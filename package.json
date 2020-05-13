@@ -1,8 +1,8 @@
 {
-  "name": "lqd-gatsby-messages",
+  "name": "lqd-gatsby",
   "private": true,
-  "description": "Liquid Messages Archive site based on Gatsby",
-  "version": "0.1.0",
+  "description": "Liquid Theme based on Gatsby",
+  "version": "0.0.1",
   "author": "George Tuan <george@liquidchurch.com>",
   "dependencies": {
     "acorn": "^7.1.1",
