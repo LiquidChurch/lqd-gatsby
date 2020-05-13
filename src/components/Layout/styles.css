@@ -1,6 +1,34 @@
-.layout {
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 0px;
+/* Global styles */
+
+.row {
+  margin-left: 0;
+  margin-right: 0;
 }
 
+.col {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.navbar-brand {
+  margin-left:-10px;
+}
+
+.navbar-toggler {
+ font-size: 0.75rem !important;
+ margin-top:12px;
+}
+
+.btn-outline-primary {
+  color: #14a7e0;
+  border-color: #14a7e0;
+  text-transform: uppercase;
+}
+
+.btn-outline-primary:hover {
+  background-color: #14a7e0;
+}
+
+.round-btn {
+  border-radius: 40px;
+}

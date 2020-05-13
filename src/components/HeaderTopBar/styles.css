@@ -1,4 +1,19 @@
-.header-icon {
+/* Header TopBar component styles */
+
+.topbar {
+  margin-top:-7px;
+  margin-bottom:-7px;
+}
+
+@media (max-width:575px) {
+  .topbar {
+    margin-top:-11px;
+    margin-bottom:0px;
+    padding-bottom:12px;
+  }
+}
+
+.topbar-icon {
   background: url('/icons/icon-144x144.png') transparent 5px 50% no-repeat;
   background-size: 30px 30px;
   display: inline-block;
@@ -7,7 +22,7 @@
   height: 30px;
 }
 
-.header-brand {
+.topbar-brand {
   display: inline-block;
   vertical-align: middle;
   padding-left: 0px;
@@ -16,36 +31,13 @@
   font-size: 1.5em;
   font-weight: 400;
   color: #14A7E0 !important;
-  /* Use the Roboto font that is loaded in the <head> */
   font-family: 'Lato', sans-serif;
 }
 
-.navbar-brand {
-  margin-left:-10px;
-}
-
-.center-btn {
+.topbar-btn {
   display:flex;
   justify-content:center;
   align-item:center;
   margin:0 auto;
   border-radius:40px;
-}
-
-.round-btn {
-  border-radius: 40px;
-}
-
-
-.primary {
-  color: #14A7E0;
-}
-
-.btn-outline-primary {
-  color: #14a7e0;
-  border-color: #14a7e0;
-  text-transform: uppercase;
-}
-.btn-outline-primary:hover {
-  background-color: #14a7e0;
 }

@@ -1,23 +1,16 @@
-.navigation {
+/* Header NavMenu component styles */
+
+.nav-menu {
   padding-top: 0px;
   min-height: 48px;
   padding-bottom: 0px;
   background-color: #14a7e0;
 }
 
-.navbar-toggler {
- font-size: 0.75rem !important;
- margin-top:12px;
-}
-
-
-.search-top {
+.nav-search {
   margin-block-end:auto;
   padding-top: 8px;
   height: 48px;
-}
-
-.toggle-adjust {
 }
 
 .collapsed {
@@ -28,22 +21,23 @@
   transition:none !important;
 }
 
-.equal-width {
+.nav-menu-item {
   margin-left: -4px !important;
   margin-right: 5px !important;
   height: 40px;
   white-space: nowrap;
   background: #14a7e0;
   text-transform: uppercase;
+  width: 21%;
 }
 
-.equal-width:hover {
+.nav-menu-item:hover {
   background: #343a40;
   color: #14a7e0 !important;
 }
 
-@media (max-width:767px){
-  .equal-width {
+@media (max-width:767px) {
+  .nav-menu-item {
     background:none;
     width:104px;
     padding-left: 10px !important;
@@ -54,10 +48,8 @@
 }
 
 @media (min-width:992px){
-  .equal-width {
+  .nav-menu-item {
     width:100px;
+    text-align:center;
   }
 }
-
-
-

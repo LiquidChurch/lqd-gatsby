@@ -8,7 +8,7 @@ import "./styles.css"
 
 export default ({ location, children }) => {
   return (
-    <div className={`layout`}>
+    <div>
     <Container fluid>
       <Meta />
       <Header home={"/" === location.pathname} location={location} />
