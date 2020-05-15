@@ -6,6 +6,10 @@ export const GeneralSettings = graphql`
       title
       description
       url
+      notificationBarToggle
+      notificationBarText
+      notificationBarCta
+      notificationBarUrl
     }
   }
 `

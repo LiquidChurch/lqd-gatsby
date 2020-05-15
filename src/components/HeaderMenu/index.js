@@ -21,6 +21,7 @@ export default ({ location }) => {
       wpgraphql {
         primaryMenu: menuItems(where: { location: PRIMARY }) {
           nodes {
+            id
             url
             label
           }
@@ -37,9 +38,9 @@ export default ({ location }) => {
           <Navbar.Collapse id="navbar-menu">
             <Nav>
                 {primaryMenu.nodes.map(item => {
-                  const { label, url } = item
+                  const { id, url, label } = item
                   return (
-                    <Nav.Link key={label} href={url} className="nav-menu-item">
+                    <Nav.Link key={id} href={url} className="nav-menu-item">
                       {label}
                     </Nav.Link>
                   )

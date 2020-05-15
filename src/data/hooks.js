@@ -5,7 +5,7 @@ export const useGeneralSettings = () => {
       query {
         wpgraphql {
           ...GeneralSettings
-        }
+          }
       }
     `
   )

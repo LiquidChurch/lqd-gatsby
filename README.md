@@ -8,6 +8,11 @@ Liquid church's website theme built using Gatsby as the front end with a Wordpre
 * React Bootstrap - [Gatsby-React-Bootstrap-Starter](https://github.com/billyjacoby/gatsby-react-bootstrap-starter)
 * Feather Icons - [React Feather](https://github.com/feathericons/react-feather)
 
+## Wordpress Theme Requirement
+
+This site requires the following Wordpress Theme and plugin.
+(Section TBD)
+
 ## Quick start
 
 1. Cloning the repository.
@@ -48,6 +53,7 @@ Here is a top level overview of the files for Gastby
 ## Release History
 
 * 0.0.1 - Pre-Release
+* 0.0.2 - Add in Notification Bar. Requires Notification-Bar Plugin on Wordpress.
 
 ## License
 

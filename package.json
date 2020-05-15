@@ -2,7 +2,7 @@
   "name": "lqd-gatsby",
   "private": true,
   "description": "Liquid Theme based on Gatsby",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "George Tuan <george@liquidchurch.com>",
   "dependencies": {
     "acorn": "^7.1.1",
