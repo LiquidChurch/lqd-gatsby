@@ -65,7 +65,6 @@ export default ({ location }) => {
             </InputGroup.Append>
          </InputGroup>
         </Col>
-
       </Navbar>
     )
   )

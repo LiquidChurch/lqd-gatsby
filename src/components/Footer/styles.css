@@ -4,6 +4,10 @@
   margin-top:-6px
 }
 
+.footer-copyright {
+  margin-bottom: 5px;
+}
+
 .footer-icon {
   background: url('/icons/icon-144x144.png') transparent 5px 50% no-repeat;
   background-size: 25px 25px;
@@ -15,7 +19,7 @@
   margin-bottom:0.2rem;
 }
 
-.footer-copyright {
+.footer-brand {
   display: inline-block;
   vertical-align: middle;
   padding-left: 0px;

@@ -4,23 +4,24 @@ import Nav from 'react-bootstrap/Nav'
 import Col from 'react-bootstrap/Col'
 import Navbar from 'react-bootstrap/Navbar'
 
+import FooterMenu from './FooterMenu'
+
 
 import { CopyrightIconSm, FacebookIcon, InstagramIcon, YouTubeIcon, TwitterIcon } from '../../helpers/icons'
 
 import "./styles.css"
 
 export default () => {
-  const date = new Date()
   return (
     <footer id='footer' className='footer'>
       
       <Navbar sticky="bottom" bg="dark" expand="md" className="d-flex bottombar">
-        <Col xs={{span: 12, order:2}} md={{span:5, order:1}} block="true">
+        <Col xs={{span: 12, order:2}} md={{span:5, order:1}} block="true" className='footer-copyright'>
           <Navbar.Brand className='flex-nowrap'>
             <span className="footer-copyright-icon">
               <CopyrightIconSm/>2020
             </span>
-            <span className="footer-copyright">
+            <span className="footer-brand">
               <b>Liquid</b>Church
             </span>
             <span className="footer-copyright-links">
@@ -38,17 +39,7 @@ export default () => {
           </Navbar.Brand>
         </Col>
         <Col xs={{span:8, order:1}} md={{span:5, order:2}} block="true" className='footer-links'>
-          <Nav className='flex-nowrap flex-row' as='ul'>
-            <Nav.Item className="p-2" as='li'>
-              <Nav.Link href="">Contact Us</Nav.Link>
-            </Nav.Item>
-            <Nav.Item className="p-2" as='li'>
-              <Nav.Link href="">Jobs</Nav.Link>
-            </Nav.Item>
-            <Nav.Item className="p-2" as='li'>
-              <Nav.Link href="">Prayer Request</Nav.Link>
-            </Nav.Item>
-          </Nav>
+          <FooterMenu />
         </Col>
         <Col xs={{span:3, order:1}} md={{span:2, order:3}} block="true">
           <Nav className='flex-nowrap flex-row-reverse social-icons-group' as='ul'>
