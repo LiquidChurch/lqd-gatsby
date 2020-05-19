@@ -5,9 +5,9 @@ import Col from 'react-bootstrap/Col'
 import { useGeneralSettings } from "../../data/hooks"
 import "./styles.css"
 
-import HeaderNotification from "../HeaderNotification"
-import HeaderMenu from "../HeaderMenu"
-import HeaderTopBar from "../HeaderTopBar"
+import HeaderNotification from "./HeaderNotification"
+import HeaderMenu from "./HeaderMenu"
+import HeaderTopBar from "./HeaderTopBar"
 
 function NotificationToggleCheck(props) {
   const notificationToggled = props.notificationToggle;
@@ -34,7 +34,7 @@ export default ({ home = false, location }) => {
   const { title, notificationBarToggle, notificationBarText, notificationBarCta, notificationBarUrl } = useGeneralSettings()
     
   return (
-    <header className={`header`}>
+    <header id='header' className={`header`}>
       <NotificationToggleCheck 
         notificationToggle={notificationBarToggle}
         notificationText={notificationBarText}
