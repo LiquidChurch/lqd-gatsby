@@ -16,11 +16,20 @@ This site requires the following Wordpress Theme and plugin.
 ## Quick start
 
 1. Cloning the repository.
+```
+$ git clone git@github.com:LiquidChurch/lqd-gatsby.git
+$ git fetch
+```
 
-2. `npm run install`
+2. Install required node modules.
+```
+$ npm install
+```
 
-3. `npm start` 
-    
+3. Starting gatsby
+```
+$ npm run develop
+```
     The development server is currently set with host 0.0.0.0 and port 3000. This is due to the codeanywhere environment that is being used and can be changed by modifying package.json.
 
 
