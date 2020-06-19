@@ -5,27 +5,11 @@ import Meta from "../Meta"
 import Footer from "../Footer"
 import Header from "../Header"
 import "./styles.css"
-import useWindowDimensions from "./windowDimension.js"
 
 export default ({ location, children }) => {
-  var { width, height } = useWindowDimensions();
-
-  //const clientHeight = window.innerHeight;
-  //const headerHeight = document.getElementById('header').clientHeight
-  //const footerHeight = document.getElementById('footer').clientHeight
-    
-  console.log("layout init", height)
-  //console.log("header height", headerHeight)  
-  //console.log("footer height", footerHeight)
-  console.log("width", width)
   
-  var mainMinHeight = 0;
+  var mainMinHeight = 400;
 
-  if ( width > 576 ) {
-    mainMinHeight = (height - 56);  //206
-  } else {
-    mainMinHeight = (height - 94);  //244
-  }
  
 
   
