@@ -2,3 +2,51 @@
   margin-left:-15px;
   margin-right:-15px;
 }
+
+.burger-icon {
+  -webkit-mask-image: url('./burger-med.svg');
+  -webkit-mask-size: 100% 100%;
+  mask-image: url('./burger-med.svg');
+}
+
+.magnifier-icon {
+  -webkit-mask-image: url('./magnifier-thin.svg');
+  -webkit-mask-size: 100% 100%;
+  mask-image: url('./magnifier-thin.svg');
+}
+
+.liquid-logo {
+  -webkit-mask-image: url('./logo.svg');
+  -webkit-mask-size: 101% 101%;
+  mask-image: url('./logo.svg');
+}
+
+.new-here-icon {
+  -webkit-mask-image: url('./new-here.svg');
+  -webkit-mask-size: 101% 101%;
+  mask-image: url('./new-here.svg');
+}
+
+.locations-icon {
+  -webkit-mask-image: url('./locations.svg');
+  -webkit-mask-size: 101% 101%;
+  mask-image: url('./locations.svg');
+}
+
+.chop-icon {
+  -webkit-mask-image: url('./chop-icon.svg');
+  -webkit-mask-size: 101% 101%;
+  mask-image: url('./chop-icon.svg');
+}
+
+.give-icon {
+  -webkit-mask-image: url('./give.svg');
+  -webkit-mask-size: 101% 101%;
+  mask-image: url('./give.svg');
+}
+
+.messages-icon {
+  -webkit-mask-image: url('./messages.svg');
+  -webkit-mask-size: 101% 101%;
+  mask-image: url('./messages.svg');
+}

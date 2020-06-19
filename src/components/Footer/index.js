@@ -14,8 +14,7 @@ import "./styles.css"
 export default () => {
   return (
     <footer id='footer' className='footer'>
-      
-      <Navbar sticky="bottom" bg="dark" expand="md" className="d-flex bottombar">
+      <Navbar bg="dark" expand="md" className="d-flex bottombar">
         <Col xs={{span: 12, order:2}} md={{span:5, order:1}} block="true" className='footer-copyright'>
           <Navbar.Brand className='flex-nowrap'>
             <span className="footer-copyright-icon">

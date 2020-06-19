@@ -14,6 +14,7 @@
 
 @custom-media --small-viewport (min-width: 768px);
 
+
 body {
   color: var(--base);
   background-color: #fff;
@@ -81,3 +82,8 @@ img {
 .post {
   margin-top: 40px;
 }
+
+.bg-test {
+  background-color:black;
+}
+

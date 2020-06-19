@@ -1,6 +1,8 @@
 import React from "react"
+import { graphql, useStaticQuery } from "gatsby"
 
 import Col from 'react-bootstrap/Col'
+import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import Button from 'react-bootstrap/Button'
 
@@ -9,25 +11,52 @@ import "./styles.css"
 /**
  * The Header TopBar component.
  */
-export default ({ title }) => {
+export default ({ location }) => {
+  const {
+    wpgraphql: { primaryMenu },
+  } = useStaticQuery(graphql`
+    query {
+      wpgraphql {
+        primaryMenu: menuItems(where: { location: PRIMARY }) {
+          nodes {
+            id
+            url
+            label
+          }
+        }
+      }
+    }
+  `)
+  
   return (
-    <Navbar bg="dark" expand="md" className="topbar">
-      <Col xs={12} sm={6} block="true">
-        <Navbar.Brand href="/">
-          <span className="topbar-icon"></span>
-          <span className="topbar-brand">
-            <b>Liquid</b>Church
-          </span>
-        </Navbar.Brand>
-      </Col>
-      <Col xs={6} sm={4} className="topbar-btn">
-        <Button variant="outline-primary" size="sm" className="round-btn" block>
-          Church Online
+    <Navbar bg="test" variant="dark" expand="true" className="topbar d-flex">
+      <Col className="topbar-icon">
+        <Button className="burger-icon" variant="topbar-icon">
         </Button>{' '}
       </Col>
-      <Col xs={6} sm={2} className="topbar-btn">
-        <Button variant="outline-primary" size="sm" className="round-btn" block>
-          Give
+      <Col className="topbar-brand">
+        <Button className="liquid-logo" variant="topbar-brand">
+        </Button>{'/'}
+      </Col>
+      <Col className="">
+        <Nav className="topbar-menu d-sm-none d-lg-flex">
+            {primaryMenu.nodes.map(item => {
+              const { id, url, label } = item
+              return (
+                <Nav.Link key={id} href={url} className="topbar-menu-item">
+                  {label}
+                </Nav.Link>
+              )
+            })}
+        </Nav>
+      </Col>
+      <Col className="topbar-chop">
+        <Button className="topbar-chop-button" variant="outline-white" size="sm">
+          Watch Church Online
+        </Button>{' '}
+      </Col>
+      <Col className="topbar-icon">
+        <Button className="magnifier-icon" variant="topbar-icon">
         </Button>{' '}
       </Col>
     </Navbar>

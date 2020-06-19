@@ -4,8 +4,8 @@ import { graphql, useStaticQuery } from "gatsby"
 import Col from 'react-bootstrap/Col'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
-import InputGroup from 'react-bootstrap/InputGroup'
-import FormControl from 'react-bootstrap/FormControl'
+import ButtonGroup from 'react-bootstrap/ButtonGroup'
+import Button from 'react-bootstrap/Button'
 import { Search } from 'react-feather';
 
 import "./styles.css"
@@ -30,42 +30,29 @@ export default ({ location }) => {
     }
   `)
 
-  return ( 
-    primaryMenu && (
-      <Navbar expand="md" className="nav-menu">
-        <Col xs={{span:2, order:1}}  md={{span:8, order:1}} lg={{span:9, order:1}} className="toggle-adjust">
-          <Navbar.Toggle aria-controls="navbar-menu"  />
-          <Navbar.Collapse id="navbar-menu">
-            <Nav>
-                {primaryMenu.nodes.map(item => {
-                  const { id, url, label } = item
-                  return (
-                    <Nav.Link key={id} href={url} className="nav-menu-item">
-                      {label}
-                    </Nav.Link>
-                  )
-                })}
-            </Nav>
-          </Navbar.Collapse>
-        </Col>
-        <Col xs={{ span:10, order:2}} md={{ span:4, order:2}} lg={{ span:3, order:2}} 
-             className="nav-search">
-          <InputGroup className="mb-3">
-            <FormControl
-              placeholder="Search"
-              aria-label="Search"
-              aria-describedby="search-field"
-              className="round-btn"
-              size="sm"
-            />
-            <InputGroup.Append>
-              <InputGroup.Text id="search-field" className="round-btn" size="sm">
-                <Search size={15}/>
-              </InputGroup.Text>
-            </InputGroup.Append>
-         </InputGroup>
-        </Col>
-      </Navbar>
-    )
+  return (
+    <Navbar fixed="bottom" bg="light" className="mobile-menu">
+      <ButtonGroup className="mobile-menu-burger">
+        <Button variant="mobile-menu-burger" className="burger-icon"></Button>    
+      </ButtonGroup>
+      <ButtonGroup className="mobile-menu-group">
+        {primaryMenu.nodes.map(item => {
+          const { id, url, label } = item
+          var path = item.url.split("/")
+          return (
+            <Button variant="mobile-menu" key={id} href={url}>
+              <div className={'mobile-menu-icon ' + path[3] + '-icon'}></div>
+              <div className="mobile-menu-text">{label}</div>
+            </Button>
+          )
+        })}
+      </ButtonGroup>
+      <ButtonGroup className="mobile-menu-chop">
+        <Button variant="mobile-menu">
+          <div className="mobile-menu-chop-icon chop-icon"></div>
+          <div className="mobile-menu-text two-line">Church Online</div>
+        </Button>
+      </ButtonGroup>
+    </Navbar>
   )
 }

@@ -1,43 +1,82 @@
 /* Header TopBar component styles */
 
 .topbar {
-  margin-top:-7px;
-  margin-bottom:-7px;
+  padding: 1.2rem 1.2rem;
 }
 
 @media (max-width:575px) {
-  .topbar {
-    margin-top:-11px;
-    margin-bottom:0px;
-    padding-bottom:12px;
+  .topbar-chop {
+    display:none !important;
+  }
+  .topbar-menu {
+    display:none !important;
+  }
+  .topbar-icon {
+    display:none !important;
+  }
+  .topbar-brand {
+    display:flex !important;
+    max-width: 100% !important;
+    min-width: 100% !important;
+    margin: 0 0 !important;
+  }
+  .btn-topbar-brand {
+    margin: 0 auto;
   }
 }
 
 .topbar-icon {
-  background: url('/icons/icon-144x144.png') transparent 5px 50% no-repeat;
-  background-size: 30px 30px;
-  display: inline-block;
-  vertical-align: middle;
-  width: 58px;
-  height: 30px;
+  max-width:2rem;
+  min-width:2rem;
+  margin-bottom:0.15rem;
+  margin-left:0.3rem;
 }
 
 .topbar-brand {
-  display: inline-block;
-  vertical-align: middle;
-  padding-left: 0px;
-  padding-right: 0px;
-  margin-left:-20px;
-  font-size: 1.5em;
-  font-weight: 400;
-  color: #14A7E0 !important;
-  font-family: 'Lato', sans-serif;
+  max-width:11.4rem;
+  min-width:11.4rem;
+  margin: 0 0.8rem;  
 }
 
-.topbar-btn {
-  display:flex;
+.topbar-menu {
+  flex-direction: row;
+  place-content:flex-end;
+  height: 2rem;
+  margin-top: -0.5rem;
+}
+
+.topbar-menu-item {
+  margin: 0 0.8rem;
+  white-space: nowrap;
+}
+
+.topbar-chop {
   justify-content:center;
-  align-item:center;
-  margin:0 auto;
-  border-radius:40px;
+  max-width:19rem;
+  min-width:12rem;
+  margin: 0 1.2rem;  
+}
+
+.topbar-chop-button {
+  width:100%;
+}
+
+.btn-topbar-icon {
+  background-color: white;
+  border:none;
+  border-radius: 0;
+  height: 1.5rem;
+  width: auto;  
+}
+
+.btn-topbar-icon:hover{
+  background-color:grey;
+}
+
+.btn-topbar-brand {
+  background-color: white;
+  border:none;
+  border-radius: 0;
+  height: 2.2rem;
+  width: 10.9rem;  
 }

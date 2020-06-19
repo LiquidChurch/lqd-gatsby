@@ -47,7 +47,7 @@ export default ({ home = false, location }) => {
       </Row>
       <Row>
         <Col>
-          <HeaderMenu location={location} />
+          <HeaderMenu />
         </Col>
       </Row>
     </header>

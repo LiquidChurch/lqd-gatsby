@@ -20,11 +20,11 @@ export default ({ location, children }) => {
   console.log("width", width)
   
   var mainMinHeight = 0;
-  
+
   if ( width > 576 ) {
-    mainMinHeight = (height - 206);  
+    mainMinHeight = (height - 56);  //206
   } else {
-    mainMinHeight = (height - 244);
+    mainMinHeight = (height - 94);  //244
   }
  
 
@@ -35,7 +35,6 @@ export default ({ location, children }) => {
       <Meta />
       <Header home={"/" === location.pathname} location={location} />
       <main id='main' className={`layout__content`} style={{minHeight: mainMinHeight + 'px'}}>{children}</main>
-      <Footer />
     </Container>
     </div>
   )
