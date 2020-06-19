@@ -35,15 +35,16 @@ export default ({ location }) => {
         </Button>{' '}
       </Col>
       <Col className="topbar-brand">
-        <Button className="liquid-logo" variant="topbar-brand">
+        <Button href={'/'} className="liquid-logo" variant="topbar-brand">
         </Button>{'/'}
       </Col>
       <Col className="">
         <Nav className="topbar-menu d-sm-none d-lg-flex">
             {primaryMenu.nodes.map(item => {
               const { id, url, label } = item
+              var path = item.url.split("/")
               return (
-                <Nav.Link key={id} href={url} className="topbar-menu-item">
+                <Nav.Link key={id} href={'/' + path[3]} className="topbar-menu-item">
                   {label}
                 </Nav.Link>
               )
@@ -51,7 +52,7 @@ export default ({ location }) => {
         </Nav>
       </Col>
       <Col className="topbar-chop">
-        <Button className="topbar-chop-button" variant="outline-white" size="sm">
+        <Button href="https://liquidchurchonline.com" className="topbar-chop-button" variant="outline-white" size="sm">
           Watch Church Online
         </Button>{' '}
       </Col>

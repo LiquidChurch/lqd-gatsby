@@ -40,7 +40,7 @@ export default ({ location }) => {
           const { id, url, label } = item
           var path = item.url.split("/")
           return (
-            <Button variant="mobile-menu" key={id} href={url}>
+            <Button variant="mobile-menu" key={id} href={'/' + path[3]}>
               <div className={'mobile-menu-icon ' + path[3] + '-icon'}></div>
               <div className="mobile-menu-text">{label}</div>
             </Button>
@@ -48,7 +48,7 @@ export default ({ location }) => {
         })}
       </ButtonGroup>
       <ButtonGroup className="mobile-menu-chop">
-        <Button variant="mobile-menu">
+        <Button variant="mobile-menu" href="https://liquidchurchonline.com">
           <div className="mobile-menu-chop-icon chop-icon"></div>
           <div className="mobile-menu-text two-line">Church Online</div>
         </Button>
