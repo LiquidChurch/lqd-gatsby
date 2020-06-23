@@ -28,9 +28,10 @@ export default () => {
       <Nav className='flex-nowrap flex-row footer-menu-padding' as='ul'>
         {footerMenu.nodes.map(item => {
           const { id, url, label } = item
+          var path = item.url.split("/")
           return (
             <Nav.Item className='p-2 footer-font' as='li'>
-              <Nav.Link key={id} href={url}>
+              <Nav.Link key={id} href={'/' + path[3]}>
                 {label}
               </Nav.Link>
             </Nav.Item>
