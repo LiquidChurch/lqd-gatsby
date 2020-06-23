@@ -4,82 +4,44 @@
   margin-top:-6px
 }
 
-.footer-copyright {
-  margin-bottom: 5px;
-}
-
-.footer-icon {
-  background: url('/icons/icon-144x144.png') transparent 5px 50% no-repeat;
-  background-size: 25px 25px;
-  display: inline-block;
-  vertical-align: middle;
-  width: 58px;
-  height: 25px;
-  margin-left:-1rem;
-  margin-bottom:0.2rem;
-}
-
-.footer-brand {
-  display: inline-block;
-  vertical-align: middle;
-  padding-left: 0px;
-  padding-right: 0px;
-  margin-left:5px;
-  margin-bottom:0.1rem;
-  font-size: 0.7em;
-  font-weight: 400;
-  color: #14A7E0 !important;
-  font-family: 'Lato', sans-serif;
-}
-
-.social-icon {
-  width: 2rem;
-  margin-right: -0.1rem;
-}
-
-.social-icons-group{
-  margin: -1rem 0;
-}
-
-.footer-copyright-icon {
-  vertical-align: initial;
-  font-size: 0.7rem;
-  font-weight: 400;
-  color: #14A7E0 !important;
-  font-family: 'Lato', sans-serif;
-  margin-bottom:0.1rem;
-  margin-left: -0.5rem;
-}
-
-.footer-copyright-links {
-  color: #14A7E0 !important;
-  font-size:0.8rem;
-}
-
-.footer-copyright-links a {
-  color: #14A7E0 !important;
-  font-weight:400;
-}
-
-.footer-links {
-  vertical-align: baseline;
-  color: #14A7E0 !important;
-  font-size:0.8rem;
-  font-weight:200;
-  padding-left: 2.0rem;
-  white-space:nowrap;
-}
-
-.footer-links a {
-  color: #14A7E0 !important;
-}
-
-@media (max-width:767px) {
-  .footer{
-      margin-top:-46px
+@media (max-width:575px) {
+  .footer {
+    margin-bottom: 3.5em;
   }
-  .footer-links {
-    padding-left: 0rem;
-  }
-  
+}
+
+.liquid-icon {
+  -webkit-mask-image: url('./svg/liquid-icon.svg');
+  -webkit-mask-size: 100% 100%;
+  mask-image: url('./svg/liquid-icon.svg');
+}
+
+.to-top-icon {
+  -webkit-mask-image: url('./svg/to-top.svg');
+  -webkit-mask-size: 100% 100%;
+  mask-image: url('./svg/to-top.svg');
+}
+
+.facebook-icon {
+  -webkit-mask-image: url('./svg/facebook.svg');
+  -webkit-mask-size: 100% 100%;
+  mask-image: url('./svg/facebook.svg'); 
+}
+
+.instagram-icon {
+  -webkit-mask-image: url('./svg/instagram.svg');
+  -webkit-mask-size: 100% 100%;
+  mask-image: url('./svg/instagram.svg'); 
+}
+
+.twitter-icon {
+  -webkit-mask-image: url('./svg/twitter.svg');
+  -webkit-mask-size: 100% 100%;
+  mask-image: url('./svg/twitter.svg'); 
+}
+
+.youtube-icon {
+  -webkit-mask-image: url('./svg/youtube.svg');
+  -webkit-mask-size: 100% 100%;
+  mask-image: url('./svg/youtube.svg'); 
 }

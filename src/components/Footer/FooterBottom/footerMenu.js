@@ -3,8 +3,6 @@ import { graphql, useStaticQuery } from "gatsby"
 
 import Nav from 'react-bootstrap/Nav'
 
-import "./styles.css"
-
 /**
  * The Footer Menu component.
  */
@@ -27,11 +25,11 @@ export default () => {
 
   return ( 
     footerMenu && (
-      <Nav className='flex-nowrap flex-row' as='ul'>
+      <Nav className='flex-nowrap flex-row footer-menu-padding' as='ul'>
         {footerMenu.nodes.map(item => {
           const { id, url, label } = item
           return (
-            <Nav.Item className='p-2' as='li'>
+            <Nav.Item className='p-2 footer-font' as='li'>
               <Nav.Link key={id} href={url}>
                 {label}
               </Nav.Link>

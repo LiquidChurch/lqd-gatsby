@@ -19,6 +19,7 @@ export default ({ location, children }) => {
       <Meta />
       <Header home={"/" === location.pathname} location={location} />
       <main id='main' className={`layout__content`} style={{minHeight: mainMinHeight + 'px'}}>{children}</main>
+      <Footer />
     </Container>
     </div>
   )

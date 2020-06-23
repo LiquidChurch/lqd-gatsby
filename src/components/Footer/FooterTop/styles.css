@@ -1,0 +1,49 @@
+@media (max-width:575px) {
+  .footer-liquid-app {
+    margin-left:auto;
+    margin-right:auto;
+    max-width:16.4em !important;
+  }
+  .footer-to-top {
+    display:none;
+  }
+}
+
+.footer-liquid-app {
+  padding-top:1.2rem;
+  padding-bottom:1.2rem;
+  padding-left: 1rem;
+  max-width: 100%;
+}
+
+.footer-to-top {
+  padding-top:1.2rem;
+  padding-bottom:1.2rem;
+}
+
+.liquid-app {
+  position: absolute;
+  height: 2.9em;
+  width: 2.9em;
+  margin-bottom:0.15em;
+  margin-left:0.3em;
+  background-color: #00A7E1;
+}
+
+.liquid-app-text {
+  position: relative;
+  left: 3.8em;
+  height: 2.5em;
+  font-weight:600;
+  color: #B4B4B4;
+  line-height: normal;
+}
+
+.to-top {
+  position: absolute;
+  right: 1em;
+  height: 3.9em;
+  width: 4.8em;
+  bottom:1.35em;
+  background-color: #00A7E1;
+}
