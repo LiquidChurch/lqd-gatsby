@@ -8,18 +8,17 @@
 
 .mobile-menu {
   padding: 0 0;
-  min-width:250px;
 }
 
 .mobile-menu-burger {
-  width: 17%;
-  height: 16.2vw;
+  width: 3.1em;
+  height: 3.1em;
   background-color: #00A7E1 !important;
 }
 
 .mobile-menu-chop {
-  width: 17%;
-  height: 16.2vw;
+  width: 3.1em;
+  height: 3.1em;
   background-color: #EFEFEF !important;
 }
 
@@ -27,13 +26,13 @@
   background-color: white;
   border:none;
   color:#959595;
-  height: 8vw;
+  height: 1.4em;
   margin: auto;
 }
 
 .mobile-menu-group {
-  width: 66%;
-  height: 16.2vw;
+  width: calc(100vw - 3.1em);
+  height: 3.1em;
 }
 
 .btn-mobile-menu {
@@ -45,7 +44,7 @@
 }
 
 .mobile-menu-icon {
-  height: 7vw;
+  height: 1.4em;
   margin: auto;
   background-color: #959595;  
   margin-top: 0.5rem;
@@ -56,10 +55,12 @@
   font-size:2.2vw;
   text-transform:uppercase;
   line-height:1.5rem;
+  padding-left:0.1rem;
+  padding-right:0.1rem;
 }
 
 .mobile-menu-chop-icon {
-  height: 8.5vw;
+  height: 1.8em;
   margin: auto;
   background-color: #959595;  
   margin-top: 0.2rem;

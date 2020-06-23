@@ -46,8 +46,6 @@ export default ({ location }) => {
             </Button>
           )
         })}
-      </ButtonGroup>
-      <ButtonGroup className="mobile-menu-chop">
         <Button variant="mobile-menu" href="https://liquidchurchonline.com">
           <div className="mobile-menu-chop-icon chop-icon"></div>
           <div className="mobile-menu-text two-line">Church Online</div>
