@@ -1,10 +1,11 @@
-import React from "react"
+import React, { useContext } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 
 import Col from 'react-bootstrap/Col'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import Button from 'react-bootstrap/Button'
+import { MegaMenuContext } from '../MegaMenu/context.js'
 
 import "./styles.css"
 
@@ -12,6 +13,8 @@ import "./styles.css"
  * The Header TopBar component.
  */
 export default ({ location }) => {
+  const ctx = useContext(MegaMenuContext)
+  
   const {
     wpgraphql: { primaryMenu },
   } = useStaticQuery(graphql`
@@ -31,7 +34,7 @@ export default ({ location }) => {
   return (
     <Navbar bg="test" variant="dark" expand="true" className="topbar d-flex">
       <Col className="topbar-icon">
-        <Button className="burger-icon" variant="topbar-icon">
+        <Button className="burger-icon" variant="topbar-icon" onClick={ctx.toggleMenu}>
         </Button>{' '}
       </Col>
       <Col className="topbar-brand">
@@ -41,7 +44,7 @@ export default ({ location }) => {
       <Col className="">
         <Nav className="topbar-menu d-sm-none d-lg-flex">
             {primaryMenu.nodes.map(item => {
-              const { id, url, label } = item
+              const { id, label } = item
               var path = item.url.split("/")
               return (
                 <Nav.Link key={id} href={'/' + path[3]} className="topbar-menu-item">

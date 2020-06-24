@@ -1,12 +1,10 @@
-import React from "react"
+import React, { useContext } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 
-import Col from 'react-bootstrap/Col'
 import Navbar from 'react-bootstrap/Navbar'
-import Nav from 'react-bootstrap/Nav'
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import Button from 'react-bootstrap/Button'
-import { Search } from 'react-feather';
+import { MegaMenuContext } from '../MegaMenu/context.js'
 
 import "./styles.css"
 
@@ -14,6 +12,8 @@ import "./styles.css"
  * The Header Menu component.
  */
 export default ({ location }) => {
+  const ctx = useContext(MegaMenuContext)
+  
   const {
     wpgraphql: { primaryMenu },
   } = useStaticQuery(graphql`
@@ -33,11 +33,11 @@ export default ({ location }) => {
   return (
     <Navbar fixed="bottom" bg="light" className="mobile-menu">
       <ButtonGroup className="mobile-menu-burger">
-        <Button variant="mobile-menu-burger" className="burger-icon"></Button>    
+        <Button variant="mobile-menu-burger" className="burger-icon" onClick={ctx.toggleMenu}></Button>    
       </ButtonGroup>
       <ButtonGroup className="mobile-menu-group">
         {primaryMenu.nodes.map(item => {
-          const { id, url, label } = item
+          const { id, label } = item
           var path = item.url.split("/")
           return (
             <Button variant="mobile-menu" key={id} href={'/' + path[3]}>
