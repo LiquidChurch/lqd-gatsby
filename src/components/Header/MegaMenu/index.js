@@ -13,7 +13,10 @@ const MegaMenu = () => {
       isOpen={ ctx.isMenuOpen }
       onStateChange={(state) => ctx.stateChangeHandler(state)}
     >
-      <a id="home" className="menu-item" href="/">Home</a>
+      <a id="home" className="menu-item" href="/">
+        <span className="liquid-icon bm-icon"></span>
+        <span className="bm-text">Home</span>
+      </a>
     </Menu>
   )
 }

@@ -40,9 +40,11 @@ Note: Beware of modifying this element as it can break the animations - you shou
  
 /* General sidebar styles */
 .bm-menu {
-  background: #373a47;
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;
+  border-radius: 0px 11px 11px 0px;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #0000007D;
 }
  
 /* Morph shape necessary with bubble or elastic */
@@ -59,8 +61,23 @@ Note: Beware of modifying this element as it can break the animations - you shou
 /* Individual item */
 .bm-item {
   display: inline-block;
+  margin-left:-1em;
+}
+
+.bm-icon {
+  background-color: grey;
+  width: 1.4em;
+  height: 1.1em;
+  display: inline-block;
+  vertical-align: text-top;
 }
  
+.bm-text {
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #00A7E1;
+  padding-left: 0.9em;
+}
 /* Styling of overlay */
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);
