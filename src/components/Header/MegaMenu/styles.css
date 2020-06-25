@@ -37,7 +37,12 @@ Note: Beware of modifying this element as it can break the animations - you shou
   height: 100%;
   left:0;
 }
- 
+
+@media (min-width:350px) {
+  .bm-menu-wrap {
+    width: 350px !important;
+  }
+}
 /* General sidebar styles */
 .bm-menu {
   padding: 2.5em 1.5em 0;
@@ -62,6 +67,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 .bm-item {
   display: inline-block;
   margin-left:-1em;
+  line-height:2em;
 }
 
 .bm-icon {
@@ -69,7 +75,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
   width: 1.4em;
   height: 1.1em;
   display: inline-block;
-  vertical-align: text-top;
+  vertical-align: middle;
 }
  
 .bm-text {
@@ -77,7 +83,56 @@ Note: Beware of modifying this element as it can break the animations - you shou
   font-weight: 600;
   color: #00A7E1;
   padding-left: 0.9em;
+  vertical-align: middle;
 }
+
+.bm-subcat {
+  margin-left: -1.5em !important;
+  margin-right: -3.5em !important;
+  margin-bottom: 2em !important;
+}
+
+.bm-subcat-header {
+  font-size: 0.8em;
+  font-family:"Avenir Next Bold";
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight:900;
+  color:black;
+  margin-bottom: 0em;
+  margin-top:2em;
+  white-space: nowrap;
+}
+
+.bm-subcat-item {
+  display: block;
+  font-size:1em;
+  color: #00A7E1;
+  line-height: 2em;
+  white-space: nowrap;
+}
+
+@media (max-width:349px) {
+  .bm-icon {
+    width: 1.3em !important;
+    height: 1em !important;
+  }
+  
+  .bm-text {
+    font-size:0.9em !important;
+  }
+  
+  .bm-subcat-header {
+    font-size: 0.7em !important;
+    letter-spacing: 0.05em !important;
+  }
+  
+  .bm-subcat-item {
+    font-size: 0.8em !important;
+  }
+}
+
+
 /* Styling of overlay */
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);

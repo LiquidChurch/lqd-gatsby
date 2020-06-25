@@ -38,7 +38,7 @@ export default ({ location }) => {
         </Button>{' '}
       </Col>
       <Col className="topbar-brand">
-        <Button href={'/'} className="liquid-logo" variant="topbar-brand">
+        <Button href={'/'} className="liquid-brand" variant="topbar-brand">
         </Button>{'/'}
       </Col>
       <Col className="">
