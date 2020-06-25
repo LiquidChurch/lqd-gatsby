@@ -35,7 +35,6 @@ const MegaMenu = () => {
     }
   `)
    
-  console.log(megaMenu.nodes[0].childItems.nodes)
   var mainCategory = megaMenu.nodes[0]
   
   var categories = []
@@ -55,7 +54,6 @@ const MegaMenu = () => {
         const { id, label } = mainItem
         var path = mainItem.url.split("/")
         var icon = label.replace(/\s+/g, "-").toLowerCase();
-        console.log(icon)
         return (
           <a key={id} className="menu-item" href={"/" + path[3]}>
             <span className={icon + '-icon bm-icon'}></span>
@@ -66,14 +64,12 @@ const MegaMenu = () => {
       <Container fluid>
       <Row className="bm-subcat">
       {categories.map(category => {
-        console.log(category.label)
         return (
           <Col xs={6} key={category.id}>
           <p className="bm-subcat-header">{category.label}</p>
         
           {category.childItems.nodes.map(item => {
             const { id, label } = item
-            console.log("->", item.label)
             var path = item.url.split("/")
             return (
             <a key={id} className="bm-subcat-item" href={"/" + path[3]}>
