@@ -52,7 +52,7 @@
 }
 
 .footer-social-padding {
-  
+  place-content:flex-end;
 }
 
 .footer-font {
@@ -61,15 +61,23 @@
   white-space: nowrap;
   padding-left:0.1em !important;
   padding-right:0.1em !important;
-  color: #B4B4B4;
+  color: #007EA8;
 }
 
 .footer-font a {
-  color: #00A7E1;
+  color: #007EA8;
 }
 
 .social-icon {
-  background-color: #B4B4B4;
+  background-color: #949494;
   height: 2em;
   width: 2.5em;
+}
+
+.social-icon:focus {
+  background-color:black;
+}
+
+.social-icon:hover {
+  background-color:black;
 }

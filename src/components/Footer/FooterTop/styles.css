@@ -27,7 +27,7 @@
   width: 2.9em;
   margin-bottom:0.15em;
   margin-left:0.3em;
-  background-color: #00A7E1;
+  background-color: #009DD1;
 }
 
 .liquid-app-text {
@@ -35,7 +35,7 @@
   left: 3.8em;
   height: 2.5em;
   font-weight:600;
-  color: #B4B4B4;
+  color: #757575;
   line-height: normal;
 }
 
@@ -45,5 +45,5 @@
   height: 3.9em;
   width: 4.8em;
   bottom:1.35em;
-  background-color: #00A7E1;
+  background-color: #009DD1;
 }

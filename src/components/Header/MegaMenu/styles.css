@@ -1,31 +1,14 @@
-/* Position and sizing of burger button */
-.bm-burger-button {
-  position: fixed;
-  width: 36px;
-  height: 30px;
-  left: 36px;
-  top: 36px;
-}
- 
-/* Color/shape of burger icon bars */
-.bm-burger-bars {
-  background: #373a47;
-}
- 
-/* Color/shape of burger icon bars on hover*/
-.bm-burger-bars-hover {
-  background: #a90000;
-}
  
 /* Position and sizing of clickable cross button */
 .bm-cross-button {
-  height: 24px;
-  width: 24px;
-}
- 
-/* Color/shape of close button cross */
-.bm-cross {
-  background: #bdc3c7;
+  height: 50px;
+  width: 50px;
+  
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background-color: transparent;
+  border:none;
 }
  
 /*
@@ -52,6 +35,13 @@ Note: Beware of modifying this element as it can break the animations - you shou
   box-shadow: 0px 3px 6px #0000007D;
 }
  
+.bm-hr {
+  margin-top: 1.2em;
+  margin-bottom:-0.7em;
+  margin-right:-2.6em;
+  margin-left:-0.7em;
+}
+
 /* Morph shape necessary with bubble or elastic */
 .bm-morph-shape {
   fill: #373a47;
@@ -64,6 +54,12 @@ Note: Beware of modifying this element as it can break the animations - you shou
 }
  
 /* Individual item */
+.bm-maincat {
+  margin-left: -0.7em !important;
+  display:grid;
+  margin-top:-0.5em;
+}
+
 .bm-item {
   display: inline-block;
   margin-left:-1em;
@@ -81,7 +77,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 .bm-text {
   font-size: 1.1em;
   font-weight: 600;
-  color: #00A7E1;
+  color: #007EA8;
   padding-left: 0.9em;
   vertical-align: middle;
 }
@@ -107,7 +103,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 .bm-subcat-item {
   display: block;
   font-size:1em;
-  color: #00A7E1;
+  color: #007EA8;
   line-height: 2em;
   white-space: nowrap;
 }
@@ -133,7 +129,26 @@ Note: Beware of modifying this element as it can break the animations - you shou
 }
 
 
-/* Styling of overlay */
+/* Styling of overlay */    
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);
+}
+
+.menu-item:focus {
+  outline-style:none;
+  color:#003647;
+  background-color:#e5f9ff;
+}
+
+.bm-subcat-item:focus {
+  outline-style:none;
+  color:#003647;
+  background-color:#e5f9ff;
+}
+
+.bm-cross-button:focus{
+  outline-style:none;
+  color:#003647;
+  background-color:#e5f9ff;
+  box-shadow:none;
 }

@@ -31,9 +31,13 @@ export default ({ location }) => {
   `)
 
   return (
-    <Navbar fixed="bottom" bg="light" className="mobile-menu">
+    <Navbar aria-label="Mobile Menu" fixed="bottom" bg="light" className="mobile-menu">
       <ButtonGroup className="mobile-menu-burger">
-        <Button variant="mobile-menu-burger" className="burger-icon" onClick={ctx.toggleMenu}></Button>    
+        <Button variant="mobile-menu-burger" 
+          aria-label="Open Main Menu Drawer"
+          className="burger-icon" 
+          onClick={ctx.toggleMenu}>
+        </Button>    
       </ButtonGroup>
       <ButtonGroup className="mobile-menu-group">
         {primaryMenu.nodes.map(item => {

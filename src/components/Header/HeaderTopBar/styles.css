@@ -19,6 +19,7 @@
     max-width: 100% !important;
     min-width: 100% !important;
     margin: 0 0 !important;
+    place-content: center;
   }
   .btn-topbar-brand {
     margin: 0 auto;
@@ -30,6 +31,10 @@
   min-width:2rem;
   margin-bottom:0.15rem;
   margin-left:0.3rem;
+}
+
+.topbar-icon:hover{
+  box-sizing:border-box;
 }
 
 .topbar-brand {
@@ -46,8 +51,10 @@
 }
 
 .topbar-menu-item {
-  margin: 0 0.8rem;
+  margin: 0 0.46rem;
   white-space: nowrap;
+  font-size:1.1em;
+  margin-bottom: -0.5em;
 }
 
 .topbar-chop {
@@ -69,14 +76,58 @@
   width: auto;  
 }
 
-.btn-topbar-icon:hover{
-  background-color:grey;
-}
-
 .btn-topbar-brand {
   background-color: white;
   border:none;
   border-radius: 0;
   height: 2.2rem;
   width: 10.9rem;  
+}
+
+.btn-topbar-brand-focus {
+  background-color: white;
+  border:none;
+  border-radius: 0;
+  height: 2.2rem;
+  width: 10.9rem;  
+}
+
+
+.btn-topbar-menu {
+  background-color:transparent;
+  color:white;
+  font-weight: bold
+}
+
+.btn-topbar-icon:hover{
+  background-color:grey;
+}
+
+.btn-topbar-menu:hover{
+  color:grey;
+}
+
+.btn-topbar-brand:hover{
+  background-color:grey;  
+}
+
+.btn-topbar-brand-focus:hover{
+  background-color:grey;  
+}
+
+.btn-topbar-icon:focus{
+  background-color:grey;
+}
+
+.btn-topbar-menu:focus{
+  box-shadow: 0 0 0 0.2em grey;
+}
+
+.btn-topbar-brand-focus:focus{
+  background-color:grey;  
+}
+
+.topbar-chop-button:focus {
+  background-color:grey;
+  color:black;
 }
