@@ -8,6 +8,7 @@ export default () => {
   return (
     <Helmet defaultTitle={`${ReactHtmlParser(title)} | ${description}`}>
       <meta name="description" content={description} />
+      <html lang="en" />
       <link
         rel="apple-touch-icon"
         sizes="180x180"

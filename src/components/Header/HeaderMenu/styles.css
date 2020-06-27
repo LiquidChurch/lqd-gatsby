@@ -30,6 +30,14 @@
   margin: auto;
 }
 
+.btn-mobile-menu-burger:focus {
+  background-color: black;
+}
+
+.btn-mobile-menu-burger:hover {
+  background-color: black;
+}
+
 .mobile-menu-group {
   width: calc(100vw);
   height: 3.1em;
@@ -37,7 +45,7 @@
 
 .btn-mobile-menu {
   border: none;
-  color: #959595;
+  color: #707070    ;
   width: 16.6%;
   padding: 0 0;
   margin: auto;
@@ -46,7 +54,7 @@
 .mobile-menu-icon {
   height: 1.4em;
   margin: auto;
-  background-color: #959595;  
+  background-color: #8F8F8F;  
   margin-top: 0.5rem;
 }
 
@@ -59,11 +67,19 @@
   padding-right:0.1rem;
 }
 
+.mobile-menu-icon:hover {
+  background-color: black;  
+}
+
 .mobile-menu-chop-icon {
   height: 1.8em;
   margin: auto;
-  background-color: #959595;  
+  background-color: #8F8F8F;  
   margin-top: 0.2rem;
+}
+
+.mobile-menu-chop-icon:hover {
+  background-color: black;  
 }
 
 .two-line {

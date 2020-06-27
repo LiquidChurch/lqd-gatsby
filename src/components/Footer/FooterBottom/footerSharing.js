@@ -22,14 +22,13 @@ export default () => {
 
   return (
     socialMenu && (
-      <Nav className='flex-nowrap flex-row-reverse footer-social-padding' as='ul'>
+      <Nav className='flex-nowrap flex-row footer-social-padding' as='ul'>
         {socialMenu.nodes.map(item => {
           const { id, url, label } = item
           var socialIcon = label.toLowerCase()
-          console.log(socialIcon)
           return (
-            <Nav.Item className="p-2" as='li'>
-              <Nav.Link key={id} href={url} className={'social-icon ' + socialIcon + '-icon'}></Nav.Link>
+            <Nav.Item key={id} className="p-2" as='li'>
+              <Nav.Link href={url} aria-label={label} className={'social-icon ' + socialIcon + '-icon'}></Nav.Link>
             </Nav.Item>
           )
         })}

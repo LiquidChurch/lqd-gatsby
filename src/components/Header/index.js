@@ -9,6 +9,9 @@ import HeaderNotification from "./HeaderNotification"
 import HeaderMenu from "./HeaderMenu"
 import HeaderTopBar from "./HeaderTopBar"
 
+import { MegaMenuProvider } from "./MegaMenu/context.js"
+import MegaMenu from "./MegaMenu"
+
 function NotificationToggleCheck(props) {
   const notificationToggled = props.notificationToggle;
   
@@ -35,6 +38,8 @@ export default ({ home = false, location }) => {
     
   return (
     <header id='header' className={`header`}>
+      <MegaMenuProvider>
+      <MegaMenu />
       <NotificationToggleCheck 
         notificationToggle={notificationBarToggle}
         notificationText={notificationBarText}
@@ -50,6 +55,7 @@ export default ({ home = false, location }) => {
           <HeaderMenu />
         </Col>
       </Row>
+      </MegaMenuProvider>
     </header>
   )
 }

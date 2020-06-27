@@ -1,0 +1,119 @@
+.liquid-brand {
+  -webkit-mask-image: url('./svg/logo.svg');
+  -webkit-mask-size: 101% 101%;
+  mask-image: url('./svg/logo.svg');
+}
+
+.liquid-icon {
+  -webkit-mask-image: url('./svg/liquid.svg');
+  -webkit-mask-size: 100% 100%;
+  mask-image: url('./svg/liquid.svg');
+}
+
+.burger-icon {
+  -webkit-mask-image: url('./svg/burger.svg');
+  -webkit-mask-size: 100% 100%;
+  mask-image: url('./svg/burger.svg');
+}
+
+.to-top-icon {
+  -webkit-mask-image: url('./svg/to-top.svg');
+  -webkit-mask-size: 100% 100%;
+  mask-image: url('./svg/to-top.svg');
+}
+
+.facebook-icon {
+  -webkit-mask-image: url('./svg/facebook.svg');
+  -webkit-mask-size: 100% 100%;
+  mask-image: url('./svg/facebook.svg'); 
+}
+
+.instagram-icon {
+  -webkit-mask-image: url('./svg/instagram.svg');
+  -webkit-mask-size: 100% 100%;
+  mask-image: url('./svg/instagram.svg'); 
+}
+
+.twitter-icon {
+  -webkit-mask-image: url('./svg/twitter.svg');
+  -webkit-mask-size: 100% 100%;
+  mask-image: url('./svg/twitter.svg'); 
+}
+
+.youtube-icon {
+  -webkit-mask-image: url('./svg/youtube.svg');
+  -webkit-mask-size: 100% 100%;
+  mask-image: url('./svg/youtube.svg'); 
+}
+
+.home-icon {
+  -webkit-mask-image: url('./svg/liquid.svg');
+  -webkit-mask-size: 100% 100%;
+  mask-image: url('./svg/liquid.svg');
+}
+
+.magnifier-icon {
+  -webkit-mask-image: url('./svg/magnifier.svg');
+  -webkit-mask-size: 100% 100%;
+  mask-image: url('./svg/magnifier.svg');
+}
+
+.new-here-icon {
+  -webkit-mask-image: url('./svg/new-here.svg');
+  -webkit-mask-size: 101% 101%;
+  mask-image: url('./svg/new-here.svg');
+}
+
+.locations-icon {
+  -webkit-mask-image: url('./svg/locations.svg');
+  -webkit-mask-size: 101% 101%;
+  mask-image: url('./svg/locations.svg');
+}
+
+.chop-icon {
+  -webkit-mask-image: url('./svg/chop-icon.svg');
+  -webkit-mask-size: 101% 101%;
+  mask-image: url('./svg/chop-icon.svg');
+}
+
+.church-online-icon {
+  -webkit-mask-image: url('./svg/church-online.svg');
+  -webkit-mask-size: 101% 101%;
+  mask-image: url('./svg/church-online.svg');  
+}
+
+.give-icon {
+  -webkit-mask-image: url('./svg/give.svg');
+  -webkit-mask-size: 101% 101%;
+  mask-image: url('./svg/give.svg');
+}
+
+.messages-icon {
+  -webkit-mask-image: url('./svg/messages.svg');
+  -webkit-mask-size: 101% 101%;
+  mask-image: url('./svg/messages.svg');
+}
+
+.about-icon {
+  -webkit-mask-image: url('./svg/about.svg');
+  -webkit-mask-size: 101% 101%;
+  mask-image: url('./svg/about.svg');
+}
+
+.groups-icon {
+  -webkit-mask-image: url('./svg/groups.svg');
+  -webkit-mask-size: 101% 101%;
+  mask-image: url('./svg/groups.svg');
+}
+
+.next-steps-icon {
+  -webkit-mask-image: url('./svg/next-steps.svg');
+  -webkit-mask-size: 101% 101%;
+  mask-image: url('./svg/next-steps.svg');
+}
+
+.family-icon {
+  -webkit-mask-image: url('./svg/family.svg');
+  -webkit-mask-size: 101% 101%;
+  mask-image: url('./svg/family.svg');
+}

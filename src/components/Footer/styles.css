@@ -1,6 +1,6 @@
 .footer {
-  margin-left:-15px;
-  margin-right:-15px;
+  margin-left:-15px !important;
+  margin-right:-15px !important;
   margin-top:-6px
 }
 
@@ -8,40 +8,4 @@
   .footer {
     margin-bottom: 3.5em;
   }
-}
-
-.liquid-icon {
-  -webkit-mask-image: url('./svg/liquid-icon.svg');
-  -webkit-mask-size: 100% 100%;
-  mask-image: url('./svg/liquid-icon.svg');
-}
-
-.to-top-icon {
-  -webkit-mask-image: url('./svg/to-top.svg');
-  -webkit-mask-size: 100% 100%;
-  mask-image: url('./svg/to-top.svg');
-}
-
-.facebook-icon {
-  -webkit-mask-image: url('./svg/facebook.svg');
-  -webkit-mask-size: 100% 100%;
-  mask-image: url('./svg/facebook.svg'); 
-}
-
-.instagram-icon {
-  -webkit-mask-image: url('./svg/instagram.svg');
-  -webkit-mask-size: 100% 100%;
-  mask-image: url('./svg/instagram.svg'); 
-}
-
-.twitter-icon {
-  -webkit-mask-image: url('./svg/twitter.svg');
-  -webkit-mask-size: 100% 100%;
-  mask-image: url('./svg/twitter.svg'); 
-}
-
-.youtube-icon {
-  -webkit-mask-image: url('./svg/youtube.svg');
-  -webkit-mask-size: 100% 100%;
-  mask-image: url('./svg/youtube.svg'); 
 }
