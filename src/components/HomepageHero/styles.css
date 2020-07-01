@@ -6,7 +6,6 @@
 
   position:relative;
   top:-73px;
-  z-index:-5;
   height: 56.25vw;
   width: 100vw;
   overflow:hidden;  
@@ -76,12 +75,19 @@
   text-align: center;
   font-family: "Avenir Next Regular";
   
-
+  transition:opacity 1.5s ease-in;
+  transition-delay: 4s;
+  opacity: 0;
+  
   left: 25%;
   width: 40%;
   margin-left: -20%;
   font-size: 2vw;
   margin-top: -5.5em;
+}
+
+.homepage-hero-cta.loaded {
+  opacity: 1;
 }
 
 .homepage-hero-button {
@@ -93,6 +99,24 @@
   padding-right:1.1em;
   text-transform:uppercase;
   background-color:#009DD1;
+}
+
+.homepage-hero-button:hover {
+  border-color:#009DD1;
+  background-color:#ebfaff;
+  color:#009DD1;
+}
+
+.homepage-hero-button:focus {
+  border-color:#009DD1;
+  background-color:#ebfaff;
+  color:#009DD1;
+}
+
+.homepage-hero-button:active {
+  border-color:#009DD1 !important;
+  background-color:#ebfaff !important;
+  color:#009DD1 !important;
 }
 
 @media (max-width:991px) {

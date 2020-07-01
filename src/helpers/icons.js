@@ -8,7 +8,7 @@ import "./icons.css"
 
 const SmallIcon = withBaseIcon({size: 16, style: { color: '#949494', verticalAlign: 'text-bottom'}})
 const StandardIcon = withBaseIcon({size: 20, style: { color: '#949494', verticalAlign: 'text-bottom'}})
-const CenterIcon = withBaseIcon({size: 20, style: { color: '#949494', verticalAlign: 'center'}})
+const LargeIcon = withBaseIcon({size: 28, style: { color: '#949494', verticalAlign: 'text-bottom'}})
 export const ArrowRight = () => <StandardIcon icon={ic_arrow_forward} />
 export const CopyrightIcon = () => <SmallIcon icon={ic_copyright} />
-export const ClearIcon = () => <StandardIcon icon={ic_clear} />
+export const ClearIcon = () => <LargeIcon icon={ic_clear} />

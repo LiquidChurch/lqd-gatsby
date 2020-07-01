@@ -58,6 +58,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
   margin-left: -0.7em !important;
   display:grid;
   margin-top:-0.5em;
+  line-height:2.1em;
 }
 
 .bm-item {
@@ -75,7 +76,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 }
  
 .bm-text {
-  font-size: 1.1em;
+  font-size: 1.3em;
   font-weight: 600;
   color: #007EA8;
   padding-left: 0.9em;
@@ -94,7 +95,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
   letter-spacing: 0.1em;
   text-transform: uppercase;
   font-weight:900;
-  color:black;
+  color:grey;
   margin-bottom: 0em;
   margin-top:2em;
   white-space: nowrap;
@@ -128,7 +129,6 @@ Note: Beware of modifying this element as it can break the animations - you shou
   }
 }
 
-
 /* Styling of overlay */    
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);
@@ -150,5 +150,12 @@ Note: Beware of modifying this element as it can break the animations - you shou
   outline-style:none;
   color:#003647;
   background-color:#e5f9ff;
+  box-shadow:none;
+}
+
+.bm-cross-button:hover{
+  outline-style:none;
+  color:#003647;
+  background-color:#EBEBEB;
   box-shadow:none;
 }

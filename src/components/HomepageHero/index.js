@@ -30,15 +30,22 @@ export default ({
   
   const [runEffect, setRunEffect] = useState(false)
   return (
+    <>
     <Container fluid className="homepage-hero-container">
-      <Row>
-        <Col xs={12} className={runEffect ? "homepage-hero-image loaded" : "homepage-hero-image"}>
-          <Imgix src={"https://liquidchurch.imgix.net" + hero_image + "?gam=50"} sizes="100vw" />
-        </Col>
-        <span className={runEffect ? "homepage-hero-tag loaded" : "homepage-hero-tag"}>{hero_tag}</span>
-        <span className={runEffect ? "homepage-hero-text loaded" : "homepage-hero-text"}>{hero_text}</span>
-        <span className="homepage-hero-cta"><Button variant="primary" className="homepage-hero-button">{cta_label}</Button></span>
-      </Row>
+      <div className={runEffect ? "homepage-hero-image loaded" : "homepage-hero-image"}>
+        <Imgix src={"https://liquidchurch.imgix.net" + hero_image + "?gam=50"} sizes="100vw" />
+      </div>
+      <span className={runEffect ? "homepage-hero-tag loaded" : "homepage-hero-tag"}>{hero_tag}</span>
+      <span className={runEffect ? "homepage-hero-text loaded" : "homepage-hero-text"}>{hero_text}</span>
+      <div className={runEffect ? "homepage-hero-cta loaded" : "homepage-hero-cta"}>
+        <Button 
+          variant="primary"
+          id="hero-cta"
+          href={cta_url} 
+          className="homepage-hero-button"
+        >{cta_label}</Button>
+      </div>
     </Container>
+    </>
   )
 }
