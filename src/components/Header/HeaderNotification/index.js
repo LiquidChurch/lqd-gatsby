@@ -12,9 +12,9 @@ function ShowCtaCheck(props) {
   if (showCtaToggle !== "") {
     return(
       <div className="notification-cta">
-        <Button variant="outline-primary" 
+        <Button variant={"outline-" + props.variant}
               size="sm" 
-              className="round-btn notification-cta-button"
+              className="notification-cta-button"
               href={props.url}>
           {props.cta}
         </Button>
@@ -26,19 +26,19 @@ function ShowCtaCheck(props) {
 /**
  * The Header Notification Bar component.
  */
-export default ({ text, cta, url }) => {
+export default ({ text, cta, url, variant }) => {
   const [show, setShow] = useState(true);
   
   if (show) {
     return (
-      <Alert key="test" variant="success" className="header-notification" 
+      <Alert key="test" variant={variant} className="header-notification" 
          onClose={() => setShow(false)} dismissible>
         <div className="d-flex">
           
           <div className="notification-text">
           {Parse(text)}
           </div>
-          <ShowCtaCheck url={url} cta={cta} />
+          <ShowCtaCheck url={url} cta={cta} variant={variant} />
         </div>
       </Alert>
     )

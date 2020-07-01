@@ -1,5 +1,5 @@
 .header-notification {
-  margin-bottom: 7px;
+  margin-bottom: -0.2em;
   border-radius: 0px;
   border: none;
 }
@@ -15,8 +15,13 @@
 }
 
 .notification-cta-button {
-  height: 1.3rem;
-  line-height: 0.6rem;
+  height: 1.5em;
+  line-height: 0.6em;
+  border-radius: 0.9em;
+  padding-top: 0.5em;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  white-space: nowrap;
 }
 
 .alert-dismissible .close {
@@ -31,6 +36,12 @@
   .notification-cta {
     justify-content: flex-end;
     align-self: flex-end;
-    margin-right: -3.5rem;
+    margin-right: -2.8em;
   }
+  .notification-cta-button {
+    margin-left: 0.5em !important;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    padding-bottom: 0.2em;
+  }  
 }
