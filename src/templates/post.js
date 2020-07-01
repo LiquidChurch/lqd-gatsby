@@ -15,6 +15,8 @@ export default ({
 }) => {
   const generalSettings = useGeneralSettings()
 
+  console.log('Post Load', location)
+  
   return (
     <Layout location={location}>
       <Helmet titleTemplate={`%s | ${generalSettings.title}`}>

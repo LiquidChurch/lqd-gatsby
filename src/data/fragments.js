@@ -10,6 +10,7 @@ export const GeneralSettings = graphql`
       notificationBarText
       notificationBarCta
       notificationBarUrl
+      notificationBarVariant
     }
   }
 `
@@ -105,6 +106,18 @@ export const Code = graphql`
   }
 `
 
+export const HompageHero = graphql`
+  fragment HomepageHero on WPGraphQL_BlockLabHomepageHeroBlock {
+    attributes {
+        cta_label
+        cta_url
+        hero_image
+        hero_tag
+        hero_text
+    }
+  }
+`
+
 export const AllBlocks = graphql`
   fragment AllBlocks on WPGraphQL_Block {
     name
@@ -115,5 +128,6 @@ export const AllBlocks = graphql`
     ...Code
     ...List
     ...Blockquote
+    ...HomepageHero
   }
 `

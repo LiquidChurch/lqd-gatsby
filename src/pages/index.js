@@ -1,17 +1,39 @@
 import React from "react"
+import { Helmet } from "react-helmet"
 import { graphql } from "gatsby"
+import { useGeneralSettings } from "../data/hooks"
+import Parse from "react-html-parser"
+import Image from "gatsby-image"
 import Layout from "../components/Layout"
-import PostExcerpt from "../components/PostExcerpt"
+import PageBlocks from "../components/PageBlocks"
+import PostHeader from "../components/PostHeader"
 
-export default ({ data, location }) => {
-  const posts = data?.wpgraphql?.posts?.nodes
+/** 
+ * Homepage
+ */
+
+export default ({
+  location,
+  data: {
+    wpgraphql: { page },
+  },
+}) => {
+
+  const generalSettings = useGeneralSettings()
+  const featuredImage = page?.featuredImage?.localFile?.childImageSharp?.fluid
+  console.log('Page Load', location)
+  console.log(featuredImage)
   return (
     <Layout location={location}>
-      {posts ? (
-        posts.map(post => <PostExcerpt {...post} key={post.title} />)
-      ) : (
-        <p>Sorry, no posts were found.</p>
-      )}
+      <Helmet>
+        <title>{Parse(page.title)}</title>
+        {featuredImage && (
+          <meta property="og:image" content={featuredImage.src} />
+        )}
+      </Helmet>
+      <article className="page">
+        <PageBlocks {...page} />
+      </article>
     </Layout>
   )
 }
@@ -19,40 +41,15 @@ export default ({ data, location }) => {
 export const query = graphql`
   query {
     wpgraphql {
-      posts {
-        nodes {
-          date
-          excerpt
-          title
-          slug
-          postId
-          author {
-            avatar {
-              url
-              localFile {
-                childImageSharp {
-                  fixed(width: 40) {
-                    ...GatsbyImageSharpFixed_withWebp_tracedSVG
-                  }
-                }
-              }
-            }
-            description
-            firstName
-            lastName
-          }
-          featuredImage {
-            altText
-            sourceUrl
-            localFile {
-              childImageSharp {
-                fluid {
-                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                }
-              }
-            }
-          }
+      page(
+          id: "home"
+          idType: URI ) {
+        blocks {
+          ...AllBlocks
         }
+        date
+        title
+        slug
       }
     }
   }

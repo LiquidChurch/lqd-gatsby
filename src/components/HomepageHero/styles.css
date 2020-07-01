@@ -1,0 +1,10 @@
+.homepage-hero-container {
+  margin-left: -1.9em;
+  margin-right: -1.9em;
+  padding-left: 0;
+  padding-right: 0;
+  width: fit-content;
+  position:relative;
+  top:-73px;
+  z-index:-5;
+}

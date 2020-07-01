@@ -23,6 +23,15 @@ module.exports = {
         typeName: "WPGraphQL",
         fieldName: "wpgraphql",
         url: `http://gatsby.liquidchurch.com/graphql`,
+        includedRoutes: [
+          "**/categories",
+          "**/posts",
+          "**/pages",
+          "**/media",
+          "**/tags",
+          "**/taxonomies",
+          "**/frontpage",
+        ],
       },
     },
     {

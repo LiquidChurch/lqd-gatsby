@@ -16,7 +16,7 @@ export default ({
 }) => {
   const generalSettings = useGeneralSettings()
   const featuredImage = page?.featuredImage?.localFile?.childImageSharp?.fluid
-
+  console.log('Page Load', location)
   return (
     <Layout location={location}>
       <Helmet titleTemplate={`%s | ${generalSettings.title}`}>

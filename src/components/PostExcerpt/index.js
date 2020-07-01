@@ -8,9 +8,9 @@ import "./styles.css"
 export default ({ title, author, date, excerpt, slug }) => {
   return (
     <article className={`preview`}>
-      <h2 className={`preview__title`}>
+      <h1 className={`preview__title`}>
         <Link to={`/posts/${slug}`}>{Parse(title)}</Link>
-      </h2>
+      </h1>
       <Date dateString={date} />
       <div className="preview__excerpt">{Parse(excerpt)}</div>
       <Button url={`/posts/${slug}`} label={`Read More`} />
