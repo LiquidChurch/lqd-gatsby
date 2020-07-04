@@ -41,7 +41,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     `
       query {
         wpgraphql {
-          pages {
+          pages (
+                  first: 2000
+                  ) {
             nodes {
               id
               slug

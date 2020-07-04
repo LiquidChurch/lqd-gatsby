@@ -118,6 +118,36 @@ export const HompageHero = graphql`
   }
 `
 
+export const ExternalRedirect = graphql`
+  fragment ExternalRedirect on WPGraphQL_BlockLabExternalRedirectBlock {
+    attributes {
+        external_url
+        new_tab
+    }
+  }
+`
+
+export const PageStrap = graphql`
+  fragment PageStrap on WPGraphQL_BlockLabPageStrapBlock {
+    attributes {
+      cta_slug
+      cta_text
+      strap_bg_img
+      strap_color
+      strap_tag
+      strap_text
+    }
+  }
+`
+
+export const HomeLinks = graphql`
+  fragment HomeLinks on WPGraphQL_BlockLabHomeLinksBlock {
+    attributes {
+      page_slug_list 
+    }
+  }
+`
+
 export const AllBlocks = graphql`
   fragment AllBlocks on WPGraphQL_Block {
     name
@@ -129,5 +159,8 @@ export const AllBlocks = graphql`
     ...List
     ...Blockquote
     ...HomepageHero
+    ...ExternalRedirect
+    ...PageStrap
+    ...HomeLinks
   }
 `

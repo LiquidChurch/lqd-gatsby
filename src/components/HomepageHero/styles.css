@@ -1,6 +1,5 @@
 .homepage-hero-container {
   margin-left: -0.9em;
-  margin-right: -0.9em;
   padding-left: 0;
   padding-right: 0;
 
@@ -83,7 +82,7 @@
   width: 40%;
   margin-left: -20%;
   font-size: 2vw;
-  margin-top: -5.5em;
+  margin-top: -5.0em;
 }
 
 .homepage-hero-cta.loaded {
@@ -129,7 +128,7 @@
     width: 40%;
     margin-left:-20%;
     font-size:3vw;
-    margin-top: -2.8em;
+    margin-top: -2.5em;
   }
 
   .homepage-hero-text {
@@ -145,7 +144,7 @@
     width: 40%;
     margin-left: -20%;
     font-size: 2vw;
-    margin-top: -2.5em;
+    margin-top: -1.9em;
   }
 }
 
@@ -171,7 +170,7 @@
     width: 50%;
     margin-left: -25%;
     font-size: 3vw;
-    margin-top: -2.5em;
+    margin-top: -2.3em;
   }
 }
 

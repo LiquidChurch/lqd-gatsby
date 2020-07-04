@@ -26,7 +26,6 @@ export default ({
   return (
     <Layout location={location}>
       <Helmet>
-        <title>{Parse(page.title)}</title>
         {featuredImage && (
           <meta property="og:image" content={featuredImage.src} />
         )}

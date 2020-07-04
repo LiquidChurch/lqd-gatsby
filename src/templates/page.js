@@ -5,7 +5,7 @@ import { useGeneralSettings } from "../data/hooks"
 import Parse from "react-html-parser"
 import Image from "gatsby-image"
 import Layout from "../components/Layout"
-import PostBlocks from "../components/PostBlocks"
+import PageBlocks from "../components/PageBlocks"
 import PostHeader from "../components/PostHeader"
 
 export default ({
@@ -21,18 +21,9 @@ export default ({
     <Layout location={location}>
       <Helmet titleTemplate={`%s | ${generalSettings.title}`}>
         <title>{Parse(page.title)}</title>
-        {featuredImage && (
-          <meta property="og:image" content={featuredImage.src} />
-        )}
       </Helmet>
-      <article className="post">
-        <PostHeader {...page} />
-        {featuredImage && (
-          <div className="post-header__image">
-            <Image fluid={featuredImage} />
-          </div>
-        )}
-        <PostBlocks {...page} />
+      <article className="page">
+        <PageBlocks {...page} />
       </article>
     </Layout>
   )
@@ -48,34 +39,6 @@ export const query = graphql`
         date
         title
         slug
-        author {
-          avatar {
-            url
-            localFile {
-              childImageSharp {
-                fixed(width: 80) {
-                  ...GatsbyImageSharpFixed_withWebp_tracedSVG
-                }
-              }
-            }
-          }
-          description
-          nickname
-          firstName
-          lastName
-          username
-        }
-        featuredImage {
-          altText
-          sourceUrl
-          localFile {
-            childImageSharp {
-              fluid(maxWidth: 700) {
-                ...GatsbyImageSharpFluid_withWebp_tracedSVG
-              }
-            }
-          }
-        }
       }
     }
   }

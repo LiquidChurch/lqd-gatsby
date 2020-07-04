@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react"
-import Imgix from "react-imgix";
+import { Link } from "gatsby"
+import Imgix from "react-imgix"
 
 import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Image from 'react-bootstrap/Image'
-import Button from 'react-bootstrap/Button'
 
 import "./styles.css"
 
@@ -35,15 +35,14 @@ export default ({
       <div className={runEffect ? "homepage-hero-image loaded" : "homepage-hero-image"}>
         <Imgix src={"https://liquidchurch.imgix.net" + hero_image + "?gam=50"} sizes="100vw" />
       </div>
-      <span className={runEffect ? "homepage-hero-tag loaded" : "homepage-hero-tag"}>{hero_tag}</span>
-      <span className={runEffect ? "homepage-hero-text loaded" : "homepage-hero-text"}>{hero_text}</span>
+      <h1 className={runEffect ? "homepage-hero-tag loaded" : "homepage-hero-tag"}>{hero_tag}</h1>
+      <p className={runEffect ? "homepage-hero-text loaded" : "homepage-hero-text"}>{hero_text}</p>
       <div className={runEffect ? "homepage-hero-cta loaded" : "homepage-hero-cta"}>
-        <Button 
-          variant="primary"
+        <Link
           id="hero-cta"
-          href={cta_url} 
-          className="homepage-hero-button"
-        >{cta_label}</Button>
+          to={"/" + cta_url} 
+          className="btn btn-primary homepage-hero-button"
+        >{cta_label}</Link>
       </div>
     </Container>
     </>

@@ -39,11 +39,20 @@
   line-height: normal;
 }
 
-.to-top {
+.scroll-to-top {
   position: absolute;
   right: 1em;
   height: 3.9em;
   width: 4.8em;
   bottom:1.35em;
   background-color: #009DD1;
+  border:none;
+}
+
+.to-top:hover {
+  background-color: #00455c;
+}
+
+.to-top:focus {
+  background-color: #00455c;
 }

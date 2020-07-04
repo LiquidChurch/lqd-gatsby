@@ -39,6 +39,7 @@ export default ({ home = false, location }) => {
     
   return (
     <header id='header' className={`header`}>
+      <a name="top"></a>
       <MegaMenuProvider>
       <MegaMenu />
       <NotificationToggleCheck 

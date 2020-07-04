@@ -1,8 +1,8 @@
 import React, { useState} from "react"
+import { Link } from "gatsby"
 import Parse from "react-html-parser"
 
 import Alert from 'react-bootstrap/Alert'
-import Button from 'react-bootstrap/Button'
 
 import "./styles.css"
 
@@ -12,12 +12,12 @@ function ShowCtaCheck(props) {
   if (showCtaToggle !== "") {
     return(
       <div className="notification-cta">
-        <Button variant={"outline-" + props.variant}
-              size="sm" 
-              className="notification-cta-button"
-              href={props.url}>
+        <Link
+          className={"btn btn-sm btn-outline-" + props.variant + " notification-cta-button"}
+          to={"/" + props.url}
+        >
           {props.cta}
-        </Button>
+        </Link>
       </div>
     )
     }

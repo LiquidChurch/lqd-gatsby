@@ -28,7 +28,13 @@ export default () => {
           var socialIcon = label.toLowerCase()
           return (
             <Nav.Item key={id} className="p-2" as='li'>
-              <Nav.Link href={url} aria-label={label} className={'social-icon ' + socialIcon + '-icon'}></Nav.Link>
+              <Nav.Link 
+                href={url} 
+                aria-label={label} 
+                className={'social-icon ' + socialIcon + '-icon'}
+                target="_blank"
+              >
+              </Nav.Link>
             </Nav.Item>
           )
         })}

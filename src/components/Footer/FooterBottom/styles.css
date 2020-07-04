@@ -68,6 +68,10 @@
   color: #007EA8;
 }
 
+.footer-font:hover {
+  text-decoration:underline;
+}
+
 .social-icon {
   background-color: #949494;
   height: 2em;

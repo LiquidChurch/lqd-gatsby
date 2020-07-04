@@ -1,11 +1,9 @@
 import React, { useContext, useEffect } from "react"
-import { graphql, useStaticQuery } from "gatsby"
-
+import { Link, graphql, useStaticQuery } from "gatsby"
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import Button from 'react-bootstrap/Button'
 
 import { slide as Menu } from 'react-burger-menu'
 import { MegaMenuContext } from './context'
@@ -110,9 +108,9 @@ const MegaMenu = () => {
           >
               Main Menu Open
         </div>
-        <Button
+        <a
           id="bm-close-top"
-          className="bm-cross-button"
+          className="btn bm-cross-button"
           tabIndex={tabIndex} 
           aria-hidden={!ctx.isMenuOpen}
           aria-label="Close Main Menu Drawer"
@@ -120,23 +118,23 @@ const MegaMenu = () => {
           onKeyDown={closeTopKeyEvent}
         >
           <ClearIcon />
-        </Button>
+        </a>
         <Row className="bm-maincat">
           {mainCategory.childItems.nodes.map(mainItem => {
             const { id, label } = mainItem
             var path = mainItem.url.split("/")
             var icon = label.replace(/\s+/g, "-").toLowerCase();
             return (
-              <a key={id} 
+              <Link key={id} 
                 id={'megamenu-' + label} 
                 aria-label={label} 
                 aria-hidden={!ctx.isMenuOpen}
                 tabIndex={tabIndex} 
                 className="menu-item" 
-                href={"/" + path[3]}>
+                to={"/" + path[3]}>
                 <span className={icon + '-icon bm-icon'}></span>
                 <span className="bm-text">{label}</span>
-              </a>
+              </Link>
             )
           })}
         </Row>
@@ -150,24 +148,24 @@ const MegaMenu = () => {
                 const { id, label } = item
                 var path = item.url.split("/")
                 return (
-                <a key={id}
+                <Link key={id}
                   id={'megamenu-' + category.label + '-' + label} 
                   aria-label={category.label + " " + label} 
                   aria-hidden={!ctx.isMenuOpen}
                   tabIndex={tabIndex} 
                   className="bm-subcat-item" 
-                  href={"/" + path[3]}>
+                  to={"/" + path[3]}>
                   {label}
-                </a>
+                </Link>
                 )
               })}
               </Col>
             )
           })}
         </Row>
-        <Button
+        <a
           id="bm-close-bottom"
-          className="bm-cross-button"
+          className="btn bm-cross-button"
           tabIndex={tabIndex} 
           aria-hidden={!ctx.isMenuOpen}
           aria-label="Close Main Menu Drawer"
@@ -175,7 +173,7 @@ const MegaMenu = () => {
           onKeyDown={closeBottomKeyEvent}
         >
           <ClearIcon />
-        </Button>
+        </a>
       </Container>
      </Menu>
     </>

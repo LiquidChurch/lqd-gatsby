@@ -8,8 +8,8 @@ import BlockList from "../List"
 import BlockBlockquote from "../Blockquote"
 import BlockButton from "../Button"
 import BlockHomepageHero from "../HomepageHero"
-
-
+import BlockExternalRedirect from "../ExternalRedirect"
+import BlockPageStrap from "../PageStrap"
 
 /** 
  * Page Blocks
@@ -25,6 +25,8 @@ export default ({ blocks, featuredImage }) => {
     "core/quote": BlockBlockquote,
     "core/button": BlockButton,
     "block-lab/homepage-hero": BlockHomepageHero,
+    "block-lab/external-redirect": BlockExternalRedirect,
+    "block-lab/page-strap": BlockPageStrap,
   }
 
   return (
@@ -33,7 +35,7 @@ export default ({ blocks, featuredImage }) => {
         {blocks &&
           blocks.map((data, index) => {
             const Component = blockMap[data.name] || false
-            console.log(Component)
+            console.log("Page Component", Component)
             if (!Component) {
               return null
             }
