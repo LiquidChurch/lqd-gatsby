@@ -100,7 +100,8 @@ const MegaMenu = () => {
       <Container fluid>
         <div 
             id='megamenu' 
-            className="screen-reader-only" 
+            className="screen-reader-only"
+            role="button"
             aria-hidden={!ctx.isMenuOpen}
             tabIndex={tabIndex} 
             onKeyDown={shiftUpEvent}
@@ -108,7 +109,7 @@ const MegaMenu = () => {
           >
               Main Menu Open
         </div>
-        <a
+        <button
           id="bm-close-top"
           className="btn bm-cross-button"
           tabIndex={tabIndex} 
@@ -118,7 +119,7 @@ const MegaMenu = () => {
           onKeyDown={closeTopKeyEvent}
         >
           <ClearIcon />
-        </a>
+        </button>
         <Row className="bm-maincat">
           {mainCategory.childItems.nodes.map(mainItem => {
             const { id, label } = mainItem
@@ -163,7 +164,7 @@ const MegaMenu = () => {
             )
           })}
         </Row>
-        <a
+        <button
           id="bm-close-bottom"
           className="btn bm-cross-button"
           tabIndex={tabIndex} 
@@ -173,7 +174,7 @@ const MegaMenu = () => {
           onKeyDown={closeBottomKeyEvent}
         >
           <ClearIcon />
-        </a>
+        </button>
       </Container>
      </Menu>
     </>

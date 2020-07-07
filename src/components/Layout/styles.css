@@ -82,3 +82,10 @@ html,body {
   white-space: nowrap; /* added line */
   width: 1px;
 }
+
+.fullwidth-section {
+  padding-top:2.5em;
+  padding-bottom:1em;
+  margin-left: -15px;
+  margin-right: -15px;  
+}

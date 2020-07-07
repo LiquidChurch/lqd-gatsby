@@ -3,9 +3,6 @@ import { Link } from "gatsby"
 import Imgix from "react-imgix"
 
 import Container from 'react-bootstrap/Container'
-import Col from 'react-bootstrap/Col'
-import Row from 'react-bootstrap/Row'
-import Image from 'react-bootstrap/Image'
 
 import "./styles.css"
 
@@ -19,18 +16,18 @@ export default ({
   cta_label,
   cta_url,
 }) => {
-  
+
+  const [runEffect, setRunEffect] = useState(false)
   useEffect(() => {
     const timer1 = setTimeout(() => {
-      setRunEffect(!runEffect)
-      
+      setRunEffect(true)
     }, 1500);
-    return () => clearTimeout(timer1);
+    return () => clearTimeout(timer1); 
   }, []);
   
-  const [runEffect, setRunEffect] = useState(false)
   return (
     <>
+    <section id="homepage-hero">
     <Container fluid className="homepage-hero-container">
       <div className={runEffect ? "homepage-hero-image loaded" : "homepage-hero-image"}>
         <Imgix src={"https://liquidchurch.imgix.net" + hero_image + "?gam=50"} sizes="100vw" />
@@ -45,6 +42,7 @@ export default ({
         >{cta_label}</Link>
       </div>
     </Container>
+    </section>
     </>
   )
 }

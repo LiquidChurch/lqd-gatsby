@@ -1,5 +1,5 @@
 import React from "react"
-import Image from "gatsby-image"
+//import Image from "gatsby-image"
 import BlockParagraph from "../Paragraph"
 import BlockHeading from "../Heading"
 import BlockImage from "../Image"
@@ -10,12 +10,13 @@ import BlockButton from "../Button"
 import BlockHomepageHero from "../HomepageHero"
 import BlockExternalRedirect from "../ExternalRedirect"
 import BlockPageStrap from "../PageStrap"
+import BlockHomeLinks from "../HomeLinks"
 
 /** 
  * Page Blocks
  */
 export default ({ blocks, featuredImage }) => {
-  const topImage = featuredImage?.localFile?.childImageSharp?.fluid
+  //const topImage = featuredImage?.localFile?.childImageSharp?.fluid
   const blockMap = {
     "core/paragraph": BlockParagraph,
     "core/heading": BlockHeading,
@@ -27,6 +28,7 @@ export default ({ blocks, featuredImage }) => {
     "block-lab/homepage-hero": BlockHomepageHero,
     "block-lab/external-redirect": BlockExternalRedirect,
     "block-lab/page-strap": BlockPageStrap,
+    "block-lab/home-links": BlockHomeLinks,
   }
 
   return (

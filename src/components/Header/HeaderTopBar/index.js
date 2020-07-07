@@ -13,6 +13,8 @@ import "./styles.css"
  */
 export default ({ location }) => {
   const ctx = useContext(MegaMenuContext)
+  const [focusOn, setFocusOn] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(true)
   
   useEffect(() => {
     if (!ctx.isMenuOpen) {
@@ -24,10 +26,7 @@ export default ({ location }) => {
       } else {
         setMenuOpen(true)
       }
-  })
-  
-  const [focusOn, setFocusOn] = useState(false)
-  const [menuOpen, setMenuOpen] = useState(true)
+  }, [ctx.isMenuOpen, menuOpen])
   
   const brandKeyEvent = event => {
     if (event.key === 'Tab') {
@@ -55,14 +54,14 @@ export default ({ location }) => {
   return (
     <Navbar aria-label="Header Menu" bg="test" variant="dark" expand="true" className="topbar d-flex">
       <Col className="topbar-icon">
-        <a
+        <button
           id='header-icon'
           className="btn btn-topbar-icon burger-icon" 
           aria-label="Open Main Menu Drawer" 
           tabIndex="0"
           onClick={ctx.toggleMenu}
         >
-        </a>
+        </button>
       </Col>
       <Col className="topbar-brand">
         <Link

@@ -32,11 +32,11 @@ export default ({ location }) => {
   return (
     <Navbar aria-label="Mobile Menu" fixed="bottom" bg="light" className="mobile-menu">
       <ButtonGroup className="mobile-menu-burger">
-        <a
+        <button
           className="btn btn-mobile-menu-burger burger-icon" 
           aria-label="Open Main Menu Drawer"
           onClick={ctx.toggleMenu}>
-        </a>    
+        </button>    
       </ButtonGroup>
       <ButtonGroup className="mobile-menu-group">
         {primaryMenu.nodes.map(item => {

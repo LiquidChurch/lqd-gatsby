@@ -143,7 +143,8 @@ export const PageStrap = graphql`
 export const HomeLinks = graphql`
   fragment HomeLinks on WPGraphQL_BlockLabHomeLinksBlock {
     attributes {
-      page_slug_list 
+      page_slug_list
+      background_color
     }
   }
 `

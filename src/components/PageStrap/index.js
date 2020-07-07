@@ -25,7 +25,8 @@ export default ({
   
   return (
   <>
-  <Container fluid className="page-strap-container" style={{backgroundColor: strap_color}}>
+  <section className="fullwidth-section" style={{backgroundColor: strap_color}}>
+  <Container>
     <Row>
       <Col>
         <h2 className="page-strap-tag">{Parse(strap_tag)}</h2>
@@ -36,6 +37,7 @@ export default ({
       </Col> 
     </Row>
   </Container>
+  </section>
   </>
   )
 }

@@ -11,7 +11,7 @@ export default ({
   console.log(external_url)
   useEffect(() => {
     window.location.replace(external_url)  
-  }, []);
+  }, [external_url]);
   
   return (
     <>

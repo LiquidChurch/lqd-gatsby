@@ -1,12 +1,12 @@
 import React from "react"
 import { Helmet } from "react-helmet"
 import { graphql } from "gatsby"
-import { useGeneralSettings } from "../data/hooks"
-import Parse from "react-html-parser"
-import Image from "gatsby-image"
+//import { useGeneralSettings } from "../data/hooks"
+//import Parse from "react-html-parser"
+//import Image from "gatsby-image"
 import Layout from "../components/Layout"
 import PageBlocks from "../components/PageBlocks"
-import PostHeader from "../components/PostHeader"
+//import PostHeader from "../components/PostHeader"
 
 /** 
  * Homepage
@@ -19,7 +19,7 @@ export default ({
   },
 }) => {
 
-  const generalSettings = useGeneralSettings()
+  //const generalSettings = useGeneralSettings()
   const featuredImage = page?.featuredImage?.localFile?.childImageSharp?.fluid
   console.log('Page Load', location)
   console.log(featuredImage)

@@ -3,10 +3,8 @@ import { Helmet } from "react-helmet"
 import { graphql } from "gatsby"
 import { useGeneralSettings } from "../data/hooks"
 import Parse from "react-html-parser"
-import Image from "gatsby-image"
 import Layout from "../components/Layout"
 import PageBlocks from "../components/PageBlocks"
-import PostHeader from "../components/PostHeader"
 
 export default ({
   location,
@@ -15,7 +13,7 @@ export default ({
   },
 }) => {
   const generalSettings = useGeneralSettings()
-  const featuredImage = page?.featuredImage?.localFile?.childImageSharp?.fluid
+ // const featuredImage = page?.featuredImage?.localFile?.childImageSharp?.fluid
   console.log('Page Load', location)
   return (
     <Layout location={location}>
@@ -39,6 +37,17 @@ export const query = graphql`
         date
         title
         slug
+        featuredImage {
+          title
+          caption (
+            format: RAW
+          )
+          altText
+          description (
+            format: RAW
+          )
+          mediaItemUrl
+        }
       }
     }
   }
