@@ -21,7 +21,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     `
   )
   if (postResult.errors) {
-    reporter.panicOnBuild(`Error while running GraphQL query.`)
+    reporter.panicOnBuild(`Error while running GraphQL query on Post.`)
     return
   }
 
@@ -54,8 +54,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       }
     `
   )
+  
   if (pageResult.errors) {
-    reporter.panicOnBuild(`Error while running GraphQL query.`)
+    reporter.panicOnBuild(`Error while running GraphQL query on Page.`)
     return
   }
 
@@ -70,6 +71,48 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       })
     })
   }
+
+const messageResult = await graphql(
+    `
+      query {
+        wpgraphql {
+          lqdmMessages (
+                  first: 2000
+                  ) {
+            nodes {
+              id
+              slug
+              title
+              lqdmSeriesNodes {
+                nodes {
+                  id
+                  name
+                  slug
+                }
+              }
+            }
+          }
+        }
+      }
+    `
+  )
+
+  if (messageResult.errors) {
+    reporter.panicOnBuild(`Error while running GraphQL query on Messages.`)
+    return
+  }
+
+  if (messageResult.data.wpgraphql.lqdmMessages.nodes) {
+    messageResult.data.wpgraphql.lqdmMessages.nodes.forEach(message => {
+      createPage({
+        path: `/message/${message.slug}`,
+        component: slash(path.resolve(`./src/templates/message.js`)),
+        context: {
+          id: message.id,
+        },
+      })
+    })
+  }  
 }
 
 /**
