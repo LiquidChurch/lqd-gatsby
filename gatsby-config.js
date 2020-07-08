@@ -37,8 +37,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `wp-gatsby-starter`,
-        short_name: `wgs`,
+        name: `liquid-church`,
+        short_name: `lqd`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#14a7e0`,

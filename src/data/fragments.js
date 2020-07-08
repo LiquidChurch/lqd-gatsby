@@ -136,6 +136,7 @@ export const PageStrap = graphql`
       strap_color
       strap_tag
       strap_text
+      strap_image
     }
   }
 `

@@ -52,13 +52,14 @@ export default ({ message_slug,
         className="d-block d-sm-none message-tile-image"
         sizes="100vw" />
       <h4 className="message-tile-title">{message_info.title}</h4>
-      <p className="message-tile-series"><a href="javascript:void(0);">{message_info.lqdmSeriesNodes.nodes[0].name}</a>{partNumber} </p>
-        <Link
-          className="btn message-tile-btn"
-          to={"/message/" + message_info.slug}
-        > 
-          <PlayArrow style={{fill:"#fff;"}} /> Watch
-        </Link>
+      <p className="message-tile-series">
+        <Link to={"/series/" + message_info.lqdmSeriesNodes.nodes[0].slug}>{message_info.lqdmSeriesNodes.nodes[0].name}</Link>{partNumber}</p>
+      <Link
+        className="btn message-tile-btn"
+        to={"/message/" + message_info.slug}
+      > 
+        <PlayArrow style={{fill:"#fff;"}} /> Watch
+      </Link>
       </Col>
     </Row>
   </Container>

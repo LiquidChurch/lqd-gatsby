@@ -96,3 +96,8 @@ html,body {
     padding-bottom: 1.25em;
   } 
 }
+
+.vertical-center {
+  margin-top: auto;
+  margin-bottom: auto;
+}
