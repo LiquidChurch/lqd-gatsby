@@ -160,6 +160,14 @@ export const MessageTile = graphql`
   }
 `
 
+export const PageModal = graphql`
+  fragment PageModal on WPGraphQL_BlockLabPageModalBlock {
+      attributes {
+        modal_title
+        modal_text
+      }
+  }
+`
 export const AllBlocks = graphql`
   fragment AllBlocks on WPGraphQL_Block {
     name
@@ -175,5 +183,6 @@ export const AllBlocks = graphql`
     ...PageStrap
     ...HomeLinks
     ...MessageTile
+    ...PageModal
   }
 `

@@ -24,7 +24,7 @@ export default ({ page_slug }) => {
       className="home-tile-image"
       sizes="100vw" />
     <h3 className="home-tile-caption">{Parse(page_info.featuredImage.caption)}</h3>
-    <p className="home-tile-description">{Parse(page_info.featuredImage.description)}</p>
+    <div className="home-tile-description">{Parse(page_info.featuredImage.description)}</div>
     <Link
       className="btn home-tile-btn"
       key={page_info.id}

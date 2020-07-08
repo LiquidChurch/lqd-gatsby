@@ -26,7 +26,7 @@ export default ({ message_slug,
     </>
     )
   }
-  console.log(message_info)
+
   var imgUrl = message_info.featured_image.split("/")
   message_info.display_order = "1"
   var partNumber = ""

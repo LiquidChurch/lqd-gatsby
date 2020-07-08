@@ -12,6 +12,9 @@ import BlockExternalRedirect from "../ExternalRedirect"
 import BlockPageStrap from "../PageStrap"
 import BlockHomeLinks from "../HomeLinks"
 import BlockMessageTile from "../MessageTile"
+import BlockPageModal from "../PageModal"
+
+import { PageModalProvider } from "../PageModal/context.js"
 
 /** 
  * Page Blocks
@@ -31,15 +34,16 @@ export default ({ blocks, featuredImage }) => {
     "block-lab/page-strap": BlockPageStrap,
     "block-lab/home-links": BlockHomeLinks,
     "block-lab/message-tile": BlockMessageTile,
+    "block-lab/page-modal": BlockPageModal,
   }
 
   return (
     <>
+      <PageModalProvider>
       <div>
         {blocks &&
           blocks.map((data, index) => {
             const Component = blockMap[data.name] || false
-            console.log("Page Component", Component)
             if (!Component) {
               return null
             }
@@ -48,7 +52,9 @@ export default ({ blocks, featuredImage }) => {
               <Component key={`${data.name}-${index}`} {...data.attributes} />
             )
           })}
+
       </div>
+      </PageModalProvider>
     </>
   )
 }

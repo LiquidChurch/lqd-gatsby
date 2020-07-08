@@ -21,7 +21,7 @@ export default ({ page_slug_list, background_color }) => {
     <Row>
         {obj_page_slug_list.rows.map(item => {
           return (
-            <Col xs={12} md={6} className="home-tile">
+            <Col key={"home-tile-" + item.page_slug} xs={12} md={6} className="home-tile">
               <HomeLink
                 page_slug={item.page_slug}>
               </HomeLink>

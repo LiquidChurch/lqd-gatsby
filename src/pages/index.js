@@ -21,8 +21,6 @@ export default ({
 
   //const generalSettings = useGeneralSettings()
   const featuredImage = page?.featuredImage?.localFile?.childImageSharp?.fluid
-  console.log('Page Load', location)
-  console.log(featuredImage)
   return (
     <Layout location={location}>
       <Helmet>

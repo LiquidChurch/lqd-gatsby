@@ -24,6 +24,13 @@
   margin-right: auto;
 }
 
+.page-strap-btn {
+  background-color: #009DD1;
+  color: #fff;
+  border-radius:1.5em;
+  font-size: 1.0em;  
+}
+
 .page-strap-cta-text {
   color: #009DD1;
   font-size: 1.3em;
@@ -35,9 +42,13 @@
 }
 
 .strap-left {
-  margin-left:0.8em;
   text-align:left;
 }
+
+.strap-pad-left{
+  margin-left:0.5em;
+}
+
 @media (max-width:991px) {
   .page-strap-container {
     padding-top: 3em;
@@ -57,6 +68,10 @@
   
   .page-strap-cta-text {
     font-size:2.2vw;
+  }
+
+  .page-strap-btn {
+    font-size:2.0vw;
   }
 }
 
@@ -79,7 +94,11 @@
   
   .page-strap-cta-text {
     font-size:3.3vw;
-  }  
+  }
+  
+  .page-strap-btn {
+    font-size:3.1vw;
+  }   
 }
 
 @media (max-width:334px) {
@@ -92,4 +111,9 @@
     font-size:3.9vw;
     margin-bottom:2.0vw;
   }
+  
+  .page-strap-btn {
+    font-size:3.9vw;
+    margin-bottom:2.0vw;
+  }   
 }
