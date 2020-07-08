@@ -7,10 +7,7 @@ import { useFeaturedImage } from "../../data/featureImage"
 
 export default ({ page_slug }) => {
   const page_info = useFeaturedImage(page_slug)
-  console.log(page_info)
-  
   if (page_info === undefined) {
-    console.log("page_slug undefined")
     return (
     <>
     </>
@@ -19,11 +16,7 @@ export default ({ page_slug }) => {
   
   var imgUrl = page_info.featuredImage.mediaItemUrl.split("/")
   
-  console.log(imgUrl[4])
-  console.log(imgUrl[5])
-    
   return (
-  
   <>
     <Imgix 
       src={"https://liquidchurch.imgix.net/" + imgUrl[4] + "/" + imgUrl[5] + "?ar=16:9&fit=crop"}

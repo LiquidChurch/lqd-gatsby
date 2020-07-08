@@ -8,19 +8,11 @@ import HomeLink from "./homeLink"
 
 import "./styles.css"
 
+/** 
+ * Home Link Block Component
+ */
 export default ({ page_slug_list, background_color }) => {
-  //const nodes = useFeaturedImage("liquid-lunch")
-
-  //console.log(nodes)
   var obj_page_slug_list = JSON.parse(page_slug_list)
-  var strap_color = "#121212"
-  //console.log(obj_page_slug_list)
-  //const listItems = obj_page_slug_list.rows.map((item) => {
-  //  return item.page_slug
-  //})
-  
-  //const test = listItems[0]
-  //console.log(test)
 
   return (
   <>

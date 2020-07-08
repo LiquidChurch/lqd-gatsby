@@ -149,6 +149,16 @@ export const HomeLinks = graphql`
   }
 `
 
+export const MessageTile = graphql`
+  fragment MessageTile on WPGraphQL_BlockLabMessageTileBlock {
+      attributes {
+        block_title
+        background_color
+        message_slug
+      }
+  }
+`
+
 export const AllBlocks = graphql`
   fragment AllBlocks on WPGraphQL_Block {
     name
@@ -163,5 +173,6 @@ export const AllBlocks = graphql`
     ...ExternalRedirect
     ...PageStrap
     ...HomeLinks
+    ...MessageTile
   }
 `

@@ -5,7 +5,6 @@ import { useGeneralSettings } from "../data/hooks"
 import Parse from "react-html-parser"
 import Layout from "../components/Layout"
 import PostBlocks from "../components/PostBlocks"
-import PostHeader from "../components/PostHeader"
 
 export default ({
   location,

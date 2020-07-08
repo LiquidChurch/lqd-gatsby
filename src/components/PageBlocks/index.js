@@ -11,6 +11,7 @@ import BlockHomepageHero from "../HomepageHero"
 import BlockExternalRedirect from "../ExternalRedirect"
 import BlockPageStrap from "../PageStrap"
 import BlockHomeLinks from "../HomeLinks"
+import BlockMessageTile from "../MessageTile"
 
 /** 
  * Page Blocks
@@ -29,6 +30,7 @@ export default ({ blocks, featuredImage }) => {
     "block-lab/external-redirect": BlockExternalRedirect,
     "block-lab/page-strap": BlockPageStrap,
     "block-lab/home-links": BlockHomeLinks,
+    "block-lab/message-tile": BlockMessageTile,
   }
 
   return (
