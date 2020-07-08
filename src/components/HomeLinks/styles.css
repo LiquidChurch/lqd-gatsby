@@ -73,3 +73,17 @@
     margin-top: -2.6em;
   }
 }
+
+@media (max-width:334px) {
+  .home-tile-caption {
+    font-size: 4.2vw;
+  }
+
+  .home-tile-description {
+    font-size: 3.8vw;
+  }
+  
+  .home-tile-btn {
+    font-size: 2.8vw;
+  }
+}

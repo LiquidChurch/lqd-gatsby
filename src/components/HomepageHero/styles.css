@@ -176,9 +176,27 @@
 }
 
 @media (max-width:334px) {
+  .homepage-hero-tag {
+    left: 50%;
+    width: 86%;
+    margin-left:-43%;
+    font-size:4.4vw;
+    margin-top: -2em;
+  }
+  
   .homepage-hero-text {
     left: 50%;
-    width: 76%;
-    margin-left: -38%;
+    width: 86%;
+    margin-left: -43%;
+    font-size: 3.8vw;
+    margin-top: -2.9em;    
   }
+  
+  .homepage-hero-cta {
+    left: 50%;
+    width: 50%;
+    margin-left: -25%;
+    font-size: 3.3vw;
+    margin-top: -2.5em;
+  }  
 }

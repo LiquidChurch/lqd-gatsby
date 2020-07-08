@@ -121,7 +121,7 @@
   
   .message-tile-series {
     font-size: 2.7vw;
-    left: 18px;
+    left: 17px;
     bottom: 0.5vw;
     color: #757575;    
   }
@@ -135,6 +135,15 @@
     bottom: calc(79px + 5.7vw);
     padding-top: 0.35em;
     font-size: 0.8em;   
+  } 
+}
+
+@media (max-width:334px) {
+  .message-tile-title {
+    font-size: 4.2vw;
   }
-  
+
+  .message-tile-series {
+    font-size: 3.4vw;
+  }
 }
