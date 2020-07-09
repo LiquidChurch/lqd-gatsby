@@ -12,6 +12,7 @@ import BlockExternalRedirect from "../ExternalRedirect"
 import BlockPageStrap from "../PageStrap"
 import BlockHomeLinks from "../HomeLinks"
 import BlockMessageTile from "../MessageTile"
+import BlockMediaTile from "../MediaTile"
 import BlockPageModal from "../PageModal"
 
 import { PageModalProvider } from "../PageModal/context.js"
@@ -34,6 +35,7 @@ export default ({ blocks, featuredImage }) => {
     "block-lab/page-strap": BlockPageStrap,
     "block-lab/home-links": BlockHomeLinks,
     "block-lab/message-tile": BlockMessageTile,
+    "block-lab/media-tile": BlockMediaTile,
     "block-lab/page-modal": BlockPageModal,
   }
 

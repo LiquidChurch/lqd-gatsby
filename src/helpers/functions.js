@@ -16,3 +16,9 @@ export const getRelativeUrl = (url, siteUrl) => {
 
   return normalizedUrl.replace(normalizedSiteUrl, "")
 }
+
+export const RemoveParagraph = (props) => {
+  var stringLength = props.tempString.length  
+  var tempString = props.tempString.substring(3, stringLength-5)
+  return tempString
+}

@@ -14,7 +14,6 @@ import "./styles.css"
 /** 
  * Message Tile Block Component
  */
-
 export default ({ message_slug,
                   background_color,
                   block_title }) => {
@@ -28,7 +27,6 @@ export default ({ message_slug,
   }
 
   var imgUrl = message_info.featured_image.split("/")
-  message_info.display_order = "1"
   var partNumber = ""
   if (message_info.display_order !== "") {
     partNumber = " · Part " + message_info.display_order
@@ -43,6 +41,7 @@ export default ({ message_slug,
         <h6 className="message-tile-block-title">{block_title}</h6>
       </Col>
       <Col>
+      <Link to={"/message/" + message_info.slug}>
       <Imgix 
         src={"https://liquidchurch.imgix.net/" + imgUrl[4] + "/" + imgUrl[5] + "?ar=16:9&fit=crop"}
         className="d-none d-sm-block message-tile-image"
@@ -51,6 +50,7 @@ export default ({ message_slug,
         src={"https://liquidchurch.imgix.net/" + imgUrl[4] + "/" + imgUrl[5] + "?ar=1:1&fit=crop"}
         className="d-block d-sm-none message-tile-image"
         sizes="100vw" />
+      </Link>
       <h4 className="message-tile-title">{message_info.title}</h4>
       <p className="message-tile-series">
         <Link to={"/series/" + message_info.lqdmSeriesNodes.nodes[0].slug}>{message_info.lqdmSeriesNodes.nodes[0].name}</Link>{partNumber}</p>

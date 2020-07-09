@@ -49,10 +49,16 @@
   border:none;
 }
 
-.to-top:hover {
-  background-color: #00455c;
+.to-top-icon {
+  transition: bottom 0.3s ease-in-out;
+  color:#009DD1;
+  fill-opacity:0;
+}
+.to-top-icon:hover {
+    bottom: 2em;
+    background-color:#757575;
 }
 
-.to-top:focus {
-  background-color: #00455c;
+.to-top-icon:focus {
+    background-color:#757575;
 }

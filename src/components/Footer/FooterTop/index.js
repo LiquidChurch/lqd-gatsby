@@ -20,7 +20,7 @@ export default () => {
           </Link>
       </Col>
       <Col xs={12} sm={6} className="footer-to-top">
-        <ScrollToTop smooth className="to-top-icon" color="#009DD1"/>    
+        <ScrollToTop smooth className="to-top-icon" color="#009DD1" fill-opacity="0"/>    
       </Col>
     </>
    )

@@ -18,11 +18,13 @@ export default ({ page_slug }) => {
   
   return (
   <>
+    <Link to={"/" + page_info.slug}>
     <Imgix 
       src={"https://liquidchurch.imgix.net/" + imgUrl[4] + "/" + imgUrl[5] + "?ar=16:9&fit=crop"}
       altText={page_info.featuredImage.altText}
       className="home-tile-image"
       sizes="100vw" />
+    </Link>
     <h3 className="home-tile-caption">{Parse(page_info.featuredImage.caption)}</h3>
     <div className="home-tile-description">{Parse(page_info.featuredImage.description)}</div>
     <Link

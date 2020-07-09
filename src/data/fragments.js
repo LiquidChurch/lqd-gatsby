@@ -160,6 +160,15 @@ export const MessageTile = graphql`
   }
 `
 
+export const MediaTile = graphql`
+  fragment MediaTile on WPGraphQL_BlockLabMediaTileBlock {
+      attributes {
+        block_title
+        background_color
+        media_slug
+      }
+  }
+`
 export const PageModal = graphql`
   fragment PageModal on WPGraphQL_BlockLabPageModalBlock {
       attributes {
@@ -183,6 +192,7 @@ export const AllBlocks = graphql`
     ...PageStrap
     ...HomeLinks
     ...MessageTile
+    ...MediaTile
     ...PageModal
   }
 `

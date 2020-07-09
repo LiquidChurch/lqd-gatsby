@@ -117,3 +117,9 @@
   -webkit-mask-size: 101% 101%;
   mask-image: url('./svg/family.svg');
 }
+
+.blog-icon {
+  -webkit-mask-image: url('./svg/blog.svg');
+  -webkit-mask-size: 101% 101%;
+  mask-image: url('./svg/blog.svg');
+}

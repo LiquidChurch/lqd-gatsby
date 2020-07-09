@@ -9,17 +9,27 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     `
       query {
         wpgraphql {
-          posts {
+          posts (
+              first: 2000
+            ) {
             nodes {
               id
               slug
               title
+              categories {
+                nodes {
+                  id
+                  name
+                  slug
+                }
+              }
             }
           }
         }
       }
     `
   )
+  
   if (postResult.errors) {
     reporter.panicOnBuild(`Error while running GraphQL query on Post.`)
     return
@@ -28,7 +38,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   if (postResult.data.wpgraphql.posts.nodes) {
     postResult.data.wpgraphql.posts.nodes.forEach(post => {
       createPage({
-        path: `/posts/${post.slug}`,
+        path: `/${post.categories.nodes[0].slug}/${post.slug}`,
         component: slash(path.resolve(`./src/templates/post.js`)),
         context: {
           id: post.id,
