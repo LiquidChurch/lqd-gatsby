@@ -191,7 +191,7 @@ export const PageModal = graphql`
 `
 
 export const LinkTiles = graphql`
-  fragment LinkTiles on WPGraphQL_BlockLabBlock {
+  fragment LinkTiles on WPGraphQL_BlockLabLinkTilesBlock {
     attributes {
       slugs_list
     }
