@@ -13,7 +13,7 @@ export default () => {
   <>
     <Col xs={{span: 12, order: 3}} sm={{span: 12, order: 3}} lg={{span: 4, order: 1}} block="true" className="footer-copyright-padding">
     <div className="screen-reader-only">Copyright 2020 Liquid Church</div>  
-      <span className="footer-font" aria-hidden={true}>
+      <span className="footer-font" aria-hidden={true} style="color: #757575; text-decoration:none;">
         <CopyrightIcon />{'\u00A0'}2020{'\u00A0'}LiquidChurch.
       </span>
       <span className="footer-font">

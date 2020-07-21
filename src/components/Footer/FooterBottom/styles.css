@@ -61,12 +61,11 @@
   white-space: nowrap;
   padding-left:0.1em !important;
   padding-right:0.1em !important;
-  color: #757575;
+  color: #007EA8;;
 }
 
 .footer-font a {
   color: #007EA8;
-  text-decoration: none;
 }
 
 .footer-font:hover {
