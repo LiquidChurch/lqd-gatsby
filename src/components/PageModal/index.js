@@ -12,7 +12,6 @@ export default ({ modal_title,
   console.log(modal_title)
   
   const ctx = useContext(PageModalContext)
-  console.log(ctx)
   
   return (
     <>

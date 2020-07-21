@@ -27,7 +27,7 @@ export default () => {
           const { id, url, label } = item
           var socialIcon = label.toLowerCase()
           return (
-            <Nav.Item key={id} className="p-2" as='li'>
+            <Nav.Item key={id} className="p-1" as='li'>
               <Nav.Link 
                 href={url} 
                 aria-label={label} 

@@ -22,7 +22,7 @@ function StrapImage(props) {
     return (
       <Col xs={4} md={3}>
       <Imgix 
-        src={"https://liquidchurch.imgix.net/" + imgUrl[4] + "/" + imgUrl[5]}
+        src={"https://liquidchurch.imgix.net/" + imgUrl[4] + "/" + imgUrl[5] + "?h=296"}
         className=""
         sizes="40vw" />
       </Col>

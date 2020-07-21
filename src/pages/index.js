@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Helmet } from "react-helmet"
 import { graphql } from "gatsby"
 //import { useGeneralSettings } from "../data/hooks"
@@ -7,7 +7,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import PageBlocks from "../components/PageBlocks"
 //import PostHeader from "../components/PostHeader"
-
+//import { LoadingOverlayProvider } from "../components/LoadingOverlay/context.js"
 /** 
  * Homepage
  */
@@ -18,7 +18,11 @@ export default ({
     wpgraphql: { page },
   },
 }) => {
-
+//  NProgress.start()
+  
+  useEffect(() => {
+//    NProgress.done()
+  })
   //const generalSettings = useGeneralSettings()
   const featuredImage = page?.featuredImage?.localFile?.childImageSharp?.fluid
   return (

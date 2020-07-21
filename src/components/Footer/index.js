@@ -11,7 +11,7 @@ import "./styles.css"
 export default () => {
   return (
     <footer id='footer' className='footer'>
-    <Container fluid>
+    <Container>
       <Row className="d-flex">
         <FooterTop />
       </Row>

@@ -1,6 +1,5 @@
 import React from 'react'
 import Imgix from 'react-imgix'
-import Parse from "react-html-parser"
 import { Link } from 'gatsby'
 
 import Container from 'react-bootstrap/Container'
@@ -48,9 +47,9 @@ export default ({
       <Col xs={{span:12, offset:0}} md={{ span: 10, offset: 1 }}>
         <Link to={"/" + category + "/" + media_info.slug}>
         <Imgix
-          src={"https://liquidchurch.imgix.net/" + imgUrl[4] + "/" + imgUrl[5] + "?ar=16:9&fit=crop"}
+          src={"https://liquidchurch.imgix.net/" + imgUrl[4] + "/" + imgUrl[5] + "?ar=16:9&fit=crop&h=296"}
           className="media-tile-image"
-          sizes="100vw" />
+          sizes="50vw" />
         </Link>
         <Card className="media-tile-card" style={{ width: '18rem' }}>
           <Card.Body>
@@ -62,14 +61,8 @@ export default ({
                 className="media-tile-author-image"
               />
                 <div className="media-tile-author-name">{media_info.author.name}</div>
+                <div className={"media-tile-icon " + category + "-icon"}></div>
                 <div className="media-tile-date">{formattedDate}</div>
-                <div className="media-tile-icon-btn">
-                  <Link
-                    to={"/" + category + "/" + media_info.slug}
-                    className={"btn media-tile-icon " + category + "-icon"}
-                  >
-                  </Link>
-                </div>
             </Card.Header>
           </Card.Body>
         </Card>

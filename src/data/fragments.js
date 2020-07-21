@@ -118,6 +118,17 @@ export const HompageHero = graphql`
   }
 `
 
+export const HeroImage = graphql`
+  fragment HeroImage on WPGraphQL_BlockLabHeroImageBlock {
+    attributes {
+      hero_image_id
+      hero_title
+      image_style
+      hero_text
+    }
+  }
+`
+
 export const ExternalRedirect = graphql`
   fragment ExternalRedirect on WPGraphQL_BlockLabExternalRedirectBlock {
     attributes {
@@ -188,6 +199,7 @@ export const AllBlocks = graphql`
     ...List
     ...Blockquote
     ...HomepageHero
+    ...HeroImage
     ...ExternalRedirect
     ...PageStrap
     ...HomeLinks

@@ -1,8 +1,10 @@
-import React, { useState} from "react"
+import React, { useContext } from "react"
 import { Link } from "gatsby"
 import Parse from "react-html-parser"
 
 import Alert from 'react-bootstrap/Alert'
+import { GlobalContext } from '../../GlobalContext/context'
+
 
 import "./styles.css"
 
@@ -27,12 +29,15 @@ function ShowCtaCheck(props) {
  * The Header Notification Bar component.
  */
 export default ({ text, cta, url, variant }) => {
-  const [show, setShow] = useState(true);
   
-  if (show) {
+  //const ctx = useContext(GlobalContext)
+  
+  const ctx = useContext(GlobalContext)
+  
+  if (ctx.isNotificationOpen) {
     return (
       <Alert key="test" variant={variant} className="header-notification" 
-         onClose={() => setShow(false)} dismissible>
+         onClose={ctx.toggleNotification} dismissible>
         <div className="d-flex">
           
           <div className="notification-text">

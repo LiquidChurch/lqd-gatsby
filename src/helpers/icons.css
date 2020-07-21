@@ -94,6 +94,12 @@
   mask-image: url('./svg/messages.svg');
 }
 
+.media-icon {
+  -webkit-mask-image: url('./svg/messages.svg');
+  -webkit-mask-size: 101% 101%;
+  mask-image: url('./svg/messages.svg');
+}
+
 .about-icon {
   -webkit-mask-image: url('./svg/about.svg');
   -webkit-mask-size: 101% 101%;

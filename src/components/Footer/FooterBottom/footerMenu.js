@@ -30,7 +30,7 @@ export default () => {
           const { id, label } = item
           var path = item.url.split("/")
           return (
-            <Nav.Item key={id} className='p-2 footer-font' as='li'>
+            <Nav.Item key={id} className='p-1 footer-font' as='li'>
               <Link 
                 className="nav-link"
                 to={'/' + path[3]}

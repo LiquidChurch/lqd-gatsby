@@ -22,7 +22,7 @@
   }
   
   .footer-menu-padding {
-    margin-left:auto;
+    margin-left:auto !important;
     margin-right:auto;
     max-width:260px !important;
   }
@@ -30,6 +30,7 @@
   .footer-social-padding {
     margin-left:auto;
     margin-right:auto;
+    padding-right: 15px;
     max-width:220px !important;
   }
   
@@ -43,12 +44,15 @@
     place-content:flex-start !important;
   }
 }
+
 .footer-copyright-padding {
-  padding-top:0.8em;
+  padding-top:0.6em;
+  margin-bottom: 6em;  
 }
 
 .footer-menu-padding {
   place-content:flex-end;
+  margin-left: -15px;
 }
 
 .footer-social-padding {
