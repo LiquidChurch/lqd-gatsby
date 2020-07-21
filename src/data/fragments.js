@@ -180,12 +180,21 @@ export const MediaTile = graphql`
       }
   }
 `
+
 export const PageModal = graphql`
   fragment PageModal on WPGraphQL_BlockLabPageModalBlock {
       attributes {
         modal_title
         modal_text
       }
+  }
+`
+
+export const LinkTiles = graphql`
+  fragment LinkTiles on WPGraphQL_BlockLabBlock {
+    attributes {
+      slugs_list
+    }
   }
 `
 export const AllBlocks = graphql`
@@ -206,5 +215,6 @@ export const AllBlocks = graphql`
     ...MessageTile
     ...MediaTile
     ...PageModal
+    ...LinkTiles
   }
 `
