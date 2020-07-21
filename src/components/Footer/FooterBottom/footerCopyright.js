@@ -10,7 +10,7 @@ export default () => {
   return ( 
       <>
       <div className="screen-reader-only">Copyright 2020 Liquid Church</div>  
-      <span className="footer-font" aria-hidden={true}>
+      <span className="footer-font" aria-hidden={true} style={{color: "#757575", textDecoration:"none"}}>
         <CopyrightIcon />{'\u00A0'}2020{'\u00A0'}LiquidChurch.
       </span>
       <span className="footer-font">

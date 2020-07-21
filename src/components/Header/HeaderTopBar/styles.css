@@ -70,11 +70,12 @@
 }
 
 .topbar-chop-button {
-  width: 225px;
+  width: 229px;
   letter-spacing: 0.1em;
   font-size: 0.9em;
   font-family:"Avenir Next Regular";
   font-weight:700;
+  white-space:nowrap;
 }
 
 .btn-topbar-icon {

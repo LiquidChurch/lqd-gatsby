@@ -45,19 +45,22 @@ export default ({
         <h6 className="message-tile-block-title">{block_title}</h6>
       </Col>
       <Col xs={{span:12, offset:0}} md={{ span: 10, offset: 1 }}>
-        <Link to={"/" + category + "/" + media_info.slug}>
-        <Imgix
-          src={"https://liquidchurch.imgix.net/" + imgUrl[4] + "/" + imgUrl[5] + "?ar=16:9&fit=crop&h=296"}
-          className="media-tile-image"
-          sizes="50vw" />
-        </Link>
+        <div className="media-tile-card-image">
+          <Link to={"/" + category + "/" + media_info.slug}>
+            <Imgix
+              src={"https://liquidchurch.imgix.net/" + imgUrl[4] + "/" + imgUrl[5] + "?ar=16:9&fit=crop&h=296"}
+              className="rounded media-tile-image"
+              size="100vw"
+              />
+          </Link>
+        </div>
         <Card className="media-tile-card" style={{ width: '18rem' }}>
           <Card.Body>
             <Card.Title className="media-tile-title"><RemoveParagraph tempString={media_info.featuredImage.caption} /></Card.Title>
             <Card.Text className="media-tile-text"><RemoveParagraph tempString={media_info.featuredImage.description} /></Card.Text>
             <Card.Header className="media-tile-author">
               <Imgix
-                src={"https://liquidchurch.imgix.net/" + authorImgUrl[4] + "/" + authorImgUrl[5] + "?ar=1:1&fit=crop&mask=ellipse&h=50"}
+                src={"https://liquidchurch.imgix.net/" + authorImgUrl[4] + "/" + authorImgUrl[5] + "?ar=1:1&fit=crop&fill-color=0FFF&mask=ellipse&h=50"}
                 className="media-tile-author-image"
               />
                 <div className="media-tile-author-name">{media_info.author.name}</div>
