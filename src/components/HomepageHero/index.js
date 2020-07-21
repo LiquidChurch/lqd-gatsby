@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useContext } from "react"
 import { Link } from "gatsby"
 import Imgix from "react-imgix"
 
 import Container from 'react-bootstrap/Container'
+import { GlobalContext } from '../GlobalContext/context'
 
 import "./styles.css"
 
@@ -16,14 +17,22 @@ export default ({
   cta_label,
   cta_url,
 }) => {
-
+  const ctx = useContext(GlobalContext)
   const [runEffect, setRunEffect] = useState(false)
+  
+  if (runEffect === false && ctx.isInitialLoad === false) {
+    setRunEffect(true)
+  }
+  
   useEffect(() => {
     const timer1 = setTimeout(() => {
-      setRunEffect(true)
+      setRunEffect(ctx.isInitialLoad)
     }, 1500);
-    return () => clearTimeout(timer1); 
-  }, []);
+    return () => {
+      ctx.initialLoaded()
+      clearTimeout(timer1)
+    }    
+  }, [ctx]);
   
   return (
     <>
@@ -32,14 +41,16 @@ export default ({
       <div className={runEffect ? "homepage-hero-image loaded" : "homepage-hero-image"}>
         <Imgix src={"https://liquidchurch.imgix.net" + hero_image + "?gam=50"} sizes="100vw" />
       </div>
-      <h1 className={runEffect ? "homepage-hero-tag loaded" : "homepage-hero-tag"}>{hero_tag}</h1>
-      <p className={runEffect ? "homepage-hero-text loaded" : "homepage-hero-text"}>{hero_text}</p>
-      <div className={runEffect ? "homepage-hero-cta loaded" : "homepage-hero-cta"}>
-        <Link
-          id="hero-cta"
-          to={"/" + cta_url} 
-          className="btn btn-primary homepage-hero-button"
-        >{cta_label}</Link>
+      <div className="homepage-hero-text-block">
+        <h1 className={runEffect ? "homepage-hero-tag loaded" : "homepage-hero-tag"}>{hero_tag}</h1>
+        <p className={runEffect ? "homepage-hero-text loaded" : "homepage-hero-text"}>{hero_text}</p>
+        <div className={runEffect ? "homepage-hero-cta loaded" : "homepage-hero-cta"}>
+          <Link
+            id="hero-cta"
+            to={"/" + cta_url} 
+            className="btn btn-primary homepage-hero-button"
+          >{cta_label}</Link>
+        </div>
       </div>
     </Container>
     </section>

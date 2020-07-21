@@ -20,7 +20,7 @@ export default ({ page_slug }) => {
   <>
     <Link to={"/" + page_info.slug}>
     <Imgix 
-      src={"https://liquidchurch.imgix.net/" + imgUrl[4] + "/" + imgUrl[5] + "?ar=16:9&fit=crop"}
+      src={"https://liquidchurch.imgix.net/" + imgUrl[4] + "/" + imgUrl[5] + "?ar=16:9&fit=crop&h=296"}
       altText={page_info.featuredImage.altText}
       className="home-tile-image"
       sizes="100vw" />

@@ -60,34 +60,19 @@
 
 .media-tile-date {
   position: absolute;
-  left: 80px;
+  left: 100px;
   bottom: 3px;
   font-size: 0.8em;
-}
-
-.media-tile-icon-btn {
-  position: absolute;
-  right: 15px;
-  bottom: 4px;
-  background: #009DD1;
-  border-radius: 30px;
-  height: 50px;
-  width: 50px;
+  color:#757575;
 }
 
 .media-tile-icon {
-  width: 30px;
-  height: 30px;
-  background-color: white;
-  padding-left: 38px;
-  margin-top: 10px;
-}
-
-.media-tile-icon:hover {
-  background-color: #464646;
-}
-.media-tile-icon:focus {
-  background-color: #464646;
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: #757575;
+    left: 80px;
+    bottom: 5px;
 }
 
 @media (max-width:1199px) {
@@ -156,6 +141,10 @@
     font-size: 0.9em;
     height: 63px;
   }
+  
+  .media-tile-icon {
+    bottom: 6px;
+  }
 }
 
 @media (max-width:575px) {
@@ -200,9 +189,13 @@
 
   .media-tile-date {
     position: absolute;
-    left: 73px;
+    left: 93px;
     bottom: 5px;
     font-size: 0.7em;
   }
 
+  .media-tile-icon {
+    left: 73px;
+  }
+  
 }

@@ -43,13 +43,13 @@ export default ({ message_slug,
       <Col>
       <Link to={"/message/" + message_info.slug}>
       <Imgix 
-        src={"https://liquidchurch.imgix.net/" + imgUrl[4] + "/" + imgUrl[5] + "?ar=16:9&fit=crop"}
+        src={"https://liquidchurch.imgix.net/" + imgUrl[4] + "/" + imgUrl[5] + "?ar=16:9&fit=crop&h=607"}
         className="d-none d-sm-block message-tile-image"
-        sizes="100vw" />
+        sizes="90vw" />
       <Imgix 
-        src={"https://liquidchurch.imgix.net/" + imgUrl[4] + "/" + imgUrl[5] + "?ar=1:1&fit=crop"}
+        src={"https://liquidchurch.imgix.net/" + imgUrl[4] + "/" + imgUrl[5] + "?ar=1:1&fit=crop&h=607"}
         className="d-block d-sm-none message-tile-image"
-        sizes="100vw" />
+        sizes="80vw" />
       </Link>
       <h4 className="message-tile-title">{message_info.title}</h4>
       <p className="message-tile-series">

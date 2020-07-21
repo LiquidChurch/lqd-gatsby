@@ -14,6 +14,7 @@
   margin-right: auto;  
   text-align:center;
   font-size: 1.5em;
+  color: #464646;
 }
 
 .page-strap-cta {
@@ -22,13 +23,15 @@
   text-transform: uppercase;
   margin-left: auto;
   margin-right: auto;
+  letter-spacing: 0.1em;
 }
 
 .page-strap-btn {
   background-color: #009DD1;
   color: #fff;
   border-radius:1.5em;
-  font-size: 1.0em;  
+  font-size: 1.0em;
+  letter-spacing: 0.1em;  
 }
 
 .page-strap-cta-text {

@@ -6,6 +6,7 @@
   color: #757575;
   font-family: "Avenir Next Bold";
   margin-bottom: 1em;
+  letter-spacing: 0.1em;  
 }
 
 .message-tile-image {
@@ -18,21 +19,23 @@
 
 .message-tile-title {
   color: #fff;
-  bottom: 3.3em;
+  bottom: 4.3em;
   position: relative;
-  left: 1.8em;
-  font-family: "Avenir Next Demi";
-  font-size: 1.5em;
+  left: 1.5em;
+  font-family: "Avenir Next Bold";
+  font-size: 1.6em;
+  letter-spacing:0.02em;
 }
 
 .message-tile-series {
   color: #fff;
   font-family: "Avenir Next Regular";
   position: relative;
-  bottom: 5.4em;
-  left: 2.8em;
+  bottom: 6.6em;
+  left: 2.4em;
   font-size: 1em;
   text-transform: uppercase;
+  letter-spacing:0.08em;
 }
 
 .message-tile-series a {
@@ -48,56 +51,65 @@
 .message-tile-btn {
   color: #fff;
   position: relative;
-  bottom: 5.8em;
-  left: 2.5em;
+  bottom: 6.3em;
+  left: 1.7em;
   background: #009DD1;
   border-radius: 1.5em;
   padding-left: 1em;
   text-transform: uppercase;
   font-size: 1em;
+  letter-spacing: 0.1em;
   padding-right: 1.3em;
-  padding-top: 0.2em;
-  padding-bottom: 0.3em;
+  padding-top: 0.6em;
+  padding-bottom: 0.6em;
 }
 
 @media (max-width:991px) {
+  .message-tile-image {
+    height: 371px;
+    max-width: 660px;
+    overflow: hidden;
+    object-fit: cover;
+    object-position: center;
+  }
+  
   .message-tile-title {
     font-size: 1.5em;
-    bottom: 3.2em;
+    bottom: 3.7em;
     left: 1.5em;
   }
   
   .message-tile-series {
     font-size: 1em;
-    bottom: 5.3em;
+    bottom: 5.8em;
     left:2.3em;
   }
   
   .message-tile-btn {
-    left: 2.2em;
+    left: 1.9em;
     font-size: 0.9em;
-    bottom: 6.4em;
+    bottom: 6.8em;
   }
 }
 
 @media (max-width:767px) {
   .message-tile-title {
     font-size: 1.2em;
-    bottom: 3.2em;
+    bottom: 3.9em;
     left:1.7em
   }
   
   .message-tile-series {
     font-size: 0.9em;
-    bottom: 4.9em;
+    bottom: 5.4em;
     left:2.3em;
   }
   
   .message-tile-btn {
     left: 2.3em;
-    bottom: 6.5em;
-    padding-top: 0.2em;
-    padding-bottom: 0.4em;
+    bottom: 6.7em;
+    padding-top: 0.5em;
+    padding-bottom: 0.7em;
     font-size: 0.8em; 
   }
   
@@ -133,8 +145,9 @@
   .message-tile-btn {
     left: 25px;
     bottom: calc(79px + 5.7vw);
-    padding-top: 0.35em;
-    font-size: 0.8em;   
+    padding-top: 0.45em;
+    font-size: 0.8em;
+    padding-bottom: 0.55em;
   } 
 }
 
