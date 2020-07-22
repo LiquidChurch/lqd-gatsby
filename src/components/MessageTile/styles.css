@@ -1,13 +1,6 @@
 .message-tile-section {
   margin-bottom: -5.4em;
 }
-.message-tile-block-title {
-  text-transform:uppercase;
-  color: #757575;
-  font-family: "Avenir Next Bold";
-  margin-bottom: 1em;
-  letter-spacing: 0.1em;  
-}
 
 .message-tile-image {
   border-radius: 0.8em;

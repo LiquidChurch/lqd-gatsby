@@ -1,20 +1,14 @@
 .page-strap-tag {
-  color: #009DD1;
   margin-left: auto;
   margin-right: auto;
-  font-family: "Avenir Next Bold";
   text-align:center;
-  line-height: 1.3em;
   margin-bottom: 0.7em;  
-  font-size: 2em;
 }
 
 .page-strap-text {
   margin-left: auto;
   margin-right: auto;  
   text-align:center;
-  font-size: 1.5em;
-  color: #464646;
 }
 
 .page-strap-cta {
@@ -23,7 +17,6 @@
   text-transform: uppercase;
   margin-left: auto;
   margin-right: auto;
-  letter-spacing: 0.1em;
 }
 
 .page-strap-btn {
@@ -32,16 +25,6 @@
   border-radius:1.5em;
   font-size: 1.0em;
   letter-spacing: 0.1em;  
-}
-
-.page-strap-cta-text {
-  color: #009DD1;
-  font-size: 1.3em;
-}
-
-.page-strap-cta-text:hover {
-  color: #009DD1;
-  text-decoration:underline;
 }
 
 .strap-left {
@@ -59,20 +42,13 @@
   }
   
   .page-strap-tag {
-    line-height: 3.2vw;
     margin-bottom: 2.0vw;    
-    font-size:2.7vw;
   }
   
   .page-strap-text {
     max-width:88vw;    
-    font-size:2.2vw;
   }
   
-  .page-strap-cta-text {
-    font-size:2.2vw;
-  }
-
   .page-strap-btn {
     font-size:2.0vw;
   }
@@ -85,18 +61,11 @@
   }
   
   .page-strap-tag {
-    line-height: 4.1vw;
     margin-bottom: 2.9vw;    
-    font-size:3.7vw;
   }
   
   .page-strap-text {
     max-width:90vw;    
-    font-size:3.3vw;
-  }
-  
-  .page-strap-cta-text {
-    font-size:3.3vw;
   }
   
   .page-strap-btn {
@@ -105,13 +74,7 @@
 }
 
 @media (max-width:334px) {
-  .page-strap-tag {
-    font-size:4.2vw;
-    line-height: 5.5vw;
-  }
-
   .page-strap-text {
-    font-size:3.9vw;
     margin-bottom:2.0vw;
   }
   

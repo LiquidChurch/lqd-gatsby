@@ -38,7 +38,7 @@ export default ({ message_slug,
   <Container>
     <Row>
       <Col xs={12}>
-        <h6 className="message-tile-block-title">{block_title}</h6>
+        <h6 className="font-section-header">{block_title}</h6>
       </Col>
       <Col>
       <Link to={"/message/" + message_info.slug}>

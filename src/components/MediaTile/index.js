@@ -42,7 +42,7 @@ export default ({
   <Container>
     <Row>
       <Col xs={{span:12, offset:0}} md={{ span: 10, offset: 1 }}>
-        <h6 className="message-tile-block-title">{block_title}</h6>
+        <h6 className="font-section-header">{block_title}</h6>
       </Col>
       <Col xs={{span:12, offset:0}} md={{ span: 10, offset: 1 }}>
         <div className="media-tile-card-image">
@@ -56,8 +56,8 @@ export default ({
         </div>
         <Card className="media-tile-card" style={{ width: '18rem' }}>
           <Card.Body>
-            <Card.Title className="media-tile-title"><RemoveParagraph tempString={media_info.featuredImage.caption} /></Card.Title>
-            <Card.Text className="media-tile-text"><RemoveParagraph tempString={media_info.featuredImage.description} /></Card.Text>
+            <Card.Title className="media-tile-title font-h2"><RemoveParagraph tempString={media_info.featuredImage.caption} /></Card.Title>
+            <Card.Text className="media-tile-text font-regular"><RemoveParagraph tempString={media_info.featuredImage.description} /></Card.Text>
             <Card.Header className="media-tile-author">
               <Imgix
                 src={"https://liquidchurch.imgix.net/" + authorImgUrl[4] + "/" + authorImgUrl[5] + "?ar=1:1&fit=crop&fill-color=0FFF&mask=ellipse&h=50"}
