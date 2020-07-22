@@ -1,8 +1,10 @@
-import React, { useState} from "react"
+import React, { useContext } from "react"
+import { Link } from "gatsby"
 import Parse from "react-html-parser"
 
 import Alert from 'react-bootstrap/Alert'
-import Button from 'react-bootstrap/Button'
+import { GlobalContext } from '../../GlobalContext/context'
+
 
 import "./styles.css"
 
@@ -12,12 +14,12 @@ function ShowCtaCheck(props) {
   if (showCtaToggle !== "") {
     return(
       <div className="notification-cta">
-        <Button variant="outline-primary" 
-              size="sm" 
-              className="round-btn notification-cta-button"
-              href={props.url}>
+        <Link
+          className={"btn btn-sm btn-outline-" + props.variant + " notification-cta-button"}
+          to={"/" + props.url}
+        >
           {props.cta}
-        </Button>
+        </Link>
       </div>
     )
     }
@@ -26,19 +28,22 @@ function ShowCtaCheck(props) {
 /**
  * The Header Notification Bar component.
  */
-export default ({ text, cta, url }) => {
-  const [show, setShow] = useState(true);
+export default ({ text, cta, url, variant }) => {
   
-  if (show) {
+  //const ctx = useContext(GlobalContext)
+  
+  const ctx = useContext(GlobalContext)
+  
+  if (ctx.isNotificationOpen) {
     return (
-      <Alert key="test" variant="success" className="header-notification" 
-         onClose={() => setShow(false)} dismissible>
+      <Alert key="test" variant={variant} className="header-notification" 
+         onClose={ctx.toggleNotification} dismissible>
         <div className="d-flex">
           
           <div className="notification-text">
           {Parse(text)}
           </div>
-          <ShowCtaCheck url={url} cta={cta} />
+          <ShowCtaCheck url={url} cta={cta} variant={variant} />
         </div>
       </Alert>
     )

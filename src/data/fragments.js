@@ -10,6 +10,7 @@ export const GeneralSettings = graphql`
       notificationBarText
       notificationBarCta
       notificationBarUrl
+      notificationBarVariant
     }
   }
 `
@@ -105,6 +106,97 @@ export const Code = graphql`
   }
 `
 
+export const HompageHero = graphql`
+  fragment HomepageHero on WPGraphQL_BlockLabHomepageHeroBlock {
+    attributes {
+        cta_label
+        cta_url
+        hero_image
+        hero_tag
+        hero_text
+    }
+  }
+`
+
+export const HeroImage = graphql`
+  fragment HeroImage on WPGraphQL_BlockLabHeroImageBlock {
+    attributes {
+      hero_image_id
+      hero_title
+      image_style
+      hero_text
+    }
+  }
+`
+
+export const ExternalRedirect = graphql`
+  fragment ExternalRedirect on WPGraphQL_BlockLabExternalRedirectBlock {
+    attributes {
+        external_url
+        new_tab
+    }
+  }
+`
+
+export const PageStrap = graphql`
+  fragment PageStrap on WPGraphQL_BlockLabPageStrapBlock {
+    attributes {
+      cta_slug
+      cta_text
+      strap_bg_img
+      strap_color
+      strap_tag
+      strap_text
+      strap_image
+    }
+  }
+`
+
+export const HomeLinks = graphql`
+  fragment HomeLinks on WPGraphQL_BlockLabHomeLinksBlock {
+    attributes {
+      page_slug_list
+      background_color
+    }
+  }
+`
+
+export const MessageTile = graphql`
+  fragment MessageTile on WPGraphQL_BlockLabMessageTileBlock {
+      attributes {
+        block_title
+        background_color
+        message_slug
+      }
+  }
+`
+
+export const MediaTile = graphql`
+  fragment MediaTile on WPGraphQL_BlockLabMediaTileBlock {
+      attributes {
+        block_title
+        background_color
+        media_slug
+      }
+  }
+`
+
+export const PageModal = graphql`
+  fragment PageModal on WPGraphQL_BlockLabPageModalBlock {
+      attributes {
+        modal_title
+        modal_text
+      }
+  }
+`
+
+export const LinkTiles = graphql`
+  fragment LinkTiles on WPGraphQL_BlockLabLinkTilesBlock {
+    attributes {
+      slugs_list
+    }
+  }
+`
 export const AllBlocks = graphql`
   fragment AllBlocks on WPGraphQL_Block {
     name
@@ -115,5 +207,14 @@ export const AllBlocks = graphql`
     ...Code
     ...List
     ...Blockquote
+    ...HomepageHero
+    ...HeroImage
+    ...ExternalRedirect
+    ...PageStrap
+    ...HomeLinks
+    ...MessageTile
+    ...MediaTile
+    ...PageModal
+    ...LinkTiles
   }
 `

@@ -1,0 +1,220 @@
+.media-tile-section {
+  margin-bottom: 0.6em;
+}
+
+.media-tile-card-image {
+  width:58.4%;
+  display:inline-flex;
+}
+
+.media-tile-image {
+  min-width: 523px;
+}
+
+.media-tile-card {
+  display: inline-flex;
+  width: 41.6% !important;
+  height: 230px;
+  border-radius: 0 0.8em 0.8em 0;
+  box-shadow: 0px 3px 6px #00000029;
+  margin-bottom: -23.2%;
+  vertical-align:top;
+  margin-top:30px;
+}
+
+.media-tile-title {
+  color: #009DD1;
+  font-family: "Avenir Next Bold";
+  font-size: 1.3em;
+  margin-top: -5px;
+}
+
+.media-tile-text {
+  color: #464646;
+  font-family: "Avenir Next Regular";
+  font-size: 1em;
+  margin-top: -7px;
+  overflow:hidden;
+  text-overflow: ellipsis;
+  height: 96px;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;      
+}
+
+.media-tile-author {
+  margin-left: -1.25em;
+  margin-right: -1.25em;
+  border-radius: 0 0 0.8em 0;
+  background: #F2ECEC;
+  height: 55px;
+}
+
+.media-tile-author-image {
+  height: 50px;
+  width: 50px;
+  margin-top: -18px;
+  margin-bottom: -3px;
+}
+
+.media-tile-author-name {
+  position: relative;
+  bottom: 35px;
+  left: 65px;
+}
+
+.media-tile-date {
+  position: relative;
+  left: 86px;
+  bottom: 50px;
+  font-size: 0.8em;
+  color:#757575;
+}
+
+.media-tile-icon {
+    position: relative;
+    width: 15px;
+    height: 15px;
+    background-color: #757575;
+    left: 65px;
+    bottom: 34px;
+}
+
+@media (max-width:1199px) {
+  .media-tile-image {
+    min-width:435px;
+  }
+  
+  .media-tile-card {
+    height: 200px;
+    margin-top:20px;
+  }
+  
+  .media-tile-title {
+    color: #009DD1;
+    font-size: 1.1em;
+    margin-top: -5px;
+  }
+  
+  .media-tile-text {
+    font-size: 1.0em;    
+    height: 71px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;     
+  }
+}
+
+@media (max-width:991px) {
+  .media-tile-card-image {
+    width:100%;
+  }
+  
+  .media-tile-image {
+    min-width:545px;
+  }
+  
+  .media-tile-card {
+    bottom: 0%;
+    height: 183px;
+    margin-top:0;
+    margin-bottom: 0%;
+    margin-left: 8%;
+    width: 84% !important;
+    border-radius: 0em 0em 0.8em 0.8em;    
+  }
+  
+  .media-tile-title {
+    color: #009DD1;
+    font-size: 1.1em;
+    margin-top: -5px;
+  }
+  
+  .media-tile-text {
+    font-size: 1.0em;    
+    height: 75px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;     
+  }
+  
+  .media-tile-author {
+    border-radius: 0 0 0.8em 0.8em;
+  }
+}
+
+@media (max-width:767px) {
+
+  .media-tile-card {
+    height: 171px;
+  }
+  
+  .media-tile-image {
+    min-width:480px;
+  }
+  
+  .media-tile-text {
+    font-size: 0.9em;
+    height: 63px;
+  }
+  
+  .media-tile-icon {
+  }
+}
+
+@media (max-width:575px) {
+  .media-tile-image {
+    border-radius: 0.8em 0.8em 0em 0em !important;
+    min-width:auto;
+  }
+  
+  .media-tile-card-image {
+    display:block;
+  }
+  .media-tile-title {
+    font-size: 4vw;
+  }
+  
+  .media-tile-card {
+    width: 100% !important;
+    margin-left:0;
+    height: inherit;
+  }
+  
+  .media-tile-text {
+    font-size: 3.7vw;
+    height: inherit;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;   
+  }
+  
+  .media-tile-author {
+    margin-bottom:-20px;
+    height: 45px;
+  }
+  
+  .media-tile-author-image {
+    height: 44px;
+    width: 44px;
+    margin-top: -25px;
+  }
+  
+  .media-tile-author-name {
+    bottom: 32px;
+    left: 56px;
+    font-size: 0.9em;
+  }
+
+  .media-tile-date {
+    left: 75px;
+    bottom: 49px;
+    font-size: 0.7em;
+  }
+
+  .media-tile-icon {
+    left: 56px;
+    bottom: 33px;
+  }
+  
+}

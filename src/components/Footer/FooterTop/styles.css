@@ -10,15 +10,15 @@
 }
 
 .footer-liquid-app {
-  padding-top:1.2rem;
-  padding-bottom:1.2rem;
-  padding-left: 1rem;
+  padding-top:1.5em;
+  padding-bottom:1.2em;
+  padding-left: 1em;
   max-width: 100%;
 }
 
 .footer-to-top {
-  padding-top:1.2rem;
-  padding-bottom:1.2rem;
+  padding-top:1.2em;
+  padding-bottom:1.2em;
 }
 
 .liquid-app {
@@ -39,11 +39,26 @@
   line-height: normal;
 }
 
-.to-top {
+.scroll-to-top {
   position: absolute;
   right: 1em;
   height: 3.9em;
   width: 4.8em;
   bottom:1.35em;
   background-color: #009DD1;
+  border:none;
+}
+
+.to-top-icon {
+  transition: bottom 0.3s ease-in-out;
+  color:#009DD1;
+  fill-opacity:0;
+}
+.to-top-icon:hover {
+    bottom: 2em;
+    background-color:#757575;
+}
+
+.to-top-icon:focus {
+    background-color:#757575;
 }

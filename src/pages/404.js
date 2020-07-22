@@ -3,6 +3,7 @@ import Layout from "../components/Layout"
 import Button from "../components/Button"
 
 export default ({ location }) => {
+  console.log("404 load")
   return (
     <Layout location={location}>
       <div className="post">

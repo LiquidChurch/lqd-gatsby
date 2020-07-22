@@ -6,6 +6,7 @@ import { useGeneralSettings } from "../../data/hooks"
 import "./styles.css"
 
 import HeaderNotification from "./HeaderNotification"
+
 import HeaderMenu from "./HeaderMenu"
 import HeaderTopBar from "./HeaderTopBar"
 
@@ -22,7 +23,8 @@ function NotificationToggleCheck(props) {
             <HeaderNotification 
               text={props.notificationText}
               cta={props.notificationCta}
-              url={props.notificationUrl} />
+              url={props.notificationUrl}
+              variant={props.notificationVariant} />
           </Col>
         </Row>
     )
@@ -34,7 +36,7 @@ function NotificationToggleCheck(props) {
  * The Header component.
  */
 export default ({ home = false, location }) => {
-  const { title, notificationBarToggle, notificationBarText, notificationBarCta, notificationBarUrl } = useGeneralSettings()
+  const { title, notificationBarToggle, notificationBarText, notificationBarCta, notificationBarUrl, notificationBarVariant } = useGeneralSettings()
     
   return (
     <header id='header' className={`header`}>
@@ -44,7 +46,8 @@ export default ({ home = false, location }) => {
         notificationToggle={notificationBarToggle}
         notificationText={notificationBarText}
         notificationCta={notificationBarCta}
-        notificationUrl={notificationBarUrl} />
+        notificationUrl={notificationBarUrl} 
+        notificationVariant={notificationBarVariant}/>
       <Row>
         <Col>
           <HeaderTopBar title={title} />

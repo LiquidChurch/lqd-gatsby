@@ -2,6 +2,8 @@
 
 .topbar {
   padding: 1.2rem 1.2rem;
+  background: linear-gradient(rgba(0,0,0,1), rgba(0,0,0,0));  
+  z-index:10;
 }
 
 @media (max-width:575px) {
@@ -47,25 +49,33 @@
   flex-direction: row;
   place-content:flex-end;
   height: 2rem;
-  margin-top: -0.5rem;
+  margin-top: -0.3em;
+  margin-left: -0.9em;
 }
 
 .topbar-menu-item {
-  margin: 0 0.46rem;
+  margin: 0 0.3em;
   white-space: nowrap;
-  font-size:1.1em;
+  font-size:0.9em;
   margin-bottom: -0.5em;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 .topbar-chop {
   justify-content:center;
-  max-width:19rem;
-  min-width:12rem;
-  margin: 0 1.2rem;  
+  max-width:14.9em;
+  min-width:14.9em;
+  margin: 0 0;  
 }
 
 .topbar-chop-button {
-  width:100%;
+  width: 229px;
+  letter-spacing: 0.1em;
+  font-size: 0.9em;
+  font-family:"Avenir Next Regular";
+  font-weight:700;
+  white-space:nowrap;
 }
 
 .btn-topbar-icon {
@@ -128,6 +138,11 @@
 }
 
 .topbar-chop-button:focus {
-  background-color:grey;
-  color:black;
+  background-color:#009DD1 !important;
+  color:white;
+}
+
+.topbar-chop-button:hover {
+  background-color:#009DD1 !important;
+  color:white;
 }

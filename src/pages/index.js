@@ -1,17 +1,40 @@
-import React from "react"
+import React, { useEffect } from "react"
+import { Helmet } from "react-helmet"
 import { graphql } from "gatsby"
+//import { useGeneralSettings } from "../data/hooks"
+//import Parse from "react-html-parser"
+//import Image from "gatsby-image"
 import Layout from "../components/Layout"
-import PostExcerpt from "../components/PostExcerpt"
+import PageBlocks from "../components/PageBlocks"
+//import PostHeader from "../components/PostHeader"
+//import { LoadingOverlayProvider } from "../components/LoadingOverlay/context.js"
+/** 
+ * Homepage
+ */
 
-export default ({ data, location }) => {
-  const posts = data?.wpgraphql?.posts?.nodes
+export default ({
+  location,
+  data: {
+    wpgraphql: { page },
+  },
+}) => {
+//  NProgress.start()
+  
+  useEffect(() => {
+//    NProgress.done()
+  })
+  //const generalSettings = useGeneralSettings()
+  const featuredImage = page?.featuredImage?.localFile?.childImageSharp?.fluid
   return (
     <Layout location={location}>
-      {posts ? (
-        posts.map(post => <PostExcerpt {...post} key={post.title} />)
-      ) : (
-        <p>Sorry, no posts were found.</p>
-      )}
+      <Helmet>
+        {featuredImage && (
+          <meta property="og:image" content={featuredImage.src} />
+        )}
+      </Helmet>
+      <article className="page">
+        <PageBlocks {...page} />
+      </article>
     </Layout>
   )
 }
@@ -19,40 +42,15 @@ export default ({ data, location }) => {
 export const query = graphql`
   query {
     wpgraphql {
-      posts {
-        nodes {
-          date
-          excerpt
-          title
-          slug
-          postId
-          author {
-            avatar {
-              url
-              localFile {
-                childImageSharp {
-                  fixed(width: 40) {
-                    ...GatsbyImageSharpFixed_withWebp_tracedSVG
-                  }
-                }
-              }
-            }
-            description
-            firstName
-            lastName
-          }
-          featuredImage {
-            altText
-            sourceUrl
-            localFile {
-              childImageSharp {
-                fluid {
-                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                }
-              }
-            }
-          }
+      page(
+          id: "home"
+          idType: URI ) {
+        blocks {
+          ...AllBlocks
         }
+        date
+        title
+        slug
       }
     }
   }

@@ -9,26 +9,36 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     `
       query {
         wpgraphql {
-          posts {
+          posts (
+              first: 2000
+            ) {
             nodes {
               id
               slug
               title
+              categories {
+                nodes {
+                  id
+                  name
+                  slug
+                }
+              }
             }
           }
         }
       }
     `
   )
+  
   if (postResult.errors) {
-    reporter.panicOnBuild(`Error while running GraphQL query.`)
+    reporter.panicOnBuild(`Error while running GraphQL query on Post.`)
     return
   }
 
   if (postResult.data.wpgraphql.posts.nodes) {
     postResult.data.wpgraphql.posts.nodes.forEach(post => {
       createPage({
-        path: `/posts/${post.slug}`,
+        path: `/${post.categories.nodes[0].slug}/${post.slug}`,
         component: slash(path.resolve(`./src/templates/post.js`)),
         context: {
           id: post.id,
@@ -41,7 +51,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     `
       query {
         wpgraphql {
-          pages {
+          pages (
+                  first: 2000
+                  ) {
             nodes {
               id
               slug
@@ -52,8 +64,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       }
     `
   )
+  
   if (pageResult.errors) {
-    reporter.panicOnBuild(`Error while running GraphQL query.`)
+    reporter.panicOnBuild(`Error while running GraphQL query on Page.`)
     return
   }
 
@@ -68,6 +81,48 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       })
     })
   }
+
+const messageResult = await graphql(
+    `
+      query {
+        wpgraphql {
+          lqdmMessages (
+                  first: 2000
+                  ) {
+            nodes {
+              id
+              slug
+              title
+              lqdmSeriesNodes {
+                nodes {
+                  id
+                  name
+                  slug
+                }
+              }
+            }
+          }
+        }
+      }
+    `
+  )
+
+  if (messageResult.errors) {
+    reporter.panicOnBuild(`Error while running GraphQL query on Messages.`)
+    return
+  }
+
+  if (messageResult.data.wpgraphql.lqdmMessages.nodes) {
+    messageResult.data.wpgraphql.lqdmMessages.nodes.forEach(message => {
+      createPage({
+        path: `/message/${message.slug}`,
+        component: slash(path.resolve(`./src/templates/message.js`)),
+        context: {
+          id: message.id,
+        },
+      })
+    })
+  }  
 }
 
 /**
