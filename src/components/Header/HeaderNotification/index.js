@@ -2,6 +2,9 @@ import React, { useContext } from "react"
 import { Link } from "gatsby"
 import Parse from "react-html-parser"
 
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+
 import Alert from 'react-bootstrap/Alert'
 import { GlobalContext } from '../../GlobalContext/context'
 
@@ -38,13 +41,14 @@ export default ({ text, cta, url, variant }) => {
     return (
       <Alert key="test" variant={variant} className="header-notification" 
          onClose={ctx.toggleNotification} dismissible>
-        <div className="d-flex">
-          
-          <div className="notification-text">
-          {Parse(text)}
-          </div>
+        <Row className="justify-content-sm-center">
+          <Col xs="auto">
+            <div className="notification-text">
+              {Parse(text)}
+            </div>
           <ShowCtaCheck url={url} cta={cta} variant={variant} />
-        </div>
+          </Col>
+         </Row>
       </Alert>
     )
   }

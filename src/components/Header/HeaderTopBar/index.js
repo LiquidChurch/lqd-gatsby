@@ -74,7 +74,6 @@ export default ({ location }) => {
         <Nav className="topbar-menu d-sm-none d-lg-flex">
         {data.primaryMenu.menuItems.nodes.map(item => {
           const { id, label } = item
-          var path = item.url.split("/")
           return (
             <Link
               key={id} 

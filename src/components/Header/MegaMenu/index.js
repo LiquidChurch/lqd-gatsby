@@ -124,7 +124,6 @@ const MegaMenu = () => {
         <Row className="bm-maincat">
           {mainCategory.childItems.nodes.map(mainItem => {
             const { id, label } = mainItem
-            var path = mainItem.url.split("/")
             var icon = label.replace(/\s+/g, "-").toLowerCase();
             return (
               <Link key={id} 
@@ -148,7 +147,6 @@ const MegaMenu = () => {
               <p className="bm-subcat-header" aria-hidden={true}>{category.label}</p>
               {category.childItems.nodes.map(item => {
                 const { id, label } = item
-                var path = item.url.split("/")
                 return (
                 <Link key={id}
                   id={'megamenu-' + category.label + '-' + label} 

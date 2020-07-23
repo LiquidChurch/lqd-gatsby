@@ -9,7 +9,7 @@ import PostBlocks from "../components/PostBlocks"
 export default ({
   location,
   data: {
-    wpgraphql: { lqdmMessage },
+    lqdmMessage,
   },
 }) => {
   //const generalSettings = useGeneralSettings()

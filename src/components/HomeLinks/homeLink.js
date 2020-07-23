@@ -26,7 +26,7 @@ export default ({ page_slug }) => {
       sizes="100vw" />
     </Link>
     <h3 className="home-tile-caption font-h2">{Parse(page_info.featuredImage.node.caption)}</h3>
-    <div className="home-tile-description font-h2-sub">{Parse(page_info.featuredImage.node.description)}</div>
+    <div className="home-tile-description font-h3">{Parse(page_info.featuredImage.node.description)}</div>
     <Link
       className="btn font-btn"
       key={page_info.id}
