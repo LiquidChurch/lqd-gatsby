@@ -4,10 +4,10 @@ import { useGeneralSettings } from "../../data/hooks"
 import ReactHtmlParser from "react-html-parser"
 
 export default () => {
-  const { title, description } = useGeneralSettings()
+  const data = useGeneralSettings()
   return (
-    <Helmet defaultTitle={`${ReactHtmlParser(title)} | ${description}`}>
-      <meta name="description" content={description} />
+    <Helmet defaultTitle={`${ReactHtmlParser(data.title)} | ${data.description}`}>
+      <meta name="description" content={data.description} />
       <meta name="viewport" content= "width=device-width, user-scalable=no" />
       <html lang="en" />
       <link

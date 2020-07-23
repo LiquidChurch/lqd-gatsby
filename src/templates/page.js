@@ -10,12 +10,12 @@ import PageBlocks from "../components/PageBlocks"
 export default ({
   location,
   data: {
-    wpgraphql: { page },
+    page,
   },
 }) => {
   const generalSettings = useGeneralSettings()
  // const featuredImage = page?.featuredImage?.localFile?.childImageSharp?.fluid
-  console.log('Page Load', location)
+  console.log('Page Load', page)
   return (
     <Layout location={location}>
       <Helmet titleTemplate={`%s | ${generalSettings.title} `}>
@@ -30,9 +30,8 @@ export default ({
 }
 
 export const query = graphql`
-  query Page($id: ID!) {
-    wpgraphql {
-      page(id: $id) {
+  query Page($id: String!) {
+      page: wpPage(id: { eq: $id}) {
         blocks {
           ...AllBlocks
         }
@@ -40,17 +39,15 @@ export const query = graphql`
         title
         slug
         featuredImage {
-          title
-          caption (
-            format: RAW
-          )
-          altText
-          description (
-            format: RAW
-          )
-          mediaItemUrl
+          node {
+            title
+            caption 
+            altText
+            description 
+            mediaItemUrl
+          }
         }
       }
-    }
+    
   }
 `

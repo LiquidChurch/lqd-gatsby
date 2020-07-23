@@ -13,9 +13,8 @@ export default () => {
   return (
     <>
       <Col xs={12} sm={6} className="footer-liquid-app">
-          <div className="liquid-app liquid-icon">
-          </div>
           <Link to="/app" className="liquid-app-text">
+            <div className="liquid-app liquid-icon"></div>
             Download the <br /> Liquid Church App <ArrowRight/>
           </Link>
       </Col>

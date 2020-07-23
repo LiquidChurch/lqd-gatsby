@@ -18,10 +18,18 @@ export default ({
   image_style,
 }) => {
   const image_info = useImage(hero_image_id)
+
+  if (image_info === undefined) {
+    return (
+    <>
+    </>
+    )
+  }
+  
   var imgUrl = image_info.mediaItemUrl.split("/")
 
   var imgStyle = image_style.split(":")  
-  console.log(imgStyle[0])
+
   return (
   <>
     <section id="hero-image">

@@ -1,13 +1,14 @@
 import React from "react"
 
 //import Image from "gatsby-image"
-import BlockParagraph from "../Paragraph"
-import BlockHeading from "../Heading"
-import BlockImage from "../Image"
-import BlockCode from "../Code"
-import BlockList from "../List"
-import BlockBlockquote from "../Blockquote"
-import BlockButton from "../Button"
+
+//import BlockParagraph from "../Paragraph"
+//import BlockHeading from "../Heading"
+//import BlockImage from "../Image"
+//import BlockCode from "../Code"
+//import BlockList from "../List"
+//import BlockBlockquote from "../Blockquote"
+//import BlockButton from "../Button"
 import BlockHomepageHero from "../HomepageHero"
 import BlockHeroImage from "../HeroImage"
 import BlockExternalRedirect from "../ExternalRedirect"
@@ -27,13 +28,13 @@ export default ({ blocks, featuredImage }) => {
 
   //const topImage = featuredImage?.localFile?.childImageSharp?.fluid
   const blockMap = {
-    "core/paragraph": BlockParagraph,
-    "core/heading": BlockHeading,
-    "core/image": BlockImage,
-    "core/code": BlockCode,
-    "core/list": BlockList,
-    "core/quote": BlockBlockquote,
-    "core/button": BlockButton,
+//    "core/paragraph": BlockParagraph,
+//    "core/heading": BlockHeading,
+//    "core/image": BlockImage,
+//    "core/code": BlockCode,
+//    "core/list": BlockList,
+//    "core/quote": BlockBlockquote,
+//    "core/button": BlockButton,
     "block-lab/homepage-hero": BlockHomepageHero,
     "block-lab/hero-image": BlockHeroImage,
     "block-lab/external-redirect": BlockExternalRedirect,

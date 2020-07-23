@@ -1,5 +1,7 @@
 import React from 'react'
 import Imgix from 'react-imgix'
+import Parse from 'react-html-parser'
+
 import { Link } from 'gatsby'
 
 import Container from 'react-bootstrap/Container'
@@ -8,7 +10,6 @@ import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card'
 
 import { useMedia } from '../../data/media'
-import { RemoveParagraph } from '../../helpers/functions'
 
 import './styles.css'
 
@@ -21,8 +22,9 @@ export default ({
   media_slug,
 }) => {
   const media_info = useMedia(media_slug)
-  var imgUrl = media_info.featuredImage.mediaItemUrl.split("/")
-  var authorImgUrl = media_info.author.avatar.url.split("/")
+  console.log(media_info)
+  var imgUrl = media_info.featuredImage.node.mediaItemUrl.split("/")
+  var authorImgUrl = media_info.author.node.avatar.url.split("/")
 
   const formatter = new Intl.DateTimeFormat('en-US', { month: 'short',  day: 'numeric',   year: 'numeric'});
   const formattedDate =  formatter.format(new Date(media_info.date));
@@ -42,7 +44,7 @@ export default ({
   <Container>
     <Row>
       <Col xs={{span:12, offset:0}} md={{ span: 10, offset: 1 }}>
-        <h6 className="message-tile-block-title">{block_title}</h6>
+        <h6 className="font-section-header">{block_title}</h6>
       </Col>
       <Col xs={{span:12, offset:0}} md={{ span: 10, offset: 1 }}>
         <div className="media-tile-card-image">
@@ -56,14 +58,14 @@ export default ({
         </div>
         <Card className="media-tile-card" style={{ width: '18rem' }}>
           <Card.Body>
-            <Card.Title className="media-tile-title"><RemoveParagraph tempString={media_info.featuredImage.caption} /></Card.Title>
-            <Card.Text className="media-tile-text"><RemoveParagraph tempString={media_info.featuredImage.description} /></Card.Text>
+            <Card.Title className="media-tile-title font-h2">{Parse(media_info.featuredImage.node.caption)}</Card.Title>
+            <Card.Text as="div" className="media-tile-text font-regular">{Parse(media_info.featuredImage.node.description)}</Card.Text>
             <Card.Header className="media-tile-author">
               <Imgix
                 src={"https://liquidchurch.imgix.net/" + authorImgUrl[4] + "/" + authorImgUrl[5] + "?ar=1:1&fit=crop&fill-color=0FFF&mask=ellipse&h=50"}
                 className="media-tile-author-image"
               />
-                <div className="media-tile-author-name">{media_info.author.name}</div>
+                <div className="media-tile-author-name">{media_info.author.node.name}</div>
                 <div className={"media-tile-icon " + category + "-icon"}></div>
                 <div className="media-tile-date">{formattedDate}</div>
             </Card.Header>

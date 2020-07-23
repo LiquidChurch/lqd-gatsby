@@ -8,10 +8,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const postResult = await graphql(
     `
       query {
-        wpgraphql {
-          posts (
-              first: 2000
-            ) {
+          allWpPost {
             nodes {
               id
               slug
@@ -25,7 +22,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               }
             }
           }
-        }
       }
     `
   )
@@ -35,8 +31,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     return
   }
 
-  if (postResult.data.wpgraphql.posts.nodes) {
-    postResult.data.wpgraphql.posts.nodes.forEach(post => {
+  if (postResult.data.allWpPost.nodes) {
+    postResult.data.allWpPost.nodes.forEach(post => {
       createPage({
         path: `/${post.categories.nodes[0].slug}/${post.slug}`,
         component: slash(path.resolve(`./src/templates/post.js`)),
@@ -50,17 +46,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const pageResult = await graphql(
     `
       query {
-        wpgraphql {
-          pages (
-                  first: 2000
-                  ) {
+          allWpPage {
             nodes {
               id
               slug
               title
             }
           }
-        }
+        
       }
     `
   )
@@ -70,8 +63,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     return
   }
 
-  if (pageResult.data.wpgraphql.pages.nodes) {
-    pageResult.data.wpgraphql.pages.nodes.forEach(page => {
+  if (pageResult.data.allWpPage.nodes) {
+    pageResult.data.allWpPage.nodes.forEach(page => {
       createPage({
         path: page.slug,
         component: slash(path.resolve(`./src/templates/page.js`)),
@@ -85,10 +78,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 const messageResult = await graphql(
     `
       query {
-        wpgraphql {
-          lqdmMessages (
-                  first: 2000
-                  ) {
+          allWpLqdmMessage {
             nodes {
               id
               slug
@@ -102,7 +92,7 @@ const messageResult = await graphql(
               }
             }
           }
-        }
+        
       }
     `
   )
@@ -112,17 +102,24 @@ const messageResult = await graphql(
     return
   }
 
-  if (messageResult.data.wpgraphql.lqdmMessages.nodes) {
-    messageResult.data.wpgraphql.lqdmMessages.nodes.forEach(message => {
-      createPage({
-        path: `/message/${message.slug}`,
-        component: slash(path.resolve(`./src/templates/message.js`)),
-        context: {
-          id: message.id,
-        },
+  let endMessages = false
+  
+  do {
+    if (messageResult.data.allWpLqdmMessage.nodes) {
+      messageResult.data.allWpLqdmMessage.nodes.forEach(message => {
+        createPage({
+          path: `/message/${message.slug}`,
+          component: slash(path.resolve(`./src/templates/message.js`)),
+          context: {
+            id: message.id,
+          },
+        })
       })
-    })
-  }  
+      endMessages = true;
+    }
+  }
+  while(!endMessages)
+    
 }
 
 /**

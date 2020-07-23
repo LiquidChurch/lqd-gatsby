@@ -1,33 +1,34 @@
 import { useStaticQuery, graphql } from "gatsby"
 export const useFeaturedImage = (pageSlug) => {
-  const { wpgraphql } = useStaticQuery(
+  const data = useStaticQuery(
     graphql`
       query {
-        wpgraphql {
-          pages (
-            first:2000
-          ) {
+          allWpPage {
             nodes {
               id
               slug
               title
               featuredImage {
-                title
-                caption
-                altText
-                description
-                mediaItemUrl
+                node {
+                  title
+                  caption
+                  altText
+                  description
+                  mediaItemUrl
+                }
               }
             }
           }
-        }
+        
       }
     `
   )
   
-  var featureImageInfo = wpgraphql.pages.nodes.find(
+  var featureImageInfo = data.allWpPage.nodes.find(
     ({ slug }) => slug === pageSlug
   )
+ 
+  console.log(featureImageInfo)
   return featureImageInfo
   
 }

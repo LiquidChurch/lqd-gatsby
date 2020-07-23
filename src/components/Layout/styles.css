@@ -10,6 +10,7 @@
   }
 }
 
+/* Font sytles */
 
 @font-face{
     font-family:"Avenir Next Regular";
@@ -31,6 +32,192 @@
     font-family:"Avenir Next Bold Italic";
     src:url("./Fonts/eaafcb26-9296-4a57-83e4-4243abc03db7.woff2") format("woff2"),url("./Fonts/25e83bf5-47e3-4da7-98b1-755efffb0089.woff") format("woff");
 }
+
+.font-h1 {
+  font-family: "Avenir Next Bold";
+  font-size: 2.5em;
+  color: #0099CC;
+  line-height: 1.3em;
+}
+
+.font-h2 {
+  font-family: "Avenir Next Bold";
+  font-size: 1.5em;
+  color: #0099CC;
+  line-height: 1.3em;
+  letter-spacing:0.02em;
+}
+
+.font-h2-sub {
+  font-family: "Avenir Next Italic";
+  font-size: 1.13em;
+  color: #0099CC;
+}
+
+.font-h3 {
+  font-family: "Avenir Next Regular";
+  font-weight: 400 !important;
+  font-size: 1.13em;
+  color: #565656;
+  letter-spacing:0.08em;  
+}
+
+.font-h3 a {
+  font-weight: 400;
+}
+
+.font-section-header {
+  font-family: "Avenir Next Bold";
+  text-transform:uppercase;
+  font-size: 1.5em;
+  color: #565656;
+  line-height: 1.3em;
+  margin-bottom: 1em;
+  letter-spacing: 0.1em;    
+}
+
+.font-large {
+  font-family: "Avenir Next Regular";
+  font-size: 1.5em;
+  color: #464646;
+}
+
+.font-regular {
+  font-family: "Avenir Next Regular";
+  font-size: 1.13em;
+  color: #464646;
+}
+
+.font-link {
+  font-family: "Avenir Next Demi";
+  font-size: 1.13em;
+  color: #0099CC;
+  letter-spacing: 0.1em;
+}
+
+.font-link:hover {
+  color: #0099CC;
+  text-decoration:underline;
+}
+
+.font-btn {
+  font-family: "Avenir Next Regular";
+  background: #898989;
+  border-radius: 1.5em;
+  color: white;
+  padding: 6px 15px;
+  text-transform: uppercase;
+  margin-top: -1em;
+  font-size: 0.81em;
+  letter-spacing:0.1em;
+}
+
+.font-btn-large {
+  font-family: "Avenir Next Regular";
+  background: #898989;
+  border-radius: 1.5em;
+  color: white;
+  padding: 8px 18px;
+  text-transform: uppercase;
+  margin-top: -1em;
+  font-size: 1.13em;
+  letter-spacing:0.1em;
+}
+
+.blue-btn {
+  background: #0099CC !important;
+}
+
+@media (max-width:991px) { 
+  .font-h1 {
+    font-size:1.9em;
+  }
+}
+
+@media (max-width:767px) { 
+  .font-h1 {
+    font-size:1.6em;
+  }
+  
+  .font-h2 {
+    font-size:1.35em;
+  }
+  
+  .font-h2-sub {
+    font-size:1.08em;
+  }
+  
+  .font-h3 {
+    font-size:1.08em;
+  }
+  
+  .font-section-header {
+    font-size: 1.13em;
+  }
+  
+  .font-large {
+    font-size: 1.13em;
+  }
+
+  .font-regular {
+    font-size: 1em;
+  }  
+}
+
+@media (max-width:575px) {
+  .font-h1 {
+    font-size:1.5em;
+  }
+  
+  .font-h2 {
+    font-size:1.13em;
+  }
+  
+
+  .font-section-header {
+    display:none;
+  }
+  
+  .font-btn {
+    font-size:0.75em;
+  }
+  
+  .font-btn-large {
+    font-size:1em;
+  }
+}
+
+@media (max-width:334px) {
+  .font-h1 {
+    font-size:1.2em;
+  }  
+  
+  .font-h2 {
+    font-size:1.05em;
+  }
+  
+  .font-h2-sub {
+    font-size:0.9em;
+  }
+  
+  .font-h3 {
+    font-size:0.9em;
+  }
+  
+  .font-large {
+    font-size: 1em !important;
+  }
+  
+  .font-regular {
+    font-size: 0.9em !important;
+  }
+  
+  .font-link {
+    font-size: 0.9em !important;
+  }
+}
+
+
 
 html,body {
   font-family:"Avenir Next Regular", "Avenir Next Italic", "Avenir Next Demi", "Avenir Next Bold","Avenir Next Bold Italic";

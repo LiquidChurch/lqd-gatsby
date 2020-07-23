@@ -13,22 +13,22 @@ import "./styles.css"
 export default ({ location }) => {
   const ctx = useContext(MegaMenuContext)
   
-  const {
-    wpgraphql: { primaryMenu },
-  } = useStaticQuery(graphql`
+  const data = useStaticQuery(graphql`
     query {
-      wpgraphql {
-        primaryMenu: menuItems(where: { location: PRIMARY }) {
+        primaryMenu: wpMenu(slug: { eq: "main-menu" }) {
+          menuItems {
           nodes {
             id
             url
             label
           }
         }
-      }
+        }
     }
   `)
-
+  
+  console.log(data)
+  
   return (
     <Navbar aria-label="Mobile Menu" fixed="bottom" bg="light" className="mobile-menu">
       <ButtonGroup className="mobile-menu-burger">
@@ -39,16 +39,16 @@ export default ({ location }) => {
         </button>    
       </ButtonGroup>
       <ButtonGroup className="mobile-menu-group">
-        {primaryMenu.nodes.map(item => {
+        {data.primaryMenu.menuItems.nodes.map(item => {
           const { id, label } = item
           var path = item.url.split("/")
           return (
             <Link 
               className="btn btn-mobile-menu"
               key={id} 
-              to={'/' + path[3]}
+              to={item.url}
             >
-              <div className={'mobile-menu-icon ' + path[3] + '-icon'}></div>
+              <div className={'mobile-menu-icon ' + path[1] + '-icon'}></div>
               <div className="mobile-menu-text">{label}</div>
             </Link>
           )

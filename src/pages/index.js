@@ -14,8 +14,8 @@ import PageBlocks from "../components/PageBlocks"
 
 export default ({
   location,
-  data: {
-    wpgraphql: { page },
+  data: { 
+    page,
   },
 }) => {
 //  NProgress.start()
@@ -24,13 +24,10 @@ export default ({
 //    NProgress.done()
   })
   //const generalSettings = useGeneralSettings()
-  const featuredImage = page?.featuredImage?.localFile?.childImageSharp?.fluid
+
   return (
     <Layout location={location}>
       <Helmet>
-        {featuredImage && (
-          <meta property="og:image" content={featuredImage.src} />
-        )}
       </Helmet>
       <article className="page">
         <PageBlocks {...page} />
@@ -41,10 +38,7 @@ export default ({
 
 export const query = graphql`
   query {
-    wpgraphql {
-      page(
-          id: "home"
-          idType: URI ) {
+      page: wpPage (slug: { eq: "home" }){
         blocks {
           ...AllBlocks
         }
@@ -52,6 +46,6 @@ export const query = graphql`
         title
         slug
       }
-    }
+    
   }
 `

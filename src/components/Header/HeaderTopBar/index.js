@@ -35,19 +35,17 @@ export default ({ location }) => {
     }
   }
   
-  const {
-    wpgraphql: { primaryMenu },
-  } = useStaticQuery(graphql`
+  const data = useStaticQuery(graphql`
     query {
-      wpgraphql {
-        primaryMenu: menuItems(where: { location: PRIMARY }) {
-          nodes {
-            id
-            url
-            label
+        primaryMenu: wpMenu(slug: { eq: "main-menu" }) {
+          menuItems {
+            nodes {
+              id
+              url
+              label
+            }
           }
         }
-      }
     }
   `)
   
@@ -74,13 +72,13 @@ export default ({ location }) => {
       </Col>
       <Col className="">
         <Nav className="topbar-menu d-sm-none d-lg-flex">
-        {primaryMenu.nodes.map(item => {
+        {data.primaryMenu.menuItems.nodes.map(item => {
           const { id, label } = item
           var path = item.url.split("/")
           return (
             <Link
               key={id} 
-              to={'/' + path[3]} 
+              to={item.url} 
               className="btn btn-topbar-menu topbar-menu-item"
             >
               {label}

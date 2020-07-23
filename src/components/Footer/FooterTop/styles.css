@@ -25,8 +25,7 @@
   position: absolute;
   height: 2.9em;
   width: 2.9em;
-  margin-bottom:0.15em;
-  margin-left:0.3em;
+  margin-left:-3.7em;
   background-color: #009DD1;
 }
 
@@ -37,6 +36,7 @@
   font-weight:600;
   color: #757575;
   line-height: normal;
+  vertical-align:top;
 }
 
 .scroll-to-top {

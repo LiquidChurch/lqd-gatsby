@@ -14,7 +14,7 @@ export default ({ page_slug }) => {
     )
   }
   
-  var imgUrl = page_info.featuredImage.mediaItemUrl.split("/")
+  var imgUrl = page_info.featuredImage.node.mediaItemUrl.split("/")
   
   return (
   <>
@@ -25,10 +25,10 @@ export default ({ page_slug }) => {
       className="home-tile-image"
       sizes="100vw" />
     </Link>
-    <h3 className="home-tile-caption">{Parse(page_info.featuredImage.caption)}</h3>
-    <div className="home-tile-description">{Parse(page_info.featuredImage.description)}</div>
+    <h3 className="home-tile-caption font-h2">{Parse(page_info.featuredImage.node.caption)}</h3>
+    <div className="home-tile-description font-h2-sub">{Parse(page_info.featuredImage.node.description)}</div>
     <Link
-      className="btn home-tile-btn"
+      className="btn font-btn"
       key={page_info.id}
       to={"/" + page_info.slug}
     >

@@ -36,11 +36,11 @@ function StrapLink(props) {
     
   if (props.cta_slug === "open-modal") {
     return (
-      <button className="btn page-strap-btn" onClick={ctx.toggleModal}>{props.cta_text}</button>
+      <button className="btn font-btn blue-btn" onClick={ctx.toggleModal}>{props.cta_text}</button>
     )
   }
   return (
-    <Link className="page-strap-cta-text" to={"/" + props.cta_slug}>{props.cta_text} <ArrowRight style={{fill:"#009DD1;"}} /></Link>
+    <Link className="font-link" to={"/" + props.cta_slug}>{props.cta_text} <ArrowRight style={{fill:"#009DD1;"}} /></Link>
   )
 }
 /**
@@ -68,8 +68,8 @@ export default ({
     <Row>
     <StrapImage strap_image_id={strap_image} />
       <Col id={"strap-body-" + cta_slug} className={hasImage ? "vertical-center strap-pad-left" : "vertical-center"}>
-        <h2 className={hasImage ? "page-strap-tag strap-left" : "page-strap-tag"}>{Parse(strap_tag)}</h2>
-        <p className={hasImage ? "page-strap-text strap-left" : "page-strap-text"}>{strap_text}</p>
+        <h2 className={hasImage ? "page-strap-tag font-h1 strap-left" : "page-strap-tag font-h1"}>{Parse(strap_tag)}</h2>
+        <p className={hasImage ? "page-strap-text font-large strap-left" : "page-strap-text font-large"}>{strap_text}</p>
         <div className={hasImage ? "page-strap-cta strap-left" : "page-strap-cta"}>
           <StrapLink cta_text={cta_text} cta_slug={cta_slug} />
         </div>
