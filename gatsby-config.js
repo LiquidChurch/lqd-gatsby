@@ -36,7 +36,7 @@ module.exports = {
             lazyNodes: false,
           }
         },
-        verbose:true,
+        verbose:false,
         includedRoutes: [
           "**/categories",
           "**/posts",

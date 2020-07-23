@@ -8,9 +8,7 @@ import { PageModalContext } from './context'
  * Page Modal Block Component
  */
 export default ({ modal_title,
-                  modal_text }) => {
-  console.log(modal_title)
-  
+                  modal_text }) => {  
   const ctx = useContext(PageModalContext)
   
   return (

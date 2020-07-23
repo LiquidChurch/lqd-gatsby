@@ -20,7 +20,6 @@ export default ({ location }) => {
     if (!ctx.isMenuOpen) {
       if (menuOpen) {
         document.getElementById("liquid-header").focus()
-        console.log('setting focus to liquid header')
         setMenuOpen(!menuOpen)
       }
       } else {
@@ -30,7 +29,6 @@ export default ({ location }) => {
   
   const brandKeyEvent = event => {
     if (event.key === 'Tab') {
-      console.log("brand tab")
       setFocusOn(true)
     }
   }

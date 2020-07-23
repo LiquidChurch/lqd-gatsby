@@ -17,9 +17,7 @@ export const useImage = (imageId) => {
       }
     `
   )
-  
-  console.log(imageId)
-  console.log(data)
+
   var imageInfo = data.allWpMediaItem.nodes.find(
     ({ databaseId }) => databaseId === imageId
   )

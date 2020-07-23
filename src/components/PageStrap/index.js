@@ -20,11 +20,11 @@ function StrapImage(props) {
   if (image_info !== undefined) {
     var imgUrl = image_info.mediaItemUrl.split("/")
     return (
-      <Col xs={4} md={3}>
-      <Imgix 
-        src={"https://liquidchurch.imgix.net/" + imgUrl[4] + "/" + imgUrl[5] + "?h=296"}
-        className=""
-        sizes="40vw" />
+      <Col xs={12} sm={12} md={4} lg={3} className="page-strap-image-col">
+        <Imgix 
+          src={"https://liquidchurch.imgix.net/" + imgUrl[4] + "/" + imgUrl[5] + "?h=296"}
+          className="page-strap-image"
+          sizes="40vw" />
       </Col>
     )
   }  
@@ -66,7 +66,7 @@ export default ({
   <section className="fullwidth-section" style={{backgroundColor: strap_color}}>
   <Container>
     <Row>
-    <StrapImage strap_image_id={strap_image} />
+      <StrapImage strap_image_id={strap_image} />
       <Col id={"strap-body-" + cta_slug} className={hasImage ? "vertical-center strap-pad-left" : "vertical-center"}>
         <h2 className={hasImage ? "page-strap-tag font-h1 strap-left" : "page-strap-tag font-h1"}>{Parse(strap_tag)}</h2>
         <p className={hasImage ? "page-strap-text font-large strap-left" : "page-strap-text font-large"}>{strap_text}</p>

@@ -28,7 +28,5 @@ export const useFeaturedImage = (pageSlug) => {
     ({ slug }) => slug === pageSlug
   )
  
-  console.log(featureImageInfo)
-  return featureImageInfo
-  
+  return featureImageInfo 
 }

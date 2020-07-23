@@ -18,8 +18,6 @@ export default ({ message_slug,
                   background_color,
                   block_title }) => {
   const message_info = useMessage(message_slug)
-  console.log(message_slug)
-  console.log(message_info)
   if (message_info === undefined) {
     return (
     <>
