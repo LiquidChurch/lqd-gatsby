@@ -18,11 +18,25 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-graphql`,
+      resolve: `gatsby-source-wordpress-experimental`,
       options: {
         typeName: "WPGraphQL",
         fieldName: "wpgraphql",
         url: `http://gatsby.liquidchurch.com/graphql`,
+        debug: {
+          graphql: {
+            writeQueriesToDisk:true,
+          }
+        },
+        html: {
+          useGatsbyImage: false,
+        },
+        type: {
+          MediaItem: {
+            lazyNodes: false,
+          }
+        },
+        verbose:true,
         includedRoutes: [
           "**/categories",
           "**/posts",

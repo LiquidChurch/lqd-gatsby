@@ -1,7 +1,7 @@
 import { graphql } from "gatsby"
 
 export const GeneralSettings = graphql`
-  fragment GeneralSettings on WPGraphQL {
+  fragment GeneralSettings on Wp {
     generalSettings {
       title
       description
@@ -15,6 +15,7 @@ export const GeneralSettings = graphql`
   }
 `
 
+/*
 export const Paragraph = graphql`
   fragment Paragraph on WPGraphQL_CoreParagraphBlock {
     attributes {
@@ -59,7 +60,8 @@ export const Image = graphql`
     }
   }
 `
-
+*/
+/*
 export const Heading = graphql`
   fragment Heading on WPGraphQL_CoreHeadingBlock {
     attributes {
@@ -105,9 +107,10 @@ export const Code = graphql`
     }
   }
 `
+*/
 
 export const HompageHero = graphql`
-  fragment HomepageHero on WPGraphQL_BlockLabHomepageHeroBlock {
+  fragment HomepageHero on WpBlockLabHomepageHeroBlock {
     attributes {
         cta_label
         cta_url
@@ -119,7 +122,7 @@ export const HompageHero = graphql`
 `
 
 export const HeroImage = graphql`
-  fragment HeroImage on WPGraphQL_BlockLabHeroImageBlock {
+  fragment HeroImage on WpBlockLabHeroImageBlock {
     attributes {
       hero_image_id
       hero_title
@@ -130,7 +133,7 @@ export const HeroImage = graphql`
 `
 
 export const ExternalRedirect = graphql`
-  fragment ExternalRedirect on WPGraphQL_BlockLabExternalRedirectBlock {
+  fragment ExternalRedirect on WpBlockLabExternalRedirectBlock {
     attributes {
         external_url
         new_tab
@@ -139,7 +142,7 @@ export const ExternalRedirect = graphql`
 `
 
 export const PageStrap = graphql`
-  fragment PageStrap on WPGraphQL_BlockLabPageStrapBlock {
+  fragment PageStrap on WpBlockLabPageStrapBlock {
     attributes {
       cta_slug
       cta_text
@@ -153,7 +156,7 @@ export const PageStrap = graphql`
 `
 
 export const HomeLinks = graphql`
-  fragment HomeLinks on WPGraphQL_BlockLabHomeLinksBlock {
+  fragment HomeLinks on WpBlockLabHomeLinksBlock {
     attributes {
       page_slug_list
       background_color
@@ -162,7 +165,7 @@ export const HomeLinks = graphql`
 `
 
 export const MessageTile = graphql`
-  fragment MessageTile on WPGraphQL_BlockLabMessageTileBlock {
+  fragment MessageTile on WpBlockLabMessageTileBlock {
       attributes {
         block_title
         background_color
@@ -172,7 +175,7 @@ export const MessageTile = graphql`
 `
 
 export const MediaTile = graphql`
-  fragment MediaTile on WPGraphQL_BlockLabMediaTileBlock {
+  fragment MediaTile on WpBlockLabMediaTileBlock {
       attributes {
         block_title
         background_color
@@ -182,7 +185,7 @@ export const MediaTile = graphql`
 `
 
 export const PageModal = graphql`
-  fragment PageModal on WPGraphQL_BlockLabPageModalBlock {
+  fragment PageModal on WpBlockLabPageModalBlock {
       attributes {
         modal_title
         modal_text
@@ -191,22 +194,15 @@ export const PageModal = graphql`
 `
 
 export const LinkTiles = graphql`
-  fragment LinkTiles on WPGraphQL_BlockLabLinkTilesBlock {
+  fragment LinkTiles on WpBlockLabLinkTilesBlock {
     attributes {
       slugs_list
     }
   }
 `
 export const AllBlocks = graphql`
-  fragment AllBlocks on WPGraphQL_Block {
+  fragment AllBlocks on WpBlock {
     name
-    ...Paragraph
-    ...Heading
-    ...Button
-    ...Image
-    ...Code
-    ...List
-    ...Blockquote
     ...HomepageHero
     ...HeroImage
     ...ExternalRedirect

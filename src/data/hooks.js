@@ -1,13 +1,22 @@
 import { useStaticQuery, graphql } from "gatsby"
+
 export const useGeneralSettings = () => {
-  const { wpgraphql } = useStaticQuery(
+  const data = useStaticQuery(
     graphql`
       query {
-        wpgraphql {
-          ...GeneralSettings
-          }
+        wp {
+          generalSettings {
+            title
+            description
+            notificationBarCta
+            notificationBarText
+            notificationBarToggle
+            notificationBarUrl
+            notificationBarVariant
+        }
       }
+    }
     `
   )
-  return wpgraphql.generalSettings
+  return data.wp.generalSettings
 }

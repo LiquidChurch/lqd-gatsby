@@ -1,7 +1,7 @@
 import React from "react"
 import { Helmet } from "react-helmet"
 import { graphql } from "gatsby"
-import { useGeneralSettings } from "../data/hooks"
+//import { useGeneralSettings } from "../data/hooks"
 import Parse from "react-html-parser"
 import Layout from "../components/Layout"
 import PostBlocks from "../components/PostBlocks"
@@ -12,13 +12,13 @@ export default ({
     wpgraphql: { lqdmMessage },
   },
 }) => {
-  const generalSettings = useGeneralSettings()
+  //const generalSettings = useGeneralSettings()
 
   console.log('Message Load', location)
   
   return (
     <Layout location={location}>
-      <Helmet titleTemplate={`%s | ${generalSettings.title}`}>
+      <Helmet titleTemplate={`%s | Liquid Church`}>
         <title>{Parse(lqdmMessage.title)}</title>
       </Helmet>
       <article className="post">
@@ -29,9 +29,8 @@ export default ({
 }
 
 export const query = graphql`
-  query Message($id: ID!) {
-    wpgraphql {
-      lqdmMessage(id: $id) {
+  query Message($id: String!) {
+      lqdmMessage: wpLqdmMessage(id: { eq: $id }) {
         blocks {
           ...AllBlocks
         }
@@ -58,7 +57,7 @@ export const query = graphql`
             slug
           }
         }  
-      }
+      
     }
   }
 `

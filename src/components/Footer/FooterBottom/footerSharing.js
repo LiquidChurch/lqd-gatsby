@@ -4,12 +4,10 @@ import { graphql, useStaticQuery } from "gatsby"
 import Nav from 'react-bootstrap/Nav'
 
 export default () => {
-  const {
-    wpgraphql: { socialMenu },
-  } = useStaticQuery(graphql`
+  const data = useStaticQuery(graphql`
     query {
-      wpgraphql {
-        socialMenu: menuItems(where: { location: SOCIAL }) {
+        socialMenu: wpMenu(slug: { eq: "social-menu" }) {
+        menuItems {
           nodes {
             id
             url
@@ -21,9 +19,8 @@ export default () => {
   `)
 
   return (
-    socialMenu && (
       <Nav className='flex-nowrap flex-row footer-social-padding' as='ul'>
-        {socialMenu.nodes.map(item => {
+        {data.socialMenu.menuItems.nodes.map(item => {
           const { id, url, label } = item
           var socialIcon = label.toLowerCase()
           return (
@@ -40,5 +37,5 @@ export default () => {
         })}
       </Nav>    
     )
-  )
+  
 }

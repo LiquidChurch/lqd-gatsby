@@ -7,26 +7,23 @@ import Nav from 'react-bootstrap/Nav'
  * The Footer Menu component.
  */
 export default () => {
-  const {
-    wpgraphql: { footerMenu },
-  } = useStaticQuery(graphql`
+  const data = useStaticQuery(graphql`
     query {
-      wpgraphql {
-        footerMenu: menuItems(where: { location: FOOTER }) {
+        footerMenu: wpMenu(slug: { eq: "footer-menu" }) {
+          menuItems {
           nodes {
             id
             url
             label
           }
         }
-      }
+        }
     }
   `)
 
-  return ( 
-    footerMenu && (
+  return (
       <Nav className='flex-nowrap flex-row footer-menu-padding' as='ul'>
-        {footerMenu.nodes.map(item => {
+        {data.footerMenu.menuItems.nodes.map(item => {
           const { id, label } = item
           var path = item.url.split("/")
           return (
@@ -42,5 +39,4 @@ export default () => {
         })}
       </Nav>
     )
-  )
 }

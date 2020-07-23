@@ -1,12 +1,9 @@
 import { useStaticQuery, graphql } from "gatsby"
 export const useMedia = (mediaSlug) => {
-  const { wpgraphql } = useStaticQuery(
+  const data = useStaticQuery(
     graphql`
       query {
-        wpgraphql {
-          posts (
-            first:2000
-          ) {
+          allWpPost {
             nodes {
               id
               slug
@@ -18,26 +15,30 @@ export const useMedia = (mediaSlug) => {
                 }
               }
               featuredImage {
-                title
-                caption
-                altText
-                description
-                mediaItemUrl
+                node {
+                  title
+                  caption
+                  altText
+                  description
+                  mediaItemUrl
+                }
               }
               author {
-                avatar {
-                  url
+                node {
+                  avatar {
+                    url
+                  }
+                  name
                 }
-                name
               }
             }
           }
-        }
+        
       }
     `
   )
   
-  var mediaPageInfo = wpgraphql.posts.nodes.find(
+  var mediaPageInfo = data.allWpPost.nodes.find(
     ({ slug }) => slug === mediaSlug
   )
   return mediaPageInfo

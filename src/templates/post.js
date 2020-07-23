@@ -34,9 +34,8 @@ export default ({
 }
 
 export const query = graphql`
-  query Post($id: ID!) {
-    wpgraphql {
-      post(id: $id) {
+  query Post($id: String!) {
+      post: wpPost(id: {eq: $id}) {
         blocks {
           ...AllBlocks
         }
@@ -44,36 +43,25 @@ export const query = graphql`
         excerpt
         title
         slug
-        postId
         author {
-          avatar {
-            url
-            localFile {
-              childImageSharp {
-                fixed(width: 40) {
-                  ...GatsbyImageSharpFixed_withWebp_tracedSVG
-                }
-              }
+          node {
+            avatar {
+              url
             }
+            description
+            nickname
+            firstName
+            lastName
+            username
           }
-          description
-          nickname
-          firstName
-          lastName
-          username
         }
         featuredImage {
-          altText
-          sourceUrl
-          localFile {
-            childImageSharp {
-              fluid(maxWidth: 700) {
-                ...GatsbyImageSharpFluid_withWebp_tracedSVG
-              }
-            }
-          }
+          node {
+            altText
+            sourceUrl
+          } 
         }
       }
-    }
+   
   }
 `

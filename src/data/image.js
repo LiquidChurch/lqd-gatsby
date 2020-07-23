@@ -1,28 +1,27 @@
 import { useStaticQuery, graphql } from "gatsby"
 export const useImage = (imageId) => {
-  const { wpgraphql } = useStaticQuery(
+  const data = useStaticQuery(
     graphql`
       query {
-        wpgraphql {
-          mediaItems (
-            first:2000
-          ) {
+          allWpMediaItem  {
             nodes {
               id
-              mediaItemId
+              databaseId
               mediaItemUrl
               altText
               caption
               description
             }
           }
-        }
+        
       }
     `
   )
   
-  var imageInfo = wpgraphql.mediaItems.nodes.find(
-    ({ mediaItemId }) => mediaItemId === imageId
+  console.log(imageId)
+  console.log(data)
+  var imageInfo = data.allWpMediaItem.nodes.find(
+    ({ databaseId }) => databaseId === imageId
   )
   return imageInfo
 }

@@ -1,12 +1,9 @@
 import { useStaticQuery, graphql } from "gatsby"
 export const useMessage = (messageSlug) => {
-  const { wpgraphql } = useStaticQuery(
+  const data = useStaticQuery(
     graphql`
       query {
-        wpgraphql {
-          lqdmMessages (
-            first:2000
-          ) {
+          allWpLqdmMessage {
             nodes {
               id
               slug
@@ -24,12 +21,12 @@ export const useMessage = (messageSlug) => {
               }  
             }
           }
-        }
+        
       }
     `
   )
   
-  var messagePageInfo = wpgraphql.lqdmMessages.nodes.find(
+  var messagePageInfo = data.allWpLqdmMessage.nodes.find(
     ({ slug }) => slug === messageSlug
   )
   return messagePageInfo

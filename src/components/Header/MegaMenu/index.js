@@ -44,38 +44,39 @@ const MegaMenu = () => {
   useEffect(() => {
     if (ctx.isMenuOpen) {
       document.getElementById("megamenu").focus()
-      console.log('setting focus to megamenu')
     }
   })
   
-  const {
-    wpgraphql: { megaMenu },
-  } = useStaticQuery(graphql`
+  const data = useStaticQuery(graphql`
     query {
-      wpgraphql {
-        megaMenu: menuItems(where: { location: MEGAMENU }) {
-          nodes {
-            id
-            url
-            label
-            childItems {
-              nodes {
+        megaMenu: wpMenu(slug: { eq: "mega-menu" }) {
+          menuItems {
+            nodes {
               id
               url
               label
+              parentId
+              childItems {
+                nodes {
+                id
+                url
+                label
+                }
               }
             }
           }
         }
-      }
+      
     }
   `)
-   
-  var mainCategory = megaMenu.nodes[0]
+  
+  var mainCategory = data.megaMenu.menuItems.nodes[0]
 
   var categories = []
-  for (var i = 1; i < megaMenu.nodes.length; i++ ){
-    categories.push(megaMenu.nodes[i])
+  for (var i = 1; i < data.megaMenu.menuItems.nodes.length; i++ ){
+    if (data.megaMenu.menuItems.nodes[i].parentId === null) {
+      categories.push(data.megaMenu.menuItems.nodes[i])
+    }
   }
 
   var tabIndex = -1
