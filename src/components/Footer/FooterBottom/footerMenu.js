@@ -17,7 +17,7 @@ export default () => {
             label
           }
         }
-        }
+      }
     }
   `)
 
@@ -25,12 +25,11 @@ export default () => {
       <Nav className='flex-nowrap flex-row footer-menu-padding' as='ul'>
         {data.footerMenu.menuItems.nodes.map(item => {
           const { id, label } = item
-          var path = item.url.split("/")
           return (
             <Nav.Item key={id} className='p-1 footer-font' as='li'>
               <Link 
                 className="nav-link"
-                to={'/' + path[3]}
+                to={item.url}
               >
                 {label}
               </Link>

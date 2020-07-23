@@ -26,7 +26,9 @@ export default ({ location }) => {
         }
     }
   `)
-
+  
+  console.log(data)
+  
   return (
     <Navbar aria-label="Mobile Menu" fixed="bottom" bg="light" className="mobile-menu">
       <ButtonGroup className="mobile-menu-burger">
@@ -44,7 +46,7 @@ export default ({ location }) => {
             <Link 
               className="btn btn-mobile-menu"
               key={id} 
-              to={'/' + path[1]}
+              to={item.url}
             >
               <div className={'mobile-menu-icon ' + path[1] + '-icon'}></div>
               <div className="mobile-menu-text">{label}</div>

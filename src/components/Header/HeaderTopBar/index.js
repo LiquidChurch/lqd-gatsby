@@ -78,7 +78,7 @@ export default ({ location }) => {
           return (
             <Link
               key={id} 
-              to={'/' + path[3]} 
+              to={item.url} 
               className="btn btn-topbar-menu topbar-menu-item"
             >
               {label}

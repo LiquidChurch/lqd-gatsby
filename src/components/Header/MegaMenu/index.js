@@ -133,7 +133,7 @@ const MegaMenu = () => {
                 aria-hidden={!ctx.isMenuOpen}
                 tabIndex={tabIndex} 
                 className="menu-item" 
-                to={"/" + path[3]}>
+                to={mainItem.url}>
                 <span className={icon + '-icon bm-icon'}></span>
                 <span className="bm-text">{label}</span>
               </Link>
@@ -156,7 +156,7 @@ const MegaMenu = () => {
                   aria-hidden={!ctx.isMenuOpen}
                   tabIndex={tabIndex} 
                   className="bm-subcat-item" 
-                  to={"/" + path[3]}>
+                  to={item.url}>
                   {label}
                 </Link>
                 )
