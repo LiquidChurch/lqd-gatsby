@@ -25,7 +25,7 @@ module.exports = {
         url: `http://gatsby.liquidchurch.com/graphql`,
         debug: {
           graphql: {
-            writeQueriesToDisk:true,
+            writeQueriesToDisk:false,
           }
         },
         html: {
@@ -36,7 +36,7 @@ module.exports = {
             lazyNodes: false,
           }
         },
-        verbose:true,
+        verbose:false,
         includedRoutes: [
           "**/categories",
           "**/posts",

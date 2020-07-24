@@ -26,9 +26,6 @@ export default ({ location }) => {
         }
     }
   `)
-  
-  console.log(data)
-  
   return (
     <Navbar aria-label="Mobile Menu" fixed="bottom" bg="light" className="mobile-menu">
       <ButtonGroup className="mobile-menu-burger">

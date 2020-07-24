@@ -16,6 +16,7 @@ export default ({
   hero_title,
   hero_text,
   image_style,
+  theme_style,
 }) => {
   const image_info = useImage(hero_image_id)
 

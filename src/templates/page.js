@@ -1,10 +1,11 @@
-import React from "react"
+import React, { useContext, useEffect } from "react"
 import { Helmet } from "react-helmet"
 import { graphql } from "gatsby"
 import { useGeneralSettings } from "../data/hooks"
 import Parse from "react-html-parser"
 import Layout from "../components/Layout"
 import PageBlocks from "../components/PageBlocks"
+import { GlobalContext } from '../components/GlobalContext/context'
 
 
 export default ({
@@ -14,18 +15,33 @@ export default ({
   },
 }) => {
   const generalSettings = useGeneralSettings()
+  const ctx = useContext(GlobalContext)
  // const featuredImage = page?.featuredImage?.localFile?.childImageSharp?.fluid
-  console.log('Page Load', page)
+  
+  var heroBlock = page.blocks.find(
+    ({ __typename }) => __typename === "WpBlockLabHeroImageBlock"
+  )
+  
+  let theme = "Dark"
+  if (heroBlock !== undefined) {
+    theme = heroBlock.attributes.theme_style
+  } 
+
+  useEffect(() => {
+    ctx.setTheme(theme)
+  }, [ctx, theme])
+  
   return (
+    <>
     <Layout location={location}>
       <Helmet titleTemplate={`%s | ${generalSettings.title} `}>
         <title>{Parse(page.title)}</title>
       </Helmet>
         <article className="page">
           <PageBlocks {...page} />
-
         </article>
     </Layout>
+    </>
   )
 }
 

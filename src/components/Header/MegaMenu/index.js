@@ -76,6 +76,7 @@ const MegaMenu = () => {
   for (var i = 1; i < data.megaMenu.menuItems.nodes.length; i++ ){
     if (data.megaMenu.menuItems.nodes[i].parentId === null) {
       categories.push(data.megaMenu.menuItems.nodes[i])
+      console.log(data.megaMenu.menuItems.nodes[i])
     }
   }
 
@@ -124,7 +125,6 @@ const MegaMenu = () => {
         <Row className="bm-maincat">
           {mainCategory.childItems.nodes.map(mainItem => {
             const { id, label } = mainItem
-            var path = mainItem.url.split("/")
             var icon = label.replace(/\s+/g, "-").toLowerCase();
             return (
               <Link key={id} 
@@ -148,7 +148,6 @@ const MegaMenu = () => {
               <p className="bm-subcat-header" aria-hidden={true}>{category.label}</p>
               {category.childItems.nodes.map(item => {
                 const { id, label } = item
-                var path = item.url.split("/")
                 return (
                 <Link key={id}
                   id={'megamenu-' + category.label + '-' + label} 

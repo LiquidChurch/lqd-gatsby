@@ -9,6 +9,7 @@
   margin-left: auto;
   margin-right: auto;  
   text-align:center;
+  margin-bottom:20px;
 }
 
 .page-strap-cta {
@@ -53,6 +54,25 @@
     font-size:2.0vw;
   }
 }
+
+@media (max-width:767px) {
+  .page-strap-image-col {
+    text-align-last: center;
+    padding-bottom: 1em;
+  }
+  
+  .page-strap-image {
+    height: 215px;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .strap-left {
+    text-align: center;
+  }
+}
+
 
 @media (max-width:575px) {
   .page-strap-container {

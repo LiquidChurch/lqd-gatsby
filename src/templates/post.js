@@ -5,28 +5,22 @@ import { useGeneralSettings } from "../data/hooks"
 import Parse from "react-html-parser"
 import Layout from "../components/Layout"
 import PostBlocks from "../components/PostBlocks"
-import PostHeader from "../components/PostHeader"
+//import PostHeader from "../components/PostHeader"
 
 export default ({
   location,
   data: {
-    wpgraphql: { post },
+    post,
   },
 }) => {
   const generalSettings = useGeneralSettings()
-
-  console.log('Post Load', location)
   
   return (
     <Layout location={location}>
       <Helmet titleTemplate={`%s | ${generalSettings.title}`}>
         <title>{Parse(post.title)}</title>
-        {post?.featuredImage && (
-          <meta property="og:image" content={post?.featuredImage?.src} />
-        )}
       </Helmet>
       <article className="post">
-        <PostHeader {...post} />
         <PostBlocks {...post} />
       </article>
     </Layout>

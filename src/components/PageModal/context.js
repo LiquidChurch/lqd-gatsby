@@ -4,7 +4,6 @@ const PageModalContext = React.createContext()
 
 const PageModalProvider = (props) => {
   const [modalOpenState, setModalOpenState] = useState(false)
-  console.log("Page Modal Provider")
   return (
     <PageModalContext.Provider value={{
       isModalOpen: modalOpenState,

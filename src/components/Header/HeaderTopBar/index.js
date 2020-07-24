@@ -16,11 +16,11 @@ export default ({ location }) => {
   const [focusOn, setFocusOn] = useState(false)
   const [menuOpen, setMenuOpen] = useState(true)
   
+  //console.log("theme state", globalCtx.currentTheme)
   useEffect(() => {
     if (!ctx.isMenuOpen) {
       if (menuOpen) {
         document.getElementById("liquid-header").focus()
-        console.log('setting focus to liquid header')
         setMenuOpen(!menuOpen)
       }
       } else {
@@ -30,7 +30,6 @@ export default ({ location }) => {
   
   const brandKeyEvent = event => {
     if (event.key === 'Tab') {
-      console.log("brand tab")
       setFocusOn(true)
     }
   }
@@ -74,7 +73,6 @@ export default ({ location }) => {
         <Nav className="topbar-menu d-sm-none d-lg-flex">
         {data.primaryMenu.menuItems.nodes.map(item => {
           const { id, label } = item
-          var path = item.url.split("/")
           return (
             <Link
               key={id} 

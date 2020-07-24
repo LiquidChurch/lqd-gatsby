@@ -18,8 +18,6 @@ export default ({ message_slug,
                   background_color,
                   block_title }) => {
   const message_info = useMessage(message_slug)
-  console.log(message_slug)
-  console.log(message_info)
   if (message_info === undefined) {
     return (
     <>
@@ -52,14 +50,16 @@ export default ({ message_slug,
         className="d-block d-sm-none message-tile-image"
         sizes="80vw" />
       </Link>
-      <h4 className="message-tile-title font-h2">{message_info.title}</h4>
-      <div className="message-tile-series font-h3">
-        <p>
-          <Link to={"/series/" + message_info.lqdmSeriesNodes.nodes[0].slug}>{message_info.lqdmSeriesNodes.nodes[0].name}</Link>{partNumber}
-        </p>
+      <div className="message-tile-text-overlay">
+        <h4 className="message-tile-title font-h2">{message_info.title}</h4>
+        <div className="message-tile-series font-h3">
+          <p>
+            <Link to={"/series/" + message_info.lqdmSeriesNodes.nodes[0].slug}>{message_info.lqdmSeriesNodes.nodes[0].name}</Link>{partNumber}
+          </p>
+        </div>
       </div>
       <Link
-        className="btn font-btn-large message-tile-btn"
+        className="btn font-btn-large message-tile-btn-overlay"
         to={"/message/" + message_info.slug}
       > 
         <PlayArrow style={{fill:"#fff;"}} /> Watch

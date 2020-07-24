@@ -22,7 +22,7 @@ export default ({
   media_slug,
 }) => {
   const media_info = useMedia(media_slug)
-  console.log(media_info)
+
   var imgUrl = media_info.featuredImage.node.mediaItemUrl.split("/")
   var authorImgUrl = media_info.author.node.avatar.url.split("/")
 

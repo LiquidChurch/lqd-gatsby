@@ -48,18 +48,12 @@
   letter-spacing:0.02em;
 }
 
-.font-h2-sub {
-  font-family: "Avenir Next Italic";
-  font-size: 1.13em;
-  color: #0099CC;
-}
-
 .font-h3 {
   font-family: "Avenir Next Regular";
   font-weight: 400 !important;
   font-size: 1.13em;
   color: #565656;
-  letter-spacing:0.08em;  
+  letter-spacing:0.02em;  
 }
 
 .font-h3 a {
@@ -143,10 +137,6 @@
     font-size:1.35em;
   }
   
-  .font-h2-sub {
-    font-size:1.08em;
-  }
-  
   .font-h3 {
     font-size:1.08em;
   }
@@ -173,6 +163,9 @@
     font-size:1.13em;
   }
   
+  .font-h3 {
+    font-size:1.0em;
+  }
 
   .font-section-header {
     display:none;
@@ -183,7 +176,7 @@
   }
   
   .font-btn-large {
-    font-size:1em;
+    font-size:0.9em;
   }
 }
 
@@ -194,10 +187,6 @@
   
   .font-h2 {
     font-size:1.05em;
-  }
-  
-  .font-h2-sub {
-    font-size:0.9em;
   }
   
   .font-h3 {

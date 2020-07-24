@@ -9,13 +9,9 @@ import PostBlocks from "../components/PostBlocks"
 export default ({
   location,
   data: {
-    wpgraphql: { lqdmMessage },
+    lqdmMessage,
   },
 }) => {
-  //const generalSettings = useGeneralSettings()
-
-  console.log('Message Load', location)
-  
   return (
     <Layout location={location}>
       <Helmet titleTemplate={`%s | Liquid Church`}>
