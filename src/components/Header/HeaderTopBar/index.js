@@ -16,6 +16,7 @@ export default ({ location }) => {
   const [focusOn, setFocusOn] = useState(false)
   const [menuOpen, setMenuOpen] = useState(true)
   
+  //console.log("theme state", globalCtx.currentTheme)
   useEffect(() => {
     if (!ctx.isMenuOpen) {
       if (menuOpen) {

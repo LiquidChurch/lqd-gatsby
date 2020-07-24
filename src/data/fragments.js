@@ -128,6 +128,7 @@ export const HeroImage = graphql`
       hero_title
       image_style
       hero_text
+      theme_style
     }
   }
 `
@@ -158,7 +159,7 @@ export const PageStrap = graphql`
 export const HomeLinks = graphql`
   fragment HomeLinks on WpBlockLabHomeLinksBlock {
     attributes {
-      page_slug_list
+      page_list
       background_color
     }
   }

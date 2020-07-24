@@ -5,8 +5,8 @@ import { Link } from 'gatsby'
 
 import { useFeaturedImage } from "../../data/featureImage"
 
-export default ({ page_slug }) => {
-  const page_info = useFeaturedImage(page_slug)
+export default ({ page_slug_id }) => {  
+  const page_info = useFeaturedImage(page_slug_id)
   if (page_info === undefined) {
     return (
     <>
@@ -14,11 +14,15 @@ export default ({ page_slug }) => {
     )
   }
   
+  console.log(page_info)
   var imgUrl = page_info.featuredImage.node.mediaItemUrl.split("/")
   
   return (
   <>
-    <Link to={"/" + page_info.slug}>
+    <Link 
+      to={page_info.uri}
+      key={"home-tile-image-" + page_info.databaseId}
+    >
     <Imgix 
       src={"https://liquidchurch.imgix.net/" + imgUrl[4] + "/" + imgUrl[5] + "?ar=16:9&fit=crop&h=296"}
       altText={page_info.featuredImage.altText}
@@ -29,8 +33,8 @@ export default ({ page_slug }) => {
     <div className="home-tile-description font-h3">{Parse(page_info.featuredImage.node.description)}</div>
     <Link
       className="btn font-btn"
-      key={page_info.id}
-      to={"/" + page_info.slug}
+      key={"home-tile-button" + page_info.databaseId}
+      to={page_info.uri}
     >
       LEARN MORE
     </Link>

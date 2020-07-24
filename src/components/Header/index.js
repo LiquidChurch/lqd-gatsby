@@ -37,7 +37,7 @@ function NotificationToggleCheck(props) {
  */
 export default ({ home = false, location }) => {
   const { title, notificationBarToggle, notificationBarText, notificationBarCta, notificationBarUrl, notificationBarVariant } = useGeneralSettings()
-    
+  
   return (
     <header id='header' className={`header`}>
       <MegaMenuProvider>

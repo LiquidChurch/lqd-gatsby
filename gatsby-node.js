@@ -51,6 +51,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               id
               slug
               title
+              uri
             }
           }
         
@@ -66,7 +67,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   if (pageResult.data.allWpPage.nodes) {
     pageResult.data.allWpPage.nodes.forEach(page => {
       createPage({
-        path: page.slug,
+        path: page.uri.slice(1,-1),
         component: slash(path.resolve(`./src/templates/page.js`)),
         context: {
           id: page.id,

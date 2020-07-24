@@ -76,6 +76,7 @@ const MegaMenu = () => {
   for (var i = 1; i < data.megaMenu.menuItems.nodes.length; i++ ){
     if (data.megaMenu.menuItems.nodes[i].parentId === null) {
       categories.push(data.megaMenu.menuItems.nodes[i])
+      console.log(data.megaMenu.menuItems.nodes[i])
     }
   }
 

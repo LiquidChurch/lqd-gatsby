@@ -1,12 +1,14 @@
 import { useStaticQuery, graphql } from "gatsby"
-export const useFeaturedImage = (pageSlug) => {
+export const useFeaturedImage = (pageSlugId) => {
   const data = useStaticQuery(
     graphql`
       query {
           allWpPage {
             nodes {
               id
+              databaseId
               slug
+              uri
               title
               featuredImage {
                 node {
@@ -25,7 +27,7 @@ export const useFeaturedImage = (pageSlug) => {
   )
   
   var featureImageInfo = data.allWpPage.nodes.find(
-    ({ slug }) => slug === pageSlug
+    ({ databaseId }) => databaseId === pageSlugId
   )
  
   return featureImageInfo 
