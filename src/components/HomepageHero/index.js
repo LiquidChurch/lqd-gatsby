@@ -39,16 +39,19 @@ export default ({
     <section id="homepage-hero">
     <Container fluid className="homepage-hero-container">
       <div className={runEffect ? "homepage-hero-image loaded" : "homepage-hero-image"}>
-        <Imgix src={"https://liquidchurch.imgix.net" + hero_image + "?gam=50"} sizes="100vw" />
+        <Imgix 
+           src={"https://liquidchurch.imgix.net" + hero_image + "?gam=50"} 
+           className="homepage-hero-image-crop" 
+           sizes="150vw" />
       </div>
       <div className="homepage-hero-text-block">
-        <h1 className={runEffect ? "homepage-hero-tag loaded" : "homepage-hero-tag"}>{hero_tag}</h1>
-        <p className={runEffect ? "homepage-hero-text loaded" : "homepage-hero-text"}>{hero_text}</p>
+        <h1 className={runEffect ? "homepage-hero-tag font-h1 loaded" : "homepage-hero-tag font-h1"}>{hero_tag}</h1>
+        <p className={runEffect ? "homepage-hero-text font-large loaded" : "homepage-hero-text font-large"}>{hero_text}</p>
         <div className={runEffect ? "homepage-hero-cta loaded" : "homepage-hero-cta"}>
           <Link
             id="hero-cta"
             to={"/" + cta_url} 
-            className="btn btn-primary homepage-hero-button"
+            className="btn font-btn-large blue-btn"
           >{cta_label}</Link>
         </div>
       </div>
