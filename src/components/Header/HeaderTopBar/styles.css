@@ -1,8 +1,14 @@
 /* Header TopBar component styles */
 
-.topbar {
+.topbar-dark {
   padding: 1.2rem 1.2rem;
   background: linear-gradient(rgba(0,0,0,1), rgba(0,0,0,0));  
+  z-index:10;
+}
+
+.topbar-light {
+  padding: 1.2rem 1.2rem;
+  background: white;
   z-index:10;
 }
 
@@ -33,6 +39,14 @@
   min-width:2rem;
   margin-bottom:0.15rem;
   margin-left:0.3rem;
+}
+
+.topbar-icon-dark {
+  background-color:white;
+}
+
+.topbar-icon-light{
+  background-color:#009DD1
 }
 
 .topbar-icon:hover{
@@ -80,6 +94,20 @@
   vertial-align: text-top;
 }
 
+.topbar-button-dark {
+  color: white;
+  border-color: white;
+  border-radius: 27px;
+  text-transform: uppercase;
+}
+
+.topbar-button-light {
+  color: #009DD1;
+  border-color: #009DD1;
+  border-radius: 27px;
+  text-transform: uppercase;
+}
+
 .topbar-chop-button:focus {
   background-color:#009DD1 !important;
   color:white;
@@ -93,11 +121,18 @@
 }
 
 .btn-topbar-icon {
-  background-color: white;
   border:none;
   border-radius: 0;
   height: 1.5rem;
   width: auto;  
+}
+
+.theme-icon-dark {
+  background-color: white !important;
+}
+
+.theme-icon-light {
+  background-color: #009DD1 !important;
 }
 
 .btn-topbar-brand {
@@ -116,9 +151,15 @@
   width: 10.9rem;  
 }
 
-.btn-topbar-menu {
+.btn-topbar-menu-dark {
   background-color:transparent;
   color:white;
+  font-weight: bold
+}
+
+.btn-topbar-menu-light {
+  background-color:transparent;
+  color:#009DD1;
   font-weight: bold
 }
 
