@@ -146,9 +146,11 @@ const MegaMenu = () => {
             return (
               <Col xs={6} key={category.id}>
               <p className="bm-subcat-header" aria-hidden={true}>{category.label}</p>
+              <ul className="bm-subcat-list">
               {category.childItems.nodes.map(item => {
                 const { id, label } = item
                 return (
+                <li className="bm-subcat-list-item">
                 <Link key={id}
                   id={'megamenu-' + category.label + '-' + label} 
                   aria-label={category.label + " " + label} 
@@ -158,8 +160,10 @@ const MegaMenu = () => {
                   to={item.url}>
                   {label}
                 </Link>
+                </li>
                 )
               })}
+              </ul>
               </Col>
             )
           })}

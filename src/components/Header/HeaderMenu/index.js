@@ -38,14 +38,14 @@ export default ({ location }) => {
       <ButtonGroup className="mobile-menu-group">
         {data.primaryMenu.menuItems.nodes.map(item => {
           const { id, label } = item
-          var path = item.url.split("/")
+          var icon = label.replace(/\s+/g, "-").toLowerCase();  
           return (
             <Link 
               className="btn btn-mobile-menu"
               key={id} 
               to={item.url}
             >
-              <div className={'mobile-menu-icon ' + path[1] + '-icon'}></div>
+              <div className={'mobile-menu-icon ' + icon + '-icon'}></div>
               <div className="mobile-menu-text">{label}</div>
             </Link>
           )
