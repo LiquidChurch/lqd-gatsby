@@ -150,8 +150,8 @@ const MegaMenu = () => {
               {category.childItems.nodes.map(item => {
                 const { id, label } = item
                 return (
-                <li className="bm-subcat-list-item">
-                <Link key={id}
+                <li key={id} className="bm-subcat-list-item">
+                <Link 
                   id={'megamenu-' + category.label + '-' + label} 
                   aria-label={category.label + " " + label} 
                   aria-hidden={!ctx.isMenuOpen}
