@@ -1,0 +1,27 @@
+.heading-h1 {
+  font-size:3.1em;
+}
+
+.heading-left {
+  text-align:left;
+}
+
+.heading-center {
+  text-align:left;
+}
+
+.heading-right {
+  text-align:left;
+}
+
+@media (max-width:991px) { 
+  .heading-h1 {
+    font-size:2.8em;
+  }
+}
+
+@media (max-width:575px) {
+  .heading-h1 {
+    font-size:2.25em;
+  } 
+}

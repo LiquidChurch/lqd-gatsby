@@ -62,24 +62,6 @@ export const Image = graphql`
 `
 */
 /*
-export const Heading = graphql`
-  fragment Heading on WPGraphQL_CoreHeadingBlock {
-    attributes {
-      content
-      level
-    }
-  }
-`
-
-export const Button = graphql`
-  fragment Button on WPGraphQL_CoreButtonBlock {
-    attributes {
-      url
-      text
-    }
-  }
-`
-
 export const List = graphql`
   fragment List on WPGraphQL_CoreListBlock {
     attributes {
@@ -108,6 +90,33 @@ export const Code = graphql`
   }
 `
 */
+
+export const Heading = graphql`
+  fragment Button on WpBlockLabHeadingBlock {
+    attributes {
+      text
+      size
+      alignment
+      background_color
+    }
+  }
+`
+
+export const Button = graphql`
+  fragment Heading on WpBlockLabButtonBlock {
+    attributes {
+      text
+      alignment
+      page
+      color
+      background_color
+      has_arrow
+      has_icon
+      min_width
+      text_float
+    }
+  }
+`
 
 export const HompageHero = graphql`
   fragment HomepageHero on WpBlockLabHomepageHeroBlock {
@@ -185,6 +194,17 @@ export const MediaTile = graphql`
   }
 `
 
+export const MediaTiles = graphql`
+  fragment MediaTiles on WpBlockLabMediaTilesBlock {
+    attributes {
+      label
+      background_color
+      type
+      media_list
+    }
+  }
+`
+
 export const PageModal = graphql`
   fragment PageModal on WpBlockLabPageModalBlock {
       attributes {
@@ -204,6 +224,8 @@ export const LinkTiles = graphql`
 export const AllBlocks = graphql`
   fragment AllBlocks on WpBlock {
     name
+    ...Button
+    ...Heading
     ...HomepageHero
     ...HeroImage
     ...ExternalRedirect
@@ -211,6 +233,7 @@ export const AllBlocks = graphql`
     ...HomeLinks
     ...MessageTile
     ...MediaTile
+    ...MediaTiles
     ...PageModal
     ...LinkTiles
   }

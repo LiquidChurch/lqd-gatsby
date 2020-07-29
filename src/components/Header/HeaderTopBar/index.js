@@ -20,7 +20,6 @@ export default ({ location }) => {
   const [menuOpen, setMenuOpen] = useState(true)
   
   var themeState = globalCtx.currentTheme.toLowerCase()
-  console.log("theme State", themeState)
 
   useEffect(() => {
     if (!ctx.isMenuOpen) {

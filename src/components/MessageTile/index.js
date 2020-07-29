@@ -5,7 +5,7 @@ import { Link } from 'gatsby'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-
+import SectionHeader from '../SectionHeader'
 import { PlayArrow } from '../../helpers/icons'
 import { useMessage } from "../../data/message"
 
@@ -36,9 +36,7 @@ export default ({ message_slug,
   <section className="fullwidth-section message-tile-section" style={{backgroundColor: background_color}} >
   <Container>
     <Row>
-      <Col xs={12}>
-        <h6 className="font-section-header">{block_title}</h6>
-      </Col>
+      <SectionHeader label={block_title} offset={0}/>
       <Col>
       <Link to={"/message/" + message_info.slug}>
       <Imgix 
@@ -51,8 +49,8 @@ export default ({ message_slug,
         sizes="80vw" />
       </Link>
       <div className="message-tile-text-overlay">
-        <h4 className="message-tile-title font-h2">{message_info.title}</h4>
-        <div className="message-tile-series font-h3">
+        <h4 className="message-tile-title font-h1">{message_info.title}</h4>
+        <div className="message-tile-series font-h2">
           <p>
             <Link to={"/series/" + message_info.lqdmSeriesNodes.nodes[0].slug}>{message_info.lqdmSeriesNodes.nodes[0].name}</Link>{partNumber}
           </p>

@@ -41,7 +41,7 @@
 }
 
 .font-h2 {
-  font-family: "Avenir Next Bold";
+  font-family: "Avenir Next Demi";
   font-size: 1.5em;
   color: #0099CC;
   line-height: 1.3em;
@@ -118,6 +118,17 @@
   letter-spacing:0.1em;
 }
 
+.font-btn-xlarge {
+  font-family: "Avenir Next Regular";
+  background: #898989;
+  border-radius: 1.5em;
+  color: white;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  font-size: 1.75em;
+  letter-spacing:0.1em;
+}
+
 .blue-btn {
   background: #0099CC !important;
 }
@@ -160,7 +171,7 @@
   }
   
   .font-h2 {
-    font-size:1.13em;
+    font-size:1.25em;
   }
   
   .font-h3 {
@@ -177,6 +188,12 @@
   
   .font-btn-large {
     font-size:0.9em;
+  }
+
+  .font-btn-xlarge {
+    font-size:1.13em;
+    padding: 6px 16px;
+    margin-top: 0em;
   }
 }
 
