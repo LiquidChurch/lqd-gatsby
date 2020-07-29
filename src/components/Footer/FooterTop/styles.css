@@ -21,15 +21,7 @@
   padding-bottom:1.2em;
 }
 
-.liquid-app {
-  position: absolute;
-  height: 2.9em;
-  width: 2.9em;
-  margin-left:-3.7em;
-  background-color: #009DD1;
-}
-
-.liquid-app-text {
+.liquid-app-download {
   position: relative;
   left: 3.8em;
   height: 2.5em;
@@ -38,6 +30,26 @@
   line-height: normal;
   vertical-align:top;
 }
+
+.liquid-app-icon {
+  display: inline-flex;
+  height: 3.2em;
+  width: 2.9em;
+  margin-left:-3.7em;
+  background-color: #009DD1;
+}
+
+.liquid-app-text {
+  display: inline-flex;
+  margin-left: 8px;
+  margin-right:-8px;
+  vertical-align: middle;
+}
+
+.liquid-app-arrow {
+  display: inline-flex;
+}
+
 
 .scroll-to-top {
   position: absolute;

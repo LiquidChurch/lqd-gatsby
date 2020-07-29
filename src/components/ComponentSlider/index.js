@@ -8,14 +8,7 @@ import { ArrowRight, ArrowLeft } from '../../helpers/icons'
 
 const { node, func } = PropTypes;
 
-const arrowWidth = 20;
 const shiftWidth = 265.5 + 12;
-
-function isTouchEnabled() { 
-  return ( 'ontouchstart' in window ) ||  
-         ( navigator.maxTouchPoints > 0 ) || 
-         ( navigator.msMaxTouchPoints > 0 ); 
-} 
 
 class ComponentSlider extends React.Component {
   static displayName = 'ComponentSlider';
@@ -33,7 +26,9 @@ class ComponentSlider extends React.Component {
 
   constructor(props) {
     super(props);
-
+    
+    this.touchClass = props.sliderClass
+    
     this.setSliderRef = element => {
       this.slider = element;
     };
@@ -63,7 +58,6 @@ class ComponentSlider extends React.Component {
 
   handleLeftClicked = () => {
     const currentMarginLeft = this.state.marginLeft;
-    const sliderWidth = this.slider.offsetWidth;
     let marginLeft;
 
     if (currentMarginLeft > shiftWidth) {
@@ -128,12 +122,6 @@ class ComponentSlider extends React.Component {
   }
   
   render = () => {
-    let touchClass = ""
-    
-    if (isTouchEnabled()) {
-      touchClass = "-touch"
-    }
-    
     return (
       <>
       <div  ref={this.setSliderRef}>
@@ -141,7 +129,7 @@ class ComponentSlider extends React.Component {
         {this.renderRightArrow()}
         <div className="component-slider">
           <Row 
-            className={'flex-nowrap no-scroll-bar component-row' + touchClass}
+            className={'flex-nowrap no-scroll-bar component-row' + this.touchClass}
             ref={this.setSliderContentRef}
             style={{ marginLeft: `-${this.state.marginLeft}px` } }
           >

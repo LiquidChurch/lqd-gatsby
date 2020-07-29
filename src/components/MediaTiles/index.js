@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Imgix from 'react-imgix'
+
+import { Link } from 'gatsby'
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card'
 import SectionHeader from '../SectionHeader'
 import ComponentSlider from '../ComponentSlider'
@@ -14,19 +15,29 @@ import { useRecentPosts } from '../../data/recentPosts'
 import './styles.css'
 
 function MediaCard(props) {
+  var imgUrl = props.mediaItem.image.split("/")
   return (
   <>
+    <Link
+      to={"/" + props.mediaItem.category + "/" + props.mediaItem.slug}>
     <Card className="media-card">
       <Imgix
         className="card-img-top"
-        src={props.mediaItem.image}
+        src={"https://liquidchurch.imgix.net/" + imgUrl[4] + "/" + imgUrl[5] + "?ar=16:9&fit=crop&w=262"}
         width={262}
       />
       <Card.Title className="media-card-title font-h2">{props.mediaItem.title}</Card.Title>
     </Card>
+    </Link>
   </>
   )  
 }
+
+function isTouchEnabled() { 
+  return ( 'ontouchstart' in window ) ||  
+         ( navigator.maxTouchPoints > 0 ) || 
+         ( navigator.msMaxTouchPoints > 0 ); 
+} 
 
 export default ({
     label,
@@ -39,22 +50,28 @@ export default ({
 
   if (type.toLowerCase() === "recent messages") {
     let tempItems = useRecentMessages()
+    //console.log(tempItems)
     tempItems.map(item => {
       mediaLists.push( {
+        "category": "message",
         "title": item.title,
         "image": item.featured_image,
-        "id": item.id
+        "id": item.id,
+        "slug": item.slug,
       })
     })
   }
   
   if (type.toLowerCase() === "recent blogs") {
     let tempItems = useRecentPosts("blog")
+    //console.log(tempItems)
     tempItems.map(item => {
       mediaLists.push( {
+        "category": "blog",
         "title": item.title,
         "image": item.featuredImage.node.mediaItemUrl,
-        "id": item.id
+        "id": item.id,
+        "slug": item.slug,
       })
     })
   }
@@ -65,6 +82,14 @@ export default ({
     </>
     )
   } 
+
+  let sliderClass = ""
+      
+  useEffect(() => {
+  if (isTouchEnabled()) {
+    sliderClass = "-touch"
+  }
+  })
   
   return (
   <>
@@ -73,7 +98,7 @@ export default ({
         <Row>
         <SectionHeader label={label} offset={0}/>
         </Row>
-          <ComponentSlider>
+          <ComponentSlider touchClass={sliderClass}>
             {mediaLists.map(item => {
               return (
                   <MediaCard mediaItem={item} key={'Media-lists-' + item.id} />

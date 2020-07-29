@@ -1,0 +1,36 @@
+.message-player-container {
+  margin-left: -0.9em;
+  margin-right: -0.9em;
+  padding-left: 0;
+  padding-right: 0;
+  background-color: #313131;
+  position:relative;
+  top:-120px;
+  margin-bottom: -120px;
+  height: fit-content;
+  width: fit-content;
+  overflow:hidden;
+}
+
+.message-player {
+    width: 100vw;
+    text-align: center;
+    padding-top: 100px;
+}
+
+.message-info-section {
+  background-color: #313131;
+  padding-top:1em;
+}
+
+.message-info-title {
+  
+}
+
+
+
+@media (max-width:575px) {
+  .message-player-container {
+    padding-top: 80px;
+  }
+}

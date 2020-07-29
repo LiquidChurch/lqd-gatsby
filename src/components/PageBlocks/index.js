@@ -1,13 +1,6 @@
 import React from "react"
 
-//import Image from "gatsby-image"
-
-//import BlockParagraph from "../Paragraph"
 import BlockHeading from "../Heading"
-//import BlockImage from "../Image"
-//import BlockCode from "../Code"
-//import BlockList from "../List"
-//import BlockBlockquote from "../Blockquote"
 import BlockButton from "../Button"
 import BlockHomepageHero from "../HomepageHero"
 import BlockHeroImage from "../HeroImage"
@@ -18,7 +11,6 @@ import BlockMessageTile from "../MessageTile"
 import BlockMediaTile from "../MediaTile"
 import BlockMediaTiles from "../MediaTiles"
 import BlockPageModal from "../PageModal"
-//import BlockLinkTiles from "../LinkTiles"
 
 import { PageModalProvider } from "../PageModal/context.js"
 
@@ -26,16 +18,7 @@ import { PageModalProvider } from "../PageModal/context.js"
  * Page Blocks
  */
 export default ({ blocks, featuredImage }) => {
-
-  //const topImage = featuredImage?.localFile?.childImageSharp?.fluid
   const blockMap = {
-//    "core/paragraph": BlockParagraph,
-//    "core/heading": BlockHeading,
-//    "core/image": BlockImage,
-//    "core/code": BlockCode,
-//    "core/list": BlockList,
-//    "core/quote": BlockBlockquote,
-//    "core/button": BlockButton,
     "block-lab/button": BlockButton,
     "block-lab/heading": BlockHeading,
     "block-lab/homepage-hero": BlockHomepageHero,
@@ -47,7 +30,6 @@ export default ({ blocks, featuredImage }) => {
     "block-lab/media-tile": BlockMediaTile,
     "block-lab/media-tiles": BlockMediaTiles,
     "block-lab/page-modal": BlockPageModal,
-//    "block-lab/link-tiles": BlockLinkTiles,
   }
 
   return (

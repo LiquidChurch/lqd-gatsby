@@ -1,10 +1,11 @@
-import React from "react"
+import React, { useContext, useEffect } from "react"
 import { Helmet } from "react-helmet"
 import { graphql } from "gatsby"
 //import { useGeneralSettings } from "../data/hooks"
 import Parse from "react-html-parser"
 import Layout from "../components/Layout"
-import PostBlocks from "../components/PostBlocks"
+import MessageBlocks from "../components/MessageBlocks"
+import { GlobalContext } from '../components/GlobalContext/context'
 
 export default ({
   location,
@@ -12,13 +13,19 @@ export default ({
     lqdmMessage,
   },
 }) => {
+  const ctx = useContext(GlobalContext)
+  
+  useEffect(() => {
+    ctx.setTheme("Dark")
+  }, [ctx])
+  
   return (
     <Layout location={location}>
       <Helmet titleTemplate={`%s | Liquid Church`}>
         <title>{Parse(lqdmMessage.title)}</title>
       </Helmet>
       <article className="post">
-        <PostBlocks {...lqdmMessage} />
+        <MessageBlocks {...lqdmMessage} />
       </article>
     </Layout>
   )
