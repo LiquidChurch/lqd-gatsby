@@ -1,0 +1,47 @@
+.linked-tile-img {
+  width: 95%;
+  border-radius: 20px;
+  margin: 8px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.img-radius {
+  border-radius: 20px;
+}
+
+
+.linked-tile-title {
+  color: #24a7e1;
+  
+  text-alignment: center;
+}
+
+  .linked-tile-img:hover {
+  width: 100%;
+  margin: 2px;
+  
+} 
+
+
+
+
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 30px;
+  character-spacing: 0;
+  line-spacing: 25;
+}
+
+
+
+@media only screen and (max-width: 768px) {
+  .hero-text {
+    font-size: 18px;
+  }
+}
