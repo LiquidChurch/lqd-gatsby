@@ -118,6 +118,12 @@
   mask-image: url('./svg/next-steps.svg');
 }
 
+.tag-icon {
+  -webkit-mask-image: url('./svg/tag.svg');
+  -webkit-mask-size: 101% 101%;
+  mask-image: url('./svg/tag.svg');
+}
+
 .family-icon {
   -webkit-mask-image: url('./svg/family.svg');
   -webkit-mask-size: 101% 101%;

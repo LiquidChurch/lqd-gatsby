@@ -221,6 +221,7 @@ export const LinkTiles = graphql`
     }
   }
 `
+
 export const AllBlocks = graphql`
   fragment AllBlocks on WpBlock {
     name

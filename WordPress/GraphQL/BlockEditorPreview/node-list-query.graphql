@@ -101,6 +101,15 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
         ... on Post {
           id
         }
+        ... on Blog {
+          id
+        }
+        ... on Message {
+          id
+        }
+        ... on Podcast {
+          id
+        }
         ... on ReusableBlock {
           id
         }

@@ -22,3 +22,9 @@ export const RemoveParagraph = (props) => {
   var tempString = props.tempString.substring(3, stringLength-5)
   return tempString
 }
+
+export const isTouchEnabled = ()  => {
+  return ( 'ontouchstart' in window ) ||  
+         ( navigator.maxTouchPoints > 0 ) || 
+         ( navigator.msMaxTouchPoints > 0 ); 
+} 

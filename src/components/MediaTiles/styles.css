@@ -22,4 +22,34 @@
 .media-card-title {
   padding: 12px;
   white-space: normal;
+  min-height: 114px;
+}
+
+.media-card-wrap {
+  display: flex;
+  flex-flow: wrap;
+}
+
+@media (max-width:1199px) { 
+  .media-card-wrap {
+    padding-left:48px;
+  }
+}
+
+@media (max-width:991px) { 
+  .media-card-wrap {
+    padding-left:65px;
+  }
+}
+
+@media (max-width:767px) {
+  .media-card-wrap {
+    padding-left:113px;
+  }
+}
+
+@media (max-width:575px) {
+  .media-card-wrap {
+    padding-left:calc(calc(100vw - 322px)/2);
+  }
 }

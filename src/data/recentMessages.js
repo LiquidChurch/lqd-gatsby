@@ -1,32 +1,76 @@
 import { useStaticQuery, graphql } from "gatsby"
-export const useRecentMessages = () => {
+export const useRecentMessages = (numOfItems) => {
   const data = useStaticQuery(
     graphql`
       query {
-          allWpLqdmMessage ( 
-              limit: 4
+          allWpMessage (
+              limit: 50
               sort: {fields: date, order: DESC}
             ) {
             nodes {
               id
-              slug
-              date
+              blocks {
+                ...AllBlocks
+              }
               title
               content
-              excerpt
-              featured_image
-              display_order
-              lqdmSeriesNodes {
+              speakers {
+                nodes {
+                  name
+                  id
+                  slug
+                }
+              }
+              date
+              slug
+              message {
+                url
+              }        
+              featuredImage {
+                node {
+                  sourceUrl
+                  caption
+                  altText
+                }
+              }
+              seriesList {
+                nodes {
+                  name
+                  id
+                  slug
+                }
+              }
+              seriesPart {
+                part
+              }
+              scriptures {
                 nodes {
                   id
                   name
                   slug
                 }
-              }  
+              }
+              tags {
+                nodes {
+                  id
+                  name
+                  slug
+                }
+              }
             }
           }
         }
     `
   )
-  return data.allWpLqdmMessage.nodes  
+  
+  let returnData = []
+  let i
+  for (i = 0; i < data.allWpMessage.nodes.length ; i++) {
+    returnData.push(data.allWpMessage.nodes[i]) 
+    if (returnData.length === numOfItems) {
+      break
+    }
+  }
+  
+  return returnData
 }

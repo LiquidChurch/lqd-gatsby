@@ -15,22 +15,15 @@
 .message-player {
     width: 100vw;
     text-align: center;
-    padding-top: 100px;
+    padding-top: 90px;
 }
-
-.message-info-section {
-  background-color: #313131;
-  padding-top:1em;
-}
-
-.message-info-title {
-  
-}
-
-
 
 @media (max-width:575px) {
   .message-player-container {
     padding-top: 80px;
+  }
+  
+  .message-player {
+    padding-top: 5px;
   }
 }

@@ -89,6 +89,7 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
       }
       previewBlocksJSON
       slug
+      speaker
       status
       terms(first: 100) {
         nodes {

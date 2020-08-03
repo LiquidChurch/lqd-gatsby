@@ -100,6 +100,15 @@ query PREVIEW_QUERY($id: ID!) {
       ... on Post {
         id
       }
+      ... on Blog {
+        id
+      }
+      ... on Message {
+        id
+      }
+      ... on Podcast {
+        id
+      }
       ... on ReusableBlock {
         id
       }

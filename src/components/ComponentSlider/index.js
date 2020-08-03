@@ -1,5 +1,5 @@
 import debounce from 'lodash.debounce';
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import "./styles.css"
 import Row from 'react-bootstrap/Row'
@@ -10,6 +10,9 @@ const { node, func } = PropTypes;
 
 const shiftWidth = 265.5 + 12;
 
+/** 
+ * Component Slider
+ */
 class ComponentSlider extends React.Component {
   static displayName = 'ComponentSlider';
   
@@ -26,9 +29,9 @@ class ComponentSlider extends React.Component {
 
   constructor(props) {
     super(props);
-    
-    this.touchClass = props.sliderClass
-    
+    console.log(props)
+    this.touchEnabled = props.touchEnabled
+    this.touchClass = props.touchClass
     this.setSliderRef = element => {
       this.slider = element;
     };
@@ -120,8 +123,16 @@ class ComponentSlider extends React.Component {
     }
     return null;
   }
-  
+
   render = () => {
+    let componentClass = ""
+    
+    if (this.touchEnabled) {
+      componentClass='component-row-touch'
+    } else {
+      componentClass='component-row'
+    }
+    
     return (
       <>
       <div  ref={this.setSliderRef}>
@@ -129,7 +140,7 @@ class ComponentSlider extends React.Component {
         {this.renderRightArrow()}
         <div className="component-slider">
           <Row 
-            className={'flex-nowrap no-scroll-bar component-row' + this.touchClass}
+            className={'flex-nowrap no-scroll-bar ' + componentClass}
             ref={this.setSliderContentRef}
             style={{ marginLeft: `-${this.state.marginLeft}px` } }
           >

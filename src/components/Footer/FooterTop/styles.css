@@ -33,7 +33,7 @@
 
 .liquid-app-icon {
   display: inline-flex;
-  height: 3.2em;
+  height: 3.3em;
   width: 2.9em;
   margin-left:-3.7em;
   background-color: #009DD1;
@@ -43,11 +43,13 @@
   display: inline-flex;
   margin-left: 8px;
   margin-right:-8px;
-  vertical-align: middle;
+  margin-top:8px;
+  vertical-align: top;
 }
 
 .liquid-app-arrow {
   display: inline-flex;
+  vertical-align: top;
 }
 
 

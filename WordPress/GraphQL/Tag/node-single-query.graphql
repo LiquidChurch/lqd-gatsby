@@ -1,11 +1,26 @@
 query SINGLE_CONTENT_QUERY($id: ID!) {
   tag(id: $id) {
+    blogs(first: 100) {
+      nodes {
+        id
+      }
+    }
     count
     databaseId
     description
     id
     link
+    messages(first: 100) {
+      nodes {
+        id
+      }
+    }
     name
+    podcasts(first: 100) {
+      nodes {
+        id
+      }
+    }
     posts(first: 100) {
       nodes {
         id

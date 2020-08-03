@@ -3,30 +3,64 @@ export const useMessage = (messageSlug) => {
   const data = useStaticQuery(
     graphql`
       query {
-          allWpLqdmMessage {
+          allWpMessage {
             nodes {
               id
-              slug
+              blocks {
+                ...AllBlocks
+              }
               title
               content
-              excerpt
-              featured_image
-              display_order
-              lqdmSeriesNodes {
+              speakers {
+                nodes {
+                  name
+                  id
+                  slug
+                }
+              }
+              date
+              slug
+              message {
+                url
+              }        
+              featuredImage {
+                node {
+                  sourceUrl
+                  caption
+                  altText
+                }
+              }
+              seriesList {
+                nodes {
+                  name
+                  id
+                  slug
+                }
+              }
+              seriesPart {
+                part
+              }      
+              scriptures {
                 nodes {
                   id
                   name
                   slug
                 }
-              }  
+              }
+              tags {
+                nodes {
+                  id
+                  name
+                  slug
+                }
+              }
             }
-          }
-        
+         } 
       }
     `
   )
   
-  var messagePageInfo = data.allWpLqdmMessage.nodes.find(
+  var messagePageInfo = data.allWpMessage.nodes.find(
     ({ slug }) => slug === messageSlug
   )
   return messagePageInfo

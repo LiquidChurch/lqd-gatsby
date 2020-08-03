@@ -88,6 +88,7 @@ query SINGLE_CONTENT_QUERY($id: ID!) {
     }
     previewBlocksJSON
     slug
+    speaker
     status
     terms(first: 100) {
       nodes {
