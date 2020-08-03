@@ -100,7 +100,7 @@
   mask-image: url('./svg/messages.svg');
 }
 
-.about-icon {
+.about-us-icon {
   -webkit-mask-image: url('./svg/about.svg');
   -webkit-mask-size: 101% 101%;
   mask-image: url('./svg/about.svg');
@@ -116,6 +116,12 @@
   -webkit-mask-image: url('./svg/next-steps.svg');
   -webkit-mask-size: 101% 101%;
   mask-image: url('./svg/next-steps.svg');
+}
+
+.tag-icon {
+  -webkit-mask-image: url('./svg/tag.svg');
+  -webkit-mask-size: 101% 101%;
+  mask-image: url('./svg/tag.svg');
 }
 
 .family-icon {

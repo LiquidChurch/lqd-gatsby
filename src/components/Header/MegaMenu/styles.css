@@ -97,17 +97,25 @@ Note: Beware of modifying this element as it can break the animations - you shou
   text-transform: uppercase;
   font-weight:900;
   color:grey;
-  margin-bottom: 0em;
+  margin-bottom: 1.2em;
   margin-top:2em;
-  white-space: nowrap;
+  line-height:1.4em;
+}
+
+.bm-subcat-list {
+  margin-left:-40px;
+  list-style-type: none;
+}
+
+.bm-subcat-list-item {
+  margin-bottom:0.8em;
 }
 
 .bm-subcat-item {
   display: block;
   font-size:1em;
   color: #007EA8;
-  line-height: 2em;
-  white-space: nowrap;
+  line-height: 1.4em;
 }
 
 @media (max-width:349px) {

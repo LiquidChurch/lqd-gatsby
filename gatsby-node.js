@@ -76,21 +76,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   }
 
-const messageResult = await graphql(
+  const messageResult = await graphql(
     `
       query {
-          allWpLqdmMessage {
+          allWpMessage {
             nodes {
               id
               slug
               title
-              lqdmSeriesNodes {
-                nodes {
-                  id
-                  name
-                  slug
-                }
-              }
             }
           }
         
@@ -106,8 +99,8 @@ const messageResult = await graphql(
   let endMessages = false
   
   do {
-    if (messageResult.data.allWpLqdmMessage.nodes) {
-      messageResult.data.allWpLqdmMessage.nodes.forEach(message => {
+    if (messageResult.data.allWpMessage.nodes) {
+      messageResult.data.allWpMessage.nodes.forEach(message => {
         createPage({
           path: `/message/${message.slug}`,
           component: slash(path.resolve(`./src/templates/message.js`)),
@@ -120,7 +113,40 @@ const messageResult = await graphql(
     }
   }
   while(!endMessages)
-    
+  
+  const seriesListResult = await graphql(
+    `
+      query {
+        allWpSeries {
+          nodes {
+            id
+            slug
+            name
+          }
+        }
+      }
+    `
+  )
+  
+  if (seriesListResult.errors) {
+    reporter.panicOnBuild(`Error while running GraphQL query on Series.`)
+    return
+  }
+  
+  
+  if (seriesListResult.data.allWpSeries.nodes) {
+    seriesListResult.data.allWpSeries.nodes.forEach(series=> {
+      createPage({
+        path: `/series/${series.slug}`,
+        component: slash(path.resolve(`./src/templates/series.js`)),
+        context: {
+          id: series.id,
+        },
+      })
+    })
+  }
+  
+   
 }
 
 /**

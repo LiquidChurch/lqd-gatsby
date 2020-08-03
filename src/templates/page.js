@@ -6,8 +6,11 @@ import Parse from "react-html-parser"
 import Layout from "../components/Layout"
 import PageBlocks from "../components/PageBlocks"
 import { GlobalContext } from '../components/GlobalContext/context'
+import { isTouchEnabled } from '../helpers/functions'
 
-
+/** 
+ * Template - Page Component
+ */
 export default ({
   location,
   data: {
@@ -28,7 +31,10 @@ export default ({
   } 
 
   useEffect(() => {
-    ctx.setTheme(theme)
+    ctx.setTheme(theme)    
+    if (isTouchEnabled()) {
+      ctx.enableTouchState()
+    }
   }, [ctx, theme])
   
   return (

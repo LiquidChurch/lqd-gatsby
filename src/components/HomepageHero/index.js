@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react"
+import React, { useState, useEffect, useContext } from "react"
 import { Link } from "gatsby"
 import Imgix from "react-imgix"
 
@@ -24,6 +24,16 @@ export default ({
     setRunEffect(true)
   }
  
+  useEffect(() => {
+    const timer1 = setTimeout(() => {
+      setRunEffect(ctx.isInitialLoad)
+    }, 1500);
+    return () => {
+      ctx.initialLoaded()
+      clearTimeout(timer1)
+    }    
+  }, [ctx]);
+  
   return (
     <>
     <section id="homepage-hero">

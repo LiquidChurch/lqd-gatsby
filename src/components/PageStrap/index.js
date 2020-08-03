@@ -6,7 +6,7 @@ import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 
-import { ArrowRight } from '../../helpers/icons'
+import { ArrowForward } from '../../helpers/icons'
 import { useImage } from "../../data/image"
 import { PageModalContext } from '../PageModal/context'
 
@@ -40,7 +40,7 @@ function StrapLink(props) {
     )
   }
   return (
-    <Link className="font-link" to={"/" + props.cta_slug}>{props.cta_text} <ArrowRight style={{fill:"#009DD1;"}} /></Link>
+    <Link className="font-link" to={"/" + props.cta_slug}>{props.cta_text} <ArrowForward style={{fill:"#009DD1;"}} /></Link>
   )
 }
 /**

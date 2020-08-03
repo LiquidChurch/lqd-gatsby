@@ -25,7 +25,7 @@ module.exports = {
         url: `http://gatsby.liquidchurch.com/graphql`,
         debug: {
           graphql: {
-            writeQueriesToDisk:false,
+            writeQueriesToDisk:true,
           }
         },
         html: {

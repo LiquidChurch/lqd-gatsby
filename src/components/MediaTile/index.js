@@ -8,6 +8,7 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card'
+import SectionHeader from '../SectionHeader'
 
 import { useMedia } from '../../data/media'
 
@@ -43,9 +44,7 @@ export default ({
   <section className="fullwidth-section media-tile-section" style={{backgroundColor: background_color}} >
   <Container>
     <Row>
-      <Col xs={{span:12, offset:0}} md={{ span: 10, offset: 1 }}>
-        <h6 className="font-section-header">{block_title}</h6>
-      </Col>
+      <SectionHeader label={block_title} offset={1}/>
       <Col xs={{span:12, offset:0}} md={{ span: 10, offset: 1 }}>
         <div className="media-tile-card-image">
           <Link to={"/" + category + "/" + media_info.slug}>
