@@ -1,41 +1,29 @@
+const { graphql } = require("gatsby");
+
 // Code from: https://www.gatsbyjs.org/docs/adding-search-with-algolia/
-const escapeStringRegexp = require("escape-string-regexp")
-const pagePath = `content`
-const indexName = `Pages`
-const pageQuery = `{
-  pages: allMarkdownRemark(
-    filter: {
-      fileAbsolutePath: { regex: "/${escapeStringRegexp(pagePath)}/" },
-    }
-  ) {
-    edges {
-      node {
-        id
-        frontmatter {
+const MessageQuery =
+  `
+    query {
+      allWpLqdmMessage {
+        nodes {
           title
         }
-        fields {
-          slug
-        }
-        excerpt(pruneLength: 5000)
       }
     }
-  }
-}`
-function pageToAlgoliaRecord({ node: { id, frontmatter, fields, ...rest } }) {
-  return {
-    objectID: id,
-    ...frontmatter,
-    ...fields,
-    ...rest,
-  }
-}
+  `
+const indexName = `Messages`
+const settings = { 
+  attributesToSnippet: ['excerpt:20'],
+  
+ };
 const queries = [
   {
-    query: pageQuery,
-    transformer: ({ data }) => data.pages.edges.map(pageToAlgoliaRecord),
+    query: MessageQuery,
+    transformer: ({ data }) => (data.allWpLqdmMessage.nodes.title),
     indexName,
-    settings: { attributesToSnippet: [`excerpt:20`] },
+    settings,
   },
-]
+];
+
 module.exports = queries
+
