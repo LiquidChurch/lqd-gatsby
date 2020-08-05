@@ -21,6 +21,7 @@ export const useSeries = (seriesSlug) => {
                 slug
                 id
                 title
+                date
                 content
                 featuredImage {
                   node {
@@ -29,6 +30,35 @@ export const useSeries = (seriesSlug) => {
                     mediaItemUrl
                   }
                 }
+                speakers {
+                  nodes {
+                    name
+                    id
+                    slug
+                    AuthorImage {
+                      image {
+                        sourceUrl
+                      }
+                    }
+                  }
+                }
+                speakersAdd {
+                  speakers {
+                    name
+                    id
+                    slug
+                  }
+                }
+                seriesList {
+                  nodes {
+                    name
+                    id
+                    slug
+                  }
+                }
+                seriesPart {
+                  part
+                } 
               }
             }
           }

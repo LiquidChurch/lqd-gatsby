@@ -95,6 +95,12 @@ query SINGLE_CONTENT_QUERY($id: ID!) {
         id
       }
     }
+    speakersAdd {
+      fieldGroupName
+      speakers {
+        id
+      }
+    }
     status
     tags(first: 100) {
       nodes {

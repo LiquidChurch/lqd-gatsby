@@ -52,6 +52,18 @@ export const query = graphql`
           name
           id
           slug
+          AuthorImage {
+            image {
+              sourceUrl
+            }
+          }
+        }
+      }
+      speakersAdd {
+        speakers {
+          name
+          id
+          slug
         }
       }
       date

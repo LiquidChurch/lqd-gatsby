@@ -8,6 +8,7 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card'
+import ListGroup from 'react-bootstrap/ListGroup'
 import SectionHeader from '../SectionHeader'
 //import ComponentSlider from '../ComponentSlider'
 import WideSlider from '../WideSlider'
@@ -16,19 +17,69 @@ import { useRecentPosts } from '../../data/recentPosts'
 
 import './styles.css'
 
+
+function ShowSeries(props) {
+  if (props.showSeries) {
+    let part = ""
+    
+    if (props.seriesPart !== null) {
+      part = " • Part " + props.seriesPart
+    }
+    
+    return (
+    <>
+      <ListGroup.Item className="media-card-series font-h3"><strong>{props.seriesTitle}</strong>{part}</ListGroup.Item>
+    </>
+    )
+  }
+  return null  
+}
+
+function ShowSpeakers(props) {
+  if (props.showSpeakers) {
+    return (
+    <>
+      <ListGroup.Item className="media-card-speaker font-h3">
+        <div className="media-card-name">{props.seriesSpeakers}</div>
+        <div className={"media-card-icon " + props.category + "-icon"}></div>
+        <div className="media-card-date">{props.date}</div>
+      </ListGroup.Item>
+      
+    </>
+    )
+  }
+  return null  
+}
+
 function MediaCard(props) {
   var imgUrl = props.mediaItem.image.split("/")
   return (
   <>
     <Link
-      to={"/" + props.mediaItem.category + "/" + props.mediaItem.slug}>
+      to={"/" + props.mediaItem.category + "/" + props.mediaItem.slug}
+      className="media-card-link"
+    >
     <Card className="media-card">
       <Imgix
         className="card-img-top"
         src={"https://liquidchurch.imgix.net/" + imgUrl[4] + "/" + imgUrl[5] + "?ar=16:9&fit=crop&w=262"}
         width={262}
       />
-      <Card.Title className="media-card-title font-h2">{props.mediaItem.title}</Card.Title>
+      <ListGroup variant="flush" >
+        <ListGroup.Item className="media-card-title font-h2">{props.mediaItem.title}</ListGroup.Item>
+        <ShowSeries 
+            showSeries={props.mediaItem.showSeries}
+            seriesTitle={props.mediaItem.seriesTitle}
+            seriesPart={props.mediaItem.seriesPart}
+        />
+        <ShowSpeakers 
+            showSpeakers={props.mediaItem.showSpeakers}
+            seriesSpeakers={props.mediaItem.seriesSpeaker}
+            date={props.mediaItem.date}
+            category="messages"
+        />
+
+      </ListGroup>
     </Card>
     </Link>
   </>
@@ -74,7 +125,6 @@ export default ({
     media_list,
   }) => {
   const ctx = useContext(GlobalContext)
-
   let mediaLists = []
   let useSlider = false
 
@@ -88,6 +138,8 @@ export default ({
         "image": item.featuredImage.node.sourceUrl,
         "id": item.id,
         "slug": item.slug,
+        "showSeries": false,
+        "showSpeakers": false,
       })
       return null
     })
@@ -103,6 +155,8 @@ export default ({
         "image": item.featuredImage.node.mediaItemUrl,
         "id": item.id,
         "slug": item.slug,
+        "showSeries": false,
+        "showSpeakers": false,
       })
       return null
     })

@@ -1,6 +1,18 @@
 query NODE_LIST_QUERY($first: Int!, $after: String) {
   speakers(first: $first, after: $after, where: { parent: null }) {
     nodes {
+      AuthorImage {
+        fieldGroupName
+        image {
+          id
+          sourceUrl
+        }
+      }
+      blogs(first: 100) {
+        nodes {
+          id
+        }
+      }
       count
       databaseId
       description
@@ -12,6 +24,16 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
         }
       }
       name
+      podcasts(first: 100) {
+        nodes {
+          id
+        }
+      }
+      posts(first: 100) {
+        nodes {
+          id
+        }
+      }
       slug
       taxonomy {
         node {

@@ -99,7 +99,17 @@ query SINGLE_CONTENT_QUERY($id: ID!) {
         id
       }
     }
+    seriesList(first: 100) {
+      nodes {
+        id
+      }
+    }
     slug
+    speakers(first: 100) {
+      nodes {
+        id
+      }
+    }
     status
     tags(first: 100) {
       nodes {

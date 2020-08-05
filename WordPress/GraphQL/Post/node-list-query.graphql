@@ -100,7 +100,17 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
           id
         }
       }
+      seriesList(first: 100) {
+        nodes {
+          id
+        }
+      }
       slug
+      speakers(first: 100) {
+        nodes {
+          id
+        }
+      }
       status
       tags(first: 100) {
         nodes {
