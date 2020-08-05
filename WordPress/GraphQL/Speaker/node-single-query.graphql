@@ -1,5 +1,10 @@
 query SINGLE_CONTENT_QUERY($id: ID!) {
   speaker(id: $id) {
+    blogs(first: 100) {
+      nodes {
+        id
+      }
+    }
     count
     databaseId
     description
@@ -11,6 +16,16 @@ query SINGLE_CONTENT_QUERY($id: ID!) {
       }
     }
     name
+    podcasts(first: 100) {
+      nodes {
+        id
+      }
+    }
+    posts(first: 100) {
+      nodes {
+        id
+      }
+    }
     slug
     taxonomy {
       node {

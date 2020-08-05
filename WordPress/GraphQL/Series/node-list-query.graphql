@@ -8,6 +8,11 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
           sourceUrl
         }
       }
+      blogs(first: 100) {
+        nodes {
+          id
+        }
+      }
       count
       databaseId
       description
@@ -19,6 +24,16 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
         }
       }
       name
+      podcasts(first: 100) {
+        nodes {
+          id
+        }
+      }
+      posts(first: 100) {
+        nodes {
+          id
+        }
+      }
       slug
       taxonomy {
         node {
