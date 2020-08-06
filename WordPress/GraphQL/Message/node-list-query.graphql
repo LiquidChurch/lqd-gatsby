@@ -1,7 +1,12 @@
 query NODE_LIST_QUERY($first: Int!, $after: String) {
   messages(first: $first, after: $after, where: { parent: null }) {
     nodes {
-      attributions {
+      attributions(first: 100) {
+        nodes {
+          id
+        }
+      }
+      attributionsCo {
         attributions {
           id
         }
@@ -134,6 +139,7 @@ fragment BlockFragment on Block {
     attributes__typename_BlockLabMediaTilesBlockAttributes: attributes {
       background_color
       className
+      display_type
       label
       media_list
       num_items

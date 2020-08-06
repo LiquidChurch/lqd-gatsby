@@ -134,6 +134,7 @@ fragment BlockFragment on Block {
     attributes__typename_BlockLabMediaTilesBlockAttributes: attributes {
       background_color
       className
+      display_type
       label
       media_list
       num_items

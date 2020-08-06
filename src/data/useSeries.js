@@ -17,38 +17,39 @@ export const useSeries = (seriesSlug) => {
               }
             }
             messages {
-              nodes {
-                slug
-                id
-                title
-                date
-                content
-                featuredImage {
-                  node {
-                    id
-                    sourceUrl
-                    mediaItemUrl
-                  }
-                }
-                speakers {
+               nodes {
+                 slug
+                 id
+                 title
+                 date
+                 content
+                 featuredImage {
+                   node {
+                     id
+                     sourceUrl
+                     mediaItemUrl
+                   }
+                 }
+                 attributions {
                   nodes {
-                    name
                     id
+                    name
                     slug
-                    AuthorImage {
+                    profileImage {
                       image {
                         sourceUrl
                       }
                     }
                   }
                 }
-                speakersAdd {
-                  speakers {
-                    name
+                attributionsCo {
+                  attributions {
                     id
+                    name
                     slug
                   }
                 }
+
                 seriesList {
                   nodes {
                     name

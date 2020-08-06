@@ -1,6 +1,11 @@
 query SINGLE_CONTENT_QUERY($id: ID!) {
   message(id: $id) {
-    attributions {
+    attributions(first: 100) {
+      nodes {
+        id
+      }
+    }
+    attributionsCo {
       attributions {
         id
       }
@@ -128,6 +133,7 @@ fragment BlockFragment on Block {
     attributes__typename_BlockLabMediaTilesBlockAttributes: attributes {
       background_color
       className
+      display_type
       label
       media_list
       num_items

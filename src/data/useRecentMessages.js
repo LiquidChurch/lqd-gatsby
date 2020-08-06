@@ -1,9 +1,12 @@
 import { useStaticQuery, graphql } from "gatsby"
-export const useMessage = (messageSlug) => {
+export const useRecentMessages = (numOfItems) => {
   const data = useStaticQuery(
     graphql`
       query {
-          allWpMessage {
+          allWpMessage (
+              limit: 50
+              sort: {fields: date, order: DESC}
+            ) {
             nodes {
               id
               blocks {
@@ -11,10 +14,22 @@ export const useMessage = (messageSlug) => {
               }
               title
               content
-              speakers {
+              attributions {
                 nodes {
-                  name
                   id
+                  name
+                  slug
+                  profileImage {
+                    image {
+                      sourceUrl
+                    }
+                  }
+                }
+              }
+              attributionsCo {
+                attributions {
+                  id
+                  name
                   slug
                 }
               }
@@ -39,7 +54,7 @@ export const useMessage = (messageSlug) => {
               }
               seriesPart {
                 part
-              }      
+              }
               scriptures {
                 nodes {
                   id
@@ -55,14 +70,20 @@ export const useMessage = (messageSlug) => {
                 }
               }
             }
-         } 
-      }
+          }
+        }
     `
   )
   
-  var messagePageInfo = data.allWpMessage.nodes.find(
-    ({ slug }) => slug === messageSlug
-  )
-  return messagePageInfo
+  let returnData = []
+  let i
+  for (i = 0; i < data.allWpMessage.nodes.length ; i++) {
+    data.allWpMessage.nodes[i].category="message"
+    returnData.push(data.allWpMessage.nodes[i])
+    if (returnData.length === numOfItems) {
+      break
+    }
+  }
   
+  return returnData
 }

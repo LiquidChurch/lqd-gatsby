@@ -7,7 +7,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import SectionHeader from '../SectionHeader'
 import { PlayArrow } from '../../helpers/icons'
-import { useRecentMessages } from "../../data/recentMessages"
+import { useRecentMessages } from "../../data/useRecentMessages"
 
 import "./styles.css"
 

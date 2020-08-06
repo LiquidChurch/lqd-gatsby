@@ -11,19 +11,18 @@ import { useSeries } from "../../data/useSeries"
  * Message Blocks
  */
 export default (lqdmMessage) => {
-
   const seriesInfo = useSeries(lqdmMessage.seriesList.nodes[0].slug)
   let seriesSlugs = []
  
   seriesInfo.messages.nodes.forEach(message => {
     
-    let speakers = "" 
+    let attributions = "" 
   
-    message.speakers.nodes.forEach(item => {
-      if (speakers === "") {
-        speakers = item.name 
+    message.attributions.nodes.forEach(item => {
+      if (attributions === "") {
+        attributions = item.name 
       } else {
-        speakers = speakers + ", " + item.name
+        attributions = attributions + ", " + item.name
       }
     })
 
@@ -36,13 +35,15 @@ export default (lqdmMessage) => {
       "image": message.featuredImage.node.mediaItemUrl,
       "id": message.id,
       "slug": message.slug,
+      "showBlurb": false,
+      "blurb": message.content,
+      "showSeries": true,
       "seriesTitle": message.seriesList.nodes[0].name,
       "seriesPart": message.seriesPart.part,
-      "seriesSpeaker": speakers,
-      "showSeries": true,
-      "showSpeakers": true,
+      "showAttribution": true,
+      "attributionName": attributions,
+      "profileImage": message.attributions.nodes[0].profileImage.image.sourceUrl,
       "date": formattedDate,
-      "speakerImage": message.speakers.nodes[0].AuthorImage.image.sourceUrl,
     })
   })
   

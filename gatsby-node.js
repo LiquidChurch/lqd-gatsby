@@ -5,23 +5,24 @@ const { slash } = require("gatsby-core-utils")
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
 
+  // CreatePage for Posts
   const postResult = await graphql(
     `
       query {
-          allWpPost {
-            nodes {
-              id
-              slug
-              title
-              categories {
-                nodes {
-                  id
-                  name
-                  slug
-                }
+        allWpPost {
+          nodes {
+            id
+            slug
+            title
+            categories {
+              nodes {
+                id
+                name
+                slug
               }
             }
           }
+        }
       }
     `
   )
@@ -43,18 +44,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   }
 
+  // CreatePage for Pages
   const pageResult = await graphql(
     `
       query {
-          allWpPage {
-            nodes {
-              id
-              slug
-              title
-              uri
-            }
+        allWpPage {
+          nodes {
+            id
+            slug
+            title
+            uri
           }
-        
+        }
       }
     `
   )
@@ -76,17 +77,17 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   }
 
+  // CreatePage for Messages
   const messageResult = await graphql(
     `
       query {
-          allWpMessage {
-            nodes {
-              id
-              slug
-              title
-            }
+        allWpMessage {
+          nodes {
+            id
+            slug
+            title
           }
-        
+        }
       }
     `
   )
@@ -114,6 +115,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   }
   while(!endMessages)
   
+  // CreatePage for Series
   const seriesListResult = await graphql(
     `
       query {
@@ -133,7 +135,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     return
   }
   
-  
   if (seriesListResult.data.allWpSeries.nodes) {
     seriesListResult.data.allWpSeries.nodes.forEach(series=> {
       createPage({
@@ -146,7 +147,37 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   }
   
-   
+  // CreatePage for Tags
+  const tagsResult = await graphql(
+    `
+      query {
+        allWpTag {
+          nodes {
+            id
+            slug
+            name
+          }
+        }
+      }
+    `
+  )
+  
+  if (tagsResult.errors) {
+    reporter.panicOnBuild(`Error while running GraphQL query on Tags.`)
+    return
+  }
+  
+  if (tagsResult.data.allWpTag.nodes) {
+    tagsResult.data.allWpTag.nodes.forEach(tag=> {
+      createPage({
+        path: `/tags/${tag.slug}`,
+        component: slash(path.resolve(`./src/templates/tag.js`)),
+        context: {
+          id: tag.id,
+        },
+      })
+    })
+  }   
 }
 
 /**

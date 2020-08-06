@@ -5,6 +5,12 @@ query PREVIEW_QUERY($id: ID!) {
         id
       }
     }
+    attributionsCo {
+      attributions {
+        id
+      }
+      fieldGroupName
+    }
     blocks {
       innerBlocks {
         innerBlocks {
@@ -119,6 +125,7 @@ fragment BlockFragment on Block {
     attributes__typename_BlockLabMediaTilesBlockAttributes: attributes {
       background_color
       className
+      display_type
       label
       media_list
       num_items

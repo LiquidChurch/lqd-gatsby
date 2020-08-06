@@ -197,10 +197,15 @@ export const MediaTile = graphql`
 export const MediaTiles = graphql`
   fragment MediaTiles on WpBlockLabMediaTilesBlock {
     attributes {
-      label
+      show_attribution
       background_color
-      type
+      label
       media_list
+      num_items
+      show_blurb
+      show_series
+      type
+      display_type
     }
   }
 `

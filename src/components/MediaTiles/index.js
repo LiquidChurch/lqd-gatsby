@@ -10,16 +10,32 @@ import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card'
 import ListGroup from 'react-bootstrap/ListGroup'
 import SectionHeader from '../SectionHeader'
+import Parse from "react-html-parser"
 //import ComponentSlider from '../ComponentSlider'
 import WideSlider from '../WideSlider'
-import { useRecentMessages } from '../../data/recentMessages'
-import { useRecentPosts } from '../../data/recentPosts'
+import { useRecentMessages } from '../../data/useRecentMessages'
+import { useMessage } from '../../data/useMessage'
+import { useRecentBlogs } from '../../data/useRecentBlogs'
+import { useBlog } from '../../data/useBlog'
 
 import './styles.css'
 
+function ShowTitle(props) {
+  if (props.showBlurb) {
+    return (
+      <ListGroup.Item className="media-card-title">
+          <div className="font-h2">{props.title}</div>
+          <div className="font-small">{Parse(props.blurb)}</div>
+      </ListGroup.Item>
+    )
+  }
+  return (
+   <ListGroup.Item className="media-card-title font-h2">{props.title}</ListGroup.Item>
+  )
+}
 
 function ShowSeries(props) {
-  if (props.showSeries) {
+  if (props.showSeries && props.seriesTitle !== null) {
     let part = ""
     
     if (props.seriesPart !== null) {
@@ -35,14 +51,24 @@ function ShowSeries(props) {
   return null  
 }
 
-function ShowSpeakers(props) {
-  if (props.showSpeakers) {
+function ShowAttribution(props) {
+  if (props.showAttribution) {
+    let profileImgUrl = []
+    if (props.profileImage !== undefined) {
+      profileImgUrl = props.profileImage.split("/")
+    }
     return (
     <>
-      <ListGroup.Item className="media-card-speaker font-h3">
-        <div className="media-card-name">{props.seriesSpeakers}</div>
-        <div className={"media-card-icon " + props.category + "-icon"}></div>
-        <div className="media-card-date">{props.date}</div>
+      <ListGroup.Item className="media-card-attribution font-h3">
+        <Imgix
+          src={"https://liquidchurch.imgix.net/" + profileImgUrl[4] + "/" + profileImgUrl[5] + "?ar=1:1&fit=crop&fill-color=0FFF&mask=ellipse&h=50"}
+          className="media-card-profile-image"
+        />
+        <div className="media-card-attribution-info">
+          <div className="media-card-name">{props.attributionName}</div>
+          <div className={"media-card-icon " + props.category + "-icon"}></div>
+          <div className="media-card-date">{props.date}</div>
+        </div>
       </ListGroup.Item>
       
     </>
@@ -66,17 +92,22 @@ function MediaCard(props) {
         width={262}
       />
       <ListGroup variant="flush" >
-        <ListGroup.Item className="media-card-title font-h2">{props.mediaItem.title}</ListGroup.Item>
-        <ShowSeries 
-            showSeries={props.mediaItem.showSeries}
-            seriesTitle={props.mediaItem.seriesTitle}
-            seriesPart={props.mediaItem.seriesPart}
+        <ShowTitle
+          title={props.mediaItem.title}
+          showBlurb={props.mediaItem.showBlurb}
+          blurb={props.mediaItem.blurb}
         />
-        <ShowSpeakers 
-            showSpeakers={props.mediaItem.showSpeakers}
-            seriesSpeakers={props.mediaItem.seriesSpeaker}
-            date={props.mediaItem.date}
-            category="messages"
+        <ShowSeries 
+          showSeries={props.mediaItem.showSeries}
+          seriesTitle={props.mediaItem.seriesTitle}
+          seriesPart={props.mediaItem.seriesPart}
+        />
+        <ShowAttribution
+          showAttribution={props.mediaItem.showAttribution}
+          attributionName={props.mediaItem.attributionName}
+          profileImage={props.mediaItem.profileImage}
+          date={props.mediaItem.date}
+          category="messages"
         />
 
       </ListGroup>
@@ -111,60 +142,123 @@ function UseSlider(props) {
       </Row>
     )
   }
-  return null
 }
 
+function MediaDataTransformer(props) {
+  let lists = []
+
+  console.log('media data transformer entered')
+  props.rawItems.map(item => {
+    console.log(item)
+    const formatter = new Intl.DateTimeFormat('en-US', { month: 'short',  day: 'numeric',   year: 'numeric'});
+    let formattedDate =  formatter.format(new Date(item.date));
+
+    let attributions = ""
+
+    item.attributions.nodes.forEach(item => {
+      if (attributions === "") {
+        attributions = item.name 
+      } else {
+        attributions = attributions + ", " + item.name
+      }
+    })
+    
+    let seriesTitle = ""
+    if (item.seriesList.nodes.length !== 0) {
+      seriesTitle = item.seriesList.nodes[0].name
+    }
+    
+    let seriesPart = ""
+    if (item.seriesPart !== undefined ) {
+      seriesPart = item.seriesPart.part
+    }
+    
+    lists.push( {
+      "category": item.category,
+      "title": item.title,
+      "image": item.featuredImage.node.sourceUrl,
+      "id": item.id,
+      "slug": item.slug,
+      "showBlurb": props.showBlurb,
+      "blurb": item.content,
+      "showSeries": props.showSeries,
+      "seriesTitle": seriesTitle,
+      "seriesPart": seriesPart,
+      "showAttribution": props.showAttribution,
+      "attributionName": attributions,
+      "profileImage": item.attributions.nodes[0].profileImage.image.sourceUrl,
+      "date": formattedDate,
+    })
+    return null
+  })
+  return lists
+}
 
 /** 
  * MediaTiles
  */
 export default ({
-    label,
+    show_attribution,
     background_color,
-    type,
+    label,
     media_list,
+    num_items,
+    show_blurb,
+    show_series,
+    type,
+    display_type,
   }) => {
   const ctx = useContext(GlobalContext)
   let mediaLists = []
+  
   let useSlider = false
-
-  if (type.toLowerCase() === "recent messages") {
-    let tempItems = useRecentMessages(5)
+  if (display_type === "slider") {
     useSlider = true
-    tempItems.map(item => {
-      mediaLists.push( {
-        "category": "message",
-        "title": item.title,
-        "image": item.featuredImage.node.sourceUrl,
-        "id": item.id,
-        "slug": item.slug,
-        "showSeries": false,
-        "showSpeakers": false,
-      })
-      return null
+  }
+  
+  if (type.toLowerCase() === "recent messages") {
+    let tempItems = useRecentMessages(num_items)
+    mediaLists = MediaDataTransformer({
+      "rawItems":tempItems,
+      "showBlurb":show_blurb,
+      "showSeries":show_series,
+      "showAttribution":show_attribution,
     })
   }
   
   if (type.toLowerCase() === "recent blogs") {
-    useSlider = true
-    let tempItems = useRecentPosts("blog")
-    tempItems.map(item => {
-      mediaLists.push( {
-        "category": "blog",
-        "title": item.title,
-        "image": item.featuredImage.node.mediaItemUrl,
-        "id": item.id,
-        "slug": item.slug,
-        "showSeries": false,
-        "showSpeakers": false,
-      })
-      return null
+    let tempItems = useRecentBlogs(num_items)
+     mediaLists = MediaDataTransformer({
+      "rawItems":tempItems,
+      "showBlurb":show_blurb,
+      "showSeries":show_series,
+      "showAttribution":show_attribution,
+    })
+  }
+  
+  if (type.toLowerCase() === "specify list") {
+    let rawMediaList = JSON.parse(media_list)
+    let tempItems = []
+    rawMediaList.rows.forEach(item => {
+      if (item.message !== undefined) {
+        tempItems.push(useMessage(item.message.id))
+      }
+      if (item.blog !== undefined) {
+        tempItems.push(useBlog(item.blog.id))
+      }
+    })
+    mediaLists = MediaDataTransformer({
+      "rawItems":tempItems,
+      "showBlurb":show_blurb,
+      "showSeries":show_series,
+      "showAttribution":show_attribution,
     })
   }
   
   if (type === "") {
     mediaLists = media_list
   }
+  
   if (mediaLists === undefined) {
     return (
     <>
@@ -184,7 +278,6 @@ export default ({
             useSlider = {useSlider}
             mediaLists = {mediaLists}
           />
-         
       </Container>
     </section>
   </>

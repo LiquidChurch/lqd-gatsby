@@ -47,22 +47,22 @@ export const query = graphql`
       }
       title
       content
-      speakers {
+      attributions {
         nodes {
-          name
           id
+          name
           slug
-          AuthorImage {
+          profileImage {
             image {
               sourceUrl
             }
           }
         }
       }
-      speakersAdd {
-        speakers {
-          name
+      attributionsCo {
+        attributions {
           id
+          name
           slug
         }
       }
