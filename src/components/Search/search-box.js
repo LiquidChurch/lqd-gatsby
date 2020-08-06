@@ -1,5 +1,3 @@
-
-// Search Box: https://www.gatsbyjs.org/docs/adding-search-with-algolia/#search-box
 import React from "react"
 import { connectSearchBox } from "react-instantsearch-dom"
 import { Search as SearchIcon } from "@styled-icons/fa-solid"
@@ -7,7 +5,7 @@ import { Search as SearchIcon } from "@styled-icons/fa-solid"
 export default connectSearchBox(
     ({ refine, currentRefinement, className, onFocus }) => (
         <form className={className}>
-            <input
+            <input 
                 className="SearchInput"
                 type="text"
                 placeholder="Search"

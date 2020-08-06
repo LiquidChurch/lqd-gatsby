@@ -1,4 +1,3 @@
-// Search Results: https://www.gatsbyjs.org/docs/adding-search-with-algolia/#displaying-search-results
 import { Link } from "gatsby"
 import { default as React } from "react"
 import {
@@ -7,7 +6,7 @@ import {
     Hits,
     Index,
     Snippet,
-    PoweredBy
+    PoweredBy,   
 } from "react-instantsearch-dom"
 
 const HitCount = connectStateResults(({ searchResults }) => {
@@ -15,9 +14,9 @@ const HitCount = connectStateResults(({ searchResults }) => {
 
     return hitCount > 0 ? (
         <div className="HitCount">
-            {hitCount} result{hitCount !== 1 ? `s` : `` }
+            {hitCount} result{hitCount !== 1 ? `s` : ``}
         </div>
-    ): null
+    ) : null
 })
 
 const PageHit = ({ hit }) => (
@@ -38,7 +37,7 @@ const HitsInIndex = ({ index }) => (
     </Index>
 )
 
-const SearchResult = ({ indices, className }) => (
+const SearchResult = ({ indices, className}) => (
     <div className={className}>
         {indices.map(index => (
             <HitsInIndex index={index} key={index.name} />

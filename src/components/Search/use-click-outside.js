@@ -1,5 +1,4 @@
 import { useEffect } from "react"
-import { RemoveFormat } from "@styled-icons/fa-solid"
 
 const events = [`mousedown`, `touchstart`]
 
@@ -18,7 +17,7 @@ export default (ref, onClickOutside) => {
         }
 
         return () => {
-            for (const event of events) document.removeEventListener(event, onClick)
+            for (const event of events) document.removeEventListener(event, onClick)         
         }
     })
 }
