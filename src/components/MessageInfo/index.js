@@ -59,17 +59,16 @@ function ScriptureList(props) {
 
 
 export default (lqdmMessage) => {
+  console.log(lqdmMessage)
   const formatter = new Intl.DateTimeFormat('en-US', { month: 'short',  day: 'numeric',   year: 'numeric'});
   const formattedDate =  formatter.format(new Date(lqdmMessage.date));
-  let speakers = "" 
+  let speakers = lqdmMessage.speakers.nodes[0].name
   
-  lqdmMessage.speakers.nodes.forEach(item => {
-    if (speakers === "") {
-      speakers = item.name 
-    } else {
-      speakers = speakers + ", " + item.name
-    }
-  })
+  if (lqdmMessage.speakersAdd.speakers !== null) {
+    lqdmMessage.speakersAdd.speakers.forEach(item => {
+        speakers = speakers + ", " + item.name
+    })
+  }
   
   return (
     <>

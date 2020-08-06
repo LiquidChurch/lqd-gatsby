@@ -1,5 +1,12 @@
 query SINGLE_CONTENT_QUERY($id: ID!) {
   speaker(id: $id) {
+    AuthorImage {
+      fieldGroupName
+      image {
+        id
+        sourceUrl
+      }
+    }
     blogs(first: 100) {
       nodes {
         id

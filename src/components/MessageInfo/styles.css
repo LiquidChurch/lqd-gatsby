@@ -22,7 +22,7 @@
   text-transform: uppercase;
   color: #C7C7C7;
   display:inline;
-  vertical-align:top;
+  vertical-align:inherit;
   letter-spacing: 0.1em;
 }
 

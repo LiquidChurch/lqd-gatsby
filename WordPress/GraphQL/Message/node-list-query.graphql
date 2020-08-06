@@ -96,6 +96,12 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
           id
         }
       }
+      speakersAdd {
+        fieldGroupName
+        speakers {
+          id
+        }
+      }
       status
       tags(first: 100) {
         nodes {

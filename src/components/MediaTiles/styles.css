@@ -19,15 +19,63 @@
   box-shadow: 0px 3px 6px #00000029;
 }
 
+.media-card:hover {
+  border-color: #686868 !important;
+}
+
+.media-card-link:hover {
+  text-decoration:none;
+}
+
 .media-card-title {
-  padding: 12px;
   white-space: normal;
   min-height: 114px;
+}
+
+.media-card-series {
+  background-color:#DEDEDE;
+}
+
+.media-card-speaker {
+  background-color:#F2ECEC;
+  height:64px;
+}
+
+.media-card-name {
+  position: relative;
+  font-size: 0.9em;
+  font-weight: 600;
+  margin-top:-5px;
+}
+
+.media-card-icon {
+  position: relative;
+  display: inline-block;  
+  width: 15px;
+  height: 14px;
+  background-color: #757575;
+}
+
+.media-card-date {
+  position: relative;
+  display: inline-block;
+  font-size: 0.8em;
+  left: 7px;
+  bottom: 3px;
 }
 
 .media-card-wrap {
   display: flex;
   flex-flow: wrap;
+}
+
+.card>.list-group:last-child .list-group-item:last-child{
+  border-bottom-right-radius: 1em;
+  border-bottom-left-radius: 1em;
+}
+
+.list-group-flush .list-group-item {
+  border-width: 0 !important;
 }
 
 @media (max-width:1199px) { 

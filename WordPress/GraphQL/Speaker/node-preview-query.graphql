@@ -1,5 +1,12 @@
 query PREVIEW_QUERY($id: ID!) {
   speaker(id: $id, idType: ID, asPreview: true) {
+    AuthorImage {
+      fieldGroupName
+      image {
+        id
+        sourceUrl
+      }
+    }
     blogs(first: 100) {
       nodes {
         id

@@ -1,6 +1,13 @@
 query NODE_LIST_QUERY($first: Int!, $after: String) {
   speakers(first: $first, after: $after, where: { parent: null }) {
     nodes {
+      AuthorImage {
+        fieldGroupName
+        image {
+          id
+          sourceUrl
+        }
+      }
       blogs(first: 100) {
         nodes {
           id
