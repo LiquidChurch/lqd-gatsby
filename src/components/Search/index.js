@@ -1,10 +1,11 @@
+// Search Widget: https://www.gatsbyjs.org/docs/adding-search-with-algolia/#tying-the-search-widget-together
 import algoliasearch from "algoliasearch/lite"
 import { createRef, default as React, useState } from "react"
 import { InstantSearch } from "react-instantsearch-dom"
 import { ThemeProvider } from "styled-components"
-import StyledSearchBox from "./Input"
-import StyledSearchResult from "./Hits"
-import StyledSearchRoot from "./styled-search-root"
+import StyledSearchBox from "./Input" // ./styled-search-box
+import StyledSearchResult from "./Hits" // ./styled-search-result
+import StyledSearchRoot from "./styles" // ./styled-search-root
 import useClickOutside from "./use-click-outside"
 
 const theme = {

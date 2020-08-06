@@ -1,3 +1,5 @@
+
+// Search Box: https://www.gatsbyjs.org/docs/adding-search-with-algolia/#search-box
 import React from "react"
 import { connectSearchBox } from "react-instantsearch-dom"
 import { Search as SearchIcon } from "@styled-icons/fa-solid"

@@ -1,3 +1,4 @@
+// Search Results: https://www.gatsbyjs.org/docs/adding-search-with-algolia/#displaying-search-results
 import { Link } from "gatsby"
 import { default as React } from "react"
 import {
