@@ -1,5 +1,11 @@
 query PREVIEW_QUERY($id: ID!) {
   message(id: $id, idType: ID, asPreview: true) {
+    attributions {
+      attributions {
+        id
+      }
+      fieldGroupName
+    }
     blocks {
       innerBlocks {
         innerBlocks {
@@ -90,17 +96,6 @@ query PREVIEW_QUERY($id: ID!) {
       part
     }
     slug
-    speakers(first: 100) {
-      nodes {
-        id
-      }
-    }
-    speakersAdd {
-      fieldGroupName
-      speakers {
-        id
-      }
-    }
     status
     tags(first: 100) {
       nodes {
@@ -135,6 +130,10 @@ fragment BlockFragment on Block {
       className
       label
       media_list
+      num_items
+      show_attribution
+      show_blurb
+      show_series
       type
     }
   }

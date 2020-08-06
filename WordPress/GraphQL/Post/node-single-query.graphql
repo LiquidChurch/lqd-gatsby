@@ -1,5 +1,10 @@
 query SINGLE_CONTENT_QUERY($id: ID!) {
   post(id: $id) {
+    attributions(first: 100) {
+      nodes {
+        id
+      }
+    }
     author {
       node {
         id
@@ -105,11 +110,6 @@ query SINGLE_CONTENT_QUERY($id: ID!) {
       }
     }
     slug
-    speakers(first: 100) {
-      nodes {
-        id
-      }
-    }
     status
     tags(first: 100) {
       nodes {
@@ -145,6 +145,10 @@ fragment BlockFragment on Block {
       className
       label
       media_list
+      num_items
+      show_attribution
+      show_blurb
+      show_series
       type
     }
   }

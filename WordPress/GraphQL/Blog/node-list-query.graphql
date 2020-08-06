@@ -1,6 +1,11 @@
 query NODE_LIST_QUERY($first: Int!, $after: String) {
   blogs(first: $first, after: $after, where: { parent: null }) {
     nodes {
+      attributions(first: 100) {
+        nodes {
+          id
+        }
+      }
       blocks {
         innerBlocks {
           innerBlocks {
@@ -83,11 +88,6 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
         }
       }
       slug
-      speakers(first: 100) {
-        nodes {
-          id
-        }
-      }
       status
       tags(first: 100) {
         nodes {
@@ -127,6 +127,10 @@ fragment BlockFragment on Block {
       className
       label
       media_list
+      num_items
+      show_attribution
+      show_blurb
+      show_series
       type
     }
   }
