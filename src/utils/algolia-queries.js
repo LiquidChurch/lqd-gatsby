@@ -10,15 +10,6 @@ const algoliaQuery = `
 }
 `
 
-function messageToAlgoliaRecord({ nodes: { title, content } } ) {
-    /** Fields to be indexed */
-    return{
-        title,
-        content
-    }
-}
-
-
 /** The transformer converts the GraphQL Query into a Algolia Record */
 const queries = [
     {
