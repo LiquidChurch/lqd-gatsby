@@ -1,0 +1,53 @@
+query NODE_LIST_QUERY($first: Int!, $after: String) {
+  attributions(first: $first, after: $after, where: { parent: null }) {
+    nodes {
+      blogs(first: 100) {
+        nodes {
+          id
+        }
+      }
+      count
+      databaseId
+      description
+      id
+      link
+      messages(first: 100) {
+        nodes {
+          id
+        }
+      }
+      name
+      podcasts(first: 100) {
+        nodes {
+          id
+        }
+      }
+      posts(first: 100) {
+        nodes {
+          id
+        }
+      }
+      profileImage {
+        fieldGroupName
+        image {
+          id
+          sourceUrl
+        }
+      }
+      slug
+      taxonomy {
+        node {
+          id
+        }
+      }
+      termGroupId
+      termTaxonomyId
+      uri
+      __typename
+    }
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+  }
+}

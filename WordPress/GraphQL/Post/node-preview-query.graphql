@@ -1,5 +1,10 @@
 query PREVIEW_QUERY($id: ID!) {
   post(id: $id, idType: ID, asPreview: true) {
+    attributions(first: 100) {
+      nodes {
+        id
+      }
+    }
     author {
       node {
         id
@@ -105,11 +110,6 @@ query PREVIEW_QUERY($id: ID!) {
       }
     }
     slug
-    speakers(first: 100) {
-      nodes {
-        id
-      }
-    }
     status
     tags(first: 100) {
       nodes {
@@ -143,8 +143,13 @@ fragment BlockFragment on Block {
     attributes__typename_BlockLabMediaTilesBlockAttributes: attributes {
       background_color
       className
+      display_type
       label
       media_list
+      num_items
+      show_attribution
+      show_blurb
+      show_series
       type
     }
   }

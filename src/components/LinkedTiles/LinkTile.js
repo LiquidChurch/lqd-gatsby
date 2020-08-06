@@ -4,7 +4,6 @@ import Imgix from 'react-imgix'
 import { Link } from 'gatsby'
 
 import './tiles.css';
-import tile  from './tile.jpg';
 
 import { useFeaturedImage } from "../../data/featureImage"
 

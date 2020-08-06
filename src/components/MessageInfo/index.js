@@ -56,17 +56,14 @@ function ScriptureList(props) {
   )
 }
 
-
-
 export default (lqdmMessage) => {
-  console.log(lqdmMessage)
   const formatter = new Intl.DateTimeFormat('en-US', { month: 'short',  day: 'numeric',   year: 'numeric'});
   const formattedDate =  formatter.format(new Date(lqdmMessage.date));
-  let speakers = lqdmMessage.speakers.nodes[0].name
+  let attributions = lqdmMessage.attributions.nodes[0].name
   
-  if (lqdmMessage.speakersAdd.speakers !== null) {
-    lqdmMessage.speakersAdd.speakers.forEach(item => {
-        speakers = speakers + ", " + item.name
+  if (lqdmMessage.attributionsCo.attributions !== null) {
+    lqdmMessage.attributionsCo.attributions.forEach(item => {
+        attributions = attributions + ", " + item.name
     })
   }
   
@@ -82,7 +79,7 @@ export default (lqdmMessage) => {
             <h2 className="font-h3">Social Icon Placeholder</h2>
           </Col>
           <Col xs={{span:12, order:2}} md={{span:12, order:3}}>
-            <div className="font-h3 message-speaker">{speakers}</div>
+            <div className="font-h3 message-speaker">{attributions}</div>
             <div className="font=h3 message-date">{formattedDate}</div>
           </Col>
         </Row>
@@ -95,11 +92,13 @@ export default (lqdmMessage) => {
             <ScriptureList scriptures={lqdmMessage.scriptures} />
           </Col>
           <Col xs={12}>
+            <div className="message-tag-cloud">
             {lqdmMessage.tags.nodes.map(item => {
              return (
                 <TagIcon tagItem={item} key={'tag-item-' + item.id}/>
              )
             })}
+            </div>
           </Col>
         </Row>
       </Container>

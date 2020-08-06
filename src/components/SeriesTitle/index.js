@@ -25,10 +25,13 @@ export default (series) => {
       <Link to={"/series/" + series.slug}>
         <Imgix
           src={"https://liquidchurch.imgix.net/" + imgUrl[4] + "/" + imgUrl[5] + "?ar=16:9&fit=crop&h=607"}
-          className="d-none d-sm-block message-tile-image"
+          className="message-tile-image"
           sizes="90vw" />
         
       </Link>
+      </Col>
+      <Col>
+        <h4 className="message-tile-title font-h1">{series.name}</h4>
       </Col>
     </Row>
   </Container>

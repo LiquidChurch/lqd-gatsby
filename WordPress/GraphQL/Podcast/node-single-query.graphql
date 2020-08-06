@@ -1,5 +1,16 @@
 query SINGLE_CONTENT_QUERY($id: ID!) {
   podcast(id: $id) {
+    attributions(first: 100) {
+      nodes {
+        id
+      }
+    }
+    attributionsCo {
+      attributions {
+        id
+      }
+      fieldGroupName
+    }
     blocks {
       innerBlocks {
         innerBlocks {
@@ -82,11 +93,6 @@ query SINGLE_CONTENT_QUERY($id: ID!) {
       }
     }
     slug
-    speakers(first: 100) {
-      nodes {
-        id
-      }
-    }
     status
     tags(first: 100) {
       nodes {
@@ -119,8 +125,13 @@ fragment BlockFragment on Block {
     attributes__typename_BlockLabMediaTilesBlockAttributes: attributes {
       background_color
       className
+      display_type
       label
       media_list
+      num_items
+      show_attribution
+      show_blurb
+      show_series
       type
     }
   }

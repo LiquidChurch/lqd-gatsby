@@ -1,31 +1,38 @@
 import { useStaticQuery, graphql } from "gatsby"
-export const useRecentMessages = (numOfItems) => {
+export const useBlog = (blogId) => {
   const data = useStaticQuery(
     graphql`
       query {
-          allWpMessage (
-              limit: 50
-              sort: {fields: date, order: DESC}
-            ) {
+          allWpBlog {
             nodes {
               id
+              databaseId
               blocks {
                 ...AllBlocks
               }
               title
               content
-              speakers {
+              attributions {
                 nodes {
-                  name
                   id
+                  name
+                  slug
+                  profileImage {
+                    image {
+                      sourceUrl
+                    }
+                  }
+                }
+              }
+              attributionsCo {
+                attributions {
+                  id
+                  name
                   slug
                 }
               }
               date
-              slug
-              message {
-                url
-              }        
+              slug    
               featuredImage {
                 node {
                   sourceUrl
@@ -39,10 +46,7 @@ export const useRecentMessages = (numOfItems) => {
                   id
                   slug
                 }
-              }
-              seriesPart {
-                part
-              }
+              }   
               scriptures {
                 nodes {
                   id
@@ -58,19 +62,15 @@ export const useRecentMessages = (numOfItems) => {
                 }
               }
             }
-          }
-        }
+         } 
+      }
     `
   )
   
-  let returnData = []
-  let i
-  for (i = 0; i < data.allWpMessage.nodes.length ; i++) {
-    returnData.push(data.allWpMessage.nodes[i]) 
-    if (returnData.length === numOfItems) {
-      break
-    }
-  }
+  var blogPageInfo = data.allWpBlog.nodes.find(
+    ({ databaseId }) => databaseId === blogId
+  )
+  blogPageInfo.category = "blog"
+  return blogPageInfo
   
-  return returnData
 }
