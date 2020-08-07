@@ -12,6 +12,9 @@ export const useBlog = (blogId) => {
               }
               title
               content
+              mediaBlurb {
+                blurb
+              }
               attributions {
                 nodes {
                   id

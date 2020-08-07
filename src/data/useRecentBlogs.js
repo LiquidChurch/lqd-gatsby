@@ -14,6 +14,9 @@ export const useRecentBlogs = (numOfItems) => {
               }
               title
               content
+              mediaBlurb {
+                blurb
+              }
               attributions {
                 nodes {
                   id

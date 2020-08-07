@@ -8,7 +8,7 @@ import Layout from "../components/Layout"
 import { GlobalContext } from '../components/GlobalContext/context'
 import { isTouchEnabled } from '../helpers/functions'
 
-import SeriesTitle from "../components/SeriesTitle"
+import SeriesHero from "../components/SeriesHero"
 import MediaTiles from "../components/MediaTiles"
 /** 
  * Template - Messages Component
@@ -59,7 +59,7 @@ export default ({
   const ctx = useContext(GlobalContext)
   console.log(series)
   useEffect(() => {
-    ctx.setTheme("Dark")
+    ctx.setTheme("Light")
     if (isTouchEnabled()) {
       ctx.enableTouchState()
     }
@@ -71,10 +71,10 @@ export default ({
         <title>{Parse(series.name)}</title>
       </Helmet>
       <article className="post">
-        <SeriesTitle {...series} />
+        <SeriesHero {...series} />
         <MediaTiles 
           type=""
-          label=""
+          label=" "
           background_color="#F8F8F8"
           media_list={messagesInfo} />
       </article>
@@ -88,6 +88,7 @@ export const query = graphql`
       id
       name
       slug
+      description
       SeriesImage {
         image {
           caption
