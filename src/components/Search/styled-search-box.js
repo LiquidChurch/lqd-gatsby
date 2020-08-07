@@ -12,10 +12,11 @@ const open = css`
 const closed = css`
     width: 0;
     background: transparent;
-    cursor: text;
-    margin-left: -1.6em;
-    padding-left: 1.6em;
+    cursor: pointer;
+    margin-left: -1em;
+    padding-left: 1em;
 `
+
 export default styled(SearchBox)`
     display: flex;
     flex-direction: row-reverse;
