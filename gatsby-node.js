@@ -148,7 +148,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   }
   
   // CreatePage for Tags
-  const tagsResult = await graphql(
+  /*const tagsResult = await graphql(
     `
       query {
         allWpTag {
@@ -177,7 +177,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         },
       })
     })
-  }   
+  } */  
 }
 
 /**
