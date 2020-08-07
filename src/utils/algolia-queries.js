@@ -1,12 +1,18 @@
 const algoliaQuery = `
 {
-        allWpMessage {
+    allWpMessage {
+        nodes {
+          id
+          content
+          link
+          scriptures {
             nodes {
-                id
-                title
-                content
+              name
             }
+          }
+          title
         }
+    }
 }
 `
 
