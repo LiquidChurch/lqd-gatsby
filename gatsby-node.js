@@ -153,10 +153,10 @@ exports.createResolvers = async ({
   }
 
   await createResolvers({
-    WPGraphQL_Avatar: field,
-    WPGraphQL_CoreImageBlockAttributes: field,
-    WPGraphQL_MediaItem: field,
-    WPGraphQL_CoreImageBlock: field,
-    WPGraphQL_User: field,
+    WpAvatar: field,
+    WpCoreImageBlockAttributes: field,
+    WpMediaItem: field,
+    WpCoreImageBlock: field,
+    WpUser: field,
   })
 }

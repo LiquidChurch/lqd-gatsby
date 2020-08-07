@@ -18,6 +18,7 @@ import BlockMessageTile from "../MessageTile"
 import BlockMediaTile from "../MediaTile"
 import BlockPageModal from "../PageModal"
 import BlockLinkedTiles from "../LinkedTiles"
+import BlockPhotoTab from  "../PhotoTab"
 
 import { PageModalProvider } from "../PageModal/context.js"
 
@@ -44,6 +45,7 @@ export default ({ blocks, featuredImage }) => {
     "block-lab/media-tile": BlockMediaTile,
     "block-lab/page-modal": BlockPageModal,
     "block-lab/link-tiles": BlockLinkedTiles,
+    "block-lab/photo-block": BlockPhotoTab,
   }
 
   return (

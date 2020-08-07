@@ -1,5 +1,6 @@
 import { useStaticQuery, graphql } from "gatsby"
 export const useImage = (imageId) => {
+  console.log('useImage', imageId)
   const data = useStaticQuery(
     graphql`
       query {
@@ -21,5 +22,6 @@ export const useImage = (imageId) => {
   var imageInfo = data.allWpMediaItem.nodes.find(
     ({ databaseId }) => databaseId === imageId
   )
+  console.log(imageInfo)
   return imageInfo
 }

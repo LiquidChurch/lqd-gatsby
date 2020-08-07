@@ -15,7 +15,6 @@ import "./photoTab.css"
 
 function TabImage(props) {
   const image_info = useImage(props.tab_image_id)
-  
   if (image_info !== undefined) {
     var imgUrl = image_info.mediaItemUrl.split("/")
     return (
@@ -34,31 +33,36 @@ function TabImage(props) {
  * PhotoTab Block Component
  */
 export default ({
-  cta_slug,
-  cta_text,
-  tab_bg_img,
+  cta,
   tab_color,
   tab_tag,
   tab_text,
-  tab_image,
+  image,
 }) => {
   var hasImage = false
   
-  if (tab_image !== null) {
+  if (image !== null) {
     hasImage = true
   }
+  
+  let objCta = JSON.parse(cta)
+  let cta_text = objCta.rows[0].text
+  let cta_slug = objCta.rows[0].slug
   
   return (
   <>
   <section className="fullwidth-section" style={{backgroundColor: tab_color}}>
   <Container>
     <Row>
-      <TabImage tab_image_id={tab_image} />
+      <TabImage tab_image_id={image} />
+
       <Col id={"tab-body-" + cta_slug} className={hasImage ? "vertical-center tab-pad-left" : "vertical-center"}>
-        <h2 className={hasImage ? "photo-tab-tag font-h1 tab-left" : "photo-tab-tag font-h1"}>{Parse(tab_tag)}</h2>
+      
+    <h2 className={hasImage ? "photo-tab-tag font-h1 tab-left" : "photo-tab-tag font-h1"}>{Parse(tab_tag)}</h2>
         <p className={hasImage ? "photo-tab-text font-large tab-left" : "photo-tab-text font-large"}>{tab_text}</p>
         <div className={hasImage ? "photo-tab-cta tab-left" : "photo-tab-cta"}>
-          <TabLink cta_text={cta_text} cta_slug={cta_slug} />
+              <Link cta_text={cta_text} cta_slug={cta_slug}>
+            </Link>
         </div>
       </Col> 
     </Row>
@@ -68,8 +72,9 @@ export default ({
         <h2 className={hasImage ? "photo-tab-tag font-h1 tab-left" : "photo-tab-tag font-h1"}>{Parse(tab_tag)}</h2>
         <p className={hasImage ? "photo-tab-text font-large tab-left" : "photo-tab-text font-large"}>{tab_text}</p>
         <div className={hasImage ? "photo-tab-cta tab-left" : "photo-tab-cta"}>
-          <TabLink cta_text={cta_text} cta_slug={cta_slug} />
-           <TabImage tab_image_id={tab_image} />
+          <Link cta_text={cta_text} cta_slug={cta_slug}>
+           <TabImage tab_image_id={image} />
+          </Link>
         </div>
       </Col> 
     </Row>

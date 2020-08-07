@@ -62,24 +62,6 @@ export const Image = graphql`
 `
 */
 /*
-export const Heading = graphql`
-  fragment Heading on WPGraphQL_CoreHeadingBlock {
-    attributes {
-      content
-      level
-    }
-  }
-`
-
-export const Button = graphql`
-  fragment Button on WPGraphQL_CoreButtonBlock {
-    attributes {
-      url
-      text
-    }
-  }
-`
-
 export const List = graphql`
   fragment List on WPGraphQL_CoreListBlock {
     attributes {
@@ -108,6 +90,33 @@ export const Code = graphql`
   }
 `
 */
+
+export const Heading = graphql`
+  fragment Button on WpBlockLabHeadingBlock {
+    attributes {
+      text
+      size
+      alignment
+      background_color
+    }
+  }
+`
+
+export const Button = graphql`
+  fragment Heading on WpBlockLabButtonBlock {
+    attributes {
+      text
+      alignment
+      page
+      color
+      background_color
+      has_arrow
+      has_icon
+      min_width
+      text_float
+    }
+  }
+`
 
 export const HompageHero = graphql`
   fragment HomepageHero on WpBlockLabHomepageHeroBlock {
@@ -175,13 +184,19 @@ export const MessageTile = graphql`
   }
 `
 
-export const MediaTile = graphql`
-  fragment MediaTile on WpBlockLabMediaTileBlock {
-      attributes {
-        block_title
-        background_color
-        media_slug
-      }
+export const MediaTiles = graphql`
+  fragment MediaTiles on WpBlockLabMediaTilesBlock {
+    attributes {
+      show_attribution
+      background_color
+      label
+      media_list
+      num_items
+      show_blurb
+      show_series
+      type
+      display_type
+    }
   }
 `
 
@@ -201,17 +216,33 @@ export const LinkTiles = graphql`
     }
   }
 `
+
+export const PhotoTab = graphql`
+  fragment PhotoTab on WpBlockLabPhotoBlock {
+    attributes {
+      cta
+      image
+      tab_color
+      tab_text
+      tab_tag
+    }
+  } 
+`
+
 export const AllBlocks = graphql`
   fragment AllBlocks on WpBlock {
     name
+    ...Button
+    ...Heading
     ...HomepageHero
     ...HeroImage
     ...ExternalRedirect
     ...PageStrap
     ...HomeLinks
     ...MessageTile
-    ...MediaTile
+    ...MediaTiles
     ...PageModal
     ...LinkTiles
+    ...PhotoTab
   }
 `
