@@ -8,6 +8,7 @@ export const useSeries = (seriesSlug) => {
             id
             name
             slug
+            description
             SeriesImage {
               image {
                 caption

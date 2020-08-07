@@ -59,6 +59,10 @@ query SINGLE_CONTENT_QUERY($id: ID!) {
       }
     }
     link
+    mediaBlurb {
+      blurb
+      fieldGroupName
+    }
     modified
     modifiedGmt
     previewBlocks {

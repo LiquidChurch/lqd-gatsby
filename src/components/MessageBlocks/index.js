@@ -54,6 +54,7 @@ export default (lqdmMessage) => {
       <SeriesTitle {...seriesInfo} />
       <MediaTiles 
           type="" 
+          display_type="grid"
           label="Other Messages in this series" 
           background_color="#F8F8F8"
           media_list={seriesSlugs} />

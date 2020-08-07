@@ -60,6 +60,10 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
         }
       }
       link
+      mediaBlurb {
+        blurb
+        fieldGroupName
+      }
       modified
       modifiedGmt
       previewBlocks {
