@@ -184,16 +184,6 @@ export const MessageTile = graphql`
   }
 `
 
-export const MediaTile = graphql`
-  fragment MediaTile on WpBlockLabMediaTileBlock {
-      attributes {
-        block_title
-        background_color
-        media_slug
-      }
-  }
-`
-
 export const MediaTiles = graphql`
   fragment MediaTiles on WpBlockLabMediaTilesBlock {
     attributes {
@@ -238,7 +228,6 @@ export const AllBlocks = graphql`
     ...PageStrap
     ...HomeLinks
     ...MessageTile
-    ...MediaTile
     ...MediaTiles
     ...PageModal
     ...LinkTiles

@@ -1,9 +1,10 @@
 .media-cards {
-  
+  margin-top:-50px;
+  padding-top:25px;
 }
 
 .media-cards-no-label {
-  padding-top:0px
+  padding-top:0;
 }
 
 .media-cards-row::-webkit-scrollbar {
@@ -18,7 +19,7 @@
   min-width: 265.5px;
   max-width: 265.5px;
   
-  margin: 6px 6px;
+  margin: 20px 6px;
   border-radius: 1em;
   border-color:transparent;
   background-color:transparent;
@@ -141,6 +142,10 @@
 }
 
 @media (max-width:575px) {
+  .media-cards {
+    margin-top: 0;
+  }
+  
   .media-card-wrap {
     padding-left:calc(calc(100vw - 322px)/2);
   }

@@ -127,6 +127,10 @@ export default ({
   }) => {
   const ctx = useContext(GlobalContext)
   
+  if (display_type === undefined) {
+    display_type = "Grid"
+  }
+  
   let sectionClass="media-cards"
   
   if (label === "" || label === null) {

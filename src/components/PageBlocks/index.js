@@ -8,7 +8,6 @@ import BlockExternalRedirect from "../ExternalRedirect"
 import BlockPageStrap from "../PageStrap"
 import BlockHomeLinks from "../HomeLinks"
 import BlockMessageTile from "../MessageTile"
-import BlockMediaTile from "../MediaTile"
 import BlockMediaTiles from "../MediaTiles"
 import BlockPageModal from "../PageModal"
 import BlockLinkedTiles from "../LinkedTiles"
@@ -28,7 +27,6 @@ export default ({ blocks, featuredImage }) => {
     "block-lab/page-strap": BlockPageStrap,
     "block-lab/home-links": BlockHomeLinks,
     "block-lab/message-tile": BlockMessageTile,
-    "block-lab/media-tile": BlockMediaTile,
     "block-lab/media-tiles": BlockMediaTiles,
     "block-lab/page-modal": BlockPageModal,
     "block-lab/link-tiles": BlockLinkedTiles,

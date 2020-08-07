@@ -17,7 +17,6 @@ import './styles.css'
 export default (series) => {
   console.log(series)
   var imgUrl = series.SeriesImage.image.sourceUrl.split("/")
-
   
   return (
   <>
