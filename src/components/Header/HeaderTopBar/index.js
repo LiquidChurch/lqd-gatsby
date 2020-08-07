@@ -4,10 +4,13 @@ import { Link, graphql, useStaticQuery } from "gatsby"
 import Col from 'react-bootstrap/Col'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
+import Search from '../../Search'
 import { MegaMenuContext } from '../MegaMenu/context.js'
 import { GlobalContext } from '../../GlobalContext/context.js'
 
 import "./styles.css"
+
+const searchIndices = [{ name: `Messages`, title: `Messages` }]
 
 /**
  * The Header TopBar component.
@@ -98,11 +101,7 @@ export default ({ location }) => {
         </Link>
       </Col>
       <Col className="topbar-icon">
-        <Link 
-          className={'btn btn-topbar-icon magnifier-icon topbar-icon-' + themeState} 
-          to="/search"
-        >
-        </Link>
+        <Search indices={searchIndices} />
       </Col>
     </Navbar>
   )   
