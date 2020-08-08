@@ -11,6 +11,9 @@ import { isLocalAbsoluteUrl, isRelativeUrl, getRelativeUrl } from "./functions"
  * @param {string} label The menu item text.
  */
 export const MaybeLink = ({ url, label, ...rest }) => {
+  if (url === undefined) {
+    url = rest.to
+  }
   const { url: siteUrl } = useGeneralSettings()
   if (isLocalAbsoluteUrl(url, siteUrl) || isRelativeUrl(url)) {
     return (

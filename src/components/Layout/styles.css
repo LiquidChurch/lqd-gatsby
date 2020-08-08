@@ -1,4 +1,4 @@
-ls/* Global styles */
+/* Global styles */
 .loader-icon {
   width: 30px;
   height: 30px;
@@ -86,6 +86,28 @@ ls/* Global styles */
   font-family: "Avenir Next Regular";
   font-size: 1.0em;
   color: #464646;
+}
+
+.font-medium {
+  font-family: "Avenir Next Regular";
+  font-size: 1.3em;
+  color: #464646;
+}
+
+.font-huge {
+  font-family: "Avenir Next Regular";
+  font-size: 2.0em;
+  color: #464646;
+}
+
+.font-dropCap:first-letter {
+  line-height: 0.68;
+  float: left;
+  font-size: 3em;
+  font-style: normal;
+  font-weight: 700;
+  margin: 0.2em 0.15em 0 0;
+  text-transform: uppercase;
 }
 
 .font-link {
@@ -307,4 +329,10 @@ html,body {
 .rounded {
   border-radius: 0.8em !important;
   box-shadow: 0px 3px 6px #00000029;
+}
+
+.blog {
+  width: 784px;
+  margin-left: auto;
+  margin-right: auto;
 }

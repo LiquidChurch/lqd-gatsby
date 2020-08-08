@@ -10,6 +10,7 @@ query NON_NODE_QUERY {
     generalSettingsNotificationBarToggle
     generalSettingsNotificationBarUrl
     generalSettingsNotificationBarVariant
+    generalSettingsSiteUrl
     generalSettingsStartOfWeek
     generalSettingsTimeFormat
     generalSettingsTimezone
@@ -35,6 +36,7 @@ query NON_NODE_QUERY {
     notificationBarToggle
     notificationBarUrl
     notificationBarVariant
+    siteUrl
     startOfWeek
     timeFormat
     timezone

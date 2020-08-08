@@ -6,6 +6,7 @@ export const useGeneralSettings = () => {
       query {
         wp {
           generalSettings {
+            url
             title
             description
             notificationBarCta

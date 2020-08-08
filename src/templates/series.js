@@ -19,8 +19,6 @@ export default ({
     series,
   },
 }) => {
-  console.log(series)
-  
   let messagesInfo = []
  
   series.messages.nodes.forEach(message => {
@@ -70,7 +68,7 @@ export default ({
       <Helmet titleTemplate={`%s | Liquid Church`}>
         <title>{Parse(series.name)}</title>
       </Helmet>
-      <article className="post">
+      <article className="page">
         <SeriesHero {...series} />
         <MediaTiles 
           type=""

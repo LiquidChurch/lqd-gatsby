@@ -15,6 +15,30 @@ export const GeneralSettings = graphql`
   }
 `
 
+export const Paragraph = graphql`
+  fragment Paragraph on WpCoreParagraphBlock {
+    attributes {
+      ... on WpCoreParagraphBlockAttributes {
+        align
+        content
+        dropCap
+        fontSize
+      }
+    }
+  }
+`
+
+export const List = graphql`
+  fragment List on WpCoreListBlock {
+    attributes {
+      values
+      ordered
+      reversed
+      start
+    }
+  }
+`
+
 /*
 export const Paragraph = graphql`
   fragment Paragraph on WPGraphQL_CoreParagraphBlock {
@@ -220,6 +244,8 @@ export const LinkTiles = graphql`
 export const AllBlocks = graphql`
   fragment AllBlocks on WpBlock {
     name
+    ...Paragraph
+    ...List
     ...Button
     ...Heading
     ...HomepageHero
