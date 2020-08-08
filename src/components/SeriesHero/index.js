@@ -10,7 +10,6 @@ import './styles.css'
  * Series Hero Component
  */
 export default (series) => {
-  console.log(series)
   
   var imgUrl = series.SeriesImage.image.sourceUrl.split("/")
   

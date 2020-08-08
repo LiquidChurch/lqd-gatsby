@@ -3,15 +3,12 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Imgix from 'react-imgix'
-import Parse from "react-html-parser"
 
 import './styles.css'
 /**
- * Feature Hero Component
+ * Hero - Feature Component
  */
 export default (props) => {
-  console.log(props)
-  
   var imgUrl = props.featuredImage.node.sourceUrl.split("/")
   
   const formatter = new Intl.DateTimeFormat('en-US', { month: 'short',  day: 'numeric',   year: 'numeric'});

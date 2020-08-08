@@ -45,7 +45,6 @@ function UseSlider(props) {
   }
   
   if (props.displayType === "featured") {
-    console.log(props.mediaLists[0])
     return (
     <>
       <MediaFeatured mediaItem={props.mediaLists[0]} />

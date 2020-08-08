@@ -1,18 +1,16 @@
 import React from "react"
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 
 import Parse from "react-html-parser"
 import { MaybeLink } from "../../helpers/hoc"
 
-import { Link } from 'gatsby'
 import "./styles.css"
 
 export default function Paragraph({ content, dropCap, align, fontSize }) {
   const classNames = []
   
-  if (fontSize === null || fontSize === 'normal') {
+  if (fontSize === null) {
     classNames.push('font-regular')
   } else {
     switch(fontSize) {
@@ -28,6 +26,8 @@ export default function Paragraph({ content, dropCap, align, fontSize }) {
       case 'huge':
         classNames.push('font-huge')
         break;
+      default:
+        classNames.push('font-regular')
     } 
   }
   

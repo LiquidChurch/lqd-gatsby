@@ -14,8 +14,6 @@ import LinkTile from './LinkTile';
 export default ({slugs_list}) => {
   var obj_slugs_list = JSON.parse(slugs_list)
 
-    console.log(obj_slugs_list)
-  
         return(
             <div>
               
