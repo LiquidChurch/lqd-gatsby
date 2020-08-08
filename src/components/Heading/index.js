@@ -15,7 +15,7 @@ export default ({
   
   return (
   <>
-    <section className="fullwidth-section" style={{backgroundColor: background_color}}>
+    <section className="fullwidth-section heading-section" style={{backgroundColor: background_color}}>
       <Container>
         <Row>
           <Col>
