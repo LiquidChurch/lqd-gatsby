@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react'
+import Container from 'react-bootstrap/Container'
 import { GlobalContext } from '../components/GlobalContext/context'
 import { Helmet } from "react-helmet"
 import { graphql } from "gatsby"
