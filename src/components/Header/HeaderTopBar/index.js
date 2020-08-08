@@ -4,13 +4,10 @@ import { Link, graphql, useStaticQuery } from "gatsby"
 import Col from 'react-bootstrap/Col'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
-import Search from '../../Search'
 import { MegaMenuContext } from '../MegaMenu/context.js'
 import { GlobalContext } from '../../GlobalContext/context.js'
 
 import "./styles.css"
-
-const searchIndices = [{ name: `Messages`, title: `Messages` }]
 
 /**
  * The Header TopBar component.
