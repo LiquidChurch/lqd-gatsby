@@ -40,14 +40,17 @@ export default(location) => {
 }
 
 
+
 function Hit(props) {
     return (
       <article>
         <h1>
-          <Highlight attribute="title" hit={props.hit} />
+            <a href={props.hit.link}>
+                <Highlight attribute="title" hit={props.hit} />
+            </a>
         </h1>
         <p>
-          <Highlight attribute="contents" hit={props.hit} />
+          <Highlight attribute="content" hit={props.hit} />
         </p>
       </article>
     );
