@@ -142,6 +142,16 @@ fragment BlockFragment on Block {
   parentNodeDatabaseId
   saveContent
   __typename
+  ... on BlockLabPhotoBlock {
+    attributes__typename_BlockLabPhotoBlockAttributes: attributes {
+      className
+      cta
+      image
+      tab_color
+      tab_tag
+      tab_text
+    }
+  }
   ... on BlockLabMediaTilesBlock {
     attributes__typename_BlockLabMediaTilesBlockAttributes: attributes {
       background_color
@@ -183,14 +193,6 @@ fragment BlockFragment on Block {
     attributes__typename_BlockLabLinkTilesBlockAttributes: attributes {
       className
       slugs_list
-    }
-  }
-  ... on BlockLabMediaTileBlock {
-    attributes__typename_BlockLabMediaTileBlockAttributes: attributes {
-      background_color
-      block_title
-      className
-      media_slug
     }
   }
   ... on BlockLabPageModalBlock {
