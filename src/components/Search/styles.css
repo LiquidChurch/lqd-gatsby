@@ -27,3 +27,9 @@ em {
     min-width: 200px;
     display: inline;
 }
+
+.hit-description {
+    color: #888;
+    font-size: 14px;
+    margin-bottom: .5em;
+}
