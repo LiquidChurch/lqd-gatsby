@@ -16,11 +16,14 @@ const algoliaQuery = `
 }
 `
 
+const indexName = `Messages`;
+
 /** The transformer converts the GraphQL Query into a Algolia Record */
 const queries = [
     {
         query: algoliaQuery,
         transformer: ({ data }) => data.allWpMessage.nodes,
+        indexName,
         settings: { attributesToSnippet: [`excerpt:20`] },
     },
 ]
