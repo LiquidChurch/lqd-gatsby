@@ -4,6 +4,7 @@ query NON_NODE_QUERY {
     discussionSettingsDefaultPingStatus
     generalSettingsDateFormat
     generalSettingsDescription
+    generalSettingsEmail
     generalSettingsLanguage
     generalSettingsNotificationBarCta
     generalSettingsNotificationBarText
@@ -30,6 +31,7 @@ query NON_NODE_QUERY {
   generalSettings {
     dateFormat
     description
+    email
     language
     notificationBarCta
     notificationBarText

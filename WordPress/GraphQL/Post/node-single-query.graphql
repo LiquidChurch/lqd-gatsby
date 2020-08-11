@@ -78,6 +78,11 @@ query SINGLE_CONTENT_QUERY($id: ID!) {
     modifiedGmt
     pingStatus
     pinged
+    postFormats(first: 100) {
+      nodes {
+        id
+      }
+    }
     previewBlocks {
       innerBlocks {
         innerBlocks {

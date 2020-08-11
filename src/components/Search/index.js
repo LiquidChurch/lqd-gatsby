@@ -49,9 +49,6 @@ function Hit(props) {
                 <Highlight attribute="title" hit={props.hit} />
             </a>
         </h1>
-        <p>
-          <Highlight attribute="content" hit={props.hit} />
-        </p>
       </article>
     );
   }
