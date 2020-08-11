@@ -2,6 +2,8 @@ import React from 'react';
 import algoliasearch from 'algoliasearch/lite';
 import {
     InstantSearch,
+    Index,
+    Configure,
     Hits,
     SearchBox,
     Pagination,
@@ -18,7 +20,7 @@ export default(location) => {
     return (
         <div>
             <div className="search-container">
-                <InstantSearch searchClient={searchClient} indexName="Messages">
+                <InstantSearch searchClient={searchClient} indexName="Pages">
                     <div className="search-panel">
                         <div className="search-panel__results">
                             <SearchBox
@@ -27,7 +29,18 @@ export default(location) => {
                                     placeholder: '',
                                 }}
                             />
-                            <Hits hitComponent={Hit}/>
+      
+                  <Index indexName="Pages">
+                    <Hits hitComponent={Hit}/>
+                  </Index>
+
+                  <Index indexName="Messages">
+                    <Hits hitComponent={Hit}/>
+                  </Index>
+
+      
+      
+
                         <div className="search-pagination">
                             <Pagination />
                         </div>
