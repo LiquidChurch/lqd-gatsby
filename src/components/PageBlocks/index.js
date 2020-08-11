@@ -1,5 +1,7 @@
 import React from "react"
 
+import BlockParagraph from "../Paragraph"
+import BlockList from "../List"
 import BlockHeading from "../Heading"
 import BlockButton from "../Button"
 import BlockHomepageHero from "../HomepageHero"
@@ -19,6 +21,8 @@ import { PageModalProvider } from "../PageModal/context.js"
  */
 export default ({ blocks, featuredImage }) => {
   const blockMap = {
+    "core/paragraph": BlockParagraph,
+    "core/list": BlockList,
     "block-lab/button": BlockButton,
     "block-lab/heading": BlockHeading,
     "block-lab/homepage-hero": BlockHomepageHero,

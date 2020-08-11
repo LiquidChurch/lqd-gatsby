@@ -18,7 +18,7 @@ export default ({ message_slug,
                   background_color,
                   block_title }) => {
   const messageInfo = useRecentMessages(1)
-  console.log(messageInfo)
+
   if (messageInfo === undefined) {
     return (
     <>

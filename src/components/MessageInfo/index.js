@@ -30,7 +30,7 @@ function TagIcon(props) {
   )
 }
 
-function ScriptureList(props) {
+function ScriptureList(props) {  
   if (props.scriptures.nodes.length === 0) {
     return (
       <>

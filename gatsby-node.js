@@ -115,6 +115,44 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   }
   while(!endMessages)
   
+  // CreatePage for Blog
+  const blogResult = await graphql(
+    `
+      query {
+        allWpBlog {
+          nodes {
+            id
+            slug
+            title
+          }
+        }
+      }
+    `
+  )
+
+  if (blogResult.errors) {
+    reporter.panicOnBuild(`Error while running GraphQL query on Messages.`)
+    return
+  }
+
+  let endBlog = false
+  
+  do {
+    if (blogResult.data.allWpBlog.nodes) {
+      blogResult.data.allWpBlog.nodes.forEach(blog => {
+        createPage({
+          path: `/blog/${blog.slug}`,
+          component: slash(path.resolve(`./src/templates/blog.js`)),
+          context: {
+            id: blog.id,
+          },
+        })
+      })
+      endBlog = true;
+    }
+  }
+  while(!endBlog)
+    
   // CreatePage for Series
   const seriesListResult = await graphql(
     `

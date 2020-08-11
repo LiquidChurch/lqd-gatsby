@@ -1,17 +1,15 @@
 import React, { useContext, useEffect } from "react"
 import { Helmet } from "react-helmet"
 import { graphql } from "gatsby"
-//import { useGeneralSettings } from "../data/hooks"
 import Parse from "react-html-parser"
 import Layout from "../components/Layout"
-//import MessageBlocks from "../components/MessageBlocks"
 import { GlobalContext } from '../components/GlobalContext/context'
 import { isTouchEnabled } from '../helpers/functions'
 
 import SeriesHero from "../components/SeriesHero"
 import MediaTiles from "../components/MediaTiles"
 /** 
- * Template - Messages Component
+ * Template - Series Component
  */
 export default ({
   location,
@@ -19,8 +17,6 @@ export default ({
     series,
   },
 }) => {
-  console.log(series)
-  
   let messagesInfo = []
  
   series.messages.nodes.forEach(message => {
@@ -57,7 +53,6 @@ export default ({
   })  
   
   const ctx = useContext(GlobalContext)
-  console.log(series)
   useEffect(() => {
     ctx.setTheme("Light")
     if (isTouchEnabled()) {
@@ -70,7 +65,7 @@ export default ({
       <Helmet titleTemplate={`%s | Liquid Church`}>
         <title>{Parse(series.name)}</title>
       </Helmet>
-      <article className="post">
+      <article className="page">
         <SeriesHero {...series} />
         <MediaTiles 
           type=""

@@ -9,8 +9,7 @@ import { useFeaturedImage } from "../../data/featureImage"
 
 export default ({ page_slug_id }) => {  
   const page_info = useFeaturedImage(page_slug_id)
-  console.log(page_info)
-  
+
   if (page_info === undefined) {
     return (
     <>

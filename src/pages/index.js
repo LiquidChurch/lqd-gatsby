@@ -19,7 +19,7 @@ export default ({
     page,
   },
 }) => {
-  console.log("index html")
+
  const ctx = useContext(GlobalContext)
   useEffect(() => {
     ctx.setTheme("Dark")

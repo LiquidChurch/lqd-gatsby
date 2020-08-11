@@ -9,7 +9,6 @@ import Card from 'react-bootstrap/Card'
 
 
 export default ({mediaItem}) => {
-  console.log(mediaItem)
   var imgUrl = mediaItem.image.split("/")
   var profileImgUrl = mediaItem.profileImage.split("/")
   
