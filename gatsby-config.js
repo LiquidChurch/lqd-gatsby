@@ -6,10 +6,10 @@ module.exports = {
     title: `Gatsby Default Starter`,
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
     author: `@gatsbyjs`,
+    siteUrl: `https://dev2.liquidchurch.com`
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-offline`,
     `gatsby-plugin-postcss`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
@@ -63,6 +63,7 @@ module.exports = {
         icon: `src/assets/images/logo-liquid-transparent.png`,
       },
     },
+    `gatsby-plugin-remove-serviceworker`,
     {
       resolve: `gatsby-plugin-algolia`,
       options: {

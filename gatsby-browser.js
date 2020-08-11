@@ -10,6 +10,12 @@ export const onInitialClientRender = () => {
     }, 500)
 }
 
+// trigger an immediate page refresh when an update is found
+export const onServiceWorkerUpdateReady = () => {
+  console.log("new version detected. reloading")
+  window.location.reload()
+}
+
 export const wrapRootElement = ({ element }) => (
   <GlobalProvider>{element}</GlobalProvider>
 )

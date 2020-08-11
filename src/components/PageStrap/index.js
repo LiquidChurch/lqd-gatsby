@@ -33,7 +33,14 @@ function StrapImage(props) {
 
 function StrapLink(props) {
   const ctx = useContext(PageModalContext)
-    
+  
+  if (props.cta_slug === null) {
+    return (
+    <>
+    </>
+    )
+  }
+  
   if (props.cta_slug === "open-modal") {
     return (
       <button className="btn font-btn blue-btn" onClick={ctx.toggleModal}>{props.cta_text}</button>
