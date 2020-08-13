@@ -1,0 +1,70 @@
+.message-info-section {
+  background-color: #313131;
+  padding-top:1em;
+  padding-bottom:2em;
+}
+
+.message-title {
+  font-size: 2em;
+}
+
+.message-speaker {
+  text-transform: uppercase;
+  color: #C7C7C7;
+  display: inline;
+  font-family: "Avenir Next Demi";
+  letter-spacing: 0.1em;
+}
+
+.message-date {
+  margin-left:10px;
+  margin-bottom:2px;
+  text-transform: uppercase;
+  color: #C7C7C7;
+  display:inline;
+  vertical-align:inherit;
+  letter-spacing: 0.1em;
+}
+
+.message-hr {
+  border-color: #707070;  
+}
+
+.message-description {
+  color:#C7C7C7;
+}
+  
+.message-tag-cloud {
+  display:block
+}
+.message-tag {
+  margin-left:12px;
+  white-space: nowrap;
+}
+
+.message-tag-icon {
+  background-color: #009DD1;
+  width: 1.5em;
+  height: 1.0em;
+  display: inline-block;
+  vertical-align: text-top;
+}
+
+.message-tag-text {
+  color: #009DD1;
+}
+
+.message-scripture {
+  margin-top:5px;
+  margin-bottom: 22px;
+}
+
+.message-scripture-header {
+  display:inline;
+  color:#C7C7C7;
+}
+
+.message-scripture-text {
+  display:inline;
+  color:#C7C7C7;
+}

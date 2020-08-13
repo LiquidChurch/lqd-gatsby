@@ -14,7 +14,6 @@ export default ({ page_slug_id }) => {
     )
   }
   
-  console.log(page_info)
   var imgUrl = page_info.featuredImage.node.mediaItemUrl.split("/")
   
   return (

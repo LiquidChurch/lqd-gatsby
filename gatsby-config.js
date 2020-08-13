@@ -1,12 +1,15 @@
+// Read env variables for Algolia
+require("dotenv").config()
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
     author: `@gatsbyjs`,
+    siteUrl: `https://dev2.liquidchurch.com`
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-offline`,
     `gatsby-plugin-postcss`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
@@ -25,7 +28,7 @@ module.exports = {
         url: `http://gatsby.liquidchurch.com/graphql`,
         debug: {
           graphql: {
-            writeQueriesToDisk:false,
+            writeQueriesToDisk:true,
           }
         },
         html: {
@@ -60,5 +63,16 @@ module.exports = {
         icon: `src/assets/images/logo-liquid-transparent.png`,
       },
     },
+    `gatsby-plugin-remove-serviceworker`,
+    {
+      resolve: `gatsby-plugin-algolia`,
+      options: {
+        appId: process.env.GATSBY_ALGOLIA_APP_ID,
+        apiKey: process.env.ALGOLIA_ADMIN_KEY,
+        queries: require("./src/utils/algolia-queries"),
+        chunksize: 10000
+      }
+    },
+    `gatsby-plugin-styled-components`,
   ],
 }

@@ -41,7 +41,7 @@
 }
 
 .font-h2 {
-  font-family: "Avenir Next Bold";
+  font-family: "Avenir Next Demi";
   font-size: 1.5em;
   color: #0099CC;
   line-height: 1.3em;
@@ -66,6 +66,7 @@
   font-size: 1.5em;
   color: #565656;
   line-height: 1.3em;
+  padding-top:0.5em;
   margin-bottom: 1em;
   letter-spacing: 0.1em;    
 }
@@ -80,6 +81,34 @@
   font-family: "Avenir Next Regular";
   font-size: 1.13em;
   color: #464646;
+}
+
+.font-small {
+  font-family: "Avenir Next Regular";
+  font-size: 1.0em;
+  color: #464646;
+}
+
+.font-medium {
+  font-family: "Avenir Next Regular";
+  font-size: 1.3em;
+  color: #464646;
+}
+
+.font-huge {
+  font-family: "Avenir Next Regular";
+  font-size: 2.0em;
+  color: #464646;
+}
+
+.font-dropCap:first-letter {
+  line-height: 0.68;
+  float: left;
+  font-size: 3em;
+  font-style: normal;
+  font-weight: 700;
+  margin: 0.2em 0.15em 0 0;
+  text-transform: uppercase;
 }
 
 .font-link {
@@ -118,6 +147,17 @@
   letter-spacing:0.1em;
 }
 
+.font-btn-xlarge {
+  font-family: "Avenir Next Regular";
+  background: #898989;
+  border-radius: 1.5em;
+  color: white;
+  padding: 6px 20px;
+  text-transform: uppercase;
+  font-size: 1.44em;
+  letter-spacing:0.1em;
+}
+
 .blue-btn {
   background: #0099CC !important;
 }
@@ -151,7 +191,7 @@
 
   .font-regular {
     font-size: 1em;
-  }  
+  }   
 }
 
 @media (max-width:575px) {
@@ -160,7 +200,7 @@
   }
   
   .font-h2 {
-    font-size:1.13em;
+    font-size:1.25em;
   }
   
   .font-h3 {
@@ -168,7 +208,7 @@
   }
 
   .font-section-header {
-    display:none;
+    font-size:0.9em;
   }
   
   .font-btn {
@@ -177,6 +217,12 @@
   
   .font-btn-large {
     font-size:0.9em;
+  }
+
+  .font-btn-xlarge {
+    font-size:1.13em;
+    padding: 6px 16px;
+    margin-top: 0em;
   }
 }
 
@@ -263,15 +309,15 @@ html,body {
 }
 
 .fullwidth-section {
-  padding-top:3.5em;
-  padding-bottom:3.5em;
+  padding-top:1.7em;
+  padding-bottom:1.7em;
   margin-left: -15px;
   margin-right: -15px;  
 }
 
 @media (max-width:575px) {
   .fullwidth-section{
-    padding-top: 1.25em;
+    padding-top: 1.75em;
     padding-bottom: 1.25em;
   } 
 }
@@ -284,4 +330,16 @@ html,body {
 .rounded {
   border-radius: 0.8em !important;
   box-shadow: 0px 3px 6px #00000029;
+}
+
+.blog {
+  width: 784px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width:767px) {
+  .blog {
+    width: auto;
+  } 
 }

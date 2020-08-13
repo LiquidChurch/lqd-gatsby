@@ -5,9 +5,9 @@ import { Link } from 'gatsby'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-
+import SectionHeader from '../SectionHeader'
 import { PlayArrow } from '../../helpers/icons'
-import { useMessage } from "../../data/message"
+import { useRecentMessages } from "../../data/useRecentMessages"
 
 import "./styles.css"
 
@@ -17,18 +17,19 @@ import "./styles.css"
 export default ({ message_slug,
                   background_color,
                   block_title }) => {
-  const message_info = useMessage(message_slug)
-  if (message_info === undefined) {
+  const messageInfo = useRecentMessages(1)
+
+  if (messageInfo === undefined) {
     return (
     <>
     </>
     )
   }
 
-  var imgUrl = message_info.featured_image.split("/")
+  var imgUrl = messageInfo[0].featuredImage.node.sourceUrl.split("/")
   var partNumber = ""
-  if (message_info.display_order !== "") {
-    partNumber = " · Part " + message_info.display_order
+  if (messageInfo[0].seriesPart.part !== "") {
+    partNumber = " · Part " + messageInfo[0].seriesPart.part
   }
   
   return (
@@ -36,11 +37,9 @@ export default ({ message_slug,
   <section className="fullwidth-section message-tile-section" style={{backgroundColor: background_color}} >
   <Container>
     <Row>
-      <Col xs={12}>
-        <h6 className="font-section-header">{block_title}</h6>
-      </Col>
+      <SectionHeader label={block_title} offset={0}/>
       <Col>
-      <Link to={"/message/" + message_info.slug}>
+      <Link to={"/message/" + messageInfo[0].slug}>
       <Imgix 
         src={"https://liquidchurch.imgix.net/" + imgUrl[4] + "/" + imgUrl[5] + "?ar=16:9&fit=crop&h=607"}
         className="d-none d-sm-block message-tile-image"
@@ -51,16 +50,16 @@ export default ({ message_slug,
         sizes="80vw" />
       </Link>
       <div className="message-tile-text-overlay">
-        <h4 className="message-tile-title font-h2">{message_info.title}</h4>
-        <div className="message-tile-series font-h3">
+        <h4 className="message-tile-title font-h1">{messageInfo[0].title}</h4>
+        <div className="message-tile-series font-h2">
           <p>
-            <Link to={"/series/" + message_info.lqdmSeriesNodes.nodes[0].slug}>{message_info.lqdmSeriesNodes.nodes[0].name}</Link>{partNumber}
+            <Link to={'/series/' + messageInfo[0].seriesList.nodes[0].slug}>{messageInfo[0].seriesList.nodes[0].name}</Link>{partNumber}
           </p>
         </div>
       </div>
       <Link
         className="btn font-btn-large message-tile-btn-overlay"
-        to={"/message/" + message_info.slug}
+        to={"/message/" + messageInfo[0].slug}
       > 
         <PlayArrow style={{fill:"#fff;"}} /> Watch
       </Link>

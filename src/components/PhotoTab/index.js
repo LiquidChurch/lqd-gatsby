@@ -7,14 +7,14 @@ import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 
 
-import { useImage } from "../../data/image"
+import { useImageById } from "../../data/useImage"
 
 import Parse from "react-html-parser"
 
 import "./photoTab.css"
 
 function TabImage(props) {
-  const image_info = useImage(props.tab_image_id)
+  const image_info = useImageById(props.tab_image_id)
   
   console.log('check', props.tab_image_id)
   

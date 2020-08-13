@@ -1,14 +1,10 @@
 import React from 'react';
-
-
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 
-import './tiles.css';
-
-import LinkTile from './LinkTile';
-
+import './styles.css';
+import LinkTile from './linkTile';
 
 /* class LinkedTiles extends React.Component {
     render() { 
@@ -17,8 +13,6 @@ import LinkTile from './LinkTile';
 export default ({slugs_list}) => {
   var obj_slugs_list = JSON.parse(slugs_list)
 
-    console.log(obj_slugs_list)
-  
         return(
             <div>
               

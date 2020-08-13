@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useContext } from "react"
 import { Helmet } from "react-helmet"
 import { graphql } from "gatsby"
 //import { useGeneralSettings } from "../data/hooks"
@@ -6,6 +6,7 @@ import { graphql } from "gatsby"
 //import Image from "gatsby-image"
 import Layout from "../components/Layout"
 import PageBlocks from "../components/PageBlocks"
+import { GlobalContext } from '../components/GlobalContext/context'
 //import PostHeader from "../components/PostHeader"
 //import { LoadingOverlayProvider } from "../components/LoadingOverlay/context.js"
 /** 
@@ -18,12 +19,11 @@ export default ({
     page,
   },
 }) => {
-//  NProgress.start()
-  
+
+ const ctx = useContext(GlobalContext)
   useEffect(() => {
-//    NProgress.done()
+    ctx.setTheme("Dark")
   })
-  //const generalSettings = useGeneralSettings()
 
   return (
     <Layout location={location}>

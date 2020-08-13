@@ -1,12 +1,28 @@
 import React from "react"
-export default ({ values, ordered }) => {
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+
+export default ({ values, 
+                  ordered, 
+                  start,
+                  reversed
+                }) => {
+  
   if (!values) {
     return null
   }
 
   return ordered ? (
-    <ol dangerouslySetInnerHTML={{ __html: values }} />
+    <Container>
+      <Row>
+        <ol className="font-medium" start={start} reversed={reversed} dangerouslySetInnerHTML={{ __html: values }} />
+      </Row>
+    </Container>
   ) : (
-    <ul dangerouslySetInnerHTML={{ __html: values }} />
+    <Container>
+      <Row>
+        <ul className="font-medium" dangerouslySetInnerHTML={{ __html: values }} />
+      </Row>
+    </Container>
   )
 }

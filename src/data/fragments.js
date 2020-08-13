@@ -15,6 +15,30 @@ export const GeneralSettings = graphql`
   }
 `
 
+export const Paragraph = graphql`
+  fragment Paragraph on WpCoreParagraphBlock {
+    attributes {
+      ... on WpCoreParagraphBlockAttributes {
+        align
+        content
+        dropCap
+        fontSize
+      }
+    }
+  }
+`
+
+export const List = graphql`
+  fragment List on WpCoreListBlock {
+    attributes {
+      values
+      ordered
+      reversed
+      start
+    }
+  }
+`
+
 /*
 export const Paragraph = graphql`
   fragment Paragraph on WPGraphQL_CoreParagraphBlock {
@@ -133,11 +157,12 @@ export const HompageHero = graphql`
 export const HeroImage = graphql`
   fragment HeroImage on WpBlockLabHeroImageBlock {
     attributes {
-      hero_image_id
-      hero_title
+      image_id
       image_style
-      hero_text
-      theme_style
+      bg_color
+      statement
+      sidekick
+      cta
     }
   }
 `
@@ -184,6 +209,14 @@ export const MessageTile = graphql`
   }
 `
 
+export const PhotoCarousel = graphql`
+  fragment PhotoCarousel on WpBlockLabPhotoCarouselBlock {
+      attributes {
+        images
+      }
+  }
+`
+
 export const MediaTiles = graphql`
   fragment MediaTiles on WpBlockLabMediaTilesBlock {
     attributes {
@@ -217,6 +250,7 @@ export const LinkTiles = graphql`
   }
 `
 
+<<<<<<< HEAD
 export const PhotoTab = graphql`
   fragment PhotoTab on WpBlockLabPhotoBlock {
     attributes {
@@ -232,6 +266,13 @@ export const PhotoTab = graphql`
 export const AllBlocks = graphql`
   fragment AllBlocks on WpBlock {
     name
+=======
+export const AllBlocks = graphql`
+  fragment AllBlocks on WpBlock {
+    name
+    ...Paragraph
+    ...List
+>>>>>>> integration
     ...Button
     ...Heading
     ...HomepageHero
@@ -243,6 +284,10 @@ export const AllBlocks = graphql`
     ...MediaTiles
     ...PageModal
     ...LinkTiles
+<<<<<<< HEAD
     ...PhotoTab
+=======
+    ...PhotoCarousel
+>>>>>>> integration
   }
 `

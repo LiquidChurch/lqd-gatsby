@@ -1,0 +1,207 @@
+import React, { useContext } from 'react'
+
+import { GlobalContext } from '../GlobalContext/context'
+
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import SectionHeader from '../SectionHeader'
+import WideSlider from '../WideSlider'
+import MediaCard from './mediaCard'
+import MediaFeatured from './mediaFeatured'
+
+import { useRecentMessages } from '../../data/useRecentMessages'
+import { useMessage } from '../../data/useMessage'
+import { useRecentBlogs } from '../../data/useRecentBlogs'
+import { useBlog } from '../../data/useBlog'
+
+import './styles.css'
+
+function UseSlider(props) {
+  const randomId = Math.random().toString().substr(2, 5)
+  if (props.displayType === "slider") {
+    return (
+      <WideSlider sliderId={randomId} touchEnabled={props.touchEnabled}>
+        {props.mediaLists.map(item => {
+          return (
+              <MediaCard mediaItem={item} key={'Media-lists-' + item.id} />
+          )
+        })}
+      </WideSlider>
+    )
+  } 
+  if (props.displayType === "grid") {
+    return (
+      <Row>
+        <Col className="media-card-wrap">
+        {props.mediaLists.map(item => {
+          return (
+              <MediaCard mediaItem={item} key={'Media-lists-' + item.id} />
+          )
+        })}
+        </Col>
+      </Row>
+    )
+  }
+  
+  if (props.displayType === "featured") {
+    return (
+    <>
+      <MediaFeatured mediaItem={props.mediaLists[0]} />
+    </>
+    )
+  }
+
+  return null
+}
+
+function MediaDataTransformer(props) {
+  let lists = []
+  props.rawItems.map(item => {
+    const formatter = new Intl.DateTimeFormat('en-US', { month: 'short',  day: 'numeric',   year: 'numeric'});
+    let formattedDate =  formatter.format(new Date(item.date));
+
+    let attributions = ""
+
+    item.attributions.nodes.forEach(item => {
+      if (attributions === "") {
+        attributions = item.name 
+      } else {
+        attributions = attributions + ", " + item.name
+      }
+    })
+    
+    let blurb = "" 
+    if (item.category === "message") {
+      blurb = item.content  
+    } else {
+      blurb = item.mediaBlurb.blurb
+    }
+    
+    let seriesTitle = ""
+    if (item.seriesList.nodes.length !== 0) {
+      seriesTitle = item.seriesList.nodes[0].name
+    }
+    
+    let seriesPart = ""
+    if (item.seriesPart !== undefined ) {
+      seriesPart = item.seriesPart.part
+    }
+    
+    
+    lists.push( {
+      "category": item.category,
+      "title": item.title,
+      "image": item.featuredImage.node.sourceUrl,
+      "id": item.id,
+      "slug": item.slug,
+      "showBlurb": props.showBlurb,
+      "blurb": blurb,
+      "showSeries": props.showSeries,
+      "seriesTitle": seriesTitle,
+      "seriesPart": seriesPart,
+      "showAttribution": props.showAttribution,
+      "attributionName": attributions,
+      "profileImage": item.attributions.nodes[0].profileImage.image.sourceUrl,
+      "date": formattedDate,
+    })
+    return null
+  })
+  return lists
+}
+
+/** 
+ * MediaTiles
+ */
+export default ({
+    show_attribution,
+    background_color,
+    label,
+    media_list,
+    num_items,
+    show_blurb,
+    show_series,
+    type,
+    display_type,
+  }) => {
+  const ctx = useContext(GlobalContext)
+  
+  if (display_type === undefined) {
+    display_type = "Grid"
+  }
+  
+  let sectionClass="media-cards"
+  
+  if (label === "" || label === null) {
+    sectionClass="media-cards-no-label"
+  }
+  
+  let mediaLists = []
+  
+  if (type.toLowerCase() === "recent messages") {
+    let tempItems = useRecentMessages(num_items)
+    mediaLists = MediaDataTransformer({
+      "rawItems":tempItems,
+      "showBlurb":show_blurb,
+      "showSeries":show_series,
+      "showAttribution":show_attribution,
+    })
+  }
+  
+  if (type.toLowerCase() === "recent blogs") {
+    let tempItems = useRecentBlogs(num_items)
+     mediaLists = MediaDataTransformer({
+      "rawItems":tempItems,
+      "showBlurb":show_blurb,
+      "showSeries":show_series,
+      "showAttribution":show_attribution,
+    })
+  }
+  
+  if (type.toLowerCase() === "specify list") {
+    let rawMediaList = JSON.parse(media_list)
+    let tempItems = []
+    rawMediaList.rows.forEach(item => {
+      if (item.message !== undefined) {
+        tempItems.push(useMessage(item.message.id))
+      }
+      if (item.blog !== undefined) {
+        tempItems.push(useBlog(item.blog.id))
+      }
+    })
+    mediaLists = MediaDataTransformer({
+      "rawItems":tempItems,
+      "showBlurb":show_blurb,
+      "showSeries":show_series,
+      "showAttribution":show_attribution,
+    })
+  }
+  
+  if (type === "") {
+    mediaLists = media_list
+  }
+  
+  if (mediaLists === undefined) {
+    return (
+    <>
+    </>
+    )
+  } 
+        
+  return (
+  <>
+    <section className={'fullwidth-section ' + sectionClass} style={{backgroundColor: background_color}} >
+      <Container>
+        <Row>
+        <SectionHeader label={label} offset={0}/>
+        </Row>
+        <UseSlider
+          touchEnabled = {ctx.touchEnabled}
+          displayType = {display_type.toLocaleLowerCase()}
+          mediaLists = {mediaLists}
+        />
+      </Container>
+    </section>
+  </>
+  )
+}

@@ -1,8 +1,14 @@
 /* Header TopBar component styles */
 
-.topbar {
+.topbar-dark {
   padding: 1.2rem 1.2rem;
   background: linear-gradient(rgba(0,0,0,1), rgba(0,0,0,0));  
+  z-index:10;
+}
+
+.topbar-light {
+  padding: 1.2rem 1.2rem;
+  background: white;
   z-index:10;
 }
 
@@ -35,6 +41,14 @@
   margin-left:0.3rem;
 }
 
+.topbar-icon-dark {
+  background-color:white;
+}
+
+.topbar-icon-light{
+  background-color:#009DD1
+}
+
 .topbar-icon:hover{
   box-sizing:border-box;
 }
@@ -54,7 +68,7 @@
 }
 
 .topbar-menu-item {
-  margin: 0 1.0em;
+  margin: 0 0.3em;
   white-space: nowrap;
   font-size:1.1em;
   margin-bottom: -0.5em;
@@ -64,36 +78,70 @@
 
 .topbar-chop {
   justify-content:center;
-  max-width:18.9em;
+  max-width:19.1em;
   min-width:15.9em;
-  margin-left: 1.8em;
+  margin-left: 1.2em;
 }
 
 .topbar-chop-button {
-  width: 266px;
+  width: 283px;
   letter-spacing: 0.1em;
   font-size: 1.1em;
   font-family:"Avenir Next Regular";
-  font-weight:700;
   white-space:nowrap;
+  padding-top: 6px;
   border-width: medium;
   vertial-align: text-top;
+  font-weight: 600;
+}
+
+.topbar-button-dark {
+  color: white;
+  border-color: white;
+  border-radius: 27px;
+  text-transform: uppercase;
+}
+
+.topbar-button-light {
+  color: #009DD1;
+  border-color: #009DD1;
+  border-radius: 27px;
+  text-transform: uppercase;
+}
+
+.topbar-chop-button:focus {
+  background-color:#009DD1 !important;
+  color:white;
+  border-color:#009DD1;
+}
+
+.topbar-chop-button:hover {
+  background-color:#009DD1 !important;
+  color:white;
+  border-color:#009DD1;
 }
 
 .btn-topbar-icon {
-  background-color: white;
   border:none;
   border-radius: 0;
   height: 1.5rem;
   width: auto;  
 }
 
+.theme-icon-dark {
+  background-color: white !important;
+}
+
+.theme-icon-light {
+  background-color: #009DD1 !important;
+}
+
 .btn-topbar-brand {
   background-color: white;
   border:none;
   border-radius: 0;
-  height: 2.2rem;
-  width: 10.9rem;  
+  height: 2.4rem;
+  width: 11.9rem;  
 }
 
 .btn-topbar-brand-focus {
@@ -104,9 +152,15 @@
   width: 10.9rem;  
 }
 
-.btn-topbar-menu {
+.btn-topbar-menu-dark {
   background-color:transparent;
   color:white;
+  font-weight: bold
+}
+
+.btn-topbar-menu-light {
+  background-color:transparent;
+  color:#009DD1;
   font-weight: bold
 }
 
@@ -138,30 +192,21 @@
   background-color:grey;  
 }
 
-.topbar-chop-button:focus {
-  background-color:#009DD1 !important;
-  color:white;
-}
-
-.topbar-chop-button:hover {
-  background-color:#009DD1 !important;
-  color:white;
-}
-
 @media (max-width:1199px) { 
   .topbar-menu-item {
-    margin: 0 0.3em;
+    margin: 0.2em 0.2em;
     font-size:0.9em;
   }
   
   .topbar-chop {
-    max-width:14.9em;
-    min-width:14.9em;
+    max-width:15.6em;
+    min-width:14.6em;
     margin-left: 0em;
   }
   
   .topbar-chop-button {
-    width: 229px;
+    width: 227px;
+    padding-top:8px;
     font-size: 0.9em;
   }
 }

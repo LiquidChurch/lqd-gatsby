@@ -5,23 +5,24 @@ const { slash } = require("gatsby-core-utils")
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
 
+  // CreatePage for Posts
   const postResult = await graphql(
     `
       query {
-          allWpPost {
-            nodes {
-              id
-              slug
-              title
-              categories {
-                nodes {
-                  id
-                  name
-                  slug
-                }
+        allWpPost {
+          nodes {
+            id
+            slug
+            title
+            categories {
+              nodes {
+                id
+                name
+                slug
               }
             }
           }
+        }
       }
     `
   )
@@ -43,18 +44,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   }
 
+  // CreatePage for Pages
   const pageResult = await graphql(
     `
       query {
-          allWpPage {
-            nodes {
-              id
-              slug
-              title
-              uri
-            }
+        allWpPage {
+          nodes {
+            id
+            slug
+            title
+            uri
           }
-        
+        }
       }
     `
   )
@@ -76,24 +77,17 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   }
 
-const messageResult = await graphql(
+  // CreatePage for Messages
+  const messageResult = await graphql(
     `
       query {
-          allWpLqdmMessage {
-            nodes {
-              id
-              slug
-              title
-              lqdmSeriesNodes {
-                nodes {
-                  id
-                  name
-                  slug
-                }
-              }
-            }
+        allWpMessage {
+          nodes {
+            id
+            slug
+            title
           }
-        
+        }
       }
     `
   )
@@ -106,8 +100,8 @@ const messageResult = await graphql(
   let endMessages = false
   
   do {
-    if (messageResult.data.allWpLqdmMessage.nodes) {
-      messageResult.data.allWpLqdmMessage.nodes.forEach(message => {
+    if (messageResult.data.allWpMessage.nodes) {
+      messageResult.data.allWpMessage.nodes.forEach(message => {
         createPage({
           path: `/message/${message.slug}`,
           component: slash(path.resolve(`./src/templates/message.js`)),
@@ -120,12 +114,155 @@ const messageResult = await graphql(
     }
   }
   while(!endMessages)
+  
+  // CreatePage for Blog
+  const blogResult = await graphql(
+    `
+      query {
+        allWpBlog {
+          nodes {
+            id
+            slug
+            title
+          }
+        }
+      }
+    `
+  )
+
+  if (blogResult.errors) {
+    reporter.panicOnBuild(`Error while running GraphQL query on Messages.`)
+    return
+  }
+
+  let endBlog = false
+  
+  do {
+    if (blogResult.data.allWpBlog.nodes) {
+      blogResult.data.allWpBlog.nodes.forEach(blog => {
+        createPage({
+          path: `/blog/${blog.slug}`,
+          component: slash(path.resolve(`./src/templates/blog.js`)),
+          context: {
+            id: blog.id,
+          },
+        })
+      })
+      endBlog = true;
+    }
+  }
+  while(!endBlog)
     
+  // CreatePage for Series
+  const seriesListResult = await graphql(
+    `
+      query {
+        allWpSeries {
+          nodes {
+            id
+            slug
+            name
+          }
+        }
+      }
+    `
+  )
+  
+  if (seriesListResult.errors) {
+    reporter.panicOnBuild(`Error while running GraphQL query on Series.`)
+    return
+  }
+  
+  if (seriesListResult.data.allWpSeries.nodes) {
+    seriesListResult.data.allWpSeries.nodes.forEach(series=> {
+      createPage({
+        path: `/series/${series.slug}`,
+        component: slash(path.resolve(`./src/templates/series.js`)),
+        context: {
+          id: series.id,
+        },
+      })
+    })
+  }
+  
+  
+  /*
+  // Query for Images
+  const mediaItemResult = await graphql(
+    `
+      query {
+        allWpMediaItem {
+          nodes {
+            id
+            title
+            altText
+            caption
+            description
+            mediaItemUrl
+            sourceUrl
+            databaseId
+          }
+        }
+      }
+    `
+  )
+  
+  if (mediaItemResult.errors) {
+    reporter.panicOnBuild(`Error while running GraphQL query on Media Items.`)
+    return
+  }
+  
+  if (mediaItemResult.data.allWpMediaItem.nodes) {
+    mediaItemResult.data.allWpMediaItem.nodes.forEach(media => {
+      console.log(media)
+      createPage({
+        path: `/mediaItem/${media.databaseId}`,
+        component: slash(path.resolve(`./src/templates/media.js`)),
+        context: {
+          id: media.id,
+        },
+      })
+    })
+  }  
+  
+  */
+  
+  // CreatePage for Tags
+  /*const tagsResult = await graphql(
+    `
+      query {
+        allWpTag {
+          nodes {
+            id
+            slug
+            name
+          }
+        }
+      }
+    `
+  )
+  
+  if (tagsResult.errors) {
+    reporter.panicOnBuild(`Error while running GraphQL query on Tags.`)
+    return
+  }
+  
+  if (tagsResult.data.allWpTag.nodes) {
+    tagsResult.data.allWpTag.nodes.forEach(tag=> {
+      createPage({
+        path: `/tags/${tag.slug}`,
+        component: slash(path.resolve(`./src/templates/tag.js`)),
+        context: {
+          id: tag.id,
+        },
+      })
+    })
+  } */  
 }
 
 /**
  * Import featured images.
- */
+ 
 exports.createResolvers = async ({
   actions: { createNode },
   cache,
@@ -158,5 +295,42 @@ exports.createResolvers = async ({
     WpMediaItem: field,
     WpCoreImageBlock: field,
     WpUser: field,
+  })
+}
+*/
+exports.createResolvers = async (
+  {
+    actions,
+    cache,
+    createNodeId,
+    createResolvers,
+    store,
+    reporter,
+  },
+) => {
+  const { createNode } = actions
+
+  await createResolvers({
+    WpMediaItem: {
+      imageFile: {
+        type: "File",
+        async resolve(source) {
+          let sourceUrl = source.sourceUrl
+
+          if (source.mediaItemUrl !== undefined) {
+            sourceUrl = source.mediaItemUrl
+          }
+
+          return await createRemoteFileNode({
+            url: encodeURI(sourceUrl),
+            store,
+            cache,
+            createNode,
+            createNodeId,
+            reporter,
+          })
+        },
+      },
+    },
   })
 }

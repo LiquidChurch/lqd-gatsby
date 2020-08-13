@@ -1,0 +1,23 @@
+.carousel-image {
+  border-radius: 1em;
+  box-shadow: 0px 3px 6px #00000029;    
+}
+
+.carousel-control-image {
+  transition: opacity 0.3s;
+}
+
+.carousel-control-image:hover {
+  opacity:1;
+}
+
+.greyed {
+  opacity:0.6;
+  
+}
+.carousel-control-button {
+  padding: 18px 6px;
+}
+.carousel-control {
+  display: flex;
+}

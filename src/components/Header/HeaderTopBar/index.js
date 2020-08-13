@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import { MegaMenuContext } from '../MegaMenu/context.js'
+import { GlobalContext } from '../../GlobalContext/context.js'
 
 import "./styles.css"
 
@@ -13,10 +14,13 @@ import "./styles.css"
  */
 export default ({ location }) => {
   const ctx = useContext(MegaMenuContext)
+  const globalCtx = useContext(GlobalContext)
+  
   const [focusOn, setFocusOn] = useState(false)
   const [menuOpen, setMenuOpen] = useState(true)
   
-  //console.log("theme state", globalCtx.currentTheme)
+  var themeState = globalCtx.currentTheme.toLowerCase()
+
   useEffect(() => {
     if (!ctx.isMenuOpen) {
       if (menuOpen) {
@@ -49,11 +53,11 @@ export default ({ location }) => {
   `)
   
   return (
-    <Navbar aria-label="Header Menu" bg="test" variant="dark" expand="true" className="topbar d-flex">
+    <Navbar aria-label="Header Menu" bg="test" variant="dark" expand="true" className={'topbar-' + themeState + ' d-flex'}>
       <Col className="topbar-icon">
         <button
           id='header-icon'
-          className="btn btn-topbar-icon burger-icon" 
+          className={'btn btn-topbar-icon burger-icon topbar-icon-' + themeState} 
           aria-label="Open Main Menu Drawer" 
           tabIndex="0"
           onClick={ctx.toggleMenu}
@@ -65,7 +69,7 @@ export default ({ location }) => {
           id='liquid-header'
           to="/" 
           aria-label="Liquid Church Home"
-          className={focusOn ? "btn btn-topbar-brand-focus liquid-brand" : "btn btn-topbar-brand liquid-brand"}
+          className={focusOn ? "btn btn-topbar-brand-focus liquid-brand theme-icon-" + themeState : "btn btn-topbar-brand liquid-brand theme-icon-" + themeState}
           onKeyDown={brandKeyEvent}>
         </Link>
       </Col>
@@ -77,7 +81,7 @@ export default ({ location }) => {
             <Link
               key={id} 
               to={item.url} 
-              className="btn btn-topbar-menu topbar-menu-item"
+              className={'btn topbar-menu-item btn-topbar-menu-' + themeState}
             >
               {label}
             </Link>
@@ -88,18 +92,20 @@ export default ({ location }) => {
       <Col className="topbar-chop">
         <Link
           to="/live" 
-          className="btn btn-sm btn-outline-white topbar-chop-button" 
+          className={'btn btn-sm topbar-chop-button topbar-button-' + themeState}
         >
           Watch Church Online
         </Link>
       </Col>
       <Col className="topbar-icon">
-        <Link 
-          className="btn btn-topbar-icon magnifier-icon" 
+        <Link
+          className={'btn btn-topbar-icon magnifier-icon topbar-icon-' + themeState}
           to="/search"
         >
         </Link>
       </Col>
+
     </Navbar>
+
   )   
 }
