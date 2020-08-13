@@ -250,11 +250,29 @@ export const LinkTiles = graphql`
   }
 `
 
+<<<<<<< HEAD
+export const PhotoTab = graphql`
+  fragment PhotoTab on WpBlockLabPhotoBlock {
+    attributes {
+      cta
+      image
+      tab_color
+      tab_text
+      tab_tag
+    }
+  } 
+`
+
+export const AllBlocks = graphql`
+  fragment AllBlocks on WpBlock {
+    name
+=======
 export const AllBlocks = graphql`
   fragment AllBlocks on WpBlock {
     name
     ...Paragraph
     ...List
+>>>>>>> integration
     ...Button
     ...Heading
     ...HomepageHero
@@ -266,6 +284,10 @@ export const AllBlocks = graphql`
     ...MediaTiles
     ...PageModal
     ...LinkTiles
+<<<<<<< HEAD
+    ...PhotoTab
+=======
     ...PhotoCarousel
+>>>>>>> integration
   }
 `
