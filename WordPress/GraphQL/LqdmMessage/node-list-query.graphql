@@ -120,6 +120,12 @@ fragment BlockFragment on Block {
   parentNodeDatabaseId
   saveContent
   __typename
+  ... on BlockLabPhotoCarouselBlock {
+    attributes__typename_BlockLabPhotoCarouselBlockAttributes: attributes {
+      className
+      images
+    }
+  }
   ... on BlockLabPhotoBlock {
     attributes__typename_BlockLabPhotoBlockAttributes: attributes {
       className
@@ -226,12 +232,13 @@ fragment BlockFragment on Block {
   }
   ... on BlockLabHeroImageBlock {
     attributes__typename_BlockLabHeroImageBlockAttributes: attributes {
+      bg_color
       className
-      hero_image_id
-      hero_text
-      hero_title
+      cta
+      image_id
       image_style
-      theme_style
+      sidekick
+      statement
     }
   }
   ... on YoastHowToBlock {
@@ -301,72 +308,80 @@ fragment BlockFragment on Block {
       __typename
       ... on CoreParagraphBlockAttributes {
         align
+        anchor
         backgroundColor
         className
         content
-        customBackgroundColor
-        customFontSize
-        customTextColor
         direction
         dropCap
         fontSize
         placeholder
+        style
         textColor
       }
       ... on CoreParagraphBlockDeprecatedV1Attributes {
         align
+        anchor
         backgroundColor
         className
         content
-        customBackgroundColor
-        customFontSize
-        customTextColor
         direction
         dropCap
         fontSize
         placeholder
+        style
         textColor
       }
       ... on CoreParagraphBlockDeprecatedV2Attributes {
         align
+        anchor
         backgroundColor
         className
         content
-        customBackgroundColor
-        customFontSize
-        customTextColor
         direction
         dropCap
         fontSize
         placeholder
+        style
         textColor
       }
       ... on CoreParagraphBlockDeprecatedV3Attributes {
         align
+        anchor
         backgroundColor
         className
         content
-        customBackgroundColor
-        customFontSize
-        customTextColor
         direction
         dropCap
         fontSize
         placeholder
+        style
         textColor
       }
       ... on CoreParagraphBlockDeprecatedV4Attributes {
         align
+        anchor
         backgroundColor
         className
         content
-        customBackgroundColor
-        customFontSize
-        customTextColor
         direction
         dropCap
         fontSize
         placeholder
+        style
+        textColor
+      }
+      ... on CoreParagraphBlockDeprecatedV5Attributes {
+        align
+        anchor
+        backgroundColor
+        className
+        content
+        direction
+        dropCap
+        fontSize
+        placeholder
+        style
         textColor
       }
     }
@@ -377,6 +392,7 @@ fragment BlockFragment on Block {
       ... on CoreImageBlockAttributes {
         align
         alt
+        anchor
         caption
         className
         height
@@ -394,6 +410,7 @@ fragment BlockFragment on Block {
       ... on CoreImageBlockDeprecatedV1Attributes {
         align
         alt
+        anchor
         caption
         className
         height
@@ -411,6 +428,7 @@ fragment BlockFragment on Block {
       ... on CoreImageBlockDeprecatedV2Attributes {
         align
         alt
+        anchor
         caption
         className
         height
@@ -428,6 +446,7 @@ fragment BlockFragment on Block {
       ... on CoreImageBlockDeprecatedV3Attributes {
         align
         alt
+        anchor
         caption
         className
         height
@@ -450,31 +469,49 @@ fragment BlockFragment on Block {
       ... on CoreHeadingBlockAttributes {
         align
         anchor
+        backgroundColor
         className
         content
-        customTextColor
+        fontSize
         level
         placeholder
+        style
         textColor
       }
       ... on CoreHeadingBlockDeprecatedV1Attributes {
         align
         anchor
+        backgroundColor
         className
         content
-        customTextColor
+        fontSize
         level
         placeholder
+        style
         textColor
       }
       ... on CoreHeadingBlockDeprecatedV2Attributes {
         align
         anchor
+        backgroundColor
         className
         content
-        customTextColor
+        fontSize
         level
         placeholder
+        style
+        textColor
+      }
+      ... on CoreHeadingBlockDeprecatedV3Attributes {
+        align
+        anchor
+        backgroundColor
+        className
+        content
+        fontSize
+        level
+        placeholder
+        style
         textColor
       }
     }
@@ -484,6 +521,7 @@ fragment BlockFragment on Block {
       __typename
       ... on CoreGalleryBlockAttributes {
         align
+        anchor
         caption
         className
         columns
@@ -502,6 +540,7 @@ fragment BlockFragment on Block {
       }
       ... on CoreGalleryBlockDeprecatedV1Attributes {
         align
+        anchor
         caption
         className
         columns
@@ -520,6 +559,7 @@ fragment BlockFragment on Block {
       }
       ... on CoreGalleryBlockDeprecatedV2Attributes {
         align
+        anchor
         caption
         className
         columns
@@ -538,6 +578,7 @@ fragment BlockFragment on Block {
       }
       ... on CoreGalleryBlockDeprecatedV3Attributes {
         align
+        anchor
         caption
         className
         columns
@@ -556,6 +597,7 @@ fragment BlockFragment on Block {
       }
       ... on CoreGalleryBlockDeprecatedV4Attributes {
         align
+        anchor
         caption
         className
         columns
@@ -576,6 +618,7 @@ fragment BlockFragment on Block {
   }
   ... on CoreListBlock {
     attributes__typename_CoreListBlockAttributes: attributes {
+      anchor
       className
       ordered
       reversed
@@ -589,24 +632,28 @@ fragment BlockFragment on Block {
       __typename
       ... on CoreQuoteBlockAttributes {
         align
+        anchor
         citation
         className
         value
       }
       ... on CoreQuoteBlockDeprecatedV1Attributes {
         align
+        anchor
         citation
         className
         value
       }
       ... on CoreQuoteBlockDeprecatedV2Attributes {
         align
+        anchor
         citation
         className
         value
       }
       ... on CoreQuoteBlockDeprecatedV3Attributes {
         align
+        anchor
         citation
         className
         value
@@ -631,6 +678,7 @@ fragment BlockFragment on Block {
       __typename
       ... on CoreAudioBlockAttributes {
         align
+        anchor
         autoplay
         caption
         className
@@ -641,6 +689,7 @@ fragment BlockFragment on Block {
       }
       ... on CoreAudioBlockDeprecatedV1Attributes {
         align
+        anchor
         autoplay
         caption
         className
@@ -656,16 +705,15 @@ fragment BlockFragment on Block {
       __typename
       ... on CoreButtonBlockAttributes {
         align
+        anchor
         backgroundColor
         borderRadius
         className
-        customBackgroundColor
-        customGradient
-        customTextColor
         gradient
         linkTarget
         placeholder
         rel
+        style
         text
         textColor
         title
@@ -673,16 +721,15 @@ fragment BlockFragment on Block {
       }
       ... on CoreButtonBlockDeprecatedV1Attributes {
         align
+        anchor
         backgroundColor
         borderRadius
         className
-        customBackgroundColor
-        customGradient
-        customTextColor
         gradient
         linkTarget
         placeholder
         rel
+        style
         text
         textColor
         title
@@ -690,16 +737,15 @@ fragment BlockFragment on Block {
       }
       ... on CoreButtonBlockDeprecatedV2Attributes {
         align
+        anchor
         backgroundColor
         borderRadius
         className
-        customBackgroundColor
-        customGradient
-        customTextColor
         gradient
         linkTarget
         placeholder
         rel
+        style
         text
         textColor
         title
@@ -707,16 +753,15 @@ fragment BlockFragment on Block {
       }
       ... on CoreButtonBlockDeprecatedV3Attributes {
         align
+        anchor
         backgroundColor
         borderRadius
         className
-        customBackgroundColor
-        customGradient
-        customTextColor
         gradient
         linkTarget
         placeholder
         rel
+        style
         text
         textColor
         title
@@ -724,16 +769,47 @@ fragment BlockFragment on Block {
       }
       ... on CoreButtonBlockDeprecatedV4Attributes {
         align
+        anchor
         backgroundColor
         borderRadius
         className
-        customBackgroundColor
-        customGradient
-        customTextColor
         gradient
         linkTarget
         placeholder
         rel
+        style
+        text
+        textColor
+        title
+        url
+      }
+      ... on CoreButtonBlockDeprecatedV5Attributes {
+        align
+        anchor
+        backgroundColor
+        borderRadius
+        className
+        gradient
+        linkTarget
+        placeholder
+        rel
+        style
+        text
+        textColor
+        title
+        url
+      }
+      ... on CoreButtonBlockDeprecatedV6Attributes {
+        align
+        anchor
+        backgroundColor
+        borderRadius
+        className
+        gradient
+        linkTarget
+        placeholder
+        rel
+        style
         text
         textColor
         title
@@ -744,6 +820,7 @@ fragment BlockFragment on Block {
   ... on CoreButtonsBlock {
     attributes__typename_CoreButtonsBlockAttributes: attributes {
       align
+      anchor
       className
     }
   }
@@ -766,6 +843,7 @@ fragment BlockFragment on Block {
   }
   ... on CoreCodeBlock {
     attributes__typename_CoreCodeBlockAttributes: attributes {
+      anchor
       className
       content
     }
@@ -775,28 +853,41 @@ fragment BlockFragment on Block {
       __typename
       ... on CoreColumnsBlockAttributes {
         align
+        anchor
         backgroundColor
         className
-        customBackgroundColor
-        customTextColor
+        gradient
+        style
         textColor
         verticalAlignment
       }
       ... on CoreColumnsBlockDeprecatedV1Attributes {
         align
+        anchor
         backgroundColor
         className
-        customBackgroundColor
-        customTextColor
+        gradient
+        style
         textColor
         verticalAlignment
       }
       ... on CoreColumnsBlockDeprecatedV2Attributes {
         align
+        anchor
         backgroundColor
         className
-        customBackgroundColor
-        customTextColor
+        gradient
+        style
+        textColor
+        verticalAlignment
+      }
+      ... on CoreColumnsBlockDeprecatedV3Attributes {
+        align
+        anchor
+        backgroundColor
+        className
+        gradient
+        style
         textColor
         verticalAlignment
       }
@@ -804,6 +895,7 @@ fragment BlockFragment on Block {
   }
   ... on CoreColumnBlock {
     attributes__typename_CoreColumnBlockAttributes: attributes {
+      anchor
       className
       verticalAlignment
       width
@@ -814,8 +906,10 @@ fragment BlockFragment on Block {
       __typename
       ... on CoreCoverBlockAttributes {
         align
+        anchor
         backgroundType
         className
+        contentPosition
         customGradient
         customOverlayColor
         dimRatio
@@ -824,13 +918,17 @@ fragment BlockFragment on Block {
         hasParallax
         id
         minHeight
+        minHeightUnit
         overlayColor
+        style
         url
       }
       ... on CoreCoverBlockDeprecatedV1Attributes {
         align
+        anchor
         backgroundType
         className
+        contentPosition
         customGradient
         customOverlayColor
         dimRatio
@@ -839,13 +937,17 @@ fragment BlockFragment on Block {
         hasParallax
         id
         minHeight
+        minHeightUnit
         overlayColor
+        style
         url
       }
       ... on CoreCoverBlockDeprecatedV2Attributes {
         align
+        anchor
         backgroundType
         className
+        contentPosition
         customGradient
         customOverlayColor
         dimRatio
@@ -854,13 +956,17 @@ fragment BlockFragment on Block {
         hasParallax
         id
         minHeight
+        minHeightUnit
         overlayColor
+        style
         url
       }
       ... on CoreCoverBlockDeprecatedV3Attributes {
         align
+        anchor
         backgroundType
         className
+        contentPosition
         customGradient
         customOverlayColor
         dimRatio
@@ -869,13 +975,17 @@ fragment BlockFragment on Block {
         hasParallax
         id
         minHeight
+        minHeightUnit
         overlayColor
+        style
         url
       }
       ... on CoreCoverBlockDeprecatedV4Attributes {
         align
+        anchor
         backgroundType
         className
+        contentPosition
         customGradient
         customOverlayColor
         dimRatio
@@ -884,13 +994,17 @@ fragment BlockFragment on Block {
         hasParallax
         id
         minHeight
+        minHeightUnit
         overlayColor
+        style
         url
       }
       ... on CoreCoverBlockDeprecatedV5Attributes {
         align
+        anchor
         backgroundType
         className
+        contentPosition
         customGradient
         customOverlayColor
         dimRatio
@@ -899,7 +1013,9 @@ fragment BlockFragment on Block {
         hasParallax
         id
         minHeight
+        minHeightUnit
         overlayColor
+        style
         url
       }
     }
@@ -1239,29 +1355,6 @@ fragment BlockFragment on Block {
         url
       }
       ... on CoreEmbedDailymotionBlockDeprecatedV1Attributes {
-        align
-        allowResponsive
-        caption
-        className
-        providerNameSlug
-        type
-        url
-      }
-    }
-  }
-  ... on CoreEmbedHuluBlock {
-    attributes__typename_CoreEmbedHuluBlockAttributesUnion: attributes {
-      __typename
-      ... on CoreEmbedHuluBlockAttributes {
-        align
-        allowResponsive
-        caption
-        className
-        providerNameSlug
-        type
-        url
-      }
-      ... on CoreEmbedHuluBlockDeprecatedV1Attributes {
         align
         allowResponsive
         caption
@@ -1735,6 +1828,7 @@ fragment BlockFragment on Block {
   ... on CoreFileBlock {
     attributes__typename_CoreFileBlockAttributes: attributes {
       align
+      anchor
       className
       downloadButtonText
       fileName
@@ -1753,8 +1847,9 @@ fragment BlockFragment on Block {
         anchor
         backgroundColor
         className
-        customBackgroundColor
-        customTextColor
+        gradient
+        style
+        tagName
         textColor
       }
       ... on CoreGroupBlockDeprecatedV1Attributes {
@@ -1762,8 +1857,9 @@ fragment BlockFragment on Block {
         anchor
         backgroundColor
         className
-        customBackgroundColor
-        customTextColor
+        gradient
+        style
+        tagName
         textColor
       }
       ... on CoreGroupBlockDeprecatedV2Attributes {
@@ -1771,8 +1867,19 @@ fragment BlockFragment on Block {
         anchor
         backgroundColor
         className
-        customBackgroundColor
-        customTextColor
+        gradient
+        style
+        tagName
+        textColor
+      }
+      ... on CoreGroupBlockDeprecatedV3Attributes {
+        align
+        anchor
+        backgroundColor
+        className
+        gradient
+        style
+        tagName
         textColor
       }
     }
@@ -1792,10 +1899,11 @@ fragment BlockFragment on Block {
       __typename
       ... on CoreMediaTextBlockAttributes {
         align
+        anchor
         backgroundColor
         className
-        customBackgroundColor
         focalPoint
+        gradient
         href
         imageFill
         isStackedOnMobile
@@ -1810,14 +1918,17 @@ fragment BlockFragment on Block {
         mediaUrl
         mediaWidth
         rel
+        style
+        textColor
         verticalAlignment
       }
       ... on CoreMediaTextBlockDeprecatedV1Attributes {
         align
+        anchor
         backgroundColor
         className
-        customBackgroundColor
         focalPoint
+        gradient
         href
         imageFill
         isStackedOnMobile
@@ -1832,14 +1943,17 @@ fragment BlockFragment on Block {
         mediaUrl
         mediaWidth
         rel
+        style
+        textColor
         verticalAlignment
       }
       ... on CoreMediaTextBlockDeprecatedV2Attributes {
         align
+        anchor
         backgroundColor
         className
-        customBackgroundColor
         focalPoint
+        gradient
         href
         imageFill
         isStackedOnMobile
@@ -1854,6 +1968,33 @@ fragment BlockFragment on Block {
         mediaUrl
         mediaWidth
         rel
+        style
+        textColor
+        verticalAlignment
+      }
+      ... on CoreMediaTextBlockDeprecatedV3Attributes {
+        align
+        anchor
+        backgroundColor
+        className
+        focalPoint
+        gradient
+        href
+        imageFill
+        isStackedOnMobile
+        linkClass
+        linkDestination
+        linkTarget
+        mediaAlt
+        mediaId
+        mediaLink
+        mediaPosition
+        mediaType
+        mediaUrl
+        mediaWidth
+        rel
+        style
+        textColor
         verticalAlignment
       }
     }
@@ -1869,24 +2010,50 @@ fragment BlockFragment on Block {
     }
   }
   ... on CoreLatestPostsBlock {
-    attributes__typename_CoreLatestPostsBlockAttributes: attributes {
-      align
-      categories
-      className
-      columns
-      displayFeaturedImage
-      displayPostContent
-      displayPostContentRadio
-      displayPostDate
-      excerptLength
-      featuredImageAlign
-      featuredImageSizeHeight
-      featuredImageSizeSlug
-      featuredImageSizeWidth
-      order
-      orderBy
-      postLayout
-      postsToShow
+    attributes__typename_CoreLatestPostsBlockAttributesUnion: attributes {
+      __typename
+      ... on CoreLatestPostsBlockAttributes {
+        align
+        categories
+        className
+        columns
+        displayAuthor
+        displayFeaturedImage
+        displayPostContent
+        displayPostContentRadio
+        displayPostDate
+        excerptLength
+        featuredImageAlign
+        featuredImageSizeHeight
+        featuredImageSizeSlug
+        featuredImageSizeWidth
+        order
+        orderBy
+        postLayout
+        postsToShow
+        selectedAuthor
+      }
+      ... on CoreLatestPostsBlockDeprecatedV1Attributes {
+        align
+        categories
+        className
+        columns
+        displayAuthor
+        displayFeaturedImage
+        displayPostContent
+        displayPostContentRadio
+        displayPostDate
+        excerptLength
+        featuredImageAlign
+        featuredImageSizeHeight
+        featuredImageSizeSlug
+        featuredImageSizeWidth
+        order
+        orderBy
+        postLayout
+        postsToShow
+        selectedAuthor
+      }
     }
   }
   ... on CoreMissingBlock {
@@ -1904,6 +2071,7 @@ fragment BlockFragment on Block {
   }
   ... on CorePreformattedBlock {
     attributes__typename_CorePreformattedBlockAttributes: attributes {
+      anchor
       className
       content
     }
@@ -1913,6 +2081,7 @@ fragment BlockFragment on Block {
       __typename
       ... on CorePullquoteBlockAttributes {
         align
+        anchor
         citation
         className
         customMainColor
@@ -1923,6 +2092,7 @@ fragment BlockFragment on Block {
       }
       ... on CorePullquoteBlockDeprecatedV1Attributes {
         align
+        anchor
         citation
         className
         customMainColor
@@ -1933,6 +2103,7 @@ fragment BlockFragment on Block {
       }
       ... on CorePullquoteBlockDeprecatedV2Attributes {
         align
+        anchor
         citation
         className
         customMainColor
@@ -1943,6 +2114,7 @@ fragment BlockFragment on Block {
       }
       ... on CorePullquoteBlockDeprecatedV3Attributes {
         align
+        anchor
         citation
         className
         customMainColor
@@ -1953,6 +2125,7 @@ fragment BlockFragment on Block {
       }
       ... on CorePullquoteBlockDeprecatedV4Attributes {
         align
+        anchor
         citation
         className
         customMainColor
@@ -1988,6 +2161,7 @@ fragment BlockFragment on Block {
   }
   ... on CoreSeparatorBlock {
     attributes__typename_CoreSeparatorBlockAttributes: attributes {
+      anchor
       className
       color
       customColor
@@ -2004,6 +2178,7 @@ fragment BlockFragment on Block {
   ... on CoreSocialLinksBlock {
     attributes__typename_CoreSocialLinksBlockAttributes: attributes {
       align
+      anchor
       className
     }
   }
@@ -2017,6 +2192,7 @@ fragment BlockFragment on Block {
   }
   ... on CoreSpacerBlock {
     attributes__typename_CoreSpacerBlockAttributes: attributes {
+      anchor
       className
       height
     }
@@ -2033,6 +2209,7 @@ fragment BlockFragment on Block {
       __typename
       ... on CoreTableBlockAttributes {
         align
+        anchor
         backgroundColor
         body__typename_CoreTableBlockAttributesBody: body {
           cells {
@@ -2064,6 +2241,7 @@ fragment BlockFragment on Block {
       }
       ... on CoreTableBlockDeprecatedV1Attributes {
         align
+        anchor
         backgroundColor
         body {
           cells {
@@ -2117,11 +2295,13 @@ fragment BlockFragment on Block {
     attributes__typename_CoreVerseBlockAttributesUnion: attributes {
       __typename
       ... on CoreVerseBlockAttributes {
+        anchor
         className
         content
         textAlign
       }
       ... on CoreVerseBlockDeprecatedV1Attributes {
+        anchor
         className
         content
         textAlign
@@ -2131,6 +2311,7 @@ fragment BlockFragment on Block {
   ... on CoreVideoBlock {
     attributes {
       align
+      anchor
       autoplay
       caption
       className

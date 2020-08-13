@@ -17,10 +17,9 @@ export default ({
     blog,
   },
 }) => {
-  
   const ctx = useContext(GlobalContext)
   useEffect(() => {
-    ctx.setTheme("Light")
+    ctx.setTheme("light")
     if (isTouchEnabled()) {
       ctx.enableTouchState()
     }

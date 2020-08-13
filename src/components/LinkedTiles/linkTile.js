@@ -3,8 +3,6 @@ import Parse from 'react-html-parser'
 import Imgix from 'react-imgix'
 import { Link } from 'gatsby'
 
-import './tiles.css';
-
 import { useFeaturedImage } from "../../data/featureImage"
 
 export default ({ page_slug_id }) => {  

@@ -26,7 +26,7 @@
 .caret {
   width: 20px;
   position: relative;
-  bottom:116px;
+  bottom:70px;
   padding: 0;
   margin: 0;
   background: none;
@@ -50,6 +50,6 @@
 
 @media (max-width:575px) {
   .caret {
-    bottom: 68.5px;
+    bottom: 58px;
   }
 }

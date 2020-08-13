@@ -15,13 +15,13 @@ export default ({ values,
   return ordered ? (
     <Container>
       <Row>
-        <ol className="font-regular" start={start} reversed={reversed} dangerouslySetInnerHTML={{ __html: values }} />
+        <ol className="font-medium" start={start} reversed={reversed} dangerouslySetInnerHTML={{ __html: values }} />
       </Row>
     </Container>
   ) : (
     <Container>
       <Row>
-        <ul className="font-regular" dangerouslySetInnerHTML={{ __html: values }} />
+        <ul className="font-medium" dangerouslySetInnerHTML={{ __html: values }} />
       </Row>
     </Container>
   )

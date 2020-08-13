@@ -7,7 +7,7 @@ import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 
 import { ArrowForward } from '../../helpers/icons'
-import { useImage } from "../../data/image"
+import { useImageById } from "../../data/useImage"
 import { PageModalContext } from '../PageModal/context'
 
 import Parse from "react-html-parser"
@@ -15,7 +15,7 @@ import Parse from "react-html-parser"
 import "./styles.css"
 
 function StrapImage(props) {
-  const image_info = useImage(props.strap_image_id)
+  const image_info = useImageById(props.strap_image_id)
   
   if (image_info !== undefined) {
     var imgUrl = image_info.mediaItemUrl.split("/")
@@ -70,7 +70,7 @@ export default ({
   
   return (
   <>
-  <section className="fullwidth-section" style={{backgroundColor: strap_color}}>
+  <section className="fullwidth-section page-strap-section" style={{backgroundColor: strap_color}}>
   <Container>
     <Row>
       <StrapImage strap_image_id={strap_image} />

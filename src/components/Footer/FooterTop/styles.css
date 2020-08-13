@@ -49,7 +49,9 @@
 
 .liquid-app-arrow {
   display: inline-flex;
-  vertical-align: top;
+  position: relative;
+  bottom: 22px;
+  left:12px;
 }
 
 

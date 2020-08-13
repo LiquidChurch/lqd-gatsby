@@ -157,11 +157,12 @@ export const HompageHero = graphql`
 export const HeroImage = graphql`
   fragment HeroImage on WpBlockLabHeroImageBlock {
     attributes {
-      hero_image_id
-      hero_title
+      image_id
       image_style
-      hero_text
-      theme_style
+      bg_color
+      statement
+      sidekick
+      cta
     }
   }
 `
@@ -204,6 +205,14 @@ export const MessageTile = graphql`
         block_title
         background_color
         message_slug
+      }
+  }
+`
+
+export const PhotoCarousel = graphql`
+  fragment PhotoCarousel on WpBlockLabPhotoCarouselBlock {
+      attributes {
+        images
       }
   }
 `
@@ -257,5 +266,6 @@ export const AllBlocks = graphql`
     ...MediaTiles
     ...PageModal
     ...LinkTiles
+    ...PhotoCarousel
   }
 `

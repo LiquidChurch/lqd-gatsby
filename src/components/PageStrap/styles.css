@@ -1,7 +1,12 @@
+.page-strap-section {
+  padding-bottom:2.5em;
+}
+
 .page-strap-tag {
   margin-left: auto;
   margin-right: auto;
   text-align:center;
+  margin-top:0.3em;
   margin-bottom: 0.7em;  
 }
 

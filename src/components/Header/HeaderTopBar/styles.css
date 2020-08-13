@@ -68,7 +68,7 @@
 }
 
 .topbar-menu-item {
-  margin: 0 0.9em;
+  margin: 0 0.3em;
   white-space: nowrap;
   font-size:1.1em;
   margin-bottom: -0.5em;
@@ -80,7 +80,7 @@
   justify-content:center;
   max-width:19.1em;
   min-width:15.9em;
-  margin-left: 1.8em;
+  margin-left: 1.2em;
 }
 
 .topbar-chop-button {
@@ -92,6 +92,7 @@
   padding-top: 6px;
   border-width: medium;
   vertial-align: text-top;
+  font-weight: 600;
 }
 
 .topbar-button-dark {
@@ -139,8 +140,8 @@
   background-color: white;
   border:none;
   border-radius: 0;
-  height: 2.2rem;
-  width: 10.9rem;  
+  height: 2.4rem;
+  width: 11.9rem;  
 }
 
 .btn-topbar-brand-focus {
@@ -193,7 +194,7 @@
 
 @media (max-width:1199px) { 
   .topbar-menu-item {
-    margin: 0 0.3em;
+    margin: 0.2em 0.2em;
     font-size:0.9em;
   }
   
@@ -204,7 +205,7 @@
   }
   
   .topbar-chop-button {
-    width: 235px;
+    width: 227px;
     padding-top:8px;
     font-size: 0.9em;
   }

@@ -1,5 +1,5 @@
 import { useStaticQuery, graphql } from "gatsby"
-export const useImage = (imageId) => {
+export const useImageById = (imageId) => {  
   const data = useStaticQuery(
     graphql`
       query {

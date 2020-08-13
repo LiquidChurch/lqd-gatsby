@@ -19,17 +19,13 @@ export default ({
 }) => {
   const generalSettings = useGeneralSettings()
   const ctx = useContext(GlobalContext)
+  
+  let theme = "dark"
+  if (page.themeState !== null) {
+    theme = page.themeState.state
+  }
+  
  // const featuredImage = page?.featuredImage?.localFile?.childImageSharp?.fluid
-  
-  var heroBlock = page.blocks.find(
-    ({ __typename }) => __typename === "WpBlockLabHeroImageBlock"
-  )
-  
-  let theme = "Dark"
-  if (heroBlock !== undefined) {
-    theme = heroBlock.attributes.theme_style
-  } 
-
   useEffect(() => {
     ctx.setTheme(theme)    
     if (isTouchEnabled()) {
@@ -60,14 +56,100 @@ export const query = graphql`
         date
         title
         slug
+        themeState {
+          state
+        }
         featuredImage {
           node {
             title
             caption 
             altText
-            description 
+            description
+            sourceUrl
             mediaItemUrl
           }
+        }
+        pageImage {
+          image1 {
+            title
+            caption 
+            altText
+            description
+            sourceUrl
+            mediaItemUrl
+          }
+          image2 {
+            title
+            caption 
+            altText
+            description
+            sourceUrl
+            mediaItemUrl
+          }
+          image3 {
+            title
+            caption 
+            altText
+            description
+            sourceUrl
+            mediaItemUrl
+          }
+          image4 {
+            title
+            caption 
+            altText
+            description
+            sourceUrl
+            mediaItemUrl
+          }
+          image5 {
+            title
+            caption 
+            altText
+            description
+            sourceUrl
+            mediaItemUrl
+          }
+          image6 {
+            title
+            caption 
+            altText
+            description
+            sourceUrl
+            mediaItemUrl
+          }
+          image7 {
+            title
+            caption 
+            altText
+            description
+            sourceUrl
+            mediaItemUrl
+          }
+          image8 {
+            title
+            caption 
+            altText
+            description
+            sourceUrl
+            mediaItemUrl
+          }
+          image9 {
+            title
+            caption 
+            altText
+            description
+            sourceUrl
+            mediaItemUrl
+          }
+          image10 {
+            title
+            caption 
+            altText
+            description
+            sourceUrl
+            mediaItemUrl
+          }          
         }
       }
     

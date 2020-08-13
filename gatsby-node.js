@@ -185,6 +185,48 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   }
   
+  
+  /*
+  // Query for Images
+  const mediaItemResult = await graphql(
+    `
+      query {
+        allWpMediaItem {
+          nodes {
+            id
+            title
+            altText
+            caption
+            description
+            mediaItemUrl
+            sourceUrl
+            databaseId
+          }
+        }
+      }
+    `
+  )
+  
+  if (mediaItemResult.errors) {
+    reporter.panicOnBuild(`Error while running GraphQL query on Media Items.`)
+    return
+  }
+  
+  if (mediaItemResult.data.allWpMediaItem.nodes) {
+    mediaItemResult.data.allWpMediaItem.nodes.forEach(media => {
+      console.log(media)
+      createPage({
+        path: `/mediaItem/${media.databaseId}`,
+        component: slash(path.resolve(`./src/templates/media.js`)),
+        context: {
+          id: media.id,
+        },
+      })
+    })
+  }  
+  
+  */
+  
   // CreatePage for Tags
   /*const tagsResult = await graphql(
     `
@@ -220,7 +262,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
 /**
  * Import featured images.
- */
+ 
 exports.createResolvers = async ({
   actions: { createNode },
   cache,
@@ -253,5 +295,42 @@ exports.createResolvers = async ({
     WpMediaItem: field,
     WpCoreImageBlock: field,
     WpUser: field,
+  })
+}
+*/
+exports.createResolvers = async (
+  {
+    actions,
+    cache,
+    createNodeId,
+    createResolvers,
+    store,
+    reporter,
+  },
+) => {
+  const { createNode } = actions
+
+  await createResolvers({
+    WpMediaItem: {
+      imageFile: {
+        type: "File",
+        async resolve(source) {
+          let sourceUrl = source.sourceUrl
+
+          if (source.mediaItemUrl !== undefined) {
+            sourceUrl = source.mediaItemUrl
+          }
+
+          return await createRemoteFileNode({
+            url: encodeURI(sourceUrl),
+            store,
+            cache,
+            createNode,
+            createNodeId,
+            reporter,
+          })
+        },
+      },
+    },
   })
 }

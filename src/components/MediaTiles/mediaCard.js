@@ -11,8 +11,8 @@ function ShowTitle(props) {
   if (props.showBlurb) {
     return (
       <ListGroup.Item>
-          <div className="font-h2 media-card-title">{props.title}</div>
-          <div className="font-small media-card-blurb">{Parse(props.blurb)}</div>
+          <div className="media-card-title font-h2">{props.title}</div>
+          <div className="media-card-blurb font-small">{Parse(props.blurb)}</div>
       </ListGroup.Item>
     )
   }
@@ -27,7 +27,7 @@ function ShowSeries(props) {
   if (props.showSeries && props.seriesTitle !== "") {
     let part = ""
     
-    if (props.seriesPart !== "") {
+    if (props.seriesPart !== "" && props.seriesPart !== null) {
       part = " • Part " + props.seriesPart
     }
     

@@ -4,8 +4,8 @@ import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 
-import './tiles.css';
-import LinkTile from './LinkTile';
+import './styles.css';
+import LinkTile from './linkTile';
 
 /* class LinkedTiles extends React.Component {
     render() { 

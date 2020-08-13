@@ -17,6 +17,14 @@ export default ({
     series,
   },
 }) => {
+  const ctx = useContext(GlobalContext)
+  useEffect(() => {
+    ctx.setTheme("light")
+    if (isTouchEnabled()) {
+      ctx.enableTouchState()
+    }
+  }, [ctx])
+  
   let messagesInfo = []
  
   series.messages.nodes.forEach(message => {
@@ -51,15 +59,7 @@ export default ({
       "profileImage": message.attributions.nodes[0].profileImage.image.sourceUrl,
     })
   })  
-  
-  const ctx = useContext(GlobalContext)
-  useEffect(() => {
-    ctx.setTheme("Light")
-    if (isTouchEnabled()) {
-      ctx.enableTouchState()
-    }
-  }, [ctx])
-  
+
   return (
     <Layout location={location}>
       <Helmet titleTemplate={`%s | Liquid Church`}>

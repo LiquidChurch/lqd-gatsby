@@ -17,10 +17,10 @@ export default ({
     lqdmMessage,
   },
 }) => {
-  const ctx = useContext(GlobalContext)
   
+  const ctx = useContext(GlobalContext)
   useEffect(() => {
-    ctx.setTheme("Dark")
+    ctx.setTheme("dark")
     if (isTouchEnabled()) {
       ctx.enableTouchState()
     }

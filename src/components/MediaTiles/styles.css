@@ -1,5 +1,5 @@
 .media-cards {
-  padding-top:30px;
+  padding-bottom:2.8em;
 }
 
 .media-cards-no-label {
@@ -38,12 +38,11 @@
 }
 
 .media-card-title {
-  display:contents;
   white-space: normal;
-  height:115px;
-  min-height:90px;
-  max-height:115px;
+  min-height:50px;
+  max-height:90px;
   overflow-y:hidden;
+  font-size:1.25em;
 }
 
 .media-card-blurb {
