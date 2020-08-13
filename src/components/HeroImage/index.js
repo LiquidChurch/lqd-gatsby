@@ -33,10 +33,7 @@ export default ({
   const [textAreaPosition, setTextAreaPosition] = useState(0)
   
   var imageUrl = imageInfo.mediaItemUrl.split("/")
-  var imageStyle = "fixed"
-  if (image_style.split(":")[0] === "filled") {
-    imageStyle = "filled-" + ctx.currentTheme
-  }
+  var imageStyle = image_style.split(":")[0]
   
   let textAreaHeight = 45
   useEffect (() => {
@@ -52,13 +49,13 @@ export default ({
   return (
   <>
     <section id="hero-image">
-    <Container fluid className={'hero-image-container-' + imageStyle}>
+    <Container fluid className={'hero-image-container-' + imageStyle + ' hero-image-theme-' + ctx.currentTheme}>
       <Imgix 
         src={"https://liquidchurch.imgix.net/" + imageUrl[4] + "/" + imageUrl[5]}
         className={'hero-image-' + imageStyle}
         sizes="100vw" />
       <div 
-        className="hero-image-text-area"
+        className={'hero-image-text-area-' + imageStyle}
         style={{bottom: textAreaPosition + 'px'}}>
         <div id="hero-statement" className="hero-image-title">
           { statement }
