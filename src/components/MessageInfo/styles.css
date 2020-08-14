@@ -14,16 +14,17 @@
   display: inline;
   font-family: "Avenir Next Demi";
   letter-spacing: 0.1em;
+  margin-right:12px;
 }
 
 .message-date {
-  margin-left:10px;
   margin-bottom:2px;
   text-transform: uppercase;
   color: #C7C7C7;
   display:inline;
   vertical-align:inherit;
   letter-spacing: 0.1em;
+  white-space: nowrap;
 }
 
 .message-hr {

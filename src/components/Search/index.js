@@ -72,6 +72,8 @@ const TestResults = ({ searchState }) => (
 const CustomStateResults = connectStateResults(TestResults)
 
 export default(location) => {
+  
+    console.log('algolia id', appId)
     return (
       <>
         <Heading text="Search" alignment="left" size="H1" background_color="#FFF"/>
@@ -83,8 +85,7 @@ export default(location) => {
                   indexName="Combined"
               > 
                 <div className="search-panel__filters">
-                <Configure facetFilters={["pageType:message"]}
-                   />
+
               </div>
                 <SearchBox
                     className="searchbox"

@@ -72,7 +72,8 @@ const queries = [
           })),
         indexName: mainIndexName,
         settings: { attributesToSnippet: [`blurb:40`],
-                    searchableAttributes: ['pageType', 'title', 'blurb', 'date', 'terms.name']},
+                    searchableAttributes: ['title', 'blurb', 'date', 'terms.name'],
+                    attributesForFaceting: ['pageType']},      
     },
     {
         query: blogQuery,
@@ -88,7 +89,8 @@ const queries = [
           })),
         indexName: mainIndexName,
         settings: { attributesToSnippet: [`blurb:40`],
-                    searchableAttributes: ['pageType', 'title', 'blurb', 'date', 'terms.name']},
+                    searchableAttributes: ['title', 'blurb', 'date', 'terms.name'],
+                    attributesForFaceting: ['pageType']},
     },
     {
         query: pageQuery,

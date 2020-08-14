@@ -20,12 +20,10 @@ export default ({
   sidekick,
   cta,
 }) => {
-  console.log('hero image', image_id)
   console.log('hero image cta', cta)
   const ctx = useContext(GlobalContext)
   const imageInfo = useImageById(image_id)
   
-  console.log('hero image info', imageInfo)
   if (imageInfo === undefined) {
     return (
     <>
