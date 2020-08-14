@@ -1,8 +1,36 @@
-.hero-image-theme-dark {
-  margin-bottom: -215px;
-  top:-78px;
+/* Image Style - Filled-Hero */
+.hero-image-container-filled-hero {
+  margin-left: -0.9em;
+  padding-left: 0;
+  padding-right: 0;
+  width: 100vw;
+  position:relative;
+  overflow:hidden;
+  margin-bottom: -265px;
+  top:-104px;  
 }
 
+.hero-image-filled-hero {
+  padding-right: 0px;
+  padding-left:0px;
+  max-height: 900px;
+  min-height: 400px;
+  overflow:hidden;
+  object-fit:cover;
+  object-position:center;
+}
+
+.hero-image-text-area-filled-hero {
+  position: relative;
+  display:block;
+  text-align: center;
+  background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1));
+  padding-top:35px;
+  padding-bottom: 25px;
+  margin-bottom: -60px;
+}
+
+/* Image Style - Filled */
 .hero-image-container-filled {
   margin-left: -0.9em;
   padding-left: 0;
@@ -22,14 +50,20 @@
   object-position:center;
 }
 
-.hero-image-container-fixed {
-  
+.hero-image-text-area-filled {
+  position: relative;
+  display:block;
+  text-align: center;
+  background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1));
+  padding-top:35px;
+  padding-bottom: 25px;
+  margin-bottom: -60px;
 }
 
-.hero-image-set-fixed {
-    max-width:1120px;
-  margin-left:auto;
-  margin-right:auto;
+
+/* Image Style - Fixed */
+.hero-image-container-fixed {
+  
 }
 
 .hero-image-fixed {
@@ -42,21 +76,9 @@
   margin-right:auto;  
 }
 
-.hero-image-text-area-filled {
-  position: relative;
-  display:block;
-  bottom: 210px;
-  text-align: center;
-  background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1));
-  padding-top:35px;
-  padding-bottom: 25px;
-  margin-bottom: -60px;
-}
-
 .hero-image-text-area-fixed {
   position: relative;
   display:block;
-  bottom: 210px;
   text-align: center;
   background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1));
   padding-top:35px;
@@ -65,8 +87,11 @@
   margin-left:auto;
   margin-right:auto; 
   border-radius: 0 0 0.8em 0.8em; 
+  margin-bottom: 75px;
 }
 
+
+/* All Styles shared */
 .hero-image-title {
   font-family: "Avenir Next Bold";
   font-size: 3.0em;
@@ -92,9 +117,9 @@
   .hero-image-title {
     font-size: 2.5em;
   }
-  .hero-image-container-filled {
+  /* .hero-image-container-filled {
     margin-bottom: -205px;  
-  }
+  } */
 }
 
 @media (max-width:767px) { 
@@ -108,9 +133,9 @@
     font-size: 1.4em;
     width: 575px;
   }
-  .hero-image-container-filled {
+/*  .hero-image-container-filled {
     margin-bottom: -180px;  
-  }
+  } */
 }
 
 @media (max-width:575px) { 
@@ -122,15 +147,15 @@
     width: 90%;
     margin-left:5%;
   }  
-  .hero-image-container-filled {
+/*  .hero-image-container-filled {
     margin-bottom: -163px;  
-  }
+  } */
 }
 
 @media (max-width:481px) {
-  .hero-image-container-filled {
+/*  .hero-image-container-filled {
     margin-bottom: -191px;  
-  }
+  } */
 }
 @media (max-width:334px) {
   .hero-image-title {

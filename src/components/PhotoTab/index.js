@@ -15,9 +15,7 @@ import "./photoTab.css"
 
 function TabImage(props) {
   const image_info = useImageById(props.tab_image_id)
-  
-  console.log('check', props.tab_image_id)
-  
+   
   if (image_info !== undefined) {
     var imgUrl = image_info.mediaItemUrl.split("/")
     return (
@@ -45,8 +43,6 @@ export default ({
   image,
 }) => {
   
- console.log('cta variable', cta.rows)
-  
  let cta_object = JSON.parse(cta)
   
  let cta_slug = cta_object.rows[0].slug.name
@@ -60,8 +56,6 @@ export default ({
   cta_text.forEach(item => console.log(item));
   */
 
-  
-  console.log('cta_object', cta_object.rows[0].text)
   
   
   function TabLink() {
@@ -81,9 +75,6 @@ export default ({
   if (image !== null && image !== undefined) {
     hasImage = true
   }
-  
-  console.log('benjamin',image)
-  
   
   return (
   <>

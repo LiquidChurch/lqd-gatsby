@@ -20,9 +20,12 @@ export default ({
   sidekick,
   cta,
 }) => {
-  
+  console.log('hero image', image_id)
+  console.log('hero image cta', cta)
   const ctx = useContext(GlobalContext)
   const imageInfo = useImageById(image_id)
+  
+  console.log('hero image info', imageInfo)
   if (imageInfo === undefined) {
     return (
     <>
@@ -31,12 +34,11 @@ export default ({
   }
   
   const [textAreaPosition, setTextAreaPosition] = useState(0)
-  
   var imageUrl = imageInfo.mediaItemUrl.split("/")
-  var imageStyle = image_style.split(":")[0]
   
-  let textAreaHeight = 45
+ // let textAreaHeight = 45
   useEffect (() => {
+    let textAreaHeight = 45
     function setTextAreaHeight() {
       textAreaHeight = 60 + document.getElementById('hero-statement').offsetHeight + document.getElementById('hero-sidekick').offsetHeight
       setTextAreaPosition(textAreaHeight)
@@ -48,15 +50,26 @@ export default ({
   
   return (
   <>
-    <section id="hero-image">
-    <Container fluid className={'hero-image-container-' + imageStyle + ' hero-image-theme-' + ctx.currentTheme}>
+    <section id="hero-image" className="fullwidth-section" style={{backgroundColor: bg_color}}>
+    <Container fluid className={'hero-image-container-' + image_style.split(":")[0]}>
       <Imgix 
         src={"https://liquidchurch.imgix.net/" + imageUrl[4] + "/" + imageUrl[5]}
-        className={'hero-image-' + imageStyle}
+        className={'hero-image-' + image_style.split(":")[0]}
         sizes="100vw" />
       <div 
-        className={'hero-image-text-area-' + imageStyle}
-        style={{bottom: textAreaPosition + 'px'}}>
+        className={'hero-image-text-area-' + image_style.split(":")[0]}
+        style={ (image_style.split(":")[0] === "fixed") ? 
+                ( (textAreaPosition === 60 ) ? 
+                    {background: 'none', bottom: textAreaPosition + 'px', marginBottom: (15 - textAreaPosition) + 'px'} : 
+                    {bottom: textAreaPosition + 'px', marginBottom: (15 - textAreaPosition) + 'px'} ) :  
+                ( (image_style.split(":")[0] === 'filled') ? 
+                  ( (textAreaPosition === 60) ? 
+                      {background: 'none', bottom: textAreaPosition + 'px', marginBottom: -textAreaPosition + 'px'} :
+                      {bottom: textAreaPosition + 'px', marginBottom: -textAreaPosition + 'px'} ) :
+                  ( (textAreaPosition === 60) ?
+                      {background: 'none', bottom: textAreaPosition + 'px', marginBottom: (135 - textAreaPosition) + 'px'} :
+                      {bottom: textAreaPosition + 'px', marginBottom: (135 - textAreaPosition) + 'px'} ) ) }
+      >
         <div id="hero-statement" className="hero-image-title">
           { statement }
         </div>
