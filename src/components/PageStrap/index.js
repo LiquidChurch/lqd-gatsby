@@ -6,8 +6,10 @@ import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 
+import CallToAction from '../CallToAction'
 import { ArrowForward } from '../../helpers/icons'
 import { useImageById } from "../../data/useImage"
+import { usePageById } from "../../data/usePage"
 import { PageModalContext } from '../PageModal/context'
 
 import Parse from "react-html-parser"
@@ -54,31 +56,40 @@ function StrapLink(props) {
  * Page Strap Block Component
  */
 export default ({
-  cta_slug,
-  cta_text,
-  strap_bg_img,
-  strap_color,
-  strap_tag,
-  strap_text,
-  strap_image,
+  statement,
+  sidekick,
+  bg_color,
+  image_id,
+  cta,
 }) => {
-  var hasImage = false
+  const ctaObject = JSON.parse(cta)
+
+
+
   
-  if (strap_image !== null) {
+  var hasImage = false
+  if (image_id !== null && image_id !== undefined && image_id !== 0) {
+    console.log('image_id', image_id)
     hasImage = true
   }
   
   return (
   <>
-  <section className="fullwidth-section page-strap-section" style={{backgroundColor: strap_color}}>
+  <section className="fullwidth-section page-strap-section" style={{backgroundColor: bg_color}}>
   <Container>
     <Row>
-      <StrapImage strap_image_id={strap_image} />
-      <Col id={"strap-body-" + cta_slug} className={hasImage ? "vertical-center strap-pad-left" : "vertical-center"}>
-        <h2 className={hasImage ? "page-strap-tag font-h1 strap-left" : "page-strap-tag font-h1"}>{Parse(strap_tag)}</h2>
-        <p className={hasImage ? "page-strap-text font-large strap-left" : "page-strap-text font-large"}>{strap_text}</p>
-        <div className={hasImage ? "page-strap-cta strap-left" : "page-strap-cta"}>
-          <StrapLink cta_text={cta_text} cta_slug={cta_slug} />
+      <StrapImage strap_image_id={image_id} />
+      <Col id={"strap-body-" + image_id} className={hasImage ? "vertical-center strap-pad-left" : "vertical-center"}>
+        <h2 className={hasImage ? "page-strap-tag font-h1 strap-left" : "page-strap-tag font-h1"}>{Parse(statement)}</h2>
+        <div className={hasImage ? "page-strap-text font-large strap-left" : "page-strap-text font-large"}>{Parse(sidekick)}</div>
+        <div className={hasImage ? "page-strap-cta font-medium strap-left" : "page-strap-cta font-medium"}>
+          {
+            ctaObject.rows.map(cta => {
+              return (
+                <CallToAction cta={cta} />
+              )
+            })
+          }
         </div>
       </Col> 
     </Row>

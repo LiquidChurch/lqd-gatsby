@@ -179,13 +179,11 @@ export const ExternalRedirect = graphql`
 export const PageStrap = graphql`
   fragment PageStrap on WpBlockLabPageStrapBlock {
     attributes {
-      cta_slug
-      cta_text
-      strap_bg_img
-      strap_color
-      strap_tag
-      strap_text
-      strap_image
+      statement
+      sidekick
+      bg_color
+      image_id
+      cta
     }
   }
 `
@@ -253,11 +251,14 @@ export const LinkTiles = graphql`
 export const PhotoTab = graphql`
   fragment PhotoTab on WpBlockLabPhotoBlock {
     attributes {
+      location
+      image_id
+      bg_color
+      header
+      text_block
+      header_secondary
+      text_block_secondary
       cta
-      image
-      tab_color
-      tab_text
-      tab_tag
     }
   } 
 `

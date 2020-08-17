@@ -6,7 +6,7 @@ button {
  border-style: none;
 }
 
-.tab-rows {
+.photo-tab-row {
   margin: 50px;
 }
 
@@ -61,8 +61,16 @@ button {
   text-align:left;
 }
 
+
 .tab-pad-left{
   margin-left:0.5em;
+}
+
+.photo-tab-h2 {
+  font-family: "Avenir Next Bold";  
+  color: #009DD1;
+  font-size: 1.13em;
+  margin-bottom: -13px;
 }
 
 @media (max-width:991px) {
@@ -163,48 +171,3 @@ button {
   }   
 }
 
-
-
-
-/*
-body {
-    font-family: Arial;
-    box-sizing: border-box;
-}
-
-.linked-tile-img {
-    width: 45%;
-    border-radius: 20px;
-    margin: 8px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  }
-  
-    
-  h2 {
-    color: #24a7e1;
-  }
-
-  p {
-    color: rgb(48, 47, 47);
-  } 
-
-
-  .linked-tile-img:hover {
-    width: 50%;
-    margin: 2px;
-    
-  }
-
-  button {
-      background-color: #24a7e1;
-      color: white;
-      border-radius: 20px;
-      padding: 10px;
-      border-style: none;
-
-  }
-
-  h2, p {
-      margin: 8px;
-  }
-*/

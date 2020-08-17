@@ -12,11 +12,11 @@
 }
 
 .heading-center {
-  text-align:left;
+  text-align:center;
 }
 
 .heading-right {
-  text-align:left;
+  text-align:right;
 }
 
 @media (max-width:991px) { 

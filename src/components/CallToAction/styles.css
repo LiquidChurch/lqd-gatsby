@@ -1,0 +1,35 @@
+.cta-text {
+  display: block;
+  background: transparent !important;
+  color: #009DD1;
+}
+
+.cta-button {
+  background-color: #009DD1;
+  color: #FFF;
+  border: none;
+  padding: 3px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 20px;
+  margin-top: 8px;
+}
+
+.cta-label {
+  display: inline-block;
+  margin-right: 12px;
+}
+
+.cta-icon {
+  width: 1.4em;
+  height: 1.1em;
+  display: inline-block;
+  vertical-align: text-top;
+  margin-right: 12px;
+}
+
+.cta-arrow {
+  display: block;
+}
+

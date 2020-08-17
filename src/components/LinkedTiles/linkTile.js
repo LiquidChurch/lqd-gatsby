@@ -23,13 +23,13 @@ export default ({ page_slug_id }) => {
       to={page_info.uri}
       key={"linked-tile-img-1" + page_info.databaseId}
     >
-    <div className="linked-tile-img">
+    <div className="linked-tile">
      <Imgix 
       src={"https://liquidchurch.imgix.net/" + imgUrl[4] + "/" + imgUrl[5] + "?ar=16:9&fit=crop&h=296"}
       altText={page_info.featuredImage.node.altText}
-      className="img-radius"
+      className="linked-tile-image"
        />   
-    <h2 className="hero-text">{Parse(page_info.featuredImage.node.caption)}</h2>
+      <h2 className="hero-text font-h2">{Parse(page_info.featuredImage.node.caption)}</h2>
     </div>
     </Link>
   </>

@@ -84,9 +84,6 @@ export default(location) => {
                   searchClient={searchClient} 
                   indexName="Combined"
               > 
-                <div className="search-panel__filters">
-
-              </div>
                 <SearchBox
                     className="searchbox"
                     translations={{

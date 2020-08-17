@@ -1,4 +1,5 @@
 import React from "react"
+import Parse from 'react-html-parser'
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -20,7 +21,7 @@ export default ({
         <Row>
           <Col>
             <h1 className={'font-h1 heading-' + size.toLowerCase() + ' heading-' + alignment.toLowerCase()}>
-              {text}
+              {Parse(text)}
             </h1>
           </Col>
         </Row>

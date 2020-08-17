@@ -4,8 +4,9 @@ import Parse from "react-html-parser"
 
 import Container from 'react-bootstrap/Container'
 
-import { useImageById } from "../../data/useImage"
+import { useImageById } from '../../data/useImage'
 import { GlobalContext } from '../GlobalContext/context'
+import CallToAction from '../CallToAction'
 
 import './styles.css'
 
@@ -20,9 +21,11 @@ export default ({
   sidekick,
   cta,
 }) => {
-  console.log('hero image cta', cta)
   const ctx = useContext(GlobalContext)
   const imageInfo = useImageById(image_id)
+  const ctaObject = JSON.parse(cta)
+  console.log('image id', image_id)
+  console.log('imageInfo', imageInfo)
   
   if (imageInfo === undefined) {
     return (
@@ -34,11 +37,13 @@ export default ({
   const [textAreaPosition, setTextAreaPosition] = useState(0)
   var imageUrl = imageInfo.mediaItemUrl.split("/")
   
- // let textAreaHeight = 45
   useEffect (() => {
     let textAreaHeight = 45
     function setTextAreaHeight() {
-      textAreaHeight = 60 + document.getElementById('hero-statement').offsetHeight + document.getElementById('hero-sidekick').offsetHeight
+      textAreaHeight = 60 + 
+                       document.getElementById('hero-statement').offsetHeight + 
+                       document.getElementById('hero-sidekick').offsetHeight + 
+                       document.getElementById('hero-cta').offsetHeight
       setTextAreaPosition(textAreaHeight)
     }
     
@@ -68,11 +73,20 @@ export default ({
                       {background: 'none', bottom: textAreaPosition + 'px', marginBottom: (135 - textAreaPosition) + 'px'} :
                       {bottom: textAreaPosition + 'px', marginBottom: (135 - textAreaPosition) + 'px'} ) ) }
       >
-        <div id="hero-statement" className="hero-image-title">
-          { statement }
+        <div id="hero-statement" className="hero-image-title font-h1">
+          { Parse(statement) }
         </div>
-        <div id="hero-sidekick" className="hero-image-text">
+        <div id="hero-sidekick" className="hero-image-text font-medium">
           { Parse(sidekick) }
+        </div>
+        <div id="hero-cta" className="hero-image-cta font-medium">
+          {
+            ctaObject.rows.map(cta => {
+              return (
+                <CallToAction cta={cta} />
+              )
+            })
+          }
         </div>
       </div>
     </Container>

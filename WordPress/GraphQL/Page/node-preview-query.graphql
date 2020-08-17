@@ -185,12 +185,15 @@ fragment BlockFragment on Block {
   }
   ... on BlockLabPhotoBlock {
     attributes__typename_BlockLabPhotoBlockAttributes: attributes {
+      bg_color
       className
       cta
-      image
-      tab_color
-      tab_tag
-      tab_text
+      header
+      header_secondary
+      image_id
+      location
+      text_block
+      text_block_secondary
     }
   }
   ... on BlockLabMediaTilesBlock {
@@ -260,14 +263,12 @@ fragment BlockFragment on Block {
   }
   ... on BlockLabPageStrapBlock {
     attributes__typename_BlockLabPageStrapBlockAttributes: attributes {
+      bg_color
       className
-      cta_slug
-      cta_text
-      strap_bg_img
-      strap_color
-      strap_image
-      strap_tag
-      strap_text
+      cta
+      image_id
+      sidekick
+      statement
     }
   }
   ... on BlockLabExternalRedirectBlock {

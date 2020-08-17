@@ -1,12 +1,11 @@
-.linked-tile-img {
+.linked-tile {
   width: 95%;
-  border-radius: 20px;
   margin: 8px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 20px;
 }
 
-/* radius of the location images */
-.img-radius {
+.linked-tile-image {
   border-radius: 20px;
 }
 
@@ -16,7 +15,7 @@
   text-alignment: center;
 }
 
-  .linked-tile-img:hover {
+  .linked-tile:hover {
   width: 100%;
   margin: 2px;
   
@@ -26,14 +25,10 @@
 .hero-text {
   text-align: center;
   position: absolute;
-  top: 50%;
+  top: 54%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: #ffffff;
-  font-weight: bold;
-  font-size: 30px;
-  character-spacing: 0;
-  line-spacing: 25;
 }
 
 

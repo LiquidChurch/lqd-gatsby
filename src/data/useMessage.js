@@ -1,5 +1,5 @@
 import { useStaticQuery, graphql } from "gatsby"
-export const useMessage = (messageId) => {
+export const useMessageById = (messageId) => {
   const data = useStaticQuery(
     graphql`
       query {
@@ -76,7 +76,12 @@ export const useMessage = (messageId) => {
   var messagePageInfo = data.allWpMessage.nodes.find(
     ({ databaseId }) => databaseId === messageId
   )
-  messagePageInfo.category = "message"
-  return messagePageInfo
   
+  console.log('message page info', messagePageInfo)
+  if (messagePageInfo !== undefined) {
+    messagePageInfo["category"] = "message"
+    return messagePageInfo
+  }
+  
+  return null
 }

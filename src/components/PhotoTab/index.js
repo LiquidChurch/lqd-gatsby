@@ -6,10 +6,12 @@ import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 
-
+import CallToAction from '../CallToAction'
 import { useImageById } from "../../data/useImage"
+import { usePageSlugById } from "../../data/usePage"
 
 import Parse from "react-html-parser"
+import { RichTextHelper } from "../../helpers/functions"
 
 import "./photoTab.css"
 
@@ -30,88 +32,64 @@ function TabImage(props) {
   return null
 }
 
-
 /**
  * PhotoTab Block Component
  */
 export default ({
+  location,
+  image_id,
+  bg_color,
+  header,
+  text_block,
+  header_secondary,
+  text_block_secondary,
   cta,
-  tab_bg_img,
-  tab_color,
-  tab_tag,
-  tab_text,
-  image,
 }) => {
+  const ctaObject = JSON.parse(cta)
   
- let cta_object = JSON.parse(cta)
+  const imageInfo = useImageById(image_id)
+  var imgUrl = imageInfo.mediaItemUrl.split("/")
   
- let cta_slug = cta_object.rows[0].slug.name
- let cta_text = cta_object.rows[0].text 
+  var imgOrder = 1
+  var textOrder = 2
   
-    
- 
- /*
- cta_slug.forEach(item => console.log(item));
-  
-  cta_text.forEach(item => console.log(item));
-  */
+  if (location === "right") {
+    imgOrder = 2
+    textOrder = 1
+  }
 
-  
-  
-  function TabLink() {
-  
-  return (
-    <button className="btn font-btn blue-btn">
-    <Link className="btn-text"  to={"/" + cta_slug}>{cta_text}</Link>
-    </button>
-    
-  )
-}
-  
-  
-  
-  var hasImage = false
-  
-  if (image !== null && image !== undefined) {
-    hasImage = true
+  if (text_block !== "" && text_block !== undefined) { 
+    var textBlock = RichTextHelper(text_block)
   }
   
+  console.log("text Block", textBlock)
   return (
   <>
-  <section className="fullwidth-section" style={{backgroundColor: tab_color}}>
+  <section className="fullwidth-section" style={{backgroundColor: bg_color}}>
   <Container>
-    <Row className="tab-rows">
-      <Col id={"tab-body-" + cta_slug} className={hasImage ? "tab-pad-left" : "vertical-center"}>
-        <h2 className={hasImage ? "photo-tab-tag font-h1 tab-left" : "photo-tab-tag font-h1"}>{Parse(tab_tag)}</h2>
-        <p className={hasImage ? "photo-tab-text font-large tab-left" : "photo-tab-text font-large"}>{tab_text}</p>
-        <div className={hasImage ? "photo-tab-cta tab-left" : "photo-tab-cta"}>
-          
-          {cta_object.rows.map(item => {
-                 return (
-         <TabLink cta={cta} />
-           )})}
+    <Row className="photo-tab-row">
+      <Col xs={{span: 12, order: 1}} lg={{span: 6, order: imgOrder}} className="photo-tab-image-col">
+        <Imgix 
+          src={"https://liquidchurch.imgix.net/" + imgUrl[4] + "/" + imgUrl[5] + "?ar=1:1&fit=crop&h=545"}
+          className="photo-tab-image"
+          />
+      </Col>    
+      <Col  xs={{span: 12, order: 2}} lg={{span: 6, order: textOrder}}  id={"photo-tab-body-" + image_id}>
+        <h2 className={"photo-tab-tag font-h1 tab-left"}>{Parse(header)}</h2>
+        <div className={"photo-tab-text font-regular tab-left"}>{Parse(textBlock)}</div>
+        <div className={"photo-tab-cta tab-left"}>
+          {
+            ctaObject.rows.map(cta => {
+              return (
+                <CallToAction cta={cta} />
+              )
+            })
+          }
         </div>
-      </Col> 
-      <TabImage tab_image_id={image} />
-     
-    </Row>
+      </Col>
 
-    <Row className="tab-rows">
-      <TabImage tab_image_id={image} />
-      <Col id={"tab-body-" + cta_slug} className={hasImage ? "tab-pad-left" : "vertical-center"}>
-        <h2 className={hasImage ? "photo-tab-tag font-h1 tab-left" : "photo-tab-tag font-h1"}>{Parse(tab_tag)}</h2>
-        <p className={hasImage ? "photo-tab-text font-large tab-left" : "photo-tab-text font-large"}>{tab_text}</p>
-        <div className={hasImage ? "photo-tab-cta tab-left" : "photo-tab-cta"}>
-          
-           {cta_object.rows.map(item => {
-                 return (
-         <TabLink cta={cta}/>
-           )})}
-        </div>
-      </Col> 
-       
-    </Row>
-    
+     
+    </Row>    
   </Container>
   </section>
   </>
