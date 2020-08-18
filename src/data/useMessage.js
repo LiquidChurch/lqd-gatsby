@@ -76,8 +76,7 @@ export const useMessageById = (messageId) => {
   var messagePageInfo = data.allWpMessage.nodes.find(
     ({ databaseId }) => databaseId === messageId
   )
-  
-  console.log('message page info', messagePageInfo)
+
   if (messagePageInfo !== undefined) {
     messagePageInfo["category"] = "message"
     return messagePageInfo

@@ -1,5 +1,6 @@
 import React from "react"
 import Parse from 'react-html-parser'
+import { RichTextHelper } from "../../helpers/functions"
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -20,7 +21,7 @@ export default ({
       <Container>
         <Row>
           <Col>
-            <h1 className={'font-h1 heading-' + size.toLowerCase() + ' heading-' + alignment.toLowerCase()}>
+            <h1 className={'heading-' + size.toLowerCase() + ' heading-' + alignment.toLowerCase()}>
               {Parse(text)}
             </h1>
           </Col>

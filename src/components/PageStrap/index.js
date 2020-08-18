@@ -63,9 +63,6 @@ export default ({
   cta,
 }) => {
   const ctaObject = JSON.parse(cta)
-
-
-
   
   var hasImage = false
   if (image_id !== null && image_id !== undefined && image_id !== 0) {

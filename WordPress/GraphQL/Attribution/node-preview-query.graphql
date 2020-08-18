@@ -27,11 +27,13 @@ query PREVIEW_QUERY($id: ID!) {
       }
     }
     profileImage {
+      blurb
       fieldGroupName
       image {
         id
         sourceUrl
       }
+      role
     }
     slug
     taxonomy {

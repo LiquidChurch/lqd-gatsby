@@ -1,13 +1,10 @@
-button {
- background-color: #24a7e1;
- color: white;
- border-radius: 20px;
- padding: 10px;
- border-style: none;
+.photo-tab-row {
+  margin-left: 40px;
+  margin-right: 40px;
 }
 
-.photo-tab-row {
-  margin: 50px;
+.photo-tab-image-col {
+  
 }
 
 .photo-tab-image {
@@ -15,159 +12,121 @@ button {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.blue-btn {
-    margin: 0 10px;
+.photo-tab-body-col {
+  display: block;
+  margin-top:0;
 }
-
-.btn-text {
-    font-family: "Avenir Next Demi";
-    font-size: 1.13em;
-    color: #ffffff;
-    letter-spacing: 0.1em;
-}
-
 
 .photo-tab-tag {
-  margin-left: auto;
-  margin-right: auto;
-  text-align:center;
-  margin-bottom: 0.7em;  
+  display: block;
 }
 
 .photo-tab-text {
-  margin-left: auto;
-  margin-right: auto;  
-  text-align:center;
-  margin-bottom:20px;
+  display: block;  
+  line-height: 1.3em;  
 }
 
 .photo-tab-cta {
+  display: block;  
   color: #009DD1;
-  text-align: center;
   text-transform: uppercase;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left:-34px;
 }
 
-.photo-tab-btn {
-  background-color: #009DD1;
-  color: #fff;
-  border-radius:1.5em;
-  font-size: 1.0em;
-  letter-spacing: 0.1em;  
+@media (max-width:991px) {
+  .photo-tab-left {
+    margin-right: 65px;
+    margin-left: -65px;
+  }
+  
+  .photo-tab-image {
+    width: 345px;
+  } 
+
+  .photo-tab-body-col {
+    margin-top: -13px;
+  }
+  
+  .photo-tab-tag {
+    width: 345px;
+
+  }
+  
+  .photo-tab-text {
+    width: 345px;
+  }
+  
+  .photo-tab-cta {
+    width: 345px;
+  }
 }
 
-.tab-left {
-  text-align:left;
+@media (max-width:767px) { 
+  .photo-tab-left {
+    margin-right: auto;
+    margin-left: auto;
+  } 
+  
+  .photo-tab-image-col {
+    text-align: center;
+  }
+  
+  .photo-tab-body-col {
+    margin-top: 20px;
+  }
+  
+  .photo-tab-tag {
+    margin-right: auto;
+    margin-left: auto;    
+  }
+  
+  .photo-tab-text {
+    margin-right: auto;
+    margin-left: auto;    
+  }
+  
+  .photo-tab-cta {
+    margin-left:-7px;
+    margin-top:0px;    
+  }
+}
+
+@media (max-width: 575px) {
+  .photo-tab-left {
+
+  }
+  
+  .photo-tab-image-col {
+   
+  }
+  
+  .photo-tab-image {
+    margin-left:-10%;        
+    width: 120%;
+  }
+  
+  .photo-tab-tag {    
+    margin-left:-10%;    
+    width: 120%;
+  }
+  
+  .photo-tab-text {
+    margin-left:-10%;    
+    width: 120%;
+  }
+  
+  .photo-tab-cta {
+    margin-left:-17.5%;    
+    width: 130%;
+  }
 }
 
 
-.tab-pad-left{
-  margin-left:0.5em;
-}
 
 .photo-tab-h2 {
   font-family: "Avenir Next Bold";  
   color: #009DD1;
   font-size: 1.13em;
-  margin-bottom: -13px;
+  margin-bottom: 5px;
+  margin-top: 12px;
 }
-
-@media (max-width:991px) {
-  .photo-tab-container {
-    padding-top: 3em;
-    padding-bottom: 3em;
-  }
-  
-  .photo-tab-tag {
-    margin-bottom: 2.0vw;    
-  }
-  
-  .photo-tab-text {
-    max-width:88vw;    
-  }
-  
-  .photo-tab-btn {
-    font-size:2.0vw;
-  }
-  
-   /* tentative */
- .font-h1 {
-    font-size: 1.6em;
-}
-  
-.font-large {
-    font-size: 1.1em;
-}
-  
-  .btn-text {
-    font-size: 0.8em;
-}
-  
-  .blue-btn {
-    margin: 0 10px;
-}
-    
-  
-}
-
-
-
-@media (max-width:767px) {
-  .photo-tab-image-col {
-    text-align-last: center;
-    padding-bottom: 1em;
-  }
-  
-  .photo-tab-image {
-    height: 215px;
-    width: auto;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .tab-left {
-    text-align: center;
-  }
-  
-   
-  
-}
-
-
-
-
-@media (max-width:575px) {
-  .photo-tab-container {
-    padding-top: 2.5em;
-    padding-bottom: 2.5em;
-  }
-  
-  .photo-tab-tag {
-    margin-bottom: 2.9vw;    
-  }
-  
-  .photo-tab-text {
-    max-width:90vw;    
-  }
-  
-  .photo-tab-btn {
-    font-size:3.1vw;
-  }  
-  
-  .font-btn {
-   margin-bottom: 2em;
-  }
-}
-
-@media (max-width:334px) {
-  .photo-tab-text {
-    margin-bottom:2.0vw;
-  }
-  
-  .photo-tab-btn {
-    font-size:3.9vw;
-    margin-bottom:2.0vw;
-  }   
-}
-

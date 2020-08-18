@@ -15,23 +15,6 @@ import { RichTextHelper } from "../../helpers/functions"
 
 import "./photoTab.css"
 
-function TabImage(props) {
-  const image_info = useImageById(props.tab_image_id)
-   
-  if (image_info !== undefined) {
-    var imgUrl = image_info.mediaItemUrl.split("/")
-    return (
-      <Col xs={12} sm={12} md={6} lg={6} className="photo-tab-image-col">
-        <Imgix 
-          src={"https://liquidchurch.imgix.net/" + imgUrl[4] + "/" + imgUrl[5] + "?h=296"}
-          className="photo-tab-image"
-          />
-      </Col>
-    )
-  }  
-  return null
-}
-
 /**
  * PhotoTab Block Component
  */
@@ -48,6 +31,13 @@ export default ({
   const ctaObject = JSON.parse(cta)
   
   const imageInfo = useImageById(image_id)
+
+  if (imageInfo === undefined) {
+    return(
+      <>
+      </>
+    )
+  }
   var imgUrl = imageInfo.mediaItemUrl.split("/")
   
   var imgOrder = 1
@@ -58,26 +48,30 @@ export default ({
     textOrder = 1
   }
 
-  if (text_block !== "" && text_block !== undefined) { 
+  if (text_block !== "" || text_block !== null) { 
     var textBlock = RichTextHelper(text_block)
   }
+
+  if (text_block_secondary !== "" || text_block_secondary !== null) { 
+    var textBlockSecondary = RichTextHelper(text_block_secondary)
+  }
   
-  console.log("text Block", textBlock)
   return (
   <>
   <section className="fullwidth-section" style={{backgroundColor: bg_color}}>
   <Container>
     <Row className="photo-tab-row">
-      <Col xs={{span: 12, order: 1}} lg={{span: 6, order: imgOrder}} className="photo-tab-image-col">
+      <Col xs={{span: 12, order: 1}} md={{span: 6, order: imgOrder}} 
+          className={(imgOrder === 1) ? "photo-tab-image-col photo-tab-left" : "photo-tab-image-col"}>
         <Imgix 
           src={"https://liquidchurch.imgix.net/" + imgUrl[4] + "/" + imgUrl[5] + "?ar=1:1&fit=crop&h=545"}
           className="photo-tab-image"
           />
       </Col>    
-      <Col  xs={{span: 12, order: 2}} lg={{span: 6, order: textOrder}}  id={"photo-tab-body-" + image_id}>
-        <h2 className={"photo-tab-tag font-h1 tab-left"}>{Parse(header)}</h2>
-        <div className={"photo-tab-text font-regular tab-left"}>{Parse(textBlock)}</div>
-        <div className={"photo-tab-cta tab-left"}>
+      <Col  xs={{span: 12, order: 2}} md={{span: 6, order: textOrder}} className="photo-tab-body-col" id={"photo-tab-body-" + image_id}>
+        <h2 className={(textOrder === 1) ? "photo-tab-tag photo-tab-left font-h1" :"photo-tab-tag font-h1"}>{Parse(header)}</h2>
+        <div className={(textOrder === 1) ? "photo-tab-text photo-tab-left font-regular" : "photo-tab-text font-regular"}>{Parse(textBlock)}</div>
+        <div className={(textOrder === 1) ? "photo-tab-cta photo-tab-left" : "photo-tab-cta"}>
           {
             ctaObject.rows.map(cta => {
               return (
@@ -86,72 +80,12 @@ export default ({
             })
           }
         </div>
+        <h2 className={(textOrder === 1) ? "photo-tab-tag photo-tab-left font-h1" :"photo-tab-tag font-h1"}>{Parse(header_secondary)}</h2>
+        <div className={(textOrder === 1) ? "photo-tab-text photo-tab-left font-regular" : "photo-tab-text font-regular"}>{Parse(textBlockSecondary)}</div>
       </Col>
-
-     
     </Row>    
   </Container>
   </section>
   </>
   )
 }
-
-
-
-/*
-import React from 'react';
-import ReactDOM from 'react-dom';
-
-import Col from 'react-bootstrap/Col'
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-
-import './photoTab.css';
-import photo  from './photo.jpg';
-import PhotoTab from './PhotoTab';
-
-class PhotoTabs extends React.Component {
-    render() {
-        
-
-        return(
-            <div>
-              <h2 className="linked-tile-title">PhotoTabs</h2>
-                
-          <Container>
-          <Row xs={12} md={6}>
-            <Col>
-              <PhotoTab
-                href="#"
-                src={photo}
-                className="linked-tile-img"
-                alt="Link Tile"     
-                />
-            </Col>
-
-            <Col>
-                <h2>Watch On-Demand</h2>
-                <p>Lorem ipsum dolor sit amet, mea disputando 
-                    signiferumque ne, id vim laoreet evertitur. 
-                    Admodum tacimates delicatissimi et cum, 
-                    nec ludus latine suscipit ne. 
-                    Nominavi epicurei disputationi ne usu, 
-                    usu brute percipitur dissentias ut, 
-                    at eos mandamus indoctum reprehendunt. 
-                    No sed pertinax nominati.</p>
-
-                <button>This CTA is a big deal</button>
-            </Col>
-            
-          </Row>
-          </Container>
-          
-            </div>
-        );
-    }
-
-}
-
-ReactDOM.render(<PhotoTabs/>, document.getElementById('root'));
-
-*/

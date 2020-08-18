@@ -299,7 +299,7 @@ exports.createResolvers = async ({
 }
 */
 
-/*
+
 exports.createResolvers = async (
   {
     actions,
@@ -336,4 +336,3 @@ exports.createResolvers = async (
     },
   })
 }
-*/

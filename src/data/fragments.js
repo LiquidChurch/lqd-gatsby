@@ -126,6 +126,16 @@ export const Heading = graphql`
   }
 `
 
+export const Attributions = graphql`
+  fragment Attributions on WpBlockLabAttributionsBlock {
+    attributes {
+      title
+      bg_color
+      attribution_list
+    }
+  }
+`
+
 export const Button = graphql`
   fragment Heading on WpBlockLabButtonBlock {
     attributes {
@@ -268,6 +278,7 @@ export const AllBlocks = graphql`
     name
     ...Paragraph
     ...List
+    ...Attributions
     ...Button
     ...Heading
     ...HomepageHero

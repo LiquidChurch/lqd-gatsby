@@ -41,9 +41,9 @@ export default ({
     let textAreaHeight = 45
     function setTextAreaHeight() {
       textAreaHeight = 60 + 
-                       document.getElementById('hero-statement').offsetHeight + 
-                       document.getElementById('hero-sidekick').offsetHeight + 
-                       document.getElementById('hero-cta').offsetHeight
+                       (!document.getElementById('hero-statement') ? 0 : document.getElementById('hero-statement').offsetHeight) + 
+                       (!document.getElementById('hero-sidekick') ? 0 : document.getElementById('hero-sidekick').offsetHeight) +
+                       (!document.getElementById('hero-cta') ? 0 : document.getElementById('hero-cta').offsetHeight)
       setTextAreaPosition(textAreaHeight)
     }
     

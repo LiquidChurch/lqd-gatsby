@@ -8,7 +8,6 @@ import './styles.css'
 
 
 function ShowArrow(props) {
-  console.log('show Arrow', props)
   if (props.showArrow) {
     return (
     <ArrowForward />
@@ -29,9 +28,6 @@ export default (props) => {
   if (props.cta.page_id !== undefined) {
     pageInfo = usePageById(props.cta.page_id.id)
   }
-
-  console.log('cta', props.cta)
-  console.log('pageinfo', pageInfo)
   
   let icon = ""
   if (props.cta.show_icon !== undefined && props.cta.show_icon !== "none") {
@@ -46,7 +42,7 @@ export default (props) => {
             to={"/" + pageInfo.slug}>
         <span className={(icon === '') ? '' : props.cta.show_icon + '-icon cta-icon'}
               style={{backgroundColor:props.cta.font_color}}></span>
-        <div class="cta-label"
+        <div className="cta-label"
               style={{color:props.cta.font_color}}>{props.cta.label}</div>
         <ShowArrow showArrow={props.cta.show_arrow}/>
       </Link>

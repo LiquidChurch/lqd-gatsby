@@ -18,15 +18,13 @@ export const getRelativeUrl = (url, siteUrl) => {
 }
 
 export const RichTextHelper = (props) => {
-  console.log("remove paragraph", props)
-  if (props === undefined) {
+  if (props === undefined || props === null) {
     return ""
-  }
-  
+  }  
   var stringLength = props.length  
   var tempString = props.substring(3, stringLength-5)
   tempString = tempString.replace(/&lt;/g, '<')
- console.log("temp string", tempString)
+  tempString = tempString.replace(/<\/?p[^>]*>/g, "")                      
   return tempString
 }
 

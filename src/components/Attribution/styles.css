@@ -1,0 +1,50 @@
+.attribution-profile-primary {
+  display: flex;
+}
+
+.attribution-profile-image {
+  width: 247px;
+  min-width: 247px;
+  height: auto;
+  margin-top: 15px;
+}
+
+.attribution-profile-role {
+  text-transform: uppercase;
+  color: #565656;
+}
+
+.attribution-profile-description {
+  margin-top: 12px;
+}
+
+.attribution-profile-information {
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 25px;
+}
+
+@media (max-width:991px) {
+  .attribution-profile-image {
+    width: 200px;
+    min-width: 200px;
+    height: 200px;
+  }
+}
+
+@media (max-width:575px) {
+  .attribution-profile-primary {
+    display: block;
+  }
+  
+  .attribution-profile-image {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  
+  .attribution-profile-information {
+    margin-top: 18px;
+    margin-right: 25px;
+  }
+}

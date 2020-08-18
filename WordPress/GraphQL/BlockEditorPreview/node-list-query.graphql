@@ -148,6 +148,20 @@ fragment BlockFragment on Block {
   parentNodeDatabaseId
   saveContent
   __typename
+  ... on BlockLabAttributionsBlock {
+    attributes__typename_BlockLabAttributionsBlockAttributes: attributes {
+      attribution_list
+      bg_color
+      className
+      title
+    }
+  }
+  ... on BlockLabIframeBlock {
+    attributes__typename_BlockLabIframeBlockAttributes: attributes {
+      className
+      src
+    }
+  }
   ... on BlockLabPhotoCarouselBlock {
     attributes__typename_BlockLabPhotoCarouselBlockAttributes: attributes {
       className

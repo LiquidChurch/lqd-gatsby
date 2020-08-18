@@ -28,11 +28,13 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
         }
       }
       profileImage {
+        blurb
         fieldGroupName
         image {
           id
           sourceUrl
         }
+        role
       }
       slug
       taxonomy {

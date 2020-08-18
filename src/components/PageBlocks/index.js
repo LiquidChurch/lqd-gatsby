@@ -15,6 +15,7 @@ import BlockPageModal from "../PageModal"
 import BlockLinkedTiles from "../LinkedTiles"
 import BlockPhotoTab from  "../PhotoTab"
 import BlockPhotoCarousel from "../PhotoCarousel"
+import BlockAttribution from "../Attribution"
 
 import { PageModalProvider } from "../PageModal/context.js"
 
@@ -25,6 +26,7 @@ export default ({ blocks, featuredImage }) => {
   const blockMap = {
     "core/paragraph": BlockParagraph,
     "core/list": BlockList,
+    "block-lab/attributions-block": BlockAttribution,
     "block-lab/button": BlockButton,
     "block-lab/heading": BlockHeading,
     "block-lab/homepage-hero": BlockHomepageHero,

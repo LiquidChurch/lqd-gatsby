@@ -27,11 +27,13 @@ query SINGLE_CONTENT_QUERY($id: ID!) {
       }
     }
     profileImage {
+      blurb
       fieldGroupName
       image {
         id
         sourceUrl
       }
+      role
     }
     slug
     taxonomy {

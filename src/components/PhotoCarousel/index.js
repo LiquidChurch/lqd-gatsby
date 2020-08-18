@@ -18,6 +18,12 @@ export default ({ images }) => {
     imagesInfo.push(useImageById(item.image))
   })
   
+  let carouselControl = true
+  
+  if (imagesInfo.length <= 1) {
+    carouselControl = false
+  }
+  
   const [carouselIndex, setCarouselIndex] = useState(0)
   
   const setCarousel = (index, e) => {
@@ -37,34 +43,33 @@ export default ({ images }) => {
                 onSelect={setCarousel}
               >
                 {imagesInfo.map(image => {
-
                   var imgUrl = image.mediaItemUrl.split("/")
                   return (
-                    <Carousel.Item>
+                    <Carousel.Item
+                      key={'carouse-image-item-' + image.id}>
                       <Imgix 
                         src={"https://liquidchurch.imgix.net/" + imgUrl[4] + "/" + imgUrl[5] + "?ar=16:9&fit=crop&corner-radius=10,10,10,10"}
-                        key={'carouse-image-' + image.id}
                         className={'carousel-image'}
-                        sizes="100vw" />
+                        sizes="110vw" />
                     </Carousel.Item>
                   )
                 })}
               </Carousel>
             </Col>
             <Col sm={{span:12, offset:0}} md={{span:10, offset:1}} lg={{span:8, offset:2}}>
-              <div className={'carousel-control'}>
-              {imagesInfo.map((image, index) => {
+              <div className={carouselControl ? 'carousel-control' : 'carousel-control-hidden'}>
+              {imagesInfo.map((image, index) => {               
                 var imgUrl = image.mediaItemUrl.split("/")
                 var buttonWidth = 100 / imagesInfo.length
                 return (
                       <a className={'carousel-control-button'} 
                          style={{width: buttonWidth + '%'}}
-                         onClick={() => setCarousel(index)}>
-                      <Imgix 
-                        src={"https://liquidchurch.imgix.net/" + imgUrl[4] + "/" + imgUrl[5] + "?ar=16:9&fit=crop&h=120&corner-radius=10,10,10,10"}
-                        key={'carousel-control-image-' + image.id}
-                        className={(carouselIndex===index) ? 'carousel-control-image' : 'carousel-control-image greyed'}
-                       />
+                         onClick={() => setCarousel(index)}
+                         key={'carousel-control-image-link-' + image.id}>
+                        <Imgix 
+                          src={"https://liquidchurch.imgix.net/" + imgUrl[4] + "/" + imgUrl[5] + "?ar=16:9&fit=crop&h=120&corner-radius=10,10,10,10"}
+                          className={(carouselIndex===index) ? 'carousel-control-image' : 'carousel-control-image greyed'}
+                        />
                       </a>
                 )
               })}
