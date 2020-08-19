@@ -125,6 +125,11 @@ fragment BlockFragment on Block {
   parentNodeDatabaseId
   saveContent
   __typename
+  ... on BlockLabGoogleMapBlock {
+    attributes__typename_BlockLabGoogleMapBlockAttributes: attributes {
+      className
+    }
+  }
   ... on BlockLabAttributionsBlock {
     attributes__typename_BlockLabAttributionsBlockAttributes: attributes {
       attribution_list

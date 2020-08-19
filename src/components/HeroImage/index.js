@@ -24,8 +24,6 @@ export default ({
   const ctx = useContext(GlobalContext)
   const imageInfo = useImageById(image_id)
   const ctaObject = JSON.parse(cta)
-  console.log('image id', image_id)
-  console.log('imageInfo', imageInfo)
   
   if (imageInfo === undefined) {
     return (

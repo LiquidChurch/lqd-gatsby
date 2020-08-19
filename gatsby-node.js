@@ -214,7 +214,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   
   if (mediaItemResult.data.allWpMediaItem.nodes) {
     mediaItemResult.data.allWpMediaItem.nodes.forEach(media => {
-      console.log(media)
       createPage({
         path: `/mediaItem/${media.databaseId}`,
         component: slash(path.resolve(`./src/templates/media.js`)),

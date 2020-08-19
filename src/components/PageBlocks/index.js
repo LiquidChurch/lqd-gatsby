@@ -7,6 +7,7 @@ import BlockButton from "../Button"
 import BlockHomepageHero from "../HomepageHero"
 import BlockHeroImage from "../HeroImage"
 import BlockExternalRedirect from "../ExternalRedirect"
+import BlockIFrame from "../IFrame"
 import BlockPageStrap from "../PageStrap"
 import BlockHomeLinks from "../HomeLinks"
 import BlockMessageTile from "../MessageTile"
@@ -16,6 +17,7 @@ import BlockLinkedTiles from "../LinkedTiles"
 import BlockPhotoTab from  "../PhotoTab"
 import BlockPhotoCarousel from "../PhotoCarousel"
 import BlockAttribution from "../Attribution"
+import BlockGoogleMap from "../GoogleMap"
 
 import { PageModalProvider } from "../PageModal/context.js"
 
@@ -32,6 +34,8 @@ export default ({ blocks, featuredImage }) => {
     "block-lab/homepage-hero": BlockHomepageHero,
     "block-lab/hero-image": BlockHeroImage,
     "block-lab/external-redirect": BlockExternalRedirect,
+    "block-lab/google-map": BlockGoogleMap,
+    "block-lab/iframe-block": BlockIFrame,
     "block-lab/page-strap": BlockPageStrap,
     "block-lab/home-links": BlockHomeLinks,
     "block-lab/message-tile": BlockMessageTile,

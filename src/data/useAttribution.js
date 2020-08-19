@@ -28,8 +28,7 @@ export const useAttributionById = (attributionId) => {
   var attributionInfo = data.allWpAttribution.nodes.find(
     ({ databaseId }) => databaseId === attributionId
   )
-  
-  console.log('attribution info', attributionInfo)
+
   if (attributionInfo !== undefined) {
     return attributionInfo
   }

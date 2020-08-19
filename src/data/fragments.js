@@ -186,6 +186,22 @@ export const ExternalRedirect = graphql`
   }
 `
 
+export const IFrame = graphql`
+  fragment IFrame on WpBlockLabIframeBlock {
+    attributes {
+        src
+    }
+  }
+`
+
+export const GoogleMap = graphql`
+  fragment GoogleMap on WpBlockLabGoogleMapBlock {
+    attributes {
+      className
+    }
+  }
+`
+
 export const PageStrap = graphql`
   fragment PageStrap on WpBlockLabPageStrapBlock {
     attributes {
@@ -283,7 +299,9 @@ export const AllBlocks = graphql`
     ...Heading
     ...HomepageHero
     ...HeroImage
+    ...GoogleMap
     ...ExternalRedirect
+    ...IFrame
     ...PageStrap
     ...HomeLinks
     ...MessageTile

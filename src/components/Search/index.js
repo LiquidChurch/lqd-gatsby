@@ -38,9 +38,7 @@ const IndexResults = connectStateResults(
 );
 
 const AllResults = connectStateResults(({ allSearchResults, children }) => {
-  console.log('all search results', allSearchResults)
   
-
   const hasResults =
 
     allSearchResults &&
@@ -57,23 +55,8 @@ const AllResults = connectStateResults(({ allSearchResults, children }) => {
     );
 });
 
-const TestState = ({
-  searchState,
-  searchResults,
-}) => {
-  console.log('searchState', searchState)
-  console.log('searchResults', searchResults)
-}
-
-const TestResults = ({ searchState }) => (
-  console.log('testResults searchState', searchState)
-)
-
-const CustomStateResults = connectStateResults(TestResults)
-
 export default(location) => {
   
-    console.log('algolia id', appId)
     return (
       <>
         <Heading text="Search" alignment="left" size="H1" background_color="#FFF"/>
