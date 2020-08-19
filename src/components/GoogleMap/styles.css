@@ -13,7 +13,7 @@
   border-radius: 0 16px 16px 0;
   margin-left:24px !important;
   overflow: visible !important;
-  z-index: -200 !important;
+  z-index: -300 !important;
 }
 
 .circle {

@@ -1,13 +1,51 @@
 import React from 'react'
 import "./styles.css"
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
+import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps'
 
 import Row from 'react-bootstrap/Row'
 import Container from 'react-bootstrap/Container'
+import Parse from "react-html-parser"
 
+import PageModal from "../PageModal"
 const styles = require('./GoogleMapStyles.json')
 const mapMarker = require('./map-marker.svg')
 const { MarkerWithLabel } = require("react-google-maps/lib/components/addons/MarkerWithLabel")
+
+const googleKey = process.env.GOOGLE_API_KEY
+
+const ClickTest = () => {
+  console.log('clicked')
+}
+
+function MapMarker(props) {
+  console.log('map marker', props)
+  
+  return (
+    <>
+   <MarkerWithLabel
+        icon={{
+          url: mapMarker,
+          anchor: new window.google.maps.Point(25,70),
+        }}
+        position={{
+          lat: props.lat, // latitude to position the marker
+          lng: props.lng // longitude to position the marker
+        }}
+        labelAnchor={new window.google.maps.Point(0,70)}
+        labelClass={'map-label'}        
+      >
+         <div><span className='circle'></span>{Parse(props.label)}</div>
+
+      </MarkerWithLabel>
+                   <PageModal 
+          modal_title='Test Modal'
+          modal_text='Test Text'
+        />
+            </>
+  )
+          
+  
+}
 
 const GoogleMapComponentWithMarker = withScriptjs(
   withGoogleMap(props => (
@@ -26,118 +64,46 @@ const GoogleMapComponentWithMarker = withScriptjs(
         styles: styles // change default map styles
       }}
     >
-      <MarkerWithLabel
-        icon={{
-          url: mapMarker,
-          anchor: new window.google.maps.Point(25,70),
-        }}
-        position={{
-          lat: 40.660718, // latitude to position the marker
-          lng: -74.222921 // longitude to position the marker
-        }}
-        labelAnchor={new window.google.maps.Point(0,70)}
-        labelClass={'map-label'}        
-      >
-         <div><span className='circle'></span>Morris<br/>County</div>
-      </MarkerWithLabel>
-      <MarkerWithLabel
-        icon={{
-          url: mapMarker,
-          anchor: new window.google.maps.Point(25,70),
-        }}
-        position={{
-          lat: 40.81873, // latitude to position the marker
-          lng: -74.160756 // longitude to position the marker
-        }}
-        labelAnchor={new window.google.maps.Point(0,70)}
-        labelClass={'map-label'}
-      >
-         <div><span className='circle'></span>Essex<br/>County</div>
-      </MarkerWithLabel>
-      <MarkerWithLabel
-        icon={{
-          url: mapMarker,
-          anchor: new window.google.maps.Point(25,70),
-        }}
-        position={{
-          lat: 40.650183, // latitude to position the marker
-          lng: -74.324379 // longitude to position the marker
-        }}
-        labelAnchor={new window.google.maps.Point(0,70)}
-        labelClass={'map-label'}
-      >
-         <div><span className='circle'></span>Union County<br/>Garwood</div>
-      </MarkerWithLabel>
-      <MarkerWithLabel
-        icon={{
-          url: mapMarker,
-          anchor: new window.google.maps.Point(25,70),
-        }}
-        position={{
-          lat: 40.680272, // latitude to position the marker
-          lng: -74.346357 // longitude to position the marker
-        }}
-        labelAnchor={new window.google.maps.Point(0,70)}
-        labelClass={'map-label'}
-      >
-         <div><span className='circle'></span>Union County<br/>Mountainside</div>
-      </MarkerWithLabel>
-      <MarkerWithLabel
-        icon={{
-          url: mapMarker,
-          anchor: new window.google.maps.Point(25,70),
-        }}
-        position={{
-          lat: 40.578621, // latitude to position the marker
-          lng: -74.611487 // longitude to position the marker
-        }}
-        labelAnchor={new window.google.maps.Point(0,70)}
-        labelClass={'map-label'}
-      >
-         <div><span className='circle'></span>Somerset<br/>County</div>
-      </MarkerWithLabel>
-      <MarkerWithLabel
-        icon={{
-          url: mapMarker,
-          anchor: new window.google.maps.Point(25,70),
-        }}
-        position={{
-          lat: 40.463566, // latitude to position the marker
-          lng: -74.315636 // longitude to position the marker
-        }}
-        labelAnchor={new window.google.maps.Point(0,70)}
-        labelClass={'map-label'}
-      >
-         <div><span className='circle'></span>Middlesex<br/>County</div>
-      </MarkerWithLabel>
-      <MarkerWithLabel
-        icon={{
-          url: mapMarker,
-          anchor: new window.google.maps.Point(25,70),
-        }}
-        position={{
-          lat: 40.267373, // latitude to position the marker
-          lng: -74.030067 // longitude to position the marker
-        }}
-        labelAnchor={new window.google.maps.Point(0,70)}
-        labelClass={'map-label'}
-      >
-         <div><span className='circle'></span>Monmouth<br/>County</div>
-      </MarkerWithLabel>
-      <MarkerWithLabel
-        icon={{
-          url: mapMarker,
-          anchor: new window.google.maps.Point(25,70),
-        }}
-        position={{
-          lat: 40.947944, // latitude to position the marker
-          lng: -74.216374 // longitude to position the marker
-        }}
-        labelAnchor={new window.google.maps.Point(0,70)}
-        labelClass={'map-label'}
-      >
-         <div><span className='circle'></span>Passaic<br/>County</div>
-      </MarkerWithLabel>
+      <MapMarker
+        lat= {40.855952}
+        lng={-74.416534}
+        label='Morris<br/>County'
+      />
+      <MapMarker
+        lat= {40.818734}
+        lng={-74.160756}
+        label='Essex<br/>County'
+      / >
+      <MapMarker
+        lat= {40.650183}
+        lng={-74.324379}
+        label='Union County<br/>Garwood'
+      / >
+      <MapMarker
+        lat= {40.680272}
+        lng={-74.346357}
+        label='Union County<br/>Mountainside'
+      / >
+      <MapMarker
+        lat= {40.578621}
+        lng={-74.611487}
+        label='Somerset<br/>County'
+      / >
+      <MapMarker
+        lat= {40.463566}
+        lng={-74.315636}
+        label='Middlesex<br/>County'
+      / >
+      <MapMarker
+        lat= {40.267373}
+        lng={-74.030067}
+        label='Monmouth<br/>County'
+      / >
+      <MapMarker
+        lat= {40.947944}
+        lng={-74.216374}
+        label='Passac<br/>County'
+      / >
     </GoogleMap>
   ))
 )
@@ -150,13 +116,14 @@ export default ({}) => {
         <Container fluid className='hero-image-container-filled'>
           <div className='hero-image-filled' style={{width:'100%', height:'795px'}}>
                 <GoogleMapComponentWithMarker
-                googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEyjZGdaropm46X5em_GY9p6VXM6PYNSQ&v=3.exp&libraries=geometry,drawing,places"
+                googleMapURL={'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=' + googleKey}
                 loadingElement={<div style={{ height: `100%` }} />}
                 containerElement={<div style={{ height: `100%` }} />}
                 mapElement={<div style={{ height: `100%` }} />}
               />
           </div>
         </Container>
+
       </section>
     )
   
