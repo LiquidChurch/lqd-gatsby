@@ -122,6 +122,7 @@ fragment BlockFragment on Block {
   __typename
   ... on BlockLabGoogleMapBlock {
     attributes__typename_BlockLabGoogleMapBlockAttributes: attributes {
+      campuses
       className
     }
   }
@@ -204,6 +205,7 @@ fragment BlockFragment on Block {
   ... on BlockLabPageModalBlock {
     attributes__typename_BlockLabPageModalBlockAttributes: attributes {
       className
+      modal_id
       modal_text
       modal_title
     }

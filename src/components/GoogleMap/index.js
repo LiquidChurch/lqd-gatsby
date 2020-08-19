@@ -1,25 +1,23 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import "./styles.css"
-import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps'
+import { withScriptjs, withGoogleMap, GoogleMap} from 'react-google-maps'
 
-import Row from 'react-bootstrap/Row'
 import Container from 'react-bootstrap/Container'
 import Parse from "react-html-parser"
 
 import PageModal from "../PageModal"
+import { PageModalContext } from '../PageModal/context'
+import { useCampusById } from "../../data/useCampus"
+
 const styles = require('./GoogleMapStyles.json')
 const mapMarker = require('./map-marker.svg')
 const { MarkerWithLabel } = require("react-google-maps/lib/components/addons/MarkerWithLabel")
 
 const googleKey = process.env.GOOGLE_API_KEY
 
-const ClickTest = () => {
-  console.log('clicked')
-}
-
 function MapMarker(props) {
-  console.log('map marker', props)
-  
+  const ctx = useContext(PageModalContext)
+ 
   return (
     <>
    <MarkerWithLabel
@@ -32,16 +30,18 @@ function MapMarker(props) {
           lng: props.lng // longitude to position the marker
         }}
         labelAnchor={new window.google.maps.Point(0,70)}
-        labelClass={'map-label'}        
+        labelClass={'map-label'}      
+        onClick={() => ctx.setShowModalId(props.slug)}
       >
          <div><span className='circle'></span>{Parse(props.label)}</div>
 
       </MarkerWithLabel>
-                   <PageModal 
-          modal_title='Test Modal'
-          modal_text='Test Text'
+        <PageModal 
+          modal_title={props.title}
+          modal_text={Parse(props.text)}
+          modal_id={props.slug}
         />
-            </>
+      </>
   )
           
   
@@ -64,63 +64,46 @@ const GoogleMapComponentWithMarker = withScriptjs(
         styles: styles // change default map styles
       }}
     >
-      <MapMarker
-        lat= {40.855952}
-        lng={-74.416534}
-        label='Morris<br/>County'
-      />
-      <MapMarker
-        lat= {40.818734}
-        lng={-74.160756}
-        label='Essex<br/>County'
-      / >
-      <MapMarker
-        lat= {40.650183}
-        lng={-74.324379}
-        label='Union County<br/>Garwood'
-      / >
-      <MapMarker
-        lat= {40.680272}
-        lng={-74.346357}
-        label='Union County<br/>Mountainside'
-      / >
-      <MapMarker
-        lat= {40.578621}
-        lng={-74.611487}
-        label='Somerset<br/>County'
-      / >
-      <MapMarker
-        lat= {40.463566}
-        lng={-74.315636}
-        label='Middlesex<br/>County'
-      / >
-      <MapMarker
-        lat= {40.267373}
-        lng={-74.030067}
-        label='Monmouth<br/>County'
-      / >
-      <MapMarker
-        lat= {40.947944}
-        lng={-74.216374}
-        label='Passac<br/>County'
-      / >
+    {
+      props.markerObj.map(campus => {
+          return (
+            <MapMarker
+              key={'map-marker-' + campus.slug}
+              lat={campus.googleMap.lat}
+              lng={campus.googleMap.lng}
+              label={campus.googleMap.label}
+              slug={campus.slug}
+              title={campus.name}
+              text={campus.description}
+            />
+          )
+        }
+      )
+    }
     </GoogleMap>
   ))
 )
 
-export default ({}) => {
-  console.log('google map component')
+export default ({campuses}) => {
+  const campusesObj = JSON.parse(campuses)
+  
+  let campusList = []
+  
+  campusesObj.rows.forEach(campus => {
+    campusList.push(useCampusById(campus.campus.id))
+  })
   
   return (
       <section id="locations-hero">
         <Container fluid className='hero-image-container-filled'>
           <div className='hero-image-filled' style={{width:'100%', height:'795px'}}>
-                <GoogleMapComponentWithMarker
-                googleMapURL={'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=' + googleKey}
-                loadingElement={<div style={{ height: `100%` }} />}
-                containerElement={<div style={{ height: `100%` }} />}
-                mapElement={<div style={{ height: `100%` }} />}
-              />
+            <GoogleMapComponentWithMarker
+              googleMapURL={'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=' + googleKey}
+              loadingElement={<div style={{ height: `100%` }} />}
+              containerElement={<div style={{ height: `100%` }} />}
+              mapElement={<div style={{ height: `100%` }} />}
+              markerObj={campusList}
+            />
           </div>
         </Container>
 

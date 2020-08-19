@@ -197,7 +197,7 @@ export const IFrame = graphql`
 export const GoogleMap = graphql`
   fragment GoogleMap on WpBlockLabGoogleMapBlock {
     attributes {
-      className
+      campuses
     }
   }
 `
@@ -262,6 +262,7 @@ export const PageModal = graphql`
       attributes {
         modal_title
         modal_text
+        modal_id
       }
   }
 `

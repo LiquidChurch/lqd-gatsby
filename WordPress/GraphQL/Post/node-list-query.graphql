@@ -34,6 +34,11 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
         __typename
       }
       blocksJSON
+      campuses(first: 100) {
+        nodes {
+          id
+        }
+      }
       categories(first: 100) {
         nodes {
           id
@@ -152,6 +157,7 @@ fragment BlockFragment on Block {
   __typename
   ... on BlockLabGoogleMapBlock {
     attributes__typename_BlockLabGoogleMapBlockAttributes: attributes {
+      campuses
       className
     }
   }
@@ -234,6 +240,7 @@ fragment BlockFragment on Block {
   ... on BlockLabPageModalBlock {
     attributes__typename_BlockLabPageModalBlockAttributes: attributes {
       className
+      modal_id
       modal_text
       modal_title
     }

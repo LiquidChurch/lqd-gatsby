@@ -4,11 +4,17 @@ const PageModalContext = React.createContext()
 
 const PageModalProvider = (props) => {
   const [modalOpenState, setModalOpenState] = useState(false)
+  const [modalId, setModalId] = useState('')
+  
+  const [showModalIdState, setShowModalIdState] = useState('')
+  
+  
   return (
     <PageModalContext.Provider value={{
-      isModalOpen: modalOpenState,
-      toggleModal: () => setModalOpenState(!modalOpenState),
-      stateChangeHandler: (newState) => setModalOpenState(newState.isOpen)
+      showModalId: showModalIdState,
+      setShowModalId: (mId) => setShowModalIdState(mId),
+      setCloseModal: () => setShowModalIdState(''),
+      stateChangeHandler: (mId) => setShowModalIdState(mId),
     }}>
       {props.children}
     </PageModalContext.Provider>
