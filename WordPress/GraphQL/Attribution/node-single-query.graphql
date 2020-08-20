@@ -28,6 +28,7 @@ query SINGLE_CONTENT_QUERY($id: ID!) {
     }
     profileImage {
       blurb
+      email
       fieldGroupName
       image {
         id

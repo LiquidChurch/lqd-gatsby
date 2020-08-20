@@ -28,6 +28,7 @@ query PREVIEW_QUERY($id: ID!) {
     }
     profileImage {
       blurb
+      email
       fieldGroupName
       image {
         id

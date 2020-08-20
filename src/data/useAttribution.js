@@ -18,6 +18,7 @@ export const useAttributionById = (attributionId) => {
                 }
                 blurb
                 role
+                email
               }
             }
           }

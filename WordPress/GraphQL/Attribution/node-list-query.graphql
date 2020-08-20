@@ -29,6 +29,7 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
       }
       profileImage {
         blurb
+        email
         fieldGroupName
         image {
           id
