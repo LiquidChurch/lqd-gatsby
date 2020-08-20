@@ -15,8 +15,8 @@ export const useCampusById = (campusId) => {
                 label
                 lat
                 lng
-                text
                 title
+                anchorLeft
               }
             }
           }

@@ -4,11 +4,11 @@ query SINGLE_CONTENT_QUERY($id: ID!) {
     databaseId
     description
     googleMap {
+      anchorLeft
       fieldGroupName
       label
       lat
       lng
-      text
       title
     }
     id

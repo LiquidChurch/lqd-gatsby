@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import "./styles.css"
 import { withScriptjs, withGoogleMap, GoogleMap} from 'react-google-maps'
 
@@ -15,9 +15,17 @@ const { MarkerWithLabel } = require("react-google-maps/lib/components/addons/Mar
 
 const googleKey = process.env.GOOGLE_API_KEY
 
+const LabelGenerated = () => {
+  console.log('visible changed')
+} 
+
 function MapMarker(props) {
   const ctx = useContext(PageModalContext)
  
+  var labelLocation = "right"
+  if (props.anchor > 0) {
+    labelLocation = "left"
+  }
   return (
     <>
    <MarkerWithLabel
@@ -29,12 +37,12 @@ function MapMarker(props) {
           lat: props.lat, // latitude to position the marker
           lng: props.lng // longitude to position the marker
         }}
-        labelAnchor={new window.google.maps.Point(0,70)}
-        labelClass={'map-label'}      
+        labelAnchor={{x:props.anchor, y:70}}
+        labelClass={'map-label ' + labelLocation}
         onClick={() => ctx.setShowModalId(props.slug)}
-      >
-         <div><span className='circle'></span>{Parse(props.label)}</div>
 
+      >
+         <div id={'marker-element-' + props.slug}><span className={'circle ' + labelLocation}></span>{Parse(props.label)}</div>
       </MarkerWithLabel>
         <PageModal 
           modal_title={props.title}
@@ -50,10 +58,10 @@ function MapMarker(props) {
 const GoogleMapComponentWithMarker = withScriptjs(
   withGoogleMap(props => (
     <GoogleMap
-      defaultZoom={9}
+      defaultZoom={10}
       defaultCenter={{
-        lat: 40.677, // latitude for the center of the map
-        lng: -74.204 // longitude for the center of the map
+        lat: 40.647, // latitude for the center of the map
+        lng: -74.304 // longitude for the center of the map
       }}
       defaultOptions={{
         disableDefaultUI: true, // disable default map UI
@@ -75,6 +83,7 @@ const GoogleMapComponentWithMarker = withScriptjs(
               slug={campus.slug}
               title={campus.name}
               text={campus.description}
+              anchor={campus.anchor}
             />
           )
         }
@@ -86,11 +95,18 @@ const GoogleMapComponentWithMarker = withScriptjs(
 
 export default ({campuses}) => {
   const campusesObj = JSON.parse(campuses)
-  
+
   let campusList = []
-  
-  campusesObj.rows.forEach(campus => {
-    campusList.push(useCampusById(campus.campus.id))
+  campusesObj.rows.forEach((campus,i) => {
+    let campusInfo = useCampusById(campus.campus.id)
+
+    if (campus.label_left) {
+      campusInfo.anchor = campusInfo.googleMap.anchorLeft      
+    } else {
+      campusInfo.anchor = -24
+    }
+      
+    campusList.push(campusInfo)
   })
   
   return (

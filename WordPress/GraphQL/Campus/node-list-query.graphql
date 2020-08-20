@@ -5,11 +5,11 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
       databaseId
       description
       googleMap {
+        anchorLeft
         fieldGroupName
         label
         lat
         lng
-        text
         title
       }
       id

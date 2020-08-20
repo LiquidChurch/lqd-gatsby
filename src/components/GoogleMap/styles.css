@@ -1,3 +1,10 @@
+.grow-left {
+  direction: rtl;
+}
+.grow-left > * {
+  direction: ltr;
+}
+
 .map-label {
   background: rgba(0,0,0, 0.75);
   position: relative;
@@ -10,20 +17,32 @@
   padding-bottom: 6px;
   height: 55px;
   line-height: 20px;
-  border-radius: 0 16px 16px 0;
-  margin-left:24px !important;
   overflow: visible !important;
   z-index: -300 !important;
+}
+
+.map-label.right{
+  border-radius: 0 16px 16px 0;  
+}
+.map-label.left {
+  border-radius: 16px 0 0 16px;  
 }
 
 .circle {
   width: 19px;
   height: 55px;
-  left: -19px;
   top:0px;
   overflow: hidden;
   position: absolute;
   display: block;
+}
+
+.circle.right {
+  left: -19px;  
+}
+
+.circle.left {
+  right: -19px;  
 }
 
 .circle:after {
@@ -36,6 +55,13 @@
   background: rgba(0, 0, 0, 0);
   position: absolute;
   top: -20px;
-  left: -58px;
   border: 20px solid rgba(0, 0, 0, 0.75);
+}
+
+.circle.right:after {
+  left: -58px;
+}
+
+.circle.left:after {
+  right: -58px;
 }
