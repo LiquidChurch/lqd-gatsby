@@ -8,22 +8,38 @@ import Col from 'react-bootstrap/Col'
 
 import './styles.css'
 
+function AddHR(props) {
+  console.log(props)
+  if (props.showHR) {
+    return (
+      <hr/>
+    )
+  } else {
+     return null
+   }
+}
+      
 export default ({ 
     text, 
     alignment, 
     size, 
-    background_color,
+    bg_color,
+    font_color,
+    show_hr,
+    all_caps
   }) => {
   
   return (
   <>
-    <section className="fullwidth-section heading-section" style={{backgroundColor: background_color}}>
-      <Container>
+    <section className="fullwidth-section heading-section" style={{backgroundColor: bg_color}}>
+      <Container className="heading-container">
         <Row>
           <Col>
             <h1 className={'heading-' + size.toLowerCase() + ' heading-' + alignment.toLowerCase()}>
               {Parse(text)}
+              <AddHR showHR={show_hr} />
             </h1>
+
           </Col>
         </Row>
       </Container>

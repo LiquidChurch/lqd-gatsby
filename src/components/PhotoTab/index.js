@@ -22,11 +22,13 @@ export default ({
   location,
   image_id,
   bg_color,
+  padding,
   header,
   text_block,
+  cta,
   header_secondary,
   text_block_secondary,
-  cta,
+  cta_secondary,
 }) => {
   const ctaObject = JSON.parse(cta)
   
@@ -58,7 +60,7 @@ export default ({
   
   return (
   <>
-  <section className="fullwidth-section" style={{backgroundColor: bg_color}}>
+  <section className={'site-section ' + padding} style={{backgroundColor: bg_color}}>
   <Container>
     <Row className="photo-tab-row">
       <Col xs={{span: 12, order: 1}} md={{span: 6, order: imgOrder}} 

@@ -20,6 +20,9 @@ function ShowArrow(props) {
  */
 
 export default (props) => {
+  
+      console.log('cta alignment', props)
+      
   if (props.cta.style === undefined || props.cta.page_id === undefined) {
     return null
   }
@@ -30,18 +33,22 @@ export default (props) => {
   }
   
   let icon = ""
+  let iconColor = ""
   if (props.cta.show_icon !== undefined && props.cta.show_icon !== "none") {
     icon = props.cta.show_icon
+    if (props.cta.style === "button" && props.cta.font_color != "") {
+      iconColor = "#FFF"
+    } 
   }
-   
+ 
   return (
     <>
-      <Link className={'cta-' + props.cta.style + ' font-link'} 
+      <Link className={props.cta.lastItem ? 'cta-' + props.cta.style + ' font-link ' + props.alignment : 'cta-' + props.cta.style + ' font-link ' + props.alignment + ' cta-margin'} 
             style={{color:props.cta.font_color, 
                     backgroundColor: props.cta.btn_color}}
             to={"/" + pageInfo.slug}>
         <span className={(icon === '') ? '' : props.cta.show_icon + '-icon cta-icon'}
-              style={{backgroundColor:props.cta.font_color}}></span>
+              style={{backgroundColor:iconColor}}></span>
         <div className="cta-label"
               style={{color:props.cta.font_color}}>{props.cta.label}</div>
         <ShowArrow showArrow={props.cta.show_arrow}/>

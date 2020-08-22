@@ -36,8 +36,14 @@ export default ({
   var imageUrl = imageInfo.mediaItemUrl.split("/")
   
   useEffect (() => {
-    let textAreaHeight = 45
+
     function setTextAreaHeight() {
+      let textAreaHeight = 45
+
+      if (image_style.split(":")[0] === "filled-hero") {
+        textAreaHeight = 65
+      }      
+      
       textAreaHeight = 60 + 
                        (!document.getElementById('hero-statement') ? 0 : document.getElementById('hero-statement').offsetHeight) + 
                        (!document.getElementById('hero-sidekick') ? 0 : document.getElementById('hero-sidekick').offsetHeight) +
@@ -54,7 +60,7 @@ export default ({
     <section id="hero-image" className="fullwidth-section" style={{backgroundColor: bg_color}}>
     <Container fluid className={'hero-image-container-' + image_style.split(":")[0]}>
       <Imgix 
-        src={"https://liquidchurch.imgix.net/" + imageUrl[4] + "/" + imageUrl[5]}
+        src={"https://liquidchurch.imgix.net/" + imageUrl[4] + "/" + imageUrl[5] + "?ar=16:9&fit=crop"}
         className={'hero-image-' + image_style.split(":")[0]}
         sizes="100vw" />
       <div 
@@ -69,7 +75,7 @@ export default ({
                       {bottom: textAreaPosition + 'px', marginBottom: -textAreaPosition + 'px'} ) :
                   ( (textAreaPosition === 60) ?
                       {background: 'none', bottom: textAreaPosition + 'px', marginBottom: (135 - textAreaPosition) + 'px'} :
-                      {bottom: textAreaPosition + 'px', marginBottom: (135 - textAreaPosition) + 'px'} ) ) }
+                      {bottom: textAreaPosition + 'px', marginBottom: (125 - textAreaPosition) + 'px'} ) ) }
       >
         <div id="hero-statement" className="hero-image-title font-h1">
           { Parse(statement) }

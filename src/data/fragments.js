@@ -15,117 +15,7 @@ export const GeneralSettings = graphql`
   }
 `
 
-export const Paragraph = graphql`
-  fragment Paragraph on WpCoreParagraphBlock {
-    attributes {
-      ... on WpCoreParagraphBlockAttributes {
-        align
-        content
-        dropCap
-        fontSize
-      }
-    }
-  }
-`
-
-export const List = graphql`
-  fragment List on WpCoreListBlock {
-    attributes {
-      values
-      ordered
-      reversed
-      start
-    }
-  }
-`
-
-/*
-export const Paragraph = graphql`
-  fragment Paragraph on WPGraphQL_CoreParagraphBlock {
-    attributes {
-      ... on WPGraphQL_CoreParagraphBlockAttributes {
-        align
-        content
-        dropCap
-        fontSizeInt: fontSize
-      }
-      ... on WPGraphQL_CoreParagraphBlockAttributesV2 {
-        align
-        content
-        dropCap
-        fontSizeString: fontSize
-      }
-      ... on WPGraphQL_CoreParagraphBlockAttributesV3 {
-        align
-        content
-        dropCap
-        fontSize
-      }
-    }
-  }
-`
-
-export const Image = graphql`
-  fragment Image on WPGraphQL_CoreImageBlock {
-    attributes {
-      alt
-      url
-      caption
-      sizeSlug
-      align
-      localFile {
-        publicURL
-        childImageSharp {
-          fluid(maxWidth: 768) {
-            ...GatsbyImageSharpFluid_withWebp_tracedSVG
-          }
-        }
-      }
-    }
-  }
-`
-*/
-/*
-export const List = graphql`
-  fragment List on WPGraphQL_CoreListBlock {
-    attributes {
-      values
-      ordered
-    }
-  }
-`
-
-export const Blockquote = graphql`
-  fragment Blockquote on WPGraphQL_CoreQuoteBlock {
-    attributes {
-      align
-      citation
-      value
-    }
-  }
-`
-
-export const Code = graphql`
-  fragment Code on WPGraphQL_CoreCodeBlock {
-    attributes {
-      nonNullContent: content
-      className
-    }
-  }
-`
-*/
-
-export const Heading = graphql`
-  fragment Button on WpBlockLabHeadingBlock {
-    attributes {
-      text
-      size
-      alignment
-      background_color
-    }
-  }
-`
-
+// Define block fragments.
 export const Attributions = graphql`
   fragment Attributions on WpBlockLabAttributionsBlock {
     attributes {
@@ -137,7 +27,7 @@ export const Attributions = graphql`
 `
 
 export const Button = graphql`
-  fragment Heading on WpBlockLabButtonBlock {
+  fragment Button on WpBlockLabButtonBlock {
     attributes {
       text
       alignment
@@ -152,14 +42,34 @@ export const Button = graphql`
   }
 `
 
-export const HompageHero = graphql`
-  fragment HomepageHero on WpBlockLabHomepageHeroBlock {
+
+export const ExternalRedirect = graphql`
+  fragment ExternalRedirect on WpBlockLabExternalRedirectBlock {
     attributes {
-        cta_label
-        cta_url
-        hero_image
-        hero_tag
-        hero_text
+        external_url
+        new_tab
+    }
+  }
+`
+
+export const GoogleMap = graphql`
+  fragment GoogleMap on WpBlockLabGoogleMapBlock {
+    attributes {
+      campuses
+    }
+  }
+`
+
+export const Heading = graphql`
+  fragment Heading on WpBlockLabHeadingBlock {
+    attributes {
+      text
+      size
+      alignment
+      bg_color
+      font_color
+      show_hr
+      all_caps
     }
   }
 `
@@ -177,43 +87,6 @@ export const HeroImage = graphql`
   }
 `
 
-export const ExternalRedirect = graphql`
-  fragment ExternalRedirect on WpBlockLabExternalRedirectBlock {
-    attributes {
-        external_url
-        new_tab
-    }
-  }
-`
-
-export const IFrame = graphql`
-  fragment IFrame on WpBlockLabIframeBlock {
-    attributes {
-        src
-    }
-  }
-`
-
-export const GoogleMap = graphql`
-  fragment GoogleMap on WpBlockLabGoogleMapBlock {
-    attributes {
-      campuses
-    }
-  }
-`
-
-export const PageStrap = graphql`
-  fragment PageStrap on WpBlockLabPageStrapBlock {
-    attributes {
-      statement
-      sidekick
-      bg_color
-      image_id
-      cta
-    }
-  }
-`
-
 export const HomeLinks = graphql`
   fragment HomeLinks on WpBlockLabHomeLinksBlock {
     attributes {
@@ -223,21 +96,44 @@ export const HomeLinks = graphql`
   }
 `
 
-export const MessageTile = graphql`
-  fragment MessageTile on WpBlockLabMessageTileBlock {
-      attributes {
-        block_title
-        background_color
-        message_slug
-      }
+export const HompageHero = graphql`
+  fragment HomepageHero on WpBlockLabHomepageHeroBlock {
+    attributes {
+        cta_label
+        cta_url
+        hero_image
+        hero_tag
+        hero_text
+    }
   }
 `
 
-export const PhotoCarousel = graphql`
-  fragment PhotoCarousel on WpBlockLabPhotoCarouselBlock {
-      attributes {
-        images
-      }
+export const IFrameBlock = graphql`
+  fragment IFrameBlock on WpBlockLabIframeBlock {
+    attributes {
+        src
+    }
+  }
+`
+
+export const LinkTiles = graphql`
+  fragment LinkTiles on WpBlockLabLinkTilesBlock {
+    attributes {
+      slugs_list
+      bg_color
+    }
+  }
+`
+
+
+export const List = graphql`
+  fragment List on WpCoreListBlock {
+    attributes {
+      values
+      ordered
+      reversed
+      start
+    }
   }
 `
 
@@ -257,6 +153,16 @@ export const MediaTiles = graphql`
   }
 `
 
+export const MessageTile = graphql`
+  fragment MessageTile on WpBlockLabMessageTileBlock {
+      attributes {
+        block_title
+        background_color
+        message_slug
+      }
+  }
+`
+
 export const PageModal = graphql`
   fragment PageModal on WpBlockLabPageModalBlock {
       attributes {
@@ -267,11 +173,38 @@ export const PageModal = graphql`
   }
 `
 
-export const LinkTiles = graphql`
-  fragment LinkTiles on WpBlockLabLinkTilesBlock {
+export const PageStrap = graphql`
+  fragment PageStrap on WpBlockLabPageStrapBlock {
     attributes {
-      slugs_list
+      statement
+      sidekick
+      image_id
+      cta
+      bg_color
+      padding
+      alignment
     }
+  }
+`
+
+export const Paragraph = graphql`
+  fragment Paragraph on WpCoreParagraphBlock {
+    attributes {
+      ... on WpCoreParagraphBlockAttributes {
+        align
+        content
+        dropCap
+        fontSize
+      }
+    }
+  }
+`
+
+export const PhotoCarousel = graphql`
+  fragment PhotoCarousel on WpBlockLabPhotoCarouselBlock {
+      attributes {
+        images
+      }
   }
 `
 
@@ -280,16 +213,19 @@ export const PhotoTab = graphql`
     attributes {
       location
       image_id
-      bg_color
       header
       text_block
+      cta
       header_secondary
       text_block_secondary
-      cta
+      cta_secondary
+      bg_color
+      padding      
     }
   } 
 `
 
+// Create All Blocks fragment.
 export const AllBlocks = graphql`
   fragment AllBlocks on WpBlock {
     name
@@ -302,7 +238,7 @@ export const AllBlocks = graphql`
     ...HeroImage
     ...GoogleMap
     ...ExternalRedirect
-    ...IFrame
+    ...IFrameBlock
     ...PageStrap
     ...HomeLinks
     ...MessageTile

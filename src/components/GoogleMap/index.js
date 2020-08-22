@@ -111,8 +111,8 @@ export default ({campuses}) => {
   
   return (
       <section id="locations-hero">
-        <Container fluid className='hero-image-container-filled'>
-          <div className='hero-image-filled' style={{width:'100%', height:'795px'}}>
+        <Container fluid className='hero-image-container-filled map-hero-filled'>
+          <div className='hero-image-filled' style={{width:'100%', height:'795px', paddingBottom:'25px'}}>
             <GoogleMapComponentWithMarker
               googleMapURL={'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=' + googleKey}
               loadingElement={<div style={{ height: `100%` }} />}

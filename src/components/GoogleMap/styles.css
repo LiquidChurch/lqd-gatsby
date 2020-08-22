@@ -1,8 +1,5 @@
-.grow-left {
-  direction: rtl;
-}
-.grow-left > * {
-  direction: ltr;
+.map-hero-filled {
+  margin-left:-15px;
 }
 
 .map-label {

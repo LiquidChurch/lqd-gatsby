@@ -6,39 +6,26 @@ import Row from 'react-bootstrap/Row'
 import './styles.css';
 import LinkTile from './linkTile';
 
-/* class LinkedTiles extends React.Component {
-    render() { 
-        */
-
-export default ({slugs_list}) => {
+export default ({
+    slugs_list,
+    bg_color,
+  }) => {
   var obj_slugs_list = JSON.parse(slugs_list)
-
-        return(
-            <div>
-              
-          <Container>
-          <Row>          
+  return( 
+    <section className='fullwidth-section' id="linked-tiles" style={{backgroundColor: bg_color}}>
+      <Container>
+        <Row>          
           {obj_slugs_list.rows.map(item => {
-                 return (
-            <Col key={"linked-tile-img-" + item.page_slug.id} sm={4} xs={6}>
-              <LinkTile
-                page_slug_id={item.page_slug.id}       
+            return (
+              <Col sm={12} md={6} lg={4} key={"linked-tile-img-" + item.page_slug.id}>
+                <LinkTile
+                  page_slug_id={item.page_slug.id}       
                 />
-            </Col>
-            )})}
-       
-          
-          </Row>
-          </Container>
-          
-            </div>
-          
-        );
-    }
-    
-
-//}
-
-//ReactDOM.render(<Tiles/>, document.getElementById('root'));
-
-//export default LinkedTiles;
+              </Col>
+            )
+          })}
+        </Row>
+      </Container>
+    </section>
+  );
+} 

@@ -142,8 +142,10 @@ fragment BlockFragment on Block {
   }
   ... on BlockLabPhotoCarouselBlock {
     attributes__typename_BlockLabPhotoCarouselBlockAttributes: attributes {
+      bg_color
       className
       images
+      padding
     }
   }
   ... on BlockLabPhotoBlock {
@@ -151,10 +153,12 @@ fragment BlockFragment on Block {
       bg_color
       className
       cta
+      cta_secondary
       header
       header_secondary
       image_id
       location
+      padding
       text_block
       text_block_secondary
     }
@@ -190,14 +194,18 @@ fragment BlockFragment on Block {
   ... on BlockLabHeadingBlock {
     attributes__typename_BlockLabHeadingBlockAttributes: attributes {
       alignment
-      background_color
+      all_caps
+      bg_color
       className
+      font_color
+      show_hr
       size
       text
     }
   }
   ... on BlockLabLinkTilesBlock {
     attributes__typename_BlockLabLinkTilesBlockAttributes: attributes {
+      bg_color
       className
       slugs_list
     }
@@ -227,10 +235,12 @@ fragment BlockFragment on Block {
   }
   ... on BlockLabPageStrapBlock {
     attributes__typename_BlockLabPageStrapBlockAttributes: attributes {
+      alignment
       bg_color
       className
       cta
       image_id
+      padding
       sidekick
       statement
     }

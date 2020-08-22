@@ -58,34 +58,67 @@ function StrapLink(props) {
 export default ({
   statement,
   sidekick,
-  bg_color,
-  image_id,
   cta,
+  bg_color,
+  padding,
+  alignment,
+  image_id,
 }) => {
   const ctaObject = JSON.parse(cta)
   
+  var sidekickTop = true
+  var ctaTop = true
+  var hasStatement = false
+  var hasSidekick = false
+  var hasCTA = false
+  
+  if (statement !== null && statement !== '') {
+    hasStatement = true
+    sidekickTop = false
+    ctaTop = false
+  } 
+  
+  if (sidekick !== null && sidekick !== '') {
+    hasSidekick = true
+    ctaTop = false
+  }
+
+  if (ctaObject.rows[0].style !== undefined) {
+    hasCTA = true
+    
+    let ctaObjectLength = ctaObject.rows.length
+    ctaObject.rows.forEach((cta, i) => {
+      if (i === (ctaObjectLength - 1) ) {
+        ctaObject.rows[i].lastItem = true
+      } else {
+        ctaObject.rows[i].lastItem = false
+      }
+    })
+  }
+  
+  
   var hasImage = false
   if (image_id !== null && image_id !== undefined && image_id !== 0) {
-    console.log('image_id', image_id)
     hasImage = true
   }
   
   return (
   <>
-  <section className="fullwidth-section page-strap-section" style={{backgroundColor: bg_color}}>
+  <section className={'site-section ' + padding} style={{backgroundColor: bg_color}}>
   <Container>
     <Row>
       <StrapImage strap_image_id={image_id} />
-      <Col id={"strap-body-" + image_id} className={hasImage ? "vertical-center strap-pad-left" : "vertical-center"}>
-        <h2 className={hasImage ? "page-strap-tag font-h1 strap-left" : "page-strap-tag font-h1"}>{Parse(statement)}</h2>
-        <div className={hasImage ? "page-strap-text font-large strap-left" : "page-strap-text font-large"}>{Parse(sidekick)}</div>
-        <div className={hasImage ? "page-strap-cta font-medium strap-left" : "page-strap-cta font-medium"}>
-          {
-            ctaObject.rows.map(cta => {
-              return (
-                <CallToAction cta={cta} />
-              )
-            })
+      <Col className={"vertical-center"}>
+        <h2 className={hasStatement ? 'page-strap-tag font-h1 align-' + alignment : 'no-display'}>{Parse(statement)}</h2>
+        <div className={hasSidekick ? (sidekickTop ? 'page-strap-text font-large zero-padding-top align-' + alignment : 'page-strap-text font-large align-' + alignment) : 'no-display'}>{Parse(sidekick)}</div>
+        <div className={hasCTA ? (ctaTop ? 'page-strap-cta font-medium zero-padding-top align-' + alignment : 'page-strap-cta font-medium align-' + alignment ) :'no-display'}>
+          {hasCTA ? 
+              ctaObject.rows.map(cta => {
+                return (
+                  <CallToAction cta={cta} alignment={alignment}/>
+                )
+              })
+             : ''
           }
         </div>
       </Col> 
