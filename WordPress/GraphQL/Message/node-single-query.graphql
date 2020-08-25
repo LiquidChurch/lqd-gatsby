@@ -207,6 +207,7 @@ fragment BlockFragment on Block {
       bg_color
       className
       font_color
+      padding
       show_hr
       size
       text

@@ -1,19 +1,16 @@
-.heading-section {
-  padding-top: 1.5em;
-  padding-bottom: 1.5em;
-}
-
 .heading-container {
-  height: 43px;
+  /* height: 43px;*/
 }
 .heading-h1 {
+  padding-top:6px;
   font-size:2.8em;
   font-family: "Avenir Next Bold";
   color: #0099CC;
-  line-height: 1.3em;
+  line-height: 1.2em;
 }
 
 .heading-h2 {
+  padding-top:6px;
   font-size: 2.3em;
   font-family:"Avenir Next Demi";
   color: #0099CC;
@@ -21,14 +18,11 @@
 }
 
 .heading-h3 {
+  padding-top: 6px;
   font-size: 1.8em;
   font-family:"Avenir Next Demi";
   color: #565656;
   line-height: 1.2em;  
-  padding-top: 0;
-  padding-bottom: 0;
-  margin-bottom: -3em;
-  margin-left: -12px;  
 }
 
 .heading-left {
@@ -69,6 +63,5 @@
   
   .heading-h3 {
     font-size:1.0em;
-    margin-left: 16px;
   }  
 }

@@ -66,10 +66,11 @@ export const Heading = graphql`
       text
       size
       alignment
-      bg_color
       font_color
       show_hr
       all_caps
+      bg_color
+      padding
     }
   }
 `

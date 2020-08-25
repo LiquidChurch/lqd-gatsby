@@ -1,9 +1,5 @@
 .page-strap-tag {
-  margin-bottom: 0em;
-}
-
-.page-strap-tag-none {
-  display: none
+  margin-bottom: 6px;
 }
 
 .page-strap-text {
@@ -19,10 +15,6 @@
   .page-strap-container {
     padding-top: 0em;
     padding-bottom: 0em;
-  }
-  
-  .page-strap-tag {
-
   }
   
   .page-strap-text {
@@ -54,14 +46,6 @@
 
 
 @media (max-width:575px) {
-  .page-strap-container {
-
-  }
-  
-  .page-strap-tag {
-
-  }
-  
   .page-strap-text {
     max-width:90vw;    
   }
@@ -72,12 +56,7 @@
 }
 
 @media (max-width:334px) {
-  .page-strap-text {
-
-  }
-  
   .page-strap-btn {
     font-size:3.9vw;
-
   }   
 }

@@ -23,8 +23,43 @@ export default ({
 }) => {
   const ctx = useContext(GlobalContext)
   const imageInfo = useImageById(image_id)
+  const alignment = 'center'
+// Text Area Creation  
   const ctaObject = JSON.parse(cta)
+  var ctaTop = true
+  var hasCTA = false 
+  var sidekickTop = true
+  var hasStatement = false
+  var hasSidekick = false
   
+  if (statement !== null && statement !== '') {
+    hasStatement = true
+    sidekickTop = false
+    ctaTop = false
+  } 
+  
+  if (sidekick !== null && sidekick !== '') {
+    hasSidekick = true
+    ctaTop = false
+  }
+  console.log('ctaObject', ctaObject)
+  
+  if (ctaObject.rows.length !== 0 && ctaObject.rows[0].style !== undefined) {
+    hasCTA = true
+    
+    let ctaObjectLength = ctaObject.rows.length
+    ctaObject.rows.forEach((cta, i) => {
+      if (i === (ctaObjectLength - 1) ) {
+        ctaObject.rows[i].lastItem = true
+      } else {
+        ctaObject.rows[i].lastItem = false
+      }
+    })
+  }
+  
+// End Text Area Creation
+
+
   if (imageInfo === undefined) {
     return (
     <>
@@ -38,16 +73,14 @@ export default ({
   useEffect (() => {
 
     function setTextAreaHeight() {
-      let textAreaHeight = 45
-
-      if (image_style.split(":")[0] === "filled-hero") {
-        textAreaHeight = 65
-      }      
+      let textAreaHeight = 60
       
       textAreaHeight = 60 + 
                        (!document.getElementById('hero-statement') ? 0 : document.getElementById('hero-statement').offsetHeight) + 
                        (!document.getElementById('hero-sidekick') ? 0 : document.getElementById('hero-sidekick').offsetHeight) +
                        (!document.getElementById('hero-cta') ? 0 : document.getElementById('hero-cta').offsetHeight)
+      
+      console.log('text area height', textAreaHeight)
       setTextAreaPosition(textAreaHeight)
     }
     
@@ -66,30 +99,31 @@ export default ({
       <div 
         className={'hero-image-text-area-' + image_style.split(":")[0]}
         style={ (image_style.split(":")[0] === "fixed") ? 
-                ( (textAreaPosition === 60 ) ? 
-                    {background: 'none', bottom: textAreaPosition + 'px', marginBottom: (15 - textAreaPosition) + 'px'} : 
-                    {bottom: textAreaPosition + 'px', marginBottom: (15 - textAreaPosition) + 'px'} ) :  
+                ( (textAreaPosition <= 60 ) ? 
+                    {background: 'none', bottom: textAreaPosition + 'px', marginBottom: (-10 - textAreaPosition) + 'px'} : 
+                    {bottom: textAreaPosition + 'px', marginBottom: (15 - textAreaPosition - 25) + 'px'} ) :  
                 ( (image_style.split(":")[0] === 'filled') ? 
-                  ( (textAreaPosition === 60) ? 
+                  ( (textAreaPosition <= 60) ? 
                       {background: 'none', bottom: textAreaPosition + 'px', marginBottom: -textAreaPosition + 'px'} :
                       {bottom: textAreaPosition + 'px', marginBottom: -textAreaPosition + 'px'} ) :
-                  ( (textAreaPosition === 60) ?
+                  ( (textAreaPosition <= 60) ?
                       {background: 'none', bottom: textAreaPosition + 'px', marginBottom: (135 - textAreaPosition) + 'px'} :
-                      {bottom: textAreaPosition + 'px', marginBottom: (125 - textAreaPosition) + 'px'} ) ) }
+                      {bottom: (textAreaPosition - 10)+ 'px', marginBottom: (135 - textAreaPosition) + 'px'} ) ) }
       >
-        <div id="hero-statement" className="hero-image-title font-h1">
-          { Parse(statement) }
+        <h2 id="hero-statement" className={hasStatement ? 'hero-image-tag font-h1 align-' + alignment : 'no-display'}>
+          {Parse(statement)}
+        </h2>
+        <div id="hero-sidekick" className={hasSidekick ? (sidekickTop ? 'hero-image-text font-large zero-padding-top align-' + alignment : 'hero-image-text font-large align-' + alignment) : 'no-display'}>
+          {Parse(sidekick)}
         </div>
-        <div id="hero-sidekick" className="hero-image-text font-medium">
-          { Parse(sidekick) }
-        </div>
-        <div id="hero-cta" className="hero-image-cta font-medium">
-          {
-            ctaObject.rows.map(cta => {
-              return (
-                <CallToAction cta={cta} />
-              )
-            })
+        <div className={hasCTA ? (ctaTop ? 'hero-image-cta font-medium zero-padding-top align-' + alignment : 'hero-image-cta font-medium align-' + alignment ) :'no-display'}>
+          {hasCTA ? 
+              ctaObject.rows.map(cta => {
+                return (
+                  <CallToAction cta={cta} alignment={alignment}/>
+                )
+              })
+             : ''
           }
         </div>
       </div>

@@ -23,19 +23,21 @@ export default ({
     text, 
     alignment, 
     size, 
-    bg_color,
     font_color,
     show_hr,
-    all_caps
+    all_caps,
+    bg_color,
+    padding,
   }) => {
   
   return (
   <>
-    <section className="fullwidth-section heading-section" style={{backgroundColor: bg_color}}>
+    <section className={'site-section ' + padding} style={{backgroundColor: bg_color}}>
       <Container className="heading-container">
         <Row>
           <Col>
-            <h1 className={'heading-' + size.toLowerCase() + ' heading-' + alignment.toLowerCase()}>
+            <h1 className={'heading-' + size.toLowerCase() + ' heading-' + alignment.toLowerCase()}
+                style={{color: font_color}}>
               {Parse(text)}
               <AddHR showHR={show_hr} />
             </h1>
