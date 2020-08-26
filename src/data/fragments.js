@@ -19,9 +19,12 @@ export const GeneralSettings = graphql`
 export const Attributions = graphql`
   fragment Attributions on WpBlockLabAttributionsBlock {
     attributes {
-      title
-      bg_color
+      layout
       attribution_list
+      show_blurb
+      show_email
+      bg_color
+      padding
     }
   }
 `

@@ -1,5 +1,6 @@
 import React from "react"
 
+import BlockAttribution from "../Blocks/Attribution"
 import BlockParagraph from "../Paragraph"
 import BlockList from "../List"
 import BlockHeading from "../Heading"
@@ -16,7 +17,7 @@ import BlockPageModal from "../PageModal"
 import BlockLinkedTiles from "../LinkedTiles"
 import BlockPhotoTab from  "../PhotoTab"
 import BlockPhotoCarousel from "../PhotoCarousel"
-import BlockAttribution from "../Attribution"
+
 import BlockGoogleMap from "../GoogleMap"
 
 import { PageModalProvider } from "../PageModal/context.js"

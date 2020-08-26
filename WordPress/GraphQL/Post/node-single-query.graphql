@@ -160,7 +160,10 @@ fragment BlockFragment on Block {
       attribution_list
       bg_color
       className
-      title
+      layout
+      padding
+      show_blurb
+      show_email
     }
   }
   ... on BlockLabIframeBlock {

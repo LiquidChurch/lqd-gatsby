@@ -14,7 +14,6 @@
   width: 173px;
   height: 79px;
   background: #FFF;
-  padding-top:10px;
   padding-right: 14px;
   padding-left:10px;
   position: absolute;
@@ -23,10 +22,13 @@
   line-height: 1.2em;
   box-shadow: 0px 3px 6px #00000029;
   font-size:0.95em;
+  display: inline-flex;
+  vertical-align: middle;
 }
 
 .attribution-profile-blurb p {
-  vertical-align: middle;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .attribution-profile-blurb.bottom {
@@ -44,12 +46,10 @@
 }
 
 .attribution-profile-role {
-  text-transform: uppercase;
   color: #565656;
 }
 
 .attribution-profile-email {
-  color: #009DD1;
   font-family:"Avenir Next Regular";
 }
 
@@ -58,6 +58,7 @@
 }
 
 .attribution-profile-information {
+  padding-top: 12px;
   margin-top: auto;
   margin-bottom: auto;
   margin-left: 32px;
