@@ -75,6 +75,37 @@
   font-size: 1.12em;  
 }
 
+.cta {
+  font-family: "Avenir Next Demi";  
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+}
+
+.cta.tall {
+  padding-top: 1.3em;
+}
+
+.cta.short {
+  padding-top: 0.5em;
+}
+
+.cta.xlarge {
+  font-size: 1.75em;
+}
+
+.cta.large {
+  font-size: 1.5em;
+}
+
+.cta.medium {
+  font-size: 1.3em;
+}
+
+.cta.small {
+  font-size: 1.12em;
+}
+
 @media (max-width:767px) {
   .statement.xlarge {
     font-size: 3.13em;
@@ -94,10 +125,30 @@
   .sidekick.xlarge {
     font-size: 1.5em;
   }
+
+  .sidekick.xlarge {
+    font-size: 1.3em;
+  }
   
   .sidekick.medium {
     font-size: 1.12em;
   }
+  
+  .cta.xlarge {
+    font-size: 1.5em;
+  }
+
+  .cta.large {
+    font-size: 1.3em;
+  }
+
+  .cta.medium {
+    font-size: 1.12em;
+  }
+
+  .cta.small {
+    font-size: 1.12em;
+  }  
 }
 
 @media (max-width:575px) {
@@ -123,33 +174,16 @@
   .sidekick.large {
     font-size: 1.12em;
   }
+ 
+  .cta.xlarge {
+    font-size: 1.3em;
+  }
+
+  .cta.large {
+    font-size: 1.12em;
+  }
+ 
 }
 
-.cta {
-  font-family: "Avenir Next Demi";  
-  text-transform: uppercase;
-  display: flex;
-  flex-direction: column;
-}
-
-.cta.tall {
-  padding-top: 1.3em;
-}
-
-.cta.short {
-  padding-top: 0.5em;
-}
-
-.cta.large {
-  font-size: 1.12em;
-}
-
-.cta.medium {
-  font-size: 1.12em;
-}
-
-.cta.small {
-  font-size: 1.12em;
-}
 
 

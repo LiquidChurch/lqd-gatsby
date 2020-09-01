@@ -24,8 +24,14 @@ const CallToAction = ({
   alignment,
   spacing,
 }) => {
-  let pageInfo = usePageById(cta.page_id.id)
+  let pageId = 0
   
+  if (cta.page_id !== undefined) {
+    pageId = cta.page_id.id
+  } 
+  console.log('cta', cta)
+  let pageInfo = usePageById(pageId)
+
   let icon = ""
   let iconColor = ""
   if (cta.show_icon !== undefined && cta.show_icon !== "none") {
@@ -65,6 +71,8 @@ const CallToAction = ({
 
   return (
     <>
+      {pageId === 0 ? 
+      '' :
       <Link className={cta.lastItem ? 
                         'cta-' + cta.style + ' font-link ' + alignment : 
                         'cta-' + cta.style + ' font-link ' + alignment + ' ' + spacing} 
@@ -73,7 +81,7 @@ const CallToAction = ({
                     border: border}}
             to={'/' + pageInfo.slug}>
         <span className={ (icon === '') ? 
-                          '' : 
+                          '' :
                           cta.show_icon + '-icon cta-icon'}
               style={{backgroundColor:iconColor}}>
         </span>
@@ -83,6 +91,7 @@ const CallToAction = ({
         </div>
         <ShowArrow showArrow={cta.show_arrow}/>
       </Link>
+      }
     </>
   )
 }

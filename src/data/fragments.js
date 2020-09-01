@@ -44,7 +44,9 @@ export const Button = graphql`
       has_icon
       min_width
       text_float
+      add_padding
       dropdown
+      size
     }
   }
 `
@@ -155,14 +157,14 @@ export const MediaTiles = graphql`
   fragment MediaTiles on WpBlockLabMediaTilesBlock {
     attributes {
       show_attribution
-      background_color
-      label
       media_list
       num_items
       show_blurb
       show_series
       type
       display_type
+      bg_color
+      padding
     }
   }
 `
@@ -245,6 +247,16 @@ export const PhotoTab = graphql`
   } 
 `
 
+export const Video = graphql`
+  fragment Video on WpBlockLabVideoBlock {
+    attributes {
+      video_url
+      bg_color
+      padding
+    }
+  } 
+`
+
 // Create All Blocks fragment.
 export const AllBlocks = graphql`
   fragment AllBlocks on WpBlock {
@@ -267,5 +279,6 @@ export const AllBlocks = graphql`
     ...LinkTiles
     ...PhotoTab
     ...PhotoCarousel
+    ...Video
   }
 `

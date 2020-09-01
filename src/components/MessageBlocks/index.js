@@ -3,7 +3,7 @@ import React from "react"
 import MessagePlayer from "../MessagePlayer"
 import MessageInfo from "../MessageInfo"
 import SeriesTitle from "../SeriesTitle"
-import MediaTiles from "../MediaTiles"
+import MediaTiles from "../Blocks/MediaTiles"
 
 import { useSeries } from "../../data/useSeries"
 

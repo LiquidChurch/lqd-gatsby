@@ -12,7 +12,6 @@ import { useFeaturedImage } from "../../../data/featureImage"
 
 import "./styles.css"
 
-      
 function ButtonArrow(props) {  
   if (props.hasArrow) {
     return (
@@ -49,9 +48,6 @@ function ButtonIcon(props) {
 }
 
 function DropdownButton({objDropdown, dropdownWidth}) {
-  console.log(objDropdown)
-  console.log(dropdownWidth)
-  
   return (
   <>
     <Dropdown.Menu
@@ -67,10 +63,10 @@ function DropdownButton({objDropdown, dropdownWidth}) {
   </>
   )
 }
+
 /**
  * Button Component
  */
-
 export default ({ 
     text, 
     alignment,
@@ -84,8 +80,11 @@ export default ({
     has_icon,
     min_width,
     text_float,
+    add_padding,
     dropdown,
+    size,
   }) => {
+  console.log('size', size)
   let objPage = JSON.parse(page)
   
   let pageInfo = {}
@@ -112,23 +111,19 @@ export default ({
   if (btn_outline) {
     border = '2px solid'
   }
-
   
   let objDropdown = JSON.parse(dropdown)
   let hasDropdown = false
-  //let dropdownId = Math.random().toString(36).substring(2, 7) + Math.random().toString(36).substring(2, 7)
 
-  if (objDropdown.rows[0].page !== undefined && objDropdown.rows[0].page.id !== 0) {
+  if (objDropdown.rows[0] !== undefined && objDropdown.rows[0].page.id !== 0) {
     hasDropdown = true
   }
   
   let dropdownId = Math.random().toString(36).substring(2, 7) + Math.random().toString(36).substring(2, 7)    
   let dropdownWidth = 0
   useEffect (() => {
-    console.log('dropdownId', dropdownId)
     function setDropdownWidth() {
       dropdownWidth = (!document.getElementById('dropdown-button-' + dropdownId) ? 0 : document.getElementById('dropdown-button-' + dropdownId).offsetHeight)
-      console.log('dropdownWidth', dropdownWidth)
     }
     
     setDropdownWidth()    
@@ -138,33 +133,33 @@ export default ({
   return (
   <>
     <section className={'site-section ' + padding} style={{backgroundColor: bg_color}}>
-      <Container>
+      <Container className={add_padding ? "text-padding" : ""}>
         <Row>
-          <Col className={'cta large align-' + alignment}>
+          <Col className={'cta ' + size  + ' align-' + alignment}>
             {hasDropdown ?
               <Dropdown>
                 <Dropdown.Toggle 
                     id={'dropdown-button-' + dropdownId}
-                    className={'cta-button button-dropdown font-link ' + alignment}
+                    className={'cta-button font-link button-dropdown ' + alignment}
                     style={{minWidth: min_width/16 + 'em',
                             color:fontColor,
                             backgroundColor: btnColor,
                             border: border}}>
-                  <span className={'button-text button-text-float-' + text_float}>{text}</span>
+                  <span className={'button-text ' + text_float}>{text}</span>
                 </Dropdown.Toggle>
                 <DropdownButton objDropdown={objDropdown} dropdownWidth={100}/>
               </Dropdown>
             :
               <Link 
                 to={pageInfo.uri}
-                className={'cta-button font-link ' + alignment}
+                className={'cta-button font-link' + alignment}
                 style={{minWidth: min_width/28 + 'em',
                         color:fontColor,
                         backgroundColor: btnColor,
                         border: border}}
               >
                 <ButtonIcon hasIcon={has_icon} />
-                <span className={'button-text button-text-float-' + text_float}>{text}</span>
+                <span className={'button-text ' + text_float}>{text}</span>
                 <ButtonArrow hasArrow={has_arrow} />
               </Link>
             }

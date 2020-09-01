@@ -34,7 +34,7 @@ const TextArea = ({
     ctaTop = false
   }
 
-  if (ctaObject.rows[0].style !== undefined) {
+  if (ctaObject !== undefined || ctaObject.rows[0].style !== undefined) {
     hasCTA = true
     
     let ctaObjectLength = ctaObject.rows.length

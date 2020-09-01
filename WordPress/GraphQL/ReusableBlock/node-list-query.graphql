@@ -93,6 +93,14 @@ fragment BlockFragment on Block {
   parentNodeDatabaseId
   saveContent
   __typename
+  ... on BlockLabVideoBlock {
+    attributes__typename_BlockLabVideoBlockAttributes: attributes {
+      bg_color
+      className
+      padding
+      video_url
+    }
+  }
   ... on BlockLabGoogleMapBlock {
     attributes__typename_BlockLabGoogleMapBlockAttributes: attributes {
       campuses
@@ -145,12 +153,12 @@ fragment BlockFragment on Block {
   }
   ... on BlockLabMediaTilesBlock {
     attributes__typename_BlockLabMediaTilesBlockAttributes: attributes {
-      background_color
+      bg_color
       className
       display_type
-      label
       media_list
       num_items
+      padding
       show_attribution
       show_blurb
       show_series
@@ -159,6 +167,7 @@ fragment BlockFragment on Block {
   }
   ... on BlockLabButtonBlock {
     attributes__typename_BlockLabButtonBlockAttributes: attributes {
+      add_padding
       alignment
       bg_color
       btn_color
@@ -171,6 +180,7 @@ fragment BlockFragment on Block {
       min_width
       padding
       page
+      size
       text
       text_float
     }

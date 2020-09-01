@@ -7,7 +7,7 @@ import { GlobalContext } from '../components/GlobalContext/context'
 import { isTouchEnabled } from '../helpers/functions'
 
 import SeriesHero from "../components/SeriesHero"
-import MediaTiles from "../components/MediaTiles"
+import MediaTiles from "../components/Blocks/MediaTiles"
 /** 
  * Template - Series Component
  */

@@ -1,20 +1,19 @@
 import React, { useContext } from 'react'
 
-import { GlobalContext } from '../GlobalContext/context'
+import { GlobalContext } from '../../GlobalContext/context'
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import SectionHeader from '../SectionHeader'
-import WideSlider from '../WideSlider'
+import WideSlider from '../../Commons/WideSlider'
+
+import { useRecentMessages } from '../../../data/useRecentMessages'
+import { useMessage } from '../../../data/useMessage'
+import { useRecentBlogs } from '../../../data/useRecentBlogs'
+import { useBlog } from '../../../data/useBlog'
+
 import MediaCard from './mediaCard'
 import MediaFeatured from './mediaFeatured'
-
-import { useRecentMessages } from '../../data/useRecentMessages'
-import { useMessage } from '../../data/useMessage'
-import { useRecentBlogs } from '../../data/useRecentBlogs'
-import { useBlog } from '../../data/useBlog'
-
 import './styles.css'
 
 function UseSlider(props) {
@@ -115,30 +114,26 @@ function MediaDataTransformer(props) {
  */
 export default ({
     show_attribution,
-    background_color,
-    label,
     media_list,
     num_items,
     show_blurb,
     show_series,
     type,
     display_type,
+    bg_color,
+    padding,
   }) => {
   const ctx = useContext(GlobalContext)
   
   if (display_type === undefined) {
-    display_type = "Grid"
+    display_type = "grid"
   }
   
   let sectionClass="media-cards"
   
-  if (label === "" || label === null) {
-    sectionClass="media-cards-no-label"
-  }
-  
   let mediaLists = []
   
-  if (type.toLowerCase() === "recent messages") {
+  if (type === "messages") {
     let tempItems = useRecentMessages(num_items)
     mediaLists = MediaDataTransformer({
       "rawItems":tempItems,
@@ -148,7 +143,7 @@ export default ({
     })
   }
   
-  if (type.toLowerCase() === "recent blogs") {
+  if (type === "blogs") {
     let tempItems = useRecentBlogs(num_items)
      mediaLists = MediaDataTransformer({
       "rawItems":tempItems,
@@ -158,7 +153,7 @@ export default ({
     })
   }
   
-  if (type.toLowerCase() === "specify list") {
+  if (type === "custom") {
     let rawMediaList = JSON.parse(media_list)
     let tempItems = []
     rawMediaList.rows.forEach(item => {
@@ -190,14 +185,11 @@ export default ({
         
   return (
   <>
-    <section className={'fullwidth-section ' + sectionClass} style={{backgroundColor: background_color}} >
+    <section className={'site-section media-cards ' + padding} style={{backgroundColor: bg_color}}>
       <Container>
-        <Row>
-        <SectionHeader label={label} offset={0}/>
-        </Row>
         <UseSlider
           touchEnabled = {ctx.touchEnabled}
-          displayType = {display_type.toLocaleLowerCase()}
+          displayType = {display_type}
           mediaLists = {mediaLists}
         />
       </Container>

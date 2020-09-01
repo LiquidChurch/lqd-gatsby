@@ -4,8 +4,10 @@ import BlockAttribution from "../Blocks/Attribution"
 import BlockButton from "../Blocks/Button"
 import BlockHeading from "../Blocks/Heading"
 import BlockHeroImage from "../Blocks/HeroImage"
+import BlockMediaTiles from "../Blocks/MediaTiles"
 import BlockPageStrap from "../Blocks/PageStrap"
 import BlockPhotoTab from  "../Blocks/PhotoTab"
+import BlockVideo from "../Blocks/Video"
 
 import BlockParagraph from "../Paragraph"
 import BlockList from "../List"
@@ -13,7 +15,7 @@ import BlockHomepageHero from "../HomepageHero"
 import BlockIFrame from "../IFrame"
 import BlockHomeLinks from "../HomeLinks"
 import BlockMessageTile from "../MessageTile"
-import BlockMediaTiles from "../MediaTiles"
+
 import BlockPageModal from "../PageModal"
 import BlockLinkedTiles from "../LinkedTiles"
 
@@ -45,6 +47,7 @@ export default ({ blocks, featuredImage }) => {
     "block-lab/link-tiles": BlockLinkedTiles,
     "block-lab/photo-block": BlockPhotoTab,
     "block-lab/photo-carousel": BlockPhotoCarousel,
+    "block-lab/video-block": BlockVideo,
   }
 
   return (

@@ -1,8 +1,8 @@
 import React, { useContext, useState, useEffect } from 'react'
 import Row from 'react-bootstrap/Row'
 
-import { GlobalContext } from '../GlobalContext/context'
-import { ArrowRight, ArrowLeft } from '../../helpers/icons'
+import { GlobalContext } from '../../GlobalContext/context'
+import { ArrowRight, ArrowLeft } from '../../../helpers/icons'
 import "./styles.css"
 
 const shiftWidth = 266 + 12;
