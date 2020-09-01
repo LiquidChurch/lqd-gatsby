@@ -5,7 +5,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card'
 import SectionHeader from '../SectionHeader'
-import Heading from '../Heading'
+import Heading from '../Blocks/Heading'
 
 import algoliasearch from 'algoliasearch/lite';
 import {

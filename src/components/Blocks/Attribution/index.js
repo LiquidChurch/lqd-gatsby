@@ -3,7 +3,6 @@ import React from 'react'
 import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
-import Imgix from 'react-imgix'
 
 import FeaturedAttribute from './featured'
 import TiledAttribute from './tiled'
@@ -32,20 +31,20 @@ export default ({
   
   switch(layout) {
     case 'list':
-      for (var i = 0; i < attributionObject.rows.length; i++ ) {
+      for (let i = 0; i < attributionObject.rows.length; i++ ) {
         featuredAttributionObject.push(attributionObject.rows[i])
       }
       break
     case 'tile':
-      for (var i = 0; i < attributionObject.rows.length; i++ ) {
-        tiledAttributionObject.push(attributionObject.rows[i])
+      for (let j = 0; j < attributionObject.rows.length; j++ ) {
+        tiledAttributionObject.push(attributionObject.rows[j])
       }
       break
-    case 'hybrid':
+    default:
       featuredAttributionObject.push(attributionObject.rows[0])
       if (attributionObject.rows.length > 1) {
-        for (var i = 1; i < attributionObject.rows.length; i++ ) {
-          tiledAttributionObject.push(attributionObject.rows[i])
+        for (let k = 1; k < attributionObject.rows.length; k++ ) {
+          tiledAttributionObject.push(attributionObject.rows[k])
         }
       } 
       break

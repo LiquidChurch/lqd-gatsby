@@ -1,0 +1,28 @@
+.page-strap-col {
+  max-width: 88%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (max-width:991px) {  
+  .page-strap-col {
+    max-width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+@media (max-width:767px) {
+  .page-strap-image-col {
+    text-align-last: center;
+    padding-bottom: 1em;
+  }  
+}
+
+@media (max-width:575px) {
+
+}
+
+@media (max-width:334px) {
+
+}

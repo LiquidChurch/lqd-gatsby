@@ -1,0 +1,155 @@
+.statement {
+  font-family: "Avenir Next Bold";
+  padding-top:3px;
+}
+
+.statement.tall {
+  margin-bottom: 6px;  
+}
+
+.statement.short {
+  margin-bottom: 0px;
+}
+
+.statement.light {
+  color: #009DD1;
+}
+
+.statement.dark {
+  color: #FFF;
+}
+
+.statement.xlarge {
+  font-size: 3.75em;
+  line-height: 1.3em;
+}
+
+.statement.large {
+  font-size: 2.5em;
+  line-height: 1.3em;
+}
+
+.statement.medium {
+  font-size: 2.0em;
+  line-height: 1.3em;  
+}
+
+.statement.small {
+  font-size: 1.32em;
+  line-height: 1.1em;    
+}
+
+.sidekick {
+  font-family: "Avenir Next Regular";
+}
+
+.sidekick.tall {
+  padding-top:1.3em;
+}
+
+.sidekick.short {
+  padding-top:0.5em;
+}
+
+.sidekick.light {
+  color: #464646;
+}
+
+.sidekick.dark {
+  color: #FFF;
+}
+
+.sidekick.xlarge {
+  font-size: 1.75em;
+}
+
+.sidekick.large {
+  font-size: 1.5em;
+}
+
+.sidekick.medium {
+  font-size: 1.3em;  
+}
+
+.sidekick.small {
+  font-size: 1.12em;  
+}
+
+@media (max-width:767px) {
+  .statement.xlarge {
+    font-size: 3.13em;
+    line-height: 1.3em;
+  }
+  
+  .statement.large {
+    font-size: 2.0em;
+    line-height: 1.3em;  
+  }
+  
+  .statement.medium {
+    font-size: 1.5em;
+    line-height: 1.3em;  
+  }
+  
+  .sidekick.xlarge {
+    font-size: 1.5em;
+  }
+  
+  .sidekick.medium {
+    font-size: 1.12em;
+  }
+}
+
+@media (max-width:575px) {
+  .statement.xlarge {
+    font-size: 2.0em;
+    line-height: 1.3em;
+  }
+  
+  .statement.large {
+    font-size: 1.5em;
+    line-height: 1.3em;
+  }
+
+  .statement.medium {
+    font-size: 1.32em;
+    line-height: 1.3em;
+  }
+  
+  .sidekick.xlarge {
+    font-size: 1.12em;
+  }
+  
+  .sidekick.large {
+    font-size: 1.12em;
+  }
+}
+
+.cta {
+  font-family: "Avenir Next Demi";  
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+}
+
+.cta.tall {
+  padding-top: 1.3em;
+}
+
+.cta.short {
+  padding-top: 0.5em;
+}
+
+.cta.large {
+  font-size: 1.12em;
+}
+
+.cta.medium {
+  font-size: 1.12em;
+}
+
+.cta.small {
+  font-size: 1.12em;
+}
+
+

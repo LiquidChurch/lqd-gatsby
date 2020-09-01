@@ -147,8 +147,10 @@ fragment BlockFragment on Block {
   }
   ... on BlockLabPhotoBlock {
     attributes__typename_BlockLabPhotoBlockAttributes: attributes {
+      alignment
       bg_color
       className
+      color
       cta
       cta_secondary
       header
@@ -156,6 +158,8 @@ fragment BlockFragment on Block {
       image_id
       location
       padding
+      size
+      spacing
       text_block
       text_block_secondary
     }
@@ -177,12 +181,16 @@ fragment BlockFragment on Block {
   ... on BlockLabButtonBlock {
     attributes__typename_BlockLabButtonBlockAttributes: attributes {
       alignment
-      background_color
+      bg_color
+      btn_color
+      btn_outline
       className
-      color
+      dropdown
+      font_color
       has_arrow
       has_icon
       min_width
+      padding
       page
       text
       text_float
@@ -190,6 +198,7 @@ fragment BlockFragment on Block {
   }
   ... on BlockLabHeadingBlock {
     attributes__typename_BlockLabHeadingBlockAttributes: attributes {
+      add_padding
       alignment
       all_caps
       bg_color
@@ -236,10 +245,13 @@ fragment BlockFragment on Block {
       alignment
       bg_color
       className
+      color
       cta
       image_id
       padding
       sidekick
+      size
+      spacing
       statement
     }
   }
@@ -262,12 +274,17 @@ fragment BlockFragment on Block {
   }
   ... on BlockLabHeroImageBlock {
     attributes__typename_BlockLabHeroImageBlockAttributes: attributes {
+      alignment
       bg_color
       className
+      color
       cta
       image_id
       image_style
+      padding
       sidekick
+      size
+      spacing
       statement
     }
   }

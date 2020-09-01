@@ -1,12 +1,13 @@
 import React from "react"
 import Image from "gatsby-image"
 import BlockParagraph from "../Paragraph"
-import BlockHeading from "../Heading"
+import BlockButton from "../Blocks/Button"
+import BlockHeading from "../Blocks/Heading"
 import BlockImage from "../Image"
 import BlockCode from "../Code"
 import BlockList from "../List"
 import BlockBlockquote from "../Blockquote"
-import BlockButton from "../Button"
+
 import "./styles.css"
 
 export default ({ blocks, featuredImage }) => {

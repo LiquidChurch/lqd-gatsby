@@ -43,6 +43,36 @@
   float: right;
 }
 
+.button-dropdown {
+  text-transform: uppercase;
+  font-size:1.0em;
+}
+
+.button-dropdown-menu {
+  position: absolute;
+  top: -2px !important;
+  left: 0px !important;
+  z-index: 1000;
+  display: none;
+  float: left;
+  padding: .5rem 0;
+  margin: .125rem 0 0;
+  font-size: 1rem;
+  color: #FFF;
+  text-align: left;
+  list-style: none;
+  background-color: #009DD1;
+  background-clip: padding-box;
+  border: 0;
+  border-radius: 12px 12px 12px 12px;
+  box-shadow: 0 0 0 0.2rem rgba(38,143,255,.5);
+  transition: opacity 0.3s ease-in-out;
+}
+
+.button-dropdown-menu.show {
+  display: block;
+}
+
 @media (max-width:575px) {
   .button-text {
     padding-top: 6px;

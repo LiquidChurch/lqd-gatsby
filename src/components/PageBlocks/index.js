@@ -1,21 +1,22 @@
 import React from "react"
 
 import BlockAttribution from "../Blocks/Attribution"
+import BlockButton from "../Blocks/Button"
+import BlockHeading from "../Blocks/Heading"
+import BlockHeroImage from "../Blocks/HeroImage"
+import BlockPageStrap from "../Blocks/PageStrap"
+import BlockPhotoTab from  "../Blocks/PhotoTab"
+
 import BlockParagraph from "../Paragraph"
 import BlockList from "../List"
-import BlockHeading from "../Heading"
-import BlockButton from "../Button"
 import BlockHomepageHero from "../HomepageHero"
-import BlockHeroImage from "../HeroImage"
-import BlockExternalRedirect from "../ExternalRedirect"
 import BlockIFrame from "../IFrame"
-import BlockPageStrap from "../PageStrap"
 import BlockHomeLinks from "../HomeLinks"
 import BlockMessageTile from "../MessageTile"
 import BlockMediaTiles from "../MediaTiles"
 import BlockPageModal from "../PageModal"
 import BlockLinkedTiles from "../LinkedTiles"
-import BlockPhotoTab from  "../PhotoTab"
+
 import BlockPhotoCarousel from "../PhotoCarousel"
 
 import BlockGoogleMap from "../GoogleMap"
@@ -34,7 +35,6 @@ export default ({ blocks, featuredImage }) => {
     "block-lab/heading": BlockHeading,
     "block-lab/homepage-hero": BlockHomepageHero,
     "block-lab/hero-image": BlockHeroImage,
-    "block-lab/external-redirect": BlockExternalRedirect,
     "block-lab/google-map": BlockGoogleMap,
     "block-lab/iframe-block": BlockIFrame,
     "block-lab/page-strap": BlockPageStrap,

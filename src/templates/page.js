@@ -24,25 +24,44 @@ export default ({
   if (page.themeState !== null) {
     theme = page.themeState.state
   }
+ 
+  var externalRedirectBlock = page.blocks.find(
+    ({ __typename }) => __typename === "WpBlockLabExternalRedirectBlock"
+  )
   
- // const featuredImage = page?.featuredImage?.localFile?.childImageSharp?.fluid
+  let hasExternalRedirect = false
+  
+  if (externalRedirectBlock !== undefined) {
+    hasExternalRedirect = true
+  }
+  
   useEffect(() => {
     ctx.setTheme(theme)    
     if (isTouchEnabled()) {
       ctx.enableTouchState()
     }
-  }, [ctx, theme])
+    
+    if (externalRedirectBlock !== undefined) {
+      console.log('external redirect block found')
+      window.location.replace(externalRedirectBlock.attributes.external_url)
+    }
+    
+  }, [ctx, theme, externalRedirectBlock])
   
   return (
     <>
-    <Layout location={location}>
-      <Helmet titleTemplate={`%s | ${generalSettings.title} `}>
-        <title>{Parse(page.title)}</title>
-      </Helmet>
-        <article className="page">
-          <PageBlocks {...page} />
-        </article>
-    </Layout>
+    {hasExternalRedirect ? (
+      ''
+     ) :
+      <Layout location={location}>
+        <Helmet titleTemplate={`%s | ${generalSettings.title} `}>
+          <title>{Parse(page.title)}</title>
+        </Helmet>
+          <article className="page">
+            <PageBlocks {...page} />
+          </article>
+      </Layout>
+    }
     </>
   )
 }

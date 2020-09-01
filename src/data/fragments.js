@@ -35,12 +35,16 @@ export const Button = graphql`
       text
       alignment
       page
-      color
-      background_color
+      btn_color
+      btn_outline
+      font_color
+      bg_color
+      padding
       has_arrow
       has_icon
       min_width
       text_float
+      dropdown
     }
   }
 `
@@ -72,6 +76,7 @@ export const Heading = graphql`
       font_color
       show_hr
       all_caps
+      add_padding
       bg_color
       padding
     }
@@ -84,6 +89,11 @@ export const HeroImage = graphql`
       image_id
       image_style
       bg_color
+      padding
+      spacing
+      alignment
+      size
+      color
       statement
       sidekick
       cta
@@ -186,7 +196,10 @@ export const PageStrap = graphql`
       cta
       bg_color
       padding
+      spacing
       alignment
+      size
+      color
     }
   }
 `
@@ -224,7 +237,10 @@ export const PhotoTab = graphql`
       text_block_secondary
       cta_secondary
       bg_color
-      padding      
+      padding
+      spacing
+      alignment
+      size 
     }
   } 
 `

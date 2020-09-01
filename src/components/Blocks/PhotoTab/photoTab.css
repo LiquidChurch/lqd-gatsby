@@ -1,8 +1,6 @@
 .photo-tab-row {
   padding-bottom:0em;
   padding-top:0em;
-  margin-left: 40px;
-  margin-right: 40px;
 }
 
 .photo-tab-image {
@@ -33,34 +31,18 @@
   text-transform: uppercase;
   padding-top:20px;
   padding-bottom:0;
-  margin-left:0px;   /* was -34px */
 }
 
 @media (max-width:991px) {
   .photo-tab-left {
-    margin-right: 65px;
-    margin-left: -65px;
   }
   
   .photo-tab-image {
-    width: 345px;
+    width: 315px;
   } 
 
   .photo-tab-body-col {
 
-  }
-  
-  .photo-tab-tag {
-    width: 345px;
-
-  }
-  
-  .photo-tab-text {
-    width: 345px;
-  }
-  
-  .photo-tab-cta {
-    width: 345px;
   }
 }
 
@@ -77,42 +59,11 @@
   .photo-tab-body-col {
     margin-top:20px;
   }
-  
-  .photo-tab-tag {
-    margin-right: auto;
-    margin-left: auto;    
-  }
-  
-  .photo-tab-text {
-    margin-right: auto;
-    margin-left: auto;    
-  }
-  
-  .photo-tab-cta {
-    margin-left:auto;
-    margin-right:auto;  
-  }
 }
 
 @media (max-width: 575px) {  
   .photo-tab-image {
-    margin-left:-10%;        
-    width: 120%;
-  }
-  
-  .photo-tab-tag {    
-    margin-left:-10%;    
-    width: 120%;
-  }
-  
-  .photo-tab-text {
-    margin-left:-10%;    
-    width: 120%;
-  }
-  
-  .photo-tab-cta {
-    margin-left:-10%;    
-    width: 120%;
+    width: 100%;
   }
 }
 
