@@ -13,6 +13,20 @@ const VideoPlayer = ({
     width: 0
   })
 
+  console.log(videoUrl)
+  
+  let videoSrc = ""
+  switch(videoUrl[2]) {
+    case 'vimeo.com':
+      videoSrc = 'https://player.vimeo.com/video/' + videoUrl[3]
+      break
+    case 'youtu.be':
+      videoSrc = 'https://www.youtube.com/embed/' + videoUrl[3]
+      break
+    default:
+      break
+  }
+  
   useEffect(() => {
     function setWidth() {
       if (window.innerWidth > 1199) {
@@ -38,9 +52,19 @@ const VideoPlayer = ({
 
   return (
     <>
-      <div style={{width:'100vw', textAlign:'center'}}>
+      <div style={{
+            width:'100vw', 
+            textAlign:'center',
+            width:dimensions.width,
+            height:(dimensions.height - 1),
+            borderRadius:'20px',
+            overflow: 'hidden',
+            zIndex: 1,
+            margin: '0 auto',
+            boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+          }}>
         <iframe 
-          src={'https://player.vimeo.com/video/' + videoUrl[3]} 
+          src={videoSrc} 
           width={dimensions.width}
           height={dimensions.height}
           frameBorder="0" allow="autoplay; fullscreen" 
