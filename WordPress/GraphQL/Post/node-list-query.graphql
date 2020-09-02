@@ -310,7 +310,6 @@ fragment BlockFragment on Block {
     attributes__typename_BlockLabExternalRedirectBlockAttributes: attributes {
       className
       external_url
-      new_tab
     }
   }
   ... on BlockLabHomepageHeroBlock {

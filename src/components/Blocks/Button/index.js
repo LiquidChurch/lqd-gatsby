@@ -47,7 +47,8 @@ function ButtonIcon(props) {
   }
 }
 
-function DropdownButton({objDropdown, dropdownWidth}) {
+function DropdownButton({objDropdown}) {
+  console.log('dropdown', objDropdown)
   return (
   <>
     <Dropdown.Menu
@@ -56,6 +57,7 @@ function DropdownButton({objDropdown, dropdownWidth}) {
       {objDropdown.rows.map(dropdown => {
         return (
           <Dropdown.Item
+            href={dropdown.pageInfo.uri}
             >{dropdown.text}</Dropdown.Item>         
       )
     })}
@@ -117,18 +119,13 @@ export default ({
 
   if (objDropdown.rows[0] !== undefined && objDropdown.rows[0].page.id !== 0) {
     hasDropdown = true
+    objDropdown.rows.forEach((object, i) => {
+      objDropdown.rows[i].pageInfo = useFeaturedImage(object.page.id)
+    })
   }
   
   let dropdownId = Math.random().toString(36).substring(2, 7) + Math.random().toString(36).substring(2, 7)    
-  let dropdownWidth = 0
-  useEffect (() => {
-    function setDropdownWidth() {
-      dropdownWidth = (!document.getElementById('dropdown-button-' + dropdownId) ? 0 : document.getElementById('dropdown-button-' + dropdownId).offsetHeight)
-    }
-    
-    setDropdownWidth()    
-    window.addEventListener('resize', setDropdownWidth)  
-  }, [dropdownWidth, dropdownId])
+
   
   return (
   <>
@@ -140,19 +137,19 @@ export default ({
               <Dropdown>
                 <Dropdown.Toggle 
                     id={'dropdown-button-' + dropdownId}
-                    className={'cta-button font-link button-dropdown ' + alignment}
+                    className={'cta-button button-dropdown ' + alignment}
                     style={{minWidth: min_width/16 + 'em',
                             color:fontColor,
                             backgroundColor: btnColor,
                             border: border}}>
                   <span className={'button-text ' + text_float}>{text}</span>
                 </Dropdown.Toggle>
-                <DropdownButton objDropdown={objDropdown} dropdownWidth={100}/>
+                <DropdownButton objDropdown={objDropdown}/>
               </Dropdown>
             :
               <Link 
                 to={pageInfo.uri}
-                className={'cta-button font-link' + alignment}
+                className={'cta-button ' + alignment}
                 style={{minWidth: min_width/28 + 'em',
                         color:fontColor,
                         backgroundColor: btnColor,

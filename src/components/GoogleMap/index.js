@@ -68,7 +68,7 @@ const GoogleMapComponentWithMarker = withScriptjs(
         draggable: true, // make map draggable
         keyboardShortcuts: false, // disable keyboard shortcuts
         scaleControl: true, // allow scale controle
-        scrollwheel: true, // allow scroll wheel
+        scrollwheel: false, // allow scroll wheel
         styles: styles // change default map styles
       }}
     >

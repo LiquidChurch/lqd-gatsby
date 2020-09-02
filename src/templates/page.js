@@ -36,17 +36,15 @@ export default ({
   }
   
   useEffect(() => {
+    if (hasExternalRedirect) {
+      window.location.replace(externalRedirectBlock.attributes.external_url)
+    }
+        
     ctx.setTheme(theme)    
     if (isTouchEnabled()) {
       ctx.enableTouchState()
     }
-    
-    if (externalRedirectBlock !== undefined) {
-      console.log('external redirect block found')
-      window.location.replace(externalRedirectBlock.attributes.external_url)
-    }
-    
-  }, [ctx, theme, externalRedirectBlock])
+  }, [ctx, theme, externalRedirectBlock, hasExternalRedirect])
   
   return (
     <>

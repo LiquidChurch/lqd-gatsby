@@ -58,6 +58,12 @@ export default ({
     var textBlockSecondary = RichTextHelper(text_block_secondary)
   }
   
+  let hasSecondary = true
+  if (header_secondary === null && text_block_secondary === null) {
+    console.log('no secondary block')
+    hasSecondary = false
+  }
+  
   return (
   <>
   <section className={'site-section ' + padding} style={{backgroundColor: bg_color}}>
@@ -80,8 +86,16 @@ export default ({
           spacing={spacing}
           theme={'light'}
         />
-        <h2 className={(textOrder === 1) ? "photo-tab-tag photo-tab-left font-h1" :"photo-tab-tag font-h1"}>{Parse(header_secondary)}</h2>
-        <div className={(textOrder === 1) ? "photo-tab-text photo-tab-left font-regular" : "photo-tab-text font-regular"}>{Parse(textBlockSecondary)}</div>
+        <div className={hasSecondary ? "text-padding" : ''} ></div>
+        <TextArea 
+          statement={header_secondary}
+          sidekick={textBlockSecondary}
+          cta={cta_secondary}
+          alignment={alignment}
+          size={size}
+          spacing={spacing}
+          theme={'light'}
+        />    
       </Col>
     </Row>    
   </Container>

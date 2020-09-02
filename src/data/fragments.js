@@ -56,7 +56,6 @@ export const ExternalRedirect = graphql`
   fragment ExternalRedirect on WpBlockLabExternalRedirectBlock {
     attributes {
         external_url
-        new_tab
     }
   }
 `

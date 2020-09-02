@@ -34,17 +34,19 @@ const TextArea = ({
     ctaTop = false
   }
 
-  if (ctaObject !== undefined || ctaObject.rows[0].style !== undefined) {
-    hasCTA = true
-    
-    let ctaObjectLength = ctaObject.rows.length
-    ctaObject.rows.forEach((cta, i) => {
-      if (i === (ctaObjectLength - 1) ) {
-        ctaObject.rows[i].lastItem = true
-      } else {
-        ctaObject.rows[i].lastItem = false
-      }
-    })
+  if (ctaObject !== null && ctaObject.rows.length !== 0) {
+    if (typeof ctaObject.rows[0].style !== 'undefined') {
+      hasCTA = true
+
+      let ctaObjectLength = ctaObject.rows.length
+      ctaObject.rows.forEach((cta, i) => {
+        if (i === (ctaObjectLength - 1) ) {
+          ctaObject.rows[i].lastItem = true
+        } else {
+          ctaObject.rows[i].lastItem = false
+        }
+      })
+    }
   }
 
   return (

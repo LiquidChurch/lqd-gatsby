@@ -1,20 +1,13 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
-import { ArrowForward } from '../../../helpers/icons'
+import { ArrowForwardBtn, ArrowForwardText } from '../../../helpers/icons'
 import { usePageById } from '../../../data/usePage'
 
 import './styles.css'
 
 
-function ShowArrow(props) {
-  if (props.showArrow) {
-    return (
-    <ArrowForward />
-    )
-  }
-  return null
-}
+
 /**
  * Call To Action Component
  */
@@ -29,7 +22,7 @@ const CallToAction = ({
   if (cta.page_id !== undefined) {
     pageId = cta.page_id.id
   } 
-  console.log('cta', cta)
+
   let pageInfo = usePageById(pageId)
 
   let icon = ""
@@ -74,8 +67,8 @@ const CallToAction = ({
       {pageId === 0 ? 
       '' :
       <Link className={cta.lastItem ? 
-                        'cta-' + cta.style + ' font-link ' + alignment : 
-                        'cta-' + cta.style + ' font-link ' + alignment + ' ' + spacing} 
+                        'cta-' + cta.style + ' ' + alignment : 
+                        'cta-' + cta.style + ' ' + alignment + ' ' + spacing} 
             style={{color:fontColor, 
                     backgroundColor: btnColor,
                     border: border}}
@@ -89,7 +82,13 @@ const CallToAction = ({
              style={{color:cta.font_color}}>
           {cta.label}
         </div>
-        <ShowArrow showArrow={cta.show_arrow}/>
+        {cta.show_arrow ?
+          (cta.style === 'text') ? 
+            <ArrowForwardText/> :
+            <ArrowForwardBtn />
+           :
+          ''
+        }
       </Link>
       }
     </>

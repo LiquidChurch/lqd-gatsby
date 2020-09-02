@@ -49,7 +49,7 @@ export default ({
   //if (image_id !== null && image_id !== undefined && image_id !== 0) {
   //  hasImage = true
   //}
-  
+
   return (
   <>
   <section className={'site-section ' + padding} style={{backgroundColor: bg_color}}>
