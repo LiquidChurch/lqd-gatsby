@@ -281,16 +281,19 @@ fragment BlockFragment on Block {
   ... on BlockLabPageStrapBlock {
     attributes__typename_BlockLabPageStrapBlockAttributes: attributes {
       alignment
+      all_caps
       bg_color
       className
       color
       cta
+      font_color
       image_id
       padding
       sidekick
       size
       spacing
       statement
+      width
     }
   }
   ... on BlockLabExternalRedirectBlock {

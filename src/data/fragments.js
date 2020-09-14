@@ -192,12 +192,15 @@ export const PageStrap = graphql`
   fragment PageStrap on WpBlockLabPageStrapBlock {
     attributes {
       statement
+      font_color
+      all_caps
       sidekick
       image_id
       cta
       bg_color
       padding
       spacing
+      width
       alignment
       size
       color

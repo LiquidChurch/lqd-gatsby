@@ -34,6 +34,10 @@ export default ({
   }) => {
   console.log('addPadding', add_padding)
  
+  let textTransform = "none"
+  if (all_caps) {
+    textTransform = "uppercase"
+  }
   return (
   <>
     <section className={'site-section ' + padding} style={{backgroundColor: bg_color}}>
@@ -41,7 +45,7 @@ export default ({
         <Row>
           <Col>
             <h2 className={'statement ' + size + ' align-' + alignment}
-                style={{color: font_color}}>
+                style={{color: font_color, textTransform: textTransform}}>
               {Parse(text)}
               <AddHR showHR={show_hr} />
             </h2>

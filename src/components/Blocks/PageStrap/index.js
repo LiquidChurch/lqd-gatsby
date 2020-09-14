@@ -18,11 +18,11 @@ function StrapImage(props) {
   if (image_info !== undefined) {
     var imgUrl = image_info.mediaItemUrl.split("/")
     return (
-      <Col xs={12} sm={12} md={4} lg={3} className="page-strap-image-col">
+      <Col xs={4} className="page-strap-image-col">
         <Imgix 
-          src={"https://liquidchurch.imgix.net/" + imgUrl[4] + "/" + imgUrl[5] + "?h=296"}
+          src={"https://liquidchurch.imgix.net/" + imgUrl[4] + "/" + imgUrl[5] + "?fit=clip&w=" + props.max_width}
           className="page-strap-image"
-          sizes="40vw" />
+          />
       </Col>
     )
   }  
@@ -35,11 +35,14 @@ function StrapImage(props) {
  */
 export default ({
   statement,
+  font_color,
+  all_caps,
   sidekick,
   cta,
   bg_color,
   padding,
   spacing,
+  width,
   alignment,
   size,
   color,
@@ -49,24 +52,45 @@ export default ({
   //if (image_id !== null && image_id !== undefined && image_id !== 0) {
   //  hasImage = true
   //}
-
+  console.log('pageStrap font color', font_color)
+  
+  let xsWidth = 12
+  let xsOffset = 0
+  let smWidth = (width + 4)
+  if (smWidth > 12) {smWidth = 12}
+  let smOffset = (12 - smWidth)/2
+  let mdWidth = (width + 2)
+  if (mdWidth > 12) {mdWidth = 12}
+  let mdOffset = (12 - mdWidth)/2
+  let lgWidth = width
+  let lgOffset = ((12 - lgWidth)/2 ) - 1
+  let maxWidth = width * 25
+  
   return (
   <>
   <section className={'site-section ' + padding} style={{backgroundColor: bg_color}}>
   <Container>
     <Row>
-      <StrapImage strap_image_id={image_id} />
-      <Col className={"page-strap-col vertical-center"}>
-        <TextArea 
-          statement={statement}
-          sidekick={sidekick}
-          cta={cta}
-          alignment={alignment}
-          size={size}
-          spacing={spacing}
-          theme={color}
-        />
-      </Col> 
+      <Col flex xs={{span: xsWidth, offset: xsOffset}}
+           sm={{span: smWidth, offset: smOffset}}
+           md={{span: mdWidth, offset: mdOffset}}
+           lg={{span: lgWidth, offset: lgOffset}}
+           className="page-strap">
+        <StrapImage strap_image_id={image_id} max_width={maxWidth}/>
+        <Col xs={8} className={"page-strap-col vertical-center"}>
+          <TextArea 
+            statement={statement}
+            font_color={font_color}
+            all_caps={all_caps}
+            sidekick={sidekick}
+            cta={cta}
+            alignment={alignment}
+            size={size}
+            spacing={spacing}
+            theme={color}
+          />
+        </Col>
+      </Col>
     </Row>
   </Container>
   </section>

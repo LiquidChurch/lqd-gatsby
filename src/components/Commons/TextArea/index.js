@@ -8,6 +8,8 @@ import './styles.css'
 
 const TextArea = ({
   statement,
+  font_color,
+  all_caps,
   sidekick,
   cta,
   size,
@@ -15,6 +17,7 @@ const TextArea = ({
   alignment,
   theme,
 }) => {
+  console.log('sidekick', sidekick)
   const ctaObject = JSON.parse(cta)
   
   let sidekickTop = true
@@ -22,6 +25,20 @@ const TextArea = ({
   let hasStatement = false
   let hasSidekick = false
   let hasCTA = false
+  let fontColor = "#009DD1"
+  
+  if (theme === 'dark') {
+    fontColor = '#FFF'
+  }
+  
+  if (font_color !== undefined || font_color !== "#009DD1") {
+    fontColor = font_color
+  }
+  
+  let textTransform = "none"
+  if (all_caps) {
+    textTransform = "uppercase"
+  }
   
   if (statement !== null && statement !== '') {
     hasStatement = true
@@ -53,7 +70,8 @@ const TextArea = ({
   <>
     <h2 className={hasStatement ? 
                     'statement ' + size + ' ' + spacing + ' ' + theme + ' align-' + alignment : 
-                    'no-display'}>
+                    'no-display'}
+        style={{color:fontColor, textTransform: textTransform}}>
       {Parse(statement)}
     </h2>
     <div className={hasSidekick ? 

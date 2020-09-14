@@ -1,18 +1,33 @@
+.page-strap {
+  display:flex;
+}
 .page-strap-col {
-  max-width: 88%;
+  min-width: 100%;
   margin-right: auto;
   margin-left: auto;
 }
 
-@media (max-width:991px) {  
+.page-strap-image-col {
+  object-fit:scale-down;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (max-width:991px) {
+  .page-strap {
+    display:block;
+  }
+  
   .page-strap-col {
-    max-width: 100%;
+    min-width: 100%;
     margin-right: auto;
     margin-left: auto;
   }
 }
 
 @media (max-width:767px) {
+
+  
   .page-strap-image-col {
     text-align-last: center;
     padding-bottom: 1em;

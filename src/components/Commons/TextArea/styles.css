@@ -36,7 +36,8 @@
 
 .statement.small {
   font-size: 1.32em;
-  line-height: 1.1em;    
+  line-height: 1.1em;  
+  letter-spacing: 0.14em;
 }
 
 .sidekick {
@@ -52,7 +53,7 @@
 }
 
 .sidekick.light {
-  color: #464646;
+  color: #585858;
 }
 
 .sidekick.dark {
@@ -185,5 +186,13 @@
  
 }
 
+.sidekick a {
+   color: #009DD1;
+   font-family: "Avenir Next Demi";
+   letter-spacing: 0.1em;
+}
 
+.sidekick strong {
+  font-family:"Avenir Next Bold";
+}
 
