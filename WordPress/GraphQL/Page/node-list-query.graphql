@@ -306,10 +306,11 @@ fragment BlockFragment on Block {
   }
   ... on BlockLabMessageTileBlock {
     attributes__typename_BlockLabMessageTileBlockAttributes: attributes {
-      background_color
+      bg_color
       block_title
       className
       message_slug
+      padding
     }
   }
   ... on BlockLabHomeLinksBlock {

@@ -16,17 +16,17 @@ export default (series) => {
   return (
     <section className="fullwidth-section">
     <Container className={'hero-image-container-fixed'}>
-    <Row>  
-      <Imgix 
-        src={"https://liquidchurch.imgix.net/" + imgUrl[4] + "/" + imgUrl[5]}
-        className={'hero-image-fixed'}
-        sizes="100vw" />
-    </Row>
-    <Row>
-      <Col xs={{ span:10, offset: 1}} >
-        <div className="font-large series-hero-description">{Parse(series.description)}</div>
-      </Col>
-    </Row>
+      <Row>  
+        <Imgix 
+          src={"https://liquidchurch.imgix.net/" + imgUrl[4] + "/" + imgUrl[5]}
+          className={'hero-image-fixed'}
+          sizes="100vw" />
+      </Row>
+      <Row>
+        <Col xs={{ span:10, offset: 1}} >
+          <div className="font-large series-hero-description">{Parse(series.description)}</div>
+        </Col>
+      </Row>
     </Container>
     </section>
   )

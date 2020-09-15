@@ -172,7 +172,8 @@ export const MessageTile = graphql`
   fragment MessageTile on WpBlockLabMessageTileBlock {
       attributes {
         block_title
-        background_color
+        bg_color
+        padding
         message_slug
       }
   }

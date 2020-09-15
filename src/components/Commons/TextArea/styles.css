@@ -37,7 +37,8 @@
 .statement.small {
   font-size: 1.32em;
   line-height: 1.1em;  
-  letter-spacing: 0.14em;
+  letter-spacing: 0.1em;
+  margin-left:15px;
 }
 
 .sidekick {

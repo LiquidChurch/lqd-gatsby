@@ -27,7 +27,7 @@ export default ({
     return (
       <>
       <Col xs={{span:12, offset:0}} md={{span: 12-(offset*2), offset: offset}}>
-        <h6 className="font-section-header">{label}</h6>
+        <h2 className="statement small align-left">{label}</h2>
         <AddHR showHR={showHR} />
       </Col>
       </>

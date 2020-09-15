@@ -69,8 +69,8 @@ export default ({
         <SeriesHero {...series} />
         <MediaTiles 
           type=""
-          label=" "
-          background_color="#F8F8F8"
+          bg_color="#F8F8F8"
+          padding='both'
           media_list={messagesInfo} />
       </article>
     </Layout>

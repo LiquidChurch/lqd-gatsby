@@ -20,8 +20,9 @@ function StrapImage(props) {
     return (
       <Col xs={4} className="page-strap-image-col">
         <Imgix 
-          src={"https://liquidchurch.imgix.net/" + imgUrl[4] + "/" + imgUrl[5] + "?fit=clip&w=" + props.max_width}
+          src={"https://liquidchurch.imgix.net/" + imgUrl[4] + "/" + imgUrl[5] + "?fit=fillmax&w=" + props.max_width}
           className="page-strap-image"
+          size="100vw"
           />
       </Col>
     )
@@ -48,10 +49,11 @@ export default ({
   color,
   image_id,
 }) => {
-  //var hasImage = false
-  //if (image_id !== null && image_id !== undefined && image_id !== 0) {
-  //  hasImage = true
-  //}
+  var hasImage = false
+  if (image_id !== null && image_id !== undefined && image_id !== 0) { hasImage = true }
+
+  console.log(hasImage)
+  
   console.log('pageStrap font color', font_color)
   
   let xsWidth = 12
@@ -63,9 +65,11 @@ export default ({
   if (mdWidth > 12) {mdWidth = 12}
   let mdOffset = (12 - mdWidth)/2
   let lgWidth = width
-  let lgOffset = ((12 - lgWidth)/2 ) - 1
+  let lgOffset = ((12 - lgWidth)/2 ) 
   let maxWidth = width * 25
   
+  let textAreaWidth = 12
+  if (hasImage === true) { textAreaWidth = 8 }
   return (
   <>
   <section className={'site-section ' + padding} style={{backgroundColor: bg_color}}>
@@ -77,7 +81,7 @@ export default ({
            lg={{span: lgWidth, offset: lgOffset}}
            className="page-strap">
         <StrapImage strap_image_id={image_id} max_width={maxWidth}/>
-        <Col xs={8} className={"page-strap-col vertical-center"}>
+        <Col xs={12} md={textAreaWidth} className={"page-strap-col vertical-center"}>
           <TextArea 
             statement={statement}
             font_color={font_color}

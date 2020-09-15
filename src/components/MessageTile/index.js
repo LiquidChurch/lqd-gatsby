@@ -15,7 +15,8 @@ import "./styles.css"
  * Message Tile Block Component
  */
 export default ({ message_slug,
-                  background_color,
+                  bg_color,
+                  padding,
                   block_title }) => {
   const messageInfo = useRecentMessages(1)
 
@@ -34,10 +35,9 @@ export default ({ message_slug,
   
   return (
   <>
-  <section className="fullwidth-section message-tile-section" style={{backgroundColor: background_color}} >
+  <section className={'site-section message-tile-section ' + padding} style={{backgroundColor: bg_color}} >
   <Container>
     <Row>
-      <SectionHeader label={block_title} offset={0}/>
       <Col>
       <Link to={"/message/" + messageInfo[0].slug}>
       <Imgix 

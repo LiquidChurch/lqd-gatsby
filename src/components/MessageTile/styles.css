@@ -11,8 +11,13 @@
 
 .message-tile-text-overlay {
   position: absolute;
-  bottom: 1.5em;
-  left: 2.4em;
+  bottom: 0em;
+  border-radius: 0 0 0.8em 0.8em;
+  padding-left: 2.4em;
+  padding-bottom: 2.4em;
+  background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1));
+  margin-left: 1em;
+  width: calc(100% - 1.9em);
 }
 
 .message-tile-btn-overlay {
@@ -66,6 +71,9 @@
   }
   
   .message-tile-text-overlay {
+    background:none;
+    padding-left:0;
+    padding-bottom:0;
     top: 86vw;
     left: 1em;
   }

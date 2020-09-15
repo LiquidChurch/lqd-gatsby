@@ -58,7 +58,7 @@ function MediaDataTransformer(props) {
   let lists = []
   props.rawItems.map(item => {
     const formatter = new Intl.DateTimeFormat('en-US', { month: 'short',  day: 'numeric',   year: 'numeric'});
-    let formattedDate =  formatter.format(new Date(item.date));
+    let formattedDate =  formatter.format(new Date(item.date)).toUpperCase();
 
     let attributions = ""
 

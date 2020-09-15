@@ -44,6 +44,9 @@ function ShowSeries(props) {
 }
 
 function ShowAttribution(props) {
+  
+  let date = props.date.toUpperCase()
+  
   if (props.showAttribution) {
     let profileImgUrl = []
     if (props.profileImage !== undefined) {
@@ -59,7 +62,7 @@ function ShowAttribution(props) {
         <div className="media-card-attribution-info">
           <div className="media-card-name">{props.attributionName}</div>
           <div className={"media-card-icon " + props.category + "-icon"}></div>
-          <div className="media-card-date">{props.date}</div>
+          <div className="media-card-date">{date}</div>
         </div>
       </ListGroup.Item>
       
