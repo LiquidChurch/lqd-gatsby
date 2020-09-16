@@ -16,6 +16,7 @@ const TextArea = ({
   spacing,
   alignment,
   theme,
+  noMargin,
 }) => {
   console.log('sidekick', sidekick)
   const ctaObject = JSON.parse(cta)
@@ -26,6 +27,11 @@ const TextArea = ({
   let hasSidekick = false
   let hasCTA = false
   let fontColor = "#009DD1"
+  let hasMargin = ""
+  
+  if (noMargin) {
+    hasMargin = "no-margin"
+  }
   
   if (theme === 'dark') {
     fontColor = '#FFF'
@@ -69,7 +75,7 @@ const TextArea = ({
   return (
   <>
     <h2 className={hasStatement ? 
-                    'statement ' + size + ' ' + spacing + ' ' + theme + ' align-' + alignment : 
+                    'statement ' + size + ' ' + spacing + ' ' + theme + ' align-' + alignment + ' ' + hasMargin : 
                     'no-display'}
         style={{color:fontColor, textTransform: textTransform}}>
       {Parse(statement)}

@@ -32,8 +32,6 @@ export default ({
     bg_color,
     padding,
   }) => {
-  console.log('addPadding', add_padding)
- 
   let textTransform = "none"
   if (all_caps) {
     textTransform = "uppercase"

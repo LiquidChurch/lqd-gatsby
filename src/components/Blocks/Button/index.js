@@ -48,7 +48,6 @@ function ButtonIcon(props) {
 }
 
 function DropdownButton({objDropdown}) {
-  console.log('dropdown', objDropdown)
   return (
   <>
     <Dropdown.Menu
@@ -86,7 +85,6 @@ export default ({
     dropdown,
     size,
   }) => {
-  console.log('size', size)
   let objPage = JSON.parse(page)
   
   let pageInfo = {}

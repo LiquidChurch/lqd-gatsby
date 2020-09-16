@@ -46,7 +46,7 @@
   font-size: 1.3em;
   color: #0099CC;
   line-height: 1.3em;
-  letter-spacing:0.1em;
+  letter-spacing:0.03em;
 }
 
 .font-h3 {
@@ -69,7 +69,7 @@
   line-height: 1.3em;
   padding-top:0.5em;
   margin-bottom: 1em;
-  letter-spacing: 0.1em;    
+  letter-spacing: 0.08em;    
 }
 
 .font-huge {
@@ -132,7 +132,7 @@
   text-transform: uppercase;
   margin-top: -1em;
   font-size: 0.81em;
-  letter-spacing:0.1em;
+  letter-spacing:0.08em;
 }
 
 .font-btn-large {
@@ -144,7 +144,7 @@
   text-transform: uppercase;
   margin-top: -1em;
   font-size: 1.13em;
-  letter-spacing:0.1em;
+  letter-spacing:0.09em;
 }
 
 .font-btn-xlarge {
@@ -335,8 +335,8 @@ html,body {
 }
 
 .fullwidth-section {
-  padding-top:1.6em;
-  padding-bottom:1.6em;
+  padding-top:1.9em;
+  padding-bottom:1.9em;
   margin-left: -15px;
   margin-right: -15px;  
 }
@@ -347,16 +347,16 @@ html,body {
 }
 
 .site-section.top {
-  padding-top: 2.8em;
+  padding-top: 3.4em;
 }
 
 .site-section.bottom {
-  padding-bottom: 2.8em;
+  padding-bottom: 3.4em;
 }
 
 .site-section.both {
-  padding-top: 2.8em;  
-  padding-bottom: 2.8em;
+  padding-top: 3.4em;  
+  padding-bottom: 3.4em;
 }
 
 @media (max-width:575px) {

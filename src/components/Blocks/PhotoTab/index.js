@@ -85,6 +85,7 @@ export default ({
           size={size}
           spacing={spacing}
           theme={'light'}
+          noMargin={true}
         />
         <div className={hasSecondary ? "text-padding" : ''} ></div>
         <TextArea 
@@ -95,6 +96,7 @@ export default ({
           size={size}
           spacing={spacing}
           theme={'light'}
+          noMargin={true}
         />    
       </Col>
     </Row>    

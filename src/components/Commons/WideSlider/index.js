@@ -79,9 +79,12 @@ export default (props) => {
     
   useEffect(() => {
     function setWidth() {
-      
-      setContentWidth(document.getElementById('content-slider-' + props.sliderId).offsetWidth)
-      
+      try {
+        setContentWidth(document.getElementById('content-slider-' + props.sliderId).offsetWidth)
+      }
+      catch(err) {
+        setContentWidth(0)
+      }
       if (sliderWidth !== document.getElementById('component-slider-' + props.sliderId).offsetWidth) {
         const sliderDifference = (document.getElementById('component-slider-' + props.sliderId).offsetWidth) - sliderWidth
         setSliderWidth(document.getElementById('component-slider-' + props.sliderId).offsetWidth)

@@ -4,6 +4,7 @@ import MessagePlayer from "../MessagePlayer"
 import MessageInfo from "../MessageInfo"
 import SeriesTitle from "../SeriesTitle"
 import MediaTiles from "../Blocks/MediaTiles"
+import Heading from "../Blocks/Heading"
 
 import { useSeries } from "../../data/useSeries"
 
@@ -51,12 +52,32 @@ export default (lqdmMessage) => {
     <>
       <MessagePlayer {...lqdmMessage} />
       <MessageInfo {...lqdmMessage} />
+      <Heading
+          text="Message Series"
+          alignment="left"
+          size="small"
+          all_caps="true"
+          add_padding="true"
+          font_color="#565656"
+          padding="top"
+          bg_color="#F8F8F8"
+      />
       <SeriesTitle {...seriesInfo} />
+      <Heading
+          text="Other Messages in this series"
+          alignment="left"
+          size="small"
+          all_caps="true"
+          add_padding=""
+          font_color="#565656"
+          padding="none"
+          bg_color="#F8F8F8"
+      />    
       <MediaTiles 
           type="" 
           display_type="grid"
-          label="Other Messages in this series" 
-          background_color="#F8F8F8"
+          bg_color="#F8F8F8"
+          padding="bottom"
           media_list={seriesSlugs} />
     </>
   )

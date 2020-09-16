@@ -2,7 +2,7 @@
   background: transparent !important;
   color: #009DD1;
   font-family: "Avenir Next Demi";
-  letter-spacing: 0.1em;  
+  letter-spacing: 0.08em;  
 }
 
 .cta-text.short {
@@ -59,9 +59,9 @@
 }
 
 .cta-button.short {
-  margin-bottom: 0.8em;
+  margin-bottom: 0.5em;
 }
 
 .cta-button.tall {
-  margin-bottom: 2.0em;
+  margin-bottom: 1.0em;
 }

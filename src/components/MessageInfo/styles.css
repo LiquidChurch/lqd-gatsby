@@ -6,6 +6,7 @@
 
 .message-title {
   font-size: 2em;
+  letter-spacing: 0.01em !important;  
 }
 
 .message-speaker {

@@ -19,10 +19,9 @@ export default (series) => {
   
   return (
   <>
-  <section className="fullwidth-section series-title-section" style={{backgroundColor: '#f8F8F8'}}>
+  <section className={'site-section ' + 'bottom'} style={{backgroundColor: '#F8F8F8'}}>    
   <Container>
     <Row>
-      <SectionHeader label="Message Series" offset={0}/>
       <Col xs={12} lg={6}>
       <Link to={"/series/" + series.slug}>
         <Imgix

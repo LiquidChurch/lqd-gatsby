@@ -46,11 +46,11 @@
 }
 
 .sidekick.tall {
-  padding-top:1.3em;
+  padding-top:1.0em;
 }
 
 .sidekick.short {
-  padding-top:0.5em;
+  padding-top:0.3em;
 }
 
 .sidekick.light {
@@ -85,27 +85,27 @@
 }
 
 .cta.tall {
-  padding-top: 1.3em;
+  padding-top: 1.0em;
 }
 
 .cta.short {
-  padding-top: 0.5em;
+  padding-top: 0.4em;
 }
 
 .cta.xlarge {
-  font-size: 1.75em;
+  font-size: 1.6em;
 }
 
 .cta.large {
-  font-size: 1.5em;
+  font-size: 1.4em;
 }
 
 .cta.medium {
-  font-size: 1.3em;
+  font-size: 1.2em;
 }
 
 .cta.small {
-  font-size: 1.12em;
+  font-size: 1.0em;
 }
 
 @media (max-width:767px) {
@@ -190,7 +190,7 @@
 .sidekick a {
    color: #009DD1;
    font-family: "Avenir Next Demi";
-   letter-spacing: 0.1em;
+   letter-spacing: 0.03em;
 }
 
 .sidekick strong {

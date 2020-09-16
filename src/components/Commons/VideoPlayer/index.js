@@ -30,15 +30,15 @@ const VideoPlayer = ({
   useEffect(() => {
     function setWidth() {
       if (window.innerWidth > 1199) {
-        setDimensions ({ width:1120, height:1120/1.78})
+        setDimensions ({ width:1080, height:1080/1.78})
       } else if (window.innerWidth > 991) {
-        setDimensions ({ width:940, height:940/1.78})
+        setDimensions ({ width:900, height:900/1.78})
       } else if (window.innerWidth > 767) {
-        setDimensions ({ width:700, height:700/1.78})
+        setDimensions ({ width:660, height:660/1.78})
       } else if (window.innerWidth > 575) {
-        setDimensions ({ width:520, height:520/1.78})
+        setDimensions ({ width:480, height:480/1.78})
       } else {
-        setDimensions ({ width: window.innerWidth, height: (window.innerWidth)/1.78})
+        setDimensions ({ width: window.innerWidth - 80 , height: (window.innerWidth - 80)/1.78})
       }
     }
     

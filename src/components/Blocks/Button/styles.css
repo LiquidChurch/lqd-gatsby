@@ -68,6 +68,7 @@
   box-shadow: 0 0 0 0.2rem rgba(38,143,255,.5);
   transition: opacity 0.3s ease-in-out;
   font-size: 1em;
+  text-transform: none;
 }
 
 .button-dropdown-menu.show {

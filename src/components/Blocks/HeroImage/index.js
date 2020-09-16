@@ -54,19 +54,19 @@ export default ({
       <Imgix 
         src={"https://liquidchurch.imgix.net/" + imageUrl[4] + "/" + imageUrl[5] + "?ar=16:9&fit=crop"}
         className={'hero-image-' + image_style.split(":")[0]}
-        sizes="100vw" />
+        sizes="100vh" />
       <div 
         id={'hero-text-area'}
         className={'hero-image-text-area-' + image_style.split(":")[0]}
         style={ (image_style.split(":")[0] === "fixed") ? 
-                ( (textAreaPosition <= 110 ) ? 
+                ( (textAreaPosition <= 40 ) ? 
                     {background: 'none', bottom: textAreaPosition + 'px', marginBottom: (-10 - textAreaPosition) + 'px'} : 
                     {bottom: textAreaPosition + 'px', marginBottom: (15 - textAreaPosition - 25) + 'px'} ) :  
                 ( (image_style.split(":")[0] === 'filled') ? 
-                  ( (textAreaPosition <= 110) ? 
-                      {background: 'none', bottom: textAreaPosition + 'px', marginBottom: -textAreaPosition + 'px'} :
-                      {bottom: textAreaPosition + 'px', marginBottom: -textAreaPosition + 'px'} ) :
-                  ( (textAreaPosition <= 110) ?
+                  ( (textAreaPosition <= 40) ? 
+                      {background: 'none', bottom: textAreaPosition + 'px'} :
+                      {bottom: textAreaPosition + 'px'} ) :
+                  ( (textAreaPosition <= 40) ?
                       {background: 'none', bottom: textAreaPosition + 'px', marginBottom: (135 - textAreaPosition) + 'px'} :
                       {bottom: (textAreaPosition - 10)+ 'px', marginBottom: (135 - textAreaPosition) + 'px'} ) ) }
       >

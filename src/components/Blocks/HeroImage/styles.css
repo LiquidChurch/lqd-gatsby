@@ -2,21 +2,25 @@
 .hero-image-container-filled-hero {
   padding-left: 0;
   padding-right: 0;
-  width: 100vw;
+  /* width: 100vw; */
+  height: 75vh;  
   position:relative;
   overflow:hidden;
-  margin-bottom: -256px;
-  top:-104px;  
+  /* margin-bottom: -256px; */
+  top:-104px;
+  margin-bottom: -130px;
 }
 
 .hero-image-filled-hero {
   padding-right: 0px;
   padding-left:0px;
-  max-height: 975px;
-  min-height: 400px;
+  /* max-height: 975px; */
+  /* min-height: 75vw; */
   overflow:hidden;
   object-fit:cover;
   object-position:center;
+  height: fit;
+  height: -webkit-fill-available;
 }
 
 .hero-image-text-area-filled-hero {
@@ -24,8 +28,8 @@
   display:block;
   text-align: center;
   background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1));
-  padding-top:40px;
-  padding-bottom: 10px;
+  padding-top: 10px;
+  padding-bottom: 30px;
   margin-bottom: -60px;
   padding-left:15vw;
   padding-right:15vw;
@@ -36,7 +40,8 @@
   margin-left: 0;
   padding-left: 0;
   padding-right: 0;
-  width: 100vw;
+  /* width: 100vw; */
+  height: 75vh;
   position:relative;
   overflow:hidden;
   top:-30px;
@@ -51,6 +56,8 @@
   overflow:hidden;
   object-fit:cover;
   object-position:center;
+  height: fit;
+  height: -webkit-fill-available;  
 }
 
 .hero-image-text-area-filled {
@@ -58,9 +65,9 @@
   display:block;
   text-align: center;
   background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1));
-  padding-top:40px;
-  padding-bottom: 10px;
-  margin-bottom: -60px;
+  padding-top:20px;
+  padding-bottom: 20px;
+  /* margin-bottom: -60px; */
   padding-left:14vw;
   padding-right:14vw;  
 }
@@ -124,7 +131,7 @@
 @media (max-width:575px) { 
   .hero-image-container-filled-hero {
     padding-top:8px;
-    margin-bottom:-242px;
+    margin-bottom:-117px;
   }
   
   .hero-image-text-area-filled {
