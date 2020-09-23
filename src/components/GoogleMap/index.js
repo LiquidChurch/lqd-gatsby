@@ -42,8 +42,8 @@ function MapMarker(props) {
         onClick={() => ctx.setShowModalId(props.slug)}
 
       >
-         <div id={'marker-element-' + props.slug}><span className={'circle ' + labelLocation}></span>{Parse(props.label)}</div>
-      </MarkerWithLabel>
+     <div id={'marker-element-' + props.slug}><span className={'circle ' + labelLocation}></span>{Parse(props.label)}</div>
+   </MarkerWithLabel>
         <PageModal 
           modal_title={props.title}
           modal_text={Parse(props.text)}
@@ -58,7 +58,7 @@ function MapMarker(props) {
 const GoogleMapComponentWithMarker = withScriptjs(
   withGoogleMap(props => (
     <GoogleMap
-      defaultZoom={10}
+      defaultZoom={9.5}
       defaultCenter={{
         lat: 40.647, // latitude for the center of the map
         lng: -74.304 // longitude for the center of the map
@@ -66,6 +66,7 @@ const GoogleMapComponentWithMarker = withScriptjs(
       defaultOptions={{
         disableDefaultUI: true, // disable default map UI
         draggable: true, // make map draggable
+        zoomControl: true,
         keyboardShortcuts: false, // disable keyboard shortcuts
         scaleControl: true, // allow scale controle
         scrollwheel: false, // allow scroll wheel
@@ -112,7 +113,7 @@ export default ({campuses}) => {
   return (
       <section id="locations-hero">
         <Container fluid className='hero-image-container-filled map-hero-filled'>
-          <div className='hero-image-filled' style={{width:'100%', height:'795px', paddingBottom:'25px'}}>
+          <div className='hero-image-filled' style={{height:'100vh', paddingBottom:'25px'}}>
             <GoogleMapComponentWithMarker
               googleMapURL={'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=' + googleKey}
               loadingElement={<div style={{ height: `100%` }} />}

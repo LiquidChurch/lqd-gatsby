@@ -9,7 +9,7 @@ import { PageModalContext } from './context'
  */
 export default ({ modal_title,
                   modal_text,
-                  modal_id }) => {  
+                  modal_id }) => {
   const ctx = useContext(PageModalContext)
   
   return (

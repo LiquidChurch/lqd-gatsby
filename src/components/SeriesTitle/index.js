@@ -25,7 +25,7 @@ export default (series) => {
       <Col xs={12} lg={6}>
       <Link to={"/series/" + series.slug}>
         <Imgix
-          src={"https://liquidchurch.imgix.net/" + imgUrl[4] + "/" + imgUrl[5] + "?ar=16:9&fit=crop&h=607"}
+          src={"https://liquidchurch.imgix.net/" + imgUrl[4] + "/" + imgUrl[5] + "?ar=16:9&fit=crop&h=545"}
           className="message-tile-image"
           sizes="90vw" />
         

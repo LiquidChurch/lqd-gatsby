@@ -1,6 +1,10 @@
 import React, { useState } from "react"
 
-const PageModalContext = React.createContext()
+const initialPageModal = { modalOpenState: false,
+                           modalId: '',
+                           showModalIdState: ''}
+
+const PageModalContext = React.createContext(initialPageModal)
 
 const PageModalProvider = (props) => {
   const [modalOpenState, setModalOpenState] = useState(false)

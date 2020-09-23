@@ -135,3 +135,21 @@
   -webkit-mask-size: 101% 101%;
   mask-image: url('./svg/blog.svg');
 }
+
+.share-icon {
+  -webkit-mask-image: url('./svg/share.svg');
+  -webkit-mask-size: 101% 101%;
+  mask-image: url('./svg/share.svg');
+}
+
+.subscribe-icon {
+  -webkit-mask-image: url('./svg/subscribe.svg');
+  -webkit-mask-size: 101% 101%;
+  mask-image: url('./svg/subscribe.svg');
+}
+
+.email-icon {
+  -webkit-mask-image: url('./svg/email.svg');
+  -webkit-mask-size: 101% 101%;
+  mask-image: url('./svg/email.svg');
+}

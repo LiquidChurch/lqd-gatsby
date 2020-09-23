@@ -17,7 +17,7 @@
 .media-card {
   min-width: 265.5px;
   max-width: 265.5px;
-  
+  border-width: 0px;
   margin: 20px 6px;
   border-radius: 1em;
   border-color:transparent;
@@ -26,7 +26,12 @@
 }
 
 .media-card:hover {
-  border-color: #686868 !important;
+  border-color: #a4a4a4 !important;
+  background-color: #a4a4a4;
+  border-width: 3px;
+  min-width: 271.5px;
+  max-width: 271.5px;
+  margin: 17px 3px;
 }
 
 .media-card-link:hover {
@@ -80,8 +85,8 @@
   width: 50px;
   position:relative;
   display:inline-block;
-  bottom: 13px;
-  left: -9px;
+  bottom: 14px;
+  left: -8px;
 }
 
 .media-card-attribution-info {

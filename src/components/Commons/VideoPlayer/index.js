@@ -38,7 +38,7 @@ const VideoPlayer = ({
       } else if (window.innerWidth > 575) {
         setDimensions ({ width:480, height:480/1.78})
       } else {
-        setDimensions ({ width: window.innerWidth - 80 , height: (window.innerWidth - 80)/1.78})
+        setDimensions ({ width: window.innerWidth - 60 , height: (window.innerWidth - 60)/1.78})
       }
     }
     

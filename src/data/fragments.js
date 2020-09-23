@@ -245,6 +245,7 @@ export const PhotoTab = graphql`
       padding
       spacing
       alignment
+      header_size
       size 
     }
   } 

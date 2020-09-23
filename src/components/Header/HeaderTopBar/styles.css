@@ -45,6 +45,12 @@
   background-color:white;
 }
 
+
+.topbar-icon-dark:hover {
+  background-color: #009DD1 !important;
+}
+
+
 .topbar-icon-light{
   background-color:#009DD1
 }
@@ -128,6 +134,7 @@
   width: auto;  
 }
 
+
 .theme-icon-dark {
   background-color: white !important;
 }
@@ -156,6 +163,10 @@
   background-color:transparent;
   color:white;
   font-weight: bold
+}
+
+.btn-topbar-menu-dark:hover{
+  color:#009DD1;
 }
 
 .btn-topbar-menu-light {

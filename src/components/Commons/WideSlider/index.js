@@ -78,13 +78,9 @@ export default (props) => {
   
     
   useEffect(() => {
-    function setWidth() {
-      try {
-        setContentWidth(document.getElementById('content-slider-' + props.sliderId).offsetWidth)
-      }
-      catch(err) {
-        setContentWidth(0)
-      }
+    function setWidth() {      
+      setContentWidth(document.getElementById('content-slider-' + props.sliderId).offsetWidth)
+
       if (sliderWidth !== document.getElementById('component-slider-' + props.sliderId).offsetWidth) {
         const sliderDifference = (document.getElementById('component-slider-' + props.sliderId).offsetWidth) - sliderWidth
         setSliderWidth(document.getElementById('component-slider-' + props.sliderId).offsetWidth)
@@ -100,7 +96,11 @@ export default (props) => {
         }
       }
     }
-    setWidth()
+    
+    if (document.getElementById('content-slider-' + props.sliderId) != null) {
+      setWidth()    
+    }
+    
     window.addEventListener('resize', setWidth)  
     
     return _ => {

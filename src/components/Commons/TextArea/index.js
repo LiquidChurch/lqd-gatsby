@@ -12,6 +12,7 @@ const TextArea = ({
   all_caps,
   sidekick,
   cta,
+  headerSize,
   size,
   spacing,
   alignment,
@@ -35,6 +36,10 @@ const TextArea = ({
   
   if (theme === 'dark') {
     fontColor = '#FFF'
+  }
+  
+  if (headerSize === null || headerSize === undefined) {
+    headerSize = size
   }
   
   if (font_color !== undefined || font_color !== "#009DD1") {
@@ -75,7 +80,7 @@ const TextArea = ({
   return (
   <>
     <h2 className={hasStatement ? 
-                    'statement ' + size + ' ' + spacing + ' ' + theme + ' align-' + alignment + ' ' + hasMargin : 
+                    'statement ' + headerSize + ' ' + spacing + ' ' + theme + ' align-' + alignment + ' ' + hasMargin : 
                     'no-display'}
         style={{color:fontColor, textTransform: textTransform}}>
       {Parse(statement)}

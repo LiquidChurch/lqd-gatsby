@@ -6,6 +6,8 @@ import SeriesTitle from "../SeriesTitle"
 import MediaTiles from "../Blocks/MediaTiles"
 import Heading from "../Blocks/Heading"
 
+import { PageModalProvider } from "../PageModal/context.js"
+
 import { useSeries } from "../../data/useSeries"
 
 /** 
@@ -50,6 +52,7 @@ export default (lqdmMessage) => {
   
   return (
     <>
+          <PageModalProvider>
       <MessagePlayer {...lqdmMessage} />
       <MessageInfo {...lqdmMessage} />
       <Heading
@@ -79,6 +82,7 @@ export default (lqdmMessage) => {
           bg_color="#F8F8F8"
           padding="bottom"
           media_list={seriesSlugs} />
+          </PageModalProvider>
     </>
   )
 }

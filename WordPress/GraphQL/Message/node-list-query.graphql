@@ -87,6 +87,57 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
         __typename
       }
       previewBlocksJSON
+      resources {
+        fieldGroupName
+        resource1 {
+          fieldGroupName
+          language
+          resourceType
+          url
+        }
+        resource2 {
+          fieldGroupName
+          language
+          resourceType
+          url
+        }
+        resource3 {
+          fieldGroupName
+          language
+          resourceType
+          url
+        }
+        resource4 {
+          fieldGroupName
+          language
+          resourceType
+          url
+        }
+        resource5 {
+          fieldGroupName
+          language
+          resourceType
+          url
+        }
+        resource6 {
+          fieldGroupName
+          language
+          resourceType
+          url
+        }
+        resource7 {
+          fieldGroupName
+          language
+          resourceType
+          url
+        }
+        resource8 {
+          fieldGroupName
+          language
+          resourceType
+          url
+        }
+      }
       scriptures(first: 100) {
         nodes {
           id
@@ -184,6 +235,7 @@ fragment BlockFragment on Block {
       cta_secondary
       header
       header_secondary
+      header_size
       image_id
       location
       padding

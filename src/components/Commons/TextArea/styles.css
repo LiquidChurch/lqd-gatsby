@@ -37,8 +37,12 @@
 .statement.small {
   font-size: 1.32em;
   line-height: 1.1em;  
-  letter-spacing: 0.1em;
+  letter-spacing: 0.07em;
   margin-left:15px;
+}
+
+.statement.no-margin {
+  margin-left:0px !important;
 }
 
 .sidekick {
@@ -89,7 +93,7 @@
 }
 
 .cta.short {
-  padding-top: 0.4em;
+  padding-top: 0.2em;
 }
 
 .cta.xlarge {
@@ -115,7 +119,7 @@
   }
   
   .statement.large {
-    font-size: 2.0em;
+    font-size: 2.5em;
     line-height: 1.3em;  
   }
   
@@ -160,7 +164,7 @@
   }
   
   .statement.large {
-    font-size: 1.5em;
+    font-size: 2.5em;
     line-height: 1.3em;
   }
 

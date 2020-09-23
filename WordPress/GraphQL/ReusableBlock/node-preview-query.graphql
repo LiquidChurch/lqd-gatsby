@@ -136,6 +136,7 @@ fragment BlockFragment on Block {
       cta_secondary
       header
       header_secondary
+      header_size
       image_id
       location
       padding
