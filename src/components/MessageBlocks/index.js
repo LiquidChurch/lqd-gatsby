@@ -1,7 +1,8 @@
 import React from "react"
 
-import MessagePlayer from "../MessagePlayer"
-import MessageInfo from "../MessageInfo"
+import MessagePlayer from "./MessagePlayer"
+import MessageInfo from "./MessageInfo"
+import MessageResources from "./MessageResources"
 import SeriesTitle from "../SeriesTitle"
 import MediaTiles from "../Blocks/MediaTiles"
 import Heading from "../Blocks/Heading"
@@ -52,9 +53,10 @@ export default (lqdmMessage) => {
   
   return (
     <>
-          <PageModalProvider>
+      <PageModalProvider>
       <MessagePlayer {...lqdmMessage} />
       <MessageInfo {...lqdmMessage} />
+      <MessageResources {...lqdmMessage} />
       <Heading
           text="Message Series"
           alignment="left"
@@ -82,7 +84,7 @@ export default (lqdmMessage) => {
           bg_color="#F8F8F8"
           padding="bottom"
           media_list={seriesSlugs} />
-          </PageModalProvider>
+      </PageModalProvider>
     </>
   )
 }

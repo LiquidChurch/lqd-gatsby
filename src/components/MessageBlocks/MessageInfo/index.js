@@ -7,8 +7,8 @@ import Parse from "react-html-parser"
 import { Link } from "gatsby"
 import { FacebookShareButton, TwitterShareButton, EmailShareButton } from "react-share"
 
-import PageModal from "../PageModal"
-import { PageModalContext } from '../PageModal/context'
+import PageModal from "../../PageModal"
+import { PageModalContext } from '../../PageModal/context'
 
 /** 
  * Message Info
@@ -138,7 +138,6 @@ function SocialShare(props) {
   )
 }
 export default (lqdmMessage) => {
-  console.log(lqdmMessage)
   const formatter = new Intl.DateTimeFormat('en-US', { month: 'short',  day: 'numeric',   year: 'numeric'});
   const formattedDate =  formatter.format(new Date(lqdmMessage.date));
   let attributions = lqdmMessage.attributions.nodes[0].name

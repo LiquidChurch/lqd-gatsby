@@ -102,6 +102,48 @@ export const query = graphql`
           slug
         }
       }
+      resources {
+        resource1 {
+          language
+          url
+          resourceType
+        }
+        resource2 {
+          language
+          resourceType
+          url
+        }
+        resource3 {
+          language
+          resourceType
+          url
+        }
+        resource4 {
+          language
+          resourceType
+          url
+        }
+        resource5 {
+          language
+          resourceType
+          url
+        }
+        resource6 {
+          language
+          resourceType
+          url
+        }
+        resource7 {
+          language
+          resourceType
+          url
+        }
+        resource8 {
+          language
+          resourceType
+          url
+        }
+      }
     }
   }
 `

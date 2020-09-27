@@ -5,9 +5,9 @@ import { Link } from 'gatsby'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import SectionHeader from '../SectionHeader'
-import { PlayArrow } from '../../helpers/icons'
-import { useRecentMessages } from "../../data/useRecentMessages"
+import SectionHeader from '../../SectionHeader'
+import { PlayArrow } from '../../../helpers/icons'
+import { useRecentMessages } from "../../../data/useRecentMessages"
 
 import "./styles.css"
 

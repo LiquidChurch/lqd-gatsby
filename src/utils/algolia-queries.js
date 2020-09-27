@@ -43,9 +43,9 @@ const pageQuery = `
     allWpPage {
         nodes {
           id
-          content
-          link
           title
+          slug
+          content
         }
     }
 }
@@ -56,6 +56,13 @@ const blogIndexName = `Blogs`;
 const pageIndexName = `Pages`;
 const mainIndexName = "Combined";
 
+const grabText = rawText => {
+  if (rawText === null) {
+    return null
+  }
+  return rawText.replace(/<[^>]*>?/gm, '')
+}
+  
 /** The transformer converts the GraphQL Query into a Algolia Record */
 const queries = [
     {
@@ -94,9 +101,18 @@ const queries = [
     },
     {
         query: pageQuery,
-        transformer: ({ data }) => data.allWpPage.nodes,
-        indexName: pageIndexName,
-        settings: { attributesToSnippet: [`excerpt:20`] },
+        transformer: ({ data }) => 
+          data.allWpPage.nodes.map((node) => ({
+            objectID: node.id,
+            pageType: "page",
+            title: node.title,
+            blurb: grabText(node.content),
+            slug: node.slug
+          })),
+        indexName: mainIndexName,
+        settings: { attributesToSnippet: [`blurb:20`],
+        searchableAttributes: ['title', 'blurb', 'date', 'terms.name'],
+        attributesForFaceting: ['pageType']},
     },
 ]
 
