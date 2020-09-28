@@ -27,7 +27,7 @@ export default (props) => {
     <Container className={'hero-image-container-fixed'}>
       <Row>  
         <Imgix 
-          src={"https://liquidchurch.imgix.net/" + imgUrl[4] + "/" + imgUrl[5]}
+          src={process.env.IMGIX_URL + imgUrl[4] + "/" + imgUrl[5]}
           className={'hero-image-fixed'}
           sizes="100vw" />
       </Row>

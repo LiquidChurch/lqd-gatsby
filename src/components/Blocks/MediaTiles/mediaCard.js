@@ -56,7 +56,7 @@ function ShowAttribution(props) {
     <>
       <ListGroup.Item className="media-card-attribution font-h3">
         <Imgix
-          src={"https://liquidchurch.imgix.net/" + profileImgUrl[4] + "/" + profileImgUrl[5] + "?ar=1:1&fit=crop&fill-color=0FFF&mask=ellipse&h=50"}
+          src={process.env.IMGIX_URL + profileImgUrl[4] + "/" + profileImgUrl[5] + "?ar=1:1&fit=crop&fill-color=0FFF&mask=ellipse&h=50"}
           className="media-card-profile-image"
         />
         <div className="media-card-attribution-info">
@@ -83,7 +83,7 @@ export default (props) => {
     <Card className="media-card">
       <Imgix
         className="card-img-top"
-        src={"https://liquidchurch.imgix.net/" + imgUrl[4] + "/" + imgUrl[5] + "?ar=16:9&fit=crop&w=262"}
+        src={process.env.IMGIX_URL + imgUrl[4] + "/" + imgUrl[5] + "?ar=16:9&fit=crop&w=262"}
         width={262}
       />
       <ListGroup variant="flush" >

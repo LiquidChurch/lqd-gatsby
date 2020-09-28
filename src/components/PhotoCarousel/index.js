@@ -48,7 +48,7 @@ export default ({ images }) => {
                     <Carousel.Item
                       key={'carouse-image-item-' + image.id}>
                       <Imgix 
-                        src={"https://liquidchurch.imgix.net/" + imgUrl[4] + "/" + imgUrl[5] + "?ar=16:9&fit=crop&corner-radius=10,10,10,10"}
+                        src={process.env.IMGIX_URL + imgUrl[4] + "/" + imgUrl[5] + "?ar=16:9&fit=crop&corner-radius=10,10,10,10"}
                         className={'carousel-image'}
                         sizes="110vw" />
                     </Carousel.Item>
@@ -67,7 +67,7 @@ export default ({ images }) => {
                          onClick={() => setCarousel(index)}
                          key={'carousel-control-image-link-' + image.id}>
                         <Imgix 
-                          src={"https://liquidchurch.imgix.net/" + imgUrl[4] + "/" + imgUrl[5] + "?ar=16:9&fit=crop&h=120&corner-radius=10,10,10,10"}
+                          src={process.env.IMGIX_URL + imgUrl[4] + "/" + imgUrl[5] + "?ar=16:9&fit=crop&h=120&corner-radius=10,10,10,10"}
                           className={(carouselIndex===index) ? 'carousel-control-image' : 'carousel-control-image greyed'}
                         />
                       </a>

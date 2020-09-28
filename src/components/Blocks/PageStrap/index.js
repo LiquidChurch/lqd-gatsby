@@ -20,7 +20,7 @@ function StrapImage(props) {
     return (
       <Col xs={4} className="page-strap-image-col">
         <Imgix 
-          src={"https://liquidchurch.imgix.net/" + imgUrl[4] + "/" + imgUrl[5] + "?fit=fillmax&w=" + props.max_width}
+          src={process.env.IMGIX_URL + imgUrl[4] + "/" + imgUrl[5] + "?fit=fillmax&w=" + props.max_width}
           className="page-strap-image"
           size="100vw"
           />

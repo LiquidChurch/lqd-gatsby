@@ -51,8 +51,6 @@ function MapMarker(props) {
         />
       </>
   )
-          
-  
 }
 
 const GoogleMapComponentWithMarker = withScriptjs(

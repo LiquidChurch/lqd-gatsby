@@ -40,7 +40,7 @@ export default ({
     <Container fluid className="homepage-hero-container">
       <div className={runEffect ? "homepage-hero-image loaded" : "homepage-hero-image"}>
         <Imgix 
-           src={"https://liquidchurch.imgix.net" + hero_image + "?gam=50"} 
+           src={process.env.IMGIX_URL + hero_image + "?gam=50"} 
            className="homepage-hero-image-crop" 
            sizes="150vw" />
       </div>

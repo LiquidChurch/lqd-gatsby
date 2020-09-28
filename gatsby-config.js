@@ -28,6 +28,7 @@ module.exports = {
         typeName: "WPGraphQL",
         fieldName: "wpgraphql",
         url: `http://gatsby.liquidchurch.com/graphql`,
+        //url: `http://wp.lqd.ch/graphql`,
         debug: {
           graphql: {
             writeQueriesToDisk:true,
@@ -76,5 +77,11 @@ module.exports = {
       }
     },
     `gatsby-plugin-styled-components`,
+    {
+      resolve: `gatsby-plugin-env-variables`,
+      options: {
+        allowList: ["IMGIX_URL"]
+      },
+    },
   ],
 }
