@@ -31,7 +31,7 @@ module.exports = {
         url: `http://wp.lqd.ch/graphql`,
         debug: {
           graphql: {
-            writeQueriesToDisk:true,
+            writeQueriesToDisk:false,
           }
         },
         html: {
