@@ -41,11 +41,11 @@ export default ({ message_slug,
       <Col>
       <Link to={"/message/" + messageInfo[0].slug}>
       <Imgix 
-        src={process.env.IMGIX_URL + imgUrl[4] + "/" + imgUrl[5] + "?ar=16:9&fit=crop&h=607"}
+        src={process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX] + "?ar=16:9&fit=crop&h=607"}
         className="d-none d-sm-block message-tile-image"
         sizes="90vw" />
       <Imgix 
-        src={process.env.IMGIX_URL + imgUrl[4] + "/" + imgUrl[5] + "?ar=1:1&fit=crop&h=607"}
+        src={process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX] + "?ar=1:1&fit=crop&h=607"}
         className="d-block d-sm-none message-tile-image"
         sizes="80vw" />
       </Link>

@@ -16,7 +16,7 @@ const TiledAttribute = ({
   <>
     <div> 
       <Imgix 
-        src={process.env.IMGIX_URL + imageUrl[4] + "/" + imageUrl[5] + "?mask=ellipse&w=137&h=137"}
+        src={process.env.IMGIX_URL + imageUrl[process.env.IMG_DIR_INDEX] + "/" + imageUrl[process.env.IMG_FILE_INDEX] + "?mask=ellipse&w=137&h=137"}
         className={'attribution-secondary-profile-image'}
       />
       <div className={showBlurb ? 'attribution-profile-blurb top font-small' : 'no-display'}>

@@ -73,7 +73,7 @@ export default ({
       <Col xs={{span: 12, order: 1}} md={{span: 6, order: imgOrder}} 
           className={(imgOrder === 1) ? "photo-tab-image-col photo-tab-left" : "photo-tab-image-col"}>
         <Imgix 
-          src={process.env.IMGIX_URL + imgUrl[4] + "/" + imgUrl[5] + "?ar=1:1&fit=crop&h=525"}
+          src={process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX] + "?ar=1:1&fit=crop&h=525"}
           size="100vw"
           className="photo-tab-image"
           />

@@ -25,7 +25,7 @@ export default ({ page_slug_id }) => {
       >
       <div className="linked-tile">
         <Imgix 
-          src={process.env.IMGIX_URL + imgUrl[4] + "/" + imgUrl[5] + "?ar=16:9&fit=crop&h=296&exp=-7"}
+          src={process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX] + "?ar=16:9&fit=crop&h=296&exp=-7"}
           altText={page_info.featuredImage.node.altText}
           className="linked-tile-image"
         />   

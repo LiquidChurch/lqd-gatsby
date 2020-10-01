@@ -17,7 +17,7 @@ export default ({mediaItem}) => {
       <div className="media-tile-card-image">
         <Link to={"/" + mediaItem.category + "/" + mediaItem.slug}>
           <Imgix
-            src={process.env.IMGIX_URL + imgUrl[4] + "/" + imgUrl[5] + "?ar=16:9&fit=crop&h=296"}
+            src={process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX] + "?ar=16:9&fit=crop&h=296"}
             className="rounded media-tile-image"
             size="100vw"
             />
@@ -29,7 +29,7 @@ export default ({mediaItem}) => {
           <Card.Text as="div" className="media-tile-text font-regular">{Parse(mediaItem.blurb)}</Card.Text>
           <Card.Header className="media-tile-author">
             <Imgix
-              src={process.env.IMGIX_URL + profileImgUrl[4] + "/" + profileImgUrl[5] + "?ar=1:1&fit=crop&fill-color=0FFF&mask=ellipse&h=50"}
+              src={process.env.IMGIX_URL + profileImgUrl[process.env.IMG_DIR_INDEX] + "/" + profileImgUrl[process.env.IMG_FILE_INDEX] + "?ar=1:1&fit=crop&fill-color=0FFF&mask=ellipse&h=50"}
               className="media-tile-author-image"
             />
               <div className="media-card-attribution-info">

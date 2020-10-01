@@ -18,7 +18,7 @@ export default (series) => {
     <Container className={'hero-image-container-fixed'}>
       <Row>  
         <Imgix 
-          src={process.env.IMGIX_URL + imgUrl[4] + "/" + imgUrl[5]}
+          src={process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX]}
           className={'hero-image-fixed'}
           sizes="100vw" />
       </Row>

@@ -51,11 +51,6 @@ const pageQuery = `
 }
 `
 
-const messageIndexName = `Messages`;
-const blogIndexName = `Blogs`;
-const pageIndexName = `Pages`;
-const mainIndexName = "Combined";
-
 const grabText = rawText => {
   if (rawText === null) {
     return null
@@ -77,7 +72,7 @@ const queries = [
             slug: node.slug,
             terms: node.terms.nodes
           })),
-        indexName: mainIndexName,
+        indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
         settings: { attributesToSnippet: [`blurb:40`],
                     searchableAttributes: ['title', 'blurb', 'date', 'terms.name'],
                     attributesForFaceting: ['pageType']},      
@@ -94,7 +89,7 @@ const queries = [
             slug: node.slug,
             terms: node.terms.nodes
           })),
-        indexName: mainIndexName,
+        indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
         settings: { attributesToSnippet: [`blurb:40`],
                     searchableAttributes: ['title', 'blurb', 'date', 'terms.name'],
                     attributesForFaceting: ['pageType']},
@@ -109,7 +104,7 @@ const queries = [
             blurb: grabText(node.content),
             slug: node.slug
           })),
-        indexName: mainIndexName,
+        indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
         settings: { attributesToSnippet: [`blurb:20`],
         searchableAttributes: ['title', 'blurb', 'date', 'terms.name'],
         attributesForFaceting: ['pageType']},

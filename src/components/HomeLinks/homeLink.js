@@ -23,7 +23,7 @@ export default ({ page_slug_id }) => {
       key={"home-tile-image-" + page_info.databaseId}
     >
     <Imgix 
-      src={process.env.IMGIX_URL + imgUrl[4] + "/" + imgUrl[5] + "?ar=16:9&fit=crop&h=296"}
+      src={process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX] + "?ar=16:9&fit=crop&h=296"}
       altText={page_info.featuredImage.altText}
       className="home-tile-image"
       sizes="100vw" />
