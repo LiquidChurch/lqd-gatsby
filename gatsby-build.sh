@@ -11,9 +11,11 @@ if test -f "$FILE"; then
     sleep 10
 fi
 
-echo "Starting gatsby build: "
+echo "Starting Gatsby Build Process"
 current_time=$(date "+%Y.%m.%d-%H.%M.%S")
-echo "Current Time : $current_time"
+echo "Running Gatsby Clean"
+gatsby clean
+echo "Running Gastby Build"
 gatsby build >> ./logs/build.$current_time.log 2>&1 &
 RETVAL=$?
 PID=$!
