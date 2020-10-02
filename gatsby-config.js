@@ -27,8 +27,7 @@ module.exports = {
       options: {
         typeName: "WPGraphQL",
         fieldName: "wpgraphql",
-        //url: `http://gatsby.liquidchurch.com/graphql`,
-        url: `http://wp.lqd.ch/graphql`,
+        url: process.env.WORDPRESS_URL,
         debug: {
           graphql: {
             writeQueriesToDisk:false,

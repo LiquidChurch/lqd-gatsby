@@ -57,16 +57,16 @@ export default ({
         sizes="100vh" />
       <div 
         id={'hero-text-area'}
-        className={'hero-image-text-area-' + image_style.split(":")[0]}
+        className={'hero-image-text-area-' + image_style.split(":")[0] + ' ' + color}
         style={ (image_style.split(":")[0] === "fixed") ? 
-                ( (textAreaPosition <= 40 ) ? 
+                ( (textAreaPosition <= 60 ) ? 
                     {background: 'none', bottom: textAreaPosition + 'px', marginBottom: (-10 - textAreaPosition) + 'px'} : 
                     {bottom: textAreaPosition + 'px', marginBottom: (15 - textAreaPosition - 25) + 'px'} ) :  
                 ( (image_style.split(":")[0] === 'filled') ? 
-                  ( (textAreaPosition <= 40) ? 
+                  ( (textAreaPosition <= 60) ? 
                       {background: 'none', bottom: textAreaPosition + 'px'} :
                       {bottom: textAreaPosition + 'px'} ) :
-                  ( (textAreaPosition <= 40) ?
+                  ( (textAreaPosition <= 60) ?
                       {background: 'none', bottom: textAreaPosition + 'px', marginBottom: (135 - textAreaPosition) + 'px'} :
                       {bottom: (textAreaPosition - 10)+ 'px', marginBottom: (135 - textAreaPosition) + 'px'} ) ) }
       >

@@ -25,26 +25,17 @@ const CallToAction = ({
 
   let pageInfo = usePageById(pageId)
 
-  let icon = ""
-  let iconColor = ""
-  if (cta.show_icon !== undefined && cta.show_icon !== "none") {
-    icon = cta.show_icon
-    if (cta.style === "button" && cta.font_color !== "") {
-      iconColor = "#FFF"
-    } 
-  }
- 
-  let fontColor = ''
+  let icon = ''
+  let fontColor = '#FFF'
   let btnColor = ''
   let border = '0px'
   
   switch(cta.style) {
     case 'button':
-      if (cta.font_color !== '') {
+      fontColor = '#FFF'
+      if (cta.font_color !== '' && cta.font_color !== undefined) {
         fontColor = cta.font_color
-      } else {
-        fontColor = '#FFF'
-      }
+      } 
       if (cta.btn_color !== '') {
         btnColor = cta.btn_color
       } else {
@@ -55,13 +46,16 @@ const CallToAction = ({
       }
       break
     default :
-      if (cta.font_color !== '') {
+      fontColor = '#009DD1'
+      if (cta.font_color !== '' && cta.font_color !== undefined) {
         fontColor = cta.font_color
-      } else {
-        fontColor = '#009DD1'
       }
+    }
+  
+  if (cta.show_icon !== undefined && cta.show_icon !== "none") {
+    icon = cta.show_icon
   }
-
+  
   return (
     <>
       {pageId === 0 ? 
@@ -76,7 +70,7 @@ const CallToAction = ({
         <span className={ (icon === '') ? 
                           '' :
                           cta.show_icon + '-icon cta-icon'}
-              style={{backgroundColor:iconColor}}>
+              style={{backgroundColor:fontColor}}>
         </span>
         <div className="cta-label"
              style={{color:cta.font_color}}>

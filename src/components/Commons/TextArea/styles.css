@@ -59,6 +59,7 @@
 
 .sidekick.light {
   color: #585858;
+  font-family: "Avenir Next Demi";
 }
 
 .sidekick.dark {
@@ -112,7 +113,7 @@
   font-size: 1.0em;
 }
 
-@media (max-width:767px) {
+@media (max-width:991px) {
   .statement.xlarge {
     font-size: 3.13em;
     line-height: 1.3em;
@@ -132,7 +133,7 @@
     font-size: 1.5em;
   }
 
-  .sidekick.xlarge {
+  .sidekick.large {
     font-size: 1.3em;
   }
   
@@ -164,7 +165,7 @@
   }
   
   .statement.large {
-    font-size: 2.5em;
+    font-size: 1.8em;
     line-height: 1.3em;
   }
 
