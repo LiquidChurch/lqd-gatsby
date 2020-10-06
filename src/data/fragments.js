@@ -29,6 +29,16 @@ export const Attributions = graphql`
   }
 `
 
+export const Accordion = graphql`
+  fragment Accordion on WpBlockLabAccordionBlock {
+    attributes {
+      items
+      bg_color
+      padding
+    }
+  }
+`
+
 export const Button = graphql`
   fragment Button on WpBlockLabButtonBlock {
     attributes {
@@ -267,6 +277,7 @@ export const AllBlocks = graphql`
     name
     ...Paragraph
     ...List
+    ...Accordion
     ...Attributions
     ...Button
     ...Heading

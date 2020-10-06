@@ -1,5 +1,6 @@
 import React from "react"
 
+import BlockAccordion from "../Blocks/Accordion"
 import BlockAttribution from "../Blocks/Attribution"
 import BlockButton from "../Blocks/Button"
 import BlockHeading from "../Blocks/Heading"
@@ -33,6 +34,7 @@ export default ({ blocks, featuredImage }) => {
   const blockMap = {
     "core/paragraph": BlockParagraph,
     "core/list": BlockList,
+    "block-lab/accordion": BlockAccordion,
     "block-lab/attributions-block": BlockAttribution,
     "block-lab/button": BlockButton,
     "block-lab/heading": BlockHeading,
