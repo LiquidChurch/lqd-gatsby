@@ -1,3 +1,24 @@
 .accordion-full-width {
   flex:1;
 }
+
+.accordion-card {
+  margin-bottom: 12px;
+  border-radius: 6px !important;
+  border-width: 1px;
+  border-color:#337ab7;
+}
+
+.accordion-card-header {
+  background-color: #337ab7;
+  color: white;
+  font-family: "Avenir Next Demi";
+}
+
+.accordion-card-body {
+  font-family: "Avenir Next Regular";
+  border-color:#337ab7;
+  border-bottom: solid;
+  border-bottom-color: #337ab7;
+  border-bottom-width: 1px;
+}

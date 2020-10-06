@@ -30,12 +30,12 @@ export default ({
             {itemsObject.rows.map(function(item, index) {
               console.log(item)
               return (
-                <Card>     
-                  <Accordion.Toggle as={Card.Header} variant="link" eventKey={index.toString()}>
+                <Card className="accordion-card">     
+                  <Accordion.Toggle as={Card.Header} variant="link" className="accordion-card-header" eventKey={index.toString()}>
                     {item.question}
                   </Accordion.Toggle>
                   <Accordion.Collapse eventKey={index.toString()}>
-                    <Card.Body>{Parse(item.answer)}</Card.Body>
+                    <Card.Body className="accordion-card-body">{Parse(item.answer)}</Card.Body>
                   </Accordion.Collapse>
                 </Card>
               )
