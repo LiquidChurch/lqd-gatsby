@@ -66,7 +66,7 @@ const CallToAction = ({
             style={{color:fontColor, 
                     backgroundColor: btnColor,
                     border: border}}
-            to={'/' + pageInfo.slug}>
+            to={pageInfo.uri}>
         <span className={ (icon === '') ? 
                           '' :
                           cta.show_icon + '-icon cta-icon'}

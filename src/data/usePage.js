@@ -9,6 +9,7 @@ export const usePageById = (pageId) => {
               databaseId
               title
               slug
+              uri
               featuredImage {
                 node {
                   sourceUrl
