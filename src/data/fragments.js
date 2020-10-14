@@ -207,6 +207,7 @@ export const PageStrap = graphql`
       all_caps
       sidekick
       image_id
+      image_size
       cta
       bg_color
       padding

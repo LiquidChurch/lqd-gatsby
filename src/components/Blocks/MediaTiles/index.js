@@ -17,6 +17,8 @@ import MediaFeatured from './mediaFeatured'
 import './styles.css'
 
 function UseSlider(props) {
+  
+  // check for null item
   const randomId = Math.random().toString().substr(2, 5)
   if (props.displayType === "slider") {
     return (

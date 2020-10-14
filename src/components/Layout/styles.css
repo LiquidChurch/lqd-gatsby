@@ -433,3 +433,17 @@ hr {
 a {
   font-weight: inherit;
 }
+
+h4 {
+  font-family: "Avenir Next Demi";  
+  color: #565656;
+  font-size: 1.08em;
+  letter-spacing: 0.05em;
+  margin-bottom: 5px;
+  margin-top: 12px;
+  text-transform: uppercase;
+}
+
+h4.grey {
+  color: #565656;
+}

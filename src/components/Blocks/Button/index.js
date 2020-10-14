@@ -111,7 +111,7 @@ export default ({
   if (btn_outline) {
     border = '2px solid'
   }
-  
+  // Need to check for null condition
   let objDropdown = JSON.parse(dropdown)
   let hasDropdown = false
 
