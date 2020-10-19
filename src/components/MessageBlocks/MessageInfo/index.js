@@ -68,7 +68,7 @@ function ActionIcons(props) {
   var url = "https://dev2.liquidchurch.com/message/" + props.slug
   return (
     <>
-      <Nav className='flex-nowrap flex-row footer-social-padding' as='ul'>
+      <Nav className='flex-nowrap flex-row message-action-area' as='ul'>
         <Nav.Item 
             className="p-1 message-action" 
             as='li'
@@ -140,14 +140,18 @@ function SocialShare(props) {
 export default (lqdmMessage) => {
   const formatter = new Intl.DateTimeFormat('en-US', { month: 'short',  day: 'numeric',   year: 'numeric'});
   const formattedDate =  formatter.format(new Date(lqdmMessage.date));
-  let attributions = lqdmMessage.attributions.nodes[0].name
   
-  if (lqdmMessage.attributionsCo.attributions !== null) {
-    lqdmMessage.attributionsCo.attributions.forEach(item => {
-        attributions = attributions + ", " + item.name
-    })
+  let attributions = ""
+  if (lqdmMessage.attributions.nodes != "") {
+    let attributions = lqdmMessage.attributions.nodes[0].name
+
+    if (lqdmMessage.attributionsCo.attributions !== null) {
+      lqdmMessage.attributionsCo.attributions.forEach(item => {
+          attributions = attributions + ", " + item.name
+      })
+    }
   }
-  
+ 
   return (
     <>
     <section className="fullwidth-section message-info-section">

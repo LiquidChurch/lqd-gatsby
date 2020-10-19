@@ -34,6 +34,11 @@
   margin: 17px 3px;
 }
 
+.media-card-message {
+  max-height:228px;
+  min-height: 70px;
+}
+
 .media-card-link:hover {
   text-decoration:none;
 }
@@ -44,7 +49,7 @@
 
 .media-card-title {
   white-space: normal;
-  min-height:46px;
+  min-height:23px;
   overflow-y:hidden;
   font-size:1.125em;
   letter-spacing: 0.00em !important;

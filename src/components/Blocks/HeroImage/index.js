@@ -38,7 +38,7 @@ export default ({
   
   useEffect (() => {
     function setTextAreaHeight() {
-      let textAreaHeight = 60
+      let textAreaHeight = 66
       textAreaHeight = (!document.getElementById('hero-text-area') ? 0 : document.getElementById('hero-text-area').offsetHeight)
       setTextAreaPosition(textAreaHeight)
     }

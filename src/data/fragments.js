@@ -74,6 +74,9 @@ export const GoogleMap = graphql`
   fragment GoogleMap on WpBlockLabGoogleMapBlock {
     attributes {
       campuses
+      latitude
+      longitude
+      zoom
     }
   }
 `

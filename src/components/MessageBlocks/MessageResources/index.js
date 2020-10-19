@@ -93,7 +93,7 @@ export default (lqdmMessage) => {
              md={{offset: 0, span: 4}}
              lg={{offset: 1, span: 3}}>
           <ListGroup variant="flush">
-            <ListResources title='English' resources={englishResources} />
+            <ListResources title='' resources={englishResources} />
           </ListGroup>
         </Col>
         <Col xs={{offset: 0, span: 12}}

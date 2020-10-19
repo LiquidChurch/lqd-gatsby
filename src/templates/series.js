@@ -29,10 +29,10 @@ export default ({
  
   series.messages.nodes.forEach(message => {
     
-    let attributions = "" 
+    let attributions = "Liquid Church" 
   
     message.attributions.nodes.forEach(item => {
-      if (attributions === "") {
+      if (attributions === "Liquid Church") {
         attributions = item.name 
       } else {
         attributions = attributions + ", " + item.name
@@ -42,6 +42,11 @@ export default ({
     const formatter = new Intl.DateTimeFormat('en-US', { month: 'short',  day: 'numeric',   year: 'numeric'});
     const formattedDate =  formatter.format(new Date(message.date));
 
+    let profileImgSrc = "https://liquidchurchimgix.blob.core.windows.net/webassets/user-photo/liquid_logo.png" 
+    if (message.attributions.nodes != "") {
+      profileImgSrc = message.attributions.nodes[0].profileImage.image.sourceUrl
+    }
+    
     messagesInfo.push({
       "category": "message",
       "title": message.title,
@@ -56,7 +61,7 @@ export default ({
       "showAttribution": true,
       "date": formattedDate,
       "attributionName": attributions,
-      "profileImage": message.attributions.nodes[0].profileImage.image.sourceUrl,
+      "profileImage": profileImgSrc,
     })
   })  
 

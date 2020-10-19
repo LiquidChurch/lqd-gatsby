@@ -10,14 +10,14 @@ import Parse from "react-html-parser"
 function ShowTitle(props) {
   if (props.showBlurb) {
     return (
-      <ListGroup.Item>
+      <ListGroup.Item className="media-card-message">
           <div className="media-card-title font-h2">{props.title}</div>
           <div className="media-card-blurb font-small">{Parse(props.blurb)}</div>
       </ListGroup.Item>
     )
   }
   return (
-    <ListGroup.Item>
+    <ListGroup.Item className="media-card-message">
       <div className="media-card-title font-h2">{props.title}</div>
     </ListGroup.Item>
   )
