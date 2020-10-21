@@ -70,14 +70,19 @@
 .media-card-series {
   background-color:#DEDEDE;
   white-space: break-spaces;
+  display: flex;
 }
+
 .media-card-series-title {
-  font-width: 600;
-  letter-spacing: 0.0em !important;  
+  font-weight: 800;
+  letter-spacing: 0.0em !important;
+  font-size:0.85em;
+  padding-right:6px;
 }
 
 .media-card-series-part {
-  white-space:nowrap;  
+  white-space:nowrap;
+  font-size:smaller;
 }
 
 .media-card-attribution {

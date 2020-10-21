@@ -103,7 +103,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     if (messageResult.data.allWpMessage.nodes) {
       messageResult.data.allWpMessage.nodes.forEach(message => {
         createPage({
-          path: `/message/${message.slug}`,
+          path: `/messages/${message.slug}`,
           component: slash(path.resolve(`./src/templates/message.js`)),
           context: {
             id: message.id,
@@ -141,7 +141,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     if (blogResult.data.allWpBlog.nodes) {
       blogResult.data.allWpBlog.nodes.forEach(blog => {
         createPage({
-          path: `/blog/${blog.slug}`,
+          path: `/blogs/${blog.slug}`,
           component: slash(path.resolve(`./src/templates/blog.js`)),
           context: {
             id: blog.id,

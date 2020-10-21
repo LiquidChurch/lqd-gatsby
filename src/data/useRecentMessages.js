@@ -78,7 +78,7 @@ export const useRecentMessages = (numOfItems) => {
   let returnData = []
   let i
   for (i = 0; i < data.allWpMessage.nodes.length ; i++) {
-    data.allWpMessage.nodes[i].category="message"
+    data.allWpMessage.nodes[i].category="messages"
     returnData.push(data.allWpMessage.nodes[i])
     if (returnData.length === numOfItems) {
       break

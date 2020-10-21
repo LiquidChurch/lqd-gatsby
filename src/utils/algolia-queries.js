@@ -12,6 +12,20 @@ const messageQuery = `
               name
             }
           }
+          featuredImage {
+            node {
+              sourceUrl
+              caption
+              altText
+            }
+          }
+          seriesList {
+            nodes {
+              name
+              id
+              slug
+            }
+          }
         }
     }
 }
@@ -33,6 +47,13 @@ const blogQuery = `
               name
             }
           }
+          featuredImage {
+            node {
+              sourceUrl
+              caption
+              altText
+            }
+          }
         }
     }
 }
@@ -45,9 +66,16 @@ const pageQuery = `
           id
           title
           slug
-          content
+          content          
+          featuredImage {
+            node {
+              sourceUrl
+              caption
+              altText
+            }
+          }
         }
-    }
+      }
 }
 `
 
@@ -70,9 +98,12 @@ const queries = [
             blurb: node.content.replace(/<[^>]*>?/gm, ''),
             date: node.date,
             slug: node.slug,
-            terms: node.terms.nodes
+            terms: node.terms.nodes,
+            imageUrl: node.featuredImage.node.sourceUrl,
+            parentPage: node.seriesList.nodes[0].name
           })),
         indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
+        enablePartialUpdates: true,
         settings: { attributesToSnippet: [`blurb:40`],
                     searchableAttributes: ['title', 'blurb', 'date', 'terms.name'],
                     attributesForFaceting: ['pageType']},      
@@ -87,9 +118,11 @@ const queries = [
             blurb: node.mediaBlurb.blurb,
             date: node.date,
             slug: node.slug,
-            terms: node.terms.nodes
+            terms: node.terms.nodes,
+            imageUrl: node.featuredImage.node.sourceUrl            
           })),
         indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
+        enablePartialUpdates: true,
         settings: { attributesToSnippet: [`blurb:40`],
                     searchableAttributes: ['title', 'blurb', 'date', 'terms.name'],
                     attributesForFaceting: ['pageType']},
@@ -105,6 +138,7 @@ const queries = [
             slug: node.slug
           })),
         indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
+        enablePartialUpdates: true,
         settings: { attributesToSnippet: [`blurb:20`],
         searchableAttributes: ['title', 'blurb', 'date', 'terms.name'],
         attributesForFaceting: ['pageType']},

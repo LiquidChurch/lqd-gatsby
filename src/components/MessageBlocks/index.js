@@ -34,7 +34,7 @@ export default (lqdmMessage) => {
     const formattedDate =  formatter.format(new Date(message.date));
 
     let profileImgSrc = "https://liquidchurchimgix.blob.core.windows.net/webassets/user-photo/liquid_logo.png" 
-    if (message.attributions.nodes != "") {
+    if (message.attributions.nodes.length !== 0) {
       profileImgSrc = message.attributions.nodes[0].profileImage.image.sourceUrl
     }
     

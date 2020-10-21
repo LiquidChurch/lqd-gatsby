@@ -4,9 +4,10 @@
 
 .series-title-block {
   font-size: 1.13em;
-  height: 300px;
   display:flex;
   flex-wrap: wrap; 
+  margin-top: -12px;
+  margin-bottom: -20px;
 }
 
 .series-title {

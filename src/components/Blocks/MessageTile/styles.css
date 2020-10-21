@@ -52,10 +52,10 @@
 
 @media (max-width:991px) {
   .message-tile-image {
-    height: 371px;
+    height: auto;
     max-width: 660px;
     overflow: hidden;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
   }
 }
@@ -67,7 +67,7 @@
   }
   
   .message-tile-image {
-    height: calc(90vw - 1.9em);
+   /* height: calc(90vw - 1.9em); */
   }
   
   .message-tile-text-overlay {

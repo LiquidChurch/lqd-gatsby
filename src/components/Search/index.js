@@ -38,9 +38,7 @@ const IndexResults = connectStateResults(
 );
 
 const AllResults = connectStateResults(({ allSearchResults, children }) => {
-  
   const hasResults =
-
     allSearchResults &&
     Object.values(allSearchResults).some(results => results.nbHits > 0);
     
@@ -65,7 +63,7 @@ export default(location) => {
             <Row>      
               <InstantSearch 
                   searchClient={searchClient} 
-                  indexName="Combined"
+                  indexName="Development"
               > 
                 <SearchBox
                     className="searchbox"
@@ -74,9 +72,10 @@ export default(location) => {
                     }}
                 />
                 
-                <Hits hitComponent={Hit} />
-              </InstantSearch>
-            </Row>
+                  <Hits hitComponent={Hit} />
+              
+                </InstantSearch>
+              </Row>
             <Row>
 
             </Row>
@@ -88,7 +87,7 @@ export default(location) => {
 
 function Hit(props) {
     return (
-      <article>
+      <article style="background_color:white;">
         <h1>
             <a href={"/" + props.hit.pageType + "/" + props.hit.slug}>
                 <Highlight attribute="title" hit={props.hit} />

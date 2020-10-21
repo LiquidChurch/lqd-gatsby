@@ -62,18 +62,24 @@ function MediaDataTransformer(props) {
     const formatter = new Intl.DateTimeFormat('en-US', { month: 'short',  day: 'numeric',   year: 'numeric'});
     let formattedDate =  formatter.format(new Date(item.date)).toUpperCase();
 
-    let attributions = ""
+    let attributions = "Liquid Church"
 
     item.attributions.nodes.forEach(item => {
-      if (attributions === "") {
+      if (attributions === "Liquid Church") {
         attributions = item.name 
       } else {
         attributions = attributions + ", " + item.name
       }
     })
     
+    let profileImgSrc = "https://liquidchurchimgix.blob.core.windows.net/webassets/user-photo/liquid_logo.png" 
+    if (item.attributions.nodes.length !== 0) {
+      console.log(item.attributions.nodes)
+      profileImgSrc = item.attributions.nodes[0].profileImage.image.sourceUrl
+    }
+    
     let blurb = "" 
-    if (item.category === "message") {
+    if (item.category === "messages") {
       blurb = item.content  
     } else {
       blurb = item.mediaBlurb.blurb
@@ -103,7 +109,7 @@ function MediaDataTransformer(props) {
       "seriesPart": seriesPart,
       "showAttribution": props.showAttribution,
       "attributionName": attributions,
-      "profileImage": item.attributions.nodes[0].profileImage.image.sourceUrl,
+      "profileImage": profileImgSrc,
       "date": formattedDate,
     })
     return null

@@ -265,6 +265,18 @@ export const PhotoTab = graphql`
   } 
 `
 
+export const SeriesTiles = graphql`
+  fragment SeriesTiles on WpBlockLabSeriesTilesBlock {
+    attributes {
+      type
+      num_items
+      layout
+      series_list
+      bg_color
+      padding
+    }
+  }
+`
 export const Video = graphql`
   fragment Video on WpBlockLabVideoBlock {
     attributes {
@@ -294,6 +306,7 @@ export const AllBlocks = graphql`
     ...HomeLinks
     ...MessageTile
     ...MediaTiles
+    ...SeriesTiles
     ...PageModal
     ...LinkTiles
     ...PhotoTab

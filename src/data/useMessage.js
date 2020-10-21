@@ -78,7 +78,7 @@ export const useMessageById = (messageId) => {
   )
 
   if (messagePageInfo !== undefined) {
-    messagePageInfo["category"] = "message"
+    messagePageInfo["category"] = "messages"
     return messagePageInfo
   }
   

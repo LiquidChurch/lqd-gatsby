@@ -75,7 +75,7 @@ export const useRecentBlogs = (numOfItems) => {
   let returnData = []
   let i
   for (i = 0; i < data.allWpBlog.nodes.length ; i++) {
-    data.allWpBlog.nodes[i].category="blog"
+    data.allWpBlog.nodes[i].category="blogs"
     returnData.push(data.allWpBlog.nodes[i])
     if (returnData.length === numOfItems) {
       break

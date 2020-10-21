@@ -9,6 +9,7 @@ import BlockMediaTiles from "../Blocks/MediaTiles"
 import BlockMessageTile from "../Blocks/MessageTile"
 import BlockPageStrap from "../Blocks/PageStrap"
 import BlockPhotoTab from  "../Blocks/PhotoTab"
+import BlockSeriesTiles from "../Blocks/SeriesTiles"
 import BlockVideo from "../Blocks/Video"
 
 import BlockParagraph from "../Paragraph"
@@ -47,6 +48,7 @@ export default ({ blocks, featuredImage }) => {
     "block-lab/message-tile": BlockMessageTile,
     "block-lab/media-tiles": BlockMediaTiles,
     "block-lab/page-modal": BlockPageModal,
+    "block-lab/series-tiles": BlockSeriesTiles,
     "block-lab/link-tiles": BlockLinkedTiles,
     "block-lab/photo-block": BlockPhotoTab,
     "block-lab/photo-carousel": BlockPhotoCarousel,

@@ -8,6 +8,8 @@ import { isTouchEnabled } from '../helpers/functions'
 
 import SeriesHero from "../components/SeriesHero"
 import MediaTiles from "../components/Blocks/MediaTiles"
+import SeriesTiles from "../components/Blocks/SeriesTiles"
+import Heading from "../components/Blocks/Heading"
 /** 
  * Template - Series Component
  */
@@ -43,7 +45,7 @@ export default ({
     const formattedDate =  formatter.format(new Date(message.date));
 
     let profileImgSrc = "https://liquidchurchimgix.blob.core.windows.net/webassets/user-photo/liquid_logo.png" 
-    if (message.attributions.nodes != "") {
+    if (message.attributions.nodes.length !== 0) {
       profileImgSrc = message.attributions.nodes[0].profileImage.image.sourceUrl
     }
     
@@ -72,11 +74,38 @@ export default ({
       </Helmet>
       <article className="page">
         <SeriesHero {...series} />
-        <MediaTiles 
-          type=""
+      <Heading
+          text="Messages in this Series"
+          alignment="left"
+          size="small"
+          all_caps="true"
+          add_padding=""
+          font_color="#565656"
+          padding="top"
           bg_color="#F8F8F8"
-          padding='both'
-          media_list={messagesInfo} />
+      />    
+      <MediaTiles 
+        type=""
+        bg_color="#F8F8F8"
+        padding='bottom'
+        media_list={messagesInfo} />
+      <Heading
+          text="Other Message Series"
+          alignment="left"
+          size="small"
+          all_caps="true"
+          add_padding=""
+          font_color="#565656"
+          padding="none"
+          bg_color="#F8F8F8"
+      />    
+        <SeriesTiles
+          type='recent'
+          num_items={6}
+          layout='grid'
+          series_list=''
+          bg_color='#F6F6F6' 
+          padding='bottom' />
       </article>
     </Layout>
   )
@@ -90,6 +119,7 @@ export const query = graphql`
       slug
       description
       SeriesImage {
+        date
         image {
           caption
           altText

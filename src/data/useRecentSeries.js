@@ -1,15 +1,18 @@
 import { useStaticQuery, graphql } from "gatsby"
-export const useSeries = (seriesSlug) => {
+export const useRecentSeries = (numOfItems) => {
   const data = useStaticQuery(
     graphql `
       query {
-        allWpSeries {
+        allWpSeries (
+            sort: {fields: SeriesImage___date, order: DESC}
+          ){
           nodes {
             id
             name
             slug
             description
             SeriesImage {
+              date
               image {
                 caption
                 altText
@@ -69,14 +72,15 @@ export const useSeries = (seriesSlug) => {
     `
   )
 
-  var seriesPageInfo = data.allWpSeries.nodes.find(
-    ({ slug }) => slug === seriesSlug
-  )
-  
-  if (seriesPageInfo !== undefined) {
-    seriesPageInfo["category"] = "messages"
-    return seriesPageInfo
+  let returnData = []
+  let i
+  for (i = 0; i < data.allWpSeries.nodes.length ; i++) {
+    data.allWpSeries.nodes[i].category="series"
+    returnData.push(data.allWpSeries.nodes[i])
+    if (returnData.length === numOfItems) {
+      break
+    }
   }
   
-  return null
+  return returnData
 }

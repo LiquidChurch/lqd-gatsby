@@ -1,6 +1,6 @@
 // Read env variables for Algolia
 require("dotenv").config({
-  path: `./.env.${process.env.NODE_ENV}`,
+  path: `./.env`,
 })
 
 module.exports = {
@@ -32,6 +32,9 @@ module.exports = {
           graphql: {
             writeQueriesToDisk:false,
           }
+        },
+        schema: {
+          timeout: 60000,
         },
         html: {
           useGatsbyImage: false,
