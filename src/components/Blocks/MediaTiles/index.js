@@ -74,7 +74,6 @@ function MediaDataTransformer(props) {
     
     let profileImgSrc = "https://liquidchurchimgix.blob.core.windows.net/webassets/user-photo/liquid_logo.png" 
     if (item.attributions.nodes.length !== 0) {
-      console.log(item.attributions.nodes)
       profileImgSrc = item.attributions.nodes[0].profileImage.image.sourceUrl
     }
     

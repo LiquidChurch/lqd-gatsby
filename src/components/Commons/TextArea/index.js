@@ -19,7 +19,6 @@ const TextArea = ({
   theme,
   noMargin,
 }) => {
-  console.log('sidekick', sidekick)
   const ctaObject = JSON.parse(cta)
   
   let sidekickTop = true

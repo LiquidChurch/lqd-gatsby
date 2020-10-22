@@ -53,10 +53,6 @@ export default ({
   var hasImage = false
   if (image_id !== null && image_id !== undefined && image_id !== 0) { hasImage = true }
 
-  console.log(hasImage)
-  
-  console.log('pageStrap font color', font_color)
-  console.log(image_size)
   let xsWidth = 12
   let xsOffset = 0
   let smWidth = (width + 4)

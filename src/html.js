@@ -3,7 +3,6 @@ import PropTypes from "prop-types"
 import LoaderSVG from './assets/images/liquid.svg'
 
 export default function HTML(props) {
-  console.log(props)
   return (
     <html {...props.htmlAttributes}>
       <head>

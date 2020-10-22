@@ -26,7 +26,6 @@ export default ({
       <Row>
         <Accordion className='accordion-full-width'>
             {itemsObject.rows.map(function(item, index) {
-              console.log(item)
               return (
                 <Card className="accordion-card">     
                   <Accordion.Toggle as={Card.Header} variant="link" className="accordion-card-header" eventKey={index.toString()}>

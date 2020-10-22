@@ -60,7 +60,6 @@ export default ({
   
   let hasSecondary = true
   if (header_secondary === null && text_block_secondary === null) {
-    console.log('no secondary block')
     hasSecondary = false
   }
   

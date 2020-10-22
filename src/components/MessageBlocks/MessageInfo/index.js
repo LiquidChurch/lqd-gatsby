@@ -112,7 +112,6 @@ function ActionIcons(props) {
 }
 
 function SocialShare(props) {
-  console.log(props)
   return (
   <>
       <Nav className='flex-nowrap flex-row message-social-padding' as='ul'>

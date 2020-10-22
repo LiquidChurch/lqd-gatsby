@@ -6,7 +6,6 @@ import React from "react"
 export default ({
   src,
 }) => {
-  console.log('iframe block', src)
   return (
     <>
       <iframe src={src} title="test iframe block" width="100%" height="100%"></iframe>

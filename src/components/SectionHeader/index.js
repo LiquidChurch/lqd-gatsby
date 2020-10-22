@@ -3,7 +3,6 @@ import React from 'react'
 import Col from 'react-bootstrap/Col'
 
 function AddHR(props) {
-  console.log(props)
   if (props.showHR) {
     return (
       <hr/>

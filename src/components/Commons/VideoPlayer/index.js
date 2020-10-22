@@ -14,8 +14,6 @@ const VideoPlayer = ({
     width: 0
   })
 
-  console.log(videoUrl)
-  
   let videoSrc = ""
   switch(videoUrl[2]) {
     case 'vimeo.com':

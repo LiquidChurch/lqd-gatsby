@@ -21,8 +21,6 @@ function MapMarker(props) {
   if (props.anchor > 0) {
     labelLocation = "left"
   }
-  
-  
   var mapIcon = require('./map-marker.svg')
   
   if (props.iconStyle === "grey") {
@@ -76,7 +74,6 @@ const GoogleMapComponentWithMarker = withScriptjs(
     >
     {
       props.markerObj.map(campus => {
-          console.log(campus)
           return (
             <MapMarker
               key={'map-marker-' + campus.slug}

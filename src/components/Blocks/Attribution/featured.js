@@ -10,7 +10,6 @@ const FeaturedAttribute = ({
   }) => {
   const attributeObject = useAttributionById(attribute.id)
   const imageUrl = attributeObject.profileImage.image.mediaItemUrl.split("/")
-  console.log('featured attribute', attributeObject)
   return (
   <>
     <div>
