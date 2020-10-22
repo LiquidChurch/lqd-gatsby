@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react'
  */
 const VideoPlayer = ({
   url,
+  title,
 }) => {
   var videoUrl = url.split("/")
   
@@ -53,7 +54,6 @@ const VideoPlayer = ({
   return (
     <>
       <div style={{
-            width:'100vw', 
             textAlign:'center',
             width:dimensions.width,
             height:(dimensions.height - 1),
@@ -67,6 +67,7 @@ const VideoPlayer = ({
           src={videoSrc} 
           width={dimensions.width}
           height={dimensions.height}
+          title={title}
           frameBorder="0" allow="autoplay; fullscreen" 
           allowFullScreen>
         </iframe>

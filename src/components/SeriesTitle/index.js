@@ -7,8 +7,6 @@ import Col from 'react-bootstrap/Col'
 import Imgix from 'react-imgix'
 import { Link } from 'gatsby'
 
-import SectionHeader from '../SectionHeader'
-
 import './styles.css'
 
 /**
@@ -16,10 +14,11 @@ import './styles.css'
  */
 export default (series) => {
   var imgUrl = series.SeriesImage.image.sourceUrl.split("/")
-  
+  let padding = "bottom"
+  let bg_color = "#F8F8F8"
   return (
   <>
-  <section className={'site-section ' + 'bottom'} style={{backgroundColor: '#F8F8F8'}}>    
+  <section className={'site-section ' + padding} style={{backgroundColor: bg_color}}>    
   <Container>
     <Row>
       <Col xs={12} lg={6}>

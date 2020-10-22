@@ -1,6 +1,7 @@
 import React from 'react'
 import Imgix from 'react-imgix'
 import { Link } from 'gatsby'
+//import InfiniteScroll from "react-infinite-scroll-component"
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -45,7 +46,6 @@ export default ({
   padding,
 }) => {
   let tempItems = useRecentSeries(num_items)
-  console.log('num items', num_items)
   return (
   <>
     <section className={'site-section media-cards ' + padding} style={{backgroundColor: bg_color}}>
@@ -54,7 +54,7 @@ export default ({
         <Col className="series-card-wrap">
         {tempItems.map(item => {
           return (
-              <SeriesCard mediaItem={item} key={'Media-lists-' + item.id} />
+              <SeriesCard mediaItem={item} key={'series-lists-' + item.id} />
           )
         })}
         </Col>

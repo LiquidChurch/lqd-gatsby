@@ -1,12 +1,10 @@
 import React from 'react'
 
 import Container from 'react-bootstrap/Container'
-//import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 
 import Accordion from 'react-bootstrap/Accordion'
 import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
 
 import Parse from "react-html-parser"
 

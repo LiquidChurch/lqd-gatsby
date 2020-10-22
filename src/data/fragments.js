@@ -281,6 +281,7 @@ export const Video = graphql`
   fragment Video on WpBlockLabVideoBlock {
     attributes {
       video_url
+      video_title
       bg_color
       padding
     }

@@ -6,16 +6,15 @@ import VideoPlayer from '../../Commons/VideoPlayer'
  */
 const VideoBlock = ({
   video_url,
+  video_title,
   bg_color,
   padding,
 }) => {
-  console.log(video_url)
-  
   
   return (
   <>
-  <section className={'site-section ' + 'both'} style={{backgroundColor: bg_color}}>
-    <VideoPlayer url={video_url} />
+  <section className={'site-section ' + padding} style={{backgroundColor: bg_color}}>
+    <VideoPlayer url={video_url} title={video_title} />
   </section>
   </>
   )

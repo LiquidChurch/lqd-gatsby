@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext } from 'react'
 import "./styles.css"
 import { withScriptjs, withGoogleMap, GoogleMap} from 'react-google-maps'
 
@@ -10,14 +10,9 @@ import { PageModalContext } from '../PageModal/context'
 import { useCampusById } from "../../data/useCampus"
 
 const styles = require('./GoogleMapStyles.json')
-const mapMarker = require('./map-marker.svg')
 const { MarkerWithLabel } = require("react-google-maps/lib/components/addons/MarkerWithLabel")
 
 const googleKey = process.env.GOOGLE_API_KEY
-
-const LabelGenerated = () => {
-  console.log('visible changed')
-} 
 
 function MapMarker(props) {
   const ctx = useContext(PageModalContext)
@@ -30,7 +25,7 @@ function MapMarker(props) {
   
   var mapIcon = require('./map-marker.svg')
   
-  if (props.iconStyle == "grey") {
+  if (props.iconStyle === "grey") {
     mapIcon = require('./map-marker-grey.svg')
   }
   

@@ -22,6 +22,8 @@
 }
 .carousel-control-button {
   padding: 18px 6px;
+  background:none;
+  border:none;
 }
 
 .carousel-control {

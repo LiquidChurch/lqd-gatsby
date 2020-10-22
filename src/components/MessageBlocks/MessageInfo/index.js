@@ -142,7 +142,7 @@ export default (lqdmMessage) => {
   const formattedDate =  formatter.format(new Date(lqdmMessage.date));
   
   let attributions = ""
-  if (lqdmMessage.attributions.nodes != "") {
+  if (lqdmMessage.attributions.nodes !== "") {
     let attributions = lqdmMessage.attributions.nodes[0].name
 
     if (lqdmMessage.attributionsCo.attributions !== null) {

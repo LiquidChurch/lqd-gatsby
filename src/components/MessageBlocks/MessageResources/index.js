@@ -8,8 +8,6 @@ import ListGroup from 'react-bootstrap/ListGroup'
 import './styles.css'
 
 const ListResources = ({title, resources}) => {
-  console.log(resources)
- 
   if (resources.length === 0) {
     return null
   }
@@ -18,12 +16,13 @@ const ListResources = ({title, resources}) => {
     <ListGroup.Item className="resource-header">{title}</ListGroup.Item>
     {resources.map(resource => {
       return (
-        <ListGroup.Item as="a" href={resource.url} bsPrefix="resource-item">{resource.resourceTitle}</ListGroup.Item>
+        <ListGroup.Item as="a" href={resource.url} key={resource.langulage + "-" + resource.resourceType} bsPrefix="resource-item">{resource.resourceTitle}</ListGroup.Item>
       )
     })}
     </>
     )
 }
+
 /** 
  * Message Resources
  */
@@ -32,12 +31,11 @@ export default (lqdmMessage) => {
   let spanishResources = []
   
   const processResource = res => {
-    if (res.resourceType == null || res.url == null) {
+    if (res.resourceType === null || res.url === null) {
       return
     }
     
-    if (res.language == 'english' && res.resourceType != null) {
-      
+    if (res.language === 'english' && res.resourceType !== null) {
       switch(res.resourceType) {
         case 'video':
           res.resourceTitle = "Video Download"
@@ -53,10 +51,12 @@ export default (lqdmMessage) => {
           break
         case 'leader':
           res.resourceTitle = "Leader's Guide"
-          break 
+          break
+        default:
+          break
       }
       englishResources.push(res)
-    } else if (res.language == 'spanish' && res.resourceType != null) {
+    } else if (res.language === 'spanish' && res.resourceType !== null) {
       spanishResources.push(res)
     }
   }
@@ -73,9 +73,6 @@ export default (lqdmMessage) => {
   processResource(lqdmMessage.resources.resource6)
   processResource(lqdmMessage.resources.resource7)
   processResource(lqdmMessage.resources.resource8)
-  
-  //console.log('english resource', englishResources)
-  //console.log('spanish resource', spanishResources)
   
   return (
     <>
@@ -94,14 +91,6 @@ export default (lqdmMessage) => {
              lg={{offset: 1, span: 3}}>
           <ListGroup variant="flush">
             <ListResources title='' resources={englishResources} />
-          </ListGroup>
-        </Col>
-        <Col xs={{offset: 0, span: 12}}
-             sm={{offset: 0, span: 12}}
-             md={{offset: 0, span: 4}}
-             lg={{offset: 1, span: 3}}>
-          <ListGroup variant="flush">
-            <ListResources title='Spanish' resources={spanishResources} />
           </ListGroup>
         </Col>
       </Row>

@@ -7,8 +7,7 @@ const initialPageModal = { modalOpenState: false,
 const PageModalContext = React.createContext(initialPageModal)
 
 const PageModalProvider = (props) => {
-  const [modalOpenState, setModalOpenState] = useState(false)
-  const [modalId, setModalId] = useState('')
+ // const [modalOpenState, setModalOpenState] = useState(false)
   
   const [showModalIdState, setShowModalIdState] = useState('')
   

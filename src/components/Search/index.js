@@ -2,21 +2,21 @@ import React from 'react';
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import Card from 'react-bootstrap/Card'
-import SectionHeader from '../SectionHeader'
+//import Col from 'react-bootstrap/Col'
+//import Card from 'react-bootstrap/Card'
+//import SectionHeader from '../SectionHeader'
 import Heading from '../Blocks/Heading'
 
 import algoliasearch from 'algoliasearch/lite';
 import {
     InstantSearch,
-    Index,
-    Configure,
+//    Index,
+//    Configure,
     Hits,
     SearchBox,
-    Pagination,
+//    Pagination,
     Highlight,
-    connectStateResults,
+//    connectStateResults,
 } from 'react-instantsearch-dom'
 import PropTypes from 'prop-types'
 import './styles.css'
@@ -25,6 +25,7 @@ const appId = process.env.GATSBY_ALGOLIA_APP_ID
 const searchKey = process.env.GATSBY_ALGOLIA_SEARCH_KEY
 const searchClient = algoliasearch(appId, searchKey)
 
+/*
 const IndexResults = connectStateResults(
   ({ searchState, searchResults, children }) =>
     searchResults && searchResults.nbHits !== 0 ? (
@@ -36,7 +37,8 @@ const IndexResults = connectStateResults(
       </div>
     )
 );
-
+*/
+/*
 const AllResults = connectStateResults(({ allSearchResults, children }) => {
   const hasResults =
     allSearchResults &&
@@ -52,7 +54,7 @@ const AllResults = connectStateResults(({ allSearchResults, children }) => {
       children
     );
 });
-
+*/
 export default(location) => {
   
     return (
@@ -87,7 +89,7 @@ export default(location) => {
 
 function Hit(props) {
     return (
-      <article style="background_color:white;">
+      <article>
         <h1>
             <a href={"/" + props.hit.pageType + "/" + props.hit.slug}>
                 <Highlight attribute="title" hit={props.hit} />

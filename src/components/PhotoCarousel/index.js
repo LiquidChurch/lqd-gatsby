@@ -62,7 +62,7 @@ export default ({ images }) => {
                 var imgUrl = image.mediaItemUrl.split("/")
                 var buttonWidth = 100 / imagesInfo.length
                 return (
-                      <a className={'carousel-control-button'} 
+                      <button className={'carousel-control-button'} 
                          style={{width: buttonWidth + '%'}}
                          onClick={() => setCarousel(index)}
                          key={'carousel-control-image-link-' + image.id}>
@@ -70,7 +70,7 @@ export default ({ images }) => {
                           src={process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX] + "?ar=16:9&fit=crop&h=120&corner-radius=10,10,10,10"}
                           className={(carouselIndex===index) ? 'carousel-control-image' : 'carousel-control-image greyed'}
                         />
-                      </a>
+                      </button>
                 )
               })}
                 </div>

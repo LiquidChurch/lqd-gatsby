@@ -9,7 +9,6 @@ import TextArea from '../../Commons/TextArea'
 
 import { useImageById } from "../../../data/useImage"
 
-import Parse from "react-html-parser"
 import { RichTextHelper } from "../../../helpers/functions"
 
 import "./photoTab.css"

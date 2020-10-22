@@ -137,8 +137,6 @@ export default ({
     display_type = "grid"
   }
   
-  let sectionClass="media-cards"
-  
   let mediaLists = []
   
   if (type === "messages") {
