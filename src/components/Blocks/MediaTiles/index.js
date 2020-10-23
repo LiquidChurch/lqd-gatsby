@@ -72,7 +72,7 @@ function MediaDataTransformer(props) {
       }
     })
     
-    let profileImgSrc = process.env.IMG_DIR_INDEX 
+    let profileImgSrc = process.env.LOGO_IMG
     if (item.attributions.nodes.length !== 0) {
       profileImgSrc = item.attributions.nodes[0].profileImage.image.sourceUrl
     }

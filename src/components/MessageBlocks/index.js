@@ -33,7 +33,7 @@ export default (lqdmMessage) => {
     const formatter = new Intl.DateTimeFormat('en-US', { month: 'short',  day: 'numeric',   year: 'numeric'});
     const formattedDate =  formatter.format(new Date(message.date));
 
-    let profileImgSrc = process.env.IMG_DIR_INDEX  
+    let profileImgSrc = process.env.LOGO_IMG
     if (message.attributions.nodes.length !== 0) {
       profileImgSrc = message.attributions.nodes[0].profileImage.image.sourceUrl
     }
