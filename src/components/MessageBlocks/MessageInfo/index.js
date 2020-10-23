@@ -140,9 +140,11 @@ export default (lqdmMessage) => {
   const formatter = new Intl.DateTimeFormat('en-US', { month: 'short',  day: 'numeric',   year: 'numeric'});
   const formattedDate =  formatter.format(new Date(lqdmMessage.date));
   
-  let attributions = ""
-  if (lqdmMessage.attributions.nodes !== "") {
-    let attributions = lqdmMessage.attributions.nodes[0].name
+  let attributions = "Liquid Church"
+  
+  if (lqdmMessage.attributions.nodes.length > 0) {
+    console.log('attributions found')
+    attributions = lqdmMessage.attributions.nodes[0].name
 
     if (lqdmMessage.attributionsCo.attributions !== null) {
       lqdmMessage.attributionsCo.attributions.forEach(item => {
@@ -150,7 +152,10 @@ export default (lqdmMessage) => {
       })
     }
   }
- 
+  
+  console.log(lqdmMessage.attributions.nodes.length)
+  console.log('attribution', attributions)
+  
   return (
     <>
     <section className="fullwidth-section message-info-section">
@@ -162,7 +167,7 @@ export default (lqdmMessage) => {
           <Col xs={{span:12, order:3}} md={{span:4, order:2}}>
             <ActionIcons slug={lqdmMessage.slug} />
           </Col>
-          <Col xs={{span:12, order:2}} md={{span:12, order:3}}>
+          <Col xs={{span:12, order:2}} md={{span:12, order:3}} className="message-subtitle">
             <div className="font-h3 message-speaker">{attributions}</div>
             <div className="font=h3 message-date">{formattedDate}</div>
           </Col>

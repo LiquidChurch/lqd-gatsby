@@ -49,18 +49,20 @@ export default ({
     imgOrder = 2
     textOrder = 1
   }
-
-  if (text_block !== "" || text_block !== null) { 
+  
+  if (text_block !== "<p></p>" || text_block !== null) { 
     var textBlock = RichTextHelper(text_block)
   }
 
-  if (text_block_secondary !== "" || text_block_secondary !== null) { 
+  let hasSecondary = false
+  
+  if (text_block_secondary !== "<p></p>" && text_block_secondary !== null) { 
     var textBlockSecondary = RichTextHelper(text_block_secondary)
+    hasSecondary = true
   }
   
-  let hasSecondary = true
-  if (header_secondary === null && text_block_secondary === null) {
-    hasSecondary = false
+  if (header_secondary !== null) {
+    hasSecondary = true
   }
   
   return (
@@ -88,7 +90,7 @@ export default ({
           theme={'light'}
           noMargin={true}
         />
-        <div className={hasSecondary ? "text-padding" : ''} ></div>
+        <div className={hasSecondary ? "text-padding" : ''}></div>
         <TextArea 
           statement={header_secondary}
           sidekick={textBlockSecondary}

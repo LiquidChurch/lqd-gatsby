@@ -8,7 +8,7 @@ import Col from 'react-bootstrap/Col'
 import WideSlider from '../../Commons/WideSlider'
 
 import { useRecentMessages } from '../../../data/useRecentMessages'
-import { useMessage } from '../../../data/useMessage'
+import { useMessageById } from '../../../data/useMessage'
 import { useRecentBlogs } from '../../../data/useRecentBlogs'
 import { useBlog } from '../../../data/useBlog'
 
@@ -163,7 +163,7 @@ export default ({
     let tempItems = []
     rawMediaList.rows.forEach(item => {
       if (item.message !== undefined) {
-        tempItems.push(useMessage(item.message.id))
+        tempItems.push(useMessageById(item.message.id))
       }
       if (item.blog !== undefined) {
         tempItems.push(useBlog(item.blog.id))

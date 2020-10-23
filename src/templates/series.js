@@ -50,7 +50,7 @@ export default ({
     }
     
     messagesInfo.push({
-      "category": "message",
+      "category": "messages",
       "title": message.title,
       "image": message.featuredImage.node.mediaItemUrl,
       "id": message.id,

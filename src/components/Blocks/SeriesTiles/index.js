@@ -1,7 +1,7 @@
 import React from 'react'
 import Imgix from 'react-imgix'
 import { Link } from 'gatsby'
-//import InfiniteScroll from "react-infinite-scroll-component"
+// import InfiniteScroll from "react-infinite-scroll-component"
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -52,11 +52,11 @@ export default ({
     <Container>
       <Row>
         <Col className="series-card-wrap">
-        {tempItems.map(item => {
-          return (
+          {tempItems.map(item => {
+            return (
               <SeriesCard mediaItem={item} key={'series-lists-' + item.id} />
-          )
-        })}
+            )
+          })}
         </Col>
       </Row>
   </Container>

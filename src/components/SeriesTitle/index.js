@@ -27,12 +27,13 @@ export default (series) => {
           src={process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX] + "?ar=16:9&fit=crop&h=545"}
           className="message-tile-image"
           sizes="90vw" />
-        
       </Link>
       </Col>
       <Col xs={12} lg={6}>
         <div className="series-title-block">
-          <h4 className="font-h2 series-title">{series.name}</h4>
+          <Link to={"/series/" + series.slug}>
+            <h4 className="font-h2 series-title">{series.name}</h4>
+          </Link>
           <div className="font-regular series-description">{Parse(series.description)}</div>
         </div>
       </Col>
