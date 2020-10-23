@@ -1,6 +1,18 @@
 #!/bin/bash
-# Script for Gatsby Build
-echo -e "Check for existing process \n"
+
+echo "Looking up current job status"
+
+echo "done" > build_status.txt
+JOB_STATUS=$(<build_status.txt)
+
+if [[ "$JOB_STATUS" == done ]]; then
+  echo "Job is done"
+fi
+exit 0
+
+
+  
+echo -e "Check for existing process"
 FILE=build_pid
 if test -f "$FILE"; then
     echo $FILE

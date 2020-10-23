@@ -28,6 +28,9 @@ module.exports = {
         typeName: "WPGraphQL",
         fieldName: "wpgraphql",
         url: process.env.WORDPRESS_URL,
+        schema: {
+          timeout: 60000,
+        },
         debug: {
           graphql: {
             writeQueriesToDisk:false,

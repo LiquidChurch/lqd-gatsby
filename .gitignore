@@ -75,3 +75,7 @@ yarn-error.log
 workers-site/
 wrangler.toml
 dist/
+
+# Build status
+build_status.txt
+build_pid.txt
