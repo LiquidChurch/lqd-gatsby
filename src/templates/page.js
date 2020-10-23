@@ -17,6 +17,7 @@ export default ({
     page,
   },
 }) => {
+  console.log("page: ", page.title)
   const generalSettings = useGeneralSettings()
   const ctx = useContext(GlobalContext)
   

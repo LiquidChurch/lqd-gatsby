@@ -17,7 +17,7 @@ export default ({
     lqdmMessage,
   },
 }) => {
-  
+  console.log("message:", lqdmMessage.title)
   const ctx = useContext(GlobalContext)
   useEffect(() => {
     ctx.setTheme("dark")

@@ -12,6 +12,7 @@ export default ({
     post,
   },
 }) => {
+  console.log("post: ", post.title)
   const generalSettings = useGeneralSettings()
   
   return (

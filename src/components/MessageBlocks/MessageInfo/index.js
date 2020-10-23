@@ -143,7 +143,6 @@ export default (lqdmMessage) => {
   let attributions = "Liquid Church"
   
   if (lqdmMessage.attributions.nodes.length > 0) {
-    console.log('attributions found')
     attributions = lqdmMessage.attributions.nodes[0].name
 
     if (lqdmMessage.attributionsCo.attributions !== null) {
@@ -152,9 +151,6 @@ export default (lqdmMessage) => {
       })
     }
   }
-  
-  console.log(lqdmMessage.attributions.nodes.length)
-  console.log('attribution', attributions)
   
   return (
     <>

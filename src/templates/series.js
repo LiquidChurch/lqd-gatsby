@@ -19,6 +19,7 @@ export default ({
     series,
   },
 }) => {
+  console.log("series: ", series.name)
   const ctx = useContext(GlobalContext)
   useEffect(() => {
     ctx.setTheme("light")

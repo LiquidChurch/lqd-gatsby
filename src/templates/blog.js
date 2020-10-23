@@ -17,6 +17,7 @@ export default ({
     blog,
   },
 }) => {
+  console.log("blog: ", blog.title)
   const ctx = useContext(GlobalContext)
   useEffect(() => {
     ctx.setTheme("light")

@@ -7,6 +7,7 @@ export default ({
     media,
   },
 }) => {
+  console.log("media: ", media.title)
   const ctx = useContext(GlobalContext)
   useEffect(() => {
     ctx.setTheme("dark")
