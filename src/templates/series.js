@@ -44,7 +44,7 @@ export default ({
     const formatter = new Intl.DateTimeFormat('en-US', { month: 'short',  day: 'numeric',   year: 'numeric'});
     const formattedDate =  formatter.format(new Date(message.date));
 
-    let profileImgSrc = "https://liquidchurchimgix.blob.core.windows.net/webassets/user-photo/liquid_logo.png" 
+    let profileImgSrc = process.env.IMG_DIR_INDEX
     if (message.attributions.nodes.length !== 0) {
       profileImgSrc = message.attributions.nodes[0].profileImage.image.sourceUrl
     }

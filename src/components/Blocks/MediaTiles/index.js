@@ -72,7 +72,7 @@ function MediaDataTransformer(props) {
       }
     })
     
-    let profileImgSrc = "https://liquidchurchimgix.blob.core.windows.net/webassets/user-photo/liquid_logo.png" 
+    let profileImgSrc = process.env.IMG_DIR_INDEX 
     if (item.attributions.nodes.length !== 0) {
       profileImgSrc = item.attributions.nodes[0].profileImage.image.sourceUrl
     }
