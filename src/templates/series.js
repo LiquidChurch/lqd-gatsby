@@ -102,7 +102,8 @@ export default ({
       />    
         <SeriesTiles
           type='recent'
-          num_items={6}
+          num_items={18}
+          exclude_id={series.id}
           layout='grid'
           series_list=''
           bg_color='#F6F6F6' 
