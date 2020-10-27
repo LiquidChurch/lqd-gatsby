@@ -51,13 +51,15 @@ export default ({
   }
   
   if (text_block !== "<p></p>" || text_block !== null) { 
-    var textBlock = RichTextHelper(text_block)
+    //var textBlock = RichTextHelper(text_block)
+    var textBlock = text_block
   }
 
   let hasSecondary = false
   
   if (text_block_secondary !== "<p></p>" && text_block_secondary !== null) { 
     var textBlockSecondary = RichTextHelper(text_block_secondary)
+    var textBlockSecondary = text_block_secondary
     hasSecondary = true
   }
   

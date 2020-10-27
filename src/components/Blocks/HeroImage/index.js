@@ -60,8 +60,8 @@ export default ({
         className={'hero-image-text-area-' + image_style.split(":")[0] + ' ' + color}
         style={ (image_style.split(":")[0] === "fixed") ? 
                 ( (textAreaPosition <= 60 ) ? 
-                    {background: 'none', bottom: textAreaPosition + 'px', marginBottom: (-10 - textAreaPosition) + 'px'} : 
-                    {bottom: textAreaPosition + 'px', marginBottom: (15 - textAreaPosition - 25) + 'px'} ) :  
+                    {background: 'none', bottom: (textAreaPosition) + 'px', marginBottom: (-10 - textAreaPosition) + 'px'} : 
+                    {bottom: (textAreaPosition - 49) + 'px', marginBottom: (60 - textAreaPosition) + 'px'} ) :  
                 ( (image_style.split(":")[0] === 'filled') ? 
                   ( (textAreaPosition <= 60) ? 
                       {background: 'none', bottom: textAreaPosition + 'px'} :

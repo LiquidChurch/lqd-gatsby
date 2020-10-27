@@ -21,7 +21,7 @@ export const RichTextHelper = (props) => {
   if (props === undefined || props === null) {
     return ""
   }  
-  var stringLength = props.length  
+  var stringLength = props.length
   var tempString = props.substring(3, stringLength-5)
   tempString = tempString.replace(/&lt;/g, '<')
   tempString = tempString.replace(/<\/?p[^>]*>/g, "")                      

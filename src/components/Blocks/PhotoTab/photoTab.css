@@ -80,3 +80,13 @@
 .photo-tab-h2.grey {
   color: #565656;
 }
+
+.sidekick h3 {
+  font-family: "Avenir Next Demi";  
+  color: #009DD1;
+  font-size: 1.08em;
+  letter-spacing: 0.1em;
+  margin-bottom: 5px;
+  margin-top: 12px;
+  text-transform: uppercase;
+}
