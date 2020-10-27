@@ -16,6 +16,8 @@ const FeaturedAttribute = ({
       <Imgix 
         src={process.env.IMGIX_URL + imageUrl[process.env.IMG_DIR_INDEX] + "/" + imageUrl[process.env.IMG_FILE_INDEX] + "?mask=ellipse&w=240&h=240"}
         className={'attribution-profile-image'}
+        height={240}
+        width={240}
       />
       <div className={showBlurb ? 'attribution-profile-blurb bottom font-small' : 'no-display'}>
         <p>{attributeObject.profileImage.blurb}</p>

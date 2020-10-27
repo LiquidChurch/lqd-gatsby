@@ -10,8 +10,6 @@ const PageModalProvider = (props) => {
  // const [modalOpenState, setModalOpenState] = useState(false)
   
   const [showModalIdState, setShowModalIdState] = useState('')
-  
-  
   return (
     <PageModalContext.Provider value={{
       showModalId: showModalIdState,

@@ -49,7 +49,7 @@ export default ({
       } 
       break
   }
- 
+
   return (
   <>
   <section className={'site-section ' + padding} style={{backgroundColor: bg_color}}>
@@ -57,14 +57,14 @@ export default ({
       <Row>
         { featuredAttributionObject.map(attribution => {
           return (
-            <Col xs={12} className="attribution-profile">
+            <Col xs={12} className="attribution-profile" key={attribution.attribution.id}>
               <FeaturedAttribute attribute={attributionObject.rows[0].attribution} showBlurb={show_blurb} showEmail={show_email} />
             </Col>
           )
         })}
         { tiledAttributionObject.map(attribution => {
           return (
-            <Col sm={12} md={6} lg={4} className="attribution-secondary-profile">
+            <Col sm={12} md={6} lg={4} className="attribution-secondary-profile" key={attribution.attribution.id}>
               <TiledAttribute attribute={attribution.attribution} showBlurb={show_blurb} showEmail={show_email} />
             </Col>
           )

@@ -25,7 +25,7 @@ export default ({
   color,  
 }) => {
   const imageInfo = useImageById(image_id)
-  
+
   if (imageInfo === undefined) {
     return (
     <>

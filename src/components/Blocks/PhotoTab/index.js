@@ -8,8 +8,7 @@ import Row from 'react-bootstrap/Row'
 import TextArea from '../../Commons/TextArea'
 
 import { useImageById } from "../../../data/useImage"
-
-import { RichTextHelper } from "../../../helpers/functions"
+import { ClassicTextHelper } from "../../../helpers/functions.js"
 
 import "./photoTab.css"
 
@@ -52,14 +51,13 @@ export default ({
   
   if (text_block !== "<p></p>" || text_block !== null) { 
     //var textBlock = RichTextHelper(text_block)
-    var textBlock = text_block
+    var textBlock = ClassicTextHelper(text_block)
   }
 
   let hasSecondary = false
   
   if (text_block_secondary !== "<p></p>" && text_block_secondary !== null) { 
-    var textBlockSecondary = RichTextHelper(text_block_secondary)
-    var textBlockSecondary = text_block_secondary
+    var textBlockSecondary = ClassicTextHelper(text_block_secondary)
     hasSecondary = true
   }
   
@@ -76,8 +74,8 @@ export default ({
           className={(imgOrder === 1) ? "photo-tab-image-col photo-tab-left" : "photo-tab-image-col"}>
         <Imgix 
           src={process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX] + "?ar=1:1&fit=crop&h=525"}
-          size="100vw"
           className="photo-tab-image"
+          height={525}
           />
       </Col>    
       <Col  xs={{span: 12, order: 2}} md={{span: 6, order: textOrder}} className="photo-tab-body-col" id={"photo-tab-body-" + image_id}>

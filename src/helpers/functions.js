@@ -28,6 +28,16 @@ export const RichTextHelper = (props) => {
   return tempString
 }
 
+export const ClassicTextHelper = (props) => {
+  if (props === undefined || props === null) {
+    return ""
+  }  
+  props = props.replace(/&lt;/g, '<')
+  props = props.replace(/&gt;/g, '>')
+  props = props.replace(/<\/?p[^>]*>/g, "")
+  return props
+}
+
 export const isTouchEnabled = ()  => {
   return ( 'ontouchstart' in window ) ||  
          ( navigator.maxTouchPoints > 0 ) || 

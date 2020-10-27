@@ -61,11 +61,10 @@ export const Button = graphql`
   }
 `
 
-
 export const ExternalRedirect = graphql`
   fragment ExternalRedirect on WpBlockLabExternalRedirectBlock {
     attributes {
-        external_url
+      external_url
     }
   }
 `

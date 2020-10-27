@@ -54,12 +54,14 @@ function DropdownButton({objDropdown}) {
       bsPrefix='button-dropdown-menu'
       >
       {objDropdown.rows.map(dropdown => {
-        return (
+        let dropdownItemId = Math.random().toString(36).substring(2, 7) + Math.random().toString(36).substring(2, 7)      
+        return (  
           <Dropdown.Item
             href={dropdown.pageInfo.uri}
+            key={dropdownItemId + '-' + dropdown.pageInfo.id}
             >{dropdown.text}</Dropdown.Item>         
-      )
-    })}
+        )
+      })}
     </Dropdown.Menu>
   </>
   )
@@ -115,7 +117,7 @@ export default ({
   let objDropdown = JSON.parse(dropdown)
   let hasDropdown = false
 
-  if (objDropdown.rows[0] !== undefined && objDropdown.rows[0].page.id !== 0) {
+  if (objDropdown.rows.length !== 0 && objDropdown.rows[0].page.id !== 0) {
     hasDropdown = true
     objDropdown.rows.forEach((object, i) => {
       objDropdown.rows[i].pageInfo = useFeaturedImage(object.page.id)
@@ -124,7 +126,6 @@ export default ({
   
   let dropdownId = Math.random().toString(36).substring(2, 7) + Math.random().toString(36).substring(2, 7)    
 
-  
   return (
   <>
     <section className={'site-section ' + padding} style={{backgroundColor: bg_color}}>

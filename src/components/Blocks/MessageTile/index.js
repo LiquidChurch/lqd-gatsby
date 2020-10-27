@@ -39,7 +39,7 @@ export default ({ message_slug,
   <Container>
     <Row>
       <Col>
-      <Link to={"/message/" + messageInfo[0].slug}>
+      <Link to={"/messages/" + messageInfo[0].slug}>
       <Imgix 
         src={process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX] + "?ar=16:9&fit=crop&h=607"}
         className="d-none d-sm-block message-tile-image"

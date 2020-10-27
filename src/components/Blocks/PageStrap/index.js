@@ -72,7 +72,7 @@ export default ({
   <section className={'site-section ' + padding} style={{backgroundColor: bg_color}}>
   <Container>
     <Row>
-      <Col flex xs={{span: xsWidth, offset: xsOffset}}
+      <Col xs={{span: xsWidth, offset: xsOffset}}
            sm={{span: smWidth, offset: smOffset}}
            md={{span: mdWidth, offset: mdOffset}}
            lg={{span: lgWidth, offset: lgOffset}}

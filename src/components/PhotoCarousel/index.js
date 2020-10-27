@@ -69,6 +69,7 @@ export default ({ images }) => {
                         <Imgix 
                           src={process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX] + "?ar=16:9&fit=crop&h=120&corner-radius=10,10,10,10"}
                           className={(carouselIndex===index) ? 'carousel-control-image' : 'carousel-control-image greyed'}
+                          height={93}
                         />
                       </button>
                 )

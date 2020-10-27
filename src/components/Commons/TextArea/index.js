@@ -20,12 +20,12 @@ const TextArea = ({
   noMargin,
 }) => {
   const ctaObject = JSON.parse(cta)
-  console.log('sidekick', sidekick)
   let sidekickTop = true
   let ctaTop = true
   let hasStatement = false
   let hasSidekick = false
   let hasCTA = false
+  let textAreaId = ""
   let fontColor = "#009DD1"
   let hasMargin = ""
   
@@ -62,9 +62,10 @@ const TextArea = ({
   }
 
   if (ctaObject !== null && ctaObject.rows.length !== 0) {
+      
     if (typeof ctaObject.rows[0].style !== 'undefined') {
       hasCTA = true
-
+      textAreaId = Math.random().toString(36).substring(2, 7) + Math.random().toString(36).substring(2, 7) 
       let ctaObjectLength = ctaObject.rows.length
       ctaObject.rows.forEach((cta, i) => {
         if (i === (ctaObjectLength - 1) ) {
@@ -99,7 +100,7 @@ const TextArea = ({
       {hasCTA ? 
         ctaObject.rows.map(cta => {
           return (
-            <CallToAction cta={cta} alignment={alignment} spacing={spacing}/>
+            <CallToAction cta={cta} alignment={alignment} spacing={spacing} key={textAreaId + '-' + cta.page_id.id}/>
           )
         }) : ''
       }

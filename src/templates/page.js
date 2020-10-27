@@ -37,8 +37,13 @@ export default ({
   }
   
   useEffect(() => {
+
     if (hasExternalRedirect) {
+          console.log(externalRedirectBlock.attributes.external_url.slice(0, 6))
       window.location.replace(externalRedirectBlock.attributes.external_url)
+      if (externalRedirectBlock.attributes.external_url.slice(0, 6) === "mailto") {
+        setTimeout(() => {window.history.back()},100)
+      }
     }
         
     ctx.setTheme(theme)    

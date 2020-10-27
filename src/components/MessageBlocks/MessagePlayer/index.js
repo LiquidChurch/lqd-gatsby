@@ -14,6 +14,18 @@ export default ({message}) => {
     width: 0
   })
 
+  let videoSrc = ""
+  switch(videoUrl[2]) {
+    case 'vimeo.com':
+      videoSrc = 'https://player.vimeo.com/video/' + videoUrl[3]
+      break
+    case 'youtu.be':
+      videoSrc = 'https://www.youtube.com/embed/' + videoUrl[3]
+      break
+    default:
+      break
+  }
+  
   useEffect(() => {
     function setWidth() {
       if (window.innerWidth > 1199) {
@@ -44,7 +56,7 @@ export default ({message}) => {
         <div className="message-player">
           <iframe 
             title={message.title}
-            src={'https://player.vimeo.com/video/' + videoUrl[3]} 
+            src={videoSrc} 
             width={dimensions.width}
             height={dimensions.height}
             frameBorder="0" allow="autoplay; fullscreen" 
