@@ -29,15 +29,12 @@ module.exports = {
         fieldName: "wpgraphql",
         url: process.env.WORDPRESS_URL,
         schema: {
-          timeout: 60000,
+          timeout: 120000,
         },
         debug: {
           graphql: {
             writeQueriesToDisk:false,
           }
-        },
-        schema: {
-          timeout: 60000,
         },
         html: {
           useGatsbyImage: false,

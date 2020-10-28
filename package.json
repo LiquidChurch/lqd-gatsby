@@ -28,7 +28,7 @@
     "gatsby-plugin-styled-components": "^3.3.10",
     "gatsby-source-filesystem": "^2.3.24",
     "gatsby-source-graphql": "^2.7.6",
-    "gatsby-source-wordpress-experimental": "^1.2.7",
+    "gatsby-source-wordpress-experimental": "^2.0.1",
     "gatsby-transformer-sharp": "^2.5.12",
     "ink": "^2.7.1",
     "ink-box": "^1.0.0",

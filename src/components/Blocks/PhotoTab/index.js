@@ -6,6 +6,7 @@ import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 
 import TextArea from '../../Commons/TextArea'
+import Heading from "../../Blocks/Heading"
 
 import { useImageById } from "../../../data/useImage"
 import { ClassicTextHelper } from "../../../helpers/functions.js"
@@ -41,10 +42,20 @@ export default ({
   }
   var imgUrl = imageInfo.mediaItemUrl.split("/")
   
+  var isAlternative = false
+  var altTopPadding = "top"
+  if (location.substr(location.length - 3) === 'alt') {
+    isAlternative = true
+    if (padding === "none" || padding === "bottom") {
+      altTopPadding = "none"
+    }
+    padding = "bottom"
+  }
+  
   var imgOrder = 1
   var textOrder = 2
   
-  if (location === "right") {
+  if (location.slice(0,3) === "rig") {
     imgOrder = 2
     textOrder = 1
   }
@@ -67,6 +78,18 @@ export default ({
   
   return (
   <>
+  {isAlternative &&
+    <Heading
+      text={header}
+      alignment="center"
+      size={header_size}
+      all_caps={false}
+      add_padding={true}
+      font_color="#565656"
+      padding={altTopPadding}
+      bg_color={bg_color}
+    />
+  }
   <section className={'site-section ' + padding} style={{backgroundColor: bg_color}}>
   <Container>
     <Row className="photo-tab-row">
