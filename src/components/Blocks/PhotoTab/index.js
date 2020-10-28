@@ -7,7 +7,7 @@ import Row from 'react-bootstrap/Row'
 
 import TextArea from '../../Commons/TextArea'
 import Heading from "../../Blocks/Heading"
-
+import CallToAction from '../../Commons/CallToAction'
 import { useImageById } from "../../../data/useImage"
 import { ClassicTextHelper } from "../../../helpers/functions.js"
 
@@ -33,7 +33,25 @@ export default ({
   size,  
 }) => {
   const imageInfo = useImageById(image_id)
-
+  const ctaObject = JSON.parse(cta)
+  let hasCTA = false
+  let textAreaId = ""
+  if (ctaObject !== null && ctaObject.rows.length !== 0) {
+      
+    if (typeof ctaObject.rows[0].style !== 'undefined') {
+      hasCTA = true
+      textAreaId = Math.random().toString(36).substring(2, 7) + Math.random().toString(36).substring(2, 7) 
+      let ctaObjectLength = ctaObject.rows.length
+      ctaObject.rows.forEach((cta, i) => {
+        if (i === (ctaObjectLength - 1) ) {
+          ctaObject.rows[i].lastItem = true
+        } else {
+          ctaObject.rows[i].lastItem = false
+        }
+      })
+    }
+  }
+  
   if (imageInfo === undefined) {
     return(
       <>
@@ -44,6 +62,7 @@ export default ({
   
   var isAlternative = false
   var altTopPadding = "top"
+  var theme = "light"
   if (location.substr(location.length - 3) === 'alt') {
     isAlternative = true
     if (padding === "none" || padding === "bottom") {
@@ -103,9 +122,9 @@ export default ({
       </Col>    
       <Col  xs={{span: 12, order: 2}} md={{span: 6, order: textOrder}} className="photo-tab-body-col" id={"photo-tab-body-" + image_id}>
         <TextArea 
-          statement={header}
+          statement={isAlternative ? null : header}
           sidekick={textBlock}
-          cta={cta}
+          cta={isAlternative ? null : cta}
           alignment={alignment}
           headerSize={header_size}
           size={size}
@@ -126,7 +145,20 @@ export default ({
           noMargin={true}
         />    
       </Col>
-    </Row>    
+    </Row>
+    <Row>
+      {isAlternative &&
+      <Col className={'cta ' + size + ' text-padding'}>
+        {hasCTA ? 
+          ctaObject.rows.map(cta => {
+            return (
+              <CallToAction cta={cta} alignment="center" spacing={spacing} key={textAreaId + '-' + cta.page_id.id}/>
+            )
+          }) : ''
+        }
+        </Col>
+      }
+    </Row>
   </Container>
   </section>
   </>
