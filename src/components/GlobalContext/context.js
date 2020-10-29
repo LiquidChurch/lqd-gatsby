@@ -12,7 +12,15 @@ const GlobalProvider = (props) => {
   const [initialLoadState, setInitialLoadState] = useState(true)
   const [themeState, setThemeState] = useState("Dark")
   const [touchState, setTouchState] = useState(false)
+  const [currPath, setCurrPath] = useState("")
+  const [prevPath, setPrevPath] = useState("")
   
+  function updatePath(path) {
+    if (path !== currPath) {
+      setPrevPath(currPath)
+      setCurrPath(path)
+    }
+  }
   return (
     <GlobalContext.Provider value={{
       isNotificationOpen: notificationState,
@@ -22,7 +30,10 @@ const GlobalProvider = (props) => {
       currentTheme: themeState,
       setTheme: (theme) => setThemeState(theme),
       touchEnabled: touchState,
-      enableTouchState: () => setTouchState(true)
+      enableTouchState: () => setTouchState(true),
+      prevPath: prevPath,
+      currPath: currPath,
+      setPath: (path) => updatePath(path),
     }}>
       {props.children}
     </GlobalContext.Provider>

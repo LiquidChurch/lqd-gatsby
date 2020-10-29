@@ -23,7 +23,9 @@ export default ({
  const ctx = useContext(GlobalContext)
   useEffect(() => {
     ctx.setTheme("Dark")
-  })
+    ctx.setPath(location.pathname)
+    console.log('previous path', ctx.prevPath)
+  }, [ctx, location.pathname])
 
   return (
     <Layout location={location}>

@@ -20,7 +20,7 @@ export default ({
   console.log("page: ", page.title)
   const generalSettings = useGeneralSettings()
   const ctx = useContext(GlobalContext)
-  
+
   let theme = "dark"
   if (page.themeState !== null) {
     theme = page.themeState.state
@@ -37,20 +37,32 @@ export default ({
   }
   
   useEffect(() => {
-
     if (hasExternalRedirect) {
-          console.log(externalRedirectBlock.attributes.external_url.slice(0, 6))
+      // console.log(externalRedirectBlock.attributes.external_url.slice(0, 6))
       window.location.replace(externalRedirectBlock.attributes.external_url)
-      if (externalRedirectBlock.attributes.external_url.slice(0, 6) === "mailto") {
-        setTimeout(() => {window.history.back()},100)
+      //if (externalRedirectBlock.attributes.external_url.slice(0, 6) === "mailto") {
+      //  setTimeout(() => {window.history.back()},100)
+      //}
+      console.log('current path', location.pathname)
+      console.log('prev path', ctx.currPath)
+      console.log('prepre path', ctx.prePath)
+      setTimeout(() => {
+        if (ctx.currPath !== location.pathname) {
+          window.location.replace(ctx.currPath)
+        }
+      },1500)
+      
+    } else {        
+      ctx.setTheme(theme)    
+      if (isTouchEnabled()) {
+        ctx.enableTouchState()
       }
+      ctx.setPath(location.pathname)
+      console.log('previous path', ctx.prevPath)
     }
-        
-    ctx.setTheme(theme)    
-    if (isTouchEnabled()) {
-      ctx.enableTouchState()
-    }
-  }, [ctx, theme, externalRedirectBlock, hasExternalRedirect])
+  }, [ctx, theme, externalRedirectBlock, hasExternalRedirect, location.pathname])
+  
+  
   
   return (
     <>

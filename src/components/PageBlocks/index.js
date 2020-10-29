@@ -17,13 +17,9 @@ import BlockList from "../List"
 import BlockHomepageHero from "../HomepageHero"
 import BlockIFrame from "../IFrame"
 import BlockHomeLinks from "../HomeLinks"
-
-
 import BlockPageModal from "../PageModal"
 import BlockLinkedTiles from "../LinkedTiles"
-
 import BlockPhotoCarousel from "../PhotoCarousel"
-
 import BlockGoogleMap from "../GoogleMap"
 
 import { PageModalProvider } from "../PageModal/context.js"

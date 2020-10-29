@@ -24,7 +24,9 @@ export default ({
     if (isTouchEnabled()) {
       ctx.enableTouchState()
     }
-  }, [ctx])
+    ctx.setPath(location.pathname)
+    console.log('previous path', ctx.prevPath)    
+  }, [ctx, location.pathname])
   
   return (
     <Layout location={location}>
