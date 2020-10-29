@@ -254,6 +254,7 @@ export const PhotoTab = graphql`
       header_secondary
       text_block_secondary
       cta_secondary
+      color
       bg_color
       padding
       spacing

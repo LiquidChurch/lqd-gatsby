@@ -25,12 +25,13 @@ export default ({
   header_secondary,
   text_block_secondary,
   cta_secondary,
+  color,
   bg_color,
   padding,
   spacing,
   alignment,
   header_size,
-  size,  
+  size, 
 }) => {
   const imageInfo = useImageById(image_id)
   const ctaObject = JSON.parse(cta)
@@ -62,13 +63,22 @@ export default ({
   
   var isAlternative = false
   var altTopPadding = "top"
-  var theme = "light"
+  var headerColor = "#009DD1"
   if (location.substr(location.length - 3) === 'alt') {
     isAlternative = true
     if (padding === "none" || padding === "bottom") {
       altTopPadding = "none"
     }
-    padding = "bottom"
+    
+    if (color === "dark") {
+      headerColor = "#FFF"
+    }
+    
+    if (padding === "top" || padding === "none") {
+      padding = "none"    
+    } else {
+      padding = "bottom"
+    }
   }
   
   var imgOrder = 1
@@ -104,7 +114,7 @@ export default ({
       size={header_size}
       all_caps={false}
       add_padding={true}
-      font_color="#565656"
+      font_color={headerColor}
       padding={altTopPadding}
       bg_color={bg_color}
     />
@@ -129,7 +139,7 @@ export default ({
           headerSize={header_size}
           size={size}
           spacing={spacing}
-          theme={'light'}
+          theme={color}
           noMargin={true}
         />
         <div className={hasSecondary ? "text-padding" : ''}></div>
@@ -141,18 +151,18 @@ export default ({
           headerSize={header_size}
           size={size}
           spacing={spacing}
-          theme={'light'}
+          theme={color}
           noMargin={true}
         />    
       </Col>
     </Row>
     <Row>
       {isAlternative &&
-      <Col className={'cta ' + size + ' text-padding'}>
+      <Col className={'cta ' + header_size + ' padding-top'}>
         {hasCTA ? 
           ctaObject.rows.map(cta => {
             return (
-              <CallToAction cta={cta} alignment="center" spacing={spacing} key={textAreaId + '-' + cta.page_id.id}/>
+              <CallToAction cta={cta} alignment="center" spacing="tall" key={textAreaId + '-' + cta.page_id.id}/>
             )
           }) : ''
         }

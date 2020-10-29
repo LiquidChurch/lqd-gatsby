@@ -35,7 +35,6 @@ export default ({
   
   const [textAreaPosition, setTextAreaPosition] = useState(0)
   var imageUrl = imageInfo.mediaItemUrl.split("/")
-  
   useEffect (() => {
     function setTextAreaHeight() {
       let textAreaHeight = 66

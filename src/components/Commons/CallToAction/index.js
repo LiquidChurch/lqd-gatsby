@@ -6,12 +6,9 @@ import { usePageById } from '../../../data/usePage'
 
 import './styles.css'
 
-
-
 /**
  * Call To Action Component
  */
-
 const CallToAction = ({
   cta,
   alignment,

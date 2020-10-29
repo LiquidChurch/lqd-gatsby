@@ -25,7 +25,7 @@ const TextArea = ({
   let hasStatement = false
   let hasSidekick = false
   let hasCTA = false
-  let textAreaId = ""
+  let textAreaId = Math.random().toString(36).substring(2, 7) + Math.random().toString(36).substring(2, 7)
   let fontColor = "#009DD1"
   let hasMargin = ""
   
@@ -34,7 +34,7 @@ const TextArea = ({
   }
   
   if (theme === 'dark') {
-    fontColor = '#FFF'
+    fontColor = '#F6F6F6'
   }
   
   if (headerSize === null || headerSize === undefined) {
@@ -64,8 +64,7 @@ const TextArea = ({
   if (ctaObject !== null && ctaObject.rows.length !== 0) {
       
     if (typeof ctaObject.rows[0].style !== 'undefined') {
-      hasCTA = true
-      textAreaId = Math.random().toString(36).substring(2, 7) + Math.random().toString(36).substring(2, 7) 
+      hasCTA = true 
       let ctaObjectLength = ctaObject.rows.length
       ctaObject.rows.forEach((cta, i) => {
         if (i === (ctaObjectLength - 1) ) {
@@ -87,7 +86,7 @@ const TextArea = ({
     </h2>
     <div className={hasSidekick ? 
                       (sidekickTop ? 
-                        'sidekick ' + size + ' ' + spacing + ' ' + theme + ' align-' + alignment + ' zero-padding-top' : 
+                        'sidekick ' + size + ' ' + spacing + ' ' + theme + ' align-' + alignment : 
                         'sidekick ' + size + ' ' + spacing + ' ' + theme + ' align-' + alignment) : 
                       'no-display'}>
       {Parse(sidekick)}

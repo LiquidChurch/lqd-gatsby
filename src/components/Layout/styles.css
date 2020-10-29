@@ -350,6 +350,10 @@ html,body {
   padding-top: 3.4em;
 }
 
+.padding-top {
+  padding-top: 3.4em;
+}
+
 .site-section.bottom {
   padding-bottom: 3.4em;
 }
@@ -369,6 +373,10 @@ html,body {
     padding-top: 1.7em;
   }
 
+  .padding-top {
+    padding-top: 1.7em;
+  }
+  
   .site-section.bottom {
     padding-bottom: 1.7em;
   }

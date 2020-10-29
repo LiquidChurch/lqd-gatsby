@@ -12,8 +12,6 @@ import { useCampusById } from "../../data/useCampus"
 const styles = require('./GoogleMapStyles.json')
 const { MarkerWithLabel } = require("react-google-maps/lib/components/addons/MarkerWithLabel")
 
-const googleKey = process.env.GOOGLE_API_KEY
-
 function MapMarker(props) {
   const ctx = useContext(PageModalContext)
   
@@ -101,7 +99,7 @@ export default ({
   longitude,
   zoom}) => {
   const campusesObj = JSON.parse(campuses)
-
+  const googleKey = process.env.GOOGLE_API_KEY
   let campusList = []
   campusesObj.rows.forEach((campus,i) => {
     let campusInfo = useCampusById(campus.campus.id)
@@ -133,8 +131,6 @@ export default ({
             />
           </div>
         </Container>
-
       </section>
     )
-  
 }

@@ -30,11 +30,12 @@ module.exports = {
         url: process.env.WORDPRESS_URL,
         schema: {
           timeout: 120000,
-          perPage: 50,
+          perPage: 25,
         },
         debug: {
           graphql: {
             writeQueriesToDisk:false,
+            showQueryVarsonError: true,
           }
         },
         html: {
@@ -45,7 +46,7 @@ module.exports = {
             lazyNodes: false,
           }
         },
-        verbose:false,
+        verbose:true,
         includedRoutes: [
           "**/categories",
           "**/posts",
@@ -83,7 +84,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-env-variables`,
       options: {
-        allowList: ["IMGIX_URL", "IMG_DIR_INDEX", "IMG_FILE_INDEX", "GATSBY_ALGOLIA_INDEX_NAME", "LOGO_IMG"]
+        allowList: ["IMGIX_URL", "IMG_DIR_INDEX", "IMG_FILE_INDEX", "GATSBY_ALGOLIA_INDEX_NAME", "LOGO_IMG", "GOOGLE_API_KEY"]
       },
     },
   ],
