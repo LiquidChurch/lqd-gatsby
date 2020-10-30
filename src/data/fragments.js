@@ -186,7 +186,6 @@ export const MessageTile = graphql`
         block_title
         bg_color
         padding
-        message_slug
       }
   }
 `

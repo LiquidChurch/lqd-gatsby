@@ -28,7 +28,7 @@ function ShowSeries(props) {
     let part = ""
     
     if (props.seriesPart !== "" && props.seriesPart !== null) {
-      part = " • Part " + props.seriesPart
+      part = "Part " + props.seriesPart
     }
     
     return (

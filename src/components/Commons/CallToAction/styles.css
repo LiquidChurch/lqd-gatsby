@@ -14,8 +14,6 @@
 }
 
 .cta-button {
-  background-color: #009DD1;
-  color: #FFF;
   border: none;
   padding: 8px 20px;
   font-family: "Avenir Next Regular";
@@ -36,7 +34,31 @@
   align-self: flex-end;
 }
 
+.cta-button.button-left {
+  align-self: flex-start;
+}
+
+.cta-button.button-right {
+  align-self: flex-end;
+}
+
+@media (max-width:767px) {
+  .cta-button.left {
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .cta-button.right {
+    margin-right: auto;
+    margin-left: auto;
+  }  
+}
+
 .cta-button.center {
+  margin-right:auto;
+  margin-left:auto;
+}
+
+.cta-button.button-center {
   margin-right:auto;
   margin-left:auto;
 }

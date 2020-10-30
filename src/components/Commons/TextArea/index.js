@@ -37,11 +37,15 @@ const TextArea = ({
     fontColor = '#F6F6F6'
   }
   
+  if (theme === 'family') {
+    fontColor = '#E16D00'
+  }
+  
   if (headerSize === null || headerSize === undefined) {
     headerSize = size
   }
   
-  if (font_color !== undefined || font_color !== "#009DD1") {
+  if (font_color !== undefined) {
     fontColor = font_color
   }
   
@@ -79,27 +83,27 @@ const TextArea = ({
   return (
   <>
     <h2 className={hasStatement ? 
-                    'statement ' + headerSize + ' ' + spacing + ' ' + theme + ' align-' + alignment + ' ' + hasMargin : 
+                    'statement ' + headerSize + ' ' + spacing + ' align-' + alignment + ' sidekick-only-padding ' + hasMargin : 
                     'no-display'}
         style={{color:fontColor, textTransform: textTransform}}>
       {Parse(statement)}
     </h2>
     <div className={hasSidekick ? 
                       (sidekickTop ? 
-                        'sidekick ' + size + ' ' + spacing + ' ' + theme + ' align-' + alignment : 
+                        'sidekick ' + size + ' ' + spacing + ' ' + theme + ' align-' + alignment + ' sidekick-only-padding': 
                         'sidekick ' + size + ' ' + spacing + ' ' + theme + ' align-' + alignment) : 
                       'no-display'}>
       {Parse(sidekick)}
     </div>
     <div className={hasCTA ? 
                       (ctaTop ? 
-                        'cta ' + size + ' ' + spacing + ' ' + theme + ' align-' + alignment + ' zero-padding-top' : 
-                        'cta ' + size + ' ' + spacing + ' ' + theme + ' align-' + alignment ) :
+                        'cta ' + size + ' ' + spacing + ' align-' + alignment + ' zero-padding-top' : 
+                        'cta ' + size + ' ' + spacing + ' align-' + alignment + ' half-top-padding') :
                       'no-display'}>
       {hasCTA ? 
         ctaObject.rows.map(cta => {
           return (
-            <CallToAction cta={cta} alignment={alignment} spacing={spacing} key={textAreaId + '-' + cta.page_id.id}/>
+            <CallToAction cta={cta} alignment={alignment} theme={theme} spacing={spacing} key={textAreaId + '-' + cta.page_id.id}/>
           )
         }) : ''
       }

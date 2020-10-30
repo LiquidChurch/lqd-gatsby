@@ -74,6 +74,9 @@ export default ({
       headerColor = "#FFF"
     }
     
+    if (color === "family") {
+      headerColor = "#E16D00"
+    }
     if (padding === "top" || padding === "none") {
       padding = "none"    
     } else {
@@ -158,11 +161,11 @@ export default ({
     </Row>
     <Row>
       {isAlternative &&
-      <Col className={'cta ' + header_size + ' padding-top'}>
+      <Col className={'cta ' + header_size + ' half-top-padding'}>
         {hasCTA ? 
           ctaObject.rows.map(cta => {
             return (
-              <CallToAction cta={cta} alignment="center" spacing="tall" key={textAreaId + '-' + cta.page_id.id}/>
+              <CallToAction cta={cta} alignment="center" spacing="tall" theme={color} key={textAreaId + '-' + cta.page_id.id}/>
             )
           }) : ''
         }

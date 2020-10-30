@@ -71,6 +71,7 @@
   background-color:#DEDEDE;
   white-space: break-spaces;
   display: flex;
+  flex-direction: column;
 }
 
 .media-card-series-title {
@@ -78,6 +79,10 @@
   letter-spacing: 0.0em !important;
   font-size:0.85em;
   padding-right:6px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;  
 }
 
 .media-card-series-part {
@@ -194,6 +199,10 @@
 
 .media-tile-title {
   margin-top: -10px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .media-tile-text {
@@ -273,7 +282,7 @@
 
 @media (max-width:767px) {
   .media-tile-card {
-    height: 205px;
+    height: 206px;
   }
   
   .media-tile-image {

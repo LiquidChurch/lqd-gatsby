@@ -77,11 +77,11 @@
 
 @media (max-width:575px) {
   .button-text {
-    padding-top: 6px;
+    padding-top: 9px;
   }
 
   .button-arrow {
-    bottom: -2px;
+    bottom: 0px;
     height:32px;
   }
 }

@@ -62,8 +62,8 @@
 
 @media (max-width:575px) {
   .message-tile-section {
-    margin-top:1em;
-    margin-bottom: 7.4em;
+    margin-top:0em;
+    margin-bottom: 1.3em;
   }
   
   .message-tile-image {

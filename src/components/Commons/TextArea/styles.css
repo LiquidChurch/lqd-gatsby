@@ -11,14 +11,6 @@
   margin-bottom: 0px;
 }
 
-.statement.light {
-  color: #009DD1;
-}
-
-.statement.dark {
-  color: #FFF;
-}
-
 .statement.xlarge {
   font-size: 3.75em;
   line-height: 1.3em;
@@ -201,3 +193,23 @@
   font-family:"Avenir Next Bold";
 }
 
+.sidekick h3 {
+  font-family: "Avenir Next Demi";  
+  font-size: 1.08em;
+  letter-spacing: 0.1em;
+  margin-bottom: 5px;
+  margin-top: 12px;
+  text-transform: uppercase;
+}
+
+.sidekick.dark h3 {
+  color: #009DD1;
+}
+
+.sidekick.light h3 {
+  color: #E6E6E6;
+}
+
+.sidekick.family h3 {
+  color: #E16D00
+}

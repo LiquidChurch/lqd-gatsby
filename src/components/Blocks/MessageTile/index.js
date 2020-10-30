@@ -14,8 +14,7 @@ import "./styles.css"
 /** 
  * Message Tile Block Component
  */
-export default ({ message_slug,
-                  bg_color,
+export default ({ bg_color,
                   padding,
                   block_title }) => {
   const messageInfo = useRecentMessages(1)
@@ -45,11 +44,11 @@ export default ({ message_slug,
         className="d-none d-sm-block message-tile-image"
         sizes="90vw" />
       <Imgix 
-        src={process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX] + "?ar=1:1&fit=crop&h=607"}
+        src={process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX] + "?ar=16:9&fit=crop&h=607"}
         className="d-block d-sm-none message-tile-image"
         sizes="80vw" />
       </Link>
-      <div className="message-tile-text-overlay">
+      <div className="message-tile-text-overlay no-display">
         <h4 className="message-tile-title font-h1">{messageInfo[0].title}</h4>
         <div className="message-tile-series font-h2">
           <p>
@@ -59,7 +58,7 @@ export default ({ message_slug,
       </div>
       <Link
         className="btn font-btn-large message-tile-btn-overlay"
-        to={"/message/" + messageInfo[0].slug}
+        to={"/messages/" + messageInfo[0].slug}
       > 
         <PlayArrow style={{fill:"#fff;"}} /> Watch
       </Link>

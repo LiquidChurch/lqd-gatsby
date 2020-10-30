@@ -148,7 +148,7 @@ export default ({
             :
               <Link 
                 to={pageInfo.uri}
-                className={'cta-button ' + alignment}
+                className={'cta-button button-' + alignment}
                 style={{minWidth: min_width/28 + 'em',
                         color:fontColor,
                         backgroundColor: btnColor,

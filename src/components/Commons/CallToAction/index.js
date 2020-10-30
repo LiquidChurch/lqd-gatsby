@@ -13,6 +13,7 @@ const CallToAction = ({
   cta,
   alignment,
   spacing,
+  theme,
 }) => {
   let pageId = 0
   
@@ -24,7 +25,7 @@ const CallToAction = ({
 
   let icon = ''
   let fontColor = '#FFF'
-  let btnColor = ''
+  let btnColor = '#009DD1'
   let border = '0px'
   
   switch(cta.style) {
@@ -33,10 +34,14 @@ const CallToAction = ({
       if (cta.font_color !== '' && cta.font_color !== undefined) {
         fontColor = cta.font_color
       } 
-      if (cta.btn_color !== '') {
+      if (cta.btn_color !== '' && cta.btn_color !== undefined) {
         btnColor = cta.btn_color
       } else {
-        btnColor = '#009DD1'
+        if (theme === "dark") {
+          btnColor = '#009DD1'
+        } else if (theme === "family") {
+          btnColor = '#E16D00'
+        }
       }
       if (cta.btn_outline) {
         border = '2px solid'

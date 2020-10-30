@@ -35,16 +35,22 @@ module.exports = {
         debug: {
           graphql: {
             writeQueriesToDisk:false,
-            showQueryVarsonError: true,
+            showQueryVarsOnError: true,
           }
         },
         html: {
-          useGatsbyImage: false,
+          useGatsbyImage: false
         },
         type: {
           MediaItem: {
-            lazyNodes: false,
+            lazyNodes: true
+          },
+          Post: {
+            limit:50
           }
+        },    
+        develop: {
+          nodeUpdateInterval: 700
         },
         verbose:true,
         includedRoutes: [
