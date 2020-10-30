@@ -43,7 +43,7 @@ module.exports = {
         },
         type: {
           MediaItem: {
-            lazyNodes: true
+            lazyNodes: false
           },
           Post: {
             limit:50
