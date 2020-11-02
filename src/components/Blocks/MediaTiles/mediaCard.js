@@ -101,7 +101,7 @@ export default (props) => {
           attributionName={props.mediaItem.attributionName}
           profileImage={props.mediaItem.profileImage}
           date={props.mediaItem.date}
-          category="messages"
+          category={props.mediaItem.category}
         />
       </ListGroup>
     </Card>

@@ -8,6 +8,8 @@ import { isTouchEnabled } from '../helpers/functions'
 
 import PageBlocks from "../components/PageBlocks"
 import FeatureHero from "../components/HeroFeature"
+import { PageModalProvider } from "../components/PageModal/context.js"
+
 /** 
  * Template - Blog Component
  */
@@ -32,10 +34,12 @@ export default ({
         <title>{Parse(blog.title)}</title>
       </Helmet>
       <article className="page">
+        <PageModalProvider>
         <FeatureHero {...blog} />
         <div className="blog">
           <PageBlocks {...blog} />
         </div>
+        </PageModalProvider>
       </article>
     </Layout>
   )

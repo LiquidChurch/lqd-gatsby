@@ -73,7 +73,7 @@ export const useBlog = (blogId) => {
   var blogPageInfo = data.allWpBlog.nodes.find(
     ({ databaseId }) => databaseId === blogId
   )
-  blogPageInfo.category = "blog"
+  blogPageInfo.category = "blogs"
   return blogPageInfo
   
 }

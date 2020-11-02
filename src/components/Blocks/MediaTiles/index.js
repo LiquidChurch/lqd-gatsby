@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 
 import { GlobalContext } from '../../GlobalContext/context'
 
@@ -12,11 +12,64 @@ import { useMessageById } from '../../../data/useMessage'
 import { useRecentBlogs } from '../../../data/useRecentBlogs'
 import { useBlog } from '../../../data/useBlog'
 
+import { useScrollPosition } from "../../../helpers/useScrollPosition"
+
 import MediaCard from './mediaCard'
 import MediaFeatured from './mediaFeatured'
 import './styles.css'
 
 function UseSlider(props) {
+  const perPageNum = 12
+  
+  // Get More code
+  const [items, setItems] = useState([])
+  const [currentPage, setCurrentPage] = useState(0)
+  const [loadNext, setLoadNext] = useState(true)
+  const [scrollTop, setScrollTop] = useState(0)
+  const [updateScroll, setUpdateScroll] = useState(false)
+  const [hasMore, setHasMore] = useState(true)
+
+  const loadMore = () => {
+    if (!loadNext) {
+      return
+    }
+    for (let i=0; i < perPageNum; i++) {
+      let counter = (currentPage * perPageNum) + i
+      if (counter < props.mediaLists.length) {
+        setItems(items => [...items,  props.mediaLists[(currentPage * perPageNum) + i]])
+      } else {
+        setHasMore(false)
+      }
+    }
+    setCurrentPage(currentPage + 1)
+    setLoadNext(false)
+    setUpdateScroll(true)
+  }
+
+  useScrollPosition(
+    ({ prevPos, currPos }) => {
+      setScrollTop(-currPos.y)
+      if ((currPos.th - currPos.h + currPos.y) <= currPos.h) {
+        setLoadNext(true)
+      }   
+    },
+    null,
+    false,
+    false,
+    300
+  )
+  
+  useEffect(
+    () => {
+      if (updateScroll) {
+        window.scrollTo(0,scrollTop)
+        setUpdateScroll(false)
+      }
+  },[updateScroll, scrollTop])
+  
+  if (hasMore) {
+    loadMore()
+  }
   
   // check for null item
   const randomId = Math.random().toString().substr(2, 5)
@@ -33,15 +86,22 @@ function UseSlider(props) {
   } 
   if (props.displayType === "grid") {
     return (
+      <>
       <Row>
         <Col className="media-card-wrap">
-        {props.mediaLists.map(item => {
+        {items.map(item => {
           return (
               <MediaCard mediaItem={item} key={'Media-lists-' + item.id} />
           )
         })}
         </Col>
       </Row>
+      {hasMore &&
+        <button className="cta-button" style={{float:'right'}} onClick={() => setLoadNext(true)}>
+          Load More
+        </button> 
+      }
+      </>
     )
   }
   
@@ -52,7 +112,6 @@ function UseSlider(props) {
     </>
     )
   }
-
   return null
 }
 

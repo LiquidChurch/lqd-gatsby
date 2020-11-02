@@ -79,7 +79,9 @@ export default ({
   useScrollPosition(
     ({ prevPos, currPos }) => {
       setScrollTop(-currPos.y)
-      console.log(-currPos.y)
+      if ((currPos.th - currPos.h + currPos.y) <= currPos.h) {
+        setLoadNext(true)
+      }      
     },
     null,
     false,
@@ -95,13 +97,6 @@ export default ({
       }
     },[updateScroll, scrollTop])
   
-  //useLayoutEffect(
-   // () => {
-   //   stayScrolled();
-   // },
-   // [series]
-  //);
-  
   return (
   <>
     <section className={'site-section media-cards ' + padding} style={{backgroundColor: bg_color}}>
@@ -110,14 +105,13 @@ export default ({
         <Col ref={divRef} className="series-card-wrap">
         {series.map(item => {
             return (
-
               <SeriesCard mediaItem={item} key={'series-lists-' + item.id} />
             )
           })}
         </Col>
       </Row>
       {hasMore &&
-        <button className="cta-button center" onClick={() => setLoadNext(true)}>
+        <button className="cta-button" style={{float:'right'}} onClick={() => setLoadNext(true)}>
           Load More
         </button> 
       }

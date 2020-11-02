@@ -1,14 +1,11 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import Container from 'react-bootstrap/Container'
-import Nav from 'react-bootstrap/Nav'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Parse from "react-html-parser"
 import { Link } from "gatsby"
-import { FacebookShareButton, TwitterShareButton, EmailShareButton } from "react-share"
 
-import PageModal from "../../PageModal"
-import { PageModalContext } from '../../PageModal/context'
+import TitleBlock from "../../Commons/TitleBlock"
 
 /** 
  * Message Info
@@ -61,113 +58,18 @@ function ScriptureList(props) {
   )
 }
 
-function ActionIcons(props) {
-  const ctx = useContext(PageModalContext)
-  var modalId = 'share-modal'
-  var modalTitle = "Share This Message"
-  var url = "https://dev2.liquidchurch.com/message/" + props.slug
-  return (
-    <>
-      <Nav className='flex-nowrap flex-row message-action-area' as='ul'>
-        <Nav.Item 
-            className="p-1 message-action" 
-            as='li'
-            onClick={() => ctx.setShowModalId(modalId)}>
-          <Nav.Link
-            aria-label="share"
-            className={'message-action-icon share-icon'}
-            target="_blank"
-          >
-          </Nav.Link>
-          <div className="message-action-text">Share</div>
-        </Nav.Item>
-        <Nav.Item className="p-1 message-action" as='li'>
-          <Nav.Link 
-            href="/subscribe" 
-            aria-label="subscribe"
-            className={'message-action-icon subscribe-icon'}
-            target="_blank"
-          >
-          </Nav.Link>
-          <div className="message-action-text">Subscribe</div>
-        </Nav.Item>
-        <Nav.Item className="p-1 message-action" as='li'>
-          <Nav.Link 
-            href="/give" 
-            aria-label="give"
-            className={'message-action-icon give-icon'}
-            target="_blank"
-          >
-          </Nav.Link>
-          <div className="message-action-text">Give</div>
-        </Nav.Item>
-      </Nav>
-      <PageModal 
-        modal_title={modalTitle}
-        modal_text={<SocialShare url={url}/>}
-        modal_id={modalId}
-      />
-    </>
-  )  
-}
-
-function SocialShare(props) {
-  return (
-  <>
-      <Nav className='flex-nowrap flex-row message-social-padding' as='ul'>
-        <Nav.Item className="p-1 message-social" as='li'>
-          <FacebookShareButton url={props.url}>
-            <div className={'message-social-icon facebook-icon'}>
-            </div>
-          </FacebookShareButton>
-        </Nav.Item>
-        <Nav.Item className="p-1 message-social" as='li'>
-          <TwitterShareButton url={props.url} hashtags={['liquidchurch']}>
-            <div className={'message-social-icon twitter-icon'}>
-            </div>
-          </TwitterShareButton>
-        </Nav.Item>
-        <Nav.Item className="p-1 message-social" as='li'>
-          <EmailShareButton url={props.url} subject={'Watch this message from Liquid Church'}>
-            <div className={'message-social-icon email-icon'}></div>
-          </EmailShareButton>
-        </Nav.Item>
-      </Nav>
-  </>
-  )
-}
-export default (lqdmMessage) => {
-  const formatter = new Intl.DateTimeFormat('en-US', { month: 'short',  day: 'numeric',   year: 'numeric'});
-  const formattedDate =  formatter.format(new Date(lqdmMessage.date));
-  
-  let attributions = "Liquid Church"
-  
-  if (lqdmMessage.attributions.nodes.length > 0) {
-    attributions = lqdmMessage.attributions.nodes[0].name
-
-    if (lqdmMessage.attributionsCo.attributions !== null) {
-      lqdmMessage.attributionsCo.attributions.forEach(item => {
-          attributions = attributions + ", " + item.name
-      })
-    }
-  }
-  
+export default (lqdmMessage) => {  
   return (
     <>
     <section className="fullwidth-section message-info-section">
       <Container>
-        <Row className="message-info-title">
-          <Col xs={{span:12, order:1}} md={{span:8, order:1}}>
-            <h2 className="font-h2 message-title">{lqdmMessage.title}</h2>
-          </Col>
-          <Col xs={{span:12, order:3}} md={{span:4, order:2}}>
-            <ActionIcons slug={lqdmMessage.slug} />
-          </Col>
-          <Col xs={{span:12, order:2}} md={{span:12, order:3}} className="message-subtitle">
-            <div className="font-h3 message-speaker">{attributions}</div>
-            <div className="font=h3 message-date">{formattedDate}</div>
-          </Col>
-        </Row>
+        <TitleBlock
+          date={lqdmMessage.date}
+          attributions={lqdmMessage.attributions}
+          attributionsCo={lqdmMessage.attributionsCo}
+          title={lqdmMessage.title}
+          slug={lqdmMessage.slug}
+        />
         <hr className="message-hr" />
         <Row>
           <Col xs={12}>

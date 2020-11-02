@@ -9,10 +9,9 @@ function getScrollPosition({ element, useWindow }) {
 
   const target = element ? element.current : document.body
   const position = target.getBoundingClientRect()
-
   return useWindow
-    ? { x: window.scrollX, y: window.scrollY }
-    : { x: position.left, y: position.top }
+    ? { x: window.scrollX, y: window.scrollY, th: target.clientHeight, h:window.innerHeight }
+    : { x: position.left, y: position.top, th:target.clientHeight, h:window.innerHeight }
 }
 
 export function useScrollPosition(effect, deps, element, useWindow, wait) {

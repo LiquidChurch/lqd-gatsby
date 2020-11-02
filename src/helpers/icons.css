@@ -130,10 +130,10 @@
   mask-image: url('./svg/family.svg');
 }
 
-.blog-icon {
-  -webkit-mask-image: url('./svg/blog.svg');
+.blogs-icon {
+  -webkit-mask-image: url('./svg/blogs.svg');
   -webkit-mask-size: 101% 101%;
-  mask-image: url('./svg/blog.svg');
+  mask-image: url('./svg/blogs.svg');
 }
 
 .share-icon {
