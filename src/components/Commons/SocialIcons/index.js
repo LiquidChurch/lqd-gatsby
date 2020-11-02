@@ -41,7 +41,6 @@ function SocialShare(props) {
 const SocialIcons = ({
   slug,
 }) => {
-  console.log('social icons', slug)
   const ctx = useContext(PageModalContext)
   var modalId = 'share-modal'
   var modalTitle = "Share This Message"

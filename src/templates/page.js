@@ -43,9 +43,6 @@ export default ({
       //if (externalRedirectBlock.attributes.external_url.slice(0, 6) === "mailto") {
       //  setTimeout(() => {window.history.back()},100)
       //}
-      console.log('current path', location.pathname)
-      console.log('prev path', ctx.currPath)
-      console.log('prepre path', ctx.prePath)
       setTimeout(() => {
         if (ctx.currPath !== location.pathname) {
           window.location.replace(ctx.currPath)
