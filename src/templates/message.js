@@ -25,7 +25,6 @@ export default ({
       ctx.enableTouchState()
     }
     ctx.setPath(location.pathname)
-    console.log('previous path', ctx.prevPath)    
   }, [ctx, location.pathname])
   
   return (
