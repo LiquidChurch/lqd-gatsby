@@ -14,6 +14,7 @@ const GlobalProvider = (props) => {
   const [touchState, setTouchState] = useState(false)
   const [currPath, setCurrPath] = useState("")
   const [prevPath, setPrevPath] = useState("")
+  const [pageDate, setPageDate] = useState(0)
   
   function updatePath(path) {
     if (path !== currPath) {
@@ -34,6 +35,8 @@ const GlobalProvider = (props) => {
       prevPath: prevPath,
       currPath: currPath,
       setPath: (path) => updatePath(path),
+      currentDate: pageDate,
+      setDate: (date) => setPageDate(date),
     }}>
       {props.children}
     </GlobalContext.Provider>

@@ -9,6 +9,7 @@ import './styles.css'
  * Hero - Feature Component
  */
 export default (props) => {
+  console.log(props)
   var imgUrl = props.featuredImage.node.sourceUrl.split("/")
   
   return (

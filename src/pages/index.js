@@ -7,6 +7,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import PageBlocks from "../components/PageBlocks"
 import { GlobalContext } from '../components/GlobalContext/context'
+import { getDate } from '../helpers/functions'
 //import PostHeader from "../components/PostHeader"
 //import { LoadingOverlayProvider } from "../components/LoadingOverlay/context.js"
 /** 
@@ -24,7 +25,8 @@ export default ({
   useEffect(() => {
     ctx.setTheme("Dark")
     ctx.setPath(location.pathname)
-  }, [ctx, location.pathname])
+    ctx.setDate(getDate(location.search))
+  }, [ctx, location])
 
   return (
     <Layout location={location}>

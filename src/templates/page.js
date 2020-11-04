@@ -1,12 +1,12 @@
 import React, { useContext, useEffect } from "react"
 import { Helmet } from "react-helmet"
-import { graphql } from "gatsby"
+import { graphql, navigate } from "gatsby"
 import { useGeneralSettings } from "../data/hooks"
 import Parse from "react-html-parser"
 import Layout from "../components/Layout"
 import PageBlocks from "../components/PageBlocks"
 import { GlobalContext } from '../components/GlobalContext/context'
-import { isTouchEnabled } from '../helpers/functions'
+import { isTouchEnabled, getDate } from '../helpers/functions'
 
 /** 
  * Template - Page Component
@@ -18,8 +18,15 @@ export default ({
   },
 }) => {
   console.log("page: ", page.title)
+  console.log("page date", page.date)
   const generalSettings = useGeneralSettings()
   const ctx = useContext(GlobalContext)
+  var pageValid = false
+  if ( (page.publication.publishDate === null || getDate(location.search) >= Date.parse(page.publication.publishDate)) &&
+       (page.publication.unpublishDate === null || getDate(location.search) < Date.parse(page.publication.unpublishDate)) ) {
+    pageValid = true
+    ctx.setDate(getDate(location.search))
+  }
 
   let theme = "dark"
   if (page.themeState !== null) {
@@ -34,9 +41,13 @@ export default ({
   
   if (externalRedirectBlock !== undefined) {
     hasExternalRedirect = true
+    pageValid = false
   }
   
   useEffect(() => {
+    if (!pageValid) {
+      navigate('/')
+    }
     if (hasExternalRedirect) {
       window.location.replace(externalRedirectBlock.attributes.external_url)
       //if (externalRedirectBlock.attributes.external_url.slice(0, 6) === "mailto") {
@@ -49,19 +60,19 @@ export default ({
       },1500)
       
     } else {        
-      ctx.setTheme(theme)    
+      ctx.setTheme(theme)
       if (isTouchEnabled()) {
         ctx.enableTouchState()
       }
       ctx.setPath(location.pathname)
     }
+
   }, [ctx, theme, externalRedirectBlock, hasExternalRedirect, location.pathname])
-  
   
   
   return (
     <>
-    {hasExternalRedirect ? (
+    {!pageValid ? (
       ''
      ) :
       <Layout location={location}>
@@ -88,6 +99,11 @@ export const query = graphql`
         slug
         themeState {
           state
+        }
+        publication {
+          hometileDelist
+          unpublishDate
+          publishDate
         }
         featuredImage {
           node {

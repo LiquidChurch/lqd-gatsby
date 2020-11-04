@@ -2,6 +2,9 @@ import React from "react"
 import PropTypes from "prop-types"
 import LoaderSVG from './assets/images/liquid.svg'
 
+import { GlobalContext } from './components/GlobalContext/context'
+import { getDate } from './helpers/functions'
+
 export default function HTML(props) {
   return (
     <html {...props.htmlAttributes}>

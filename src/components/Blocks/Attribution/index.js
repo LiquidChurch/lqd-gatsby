@@ -28,7 +28,7 @@ export default ({
   
   let featuredAttributionObject = []
   let tiledAttributionObject = []
-  
+
   switch(layout) {
     case 'list':
       for (let i = 0; i < attributionObject.rows.length; i++ ) {
@@ -49,7 +49,6 @@ export default ({
       } 
       break
   }
-
   return (
   <>
   <section className={'site-section ' + padding} style={{backgroundColor: bg_color}}>
@@ -58,7 +57,7 @@ export default ({
         { featuredAttributionObject.map(attribution => {
           return (
             <Col xs={12} className="attribution-profile" key={attribution.attribution.id}>
-              <FeaturedAttribute attribute={attributionObject.rows[0].attribution} showBlurb={show_blurb} showEmail={show_email} />
+              <FeaturedAttribute attribute={attribution.attribution} showBlurb={show_blurb} showEmail={show_email} />
             </Col>
           )
         })}

@@ -43,3 +43,18 @@ export const isTouchEnabled = ()  => {
          ( navigator.maxTouchPoints > 0 ) || 
          ( navigator.msMaxTouchPoints > 0 ); 
 } 
+
+export const getDate = (searchValue) => {
+  var query = searchValue.substring(1);
+  
+  var vars = query.split('&');
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split('=');
+        if (decodeURIComponent(pair[0]) === 'setDate') {
+            return Date.parse(decodeURIComponent(pair[1]))
+        }
+    }
+  
+  var d = new Date()
+  return Date.parse(d.toLocaleDateString())
+}

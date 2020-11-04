@@ -30,7 +30,7 @@ module.exports = {
         url: process.env.WORDPRESS_URL,
         schema: {
           timeout: 120000,
-          perPage: 25,
+          perPage: 15,
         },
         debug: {
           graphql: {
@@ -51,6 +51,12 @@ module.exports = {
         },    
         develop: {
           nodeUpdateInterval: 700
+        },
+        auth: {
+          htaccess: {
+            username: 'webmaster',
+            password: 'jO0Ydhg@@NxdKwH(3oZseelb',
+          }
         },
         verbose:true,
         includedRoutes: [

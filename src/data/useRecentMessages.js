@@ -1,10 +1,11 @@
 import { useStaticQuery, graphql } from "gatsby"
+
 export const useRecentMessages = (numOfItems) => {
   const data = useStaticQuery(
     graphql`
       query {
           allWpMessage (
-              limit: 50
+              limit: 100
               sort: {fields: date, order: DESC}
             ) {
             nodes {
@@ -79,7 +80,11 @@ export const useRecentMessages = (numOfItems) => {
   let i
   for (i = 0; i < data.allWpMessage.nodes.length ; i++) {
     data.allWpMessage.nodes[i].category="messages"
-    returnData.push(data.allWpMessage.nodes[i])
+    //if ( (data.allWpMessage.nodes[i].publication.publishDate === null || currentDate >= Date.parse(data.allWpMessage.nodes[i].publication.publishDate)) &&
+    //     (data.allWpMessage.nodes[i].unpublishDate === null || currentDate < Date.parse(data.allWpMessage.nodes[i].publication.unpublishDate)) ) {
+    //  console.log('message not valid')
+      returnData.push(data.allWpMessage.nodes[i])
+    //}
     if (returnData.length === numOfItems) {
       break
     }
