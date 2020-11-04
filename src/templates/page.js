@@ -25,9 +25,8 @@ export default ({
   if ( (page.publication.publishDate === null || getDate(location.search) >= Date.parse(page.publication.publishDate)) &&
        (page.publication.unpublishDate === null || getDate(location.search) < Date.parse(page.publication.unpublishDate)) ) {
     pageValid = true
-    ctx.setDate(getDate(location.search))
   }
-
+ //  ctx.setDate(getDate(location.search))
   let theme = "dark"
   if (page.themeState !== null) {
     theme = page.themeState.state
