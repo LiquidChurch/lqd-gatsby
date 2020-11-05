@@ -32,7 +32,6 @@ export default ({
   let messagesInfo = []
  
   series.messages.nodes.forEach(message => {
-    console.log(message.publication)
     
     if ( (message.publication.publishDate === null || currentDate >= Date.parse(message.publication.publishDate)) &&
          (message.publication.unpublishDate === null || currentDate < Date.parse(message.publication.unpublishDate)) ) {

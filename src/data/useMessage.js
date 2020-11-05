@@ -86,7 +86,6 @@ export const useMessageById = (messageId, currentDate) => {
     messagePageInfo["category"] = "messages"
     if ( (messagePageInfo.publication.publishDate === null || currentDate >= Date.parse(messagePageInfo.publication.publishDate)) &&
          (messagePageInfo.publication.unpublishDate === null || currentDate < Date.parse(messagePageInfo.publication.unpublishDate)) ) {
-      console.log('message valid')
       return messagePageInfo
     }
   }
