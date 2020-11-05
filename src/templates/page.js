@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from "react"
+import { Redirect } from '@reach/router'
 import { Helmet } from "react-helmet"
 import { graphql, navigate } from "gatsby"
 import { useGeneralSettings } from "../data/hooks"
@@ -8,6 +9,8 @@ import PageBlocks from "../components/PageBlocks"
 import { GlobalContext } from '../components/GlobalContext/context'
 import { isTouchEnabled, getDate } from '../helpers/functions'
 
+const RedirectPrevious = (prevUrl) => <Redirect to={{pathname:'/'}} />
+ 
 /** 
  * Template - Page Component
  */
@@ -43,20 +46,21 @@ export default ({
   }
   
   useEffect(() => {
-    if (!pageValid) {
-      navigate('/')
-    }
     if (hasExternalRedirect) {
       window.location.replace(externalRedirectBlock.attributes.external_url)
       //if (externalRedirectBlock.attributes.external_url.slice(0, 6) === "mailto") {
       //  setTimeout(() => {window.history.back()},100)
       //}
       setTimeout(() => {
+        
         if (ctx.currPath !== location.pathname) {
           window.location.replace(ctx.currPath)
+          //console.log(ctx.currPath)
+          //RedirectPrevious(ctx.currPath)
         }
-      },1500)
-      
+      },1000)      
+    } else if (!pageValid) {
+      navigate('/')  
     } else {        
       ctx.setTheme(theme)
       if (isTouchEnabled()) {
