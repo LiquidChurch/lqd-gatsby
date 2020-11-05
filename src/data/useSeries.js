@@ -1,5 +1,5 @@
 import { useStaticQuery, graphql } from "gatsby"
-export const useSeries = (seriesSlug) => {
+export const useSeries = (seriesSlug, currentDate) => {
   const data = useStaticQuery(
     graphql `
       query {
@@ -31,6 +31,11 @@ export const useSeries = (seriesSlug) => {
                      mediaItemUrl
                    }
                  }
+                 publication {
+                     hometileDelist
+                     unpublishDate
+                     publishDate
+                   }
                  attributions {
                   nodes {
                     id
@@ -75,6 +80,17 @@ export const useSeries = (seriesSlug) => {
   
   if (seriesPageInfo !== undefined) {
     seriesPageInfo["category"] = "messages"
+    
+    console.log('series messages', seriesPageInfo.messages)
+    for (let i=0; i < seriesPageInfo.messages.nodes.length; i++) {
+      console.log(seriesPageInfo.messages.nodes[i].title)
+      if ( (seriesPageInfo.messages.nodes[i].publication.publishDate === null || currentDate >= Date.parse(seriesPageInfo.messages.nodes[i].publication.publishDate)) &&
+           (seriesPageInfo.messages.nodes[i].publication.unpublishDate === null || currentDate < Date.parse(seriesPageInfo.messages.nodes[i].publication.unpublishDate)) ) {
+        console.log('message valid')
+      } else {
+        seriesPageInfo.messages.nodes.splice(i, 1)
+      }
+    }
     return seriesPageInfo
   }
   

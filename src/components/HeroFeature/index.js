@@ -22,7 +22,7 @@ export default (props) => {
           sizes="100vw" />
       </Row>
       <TitleBlock 
-        date={props.date}
+        date={props.publication.publishDate}
         attributions={props.attributions}
         attributionsCo={props.attributionCo}
         title={props.title}

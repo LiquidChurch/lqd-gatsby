@@ -1,5 +1,5 @@
 import { useStaticQuery, graphql } from "gatsby"
-export const useRecentBlogs = (numOfItems) => {
+export const useRecentBlogs = (numOfItems, currentDate) => {
   const data = useStaticQuery(
     graphql`
       query {
@@ -44,6 +44,11 @@ export const useRecentBlogs = (numOfItems) => {
                   altText
                 }
               }
+              publication {
+                  hometileDelist
+                  unpublishDate
+                  publishDate
+                }
               seriesList {
                 nodes {
                   name
@@ -72,14 +77,15 @@ export const useRecentBlogs = (numOfItems) => {
   )
   
   let returnData = []
-  let i
-  for (i = 0; i < data.allWpBlog.nodes.length ; i++) {
+  for (let i = 0; i < data.allWpBlog.nodes.length ; i++) {
     data.allWpBlog.nodes[i].category="blogs"
-    returnData.push(data.allWpBlog.nodes[i])
+    if ( (data.allWpBlog.nodes[i].publication.publishDate === null || currentDate >= Date.parse(data.allWpBlog.nodes[i].publication.publishDate)) &&
+         (data.allWpBlog.nodes[i].publication.unpublishDate === null || currentDate < Date.parse(data.allWpBlog.nodes[i].publication.unpublishDate)) ) {
+      returnData.push(data.allWpBlog.nodes[i])
+    }
     if (returnData.length === numOfItems) {
       break
     }
   }
-  
   return returnData
 }

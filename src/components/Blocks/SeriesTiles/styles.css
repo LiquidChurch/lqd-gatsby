@@ -20,6 +20,7 @@
   margin: 17px 6px;
   width: 358px;
   filter: brightness(0.8);
+  border-radius:0.9em;
 }
 
 @media (max-width:1199px) { 

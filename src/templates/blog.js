@@ -1,10 +1,10 @@
 import React, { useContext, useEffect } from 'react'
 import { Helmet } from "react-helmet"
-import { graphql } from "gatsby"
+import { graphql, navigate } from "gatsby"
 import Parse from "react-html-parser"
 import Layout from "../components/Layout"
 import { GlobalContext } from '../components/GlobalContext/context'
-import { isTouchEnabled } from '../helpers/functions'
+import { isTouchEnabled, getDate } from '../helpers/functions'
 
 import PageBlocks from "../components/PageBlocks"
 import FeatureHero from "../components/HeroFeature"
@@ -21,7 +21,17 @@ export default ({
 }) => {
   console.log("blog: ", blog.title)
   const ctx = useContext(GlobalContext)
+  
+  var pageValid = false
+  if ( (blog.publication.publishDate === null || getDate(location.search) >= Date.parse(blog.publication.publishDate)) &&
+       (blog.publication.unpublishDate === null || getDate(location.search) < Date.parse(blog.publication.unpublishDate)) ) {
+    pageValid = true
+  }
+  
   useEffect(() => {
+    if (!pageValid) {
+      navigate('/blogs')
+    }    
     ctx.setTheme("light")
     if (isTouchEnabled()) {
       ctx.enableTouchState()
@@ -29,19 +39,25 @@ export default ({
   }, [ctx])
   
   return (
-    <Layout location={location}>
-      <Helmet titleTemplate={`%s | Liquid Church`}>
-        <title>{Parse(blog.title)}</title>
-      </Helmet>
-      <article className="page">
-        <PageModalProvider>
-        <FeatureHero {...blog} />
-        <div className="blog">
-          <PageBlocks {...blog} />
-        </div>
-        </PageModalProvider>
-      </article>
-    </Layout>
+    <>
+    {!pageValid ? (
+      ''
+     ) :    
+      <Layout location={location}>
+        <Helmet titleTemplate={`%s | Liquid Church`}>
+          <title>{Parse(blog.title)}</title>
+        </Helmet>
+        <article className="page">
+          <PageModalProvider>
+          <FeatureHero {...blog} />
+          <div className="blog">
+            <PageBlocks {...blog} />
+          </div>
+          </PageModalProvider>
+        </article>
+      </Layout>
+      }
+    </>
   )
 }
 
@@ -78,7 +94,11 @@ export const query = graphql`
             sourceUrl
           } 
         }
-      }
-   
-  }
+        publication {
+            hometileDelist
+            unpublishDate
+            publishDate
+          }
+        }
+    }
 `

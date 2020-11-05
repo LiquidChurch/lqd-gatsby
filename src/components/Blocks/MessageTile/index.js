@@ -1,11 +1,12 @@
 import React from 'react'
 import Imgix from 'react-imgix'
 import { Link } from 'gatsby'
-
+import { useLocation } from '@reach/router';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
+import { getDate } from '../../../helpers/functions'
 import { PlayArrow } from '../../../helpers/icons'
 import { useRecentMessages } from "../../../data/useRecentMessages"
 
@@ -17,7 +18,7 @@ import "./styles.css"
 export default ({ bg_color,
                   padding,
                   block_title }) => {
-  const messageInfo = useRecentMessages(1)
+  const messageInfo = useRecentMessages(1,getDate(useLocation().search))
 
   if (messageInfo === undefined) {
     return (

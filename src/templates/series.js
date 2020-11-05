@@ -4,7 +4,7 @@ import { graphql } from "gatsby"
 import Parse from "react-html-parser"
 import Layout from "../components/Layout"
 import { GlobalContext } from '../components/GlobalContext/context'
-import { isTouchEnabled } from '../helpers/functions'
+import { isTouchEnabled, getDate } from '../helpers/functions'
 
 import SeriesHero from "../components/SeriesHero"
 import MediaTiles from "../components/Blocks/MediaTiles"
@@ -21,6 +21,7 @@ export default ({
 }) => {
   console.log("series: ", series.name)
   const ctx = useContext(GlobalContext)
+  const currentDate = getDate(location.search)
   useEffect(() => {
     ctx.setTheme("light")
     if (isTouchEnabled()) {
@@ -31,41 +32,46 @@ export default ({
   let messagesInfo = []
  
   series.messages.nodes.forEach(message => {
+    console.log(message.publication)
     
-    let attributions = "Liquid Church" 
-  
-    message.attributions.nodes.forEach(item => {
-      if (attributions === "Liquid Church") {
-        attributions = item.name 
-      } else {
-        attributions = attributions + ", " + item.name
+    if ( (message.publication.publishDate === null || currentDate >= Date.parse(message.publication.publishDate)) &&
+         (message.publication.unpublishDate === null || currentDate < Date.parse(message.publication.unpublishDate)) ) {
+    
+      let attributions = "Liquid Church" 
+
+      message.attributions.nodes.forEach(item => {
+        if (attributions === "Liquid Church") {
+          attributions = item.name 
+        } else {
+          attributions = attributions + ", " + item.name
+        }
+      })
+
+      const formatter = new Intl.DateTimeFormat('en-US', { month: 'short',  day: 'numeric',   year: 'numeric'});
+      const formattedDate =  formatter.format(new Date(message.publication.publishDate));
+
+      let profileImgSrc = process.env.LOGO_IMG
+      if (message.attributions.nodes.length !== 0) {
+        profileImgSrc = message.attributions.nodes[0].profileImage.image.sourceUrl
       }
-    })
 
-    const formatter = new Intl.DateTimeFormat('en-US', { month: 'short',  day: 'numeric',   year: 'numeric'});
-    const formattedDate =  formatter.format(new Date(message.date));
-
-    let profileImgSrc = process.env.LOGO_IMG
-    if (message.attributions.nodes.length !== 0) {
-      profileImgSrc = message.attributions.nodes[0].profileImage.image.sourceUrl
+      messagesInfo.push({
+        "category": "messages",
+        "title": message.title,
+        "image": message.featuredImage.node.mediaItemUrl,
+        "id": message.id,
+        "slug": message.slug,
+        "showBlurb": true,
+        "blurb": message.content,
+        "showSeries": true,
+        "seriesTitle": message.seriesList.nodes[0].name,
+        "seriesPart": message.seriesPart.part,
+        "showAttribution": true,
+        "date": formattedDate,
+        "attributionName": attributions,
+        "profileImage": profileImgSrc,
+      })
     }
-    
-    messagesInfo.push({
-      "category": "messages",
-      "title": message.title,
-      "image": message.featuredImage.node.mediaItemUrl,
-      "id": message.id,
-      "slug": message.slug,
-      "showBlurb": true,
-      "blurb": message.content,
-      "showSeries": true,
-      "seriesTitle": message.seriesList.nodes[0].name,
-      "seriesPart": message.seriesPart.part,
-      "showAttribution": true,
-      "date": formattedDate,
-      "attributionName": attributions,
-      "profileImage": profileImgSrc,
-    })
   })  
 
   return (
@@ -87,6 +93,7 @@ export default ({
       />    
       <MediaTiles 
         type=""
+        display_type="grid"
         bg_color="#F8F8F8"
         padding='bottom'
         media_list={messagesInfo} />
@@ -143,6 +150,11 @@ export const query = graphql`
               mediaItemUrl
             }
           }
+         publication {
+             hometileDelist
+             unpublishDate
+             publishDate
+           }
           attributions {
             nodes {
               id

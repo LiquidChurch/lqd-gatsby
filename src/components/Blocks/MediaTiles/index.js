@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react'
-
+import { useLocation } from '@reach/router';
 import { GlobalContext } from '../../GlobalContext/context'
 
 import Container from 'react-bootstrap/Container'
@@ -118,8 +118,11 @@ function UseSlider(props) {
 function MediaDataTransformer(props) {
   let lists = []
   props.rawItems.map(item => {
+    if (item === null) {
+      return null
+    }
     const formatter = new Intl.DateTimeFormat('en-US', { month: 'short',  day: 'numeric',   year: 'numeric'});
-    let formattedDate =  formatter.format(new Date(item.date)).toUpperCase();
+    let formattedDate =  formatter.format(new Date(item.publication.publishDate)).toUpperCase();
 
     let attributions = "Liquid Church"
 
@@ -190,7 +193,6 @@ export default ({
     padding,
   }) => {
   const ctx = useContext(GlobalContext)
-  
   if (display_type === undefined) {
     display_type = "grid"
   }
@@ -198,7 +200,7 @@ export default ({
   let mediaLists = []
   
   if (type === "messages") {
-    let tempItems = useRecentMessages(num_items)
+    let tempItems = useRecentMessages(num_items, getDate(useLocation().search))
     mediaLists = MediaDataTransformer({
       "rawItems":tempItems,
       "showBlurb":show_blurb,
@@ -208,7 +210,7 @@ export default ({
   }
   
   if (type === "blogs") {
-    let tempItems = useRecentBlogs(num_items)
+    let tempItems = useRecentBlogs(num_items, getDate(useLocation().search))
      mediaLists = MediaDataTransformer({
       "rawItems":tempItems,
       "showBlurb":show_blurb,
@@ -222,7 +224,7 @@ export default ({
     let tempItems = []
     rawMediaList.rows.forEach(item => {
       if (item.message !== undefined) {
-        tempItems.push(useMessageById(item.message.id))
+        tempItems.push(useMessageById(item.message.id, getDate(useLocation().search)))
       }
       if (item.blog !== undefined) {
         tempItems.push(useBlog(item.blog.id))

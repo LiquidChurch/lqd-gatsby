@@ -18,7 +18,6 @@ export default ({
   },
 }) => {
   console.log("page: ", page.title)
-  console.log("page date", page.date)
   const generalSettings = useGeneralSettings()
   const ctx = useContext(GlobalContext)
   var pageValid = false
@@ -67,7 +66,6 @@ export default ({
     }
 
   }, [ctx, theme, externalRedirectBlock, hasExternalRedirect, location.pathname])
-  
   
   return (
     <>

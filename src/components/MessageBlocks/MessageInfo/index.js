@@ -64,7 +64,7 @@ export default (lqdmMessage) => {
     <section className="fullwidth-section message-info-section">
       <Container>
         <TitleBlock
-          date={lqdmMessage.date}
+          date={lqdmMessage.publication.publishDate}
           attributions={lqdmMessage.attributions}
           attributionsCo={lqdmMessage.attributionsCo}
           title={lqdmMessage.title}

@@ -43,6 +43,11 @@ export const useBlog = (blogId) => {
                   altText
                 }
               }
+              publication {
+                  hometileDelist
+                  unpublishDate
+                  publishDate
+                }
               seriesList {
                 nodes {
                   name

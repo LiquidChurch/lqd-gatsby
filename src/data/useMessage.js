@@ -1,5 +1,5 @@
 import { useStaticQuery, graphql } from "gatsby"
-export const useMessageById = (messageId) => {
+export const useMessageById = (messageId, currentDate) => {
   const data = useStaticQuery(
     graphql`
       query {
@@ -43,6 +43,11 @@ export const useMessageById = (messageId) => {
                   altText
                 }
               }
+              publication {
+                  hometileDelist
+                  unpublishDate
+                  publishDate
+                }
               seriesList {
                 nodes {
                   name
@@ -79,7 +84,11 @@ export const useMessageById = (messageId) => {
 
   if (messagePageInfo !== undefined) {
     messagePageInfo["category"] = "messages"
-    return messagePageInfo
+    if ( (messagePageInfo.publication.publishDate === null || currentDate >= Date.parse(messagePageInfo.publication.publishDate)) &&
+         (messagePageInfo.publication.unpublishDate === null || currentDate < Date.parse(messagePageInfo.publication.unpublishDate)) ) {
+      console.log('message valid')
+      return messagePageInfo
+    }
   }
   
   return null

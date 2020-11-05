@@ -1,4 +1,5 @@
 import React from "react"
+import { useLocation } from '@reach/router';
 
 import MessagePlayer from "./MessagePlayer"
 import MessageInfo from "./MessageInfo"
@@ -9,13 +10,14 @@ import Heading from "../Blocks/Heading"
 
 import { PageModalProvider } from "../PageModal/context.js"
 
+import { getDate } from '../../helpers/functions'
 import { useSeries } from "../../data/useSeries"
 
 /** 
  * Message Blocks
  */
 export default (lqdmMessage) => {
-  const seriesInfo = useSeries(lqdmMessage.seriesList.nodes[0].slug)
+  const seriesInfo = useSeries(lqdmMessage.seriesList.nodes[0].slug, getDate(useLocation().search))
   let seriesSlugs = []
  
   seriesInfo.messages.nodes.forEach(message => {
@@ -31,7 +33,7 @@ export default (lqdmMessage) => {
     })
 
     const formatter = new Intl.DateTimeFormat('en-US', { month: 'short',  day: 'numeric',   year: 'numeric'});
-    const formattedDate =  formatter.format(new Date(message.date));
+    const formattedDate =  formatter.format(new Date(message.publication.publishDate));
 
     let profileImgSrc = process.env.LOGO_IMG
     if (message.attributions.nodes.length !== 0) {

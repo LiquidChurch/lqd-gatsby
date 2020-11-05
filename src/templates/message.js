@@ -28,7 +28,7 @@ export default ({
   
   useEffect(() => {
     if (!pageValid) {
-      navigate('/media')
+      navigate('/messages')
     }
     ctx.setTheme("dark")
     if (isTouchEnabled()) {

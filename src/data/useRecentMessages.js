@@ -1,6 +1,6 @@
 import { useStaticQuery, graphql } from "gatsby"
 
-export const useRecentMessages = (numOfItems) => {
+export const useRecentMessages = (numOfItems, currentDate) => {
   const data = useStaticQuery(
     graphql`
       query {
@@ -46,6 +46,11 @@ export const useRecentMessages = (numOfItems) => {
                   altText
                 }
               }
+              publication {
+                  hometileDelist
+                  unpublishDate
+                  publishDate
+                }
               seriesList {
                 nodes {
                   name
@@ -80,11 +85,10 @@ export const useRecentMessages = (numOfItems) => {
   let i
   for (i = 0; i < data.allWpMessage.nodes.length ; i++) {
     data.allWpMessage.nodes[i].category="messages"
-    //if ( (data.allWpMessage.nodes[i].publication.publishDate === null || currentDate >= Date.parse(data.allWpMessage.nodes[i].publication.publishDate)) &&
-    //     (data.allWpMessage.nodes[i].unpublishDate === null || currentDate < Date.parse(data.allWpMessage.nodes[i].publication.unpublishDate)) ) {
-    //  console.log('message not valid')
+    if ( (data.allWpMessage.nodes[i].publication.publishDate === null || currentDate >= Date.parse(data.allWpMessage.nodes[i].publication.publishDate)) &&
+         (data.allWpMessage.nodes[i].publication.unpublishDate === null || currentDate < Date.parse(data.allWpMessage.nodes[i].publication.unpublishDate)) ) {
       returnData.push(data.allWpMessage.nodes[i])
-    //}
+    }
     if (returnData.length === numOfItems) {
       break
     }
