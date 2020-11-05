@@ -148,6 +148,7 @@ export const LinkTiles = graphql`
     attributes {
       slugs_list
       bg_color
+      padding
     }
   }
 `

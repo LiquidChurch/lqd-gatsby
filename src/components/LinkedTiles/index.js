@@ -9,10 +9,11 @@ import LinkTile from './linkTile';
 export default ({
     slugs_list,
     bg_color,
+    padding,
   }) => {
   var obj_slugs_list = JSON.parse(slugs_list)
   return( 
-    <section className='fullwidth-section' id="linked-tiles" style={{backgroundColor: bg_color}}>
+    <section className={'site-section ' + padding} style={{backgroundColor: bg_color}}>
       <Container>
         <Row>          
           {obj_slugs_list.rows.map(item => {

@@ -13,7 +13,7 @@ const VideoBlock = ({
   
   return (
   <>
-  <section className={'site-section ' + padding} style={{backgroundColor: bg_color}}>
+    <section className={'site-section ' + padding} style={{backgroundColor: bg_color}}>
     <VideoPlayer url={video_url} title={video_title} />
   </section>
   </>
