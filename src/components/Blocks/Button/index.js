@@ -99,13 +99,8 @@ export default ({
   let objPage = JSON.parse(page)
   
   let pageInfo = {}
-  console.log('button objPage', objPage)
   if (objPage !== null && objPage.id !== 0) {
     pageInfo = useFeaturedImage(objPage.id)
-    
-    
-    console.log(pageInfo)
-    console.log('button', pageInfo.publication)
     if ((pageInfo.publication.publishDate === null || currentDate >= Date.parse(pageInfo.publication.publishDate)) &&
       (pageInfo.publication.unpublishDate === null || currentDate < Date.parse(pageInfo.publication.unpublishDate))) {
     } else {
@@ -138,16 +133,13 @@ export default ({
   
   if (objDropdown !== null && objDropdown.rows.length !== 0) {
     objDropdown.rows.forEach((object) => {
-      console.log(object)
       let temp = useFeaturedImage(object.page.id) 
-      console.log(temp)
       if ((temp.publication.publishDate === null || currentDate >= Date.parse(temp.publication.publishDate)) &&
           (temp.publication.unpublishDate === null || currentDate < Date.parse(temp.publication.unpublishDate))) {
         temp["text"]=object.text
         dropdownItemList.push(temp)
       } 
     })
-    console.log('dropdown list', dropdownItemList)
   }
   
   let dropdownId = Math.random().toString(36).substring(2, 7) + Math.random().toString(36).substring(2, 7)    

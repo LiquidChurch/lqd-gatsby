@@ -37,15 +37,10 @@ export default ({
   block_off,
 }) => {
   const currentDate = getDate(useLocation().search)
-  console.log('date on', block_on)
-  console.log('date off', block_off)
   let isPublished = false
   if ((block_on === null || currentDate >= Date.parse(block_on)) &&
       (block_off === null || currentDate < Date.parse(block_off))) {
     isPublished = true
-    console.log("photo block valid")
-  } else {
-    console.log("photo block invalid")
   }
   
   const imageInfo = useImageById(image_id)

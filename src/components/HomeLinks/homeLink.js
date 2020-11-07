@@ -14,7 +14,6 @@ export default ({ page_slug_id }) => {
     return (<></>)
   }
   
-  console.log('homeLink', page_info.publication)
   const currentDate = getDate(useLocation().search)
   if ((page_info.publication.publishDate === null || currentDate >= Date.parse(page_info.publication.publishDate)) &&
       (page_info.publication.unpublishDate === null || currentDate < Date.parse(page_info.publication.unpublishDate))) {

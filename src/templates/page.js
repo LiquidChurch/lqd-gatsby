@@ -45,7 +45,6 @@ export default ({
   
   useEffect(() => {
     if (hasExternalRedirect) {
-      console.log('external redirect new tab', externalRedirectBlock.attributes.new_tab)
       //add in open in new tab attempt
       if (ctx.currPath !== 'external') {
         ctx.setPath("external")
@@ -55,7 +54,6 @@ export default ({
           window.location.replace(externalRedirectBlock.attributes.external_url)
         }
       }
-
       
       // comment
       // window.location.replace(externalRedirectBlock.attributes.external_url)
@@ -68,8 +66,6 @@ export default ({
         if (ctx.prevPath !== location.pathname) {
           window.location.replace(ctx.prevPath)
           //window.history.back()
-          //console.log(ctx.currPath)
-          //RedirectPrevious(ctx.currPath)
         }
       },500)      
     } else if (!pageValid) {
