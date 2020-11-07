@@ -56,5 +56,8 @@ export const getDate = (searchValue) => {
     }
   
   var d = new Date()
-  return Date.parse(d.toLocaleDateString())
+  var date = d.toLocaleDateString('sv-SE',)
+  var hour = ('0' + d.getHours().toString()).slice(-2)
+  var min = ('0' + d.getMinutes().toString()).slice(-2) 
+  return Date.parse(date + "T" + hour + ":" + min + ":00")
 }

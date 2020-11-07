@@ -17,6 +17,10 @@ export const usePageById = (pageId) => {
                   altText
                 }
               }
+              publication {
+                  unpublishDate
+                  publishDate
+                }
               contentType {
                 node {
                   label

@@ -67,6 +67,10 @@ export const query = graphql`
             sourceUrl
           } 
         }
+        publication {
+          unpublishDate
+          publishDate
+        }
       }
    
   }

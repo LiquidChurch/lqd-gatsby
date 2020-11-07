@@ -1,5 +1,6 @@
 import React from 'react'
 import Imgix from 'react-imgix'
+import { useLocation } from '@reach/router';
 
 import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
@@ -9,7 +10,7 @@ import TextArea from '../../Commons/TextArea'
 import Heading from "../../Blocks/Heading"
 import CallToAction from '../../Commons/CallToAction'
 import { useImageById } from "../../../data/useImage"
-import { ClassicTextHelper } from "../../../helpers/functions.js"
+import { ClassicTextHelper, getDate } from "../../../helpers/functions.js"
 
 import "./photoTab.css"
 
@@ -31,8 +32,22 @@ export default ({
   spacing,
   alignment,
   header_size,
-  size, 
+  size,
+  block_on,
+  block_off,
 }) => {
+  const currentDate = getDate(useLocation().search)
+  console.log('date on', block_on)
+  console.log('date off', block_off)
+  let isPublished = false
+  if ((block_on === null || currentDate >= Date.parse(block_on)) &&
+      (block_off === null || currentDate < Date.parse(block_off))) {
+    isPublished = true
+    console.log("photo block valid")
+  } else {
+    console.log("photo block invalid")
+  }
+  
   const imageInfo = useImageById(image_id)
   const ctaObject = JSON.parse(cta)
   let hasCTA = false
@@ -110,70 +125,74 @@ export default ({
   
   return (
   <>
-  {isAlternative &&
-    <Heading
-      text={header}
-      alignment="center"
-      size={header_size}
-      all_caps={false}
-      add_padding={true}
-      font_color={headerColor}
-      padding={altTopPadding}
-      bg_color={bg_color}
-    />
-  }
-  <section className={'site-section ' + padding} style={{backgroundColor: bg_color}}>
-  <Container>
-    <Row className="photo-tab-row">
-      <Col xs={{span: 12, order: 1}} md={{span: 6, order: imgOrder}} 
-          className={(imgOrder === 1) ? "photo-tab-image-col photo-tab-left" : "photo-tab-image-col"}>
-        <Imgix 
-          src={process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX] + "?ar=1:1&fit=crop&h=525"}
-          className="photo-tab-image"
-          height={525}
+  {isPublished &&
+   <>
+    {isAlternative &&
+      <Heading
+        text={header}
+        alignment="center"
+        size={header_size}
+        all_caps={false}
+        add_padding={true}
+        font_color={headerColor}
+        padding={altTopPadding}
+        bg_color={bg_color}
+      />
+    }
+    <section className={'site-section ' + padding} style={{backgroundColor: bg_color}}>
+    <Container>
+      <Row className="photo-tab-row">
+        <Col xs={{span: 12, order: 1}} md={{span: 6, order: imgOrder}} 
+            className={(imgOrder === 1) ? "photo-tab-image-col photo-tab-left" : "photo-tab-image-col"}>
+          <Imgix 
+            src={process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX] + "?ar=1:1&fit=crop&h=525"}
+            className="photo-tab-image"
+            height={525}
+            />
+        </Col>    
+        <Col  xs={{span: 12, order: 2}} md={{span: 6, order: textOrder}} className="photo-tab-body-col" id={"photo-tab-body-" + image_id}>
+          <TextArea 
+            statement={isAlternative ? null : header}
+            sidekick={textBlock}
+            cta={isAlternative ? null : cta}
+            alignment={alignment}
+            headerSize={header_size}
+            size={size}
+            spacing={spacing}
+            theme={color}
+            noMargin={true}
           />
-      </Col>    
-      <Col  xs={{span: 12, order: 2}} md={{span: 6, order: textOrder}} className="photo-tab-body-col" id={"photo-tab-body-" + image_id}>
-        <TextArea 
-          statement={isAlternative ? null : header}
-          sidekick={textBlock}
-          cta={isAlternative ? null : cta}
-          alignment={alignment}
-          headerSize={header_size}
-          size={size}
-          spacing={spacing}
-          theme={color}
-          noMargin={true}
-        />
-        <div className={hasSecondary ? "text-padding" : ''}></div>
-        <TextArea 
-          statement={header_secondary}
-          sidekick={textBlockSecondary}
-          cta={cta_secondary}
-          alignment={alignment}
-          headerSize={header_size}
-          size={size}
-          spacing={spacing}
-          theme={color}
-          noMargin={true}
-        />    
-      </Col>
-    </Row>
-    <Row>
-      {isAlternative &&
-      <Col className={'cta ' + header_size + ' half-top-padding'}>
-        {hasCTA ? 
-          ctaObject.rows.map(cta => {
-            return (
-              <CallToAction cta={cta} alignment="center" spacing="tall" theme={color} key={textAreaId + '-' + cta.page_id.id}/>
-            )
-          }) : ''
-        }
+          <div className={hasSecondary ? "text-padding" : ''}></div>
+          <TextArea 
+            statement={header_secondary}
+            sidekick={textBlockSecondary}
+            cta={cta_secondary}
+            alignment={alignment}
+            headerSize={header_size}
+            size={size}
+            spacing={spacing}
+            theme={color}
+            noMargin={true}
+          />    
         </Col>
-      }
-    </Row>
-  </Container>
-  </section>
+      </Row>
+      <Row>
+        {isAlternative &&
+        <Col className={'cta ' + header_size + ' half-top-padding'}>
+          {hasCTA ? 
+            ctaObject.rows.map(cta => {
+              return (
+                <CallToAction cta={cta} alignment="center" spacing="tall" theme={color} key={textAreaId + '-' + cta.page_id.id}/>
+              )
+            }) : ''
+          }
+          </Col>
+        }
+      </Row>
+    </Container>
+    </section>
+  </>
+  }
   </>
   )
 }

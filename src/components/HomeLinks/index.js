@@ -2,7 +2,6 @@ import React from 'react'
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 
 import HomeLink from "./homeLink"
 
@@ -21,11 +20,9 @@ export default ({ page_list, background_color }) => {
     <Row>
         {obj_page_slug_list.rows.map(item => {
           return (
-            <Col key={"home-tile-" + item.page_slug.id} xs={12} md={6} className="home-tile">
               <HomeLink
                 page_slug_id={item.page_slug.id}>
               </HomeLink>
-            </Col>
           )
         })}
     </Row>

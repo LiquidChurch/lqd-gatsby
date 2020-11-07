@@ -35,7 +35,7 @@ export default ({
       ctx.enableTouchState()
     }
     ctx.setPath(location.pathname)
-  }, [ctx, location.pathname])
+  }, [ctx, location.pathname, pageValid])
   
   return (
     <>
@@ -96,7 +96,6 @@ export const query = graphql`
         }
       }
       publication {
-          hometileDelist
           unpublishDate
           publishDate
         }

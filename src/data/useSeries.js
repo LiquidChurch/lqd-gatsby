@@ -32,7 +32,6 @@ export const useSeries = (seriesSlug, currentDate) => {
                    }
                  }
                  publication {
-                     hometileDelist
                      unpublishDate
                      publishDate
                    }

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react"
-import { Redirect } from '@reach/router'
+
 import { Helmet } from "react-helmet"
 import { graphql, navigate } from "gatsby"
 import { useGeneralSettings } from "../data/hooks"
@@ -9,8 +9,6 @@ import PageBlocks from "../components/PageBlocks"
 import { GlobalContext } from '../components/GlobalContext/context'
 import { isTouchEnabled, getDate } from '../helpers/functions'
 
-const RedirectPrevious = (prevUrl) => <Redirect to={{pathname:'/'}} />
- 
 /** 
  * Template - Page Component
  */
@@ -47,18 +45,33 @@ export default ({
   
   useEffect(() => {
     if (hasExternalRedirect) {
-      window.location.replace(externalRedirectBlock.attributes.external_url)
+      console.log('external redirect new tab', externalRedirectBlock.attributes.new_tab)
+      //add in open in new tab attempt
+      if (ctx.currPath !== 'external') {
+        ctx.setPath("external")
+        if (externalRedirectBlock.attributes.new_tab) {
+          window.open(externalRedirectBlock.attributes.external_url) 
+        } else {
+          window.location.replace(externalRedirectBlock.attributes.external_url)
+        }
+      }
+
+      
+      // comment
+      // window.location.replace(externalRedirectBlock.attributes.external_url)
+      // comment 
       //if (externalRedirectBlock.attributes.external_url.slice(0, 6) === "mailto") {
       //  setTimeout(() => {window.history.back()},100)
       //}
       setTimeout(() => {
         
-        if (ctx.currPath !== location.pathname) {
-          window.location.replace(ctx.currPath)
+        if (ctx.prevPath !== location.pathname) {
+          window.location.replace(ctx.prevPath)
+          //window.history.back()
           //console.log(ctx.currPath)
           //RedirectPrevious(ctx.currPath)
         }
-      },1000)      
+      },500)      
     } else if (!pageValid) {
       navigate('/')  
     } else {        
@@ -69,7 +82,7 @@ export default ({
       ctx.setPath(location.pathname)
     }
 
-  }, [ctx, theme, externalRedirectBlock, hasExternalRedirect, location.pathname])
+  }, [ctx, theme, externalRedirectBlock, hasExternalRedirect, location.pathname, pageValid])
   
   return (
     <>
@@ -102,7 +115,6 @@ export const query = graphql`
           state
         }
         publication {
-          hometileDelist
           unpublishDate
           publishDate
         }

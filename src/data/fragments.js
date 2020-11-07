@@ -57,6 +57,8 @@ export const Button = graphql`
       add_padding
       dropdown
       size
+      block_on
+      block_off
     }
   }
 `
@@ -65,6 +67,7 @@ export const ExternalRedirect = graphql`
   fragment ExternalRedirect on WpBlockLabExternalRedirectBlock {
     attributes {
       external_url
+      new_tab
     }
   }
 `
@@ -218,6 +221,8 @@ export const PageStrap = graphql`
       alignment
       size
       color
+      block_on
+      block_off
     }
   }
 `
@@ -260,7 +265,9 @@ export const PhotoTab = graphql`
       spacing
       alignment
       header_size
-      size 
+      size
+      block_on
+      block_off
     }
   } 
 `

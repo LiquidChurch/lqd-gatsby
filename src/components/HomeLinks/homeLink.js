@@ -1,23 +1,32 @@
 import React from 'react'
 import Imgix from 'react-imgix'
 import Parse from 'react-html-parser'
+import Col from 'react-bootstrap/Col'
+import { useLocation } from '@reach/router';
 import { Link } from 'gatsby'
 
 import { useFeaturedImage } from "../../data/featureImage"
+import { getDate } from '../../helpers/functions'
 
 export default ({ page_slug_id }) => {  
   const page_info = useFeaturedImage(page_slug_id)
   if (page_info === undefined) {
-    return (
-    <>
-    </>
-    )
+    return (<></>)
+  }
+  
+  console.log('homeLink', page_info.publication)
+  const currentDate = getDate(useLocation().search)
+  if ((page_info.publication.publishDate === null || currentDate >= Date.parse(page_info.publication.publishDate)) &&
+      (page_info.publication.unpublishDate === null || currentDate < Date.parse(page_info.publication.unpublishDate))) {
+  } else {
+    return (<></>)
   }
   
   var imgUrl = page_info.featuredImage.node.mediaItemUrl.split("/")
   
   return (
   <>
+  <Col key={"home-tile-" + page_slug_id} xs={12} md={6} className="home-tile">
     <Link 
       to={page_info.uri}
       key={"home-tile-image-" + page_info.databaseId}
@@ -37,6 +46,7 @@ export default ({ page_slug_id }) => {
     >
       LEARN MORE
     </Link>
+  </Col>
   </>
   )
 }

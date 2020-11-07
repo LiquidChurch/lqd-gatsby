@@ -44,7 +44,6 @@ export const useMessageById = (messageId, currentDate) => {
                 }
               }
               publication {
-                  hometileDelist
                   unpublishDate
                   publishDate
                 }

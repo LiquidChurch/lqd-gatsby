@@ -1,9 +1,10 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import { useLocation } from '@reach/router';
 
 import { ArrowForwardBtn, ArrowForwardText } from '../../../helpers/icons'
 import { usePageById } from '../../../data/usePage'
-
+import { getDate } from '../../../helpers/functions'
 import './styles.css'
 
 /**
@@ -23,6 +24,13 @@ const CallToAction = ({
 
   let pageInfo = usePageById(pageId)
 
+  const currentDate = getDate(useLocation().search)
+  if ((pageInfo.publication.publishDate === null || currentDate >= Date.parse(pageInfo.publication.publishDate)) &&
+      (pageInfo.publication.unpublishDate === null || currentDate < Date.parse(pageInfo.publication.unpublishDate))) {
+  } else {
+    return (<></>)
+  }
+            
   let icon = ''
   let fontColor = '#FFF'
   let btnColor = '#009DD1'

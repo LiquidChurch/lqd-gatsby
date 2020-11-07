@@ -36,7 +36,7 @@ export default ({
     if (isTouchEnabled()) {
       ctx.enableTouchState()
     }
-  }, [ctx])
+  }, [ctx, pageValid])
   
   return (
     <>
@@ -95,7 +95,6 @@ export const query = graphql`
           } 
         }
         publication {
-            hometileDelist
             unpublishDate
             publishDate
           }

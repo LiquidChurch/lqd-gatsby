@@ -1,5 +1,4 @@
 import React from 'react';
-import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 
@@ -18,11 +17,9 @@ export default ({
         <Row>          
           {obj_slugs_list.rows.map(item => {
             return (
-              <Col sm={12} md={6} lg={4} key={"linked-tile-img-" + item.page_slug.id}>
-                <LinkTile
-                  page_slug_id={item.page_slug.id}       
-                />
-              </Col>
+              <LinkTile
+                page_slug_id={item.page_slug.id}       
+              />
             )
           })}
         </Row>

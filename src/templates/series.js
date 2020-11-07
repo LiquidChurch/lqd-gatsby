@@ -150,7 +150,6 @@ export const query = graphql`
             }
           }
          publication {
-             hometileDelist
              unpublishDate
              publishDate
            }

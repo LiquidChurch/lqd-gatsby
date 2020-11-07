@@ -44,7 +44,6 @@ export const useBlog = (blogId) => {
                 }
               }
               publication {
-                  hometileDelist
                   unpublishDate
                   publishDate
                 }

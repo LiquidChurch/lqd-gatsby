@@ -47,7 +47,6 @@ export const useRecentMessages = (numOfItems, currentDate) => {
                 }
               }
               publication {
-                  hometileDelist
                   unpublishDate
                   publishDate
                 }
@@ -85,8 +84,8 @@ export const useRecentMessages = (numOfItems, currentDate) => {
   let i
   for (i = 0; i < data.allWpMessage.nodes.length ; i++) {
     data.allWpMessage.nodes[i].category="messages"
-    if ( (data.allWpMessage.nodes[i].publication.publishDate === null || currentDate >= Date.parse(data.allWpMessage.nodes[i].publication.publishDate)) &&
-         (data.allWpMessage.nodes[i].publication.unpublishDate === null || currentDate < Date.parse(data.allWpMessage.nodes[i].publication.unpublishDate)) ) {
+    if ( (data.allWpMessage.nodes[i].publication.publishDate === null || currentDate >= Date.parse(data.allWpMessage.nodes[i].publication.publishDate + "T00:00:00")) &&
+         (data.allWpMessage.nodes[i].publication.unpublishDate === null || currentDate < Date.parse(data.allWpMessage.nodes[i].publication.unpublishDate + "T00:00:00")) ) {
       returnData.push(data.allWpMessage.nodes[i])
     }
     if (returnData.length === numOfItems) {
