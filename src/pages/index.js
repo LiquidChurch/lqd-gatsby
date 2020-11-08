@@ -23,7 +23,7 @@ export default ({
 
  const ctx = useContext(GlobalContext)
   useEffect(() => {
-    ctx.setTheme("Dark")
+    ctx.setTheme("dark")
     ctx.setPath(location.pathname)
     ctx.setDate(getDate(location.search))
   }, [ctx, location])
@@ -48,7 +48,105 @@ export const query = graphql`
         date
         title
         slug
+        themeState {
+          state
+        }
+        publication {
+          unpublishDate
+          publishDate
+        }
+        featuredImage {
+          node {
+            title
+            caption 
+            altText
+            description
+            sourceUrl
+            mediaItemUrl
+          }
+        }
+        pageImage {
+          image1 {
+            title
+            caption 
+            altText
+            description
+            sourceUrl
+            mediaItemUrl
+          }
+          image2 {
+            title
+            caption 
+            altText
+            description
+            sourceUrl
+            mediaItemUrl
+          }
+          image3 {
+            title
+            caption 
+            altText
+            description
+            sourceUrl
+            mediaItemUrl
+          }
+          image4 {
+            title
+            caption 
+            altText
+            description
+            sourceUrl
+            mediaItemUrl
+          }
+          image5 {
+            title
+            caption 
+            altText
+            description
+            sourceUrl
+            mediaItemUrl
+          }
+          image6 {
+            title
+            caption 
+            altText
+            description
+            sourceUrl
+            mediaItemUrl
+          }
+          image7 {
+            title
+            caption 
+            altText
+            description
+            sourceUrl
+            mediaItemUrl
+          }
+          image8 {
+            title
+            caption 
+            altText
+            description
+            sourceUrl
+            mediaItemUrl
+          }
+          image9 {
+            title
+            caption 
+            altText
+            description
+            sourceUrl
+            mediaItemUrl
+          }
+          image10 {
+            title
+            caption 
+            altText
+            description
+            sourceUrl
+            mediaItemUrl
+          }
+        }
       }
-    
-  }
+    }
 `

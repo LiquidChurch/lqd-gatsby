@@ -19,12 +19,9 @@ export default ({ bg_color,
                   padding,
                   block_title }) => {
   const messageInfo = useRecentMessages(1,getDate(useLocation().search))
-
-  if (messageInfo === undefined) {
-    return (
-    <>
-    </>
-    )
+  console.log('message tile block', messageInfo)
+  if (messageInfo === undefined || messageInfo[0] === undefined) {
+    return (<></>)
   }
 
   var imgUrl = messageInfo[0].featuredImage.node.sourceUrl.split("/")
