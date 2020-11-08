@@ -6,7 +6,7 @@ export const useRecentMessages = (numOfItems, currentDate) => {
       query {
           allWpMessage (
               limit: 100
-              sort: {fields: publication.publishDate, order: DESC}
+              sort: {fields: publication___publishDate, order: DESC}
             ) {
             nodes {
               id
