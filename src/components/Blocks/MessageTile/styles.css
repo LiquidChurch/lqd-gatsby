@@ -1,5 +1,5 @@
 .message-tile-section {
-  margin-bottom: 2em;
+  margin-bottom:12px;
 }
 
 .message-tile-image {
@@ -13,7 +13,7 @@
   position: absolute;
   bottom: 0em;
   border-radius: 0 0 0.8em 0.8em;
-  padding-left: 2.4em;
+  padding-left: 1.4em;
   padding-bottom: 2.4em;
   background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1));
   margin-left: 1em;
@@ -51,6 +51,9 @@
 }
 
 @media (max-width:991px) {
+  .message-tile-text-overlay {
+    font-size:smaller;
+  }
   .message-tile-image {
     height: auto;
     max-width: 660px;
@@ -60,28 +63,24 @@
   }
 }
 
-@media (max-width:575px) {
-  .message-tile-section {
-    margin-top:0em;
-    margin-bottom: 1.3em;
-  }
-  
-  .message-tile-image {
-   /* height: calc(90vw - 1.9em); */
-  }
-  
+@media (max-width:767px) {
   .message-tile-text-overlay {
     background:none;
     padding-left:0;
     padding-bottom:0;
-    top: 86vw;
+    top: 0;
+    position: relative;
+    height:95px;
+    margin-bottom:-40px;
+    left:9px;
     /* left: 1em;*/
   }
  
   .message-tile-btn-overlay {
-    bottom: 12px;
-    left: 1.5em;
+    bottom: 110px;
+    left: 29px;
     background: #009DD1;
+    position: relative;
   }
   
   .message-tile-title {
@@ -94,5 +93,7 @@
   
   .message-tile-series a {
     color: inherit;
-  }  
+  }    
 }
+
+

@@ -39,14 +39,14 @@ export default ({ bg_color,
       <Link to={"/messages/" + messageInfo[0].slug}>
       <Imgix 
         src={process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX] + "?ar=16:9&fit=crop&h=607"}
-        className="d-none d-sm-block message-tile-image"
+        className="d-none d-md-block message-tile-image"
         sizes="90vw" />
       <Imgix 
-        src={process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX] + "?ar=16:9&fit=crop&h=607"}
-        className="d-block d-sm-none message-tile-image"
+        src={process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX] + "?ar=1:1&fit=crop&h=607"}
+        className="d-block d-md-none message-tile-image"
         sizes="80vw" />
       </Link>
-      <div className="message-tile-text-overlay no-display">
+      <div className="message-tile-text-overlay">
         <h4 className="message-tile-title font-h1">{messageInfo[0].title}</h4>
         <div className="message-tile-series font-h2">
           <p>
