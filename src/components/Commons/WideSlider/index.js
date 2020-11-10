@@ -79,6 +79,7 @@ export default (props) => {
     
   useEffect(() => {
     function setWidth() {      
+      if (typeof(document.getElementById('content-slider-' + props.sliderId)) !== 'undefined') {
       setContentWidth(document.getElementById('content-slider-' + props.sliderId).offsetWidth)
 
       if (sliderWidth !== document.getElementById('component-slider-' + props.sliderId).offsetWidth) {
@@ -95,13 +96,14 @@ export default (props) => {
           setMarginLeft(marginLeft)
         }
       }
+      }
     }
     
     if (document.getElementById('content-slider-' + props.sliderId) != null) {
       setWidth()    
     }
     
-    window.addEventListener('resize', setWidth)  
+    window.addEventListener('resize', setWidth)
     
     return _ => {
       window.removeEventListener('resize', setWidth)
