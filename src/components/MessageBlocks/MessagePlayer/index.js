@@ -7,8 +7,7 @@ import './styles.css'
  * Message Player
  */
 export default ({message}) => {
-  console.log(message)
-  var videoUrl = message.url.split("/")
+  //console.log(message)
   
   const [dimensions, setDimensions] = useState({
     height: 0,
@@ -18,6 +17,7 @@ export default ({message}) => {
   let videoSrc = ""
   
   /**
+  var videoUrl = message.url.split("/")
   switch(videoUrl[2]) {
     case 'vimeo.com':
       videoSrc = 'https://player.vimeo.com/video/' + videoUrl[3]
