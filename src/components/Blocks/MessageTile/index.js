@@ -19,7 +19,7 @@ export default ({ bg_color,
                   padding,
                   block_title }) => {
   const messageInfo = useRecentMessages(1,getDate(useLocation().search))
-  console.log('message tile block', messageInfo)
+
   if (messageInfo === undefined || messageInfo[0] === undefined) {
     return (<></>)
   }

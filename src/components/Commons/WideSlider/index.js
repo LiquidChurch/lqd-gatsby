@@ -26,6 +26,7 @@ export default (props) => {
   
   const RenderRightArrow = () => {
     const remainingWidth = contentWidth - (sliderWidth) - currentMarginLeft;
+
     if (remainingWidth > 0) {
       return (
         <button className="caret caret-right" onClick={handleRightClicked}>
@@ -37,6 +38,7 @@ export default (props) => {
   }
 
   const RenderLeftArrow = () => {
+
     if (currentMarginLeft > 0) {
       return (
         <button className="caret caret-left" onClick={handleLeftClicked}>
@@ -78,8 +80,12 @@ export default (props) => {
   
     
   useEffect(() => {
-    function setWidth() {      
-      if (typeof(document.getElementById('content-slider-' + props.sliderId)) !== 'undefined') {
+    function setWidth() {
+
+      if (typeof(document.getElementById('content-slider-' + props.sliderId)) === 'undefined' || document.getElementById('content-slider-' + props.sliderId) === null) {
+        return
+      }
+      
       setContentWidth(document.getElementById('content-slider-' + props.sliderId).offsetWidth)
 
       if (sliderWidth !== document.getElementById('component-slider-' + props.sliderId).offsetWidth) {
@@ -96,17 +102,18 @@ export default (props) => {
           setMarginLeft(marginLeft)
         }
       }
-      }
     }
     
-    if (document.getElementById('content-slider-' + props.sliderId) != null) {
-      setWidth()    
+    let timeoutId = null;
+    const resizeListener = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {setWidth()}, 150)
     }
-    
-    window.addEventListener('resize', setWidth)
-    
+    setWidth()
+    window.addEventListener('resize', resizeListener)
+
     return _ => {
-      window.removeEventListener('resize', setWidth)
+      window.removeEventListener('resize', resizeListener)
     }
   })
  
