@@ -38,6 +38,8 @@ export const useRecentMessages = (numOfItems, currentDate) => {
               slug
               message {
                 url
+                vimeoId
+                youtubeId
               }        
               featuredImage {
                 node {

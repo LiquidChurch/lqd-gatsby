@@ -54,7 +54,6 @@ export const useSeries = (seriesSlug, currentDate) => {
                     slug
                   }
                 }
-
                 seriesList {
                   nodes {
                     name

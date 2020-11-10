@@ -7,6 +7,7 @@ import './styles.css'
  * Message Player
  */
 export default ({message}) => {
+  console.log(message)
   var videoUrl = message.url.split("/")
   
   const [dimensions, setDimensions] = useState({
@@ -15,6 +16,8 @@ export default ({message}) => {
   })
 
   let videoSrc = ""
+  
+  /**
   switch(videoUrl[2]) {
     case 'vimeo.com':
       videoSrc = 'https://player.vimeo.com/video/' + videoUrl[3]
@@ -24,6 +27,13 @@ export default ({message}) => {
       break
     default:
       break
+  }
+  */
+  
+  if (message.youtubeId !== null) {
+    videoSrc = 'https://www.youtube.com/embed/' + message.youtubeId
+  } else {
+    videoSrc = 'https://player.vimeo.com/video/' + message.vimeoId
   }
   
   useEffect(() => {

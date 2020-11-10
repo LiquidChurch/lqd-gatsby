@@ -61,7 +61,7 @@ export default (lqdmMessage) => {
     }
   }
   
-  if (lqdmMessage.resources.resource1.resourceType === null) {
+  if (lqdmMessage.resources.resource1.url === null) {
     return null
   } 
   

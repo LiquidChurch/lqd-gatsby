@@ -87,6 +87,8 @@ export const query = graphql`
       slug
       message {
         url
+        vimeoId
+        youtubeId        
       }        
       featuredImage {
         node {

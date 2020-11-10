@@ -35,6 +35,8 @@ export const useMessageById = (messageId, currentDate) => {
               slug
               message {
                 url
+                vimeoId
+                youtubeId
               }        
               featuredImage {
                 node {
