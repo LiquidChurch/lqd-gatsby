@@ -77,16 +77,12 @@ export default (props) => {
 
     setMarginLeft(marginLeft)
   }
-  
     
   useEffect(() => {
     function setWidth() {
-      console.log('set width')
-
       let contentOffsetWidth = 0
       let componentOffsetWidth = 0
       
-      console.log(document.getElementById('content-slider-' + props.sliderId))
       if (document.getElementById('content-slider-' + props.sliderId) !== null) {
         contentOffsetWidth = document.getElementById('content-slider-' + props.sliderId).offsetWidth
       } else {
@@ -95,7 +91,6 @@ export default (props) => {
       
       setContentWidth(contentOffsetWidth)
       
-      console.log(document.getElementById('component-slider-' + props.sliderId))
       if (document.getElementById('component-slider-' + props.sliderId) !== null) {
         componentOffsetWidth = document.getElementById('component-slider-' + props.sliderId).offsetWidth
       } else {
