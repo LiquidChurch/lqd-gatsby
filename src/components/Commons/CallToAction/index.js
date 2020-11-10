@@ -25,8 +25,8 @@ const CallToAction = ({
   let pageInfo = usePageById(pageId)
 
   const currentDate = getDate(useLocation().search)
-  if ((pageInfo.publication.publishDate === null || currentDate >= Date.parse(pageInfo.publication.publishDate)) &&
-      (pageInfo.publication.unpublishDate === null || currentDate < Date.parse(pageInfo.publication.unpublishDate))) {
+  if ((pageInfo.publication.publishDate === null || currentDate >= Date.parse(pageInfo.publication.publishDate.replace(/\s/g, 'T'))) &&
+      (pageInfo.publication.unpublishDate === null || currentDate < Date.parse(pageInfo.publication.unpublishDate.replace(/\s/g, 'T')))) {
   } else {
     return (<></>)
   }

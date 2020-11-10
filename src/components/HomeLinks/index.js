@@ -21,7 +21,7 @@ export default ({ page_list, background_color }) => {
         {obj_page_slug_list.rows.map(item => {
           return (
               <HomeLink
-                page_slug_id={item.page_slug.id}>
+                page_slug_id={item.page_slug.id} key={item.page_slug.id}>
               </HomeLink>
           )
         })}

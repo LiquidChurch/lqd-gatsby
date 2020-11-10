@@ -84,8 +84,8 @@ export const useMessageById = (messageId, currentDate) => {
 
   if (messagePageInfo !== undefined) {
     messagePageInfo["category"] = "messages"
-    if ( (messagePageInfo.publication.publishDate === null || currentDate >= Date.parse(messagePageInfo.publication.publishDate)) &&
-         (messagePageInfo.publication.unpublishDate === null || currentDate < Date.parse(messagePageInfo.publication.unpublishDate)) ) {
+    if ( (messagePageInfo.publication.publishDate === null || currentDate >= Date.parse(messagePageInfo.publication.publishDate.replace(/\s/g, 'T'))) &&
+         (messagePageInfo.publication.unpublishDate === null || currentDate < Date.parse(messagePageInfo.publication.unpublishDate.replace(/\s/g, 'T'))) ) {
       return messagePageInfo
     }
   }

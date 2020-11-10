@@ -80,8 +80,8 @@ export const useSeries = (seriesSlug, currentDate) => {
     seriesPageInfo["category"] = "messages"
     
     for (let i=0; i < seriesPageInfo.messages.nodes.length; i++) {
-      if ( (seriesPageInfo.messages.nodes[i].publication.publishDate === null || currentDate >= Date.parse(seriesPageInfo.messages.nodes[i].publication.publishDate)) &&
-           (seriesPageInfo.messages.nodes[i].publication.unpublishDate === null || currentDate < Date.parse(seriesPageInfo.messages.nodes[i].publication.unpublishDate)) ) {
+      if ( (seriesPageInfo.messages.nodes[i].publication.publishDate === null || currentDate >= Date.parse(seriesPageInfo.messages.nodes[i].publication.publishDate.replace(/\s/g, 'T'))) &&
+           (seriesPageInfo.messages.nodes[i].publication.unpublishDate === null || currentDate < Date.parse(seriesPageInfo.messages.nodes[i].publication.unpublishDate.replace(/\s/g, 'T'))) ) {
       } else {
         seriesPageInfo.messages.nodes.splice(i, 1)
       }

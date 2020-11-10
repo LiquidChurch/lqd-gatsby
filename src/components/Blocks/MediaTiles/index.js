@@ -122,7 +122,7 @@ function MediaDataTransformer(props) {
       return null
     }
     const formatter = new Intl.DateTimeFormat('en-US', { month: 'short',  day: 'numeric',   year: 'numeric'});
-    let formattedDate =  formatter.format(new Date(item.publication.publishDate)).toUpperCase();
+    let formattedDate =  formatter.format(new Date(item.publication.publishDate.replace(/\s/g, 'T'))).toUpperCase();
 
     let attributions = "Liquid Church"
 

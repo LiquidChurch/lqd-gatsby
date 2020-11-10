@@ -101,8 +101,8 @@ export default ({
   let pageInfo = {}
   if (objPage !== null && objPage.id !== 0) {
     pageInfo = useFeaturedImage(objPage.id)
-    if ((pageInfo.publication.publishDate === null || currentDate >= Date.parse(pageInfo.publication.publishDate)) &&
-      (pageInfo.publication.unpublishDate === null || currentDate < Date.parse(pageInfo.publication.unpublishDate))) {
+    if ((pageInfo.publication.publishDate === null || currentDate >= Date.parse(pageInfo.publication.publishDate.replace(/\s/g, 'T'))) &&
+      (pageInfo.publication.unpublishDate === null || currentDate < Date.parse(pageInfo.publication.unpublishDate.replace(/\s/g, 'T')))) {
     } else {
       return (<></>)
     }
@@ -134,8 +134,8 @@ export default ({
   if (objDropdown !== null && objDropdown.rows.length !== 0) {
     objDropdown.rows.forEach((object) => {
       let temp = useFeaturedImage(object.page.id) 
-      if ((temp.publication.publishDate === null || currentDate >= Date.parse(temp.publication.publishDate)) &&
-          (temp.publication.unpublishDate === null || currentDate < Date.parse(temp.publication.unpublishDate))) {
+      if ((temp.publication.publishDate === null || currentDate >= Date.parse(temp.publication.publishDate.replace(/\s/g, 'T'))) &&
+          (temp.publication.unpublishDate === null || currentDate < Date.parse(temp.publication.unpublishDate.replace(/\s/g, 'T')))) {
         temp["text"]=object.text
         dropdownItemList.push(temp)
       } 

@@ -33,8 +33,8 @@ export default ({
  
   series.messages.nodes.forEach(message => {
     
-    if ( (message.publication.publishDate === null || currentDate >= Date.parse(message.publication.publishDate)) &&
-         (message.publication.unpublishDate === null || currentDate < Date.parse(message.publication.unpublishDate)) ) {
+    if ( (message.publication.publishDate === null || currentDate >= Date.parse(message.publication.publishDate.replace(/\s/g, 'T'))) &&
+         (message.publication.unpublishDate === null || currentDate < Date.parse(message.publication.unpublishDate.replace(/\s/g, 'T'))) ) {
     
       let attributions = "Liquid Church" 
 
@@ -47,7 +47,7 @@ export default ({
       })
 
       const formatter = new Intl.DateTimeFormat('en-US', { month: 'short',  day: 'numeric',   year: 'numeric'});
-      const formattedDate =  formatter.format(new Date(message.publication.publishDate));
+      const formattedDate =  formatter.format(new Date(message.publication.publishDate.replace(/\s/g, 'T')));
 
       let profileImgSrc = process.env.LOGO_IMG
       if (message.attributions.nodes.length !== 0) {

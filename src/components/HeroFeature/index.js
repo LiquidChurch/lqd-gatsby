@@ -9,8 +9,14 @@ import './styles.css'
  * Hero - Feature Component
  */
 export default (props) => {
+  console.log('hero feature component')
   var imgUrl = props.featuredImage.node.sourceUrl.split("/")
-  
+  let messageDate = ""
+  if (props.publication.publishDate !== null) {
+    messageDate = props.publication.publishDate.replace(/\s/g, 'T')
+  } else {
+    messageDate = props.date
+  }
   return (
     <section className="fullwidth-section">
     <Container className={'hero-image-container-fixed'}>
@@ -21,7 +27,7 @@ export default (props) => {
           sizes="100vw" />
       </Row>
       <TitleBlock 
-        date={props.publication.publishDate}
+        date={messageDate}
         attributions={props.attributions}
         attributionsCo={props.attributionCo}
         title={props.title}

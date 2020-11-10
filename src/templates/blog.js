@@ -23,8 +23,8 @@ export default ({
   const ctx = useContext(GlobalContext)
   
   var pageValid = false
-  if ( (blog.publication.publishDate === null || getDate(location.search) >= Date.parse(blog.publication.publishDate)) &&
-       (blog.publication.unpublishDate === null || getDate(location.search) < Date.parse(blog.publication.unpublishDate)) ) {
+  if ( (blog.publication.publishDate === null || getDate(location.search) >= Date.parse(blog.publication.publishDate.replace(/\s/g, 'T'))) &&
+       (blog.publication.unpublishDate === null || getDate(location.search) < Date.parse(blog.publication.unpublishDate.replace(/\s/g, 'T'))) ) {
     pageValid = true
   }
   

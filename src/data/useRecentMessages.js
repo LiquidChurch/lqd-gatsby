@@ -6,7 +6,7 @@ export const useRecentMessages = (numOfItems, currentDate) => {
       query {
           allWpMessage (
               limit: 100
-              sort: {fields: publication___publishDate, order: DESC}
+              sort: {fields: date, order: DESC}
             ) {
             nodes {
               id
@@ -85,14 +85,13 @@ export const useRecentMessages = (numOfItems, currentDate) => {
   let i
   for (i = 0; i < data.allWpMessage.nodes.length ; i++) {
     data.allWpMessage.nodes[i].category="messages"
-    if ( (data.allWpMessage.nodes[i].publication.publishDate === null || currentDate >= Date.parse(data.allWpMessage.nodes[i].publication.publishDate)) &&
-         (data.allWpMessage.nodes[i].publication.unpublishDate === null || currentDate < Date.parse(data.allWpMessage.nodes[i].publication.unpublishDate)) ) {
+    if ( (data.allWpMessage.nodes[i].publication.publishDate === null || currentDate >= Date.parse(data.allWpMessage.nodes[i].publication.publishDate.replace(/\s/g, 'T'))) &&
+         (data.allWpMessage.nodes[i].publication.unpublishDate === null || currentDate < Date.parse(data.allWpMessage.nodes[i].publication.unpublishDate.replace(/\s/g, 'T'))) ) {
       returnData.push(data.allWpMessage.nodes[i])
     }
     if (returnData.length === numOfItems) {
       break
     }
   }
-  
   return returnData
 }

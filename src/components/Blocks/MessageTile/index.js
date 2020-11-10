@@ -18,9 +18,11 @@ import "./styles.css"
 export default ({ bg_color,
                   padding,
                   block_title }) => {
+  console.log('message tile block component')
   const messageInfo = useRecentMessages(1,getDate(useLocation().search))
 
   if (messageInfo === undefined || messageInfo[0] === undefined) {
+    console.log('message not found')
     return (<></>)
   }
 

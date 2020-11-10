@@ -33,7 +33,7 @@ export default (lqdmMessage) => {
     })
 
     const formatter = new Intl.DateTimeFormat('en-US', { month: 'short',  day: 'numeric',   year: 'numeric'});
-    const formattedDate =  formatter.format(new Date(message.publication.publishDate));
+    const formattedDate =  formatter.format(new Date(message.publication.publishDate.replace(/\s/g, 'T')));
 
     let profileImgSrc = process.env.LOGO_IMG
     if (message.attributions.nodes.length !== 0) {

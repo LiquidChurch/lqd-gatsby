@@ -15,8 +15,8 @@ export default ({ page_slug_id }) => {
   }
 
   const currentDate = getDate(useLocation().search)
-  if ((page_info.publication.publishDate === null || currentDate >= Date.parse(page_info.publication.publishDate)) &&
-      (page_info.publication.unpublishDate === null || currentDate < Date.parse(page_info.publication.unpublishDate))) {
+  if ((page_info.publication.publishDate === null || currentDate >= Date.parse(page_info.publication.publishDate.replace(/\s/g, 'T'))) &&
+      (page_info.publication.unpublishDate === null || currentDate < Date.parse(page_info.publication.unpublishDate.replace(/\s/g, 'T')))) {
   } else {
     return (<></>)
   }

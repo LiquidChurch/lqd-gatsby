@@ -78,8 +78,8 @@ export const useRecentBlogs = (numOfItems, currentDate) => {
   let returnData = []
   for (let i = 0; i < data.allWpBlog.nodes.length ; i++) {
     data.allWpBlog.nodes[i].category="blogs"
-    if ( (data.allWpBlog.nodes[i].publication.publishDate === null || currentDate >= Date.parse(data.allWpBlog.nodes[i].publication.publishDate) ) &&
-         (data.allWpBlog.nodes[i].publication.unpublishDate === null || currentDate < Date.parse(data.allWpBlog.nodes[i].publication.unpublishDate) )) {
+    if ( (data.allWpBlog.nodes[i].publication.publishDate === null || currentDate >= Date.parse(data.allWpBlog.nodes[i].publication.publishDate.replace(/\s/g, 'T')) ) &&
+         (data.allWpBlog.nodes[i].publication.unpublishDate === null || currentDate < Date.parse(data.allWpBlog.nodes[i].publication.unpublishDate.replace(/\s/g, 'T')) )) {
 
       returnData.push(data.allWpBlog.nodes[i])
     }

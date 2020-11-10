@@ -22,8 +22,8 @@ export default ({
   const generalSettings = useGeneralSettings()
   const ctx = useContext(GlobalContext)
   var pageValid = false
-  if ( (page.publication.publishDate === null || getDate(location.search) >= Date.parse(page.publication.publishDate)) &&
-       (page.publication.unpublishDate === null || getDate(location.search) < Date.parse(page.publication.unpublishDate)) ) {
+  if ( (page.publication.publishDate === null || getDate(location.search) >= Date.parse(page.publication.publishDate.replace(/\s/g, 'T'))) &&
+       (page.publication.unpublishDate === null || getDate(location.search) < Date.parse(page.publication.unpublishDate.replace(/\s/g, 'T'))) ) {
     pageValid = true
   }
  //  ctx.setDate(getDate(location.search))
