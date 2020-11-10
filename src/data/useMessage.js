@@ -34,7 +34,6 @@ export const useMessageById = (messageId, currentDate) => {
               date
               slug
               message {
-                url
                 vimeoId
                 youtubeId
               }        

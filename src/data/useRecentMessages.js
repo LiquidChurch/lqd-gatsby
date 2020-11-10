@@ -37,7 +37,6 @@ export const useRecentMessages = (numOfItems, currentDate) => {
               date
               slug
               message {
-                url
                 vimeoId
                 youtubeId
               }        

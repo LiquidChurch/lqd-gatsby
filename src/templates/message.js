@@ -86,7 +86,6 @@ export const query = graphql`
       date
       slug
       message {
-        url
         vimeoId
         youtubeId        
       }        
