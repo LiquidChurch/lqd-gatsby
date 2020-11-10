@@ -81,16 +81,30 @@ export default (props) => {
     
   useEffect(() => {
     function setWidth() {
+      console.log('set width')
 
-      if (typeof(document.getElementById('content-slider-' + props.sliderId)) === 'undefined' || document.getElementById('content-slider-' + props.sliderId) === null) {
+      let contentOffsetWidth = 0
+      let componentOffsetWidth = 0
+      
+      console.log(document.getElementById('content-slider-' + props.sliderId))
+      if (document.getElementById('content-slider-' + props.sliderId) !== null) {
+        contentOffsetWidth = document.getElementById('content-slider-' + props.sliderId).offsetWidth
+      } else {
         return
       }
       
-      setContentWidth(document.getElementById('content-slider-' + props.sliderId).offsetWidth)
+      setContentWidth(contentOffsetWidth)
+      
+      console.log(document.getElementById('component-slider-' + props.sliderId))
+      if (document.getElementById('component-slider-' + props.sliderId) !== null) {
+        componentOffsetWidth = document.getElementById('component-slider-' + props.sliderId).offsetWidth
+      } else {
+        return
+      }
 
-      if (sliderWidth !== document.getElementById('component-slider-' + props.sliderId).offsetWidth) {
-        const sliderDifference = (document.getElementById('component-slider-' + props.sliderId).offsetWidth) - sliderWidth
-        setSliderWidth(document.getElementById('component-slider-' + props.sliderId).offsetWidth)
+      if (sliderWidth !== componentOffsetWidth) {
+        const sliderDifference = componentOffsetWidth - sliderWidth
+        setSliderWidth(componentOffsetWidth)
         
         let marginLeft
         
