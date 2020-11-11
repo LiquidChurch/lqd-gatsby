@@ -122,8 +122,15 @@ function MediaDataTransformer(props) {
       return null
     }
     const formatter = new Intl.DateTimeFormat('en-US', { month: 'short',  day: 'numeric',   year: 'numeric'});
-    let formattedDate =  formatter.format(new Date(item.publication.publishDate.replace(/\s/g, 'T'))).toUpperCase();
+    
+    let formattedDate = ""
 
+    if (item.publication.publishDate !== null) {
+      let formattedDate = formatter.format(new Date(item.publication.publishDate.replace(/\s/g, 'T'))).toUpperCase();    
+    } else {
+      let formattedDate = formatter.format(new Date(item.date)).toUpperCase();          
+    }
+    
     let attributions = "Liquid Church"
 
     item.attributions.nodes.forEach(item => {
