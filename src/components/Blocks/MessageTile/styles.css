@@ -2,6 +2,9 @@
   margin-bottom:12px;
 }
 
+.message-tile {
+  height:fit-content;
+}
 .message-tile-image {
   border-radius: 0.8em;
   box-shadow: 0px 3px 6px #00000029;
@@ -53,7 +56,10 @@
 @media (max-width:991px) {
   .message-tile-text-overlay {
     font-size:smaller;
+    margin-left: 1.2em;
+    width: calc(100% - 2.2em);
   }
+  
   .message-tile-image {
     height: auto;
     max-width: 660px;

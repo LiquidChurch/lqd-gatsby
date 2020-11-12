@@ -21,7 +21,8 @@ function AddHR(props) {
  /**
  * Header Component
  */
-export default ({ 
+export default ({
+    keyValue,
     text, 
     alignment, 
     size, 
@@ -36,10 +37,11 @@ export default ({
   if (all_caps) {
     textTransform = "uppercase"
   }
+  let headerId = Math.random().toString(36).substring(2, 7) + Math.random().toString(36).substring(2, 7)
   return (
   <>
-    <section className={'site-section ' + padding} style={{backgroundColor: bg_color}}>
-      <Container className={add_padding ? "heading-container text-padding" : "heading-container"}>
+    <section className={'site-section ' + padding} style={{backgroundColor: bg_color}} key={'section-' + keyValue}>
+      <Container className={add_padding ? "heading-container text-padding" : "heading-container"} key={'container-' + keyValue}>
         <Row>
           <Col>
             <h2 className={'statement ' + size + ' align-' + alignment}

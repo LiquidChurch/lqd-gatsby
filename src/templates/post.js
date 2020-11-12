@@ -31,7 +31,7 @@ export default ({
       <Helmet titleTemplate={`%s | ${generalSettings.title}`}>
         <title>{Parse(post.title)}</title>
       </Helmet>
-      <article className="post">
+      <article className="page">
         <HeroFeature {...post} />
         <PageBlocks {...post} />
       </article>

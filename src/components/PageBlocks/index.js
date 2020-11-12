@@ -61,9 +61,9 @@ export default ({ blocks, featuredImage }) => {
             if (!Component) {
               return null
             }
-
+            data.keyValue=`${data.name}-${index}`
             return (
-              <Component key={`${data.name}-${index}`} {...data.attributes} />
+              <Component key={data.keyValue} {...data.attributes} />
             )
           })}
 

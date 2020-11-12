@@ -186,6 +186,47 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   }
   
   
+  // CreatePage for Blog
+  const jobResult = await graphql(
+    `
+      query {
+        allWpJob {
+          nodes {
+            id
+            slug
+            title
+          }
+        }
+      }
+    `
+  )
+
+  if (jobResult.errors) {
+    reporter.panicOnBuild(`Error while running GraphQL query on Messages.`)
+    return
+  }
+
+  let endJob = false
+  
+  do {
+    if (jobResult.data.allWpJob.nodes) {
+      jobResult.data.allWpJob.nodes.forEach(job => {
+        createPage({
+          path: `/jobs/${job.slug}`,
+          component: slash(path.resolve(`./src/templates/job.js`)),
+          context: {
+            id: job.id,
+          },
+        })
+      })
+      endJob = true;
+    }
+  }
+  while(!endJob)
+    
+    
+
+    
   /*
   // Query for Images
   const mediaItemResult = await graphql(

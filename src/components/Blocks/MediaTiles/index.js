@@ -72,13 +72,12 @@ function UseSlider(props) {
   }
   
   // check for null item
-  const randomId = Math.random().toString().substr(2, 5)
   if (props.displayType === "slider") {
     return (
-      <WideSlider sliderId={randomId} touchEnabled={props.touchEnabled}>
-        {props.mediaLists.map(item => {
+      <WideSlider sliderId={'slider-' + props.keyValue} touchEnabled={props.touchEnabled}>
+        {props.mediaLists.map((item, index) => {
           return (
-              <MediaCard mediaItem={item} key={'Media-lists-' + item.id} />
+              <MediaCard mediaItem={item} key={'media-lists-' + props.keyValue + '-' + index} />
           )
         })}
       </WideSlider>
@@ -89,9 +88,9 @@ function UseSlider(props) {
       <>
       <Row>
         <Col className="media-card-wrap">
-        {items.map(item => {
+        {items.map((item, index) => {
           return (
-              <MediaCard mediaItem={item} key={'Media-lists-' + item.id} />
+              <MediaCard mediaItem={item} key={'media-lists-' + props.keyValue + '-' + index} />
           )
         })}
         </Col>
@@ -126,9 +125,9 @@ function MediaDataTransformer(props) {
     let formattedDate = ""
 
     if (item.publication.publishDate !== null) {
-      let formattedDate = formatter.format(new Date(item.publication.publishDate.replace(/\s/g, 'T'))).toUpperCase();    
+      formattedDate = formatter.format(new Date(item.publication.publishDate.replace(/\s/g, 'T'))).toUpperCase();    
     } else {
-      let formattedDate = formatter.format(new Date(item.date)).toUpperCase();          
+      formattedDate = formatter.format(new Date(item.date)).toUpperCase();          
     }
     
     let attributions = "Liquid Church"
@@ -189,6 +188,7 @@ function MediaDataTransformer(props) {
  * MediaTiles
  */
 export default ({
+    keyValue,
     show_attribution,
     media_list,
     num_items,
@@ -258,12 +258,13 @@ export default ({
         
   return (
   <>
-    <section className={'site-section media-cards ' + padding} style={{backgroundColor: bg_color}}>
-      <Container>
+    <section className={'site-section media-cards ' + padding} style={{backgroundColor: bg_color}} key={'section-' + keyValue}>
+      <Container key={'container-' + keyValue}>
         <UseSlider
           touchEnabled = {ctx.touchEnabled}
           displayType = {display_type}
           mediaLists = {mediaLists}
+          keyValue = {keyValue}
         />
       </Container>
     </section>

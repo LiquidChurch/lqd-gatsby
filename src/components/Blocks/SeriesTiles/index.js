@@ -37,6 +37,7 @@ function SeriesCard(props) {
  * Series Tiles Block Component
  */
 export default ({
+  keyValue,
   type,
   num_items,
   exclude_id,
@@ -99,13 +100,13 @@ export default ({
   
   return (
   <>
-    <section className={'site-section media-cards ' + padding} style={{backgroundColor: bg_color}}>
-    <Container>
+    <section className={'site-section media-cards ' + padding} style={{backgroundColor: bg_color}} key={'section-' + keyValue}>
+    <Container key={'container-' + keyValue}>
       <Row>
         <Col ref={divRef} className="series-card-wrap">
-        {series.map(item => {
+        {series.map((item, index) => {
             return (
-              <SeriesCard mediaItem={item} key={'series-lists-' + item.id} />
+              <SeriesCard mediaItem={item} key={'series-lists-' + item.id + '-' + index} />
             )
           })}
         </Col>

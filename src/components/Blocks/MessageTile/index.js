@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Imgix from 'react-imgix'
 import { Link } from 'gatsby'
 import { useLocation } from '@reach/router';
@@ -12,53 +12,87 @@ import { useRecentMessages } from "../../../data/useRecentMessages"
 
 import "./styles.css"
 
-/** 
- * Message Tile Block Component
- */
-export default ({ bg_color,
-                  padding,
-                  block_title }) => {
-  console.log('message tile block component')
-  const messageInfo = useRecentMessages(1,getDate(useLocation().search))
-
-  if (messageInfo === undefined || messageInfo[0] === undefined) {
-    console.log('message not found')
-    return (<></>)
-  }
-
-  var imgUrl = messageInfo[0].featuredImage.node.sourceUrl.split("/")
-  var partNumber = ""
-  if (messageInfo[0].seriesPart.part !== "") {
-    partNumber = " · Part " + messageInfo[0].seriesPart.part
-  }
-  
+function MessageImage(props) {
   return (
-  <>
-  <section className={'site-section message-tile-section ' + padding} style={{backgroundColor: bg_color}} >
-  <Container>
-    <Row>
-      <Col>
-      <Link to={"/messages/" + messageInfo[0].slug}>
+    <>
+      <Link to={"/messages/" + props.messageSlug}>
       <Imgix 
-        src={process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX] + "?ar=16:9&fit=crop&h=607"}
+        src={process.env.IMGIX_URL + props.imageUrl + "?ar=16:9&fit=crop&h=607"}
         className="d-none d-md-block message-tile-image"
         sizes="90vw" />
       <Imgix 
-        src={process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX] + "?ar=1:1&fit=crop&h=607"}
+        src={process.env.IMGIX_URL + props.imageUrl + "?ar=1:1&fit=crop&h=607"}
         className="d-block d-md-none message-tile-image"
-        sizes="80vw" />
+        sizes="90vw" />
       </Link>
+    </>
+  )
+}
+/** 
+ * Message Tile Block Component
+ */
+export default ({ keyValue,
+                  bg_color,
+                  padding }) => {
+  console.log('message tile block component')
+  const [imgUrl, setImgUrl] = useState("")
+  const [imgLoaded, setImgLoaded] = useState(false)
+  
+  let messageInfo = useRecentMessages(1, getDate(useLocation().search))
+
+  if (messageInfo === undefined || messageInfo[0] === undefined) {
+    console.log('image url not loaded')
+  } else {
+    if (!imgLoaded) {
+      console.log('loading image url', messageInfo[0].featuredImage.node.sourceUrl)
+      let imgArray = messageInfo[0].featuredImage.node.sourceUrl.split('/')
+      
+      setImgUrl(imgArray[process.env.IMG_DIR_INDEX] + "/" + imgArray[process.env.IMG_FILE_INDEX])
+      setImgLoaded(true)
+    }
+  }
+
+  let partNumber = ""
+  let messageTitle = ""
+  let messageSlug = ""
+  let seriesSlug = ""
+  let seriesTitle = ""
+  
+  if (imgLoaded) {
+    if (messageInfo[0].seriesPart.part !== "") {
+      partNumber = " · Part " + messageInfo[0].seriesPart.part
+    }
+    messageTitle = messageInfo[0].title
+    messageSlug = messageInfo[0].slug
+    seriesTitle = messageInfo[0].seriesList.nodes[0].name
+    seriesSlug = messageInfo[0].seriesList.nodes[0].slug
+  }
+  console.log('message tile image url', imgUrl)
+  return (
+  <>
+  <section className={'site-section message-tile-section ' + padding} style={{backgroundColor: bg_color}} key={'section-' + keyValue}>
+  <Container key={'container-' + keyValue}>
+    <Row>
+      <Col>
+    <div className="message-tile">
+      {imgLoaded && 
+        <MessageImage
+          messageSlug = {messageSlug}
+          imageUrl = {imgUrl}
+        />
+      }
+    </div>
       <div className="message-tile-text-overlay">
-        <h4 className="message-tile-title font-h1">{messageInfo[0].title}</h4>
+        <h4 className="message-tile-title font-h1">{messageTitle}</h4>
         <div className="message-tile-series font-h2">
           <p>
-            <Link to={'/series/' + messageInfo[0].seriesList.nodes[0].slug}>{messageInfo[0].seriesList.nodes[0].name}</Link>{partNumber}
+            <Link to={'/series/' + seriesSlug}>{seriesTitle}</Link>{partNumber}
           </p>
         </div>
       </div>
       <Link
         className="btn font-btn-large message-tile-btn-overlay"
-        to={"/messages/" + messageInfo[0].slug}
+        to={"/messages/" + messageSlug}
       > 
         <PlayArrow style={{fill:"#fff;"}} /> Watch
       </Link>

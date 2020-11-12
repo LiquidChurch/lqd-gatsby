@@ -1,0 +1,59 @@
+.job-card {
+  position: relative;
+  min-width: 0;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: 16px;
+  margin-bottom: 12px;
+}
+
+.job-card:hover {
+  background:rgba(0,0,0,0.125);
+}
+
+.job-link a:hover {
+  text-decoration:none;
+}
+
+.job-card-body {
+  display: flex;
+  flex-direction: row;
+  margin: 1em 1em;
+}
+
+.job-title {
+  font-size: 1.3em;
+  font-family: "Avenir Next Demi";
+  color: #009DD1;
+  flex:auto;
+}
+
+.job-info {
+  flex:auto;
+  text-align: right;
+}
+
+.job-location {
+  font-size: 1em;  
+}
+
+.job-type {
+  font-size: 1em;
+  color:#f08d3c;
+  font-family: "Avenir Next Demi";
+}
+
+.job-post-length {
+  font-size: 1em;
+  color:#363636;
+}
+
+@media (max-width:575px) {
+  .job-card-body {
+    flex-direction: column;
+  }
+  .job-info {
+    text-align: left;
+  }
+}

@@ -93,5 +93,6 @@ export const useRecentMessages = (numOfItems, currentDate) => {
       break
     }
   }
+
   return returnData
 }
