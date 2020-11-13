@@ -68,6 +68,11 @@ const pageQuery = `
           slug
           content
           uri
+          terms {
+            nodes {
+              name
+            }
+          }
           featuredImage {
             node {
               sourceUrl
@@ -152,6 +157,7 @@ const queries = [
             title: node.title,
             blurb: featuredImageDesc(node.featuredImage),
             slug: node.uri,
+            terms: node.terms.nodes,
             imageUrl: featuredImageUrl(node.featuredImage)
           })),
         indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
