@@ -107,6 +107,14 @@ const featuredImageDesc = featuredImage => {
     return grabText(featuredImage.node.description)
   }
 }
+
+const pageSearchTerms = terms => {
+  if (terms === null) {
+    return ""
+  } else {
+    return terms.nodes
+  }
+}
 /** The transformer converts the GraphQL Query into a Algolia Record */
 const queries = [
     {
@@ -157,7 +165,7 @@ const queries = [
             title: node.title,
             blurb: featuredImageDesc(node.featuredImage),
             slug: node.uri,
-            terms: node.terms.nodes,
+            terms: pageSearchTerms(node.terms),
             imageUrl: featuredImageUrl(node.featuredImage)
           })),
         indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,

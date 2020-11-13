@@ -43,7 +43,10 @@ module.exports = {
         },
         type: {
           MediaItem: {
-            lazyNodes: false
+            lazyNodes: false,
+            localFile: {
+              excludeByMimeTypes: [`video/mp4`, `image/jpeg`, `image/png`]
+            },
           },
           Post: {
             limit:50
@@ -63,8 +66,8 @@ module.exports = {
           "**/categories",
           "**/posts",
           "**/blogs",
-          "**/pages",
           "**/media",
+          "**/pages",
           "**/series",
           "**/tags",
           "**/taxonomies",

@@ -58,14 +58,14 @@ export default ({
         id={'hero-text-area'}
         className={'hero-image-text-area-' + image_style.split(":")[0] + ' ' + color}
         style={ (image_style.split(":")[0] === "fixed") ? 
-                ( (textAreaPosition <= 60 ) ? 
-                    {background: 'none', bottom: (textAreaPosition) + 'px', marginBottom: (-10 - textAreaPosition) + 'px'} : 
+                ( (textAreaPosition <= 110 ) ? 
+                    {background: 'none', bottom: (textAreaPosition) + 'px', marginBottom: (49 - textAreaPosition) + 'px'} : 
                     {bottom: (textAreaPosition - 49) + 'px', marginBottom: (60 - textAreaPosition) + 'px'} ) :  
                 ( (image_style.split(":")[0] === 'filled') ? 
-                  ( (textAreaPosition <= 60) ? 
+                  ( (textAreaPosition <= 110) ? 
                       {background: 'none', bottom: textAreaPosition + 'px'} :
                       {bottom: textAreaPosition + 'px'} ) :
-                  ( (textAreaPosition <= 60) ?
+                  ( (textAreaPosition <= 110) ?
                       {background: 'none', bottom: textAreaPosition + 'px', marginBottom: (135 - textAreaPosition) + 'px'} :
                       {bottom: (textAreaPosition - 10)+ 'px', marginBottom: (135 - textAreaPosition) + 'px'} ) ) }
       >

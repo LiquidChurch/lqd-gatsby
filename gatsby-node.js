@@ -222,122 +222,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       endJob = true;
     }
   }
-  while(!endJob)
-    
-    
-
-    
-  /*
-  // Query for Images
-  const mediaItemResult = await graphql(
-    `
-      query {
-        allWpMediaItem {
-          nodes {
-            id
-            title
-            altText
-            caption
-            description
-            mediaItemUrl
-            sourceUrl
-            databaseId
-          }
-        }
-      }
-    `
-  )
-  
-  if (mediaItemResult.errors) {
-    reporter.panicOnBuild(`Error while running GraphQL query on Media Items.`)
-    return
-  }
-  
-  if (mediaItemResult.data.allWpMediaItem.nodes) {
-    mediaItemResult.data.allWpMediaItem.nodes.forEach(media => {
-      createPage({
-        path: `/mediaItem/${media.databaseId}`,
-        component: slash(path.resolve(`./src/templates/media.js`)),
-        context: {
-          id: media.id,
-        },
-      })
-    })
-  }  
-  
-  */
-  
-  // CreatePage for Tags
-  /*const tagsResult = await graphql(
-    `
-      query {
-        allWpTag {
-          nodes {
-            id
-            slug
-            name
-          }
-        }
-      }
-    `
-  )
-  
-  if (tagsResult.errors) {
-    reporter.panicOnBuild(`Error while running GraphQL query on Tags.`)
-    return
-  }
-  
-  if (tagsResult.data.allWpTag.nodes) {
-    tagsResult.data.allWpTag.nodes.forEach(tag=> {
-      createPage({
-        path: `/tags/${tag.slug}`,
-        component: slash(path.resolve(`./src/templates/tag.js`)),
-        context: {
-          id: tag.id,
-        },
-      })
-    })
-  } */  
+  while(!endJob)   
 }
-
-/**
- * Import featured images.
- 
-exports.createResolvers = async ({
-  actions: { createNode },
-  cache,
-  createNodeId,
-  createResolvers,
-  store,
-  reporter,
-}) => {
-  const field = {
-    localFile: {
-      type: `File`,
-      resolve: async source => {
-        let sourceUrl = source.url || source.mediaItemUrl || source.sourceUrl
-
-        return await createRemoteFileNode({
-          url: encodeURI(sourceUrl),
-          store,
-          cache,
-          createNode,
-          createNodeId,
-          reporter,
-        })
-      },
-    },
-  }
-
-  await createResolvers({
-    WpAvatar: field,
-    WpCoreImageBlockAttributes: field,
-    WpMediaItem: field,
-    WpCoreImageBlock: field,
-    WpUser: field,
-  })
-}
-*/
 
 
 exports.createResolvers = async (
@@ -358,11 +244,10 @@ exports.createResolvers = async (
         type: "File",
         async resolve(source) {
           let sourceUrl = source.sourceUrl
-
           if (source.mediaItemUrl !== undefined) {
             sourceUrl = source.mediaItemUrl
           }
-
+ 
           return await createRemoteFileNode({
             url: encodeURI(sourceUrl),
             store,

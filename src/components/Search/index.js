@@ -16,6 +16,7 @@ import './styles.css'
 
 const appId = process.env.GATSBY_ALGOLIA_APP_ID
 const searchKey = process.env.GATSBY_ALGOLIA_SEARCH_KEY
+const searchIndex = process.env.GATSBY_ALGOLIA_INDEX_NAME
 const searchClient = algoliasearch(appId, searchKey)
 
 export default(location) => {
@@ -33,7 +34,7 @@ export default(location) => {
       />
       <InstantSearch 
         searchClient={searchClient} 
-        indexName=process.env.GATSBY_ALGOLIA_INDEX_NAME
+        indexName={searchIndex}
       > 
         <section className="site-section bottom">
           <Container>
