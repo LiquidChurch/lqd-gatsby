@@ -33,7 +33,7 @@ export default(location) => {
       />
       <InstantSearch 
         searchClient={searchClient} 
-        indexName="Development"
+        indexName=process.env.GATSBY_ALGOLIA_INDEX_NAME
       > 
         <section className="site-section bottom">
           <Container>
@@ -63,8 +63,6 @@ const HitsTest = ({hits}) => {
   return (
   <>
     {hits.map(hit => {
-      console.log(hit)
-     
       const mediaItem = {
         category: hit.pageType,
         slug: hit.slug,
@@ -75,7 +73,6 @@ const HitsTest = ({hits}) => {
         showSeries: false,
         showAttribution: false
     }
-     console.log(mediaItem)
      return (
      <>
         <MediaCard

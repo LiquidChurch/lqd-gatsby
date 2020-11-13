@@ -34,17 +34,14 @@ function MessageImage(props) {
 export default ({ keyValue,
                   bg_color,
                   padding }) => {
-  console.log('message tile block component')
   const [imgUrl, setImgUrl] = useState("")
   const [imgLoaded, setImgLoaded] = useState(false)
   
   let messageInfo = useRecentMessages(1, getDate(useLocation().search))
 
   if (messageInfo === undefined || messageInfo[0] === undefined) {
-    console.log('image url not loaded')
   } else {
     if (!imgLoaded) {
-      console.log('loading image url', messageInfo[0].featuredImage.node.sourceUrl)
       let imgArray = messageInfo[0].featuredImage.node.sourceUrl.split('/')
       
       setImgUrl(imgArray[process.env.IMG_DIR_INDEX] + "/" + imgArray[process.env.IMG_FILE_INDEX])
@@ -67,7 +64,7 @@ export default ({ keyValue,
     seriesTitle = messageInfo[0].seriesList.nodes[0].name
     seriesSlug = messageInfo[0].seriesList.nodes[0].slug
   }
-  console.log('message tile image url', imgUrl)
+
   return (
   <>
   <section className={'site-section message-tile-section ' + padding} style={{backgroundColor: bg_color}} key={'section-' + keyValue}>

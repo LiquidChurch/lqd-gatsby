@@ -71,7 +71,6 @@ function ShowAttribution(props) {
 }
 
 export default (props) => {
-  console.log(props.mediaItem)
   if (props.mediaItem.image === undefined || props.mediaItem.image === null) {
     //var imgUrl = process.env.LOGO_IMG.split('/')
     return (<></>)

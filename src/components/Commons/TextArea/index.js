@@ -20,7 +20,7 @@ const TextArea = ({
   noMargin,
 }) => {
   const ctaObject = JSON.parse(cta)
-  console.log('text area ctaObject', ctaObject)
+
   let sidekickTop = true
   let ctaTop = true
   let hasStatement = false

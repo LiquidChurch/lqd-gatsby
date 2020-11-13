@@ -7,7 +7,6 @@ import './styles.css'
  * Message Player
  */
 export default ({message}) => {
-  //console.log(message)
   
   const [dimensions, setDimensions] = useState({
     height: 0,

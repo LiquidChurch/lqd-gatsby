@@ -16,7 +16,6 @@ export default () => {
   
   const jobLists = useJobs(getDate(useLocation().search))
   
-  console.log('jobLists', jobLists)
   return (
   <>
       <Heading

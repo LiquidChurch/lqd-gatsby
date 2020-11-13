@@ -9,7 +9,7 @@ import './styles.css'
  * Hero - Feature Component
  */
 export default (props) => {
-  console.log('hero feature component')
+
   var imgUrl = props.featuredImage.node.sourceUrl.split("/")
   let messageDate = ""
   if (props.publication.publishDate !== null) {
