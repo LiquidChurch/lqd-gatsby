@@ -7,7 +7,7 @@ const messageQuery = `
           content
           date
           slug
-          terms {
+          tags {
             nodes {
               name
             }
@@ -42,7 +42,7 @@ const blogQuery = `
           mediaBlurb {
             blurb
           }
-          terms {
+          tags {
             nodes {
               name
             }
@@ -66,7 +66,8 @@ const pageQuery = `
           id
           title
           slug
-          content          
+          content
+          uri
           featuredImage {
             node {
               sourceUrl
@@ -80,12 +81,27 @@ const pageQuery = `
 `
 
 const grabText = rawText => {
-  if (rawText === null) {
-    return null
+  if (rawText === null || rawText === undefined) {
+    return ""
   }
   return rawText.replace(/<[^>]*>?/gm, '')
 }
-  
+
+const featuredImageUrl = featuredImage => {
+  if (featuredImage === null) {
+    return null
+  } else {
+    return featuredImage.node.sourceUrl
+  }
+}
+
+const featuredImageDesc = featuredImage => {
+  if (featuredImage === null) {
+    return null
+  } else {
+    return grabText(featuredImage.node.description)
+  }
+}
 /** The transformer converts the GraphQL Query into a Algolia Record */
 const queries = [
     {
@@ -93,12 +109,12 @@ const queries = [
         transformer: ({ data }) => 
           data.allWpMessage.nodes.map((node) => ({
             objectID: node.id,
-            pageType: "message",
+            pageType: "messages",
             title: node.title,
             blurb: node.content.replace(/<[^>]*>?/gm, ''),
             date: node.date,
             slug: node.slug,
-            terms: node.terms.nodes,
+            terms: node.tags.nodes,
             imageUrl: node.featuredImage.node.sourceUrl,
             parentPage: node.seriesList.nodes[0].name
           })),
@@ -113,12 +129,12 @@ const queries = [
         transformer: ({ data }) => 
           data.allWpBlog.nodes.map((node) => ({
             objectID: node.id,
-            pageType: "blog",
+            pageType: "blogs",
             title: node.title,
             blurb: node.mediaBlurb.blurb,
             date: node.date,
             slug: node.slug,
-            terms: node.terms.nodes,
+            terms: node.tags.nodes,
             imageUrl: node.featuredImage.node.sourceUrl            
           })),
         indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
@@ -132,10 +148,11 @@ const queries = [
         transformer: ({ data }) => 
           data.allWpPage.nodes.map((node) => ({
             objectID: node.id,
-            pageType: "page",
+            pageType: "pages",
             title: node.title,
-            blurb: grabText(node.content),
-            slug: node.slug
+            blurb: featuredImageDesc(node.featuredImage),
+            slug: node.uri,
+            imageUrl: featuredImageUrl(node.featuredImage)
           })),
         indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
         enablePartialUpdates: true,

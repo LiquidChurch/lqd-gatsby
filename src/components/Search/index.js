@@ -1,23 +1,16 @@
 import React from 'react';
+import { Link } from 'gatsby'
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
-//import Col from 'react-bootstrap/Col'
-//import Card from 'react-bootstrap/Card'
-//import SectionHeader from '../SectionHeader'
+import Col from 'react-bootstrap/Col'
+import Card from 'react-bootstrap/Card'
 import Heading from '../Blocks/Heading'
 
+import MediaCard from '../Blocks/MediaTiles/mediaCard'
+
 import algoliasearch from 'algoliasearch/lite';
-import {
-    InstantSearch,
-//    Index,
-//    Configure,
-    Hits,
-    SearchBox,
-//    Pagination,
-    Highlight,
-//    connectStateResults,
-} from 'react-instantsearch-dom'
+import { InstantSearch, connectHits, SearchBox } from 'react-instantsearch-dom'
 import PropTypes from 'prop-types'
 import './styles.css'
 
@@ -25,81 +18,76 @@ const appId = process.env.GATSBY_ALGOLIA_APP_ID
 const searchKey = process.env.GATSBY_ALGOLIA_SEARCH_KEY
 const searchClient = algoliasearch(appId, searchKey)
 
-/*
-const IndexResults = connectStateResults(
-  ({ searchState, searchResults, children }) =>
-    searchResults && searchResults.nbHits !== 0 ? (
-      children
-    ) : (
-      <div>
-        No results have been found for {searchState.query} and index{' '}
-        {searchResults ? searchResults.index : ''}
-      </div>
-    )
-);
-*/
-/*
-const AllResults = connectStateResults(({ allSearchResults, children }) => {
-  const hasResults =
-    allSearchResults &&
-    Object.values(allSearchResults).some(results => results.nbHits > 0);
-    
-    return !hasResults ? (
-      <div>
-        <div>No results in category, products or brand</div>
-        <Index indexName="Pages" />
-        <Index indexName="Messages" />
-      </div>
-    ) : (
-      children
-    );
-});
-*/
 export default(location) => {
-  
-    return (
-      <>
-        <Heading text="Search" alignment="left" size="H1" background_color="#FFF"/>
-        <section className="fullwidth-section">
+  return (
+    <>
+      <Heading
+          text="Search"
+          alignment="left"
+          size="large"
+          all_caps={false}
+          add_padding={true}
+          font_color="#009DD1"
+          padding="top"
+          bg_color="#FFF"
+      />
+      <InstantSearch 
+        searchClient={searchClient} 
+        indexName="Development"
+      > 
+        <section className="site-section bottom">
           <Container>
             <Row>      
-              <InstantSearch 
-                  searchClient={searchClient} 
-                  indexName="Development"
-              > 
-                <SearchBox
-                    className="searchbox"
-                    translations={{
-                        placeholder: '',
-                    }}
-                />
-                
-                  <Hits hitComponent={Hit} />
-              
-                </InstantSearch>
-              </Row>
-            <Row>
-
+              <SearchBox
+                  className="searchbox"
+                  translations={{
+                      placeholder: '',
+                  }}
+              />
             </Row>
           </Container>
         </section>
-      </>
-    );
+        <section className="site-section bottom">
+          <Container>
+            <Row>      
+              <CustomHits />
+            </Row>
+          </Container>
+        </section>
+      </InstantSearch>
+    </>
+  );
 }
 
-function Hit(props) {
-    return (
-      <article>
-        <h1>
-            <a href={"/" + props.hit.pageType + "/" + props.hit.slug}>
-                <Highlight attribute="title" hit={props.hit} />
-                {props.hit.type}
-            </a>
-        </h1>
-      </article>
-    );
-  }
+const HitsTest = ({hits}) => {
+  return (
+  <>
+    {hits.map(hit => {
+      console.log(hit)
+     
+      const mediaItem = {
+        category: hit.pageType,
+        slug: hit.slug,
+        image: hit.imageUrl,
+        title: hit.title,
+        blurb: hit.blurb,
+        showBlurb: true,
+        showSeries: false,
+        showAttribution: false
+    }
+     console.log(mediaItem)
+     return (
+     <>
+        <MediaCard
+          mediaItem={mediaItem}
+        />
+     </>
+     )
+     
+    })}
+  </>
+  )
+}
 
-Hit.propTypes = {
-    hit: PropTypes.object.isRequired,
-};
+const CustomHits = connectHits(HitsTest)
+

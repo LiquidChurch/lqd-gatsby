@@ -60,7 +60,8 @@
 }
 
 .media-card-blurb {
-  height: 189px;
+  /*height: 189px;*/
+  height: 166px;
   margin-bottom:-8px;
   overflow-y:hidden;
   display: -webkit-box;

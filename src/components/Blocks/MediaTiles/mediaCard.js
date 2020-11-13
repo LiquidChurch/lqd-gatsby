@@ -44,10 +44,9 @@ function ShowSeries(props) {
 }
 
 function ShowAttribution(props) {
-  
-  let date = props.date.toUpperCase()
-  
+
   if (props.showAttribution) {
+    let date = props.date.toUpperCase()
     let profileImgUrl = []
     if (props.profileImage !== undefined) {
       profileImgUrl = props.profileImage.split("/")
@@ -72,11 +71,23 @@ function ShowAttribution(props) {
 }
 
 export default (props) => {
-  var imgUrl = props.mediaItem.image.split("/")
+  console.log(props.mediaItem)
+  if (props.mediaItem.image === undefined || props.mediaItem.image === null) {
+    //var imgUrl = process.env.LOGO_IMG.split('/')
+    return (<></>)
+  } else {
+    var imgUrl = props.mediaItem.image.split("/")
+  }
+  
+  if (props.mediaItem.category === "pages") {
+    var linkUrl = props.mediaItem.slug
+  } else {
+    var linkUrl = "/" + props.mediaItem.category + "/" + props.mediaItem.slug
+  }
   return (
   <>
     <Link
-      to={"/" + props.mediaItem.category + "/" + props.mediaItem.slug}
+      to={linkUrl}
       className="media-card-link"
     >
     <Card className="media-card">

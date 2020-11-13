@@ -20,6 +20,7 @@ const TextArea = ({
   noMargin,
 }) => {
   const ctaObject = JSON.parse(cta)
+  console.log('text area ctaObject', ctaObject)
   let sidekickTop = true
   let ctaTop = true
   let hasStatement = false
@@ -67,7 +68,7 @@ const TextArea = ({
 
   if (ctaObject !== null && ctaObject.rows.length !== 0) {
       
-    if (typeof ctaObject.rows[0].style !== 'undefined') {
+    if (typeof ctaObject.rows[0].style !== 'undefined' && ctaObject.rows[0].page_id.id !== 0) {
       hasCTA = true 
       let ctaObjectLength = ctaObject.rows.length
       ctaObject.rows.forEach((cta, i) => {

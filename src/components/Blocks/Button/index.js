@@ -97,7 +97,6 @@ export default ({
   } 
   
   let objPage = JSON.parse(page)
-  
   let pageInfo = {}
   if (objPage !== null && objPage.id !== 0) {
     pageInfo = useFeaturedImage(objPage.id)
@@ -130,8 +129,8 @@ export default ({
   // Need to check for null condition
   let objDropdown = JSON.parse(dropdown)
   let dropdownItemList = []
-  
-  if (objDropdown !== null && objDropdown.rows.length !== 0) {
+
+  if ((objDropdown !== null && objDropdown.rows.length !== 0) && typeof(objDropdown.rows[0].page) !== "undefined") {
     objDropdown.rows.forEach((object) => {
       let temp = useFeaturedImage(object.page.id) 
       if ((temp.publication.publishDate === null || currentDate >= Date.parse(temp.publication.publishDate.replace(/\s/g, 'T'))) &&
