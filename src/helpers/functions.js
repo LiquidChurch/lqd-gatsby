@@ -34,7 +34,6 @@ export const ClassicTextHelper = (props) => {
   }  
   props = props.replace(/&lt;/g, '<')
   props = props.replace(/&gt;/g, '>')
-  props = props.replace(/<\/?p[^>]*>/g, "")
   return props
 }
 
