@@ -6,6 +6,7 @@ const messageQuery = `
           title
           content
           date
+          modified
           slug
           tags {
             nodes {
@@ -38,6 +39,7 @@ const blogQuery = `
           id
           title
           date
+          modified
           slug
           mediaBlurb {
             blurb
@@ -66,6 +68,7 @@ const pageQuery = `
           id
           title
           slug
+          modified
           content
           uri
           terms {
@@ -126,6 +129,7 @@ const queries = [
             title: node.title,
             blurb: node.content.replace(/<[^>]*>?/gm, ''),
             date: node.date,
+            modified: node.modified,
             slug: node.slug,
             terms: node.tags.nodes,
             imageUrl: node.featuredImage.node.sourceUrl,
@@ -146,6 +150,7 @@ const queries = [
             title: node.title,
             blurb: node.mediaBlurb.blurb,
             date: node.date,
+            modified: node.modified,
             slug: node.slug,
             terms: node.tags.nodes,
             imageUrl: node.featuredImage.node.sourceUrl            
@@ -163,6 +168,7 @@ const queries = [
             objectID: node.id,
             pageType: "pages",
             title: node.title,
+            modified: node.modified,
             blurb: featuredImageDesc(node.featuredImage),
             slug: node.uri,
             terms: pageSearchTerms(node.terms),

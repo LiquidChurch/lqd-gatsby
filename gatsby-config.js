@@ -44,13 +44,7 @@ module.exports = {
         type: {
           MediaItem: {
             lazyNodes: false,
-            localFile: {
-              excludeByMimeTypes: [`video/mp4`, `image/jpeg`, `image/png`]
-            },
           },
-          Post: {
-            limit:50
-          }
         },    
         develop: {
           nodeUpdateInterval: 700
@@ -94,7 +88,9 @@ module.exports = {
         appId: process.env.GATSBY_ALGOLIA_APP_ID,
         apiKey: process.env.ALGOLIA_ADMIN_KEY,
         queries: require("./src/utils/algolia-queries"),
-        chunksize: 10000
+        chunksize: 10000,
+        enablePartialUpdates: true,
+        matchFields: ['slug', 'modified'],
       }
     },
     `gatsby-plugin-styled-components`,
