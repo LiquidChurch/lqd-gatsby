@@ -20,6 +20,7 @@ export const usePageById = (pageId) => {
               publication {
                   unpublishDate
                   publishDate
+                  promoSlug
                 }
               contentType {
                 node {
