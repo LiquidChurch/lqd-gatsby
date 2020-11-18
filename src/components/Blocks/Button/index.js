@@ -115,7 +115,7 @@ export default ({
       linkUrl = linkUrl.substr(0, linkUrl.length - 1);
     }
     
-    if (url_append !== null) {
+    if (url_append !== null && url_append !== undefined) {
       linkUrl = linkUrl + url_append
     }          
   }

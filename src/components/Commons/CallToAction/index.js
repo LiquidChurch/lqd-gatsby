@@ -36,7 +36,7 @@ const CallToAction = ({
     linkUrl = linkUrl.substr(0, linkUrl.length - 1);
   }
     
-  if (cta.url_append !== null) {
+  if (cta.url_append !== null && cta.url_append !== undefined) {
     linkUrl = linkUrl + cta.url_append
   }
           
