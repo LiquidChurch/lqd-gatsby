@@ -116,7 +116,7 @@ export default ({
   })
   
   return (
-      <section id="locations-hero">
+      <section className={'site-section bottom'} id="locations-hero">
         <Container fluid className='hero-image-container-filled map-hero-filled'>
           <div className='hero-image-filled' style={{height:'100vh', paddingBottom:'25px'}}>
             <GoogleMapComponentWithMarker

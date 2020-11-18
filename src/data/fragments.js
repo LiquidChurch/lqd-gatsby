@@ -39,12 +39,21 @@ export const Accordion = graphql`
   }
 `
 
+export const Anchor = graphql`
+  fragment Anchor on WpBlockLabAnchorBlock {
+    attributes {
+      label
+    }
+  }
+`
+
 export const Button = graphql`
   fragment Button on WpBlockLabButtonBlock {
     attributes {
       text
       alignment
       page
+      url_append
       btn_color
       btn_outline
       font_color
@@ -302,6 +311,7 @@ export const AllBlocks = graphql`
     ...Paragraph
     ...List
     ...Accordion
+    ...Anchor
     ...Attributions
     ...Button
     ...Heading

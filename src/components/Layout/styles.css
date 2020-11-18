@@ -350,6 +350,9 @@ html,body {
   padding-top: 3.4em;
 }
 
+.top-padding {
+  padding-top: 3.4em;
+}
 .half-top-padding {
   padding-top: 2.7em;
 }
@@ -368,6 +371,9 @@ html,body {
 }
 
 @media (max-width:1199px) {
+  .top-padding {
+    padding-top: 2.7em
+  }
   .half-top-padding {
     padding-top: 2.0em;
   }    
@@ -377,6 +383,9 @@ html,body {
 }
 
 @media (max-width:991px) {
+  .top-padding {
+    padding-top: 2.0em
+  }  
   .half-top-padding {
     padding-top: 1.5em;
   }  
@@ -387,6 +396,9 @@ html,body {
 }
 
 @media (max-width:767px) {
+  .top-padding {
+    padding-top: 1.5em;
+  }
   .half-top-padding {
     padding-top: 1.1em;
   }
@@ -498,4 +510,8 @@ h4.blue {
   flex-flow: row;
   justify-content: space-between;
   flex-wrap: wrap;
+}
+
+strong {
+  color: #696969;
 }

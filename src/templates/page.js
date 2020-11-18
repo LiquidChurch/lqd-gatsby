@@ -2,12 +2,14 @@ import React, { useContext, useEffect } from "react"
 
 import { Helmet } from "react-helmet"
 import { graphql, navigate } from "gatsby"
+import { AnchorLink } from "gatsby-plugin-anchor-links"
 import { useGeneralSettings } from "../data/hooks"
 import Parse from "react-html-parser"
 import Layout from "../components/Layout"
 import PageBlocks from "../components/PageBlocks"
 import { GlobalContext } from '../components/GlobalContext/context'
 import { isTouchEnabled, getDate } from '../helpers/functions'
+
 
 /** 
  * Template - Page Component
@@ -78,7 +80,7 @@ export default ({
       ctx.setPath(location.pathname)
     }
 
-  }, [ctx, theme, externalRedirectBlock, hasExternalRedirect, location.pathname, pageValid])
+  }, [ctx, theme, externalRedirectBlock, hasExternalRedirect, location, pageValid])
   
   return (
     <>

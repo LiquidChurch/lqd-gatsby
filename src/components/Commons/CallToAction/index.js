@@ -22,7 +22,7 @@ const CallToAction = ({
     pageId = cta.page_id.id
   } 
   console.log(pageId)
-
+  console.log('ctablock', cta)
   let pageInfo = usePageById(pageId)
   console.log(pageInfo)
     
@@ -32,7 +32,17 @@ const CallToAction = ({
   } else {
     return (<></>)
   }
-            
+  
+  let linkUrl = pageInfo.uri
+  
+  if (linkUrl.charAt(linkUrl.length - 1) == '/') {
+    linkUrl = linkUrl.substr(0, linkUrl.length - 1);
+  }
+    
+  if (cta.url_append !== null) {
+    linkUrl = linkUrl + cta.url_append
+  }
+          
   let icon = ''
   let fontColor = '#FFF'
   let btnColor = '#009DD1'
@@ -78,7 +88,7 @@ const CallToAction = ({
             style={{color:fontColor, 
                     backgroundColor: btnColor,
                     border: border}}
-            to={pageInfo.uri}>
+            to={linkUrl}>
         <span className={ (icon === '') ? 
                           '' :
                           cta.show_icon + '-icon cta-icon'}

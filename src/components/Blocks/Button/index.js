@@ -74,6 +74,7 @@ export default ({
     text, 
     alignment,
     page,
+    url_append,
     btn_color, 
     btn_outline,
     bg_color,
@@ -98,6 +99,8 @@ export default ({
   
   let objPage = JSON.parse(page)
   let pageInfo = {}
+  let linkUrl = ""
+  
   if (objPage !== null && objPage.id !== 0) {
     pageInfo = useFeaturedImage(objPage.id)
     if ((pageInfo.publication.publishDate === null || currentDate >= Date.parse(pageInfo.publication.publishDate.replace(/\s/g, 'T'))) &&
@@ -105,8 +108,16 @@ export default ({
     } else {
       return (<></>)
     }
-  } else {
-    pageInfo["uri"] = ''
+              
+    linkUrl = pageInfo.uri
+  
+    if (linkUrl.charAt(linkUrl.length - 1) == '/') {
+      linkUrl = linkUrl.substr(0, linkUrl.length - 1);
+    }
+    
+    if (url_append !== null) {
+      linkUrl = linkUrl + url_append
+    }          
   }
   
   let fontColor = ''
@@ -165,7 +176,7 @@ export default ({
                 </Dropdown>
               :
                 <Link 
-                  to={pageInfo.uri}
+                  to={linkUrl}
                   className={'cta-button button-' + alignment}
                   style={{minWidth: min_width/28 + 'em',
                           color:fontColor,

@@ -16,6 +16,12 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
+      resolve: `gatsby-plugin-anchor-links`,
+      options: {
+        offset: -10,
+      }
+    },  
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
@@ -30,7 +36,7 @@ module.exports = {
         url: process.env.WORDPRESS_URL,
         schema: {
           timeout: 120000,
-          perPage: 7,
+          perPage: 5,
         },
         debug: {
           graphql: {

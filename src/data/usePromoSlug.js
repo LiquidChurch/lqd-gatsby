@@ -22,10 +22,16 @@ export const usePromoSlug = (promoSlug, currentDate) => {
   let returnItem = null
   
   for (let i = 0; i < data.allWpPage.nodes.length; i++) {
-    if (data.allWpPage.nodes[i].publication.promoSlug !== null && data.allWpPage.nodes[i].publication.promoSlug.toLowerCase() === promoSlug.toLowerCase()) {
+    
+    if (data.allWpPage.nodes[i].publication.promoSlug !== null) {
+      let promoSlugList = data.allWpPage.nodes[i].publication.promoSlug.split(",")
       
-      returnItem = data.allWpPage.nodes[i]
-      break;
+      for (let j = 0; j < promoSlugList.length; j++) {
+        if (promoSlug.toLowerCase() === promoSlugList[j].trim().toLowerCase()) {
+          returnItem = data.allWpPage.nodes[i]
+          break;
+        }
+      }
     }
   }
   

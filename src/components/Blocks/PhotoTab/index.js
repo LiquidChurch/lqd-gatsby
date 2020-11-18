@@ -157,7 +157,7 @@ export default ({
             theme={color}
             noMargin={true}
           />
-          <div className={hasSecondary ? "text-padding" : ''}></div>
+          <div className={hasSecondary ? "half-top-padding" : ''}></div>
           <TextArea 
             statement={header_secondary}
             sidekick={textBlockSecondary}

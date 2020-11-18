@@ -28,7 +28,8 @@ export default ({
   
   let featuredAttributionObject = []
   let tiledAttributionObject = []
-
+  let isHybrid = false
+  
   switch(layout) {
     case 'list':
       for (let i = 0; i < attributionObject.rows.length; i++ ) {
@@ -41,6 +42,7 @@ export default ({
       }
       break
     default:
+      isHybrid = true
       featuredAttributionObject.push(attributionObject.rows[0])
       if (attributionObject.rows.length > 1) {
         for (let k = 1; k < attributionObject.rows.length; k++ ) {
@@ -63,7 +65,10 @@ export default ({
         })}
         { tiledAttributionObject.map(attribution => {
           return (
-            <Col sm={12} md={6} lg={4} className="attribution-secondary-profile" key={attribution.attribution.id}>
+            <Col sm={12} md={6} lg={4} 
+                className={isHybrid ? 'attribution-secondary-profile margin' : 'attribution-secondary-profile'}
+                key={attribution.attribution.id}
+            >
               <TiledAttribute attribute={attribution.attribution} showBlurb={show_blurb} showEmail={show_email} />
             </Col>
           )
