@@ -12,13 +12,11 @@ import './styles.css'
 
 export default ({ images }) => {
   let imagesObject = JSON.parse(images)
-  console.log('imagesObject', imagesObject)
   let imagesInfo = []
 
   imagesObject.rows.forEach(item => {
     imagesInfo.push(useImageById(item.image))
   })
-  console.log('imagesInfo', imagesInfo)
   let carouselControl = true
   
   if (imagesInfo.length <= 1) {
@@ -44,7 +42,6 @@ export default ({ images }) => {
                 onSelect={setCarousel}
               >
                 {imagesInfo.map(image => {
-                  console.log('carousel', image)
                   var imgUrl = image.mediaItemUrl.split("/")
                   return (
                     <Carousel.Item

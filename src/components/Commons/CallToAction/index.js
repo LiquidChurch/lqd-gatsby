@@ -21,10 +21,7 @@ const CallToAction = ({
   if (cta.page_id !== undefined) {
     pageId = cta.page_id.id
   } 
-  console.log(pageId)
-  console.log('ctablock', cta)
   let pageInfo = usePageById(pageId)
-  console.log(pageInfo)
     
   const currentDate = getDate(useLocation().search)
   if ((pageInfo.publication.publishDate === null || currentDate >= Date.parse(pageInfo.publication.publishDate.replace(/\s/g, 'T'))) &&

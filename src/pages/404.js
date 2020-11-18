@@ -18,9 +18,6 @@ export default ({
     subPath = subPath + "/" + urlPath[i]
   }
   
-  console.log('urlpath', urlPath[0])
-  console.log('subpath', subPath)
-  
   if (urlPath !==  null) {
     var foundPage = usePromoSlug(urlPath[0])
   }
@@ -40,7 +37,6 @@ export default ({
       break;  
     default:
       if (foundPage !== null) {
-        console.log('foundPage', foundPage)
         window.location.replace(foundPage.uri)
       } else {
         //window.location.replace('/')
