@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from "gatsby"
+import { AnchorLink as Link } from "gatsby-plugin-anchor-links";
 import { useLocation } from '@reach/router';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -53,12 +53,11 @@ function DropdownButton({objDropdown}) {
     <Dropdown.Menu
       bsPrefix='button-dropdown-menu'
       >
-      {objDropdown.map(dropdown => {
-        let dropdownItemId = Math.random().toString(36).substring(2, 7) + Math.random().toString(36).substring(2, 7)      
+      {objDropdown.map((dropdown, index) => {
         return (  
           <Dropdown.Item
             href={dropdown.uri}
-            key={dropdownItemId + '-' + dropdown.id}
+            key={dropdown.id + '-' + index}
             >{dropdown.text}</Dropdown.Item>         
         )
       })}
@@ -70,7 +69,8 @@ function DropdownButton({objDropdown}) {
 /**
  * Button Component
  */
-export default ({ 
+export default ({
+    keyValue,
     text, 
     alignment,
     page,
@@ -111,7 +111,7 @@ export default ({
               
     linkUrl = pageInfo.uri
   
-    if (linkUrl.charAt(linkUrl.length - 1) == '/') {
+    if (linkUrl.charAt(linkUrl.length - 1) === '/') {
       linkUrl = linkUrl.substr(0, linkUrl.length - 1);
     }
     
@@ -151,8 +151,6 @@ export default ({
       } 
     })
   }
-  
-  let dropdownId = Math.random().toString(36).substring(2, 7) + Math.random().toString(36).substring(2, 7)    
 
   return (
   <>
@@ -164,7 +162,7 @@ export default ({
               {(dropdownItemList.length > 0) ?
                 <Dropdown>
                   <Dropdown.Toggle 
-                      id={'dropdown-button-' + dropdownId}
+                      id={'dropdown-button-' + keyValue}
                       className={'cta-button button-dropdown ' + alignment}
                       style={{minWidth: min_width/16 + 'em',
                               color:fontColor,
@@ -182,6 +180,7 @@ export default ({
                           color:fontColor,
                           backgroundColor: btnColor,
                           border: border}}
+                  stripHash
                 >
                   <ButtonIcon hasIcon={has_icon} />
                   <span className={'button-text ' + text_float}>{text}</span>

@@ -18,6 +18,7 @@ import "./photoTab.css"
  * PhotoTab Block Component
  */
 export default ({
+  keyValue,
   location,
   image_id,
   header,
@@ -46,12 +47,10 @@ export default ({
   const imageInfo = useImageById(image_id)
   const ctaObject = JSON.parse(cta)
   let hasCTA = false
-  let textAreaId = ""
   if (ctaObject !== null && ctaObject.rows.length !== 0) {
       
     if (typeof ctaObject.rows[0].style !== 'undefined') {
       hasCTA = true
-      textAreaId = Math.random().toString(36).substring(2, 7) + Math.random().toString(36).substring(2, 7) 
       let ctaObjectLength = ctaObject.rows.length
       ctaObject.rows.forEach((cta, i) => {
         if (i === (ctaObjectLength - 1) ) {
@@ -146,7 +145,8 @@ export default ({
             />
         </Col>    
         <Col  xs={{span: 12, order: 2}} md={{span: 6, order: textOrder}} className="photo-tab-body-col" id={"photo-tab-body-" + image_id}>
-          <TextArea 
+          <TextArea
+            keyValue={keyValue + '-text-area-primary'}
             statement={isAlternative ? null : header}
             sidekick={textBlock}
             cta={isAlternative ? null : cta}
@@ -159,6 +159,7 @@ export default ({
           />
           <div className={hasSecondary ? "half-top-padding" : ''}></div>
           <TextArea 
+            keyValue={keyValue + '-text-area-secondary'}
             statement={header_secondary}
             sidekick={textBlockSecondary}
             cta={cta_secondary}
@@ -175,9 +176,9 @@ export default ({
         {isAlternative &&
         <Col className={'cta ' + header_size + ' half-top-padding'}>
           {hasCTA ? 
-            ctaObject.rows.map(cta => {
+            ctaObject.rows.map((cta, index)=> {
               return (
-                <CallToAction cta={cta} alignment="center" spacing="tall" theme={color} key={textAreaId + '-' + cta.page_id.id}/>
+                <CallToAction cta={cta} alignment="center" spacing="tall" theme={color} key={keyValue + index + '-' + cta.page_id.id}/>
               )
             }) : ''
           }

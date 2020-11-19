@@ -1,8 +1,5 @@
 import React, { useEffect } from "react"
-import Layout from "../components/Layout"
 import { usePromoSlug } from '../data/usePromoSlug'
-import { navigate } from "gatsby"
-//import Button from "../components/Button"
 
 export default ({
   location,

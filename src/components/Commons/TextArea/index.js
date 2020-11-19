@@ -7,6 +7,7 @@ import CallToAction from '../CallToAction'
 import './styles.css'
 
 const TextArea = ({
+  keyValue,
   statement,
   font_color,
   all_caps,

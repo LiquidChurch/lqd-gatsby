@@ -37,7 +37,7 @@ export default ({
   if (all_caps) {
     textTransform = "uppercase"
   }
-  let headerId = Math.random().toString(36).substring(2, 7) + Math.random().toString(36).substring(2, 7)
+
   return (
   <>
     <section className={'site-section ' + padding} style={{backgroundColor: bg_color}} key={'section-' + keyValue}>

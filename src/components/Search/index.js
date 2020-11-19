@@ -1,17 +1,13 @@
 import React from 'react';
-import { Link } from 'gatsby'
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import Card from 'react-bootstrap/Card'
 import Heading from '../Blocks/Heading'
 
 import MediaCard from '../Blocks/MediaTiles/mediaCard'
 
 import algoliasearch from 'algoliasearch/lite';
 import { InstantSearch, connectHits, SearchBox } from 'react-instantsearch-dom'
-import PropTypes from 'prop-types'
 import './styles.css'
 
 const appId = process.env.GATSBY_ALGOLIA_APP_ID

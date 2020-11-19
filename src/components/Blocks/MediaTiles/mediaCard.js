@@ -78,11 +78,13 @@ export default (props) => {
     var imgUrl = props.mediaItem.image.split("/")
   }
   
+  var linkUrl = ""
   if (props.mediaItem.category === "pages") {
-    var linkUrl = props.mediaItem.slug
+    linkUrl = props.mediaItem.slug
   } else {
-    var linkUrl = "/" + props.mediaItem.category + "/" + props.mediaItem.slug
+    linkUrl = "/" + props.mediaItem.category + "/" + props.mediaItem.slug
   }
+  
   return (
   <>
     <Link

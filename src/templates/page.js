@@ -2,7 +2,6 @@ import React, { useContext, useEffect } from "react"
 
 import { Helmet } from "react-helmet"
 import { graphql, navigate } from "gatsby"
-import { AnchorLink } from "gatsby-plugin-anchor-links"
 import { useGeneralSettings } from "../data/hooks"
 import Parse from "react-html-parser"
 import Layout from "../components/Layout"

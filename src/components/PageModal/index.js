@@ -7,11 +7,12 @@ import { PageModalContext } from './context'
 /** 
  * Page Modal Block Component
  */
-export default ({ modal_title,
+export default ({ keyValue,
+                  modal_title,
                   modal_text,
                   modal_id }) => {
   const ctx = useContext(PageModalContext)
-  
+  console.log('page modal block')
   return (
     <>
        <Modal show={(ctx.showModalId === modal_id)} onHide={ctx.setCloseModal} centered>

@@ -37,6 +37,7 @@ function StrapImage(props) {
  * Page Strap Block Component
  */
 export default ({
+  keyValue,
   statement,
   font_color,
   all_caps,
@@ -91,7 +92,8 @@ export default ({
              className="page-strap">
           <StrapImage strap_image_id={image_id} strap_image_size={image_size} max_width={maxWidth}/>
           <Col xs={12} md={textAreaWidth} className={"page-strap-col vertical-center"}>
-            <TextArea 
+            <TextArea
+              keyValue={keyValue + '-page-strap'}
               statement={statement}
               font_color={font_color}
               all_caps={all_caps}

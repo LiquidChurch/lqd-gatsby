@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import { AnchorLink as Link } from "gatsby-plugin-anchor-links";
 import { useLocation } from '@reach/router';
 
 import { ArrowForwardBtn, ArrowForwardText } from '../../../helpers/icons'
@@ -32,7 +32,7 @@ const CallToAction = ({
   
   let linkUrl = pageInfo.uri
   
-  if (linkUrl.charAt(linkUrl.length - 1) == '/') {
+  if (linkUrl.charAt(linkUrl.length - 1) === '/') {
     linkUrl = linkUrl.substr(0, linkUrl.length - 1);
   }
     
@@ -85,7 +85,8 @@ const CallToAction = ({
             style={{color:fontColor, 
                     backgroundColor: btnColor,
                     border: border}}
-            to={linkUrl}>
+            to={linkUrl}
+            stripHash>
         <span className={ (icon === '') ? 
                           '' :
                           cta.show_icon + '-icon cta-icon'}

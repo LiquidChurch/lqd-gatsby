@@ -12,6 +12,7 @@ import './styles.css'
  * Hero Image Block Component
  */
 export default ({
+  keyValue,
   image_id,
   image_style,
   statement,
@@ -70,6 +71,7 @@ export default ({
                       {bottom: (textAreaPosition - 10)+ 'px', marginBottom: (135 - textAreaPosition) + 'px'} ) ) }
       >
         <TextArea
+          keyValue={keyValue + '-hero-image'}
           statement={statement}
           sidekick={sidekick}
           cta={cta}
