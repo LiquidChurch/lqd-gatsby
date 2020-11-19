@@ -5,6 +5,7 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Dropdown from 'react-bootstrap/Dropdown'
+import styled from "styled-components";
 
 import { ArrowRight } from '../../../helpers/icons'
 import { useFeaturedImage } from "../../../data/featureImage"
@@ -152,6 +153,20 @@ export default ({
     })
   }
 
+  const StyledLink = styled(props => <Link {...props } />)`
+      color:${fontColor};
+      background-color: ${btnColor};
+      border: ${border};
+      min-width: ${min_width/16 + 'em'}
+  `
+
+  const ToggleLink = styled(props => <Dropdown.Toggle {...props } />)`
+      color:${fontColor};
+      background-color: ${btnColor};
+      border: ${border};
+      min-width: ${min_width/16 + 'em'}
+  `
+
   return (
   <>
     {isPublished &&
@@ -161,31 +176,23 @@ export default ({
             <Col className={'cta ' + size  + ' align-' + alignment}>
               {(dropdownItemList.length > 0) ?
                 <Dropdown>
-                  <Dropdown.Toggle 
+                  <ToggleLink 
                       id={'dropdown-button-' + keyValue}
-                      className={'cta-button button-dropdown ' + alignment}
-                      style={{minWidth: min_width/16 + 'em',
-                              color:fontColor,
-                              backgroundColor: btnColor,
-                              border: border}}>
+                      className={'cta-button button-dropdown ' + alignment}>
                     <span className={'button-text ' + text_float}>{text}</span>
-                  </Dropdown.Toggle>
+                  </ToggleLink>
                   <DropdownButton objDropdown={dropdownItemList}/>
                 </Dropdown>
               :
-                <Link 
+                <StyledLink 
                   to={linkUrl}
                   className={'cta-button button-' + alignment}
-                  style={{minWidth: min_width/28 + 'em',
-                          color:fontColor,
-                          backgroundColor: btnColor,
-                          border: border}}
                   stripHash
                 >
                   <ButtonIcon hasIcon={has_icon} />
                   <span className={'button-text ' + text_float}>{text}</span>
                   <ButtonArrow hasArrow={has_arrow} />
-                </Link>
+                </StyledLink>
               }
             </Col>
           </Row>

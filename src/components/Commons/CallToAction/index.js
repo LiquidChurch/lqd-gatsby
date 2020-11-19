@@ -1,6 +1,7 @@
 import React from 'react'
 import { AnchorLink as Link } from "gatsby-plugin-anchor-links";
 import { useLocation } from '@reach/router';
+import styled from "styled-components";
 
 import { ArrowForwardBtn, ArrowForwardText } from '../../../helpers/icons'
 import { usePageById } from '../../../data/usePage'
@@ -75,16 +76,21 @@ const CallToAction = ({
     icon = cta.show_icon
   }
   
+  let testColor = '#fff'
+  
+  const StyledLink = styled(props => <Link {...props } />)`
+      color:${fontColor};
+      background-color: ${btnColor};
+      border: ${border};
+  `
+
   return (
     <>
       {pageId === 0 ? 
       '' :
-      <Link className={cta.lastItem ? 
+      <StyledLink className={cta.lastItem ? 
                         'cta-' + cta.style + ' ' + alignment : 
-                        'cta-' + cta.style + ' ' + alignment + ' ' + spacing} 
-            style={{color:fontColor, 
-                    backgroundColor: btnColor,
-                    border: border}}
+                        'cta-' + cta.style + ' ' + alignment + ' ' + spacing}
             to={linkUrl}
             stripHash>
         <span className={ (icon === '') ? 
@@ -103,7 +109,7 @@ const CallToAction = ({
            :
           ''
         }
-      </Link>
+      </StyledLink>
       }
     </>
   )
