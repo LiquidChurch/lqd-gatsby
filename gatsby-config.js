@@ -36,7 +36,7 @@ module.exports = {
         url: process.env.WORDPRESS_URL,
         schema: {
           timeout: 120000,
-          perPage: 5,
+          perPage: 4,
         },
         debug: {
           graphql: {
@@ -95,7 +95,7 @@ module.exports = {
         apiKey: process.env.ALGOLIA_ADMIN_KEY,
         queries: require("./src/utils/algolia-queries"),
         chunkSize: 100,
-        enablePartialUpdates: false,
+        enablePartialUpdates: true,
         matchFields: ['slug', 'modified'],
       }
     },
