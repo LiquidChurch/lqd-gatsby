@@ -78,10 +78,10 @@ const CallToAction = ({
   
   let testColor = '#fff'
   
-  let StyledLink = styled(props => <Link {...props } />)`
-      color:${fontColor};
-      background-color: ${btnColor};
-      border: ${border};
+  const StyledLink = styled(props => <Link {...props } />)`
+      color:${props => fontColor};
+      background-color: ${props => btnColor};
+      border: ${props => border};
   `
 
   return (

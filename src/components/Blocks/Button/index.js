@@ -153,18 +153,18 @@ export default ({
     })
   }
 
-  let StyledLink = styled(props => <Link {...props } />)`
-      color:${fontColor};
-      background-color: ${btnColor};
-      border: ${border};
-      min-width: ${min_width/16 + 'em'}
+  const StyledButton = styled(props => <Link {...props } />)`
+      color:${props => fontColor};
+      background-color: ${props => btnColor};
+      border: ${props => border};
+      min-width: ${props => min_width/16 + 'em'}
   `
 
-  let ToggleLink = styled(props => <Dropdown.Toggle {...props } />)`
-      color:${fontColor};
-      background-color: ${btnColor};
-      border: ${border};
-      min-width: ${min_width/16 + 'em'}
+  const StyledDropdown = styled(props => <Dropdown.Toggle {...props } />)`
+      color:${props => fontColor};
+      background-color: ${props => btnColor};
+      border: ${props => border};
+      min-width: ${props => min_width/16 + 'em'}
   `
 
   return (
@@ -176,15 +176,15 @@ export default ({
             <Col className={'cta ' + size  + ' align-' + alignment}>
               {(dropdownItemList.length > 0) ?
                 <Dropdown>
-                  <ToggleLink 
+                  <StyledDropdown 
                       id={'dropdown-button-' + keyValue}
                       className={'cta-button button-dropdown ' + alignment}>
                     <span className={'button-text ' + text_float}>{text}</span>
-                  </ToggleLink>
+                  </StyledDropdown>
                   <DropdownButton objDropdown={dropdownItemList}/>
                 </Dropdown>
               :
-                <StyledLink 
+                <StyledButton
                   to={linkUrl}
                   className={'cta-button button-' + alignment}
                   stripHash
@@ -192,7 +192,7 @@ export default ({
                   <ButtonIcon hasIcon={has_icon} />
                   <span className={'button-text ' + text_float}>{text}</span>
                   <ButtonArrow hasArrow={has_arrow} />
-                </StyledLink>
+                </StyledButton>
               }
             </Col>
           </Row>
