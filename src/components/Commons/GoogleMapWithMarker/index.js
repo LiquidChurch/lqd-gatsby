@@ -66,7 +66,7 @@ function MapMarker(props) {
   if (props.iconStyle === "grey") {
     mapIcon = require('./map-marker-grey.svg')
   }
-  
+  console.log('modal_text', props.text)
   return (
     <>
    <MarkerWithLabel
@@ -87,8 +87,9 @@ function MapMarker(props) {
    </MarkerWithLabel>
         <PageModal 
           modal_title={props.title}
-          modal_text={Parse(props.text)}
+          modal_text={props.text}
           modal_id={props.slug}
+          modal_link={props.slug}
         />
       </>
   )

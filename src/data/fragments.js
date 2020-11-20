@@ -147,14 +147,6 @@ export const HompageHero = graphql`
   }
 `
 
-export const IFrameBlock = graphql`
-  fragment IFrameBlock on WpBlockLabIframeBlock {
-    attributes {
-        src
-    }
-  }
-`
-
 export const LinkTiles = graphql`
   fragment LinkTiles on WpBlockLabLinkTilesBlock {
     attributes {
@@ -164,7 +156,6 @@ export const LinkTiles = graphql`
     }
   }
 `
-
 
 export const List = graphql`
   fragment List on WpCoreListBlock {
@@ -321,7 +312,6 @@ export const AllBlocks = graphql`
     ...HeroImage
     ...GoogleMap
     ...ExternalRedirect
-    ...IFrameBlock
     ...PageStrap
     ...HomeLinks
     ...MessageTile

@@ -448,6 +448,10 @@ html,body {
   text-align: center;
 }
 
+.text-center {
+  margin-left:auto;
+  margin-right:auto;
+}
 
 .zero-padding-top {
   padding-top: 0 !important;

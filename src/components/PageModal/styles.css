@@ -1,0 +1,15 @@
+.modal-header .close {
+  position: absolute;
+  right: 24px;
+  top: 20px;
+}
+
+.modal-title {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.modal-link {
+  padding-left:6px;
+  color: #009DD1;
+}
