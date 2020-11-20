@@ -1,5 +1,6 @@
 import React from 'react'
 import Imgix from 'react-imgix'
+import Parse from "react-html-parser"
 
 import { useAttributionById } from '../../../data/useAttribution'
 
@@ -9,7 +10,9 @@ const FeaturedAttribute = ({
     showEmail,
   }) => {
   const attributeObject = useAttributionById(attribute.id)
+  console.log(attributeObject)
   const imageUrl = attributeObject.profileImage.image.mediaItemUrl.split("/")
+  console.log(attributeObject.description)
   return (
   <>
     <div>
@@ -38,7 +41,7 @@ const FeaturedAttribute = ({
         </a>
       </div>
       <div className={'attribution-profile-description font-regular'}>
-        {attributeObject.description}
+        {Parse(attributeObject.description)}
       </div>
     </div>    
   </>

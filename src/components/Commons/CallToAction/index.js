@@ -78,7 +78,7 @@ const CallToAction = ({
   
   let testColor = '#fff'
   
-  const StyledLink = styled(props => <Link {...props } />)`
+  let StyledLink = styled(props => <Link {...props } />)`
       color:${fontColor};
       background-color: ${btnColor};
       border: ${border};

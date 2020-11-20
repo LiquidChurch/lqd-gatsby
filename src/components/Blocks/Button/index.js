@@ -153,14 +153,14 @@ export default ({
     })
   }
 
-  const StyledLink = styled(props => <Link {...props } />)`
+  let StyledLink = styled(props => <Link {...props } />)`
       color:${fontColor};
       background-color: ${btnColor};
       border: ${border};
       min-width: ${min_width/16 + 'em'}
   `
 
-  const ToggleLink = styled(props => <Dropdown.Toggle {...props } />)`
+  let ToggleLink = styled(props => <Dropdown.Toggle {...props } />)`
       color:${fontColor};
       background-color: ${btnColor};
       border: ${border};

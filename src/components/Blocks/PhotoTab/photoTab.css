@@ -8,6 +8,13 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.photo-tab-map {
+  height: 525px;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 .photo-tab-body-col {
   display: block;
   margin-top:0;
@@ -33,7 +40,17 @@
   padding-bottom:0;
 }
 
+@media (max-width:1199px) {
+  .photo-tab-map {
+    height: 435px;
+  }
+}
+
 @media (max-width:991px) {
+  .photo-tab-map {
+    height: 315px;
+  }
+  
   .photo-tab-left {
   }
   
@@ -47,6 +64,10 @@
 }
 
 @media (max-width:767px) { 
+  .photo-tab-map {
+    height: 480px;
+  }
+  
   .photo-tab-left {
     margin-right: auto;
     margin-left: auto;
@@ -61,7 +82,11 @@
   }
 }
 
-@media (max-width: 575px) {  
+@media (max-width: 575px) {
+  .photo-tab-map {
+    height: calc(97vw - 60px);
+  }
+  
   .photo-tab-image {
     width: 100%;
   }

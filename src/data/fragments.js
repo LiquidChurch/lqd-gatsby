@@ -277,6 +277,8 @@ export const PhotoTab = graphql`
       size
       block_on
       block_off
+      google_map
+      map_toggle
     }
   } 
 `

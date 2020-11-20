@@ -9,6 +9,9 @@ import Row from 'react-bootstrap/Row'
 import TextArea from '../../Commons/TextArea'
 import Heading from "../../Blocks/Heading"
 import CallToAction from '../../Commons/CallToAction'
+import GoogleMapComponentWithMarker from "../../Commons/GoogleMapWithMarker"
+import { useCampusById } from "../../../data/useCampus"
+
 import { useImageById } from "../../../data/useImage"
 import { ClassicTextHelper, getDate } from "../../../helpers/functions.js"
 
@@ -36,6 +39,8 @@ export default ({
   size,
   block_on,
   block_off,
+  google_map,
+  map_toggle,
 }) => {
   const currentDate = getDate(useLocation().search)
   let isPublished = false
@@ -44,11 +49,9 @@ export default ({
     isPublished = true
   }
   
-  const imageInfo = useImageById(image_id)
-  const ctaObject = JSON.parse(cta)
+  let ctaObject = JSON.parse(cta)
   let hasCTA = false
   if (ctaObject !== null && ctaObject.rows.length !== 0) {
-      
     if (typeof ctaObject.rows[0].style !== 'undefined') {
       hasCTA = true
       let ctaObjectLength = ctaObject.rows.length
@@ -62,17 +65,36 @@ export default ({
     }
   }
   
-  if (imageInfo === undefined) {
-    return(
-      <>
-      </>
-    )
+  let usePhoto = true
+  console.log(map_toggle)
+  if (map_toggle !== undefined && map_toggle === true) {
+    usePhoto = false
+    var mapObj = JSON.parse(google_map)
+    console.log('mapObj', mapObj)
+    var campusList = []
+    let campusInfo = useCampusById(mapObj.rows[0].campus.id)
+
+    if (mapObj.rows[0].campus.label_left) {
+      campusInfo.anchor = campusInfo.googleMap.anchorLeft      
+    } else {
+      campusInfo.anchor = -24
+    }
+    
+    campusInfo.icon_style = mapObj.rows[0].icon_style
+    campusInfo.index = 1
+    campusList.push(campusInfo)
+  } else {
+    var imageInfo = useImageById(image_id)    
+    if (imageInfo === undefined) {
+      return(<></>)
+    } else {
+      var imgUrl = imageInfo.mediaItemUrl.split("/")         
+    }
   }
-  var imgUrl = imageInfo.mediaItemUrl.split("/")
   
-  var isAlternative = false
-  var altTopPadding = "top"
-  var headerColor = "#009DD1"
+  let isAlternative = false
+  let altTopPadding = "top"
+  let headerColor = "#009DD1"
   if (location.substr(location.length - 3) === 'alt') {
     isAlternative = true
     if (padding === "none" || padding === "bottom") {
@@ -93,26 +115,22 @@ export default ({
     }
   }
   
-  var imgOrder = 1
-  var textOrder = 2
-  
+  let imgOrder = 1
+  let textOrder = 2
   if (location.slice(0,3) === "rig") {
     imgOrder = 2
     textOrder = 1
   }
   
   if (text_block !== "<p></p>" || text_block !== null) { 
-    //var textBlock = RichTextHelper(text_block)
     var textBlock = ClassicTextHelper(text_block)
   }
 
   let hasSecondary = false
-  
   if (text_block_secondary !== "<p></p>" && text_block_secondary !== null) { 
     var textBlockSecondary = ClassicTextHelper(text_block_secondary)
     hasSecondary = true
   }
-  
   if (header_secondary !== null) {
     hasSecondary = true
   }
@@ -138,11 +156,25 @@ export default ({
       <Row className="photo-tab-row">
         <Col xs={{span: 12, order: 1}} md={{span: 6, order: imgOrder}} 
             className={(imgOrder === 1) ? "photo-tab-image-col photo-tab-left" : "photo-tab-image-col"}>
-          <Imgix 
-            src={process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX] + "?ar=1:1&fit=crop&h=525"}
-            className="photo-tab-image"
-            height={525}
+          {usePhoto ? 
+            <Imgix 
+              src={process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX] + "?ar=1:1&fit=crop&h=525"}
+              className="photo-tab-image"
+              height={525}
+              /> :
+            <div className="photo-tab-map">
+            <GoogleMapComponentWithMarker
+              googleMapURL={'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=' + process.env.GOOGLE_API_KEY}
+              loadingElement={<div style={{ height: `100%` }} />}
+              containerElement={<div style={{ height: `100%` }} />}
+              mapElement={<div style={{ height: `100%` }} />}
+              markerObj={campusList}
+              latitude={mapObj.rows[0].latitude}
+              longitude={mapObj.rows[0].longitude}
+              zoom={mapObj.rows[0].zoom}
             />
+            </div>
+           }
         </Col>    
         <Col  xs={{span: 12, order: 2}} md={{span: 6, order: textOrder}} className="photo-tab-body-col" id={"photo-tab-body-" + image_id}>
           <TextArea
