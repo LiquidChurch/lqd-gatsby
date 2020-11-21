@@ -17,7 +17,7 @@ const FeaturedAttribute = ({
   <>
     <div>
       <Imgix 
-        src={process.env.IMGIX_URL + imageUrl[process.env.IMG_DIR_INDEX] + "/" + imageUrl[process.env.IMG_FILE_INDEX] + "?mask=ellipse&w=240&h=240"}
+        src={process.env.IMGIX_URL + imageUrl[process.env.IMG_DIR_INDEX] + "/" + imageUrl[process.env.IMG_FILE_INDEX] + "?ar=1:1&fit=crop&crop=face&mask=ellipse&w=240&h=240"}
         className={'attribution-profile-image'}
         height={240}
         width={240}
