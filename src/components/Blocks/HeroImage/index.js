@@ -52,7 +52,7 @@ export default ({
     <section id="hero-image" className="fullwidth-section" style={{backgroundColor: bg_color}}>
     <Container fluid className={'hero-image-container-' + image_style.split(":")[0]}>
       <Imgix 
-        src={process.env.IMGIX_URL + imageUrl[process.env.IMG_DIR_INDEX] + "/" + imageUrl[process.env.IMG_FILE_INDEX] + "?ar=16:9&fit=crop"}
+        src={process.env.IMGIX_URL + imageUrl[process.env.IMG_DIR_INDEX] + "/" + imageUrl[process.env.IMG_FILE_INDEX]}
         className={'hero-image-' + image_style.split(":")[0]}
         sizes="100vh" />
       <div 

@@ -45,6 +45,7 @@ export default ({
           attributions = attributions + ", " + item.name
         }
       })
+      
 
       const formatter = new Intl.DateTimeFormat('en-US', { month: 'short',  day: 'numeric',   year: 'numeric'});
       const formattedDate =  formatter.format(new Date(message.publication.publishDate.replace(/\s/g, 'T')));
@@ -72,6 +73,8 @@ export default ({
       })
     }
   })  
+  
+  messagesInfo.sort((a,b) => a.seriesPart > b.seriesPart ? 1: -1)
 
   return (
     <Layout location={location}>

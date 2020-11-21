@@ -33,6 +33,8 @@
 .message-tile-title {
   color: #fff;
   position: relative;
+  margin-bottom: 5px;
+  margin-top: 12px;
 }
 
 .message-tile-series {

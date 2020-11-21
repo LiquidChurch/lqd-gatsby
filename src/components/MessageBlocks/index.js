@@ -76,7 +76,7 @@ export default (lqdmMessage) => {
       />
       <SeriesTitle {...seriesInfo} />
       <Heading
-          text="Other Messages in this series"
+          text="Messages in this series"
           alignment="left"
           size="small"
           all_caps="true"

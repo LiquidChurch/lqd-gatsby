@@ -86,6 +86,8 @@ export const useSeries = (seriesSlug, currentDate) => {
         seriesPageInfo.messages.nodes.splice(i, 1)
       }
     }
+    
+    seriesPageInfo.messages.nodes.sort((a,b) => a.publication.publishDate > b.publication.publishDate ? 1: -1)
     return seriesPageInfo
   }
   

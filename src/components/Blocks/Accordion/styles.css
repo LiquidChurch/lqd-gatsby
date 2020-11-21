@@ -23,3 +23,13 @@
   border-bottom-width: 1px;
   color: #585858;
 }
+
+.accordion-card-body li {
+  font-size: 1.0em;
+  color: #585858;
+}
+
+.accordion-card-body  {
+  font-size: 1.0em;
+  font-weight: initial;
+}

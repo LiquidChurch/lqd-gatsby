@@ -24,7 +24,7 @@ export default (series) => {
       </Row>
       <Row>
         <Col xs={{ span:10, offset: 1}} >
-          <div className="font-large series-hero-description">{Parse(series.description)}</div>
+          <div className="font-medium series-hero-description">{Parse(series.description)}</div>
         </Col>
       </Row>
     </Container>
