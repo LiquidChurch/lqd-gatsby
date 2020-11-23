@@ -17,9 +17,9 @@
 }
 
 .to-top-icon {
-  -webkit-mask-image: url('./svg/to-top.svg');
+  -webkit-mask-image: url('./svg/top.svg');
   -webkit-mask-size: 100% 100%;
-  mask-image: url('./svg/to-top.svg');
+  mask-image: url('./svg/top.svg');
 }
 
 .facebook-icon {
