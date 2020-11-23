@@ -73,7 +73,7 @@ export default (lqdmMessage) => {
         <hr className="message-hr" />
         <Row>
           <Col xs={12}>
-            <div className="font-large message-description">{Parse(lqdmMessage.content)}</div>
+            <div className="font-medium message-description">{Parse(lqdmMessage.content)}</div>
           </Col>
           <Col xs={12} className="message-scripture">
             <ScriptureList scriptures={lqdmMessage.scriptures} />
