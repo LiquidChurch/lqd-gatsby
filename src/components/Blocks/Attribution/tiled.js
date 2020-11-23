@@ -14,7 +14,7 @@ const TiledAttribute = ({
   <>
     <div> 
       <Imgix 
-        src={process.env.IMGIX_URL + imageUrl[process.env.IMG_DIR_INDEX] + "/" + imageUrl[process.env.IMG_FILE_INDEX] + "?ar=1:1&fit=crop&crop=face&mask=ellipse&w=137&h=137"}
+        src={process.env.IMGIX_URL + imageUrl[process.env.IMG_DIR_INDEX] + "/" + imageUrl[process.env.IMG_FILE_INDEX] + "?ar=1:1&fit=crop&crop=faces&mask=ellipse&w=137&h=137"}
         className={'attribution-secondary-profile-image'}
         height={137}
         width={137}

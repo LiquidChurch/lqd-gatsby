@@ -74,7 +74,7 @@ const SocialIcons = ({
           <Nav.Link 
             href="/give" 
             aria-label="give"
-            className={'message-action-icon give-icon'}
+            className={'message-action-icon give-outline-icon'}
             target="_blank"
           >
           </Nav.Link>
