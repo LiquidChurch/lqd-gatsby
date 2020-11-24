@@ -17,6 +17,7 @@ export default (props) => {
   } else {
     messageDate = props.date
   }
+
   return (
     <section className="fullwidth-section">
     <Container className={'hero-image-container-fixed'}>
@@ -29,7 +30,7 @@ export default (props) => {
       <TitleBlock 
         date={messageDate}
         attributions={props.attributions}
-        attributionsCo={props.attributionCo}
+        attributionsCo={props.attributionsCo}
         title={props.title}
         slut={props.slug}
       />

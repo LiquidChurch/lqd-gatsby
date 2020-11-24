@@ -78,10 +78,10 @@ Note: Beware of modifying this element as it can break the animations - you shou
  
 .bm-text {
   font-size: 1.3em;
-  font-weight: 600;
   color: #007EA8;
   padding-left: 0.9em;
   vertical-align: middle;
+  font-family:"Avenir Next Bold";
 }
 
 .bm-subcat {

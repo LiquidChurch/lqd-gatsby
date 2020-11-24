@@ -23,7 +23,7 @@ const TitleBlock = ({
   
   if (attributions.nodes.length > 0) {
     formattedAttributions = attributions.nodes[0].name
-
+    console.log(attributionsCo)
     if (attributionsCo.attributions !== null) {
       attributionsCo.attributions.forEach(item => {
           formattedAttributions = formattedAttributions + ", " + item.name
