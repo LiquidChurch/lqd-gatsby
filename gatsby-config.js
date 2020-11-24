@@ -36,7 +36,7 @@ module.exports = {
         url: process.env.WORDPRESS_URL,
         schema: {
           timeout: 120000,
-          perPage: 4,
+          perPage: 10,
         },
         debug: {
           graphql: {

@@ -3,7 +3,9 @@ export const useBlog = (blogId) => {
   const data = useStaticQuery(
     graphql`
       query {
-          allWpBlog {
+          allWpBlog (
+              sort: {fields: date, order: DESC}
+            ){
             nodes {
               id
               databaseId

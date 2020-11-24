@@ -20,52 +20,6 @@ export const useRecentSeries = (numOfItems, excludeId) => {
                 sourceUrl
               }
             }
-            messages {
-               nodes {
-                 slug
-                 id
-                 title
-                 date
-                 content
-                 featuredImage {
-                   node {
-                     id
-                     sourceUrl
-                     mediaItemUrl
-                   }
-                 }
-                 attributions {
-                  nodes {
-                    id
-                    name
-                    slug
-                    profileImage {
-                      image {
-                        sourceUrl
-                      }
-                    }
-                  }
-                }
-                attributionsCo {
-                  attributions {
-                    id
-                    name
-                    slug
-                  }
-                }
-
-                seriesList {
-                  nodes {
-                    name
-                    id
-                    slug
-                  }
-                }
-                seriesPart {
-                  part
-                } 
-              }
-            }
           }
         }
       }
@@ -83,6 +37,8 @@ export const useRecentSeries = (numOfItems, excludeId) => {
       }
     }
   }
+
+  returnData.sort((a,b) => a.SeriesImage.date < b.SeriesImage.date ? 1: -1)
   
   return returnData
 }

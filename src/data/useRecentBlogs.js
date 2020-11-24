@@ -4,7 +4,7 @@ export const useRecentBlogs = (numOfItems, currentDate) => {
     graphql`
       query {
           allWpBlog (
-              sort: {fields: publication___publishDate, order: DESC}
+              sort: {fields: date, order: DESC}
             ) {
             nodes {
               id
