@@ -10,9 +10,7 @@ const FeaturedAttribute = ({
     showEmail,
   }) => {
   const attributeObject = useAttributionById(attribute.id)
-  console.log(attributeObject)
   const imageUrl = attributeObject.profileImage.image.mediaItemUrl.split("/")
-  console.log(attributeObject.description)
   return (
   <>
     <div>

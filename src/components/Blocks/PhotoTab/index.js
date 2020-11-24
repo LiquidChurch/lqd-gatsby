@@ -66,11 +66,9 @@ export default ({
   }
   
   let usePhoto = true
-  console.log(map_toggle)
   if (map_toggle !== undefined && map_toggle === true) {
     usePhoto = false
     var mapObj = JSON.parse(google_map)
-    console.log('mapObj', mapObj)
     var campusList = []
     let campusInfo = useCampusById(mapObj.rows[0].campus.id)
 

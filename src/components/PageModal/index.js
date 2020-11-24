@@ -18,8 +18,6 @@ export default ({ keyValue,
                   modal_id,
                   modal_link }) => {
   const ctx = useContext(PageModalContext)
-  console.log('page modal block')
-  console.log(modal_text)
   return (
     <>
        <Modal show={(ctx.showModalId === modal_id)} onHide={ctx.setCloseModal} centered>

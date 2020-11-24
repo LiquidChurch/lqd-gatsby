@@ -66,7 +66,6 @@ function MapMarker(props) {
   if (props.iconStyle === "grey") {
     mapIcon = require('./map-marker-grey.svg')
   }
-  console.log('modal_text', props.text)
   return (
     <>
    <MarkerWithLabel
