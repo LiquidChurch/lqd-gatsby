@@ -50,7 +50,6 @@ module.exports = {
         type: {
           MediaItem: {
             lazyNodes: false,
-            excludeByMimeTypes: [`image/png`]
           },
         },    
         develop: {
