@@ -4,7 +4,7 @@ import { graphql } from "gatsby"
 import Parse from "react-html-parser"
 import Layout from "../components/Layout"
 import { GlobalContext } from '../components/GlobalContext/context'
-import { isTouchEnabled, getDate } from '../helpers/functions'
+import { getDate } from '../helpers/functions'
 
 import SeriesHero from "../components/SeriesHero"
 import MediaTiles from "../components/Blocks/MediaTiles"
@@ -28,7 +28,7 @@ export default ({
     if (!ctx.isMobileSet) {
       ctx.setIsMobile(Boolean(userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i)))
     }
-  }, [ctx])
+  }, [ctx, userAgent])
   
   let messagesInfo = []
  

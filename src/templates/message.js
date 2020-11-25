@@ -6,7 +6,7 @@ import Parse from "react-html-parser"
 import Layout from "../components/Layout"
 import MessageBlocks from "../components/MessageBlocks"
 import { GlobalContext } from '../components/GlobalContext/context'
-import { isTouchEnabled, getDate } from '../helpers/functions'
+import { getDate } from '../helpers/functions'
 
 /** 
  * Template - Messages Component
@@ -21,7 +21,7 @@ export default ({
   console.log("message:", lqdmMessage.title)
   const generalSettings = useGeneralSettings()  
   const ctx = useContext(GlobalContext)
-  const userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent;
+  const userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent
   
   var pageValid = false
   if ( (lqdmMessage.publication.publishDate === null || getDate(location.search) >= Date.parse(lqdmMessage.publication.publishDate.replace(/\s/g, 'T'))) &&
@@ -40,7 +40,7 @@ export default ({
     ctx.setTheme("dark")
 
     ctx.setPath(location.pathname)
-  }, [ctx, location.pathname, pageValid])
+  }, [ctx, location.pathname, pageValid, userAgent])
   
   return (
     <>

@@ -13,7 +13,7 @@ import PageBlocks from "../components/PageBlocks"
 import Heading from "../components/Blocks/Heading"
 
 import { GlobalContext } from '../components/GlobalContext/context'
-import { isTouchEnabled, getDate } from '../helpers/functions'
+import { getDate } from '../helpers/functions'
 import { locationLookup, jobTypeLookup, postLengthCalc } from '../helpers/jobHelper'
 
 function JobPageButtons(props) {
@@ -88,7 +88,7 @@ export default ({
       ctx.setIsMobile(Boolean(userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i)))
     }   
     ctx.setPath(location.pathname)
-  }, [ctx, location.pathname, pageValid])
+  }, [ctx, location.pathname, pageValid, userAgent])
     
   return (
     <>

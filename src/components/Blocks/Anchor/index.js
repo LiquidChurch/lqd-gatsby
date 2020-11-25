@@ -5,7 +5,7 @@ export default ({
 }) => {
   return (
   <>
-    <a id={ label.toLowerCase() }></a>
+    <div id={ label.toLowerCase() }></div>
   </>
   )
 }
