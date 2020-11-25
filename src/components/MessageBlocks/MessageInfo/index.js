@@ -22,7 +22,7 @@ function TagIcon(props) {
   return (
     <>
       <Link 
-        to={'/tag/' + props.tagItem.slug }
+        to={'/tags#' + props.tagItem.slug }
         className="message-tag"
       >
         <span className='tag-icon message-tag-icon'></span>
