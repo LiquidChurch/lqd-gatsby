@@ -68,7 +68,7 @@ export default ({
   console.log("job:", lqdmJob.title)
   const generalSettings = useGeneralSettings()    
   const ctx = useContext(GlobalContext)
-  const userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent
+
   var pageValid = false
   if ( (lqdmJob.publication.publishDate === null || getDate(location.search) >= Date.parse(lqdmJob.publication.publishDate.replace(/\s/g, 'T'))) &&
        (lqdmJob.publication.unpublishDate === null || getDate(location.search) < Date.parse(lqdmJob.publication.unpublishDate.replace(/\s/g, 'T'))) ) {
@@ -84,11 +84,12 @@ export default ({
       navigate('/jobs')
     }
     ctx.setTheme("light")
+    let userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent
     if (!ctx.isMobileSet) {
       ctx.setIsMobile(Boolean(userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i)))
     }   
     ctx.setPath(location.pathname)
-  }, [ctx, location.pathname, pageValid, userAgent])
+  }, [ctx, location.pathname, pageValid])
     
   return (
     <>

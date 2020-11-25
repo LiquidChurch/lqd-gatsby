@@ -21,7 +21,6 @@ export default ({
   console.log("message:", lqdmMessage.title)
   const generalSettings = useGeneralSettings()  
   const ctx = useContext(GlobalContext)
-  const userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent
   
   var pageValid = false
   if ( (lqdmMessage.publication.publishDate === null || getDate(location.search) >= Date.parse(lqdmMessage.publication.publishDate.replace(/\s/g, 'T'))) &&
@@ -30,6 +29,7 @@ export default ({
   }
   
   useEffect(() => {
+    let userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent
     if (!ctx.isMobileSet) {
       ctx.setIsMobile(Boolean(userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i)))
     }     
@@ -40,7 +40,7 @@ export default ({
     ctx.setTheme("dark")
 
     ctx.setPath(location.pathname)
-  }, [ctx, location.pathname, pageValid, userAgent])
+  }, [ctx, location.pathname, pageValid])
   
   return (
     <>

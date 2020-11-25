@@ -21,7 +21,6 @@ export default ({
 }) => {
   console.log("blog: ", blog.title)
   const ctx = useContext(GlobalContext)
-  const userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent
   
   var pageValid = false
   if ( (blog.publication.publishDate === null || getDate(location.search) >= Date.parse(blog.publication.publishDate.replace(/\s/g, 'T'))) &&
@@ -34,10 +33,11 @@ export default ({
       navigate('/blogs')
     }    
     ctx.setTheme("light")
+    let userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent
     if (!ctx.isMobileSet) {
       ctx.setIsMobile(Boolean(userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i)))
     }     
-  }, [ctx, pageValid, userAgent])
+  }, [ctx, pageValid])
   
   return (
     <>

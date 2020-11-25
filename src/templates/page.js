@@ -24,7 +24,6 @@ export default ({
   console.log("page: ", page.title)
   const generalSettings = useGeneralSettings()
   const ctx = useContext(GlobalContext)
-  const userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent;    
   
   let parentPageUri = "/"
   
@@ -55,6 +54,7 @@ export default ({
   }
   
   useEffect(() => {
+  let userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent;    
   if (!ctx.isMobileSet) {
     ctx.setIsMobile(Boolean(userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i)))
   } 
@@ -85,7 +85,7 @@ export default ({
       ctx.setPath(location.pathname)
     }
 
-  }, [ctx, theme, externalRedirectBlock, hasExternalRedirect, location, pageValid, parentPageUri, userAgent])
+  }, [ctx, theme, externalRedirectBlock, hasExternalRedirect, location, pageValid, parentPageUri])
   
   return (
     <>

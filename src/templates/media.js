@@ -9,10 +9,10 @@ export default ({
 }) => {
   console.log("media: ", media.title)
   const ctx = useContext(GlobalContext)
-  const userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent
   
   useEffect(() => {
     ctx.setTheme("dark")
+     let userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent
     if (!ctx.isMobileSet) {
       ctx.setIsMobile(Boolean(userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i)))
     }     

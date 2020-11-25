@@ -21,14 +21,14 @@ export default ({
 }) => {
   console.log("series: ", series.name)
   const ctx = useContext(GlobalContext)
-  const userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent  
   const currentDate = getDate(location.search)
   useEffect(() => {
     ctx.setTheme("light")
+    let userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent  
     if (!ctx.isMobileSet) {
       ctx.setIsMobile(Boolean(userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i)))
     }
-  }, [ctx, userAgent])
+  }, [ctx])
   
   let messagesInfo = []
  
