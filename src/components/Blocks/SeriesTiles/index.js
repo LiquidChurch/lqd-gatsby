@@ -1,13 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react'
 import Imgix from 'react-imgix'
 import { Link } from 'gatsby'
-// import InfiniteScroll from "react-infinite-scroll-component"
-
+import { useLocation } from '@reach/router';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card'
-
+import { getDate } from '../../../helpers/functions'
 import { useRecentSeries } from "../../../data/useRecentSeries"
 import { useScrollPosition } from "../../../helpers/useScrollPosition"
 
@@ -47,7 +46,7 @@ export default ({
   padding,
 }) => {
   const perPageNum = 12
-  let tempItems = useRecentSeries(num_items, exclude_id)
+  let tempItems = useRecentSeries(num_items, getDate(useLocation().search), exclude_id)
   const [series, setSeries] = useState([])
   const [currentPage, setCurrentPage] = useState(0)
   const [loadNext, setLoadNext] = useState(true)

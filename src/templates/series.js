@@ -21,11 +21,12 @@ export default ({
 }) => {
   console.log("series: ", series.name)
   const ctx = useContext(GlobalContext)
-  const currentDate = getDate(location.search)
+  const userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent  
+
   useEffect(() => {
     ctx.setTheme("light")
-    if (isTouchEnabled()) {
-      ctx.enableTouchState()
+    if (!ctx.isMobileSet) {
+      ctx.setIsMobile(Boolean(userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i)))
     }
   }, [ctx])
   
@@ -111,7 +112,7 @@ export default ({
       />    
         <SeriesTiles
           type='recent'
-          num_items={18}
+          num_items={0}
           exclude_id={series.id}
           layout='grid'
           series_list=''

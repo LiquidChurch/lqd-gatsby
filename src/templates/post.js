@@ -19,11 +19,13 @@ export default ({
   console.log("post: ", post.title)
   const generalSettings = useGeneralSettings()
   const ctx = useContext(GlobalContext)
+  const userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent
+  
   useEffect(() => {
     ctx.setTheme("light")
-    if (isTouchEnabled()) {
-      ctx.enableTouchState()
-    }
+    if (!ctx.isMobileSet) {
+      ctx.setIsMobile(Boolean(userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i)))
+    }   
     ctx.setPath(location.pathname)
   }, [ctx, location.pathname])
   return (

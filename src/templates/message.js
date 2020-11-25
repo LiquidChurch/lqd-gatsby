@@ -17,9 +17,12 @@ export default ({
     lqdmMessage,
   },
 }) => {
+  
   console.log("message:", lqdmMessage.title)
   const generalSettings = useGeneralSettings()  
   const ctx = useContext(GlobalContext)
+  const userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent;
+  
   var pageValid = false
   if ( (lqdmMessage.publication.publishDate === null || getDate(location.search) >= Date.parse(lqdmMessage.publication.publishDate.replace(/\s/g, 'T'))) &&
        (lqdmMessage.publication.unpublishDate === null || getDate(location.search) < Date.parse(lqdmMessage.publication.unpublishDate.replace(/\s/g, 'T'))) ) {
@@ -27,13 +30,15 @@ export default ({
   }
   
   useEffect(() => {
+    if (!ctx.isMobileSet) {
+      ctx.setIsMobile(Boolean(userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i)))
+    }     
+    
     if (!pageValid) {
       navigate('/messages')
     }
     ctx.setTheme("dark")
-    if (isTouchEnabled()) {
-      ctx.enableTouchState()
-    }
+
     ctx.setPath(location.pathname)
   }, [ctx, location.pathname, pageValid])
   

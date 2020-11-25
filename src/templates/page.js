@@ -22,11 +22,10 @@ export default ({
   },
 }) => {
   console.log("page: ", page.title)
-  const userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent;
-  console.log('userAgent', userAgent)
   const generalSettings = useGeneralSettings()
   const ctx = useContext(GlobalContext)
-    
+  const userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent;    
+  
   let parentPageUri = "/"
   
   if (page.parentDatabaseId !== null) {

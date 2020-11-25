@@ -1,5 +1,5 @@
 import { useStaticQuery, graphql } from "gatsby"
-export const useRecentSeries = (numOfItems, excludeId) => {
+export const useRecentSeries = (numOfItems, currentDate, excludeId) => {
   const data = useStaticQuery(
     graphql `
       query {
@@ -29,7 +29,9 @@ export const useRecentSeries = (numOfItems, excludeId) => {
   let returnData = []
   let i
   for (i = 0; i < data.allWpSeries.nodes.length ; i++) {
-    if (data.allWpSeries.nodes[i].id !== excludeId) {
+    if (data.allWpSeries.nodes[i].id !== excludeId && 
+        currentDate >= Date.parse(data.allWpSeries.nodes[i].date+'T19:00:00')) {
+      
       data.allWpSeries.nodes[i].category="series"
       returnData.push(data.allWpSeries.nodes[i])
       if (returnData.length === numOfItems) {
