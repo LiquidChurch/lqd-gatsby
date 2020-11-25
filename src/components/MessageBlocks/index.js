@@ -82,7 +82,7 @@ export default (lqdmMessage) => {
           all_caps="true"
           add_padding=""
           font_color="#565656"
-          padding="none"
+          padding="top"
           bg_color="#F8F8F8"
       />    
       <MediaTiles 
