@@ -22,7 +22,7 @@ export default ({
   console.log("series: ", series.name)
   const ctx = useContext(GlobalContext)
   const userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent  
-
+  const currentDate = getDate(location.search)
   useEffect(() => {
     ctx.setTheme("light")
     if (!ctx.isMobileSet) {
