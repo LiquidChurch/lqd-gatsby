@@ -42,6 +42,8 @@ const GoogleMapComponentWithMarker = withScriptjs(
               slug={campus.slug}
               title={campus.name}
               text={campus.description}
+              cta_label={campus.cta_label}
+              cta_link={campus.cta_link}
               anchor={campus.anchor}
               iconStyle={campus.icon_style}
               index={campus.index}
@@ -88,7 +90,8 @@ function MapMarker(props) {
           modal_title={props.title}
           modal_text={props.text}
           modal_id={props.slug}
-          modal_link={props.slug}
+          modal_cta={props.cta_label}
+          modal_link={props.cta_link}
         />
       </>
   )

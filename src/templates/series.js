@@ -51,7 +51,7 @@ export default ({
       const formattedDate =  formatter.format(new Date(message.publication.publishDate.replace(/\s/g, 'T')));
 
       let profileImgSrc = process.env.LOGO_IMG
-      if (message.attributions.nodes.length !== 0) {
+      if (message.attributions.nodes.length !== 0 && message.attributions.nodes[0].profileImage.image !== null) {
         profileImgSrc = message.attributions.nodes[0].profileImage.image.sourceUrl
       }
 

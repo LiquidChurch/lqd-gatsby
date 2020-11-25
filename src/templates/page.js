@@ -8,7 +8,7 @@ import Layout from "../components/Layout"
 import PageBlocks from "../components/PageBlocks"
 import { GlobalContext } from '../components/GlobalContext/context'
 import { isTouchEnabled, getDate } from '../helpers/functions'
-
+import { usePageById } from '../data/usePage'
 
 /** 
  * Template - Page Component
@@ -22,6 +22,13 @@ export default ({
   console.log("page: ", page.title)
   const generalSettings = useGeneralSettings()
   const ctx = useContext(GlobalContext)
+  
+  let parentPageUri = "/"
+  
+  if (page.parentDatabaseId !== null) {
+    parentPageUri = usePageById(page.parentDatabaseId).uri
+  }
+
   var pageValid = false
   if ( (page.publication.publishDate === null || getDate(location.search) >= Date.parse(page.publication.publishDate.replace(/\s/g, 'T'))) &&
        (page.publication.unpublishDate === null || getDate(location.search) < Date.parse(page.publication.unpublishDate.replace(/\s/g, 'T'))) ) {
@@ -43,7 +50,6 @@ export default ({
     hasExternalRedirect = true
     pageValid = false
   }
-  
   useEffect(() => {
     if (hasExternalRedirect) {
       //add in open in new tab attempt
@@ -64,9 +70,10 @@ export default ({
       //}
       setTimeout(() => {
         
-        if (ctx.prevPath !== location.pathname) {
+        if (ctx.prevPath !== "" && ctx.prevPath !== location.pathname) {
           window.location.replace(ctx.prevPath)
-          //window.history.back()
+        } else if (ctx.prevPath === "") {
+          window.location.replace(parentPageUri)
         }
       },500)      
     } else if (!pageValid) {
@@ -79,7 +86,7 @@ export default ({
       ctx.setPath(location.pathname)
     }
 
-  }, [ctx, theme, externalRedirectBlock, hasExternalRedirect, location, pageValid])
+  }, [ctx, theme, externalRedirectBlock, hasExternalRedirect, location, pageValid, parentPageUri])
   
   return (
     <>
@@ -111,6 +118,7 @@ export const query = graphql`
         themeState {
           state
         }
+        parentDatabaseId
         publication {
           unpublishDate
           publishDate

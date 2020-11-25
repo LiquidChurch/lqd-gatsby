@@ -25,6 +25,9 @@ export default ({
     
     campusInfo.icon_style = campus.icon_style
     campusInfo.index = campusesObj.rows.length - i
+    campusInfo.cta_label="View Info"
+    campusInfo.cta_link=campusInfo.slug
+    
     campusList.push(campusInfo)
   })
   

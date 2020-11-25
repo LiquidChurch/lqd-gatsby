@@ -45,15 +45,16 @@ module.exports = {
           }
         },
         html: {
-          useGatsbyImage: false
+          useGatsbyImage: false,
         },
         type: {
           MediaItem: {
             lazyNodes: false,
+            excludeByMimeTypes: [`image/png`]
           },
         },    
         develop: {
-          nodeUpdateInterval: 700
+          nodeUpdateInterval: 1000
         },
         auth: {
           htaccess: {

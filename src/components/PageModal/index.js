@@ -2,9 +2,7 @@ import React, { useContext } from 'react'
 import { Link } from 'gatsby'
 import Parse from "react-html-parser"
 import Modal from 'react-bootstrap/Modal'
-import Button from 'react-bootstrap/Button'
-import CallToAction from '../Commons/CallToAction'
-import { ArrowForwardBtn, ArrowForwardText } from '../../helpers/icons'
+import { ArrowForwardText } from '../../helpers/icons'
 
 import { PageModalContext } from './context'
 import "./styles.css"
@@ -16,6 +14,7 @@ export default ({ keyValue,
                   modal_title,
                   modal_text,
                   modal_id,
+                  modal_cta,
                   modal_link }) => {
   const ctx = useContext(PageModalContext)
   return (
@@ -28,7 +27,7 @@ export default ({ keyValue,
         <Modal.Footer>
           <Link className={'cta medium text-center modal-link'}
                 to={modal_link}
-           ><div className="cta-label">View Info<ArrowForwardText/></div>
+           ><div className="cta-label">{modal_cta}<ArrowForwardText/></div>
            </Link>
         </Modal.Footer>
       </Modal>

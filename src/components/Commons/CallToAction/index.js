@@ -76,8 +76,6 @@ const CallToAction = ({
     icon = cta.show_icon
   }
   
-  let testColor = '#fff'
-  
   const StyledLink = styled(props => <Link {...props } />)`
       color:${props => fontColor};
       background-color: ${props => btnColor};

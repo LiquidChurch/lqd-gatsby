@@ -11,6 +11,7 @@ import Heading from "../../Blocks/Heading"
 import CallToAction from '../../Commons/CallToAction'
 import GoogleMapComponentWithMarker from "../../Commons/GoogleMapWithMarker"
 import { useCampusById } from "../../../data/useCampus"
+import { usePageById } from '../../../data/usePage'
 
 import { useImageById } from "../../../data/useImage"
 import { ClassicTextHelper, getDate } from "../../../helpers/functions.js"
@@ -69,6 +70,12 @@ export default ({
   if (map_toggle !== undefined && map_toggle === true) {
     usePhoto = false
     var mapObj = JSON.parse(google_map)
+    
+    let pageInfo = {}
+    if (mapObj.rows[0].cta_link.id !== undefined) {
+      pageInfo = usePageById(mapObj.rows[0].cta_link.id)
+    } 
+
     var campusList = []
     let campusInfo = useCampusById(mapObj.rows[0].campus.id)
 
@@ -80,6 +87,8 @@ export default ({
     
     campusInfo.icon_style = mapObj.rows[0].icon_style
     campusInfo.index = 1
+    campusInfo.cta_label=mapObj.rows[0].cta_label
+    campusInfo.cta_link=pageInfo.uri
     campusList.push(campusInfo)
   } else {
     var imageInfo = useImageById(image_id)    

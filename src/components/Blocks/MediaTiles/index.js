@@ -141,7 +141,7 @@ function MediaDataTransformer(props) {
     })
     
     let profileImgSrc = process.env.LOGO_IMG
-    if (item.attributions.nodes.length !== 0) {
+    if (item.attributions.nodes.length !== 0 && item.attributions.nodes[0].profileImage.image !== null) {
       profileImgSrc = item.attributions.nodes[0].profileImage.image.sourceUrl
     }
     
