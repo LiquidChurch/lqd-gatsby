@@ -10,7 +10,7 @@ import { GlobalContext } from '../components/GlobalContext/context'
 //import { isTouchEnabled, getDate } from '../helpers/functions'
 import { getDate } from '../helpers/functions'
 import { usePageById } from '../data/usePage'
-import useDeviceDetect from '../helpers/useDeviceDetection'
+//import useDeviceDetect from '../helpers/useDeviceDetection'
 
 /** 
  * Template - Page Component
@@ -22,11 +22,11 @@ export default ({
   },
 }) => {
   console.log("page: ", page.title)
-  const isMobile = useDeviceDetect();
-  console.log('isMobile', isMobile)
+  const userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent;
+  console.log('userAgent', userAgent)
   const generalSettings = useGeneralSettings()
   const ctx = useContext(GlobalContext)
-  
+    
   let parentPageUri = "/"
   
   if (page.parentDatabaseId !== null) {
@@ -54,26 +54,23 @@ export default ({
     hasExternalRedirect = true
     pageValid = false
   }
+  
   useEffect(() => {
+  if (!ctx.isMobileSet) {
+    ctx.setIsMobile(Boolean(userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i)))
+  } 
+    
     if (hasExternalRedirect) {
       //add in open in new tab attempt
       if (ctx.currPath !== 'external') {
         ctx.setPath("external")
-        if (externalRedirectBlock.attributes.new_tab && !isMobile.isMobile) {
-          console.log('open in new window')
+        if (externalRedirectBlock.attributes.new_tab && !ctx.isMobile) {
           window.open(externalRedirectBlock.attributes.external_url) 
         } else {
-          console.log('open in existing window')
           window.location.replace(externalRedirectBlock.attributes.external_url)
         }
       }
       
-      // comment
-      // window.location.replace(externalRedirectBlock.attributes.external_url)
-      // comment 
-      //if (externalRedirectBlock.attributes.external_url.slice(0, 6) === "mailto") {
-      //  setTimeout(() => {window.history.back()},100)
-      //}
       setTimeout(() => {
         
         if (ctx.prevPath !== "" && ctx.prevPath !== location.pathname) {
@@ -86,13 +83,10 @@ export default ({
       navigate('/')  
     } else {        
       ctx.setTheme(theme)
-      if (isMobile.isMobile) {
-        ctx.enableTouchState()
-      }
       ctx.setPath(location.pathname)
     }
 
-  }, [ctx, theme, externalRedirectBlock, hasExternalRedirect, location, pageValid, parentPageUri])
+  }, [ctx, theme, externalRedirectBlock, hasExternalRedirect, location, pageValid, parentPageUri, userAgent])
   
   return (
     <>

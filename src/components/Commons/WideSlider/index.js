@@ -18,7 +18,7 @@ export default (props) => {
   const ctx = useContext(GlobalContext)
 
   let componentClass = ""
-  if (ctx.touchEnabled) {
+  if (ctx.isMobile) {
     componentClass='component-row-touch'
   } else {
     componentClass='component-row'
