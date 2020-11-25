@@ -112,7 +112,7 @@ export default ({
       />    
         <SeriesTiles
           type='recent'
-          num_items={0}
+          num_items={-1}
           exclude_id={series.id}
           layout='grid'
           series_list=''
