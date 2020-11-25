@@ -7,8 +7,10 @@ import Parse from "react-html-parser"
 import Layout from "../components/Layout"
 import PageBlocks from "../components/PageBlocks"
 import { GlobalContext } from '../components/GlobalContext/context'
-import { isTouchEnabled, getDate } from '../helpers/functions'
+//import { isTouchEnabled, getDate } from '../helpers/functions'
+import { getDate } from '../helpers/functions'
 import { usePageById } from '../data/usePage'
+import useDeviceDetect from '../helpers/useDeviceDetection'
 
 /** 
  * Template - Page Component
@@ -20,6 +22,8 @@ export default ({
   },
 }) => {
   console.log("page: ", page.title)
+  const isMobile = useDeviceDetect();
+  console.log('isMobile', isMobile)
   const generalSettings = useGeneralSettings()
   const ctx = useContext(GlobalContext)
   
@@ -55,9 +59,11 @@ export default ({
       //add in open in new tab attempt
       if (ctx.currPath !== 'external') {
         ctx.setPath("external")
-        if (externalRedirectBlock.attributes.new_tab) {
+        if (externalRedirectBlock.attributes.new_tab && !isMobile.isMobile) {
+          console.log('open in new window')
           window.open(externalRedirectBlock.attributes.external_url) 
         } else {
+          console.log('open in existing window')
           window.location.replace(externalRedirectBlock.attributes.external_url)
         }
       }
@@ -80,7 +86,7 @@ export default ({
       navigate('/')  
     } else {        
       ctx.setTheme(theme)
-      if (isTouchEnabled()) {
+      if (isMobile.isMobile) {
         ctx.enableTouchState()
       }
       ctx.setPath(location.pathname)
