@@ -25,7 +25,6 @@ export default ({
     hasResult = false
   }
   
-  console.log(tagList)
   return (
   <>    
     <Layout location={location}>
@@ -63,7 +62,6 @@ const HitsTest = ({hits}) => {
   return (
   <>
     {hits.nodes.map(hit => {
-     console.log(hit)
       const mediaItem = {
         category: "messages",
         slug: hit.slug,
