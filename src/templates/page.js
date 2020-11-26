@@ -54,10 +54,10 @@ export default ({
   }
   
   useEffect(() => {
-  let userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent;    
-  if (!ctx.isMobileSet) {
-    ctx.setIsMobile(Boolean(userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i)))
-  } 
+    let userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent;    
+    if (!ctx.isMobileSet) {
+      ctx.setIsMobile(Boolean(userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i)))
+    } 
     
     if (hasExternalRedirect) {
       //add in open in new tab attempt
@@ -71,13 +71,12 @@ export default ({
       }
       
       setTimeout(() => {
-        
         if (ctx.prevPath !== "" && ctx.prevPath !== location.pathname) {
           window.location.replace(ctx.prevPath)
         } else if (ctx.prevPath === "") {
           window.location.replace(parentPageUri)
         }
-      },500)      
+      },1500)      
     } else if (!pageValid) {
       navigate('/')  
     } else {        

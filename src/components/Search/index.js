@@ -2,6 +2,7 @@ import React from 'react';
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 import Heading from '../Blocks/Heading'
 
 import MediaCard from '../Blocks/MediaTiles/mediaCard'
@@ -46,8 +47,10 @@ export default(location) => {
         </section>
         <section className="site-section bottom">
           <Container>
-            <Row>      
-              <CustomHits />
+            <Row>
+              <Col className="media-card-wrap">
+                <CustomHits />
+              </Col>
             </Row>
           </Container>
         </section>
@@ -77,7 +80,6 @@ const HitsTest = ({hits}) => {
         />
      </>
      )
-     
     })}
   </>
   )
