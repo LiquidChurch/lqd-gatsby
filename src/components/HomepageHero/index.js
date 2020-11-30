@@ -53,6 +53,11 @@ export default ({
             to={"/" + cta_url} 
             className="btn font-btn-large blue-btn"
           >{cta_label}</Link>
+          <Link
+            id="hero-cta"
+            to={"/indoors"} 
+            className="btn font-btn-large blue-btn"
+          >Join Us In Person</Link>
         </div>
       </div>
     </Container>
