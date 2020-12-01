@@ -4,6 +4,8 @@ import Imgix from "react-imgix"
 
 import Container from 'react-bootstrap/Container'
 import { GlobalContext } from '../GlobalContext/context'
+import { ArrowRight } from '../../helpers/icons'
+import { ArrowForwardText } from '../../helpers/icons'
 
 import "./styles.css"
 
@@ -51,13 +53,23 @@ export default ({
           <Link
             id="hero-cta"
             to={"/" + cta_url} 
-            className="btn font-btn-large blue-btn"
-          >{cta_label}</Link>
+            className="btn font-btn homepage-hero-btn"
+          >
+            {cta_label}
+            <span className="button-arrow homepage-hero-btn-arrow">
+            <ArrowForwardText style={{fill:"#009DD1;"}} />
+            </span>
+          </Link>
           <Link
             id="hero-cta"
-            to={"/indoors"} 
-            className="btn font-btn-large blue-btn"
-          >Join Us In Person</Link>
+            to={"/indoor-services"} 
+            className="btn font-btn homepage-hero-btn"
+          >
+            Join Us In Person
+            <span className="button-arrow homepage-hero-btn-arrow">
+            <ArrowForwardText style={{fill:"#009DD1;"}} />
+            </span>
+          </Link>
         </div>
       </div>
     </Container>

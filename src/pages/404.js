@@ -36,7 +36,7 @@ export default ({
       if (foundPage !== null) {
         window.location.replace(foundPage.uri)
       } else {
-        //window.location.replace('/')
+        window.location.replace('/')
       }
      }
     }
