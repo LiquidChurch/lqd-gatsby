@@ -78,7 +78,7 @@ export default ({
         }
       },1500)      
     } else if (!pageValid) {
-      navigate('/')  
+      navigate('/404')  
     } else {        
       ctx.setTheme(theme)
       ctx.setPath(location.pathname)

@@ -1,6 +1,6 @@
 .message-player-container {
-  margin-left: -0.9em;
-  margin-right: -0.9em;
+  margin-left: -1em;
+  margin-right: -1em;
   padding-left: 0;
   padding-right: 0;
   background-color: #313131;
@@ -8,7 +8,7 @@
   top:-115px;
   margin-bottom: -115px;
   height: fit-content;
-  width: fit-content;
+  width: 110%;
   overflow:hidden;
 }
 

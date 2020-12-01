@@ -4,8 +4,7 @@ import Imgix from "react-imgix"
 
 import Container from 'react-bootstrap/Container'
 import { GlobalContext } from '../GlobalContext/context'
-import { ArrowRight } from '../../helpers/icons'
-import { ArrowForwardText } from '../../helpers/icons'
+//import { ArrowForwardText } from '../../helpers/icons'
 
 import "./styles.css"
 
@@ -47,7 +46,7 @@ export default ({
            sizes="150vw" />
       </div>
       <div className="homepage-hero-text-block">
-        <h1 className={runEffect ? "homepage-hero-tag font-h1 loaded" : "homepage-hero-tag font-h1"}>{hero_tag}</h1>
+        <h1 className={runEffect ? "homepage-hero-tag loaded" : "homepage-hero-tag"}>{hero_tag}</h1>
         <p className={runEffect ? "homepage-hero-text font-large loaded" : "homepage-hero-text font-large"}>{hero_text}</p>
         <div className={runEffect ? "homepage-hero-cta loaded" : "homepage-hero-cta"}>
           <Link
@@ -56,9 +55,6 @@ export default ({
             className="btn font-btn homepage-hero-btn"
           >
             {cta_label}
-            <span className="button-arrow homepage-hero-btn-arrow">
-            <ArrowForwardText style={{fill:"#009DD1;"}} />
-            </span>
           </Link>
           <Link
             id="hero-cta"
@@ -66,9 +62,6 @@ export default ({
             className="btn font-btn homepage-hero-btn"
           >
             Join Us In Person
-            <span className="button-arrow homepage-hero-btn-arrow">
-            <ArrowForwardText style={{fill:"#009DD1;"}} />
-            </span>
           </Link>
         </div>
       </div>
