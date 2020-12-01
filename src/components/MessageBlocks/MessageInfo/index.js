@@ -50,12 +50,18 @@ function ScriptureList(props) {
     }
   })
   
-  return (
-    <>
-      <h6 className="font-h3 message-speaker message-scripture-header">Scriptures: </h6>
-      <div className="font-h3 message-scripture-text">{scriptures}</div>
-    </>
-  )
+  if (scriptures === "") {
+    return (<></>)
+  } else {            
+    return (
+      <>
+        <Col xs={12} className="message-scripture">
+          <h6 className="font-h3 message-speaker message-scripture-header">Scriptures: </h6>
+          <div className="font-h3 message-scripture-text">{scriptures}</div>
+        </Col>
+      </>
+    )
+  }
 }
 
 export default (lqdmMessage) => {  
@@ -75,9 +81,7 @@ export default (lqdmMessage) => {
           <Col xs={12}>
             <div className="font-medium message-description">{Parse(lqdmMessage.content)}</div>
           </Col>
-          <Col xs={12} className="message-scripture">
-            <ScriptureList scriptures={lqdmMessage.scriptures} />
-          </Col>
+          <ScriptureList scriptures={lqdmMessage.scriptures} />
           <Col xs={12}>
             <div className="message-tag-cloud">
             {lqdmMessage.tags.nodes.map(item => {

@@ -14,11 +14,15 @@
 }
   
 .message-tag-cloud {
-  display:block
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
+
 .message-tag {
   margin-left:12px;
   white-space: nowrap;
+  margin-top:4px;
 }
 
 .message-tag-icon {
@@ -35,7 +39,7 @@
 
 .message-scripture {
   margin-top:5px;
-  margin-bottom: 22px;
+  margin-bottom: 16px;
 }
 
 .message-scripture-header {

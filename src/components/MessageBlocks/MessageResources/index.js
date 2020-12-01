@@ -39,18 +39,23 @@ export default (lqdmMessage) => {
       switch(res.resourceType) {
         case 'video':
           res.resourceTitle = "Video Download"
+          res.position = 1
           break
         case 'audio':
-          res.resourceTitle = "Audio Download"
+          res.resourceTitle = "Podcast"
+          res.position = 2
           break
         case 'notes':
           res.resourceTitle = "Notes"
+          res.position = 3
           break
         case 'guide':
           res.resourceTitle = "Participant's Guide"
+          res.position = 4
           break
         case 'leader':
           res.resourceTitle = "Leader's Guide"
+          res.position = 5
           break
         default:
           break
@@ -73,6 +78,8 @@ export default (lqdmMessage) => {
   processResource(lqdmMessage.resources.resource6)
   processResource(lqdmMessage.resources.resource7)
   processResource(lqdmMessage.resources.resource8)
+  
+  englishResources.sort((a,b) => a.position > b.position)
   
   return (
     <>

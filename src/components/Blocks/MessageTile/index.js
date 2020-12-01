@@ -56,9 +56,7 @@ export default ({ keyValue,
   let seriesTitle = ""
   
   if (imgLoaded) {
-    
-    
-    if (messageInfo[0].seriesPart !== null && messageInfo[0].seriesPart.part !== "") {
+    if (messageInfo[0].seriesPart.part !== null && messageInfo[0].seriesPart.part !== "") {
       partNumber = " · Part " + messageInfo[0].seriesPart.part
     }
     messageTitle = messageInfo[0].title
