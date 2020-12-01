@@ -4,7 +4,7 @@ import { usePromoSlug } from '../data/usePromoSlug'
 export default ({
   location,
 }) => {
-  
+  console.log('404 page')
   //const navigate = useNavigate();
   
   let urlPath = location.pathname.split("/").filter(n => n)

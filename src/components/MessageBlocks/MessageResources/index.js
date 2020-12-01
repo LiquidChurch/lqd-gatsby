@@ -39,11 +39,11 @@ export default (lqdmMessage) => {
       switch(res.resourceType) {
         case 'video':
           res.resourceTitle = "Video Download"
-          res.position = 1
+          res.position = 2
           break
         case 'audio':
           res.resourceTitle = "Podcast"
-          res.position = 2
+          res.position = 1
           break
         case 'notes':
           res.resourceTitle = "Notes"
