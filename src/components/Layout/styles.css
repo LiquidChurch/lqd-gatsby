@@ -4,9 +4,8 @@
   height: 30px;
 }
 
-.container-layout {
-  width: 100.1%;
-  margin-left: -1px;
+.container-fluid {
+  overflow: hidden;
 }
 
 @media screen and (max-width: 300px) {

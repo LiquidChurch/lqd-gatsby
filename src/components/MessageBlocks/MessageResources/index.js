@@ -79,7 +79,7 @@ export default (lqdmMessage) => {
   processResource(lqdmMessage.resources.resource7)
   processResource(lqdmMessage.resources.resource8)
   
-  englishResources.sort((a,b) => a.position > b.position)
+  englishResources.sort((a,b) => a.position > b.position ? 1: -1)
   
   return (
     <>
