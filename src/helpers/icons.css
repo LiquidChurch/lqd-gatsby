@@ -159,3 +159,15 @@
   -webkit-mask-size: 101% 101%;
   mask-image: url('./svg/email.svg');
 }
+
+.google-play-button {
+  background: url('./svg/google-play-store.svg') no-repeat center;
+  background-image: url('./svg/google-play-store.svg');
+  background-size: contain;
+}
+
+.apple-app-button {
+  background: url('./svg/apple-app-store.svg') no-repeat center;
+  background-image: url('./svg/apple-app-store.svg');
+  background-size: contain;
+}

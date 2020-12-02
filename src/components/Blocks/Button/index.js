@@ -11,6 +11,7 @@ import { ArrowRight } from '../../../helpers/icons'
 import { useFeaturedImage } from "../../../data/featureImage"
 import { getDate } from '../../../helpers/functions'
 
+import { AppStore, AppleAppStore, GooglePlayStore } from './appStoreButton'
 import "./styles.css"
 
 function ButtonArrow(props) {  
@@ -120,7 +121,7 @@ export default ({
       linkUrl = linkUrl + url_append
     }          
   }
-  
+    
   let fontColor = ''
   let btnColor = ''
   let border = '0px'
@@ -183,8 +184,14 @@ export default ({
                   </StyledDropdown>
                   <DropdownButton objDropdown={dropdownItemList}/>
                 </Dropdown>
-              :
-                <StyledButton
+              : 
+                [ 
+                  {
+                  'app-store':<AppStore />,
+                  'apple-app-store':<AppleAppStore />,
+                  'google-play-store':<GooglePlayStore />}[has_icon] 
+              ||
+               <StyledButton
                   to={linkUrl}
                   className={'cta-button button-' + alignment}
                   stripHash
@@ -193,7 +200,8 @@ export default ({
                   <span className={'button-text ' + text_float}>{text}</span>
                   <ButtonArrow hasArrow={has_arrow} />
                 </StyledButton>
-              }
+              ]
+            }
             </Col>
           </Row>
         </Container>

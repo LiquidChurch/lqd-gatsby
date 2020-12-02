@@ -7,7 +7,7 @@ import { Helmet } from 'react-helmet';
 export default ({ location }) => {
  const ctx = useContext(GlobalContext)
   useEffect(() => {
-    ctx.setTheme("Dark")
+    ctx.setTheme("light")
   })
 
   return (
