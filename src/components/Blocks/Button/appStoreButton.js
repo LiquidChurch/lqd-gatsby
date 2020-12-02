@@ -14,19 +14,3 @@ export const AppStore = () => {
     </>
   )
 }
-
-export const AppleAppStore = () => {
-  return (
-      <>
-          <button className={'app-store-btn apple-app-button'}></button>
-      </>
-    )
-}
-
-export const GooglePlayStore = () => {
-  return (
-      <>
-        <h1>Google Play Store</h1>
-      </>
-    )
-}
