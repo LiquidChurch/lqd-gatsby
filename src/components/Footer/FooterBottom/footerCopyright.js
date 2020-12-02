@@ -13,13 +13,13 @@ export default () => {
       <span className="footer-font" aria-hidden={true} style={{color: "#757575", textDecoration:"none"}}>
         <CopyrightIcon />{'\u00A0'}2020{'\u00A0'}LiquidChurch.
       </span>
-      <span className="footer-font">
+      <span className="footer-font no-display" aria-hidden={true}>
         <a href="\privacy-policy">{'\u00A0'}Privacy Policy{'\u00A0'}</a>
       </span>
-      <span className="footer-font" aria-hidden={true}>
+      <span className="footer-font no-display" aria-hidden={true}>
         |
       </span>
-      <span className="footer-font">
+      <span className="footer-font no-display" aria-hidden={true}>
         <a href="\terms-of-use">{'\u00A0'}Terms of Use{'\u00A0'}</a>
       </span>
       </>
