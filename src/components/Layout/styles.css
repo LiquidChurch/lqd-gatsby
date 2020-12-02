@@ -139,6 +139,12 @@
   letter-spacing:0.08em;
 }
 
+.font-btn:hover {
+  filter: brightness(0.75);
+  color: #fff;
+  text-decoration:none;
+}
+
 .font-btn-large {
   font-family: "Avenir Next Regular";
   background: #898989;
@@ -151,6 +157,12 @@
   letter-spacing:0.09em;
 }
 
+.font-btn-large:hover {
+  filter: brightness(0.75);
+  color: #fff;
+  text-decoration:none;
+}
+
 .font-btn-xlarge {
   font-family: "Avenir Next Regular";
   background: #898989;
@@ -161,6 +173,13 @@
   font-size: 1.44em;
   letter-spacing:0.1em;
 }
+
+.font-btn-xlarge:hover {
+  filter: brightness(0.75);
+  color: #fff;
+  text-decoration:none;
+}
+
 
 .blue-btn {
   background: #0099CC !important;

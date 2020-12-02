@@ -30,6 +30,7 @@ export default ({mediaItem}) => {
       </div>
       <Card className="media-tile-card" style={{ width: '18rem' }}>
         <Card.Body>
+        <Link to={"/" + mediaItem.category + "/" + mediaItem.slug}>
           <Card.Title className="media-tile-title font-h2">{mediaItem.title}</Card.Title>
           <Card.Text as="div" className="media-tile-text font-regular">{Parse(mediaItem.blurb)}</Card.Text>
           <Card.Header className="media-tile-author">
@@ -43,6 +44,7 @@ export default ({mediaItem}) => {
                 <div className="media-card-date">{mediaItem.date}</div>
               </div>
           </Card.Header>
+        </Link>
         </Card.Body>
       </Card>
     </Col>   

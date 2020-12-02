@@ -37,22 +37,29 @@
   margin-top: 12px;
 }
 
+.message-tile-title a {
+  color: inherit;
+}
+
+.message-tile-title a:hover {
+  filter: brightness(0.5);  
+  text-decoration: none;
+}
+
 .message-tile-series {
   color: #fff;
   position: relative;
-
   text-transform: uppercase;
 }
 
 .message-tile-series a {
-  color: #fff;
+  color: inherit;
   font-weight: 600;
   text-decoration:underline;
 }
 
 .message-tile-series a:hover {
-  color: #757575;
-  text-decoration:underline;
+  filter: brightness(0.5);  
 }
 
 @media (max-width:991px) {
@@ -96,12 +103,8 @@
   }
   
   .message-tile-series {
-    color: inherit; 
+    color: #565656; 
   }
-  
-  .message-tile-series a {
-    color: inherit;
-  }    
 }
 
 

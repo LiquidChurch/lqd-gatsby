@@ -125,6 +125,10 @@
 }
 
 @media (max-width:1199px) {
+  .homepage-hero-container {
+    top:-76px;
+    
+  }
   .homepage-hero-text-block {
     width: 64%;
     left: 18%;

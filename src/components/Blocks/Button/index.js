@@ -11,7 +11,7 @@ import { ArrowRight } from '../../../helpers/icons'
 import { useFeaturedImage } from "../../../data/featureImage"
 import { getDate } from '../../../helpers/functions'
 
-import { AppStore, AppleAppStore, GooglePlayStore } from './appStoreButton'
+import { AppStore } from './appStoreButton'
 import "./styles.css"
 
 function ButtonArrow(props) {  
@@ -187,9 +187,7 @@ export default ({
               : 
                 [ 
                   {
-                  'app-store':<AppStore />,
-                  'apple-app-store':<AppleAppStore />,
-                  'google-play-store':<GooglePlayStore />}[has_icon] 
+                  'app-store':<AppStore />}[has_icon] 
               ||
                <StyledButton
                   to={linkUrl}

@@ -80,7 +80,9 @@ export default ({ keyValue,
       }
     </div>
       <div className="message-tile-text-overlay">
-        <div className="message-tile-title font-h1">{messageTitle}</div>
+        <div className="message-tile-title font-h1">
+          <Link to={"/messages/" + messageSlug}>{messageTitle}</Link>
+        </div>
         <div className="message-tile-series font-h2">
           <p>
             <Link to={'/series/' + seriesSlug}>{seriesTitle}</Link>{partNumber}

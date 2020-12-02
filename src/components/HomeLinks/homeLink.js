@@ -42,9 +42,9 @@ export default ({ page_slug_id, cta_text }) => {
       altText={page_info.featuredImage.altText}
       className="home-tile-image"
       sizes="100vw" />
-    </Link>
     <h3 className="home-tile-caption font-h2">{Parse(page_info.featuredImage.node.caption)}</h3>
     <div className="home-tile-description font-h3">{Parse(page_info.featuredImage.node.description)}</div>
+    </Link>
     <Link
       className="btn font-btn"
       key={"home-tile-button" + page_info.databaseId}

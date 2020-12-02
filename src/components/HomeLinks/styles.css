@@ -17,3 +17,8 @@
   font-family: "Avenir Next Italic";
   color: #0099CC;  
 }
+
+.home-tile a:hover {
+  text-decoration:none;
+  filter: brightness(0.75);
+}

@@ -6,7 +6,6 @@ import Parse from "react-html-parser"
 import Layout from "../components/Layout"
 import PageBlocks from "../components/PageBlocks"
 import { GlobalContext } from '../components/GlobalContext/context'
-import { isTouchEnabled } from '../helpers/functions'
 
 import HeroFeature from "../components/HeroFeature"
 
