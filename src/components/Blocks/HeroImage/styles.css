@@ -6,8 +6,8 @@
   position:relative;
   overflow:hidden;
   /* margin-bottom: -256px; */
-  top:-104px;
-  margin-bottom: -134px;
+  top:-112px;
+  margin-bottom: -143px;
 }
 
 .hero-image-filled-hero {
@@ -151,8 +151,8 @@
 
 @media (max-width:575px) { 
   .hero-image-container-filled-hero {
-    padding-top:8px;
-    margin-bottom:-117px;
+    padding-top:15px;
+    margin-bottom:-126px;
   }
   
   .hero-image-text-area-filled {
