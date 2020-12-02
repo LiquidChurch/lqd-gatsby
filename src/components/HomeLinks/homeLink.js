@@ -8,13 +8,19 @@ import { Link } from 'gatsby'
 import { useFeaturedImage } from "../../data/featureImage"
 import { getDate } from '../../helpers/functions'
 
-export default ({ page_slug_id }) => {  
+export default ({ page_slug_id, cta_text }) => {  
   const page_info = useFeaturedImage(page_slug_id)
-
+  console.log(cta_text)
   if (page_info === undefined) {
     return (<></>)
   }
   
+  if (cta_text === '') {
+    cta_text = 'Learn More'          
+  }
+            
+  cta_text = cta_text.toUpperCase()
+    
   const currentDate = getDate(useLocation().search)
   if ((page_info.publication.publishDate === null || currentDate >= Date.parse(page_info.publication.publishDate.replace(/\s/g, 'T'))) &&
       (page_info.publication.unpublishDate === null || currentDate < Date.parse(page_info.publication.unpublishDate.replace(/\s/g, 'T')))) {
@@ -44,7 +50,7 @@ export default ({ page_slug_id }) => {
       key={"home-tile-button" + page_info.databaseId}
       to={page_info.uri}
     >
-      LEARN MORE
+      {cta_text}
     </Link>
   </Col>
   </>
