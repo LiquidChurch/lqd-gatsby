@@ -196,7 +196,6 @@ export default ({
     show_blurb,
     show_series,
     type,
-    category,
     display_type,
     bg_color,
     padding,
@@ -230,10 +229,6 @@ export default ({
     })
   }
   
-  if (type === "posts") {
-    let tempItems = useRecentPosts(num_items, category.id, getDate(useLocation().search))
-    console.log(tempItems)
-  }
   
   if (type === "custom") {
     let rawMediaList = JSON.parse(media_list)
