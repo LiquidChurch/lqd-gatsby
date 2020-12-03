@@ -29,6 +29,7 @@ export default ({
   let featuredAttributionObject = []
   let tiledAttributionObject = []
   let isHybrid = false
+  let isTile = false
   
   switch(layout) {
     case 'list':
@@ -53,12 +54,12 @@ export default ({
   }
   return (
   <>
-  <section className={'site-section ' + padding} style={{backgroundColor: bg_color}}>
+  <section className={(layout === 'tile') ? 'site-section tile-only ' + padding : 'site-section ' + padding} style={{backgroundColor: bg_color}}>
     <Container>
       <Row>
         { featuredAttributionObject.map(attribution => {
           return (
-            <Col xs={12} className="attribution-profile" key={attribution.attribution.id}>
+            <Col xs={12} className={(layout === 'list') ? 'attribution-profile margin-bottom' : 'attribution-profile'} key={attribution.attribution.id}>
               <FeaturedAttribute attribute={attribution.attribution} showBlurb={show_blurb} showEmail={show_email} />
             </Col>
           )
@@ -66,7 +67,7 @@ export default ({
         { tiledAttributionObject.map(attribution => {
           return (
             <Col sm={12} md={6} lg={4} 
-                className={isHybrid ? 'attribution-secondary-profile margin' : 'attribution-secondary-profile'}
+                className={(layout === 'hybrid') ? 'attribution-secondary-profile margin' : 'attribution-secondary-profile margin'}
                 key={attribution.attribution.id}
             >
               <TiledAttribute attribute={attribution.attribution} showBlurb={show_blurb} showEmail={show_email} />

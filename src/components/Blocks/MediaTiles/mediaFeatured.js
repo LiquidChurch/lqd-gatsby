@@ -18,7 +18,7 @@ export default ({mediaItem}) => {
   var profileImgUrl = mediaItem.profileImage.split("/")
   
   return (
-    <Col xs={{span:12, offset:0}} md={{ span: 10, offset: 1 }}>
+    <Col xs={{span:12, offset:0}} md={{ span: 10, offset: 1 }} className="media-tile-col">
       <div className="media-tile-card-image">
         <Link to={"/" + mediaItem.category + "/" + mediaItem.slug}>
           <Imgix
