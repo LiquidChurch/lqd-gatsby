@@ -196,13 +196,15 @@ export default ({
     show_blurb,
     show_series,
     type,
+    category,
     display_type,
     bg_color,
     padding,
   }) => {
   const ctx = useContext(GlobalContext)
   console.log(type)
-  console.log(category)
+  let categoryObject = JSON.parse(category)
+  console.log(category.id)
   if (display_type === undefined) {
     display_type = "grid"
   }
@@ -229,6 +231,15 @@ export default ({
     })
   }
   
+  if (type === "posts") {
+    let tempItems = useRecentPosts(num_items, categoryObject.id, getDate(useLocation().search))
+     mediaLists = MediaDataTransformer({
+      "rawItems":tempItems,
+      "showBlurb":show_blurb,
+      "showSeries":show_series,
+      "showAttribution":show_attribution,
+    })
+  }
   
   if (type === "custom") {
     let rawMediaList = JSON.parse(media_list)
