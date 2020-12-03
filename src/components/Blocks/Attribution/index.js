@@ -28,8 +28,6 @@ export default ({
   
   let featuredAttributionObject = []
   let tiledAttributionObject = []
-  let isHybrid = false
-  let isTile = false
   
   switch(layout) {
     case 'list':
@@ -43,7 +41,6 @@ export default ({
       }
       break
     default:
-      isHybrid = true
       featuredAttributionObject.push(attributionObject.rows[0])
       if (attributionObject.rows.length > 1) {
         for (let k = 1; k < attributionObject.rows.length; k++ ) {
