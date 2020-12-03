@@ -29,8 +29,8 @@ export default ({mediaItem}) => {
         </Link>
       </div>
       <Card className="media-tile-card" style={{ width: '18rem' }}>
-        <Card.Body>
-        <Link to={"/" + mediaItem.category + "/" + mediaItem.slug}>
+        <Card.Body className="media-tile-card-body">
+        <Link to={"/" + mediaItem.category + "/" + mediaItem.slug} className="media-tile-card-link">
           <Card.Title className="media-tile-title font-h2">{mediaItem.title}</Card.Title>
           <Card.Text as="div" className="media-tile-text font-regular">{Parse(mediaItem.blurb)}</Card.Text>
           <Card.Header className="media-tile-author">
