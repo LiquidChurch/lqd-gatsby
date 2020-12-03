@@ -202,9 +202,7 @@ export default ({
     padding,
   }) => {
   const ctx = useContext(GlobalContext)
-  console.log(type)
-  let categoryObject = JSON.parse(category)
-  console.log(category.id)
+  
   if (display_type === undefined) {
     display_type = "grid"
   }
@@ -232,6 +230,7 @@ export default ({
   }
   
   if (type === "posts") {
+    let categoryObject = JSON.parse(category)
     let tempItems = useRecentPosts(num_items, categoryObject.id, getDate(useLocation().search))
      mediaLists = MediaDataTransformer({
       "rawItems":tempItems,
