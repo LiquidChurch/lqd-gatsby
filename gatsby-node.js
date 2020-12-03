@@ -5,23 +5,24 @@ const { slash } = require("gatsby-core-utils")
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
 
+  // CreatePage for Posts
   const postResult = await graphql(
     `
       query {
-          allWpPost {
-            nodes {
-              id
-              slug
-              title
-              categories {
-                nodes {
-                  id
-                  name
-                  slug
-                }
+        allWpPost {
+          nodes {
+            id
+            slug
+            title
+            categories {
+              nodes {
+                id
+                name
+                slug
               }
             }
           }
+        }
       }
     `
   )
@@ -43,18 +44,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   }
 
+  // CreatePage for Pages
   const pageResult = await graphql(
     `
       query {
-          allWpPage {
-            nodes {
-              id
-              slug
-              title
-              uri
-            }
+        allWpPage {
+          nodes {
+            id
+            slug
+            title
+            uri
           }
-        
+        }
       }
     `
   )
@@ -76,17 +77,17 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   }
 
+  // CreatePage for Messages
   const messageResult = await graphql(
     `
       query {
-          allWpMessage {
-            nodes {
-              id
-              slug
-              title
-            }
+        allWpMessage {
+          nodes {
+            id
+            slug
+            title
           }
-        
+        }
       }
     `
   )
@@ -102,7 +103,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     if (messageResult.data.allWpMessage.nodes) {
       messageResult.data.allWpMessage.nodes.forEach(message => {
         createPage({
-          path: `/message/${message.slug}`,
+          path: `/messages/${message.slug}`,
           component: slash(path.resolve(`./src/templates/message.js`)),
           context: {
             id: message.id,
@@ -114,6 +115,45 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   }
   while(!endMessages)
   
+  // CreatePage for Blog
+  const blogResult = await graphql(
+    `
+      query {
+        allWpBlog {
+          nodes {
+            id
+            slug
+            title
+          }
+        }
+      }
+    `
+  )
+
+  if (blogResult.errors) {
+    reporter.panicOnBuild(`Error while running GraphQL query on Messages.`)
+    return
+  }
+
+  let endBlog = false
+  
+  do {
+    if (blogResult.data.allWpBlog.nodes) {
+      blogResult.data.allWpBlog.nodes.forEach(blog => {
+        createPage({
+          path: `/blogs/${blog.slug}`,
+          component: slash(path.resolve(`./src/templates/blog.js`)),
+          context: {
+            id: blog.id,
+          },
+        })
+      })
+      endBlog = true;
+    }
+  }
+  while(!endBlog)
+    
+  // CreatePage for Series
   const seriesListResult = await graphql(
     `
       query {
@@ -133,7 +173,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     return
   }
   
-  
   if (seriesListResult.data.allWpSeries.nodes) {
     seriesListResult.data.allWpSeries.nodes.forEach(series=> {
       createPage({
@@ -146,43 +185,79 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   }
   
-   
-}
+  
+  // CreatePage for Blog
+  const jobResult = await graphql(
+    `
+      query {
+        allWpJob {
+          nodes {
+            id
+            slug
+            title
+          }
+        }
+      }
+    `
+  )
 
-/**
- * Import featured images.
- */
-exports.createResolvers = async ({
-  actions: { createNode },
-  cache,
-  createNodeId,
-  createResolvers,
-  store,
-  reporter,
-}) => {
-  const field = {
-    localFile: {
-      type: `File`,
-      resolve: async source => {
-        let sourceUrl = source.url || source.mediaItemUrl || source.sourceUrl
-
-        return await createRemoteFileNode({
-          url: encodeURI(sourceUrl),
-          store,
-          cache,
-          createNode,
-          createNodeId,
-          reporter,
-        })
-      },
-    },
+  if (jobResult.errors) {
+    reporter.panicOnBuild(`Error while running GraphQL query on Messages.`)
+    return
   }
 
+  let endJob = false
+  
+  do {
+    if (jobResult.data.allWpJob.nodes) {
+      jobResult.data.allWpJob.nodes.forEach(job => {
+        createPage({
+          path: `/jobs/${job.slug}`,
+          component: slash(path.resolve(`./src/templates/job.js`)),
+          context: {
+            id: job.id,
+          },
+        })
+      })
+      endJob = true;
+    }
+  }
+  while(!endJob)   
+}
+
+
+exports.createResolvers = async (
+  {
+    actions,
+    cache,
+    createNodeId,
+    createResolvers,
+    store,
+    reporter,
+  },
+) => {
+  const { createNode } = actions
+
   await createResolvers({
-    WPGraphQL_Avatar: field,
-    WPGraphQL_CoreImageBlockAttributes: field,
-    WPGraphQL_MediaItem: field,
-    WPGraphQL_CoreImageBlock: field,
-    WPGraphQL_User: field,
+    WpMediaItem: {
+      imageFile: {
+        type: "File",
+        async resolve(source) {
+          let sourceUrl = source.sourceUrl
+          if (source.mediaItemUrl !== undefined) {
+            sourceUrl = source.mediaItemUrl
+          }
+ 
+          return await createRemoteFileNode({
+            url: encodeURI(sourceUrl),
+            store,
+            cache,
+            createNode,
+            createNodeId,
+            reporter,
+          })
+        },
+      },
+    },
   })
 }

@@ -98,12 +98,14 @@ export default ({ location }) => {
         </Link>
       </Col>
       <Col className="topbar-icon">
-        <Link 
-          className={'btn btn-topbar-icon magnifier-icon topbar-icon-' + themeState} 
+        <Link
+          className={'btn btn-topbar-icon magnifier-icon topbar-icon-' + themeState}
           to="/search"
         >
         </Link>
       </Col>
+
     </Navbar>
+
   )   
 }

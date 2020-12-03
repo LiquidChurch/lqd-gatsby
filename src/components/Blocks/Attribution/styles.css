@@ -1,0 +1,139 @@
+.attribution-profile {
+  display: flex;
+  margin-bottom: 35px;
+}
+
+.attribution-profile-image {
+  width: 247px;
+  min-width: 247px;
+  height: 247px;
+  margin-top: 15px;
+}
+
+.attribution-profile-blurb {
+  width: 173px;
+  height: 79px;
+  background: #FFF;
+  padding-right: 14px;
+  padding-left:10px;
+  position: absolute;
+  text-align: center;
+  color:#585858;
+  line-height: 1.2em;
+  box-shadow: 0px 3px 6px #00000029;
+  font-size:0.95em;
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+.attribution-profile-blurb p {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.attribution-profile-blurb.bottom {
+  position: absolute;
+  border-radius: 0 38px 38px 38px;
+  top: 230px;
+  left: 104px;  
+}
+
+.attribution-profile-blurb.top {
+  position: absolute;
+  border-radius: 38px 38px 38px 0px;
+  top: 7px;
+  left: 134px;
+}
+
+.attribution-profile-role {
+  color: #565656;
+}
+
+.attribution-profile-email {
+  font-family:"Avenir Next Regular";
+  letter-spacing: 0.0em;
+}
+
+.attribution-profile-description {
+  margin-top: 12px;
+}
+
+.attribution-profile-information {
+  padding-top: 12px;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 32px;
+}
+
+
+.attribution-secondary-profile {
+  max-width: 400px;
+  min-width: 300px;
+  display: flex-inline;
+}
+
+.attribution-secondary-profile.margin {
+  margin-top: 48px
+}
+.attribution-secondary-profile-image {
+  width: 137px;
+  min-width: 137px;
+  height: auto;
+  margin-top: 15px;
+}
+
+.attribution-secondary-profile-information {
+  background-color: #F2ECEC;
+  padding: 11px 18px;
+  border-radius: 11px;
+  margin-top: -9px;
+}
+
+@media (max-width:1199px) {
+  .attribution-profile-blurb.bottom {
+
+  }
+      
+}
+@media (max-width:991px) {
+  .attribution-profile-image {
+    width: 200px;
+    min-width: 200px;
+    height: 200px;
+  }
+
+  .attribution-profile-blurb.bottom {
+    top:190px;
+    left:60px;
+  }
+}
+
+@media (max-width:767px) {
+  .attribution-secondary-profile {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width:575px) {
+  .attribution-profile {
+    display: block;
+  }
+  
+  .attribution-profile-image {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  
+  .attribution-profile-information {
+    margin-top: 18px;
+    margin-right: 25px;
+  }
+   
+  .attribution-profile-blurb.bottom {
+    position: relative;
+    top: -25px;
+    left: 36vw;
+  }  
+}

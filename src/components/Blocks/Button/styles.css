@@ -1,0 +1,147 @@
+.icon {
+  height: 1.3em;
+  width: 1.3em;
+  background-color: white;
+}
+
+.button-icon {
+  display: inline-block;
+  position: relative;
+  top: 6px;
+  left: 6px;
+  padding-right:10px;
+  float:left;
+}
+
+.button-text {
+  display: inline-block;
+  position: relative;
+  bottom: 4px;
+  padding-top: 8px;
+  padding-left: 3px;
+  padding-right: 3px;
+  letter-spacing: 0.1em;  
+}
+
+.button-arrow {
+  display: inline-block;
+  position: relative;
+  margin-bottom: -10px;
+  margin-right:-5px;
+  float:right;
+  transform: scale(0.8);  
+}
+
+.button-text.left {
+  float: left;
+}
+
+.button-text.center {
+  float: center;
+}
+
+.button-text.right {
+  float: right;
+}
+
+.button-dropdown {
+  text-transform: uppercase;
+  font-size:1.0em;
+}
+
+.button-dropdown-menu {
+  position: absolute;
+  left: 0px !important;
+  z-index: 1000;
+  display: none;
+  float: left;
+  padding: .5rem 0;
+  margin: .125rem 0 0;
+  font-size: 1rem;
+  color: #FFF;
+  text-align: left;
+  list-style: none;
+  background-color: #D3D3D3;
+  background-clip: padding-box;
+  border: 0;
+  border-radius: 12px 12px 12px 12px;
+  box-shadow: 0 0 0 0.2rem rgba(38,143,255,.5);
+  transition: opacity 0.3s ease-in-out;
+  font-size: 1em;
+  text-transform: none;
+}
+
+.button-dropdown-menu.show {
+  display: block;
+}
+
+@media (max-width:575px) {
+  .button-text {
+    padding-top: 9px;
+  }
+
+  .button-arrow {
+    bottom: 0px;
+    height:32px;
+  }
+}
+
+.dropdown-toggle:after {
+  vertical-align: super;
+}
+
+.dropdown-item {
+  padding: 0.5rem 1.5rem;
+}
+
+.button:hover {
+  filter: brightness(0.75);
+  color: #fff;
+  text-decoration:none;
+}
+
+.app-store-btns {
+  display: flex;
+}
+
+.app-store-link {
+  flex: auto;
+}
+
+.app-store-btn {
+  width: 170px;
+  height: 50px;
+  border: none;
+}
+
+.app-store-btn.left {
+  margin-left:auto;
+  margin-right:20px;
+}
+
+.app-store-btn.right {
+  margin-left:20px;
+  margin-right:auto;
+}
+
+.app-store-btn:hover {
+    border: none;
+    filter: brightness(0.25);
+}
+
+@media (max-width:575px) {
+  .app-store-btns {
+    flex-direction: column;
+  }
+  
+  .app-store-btn.left {
+    margin-right: auto;
+    margin-bottom: 10px;
+  }
+  
+  .app-store-btn.right {
+    margin-left: auto;
+    margin-top:10px;
+  }
+  
+}

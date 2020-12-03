@@ -19,6 +19,10 @@ export const useFeaturedImage = (pageSlugId) => {
                   mediaItemUrl
                 }
               }
+              publication {
+                  unpublishDate
+                  publishDate
+              }
             }
           }
         

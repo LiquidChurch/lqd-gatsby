@@ -1,15 +1,26 @@
+// Read env variables for Algolia
+require("dotenv").config({
+  path: `./.env`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
     author: `@gatsbyjs`,
+    siteUrl: `https://dev2.liquidchurch.com`
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-offline`,
     `gatsby-plugin-postcss`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-anchor-links`,
+      options: {
+        offset: -10,
+      }
+    },  
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -22,10 +33,15 @@ module.exports = {
       options: {
         typeName: "WPGraphQL",
         fieldName: "wpgraphql",
-        url: `http://gatsby.liquidchurch.com/graphql`,
+        url: process.env.WORDPRESS_URL,
+        schema: {
+          timeout: 120000,
+          perPage: 7,
+        },
         debug: {
           graphql: {
-            writeQueriesToDisk:true,
+            writeQueriesToDisk:false,
+            showQueryVarsOnError: true,
           }
         },
         html: {
@@ -34,14 +50,25 @@ module.exports = {
         type: {
           MediaItem: {
             lazyNodes: false,
+          },
+        },    
+        develop: {
+          nodeUpdateInterval: 1000
+        },
+        auth: {
+          htaccess: {
+            username: 'webmaster',
+            password: 'jO0Ydhg@@NxdKwH(3oZseelb',
           }
         },
-        verbose:false,
+        verbose:true,
         includedRoutes: [
           "**/categories",
           "**/posts",
-          "**/pages",
+          "**/blogs",
           "**/media",
+          "**/pages",
+          "**/series",
           "**/tags",
           "**/taxonomies",
           "**/frontpage",
@@ -58,6 +85,25 @@ module.exports = {
         theme_color: `#14a7e0`,
         display: `minimal-ui`,
         icon: `src/assets/images/logo-liquid-transparent.png`,
+      },
+    },
+    `gatsby-plugin-remove-serviceworker`,
+    {
+      resolve: `gatsby-plugin-algolia`,
+      options: {
+        appId: process.env.GATSBY_ALGOLIA_APP_ID,
+        apiKey: process.env.ALGOLIA_ADMIN_KEY,
+        queries: require("./src/utils/algolia-queries"),
+        chunkSize: 100,
+        enablePartialUpdates: true,
+        matchFields: ['slug', 'modified'],
+      }
+    },
+    `gatsby-plugin-styled-components`,
+    {
+      resolve: `gatsby-plugin-env-variables`,
+      options: {
+        allowList: ["IMGIX_URL", "IMG_DIR_INDEX", "IMG_FILE_INDEX", "GATSBY_ALGOLIA_INDEX_NAME", "LOGO_IMG", "GOOGLE_API_KEY"]
       },
     },
   ],

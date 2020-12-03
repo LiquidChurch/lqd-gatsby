@@ -15,105 +15,122 @@ export const GeneralSettings = graphql`
   }
 `
 
-/*
-export const Paragraph = graphql`
-  fragment Paragraph on WPGraphQL_CoreParagraphBlock {
+// Define block fragments.
+export const Attributions = graphql`
+  fragment Attributions on WpBlockLabAttributionsBlock {
     attributes {
-      ... on WPGraphQL_CoreParagraphBlockAttributes {
-        align
-        content
-        dropCap
-        fontSizeInt: fontSize
-      }
-      ... on WPGraphQL_CoreParagraphBlockAttributesV2 {
-        align
-        content
-        dropCap
-        fontSizeString: fontSize
-      }
-      ... on WPGraphQL_CoreParagraphBlockAttributesV3 {
-        align
-        content
-        dropCap
-        fontSize
-      }
+      layout
+      attribution_list
+      show_blurb
+      show_email
+      bg_color
+      padding
     }
   }
 `
 
-export const Image = graphql`
-  fragment Image on WPGraphQL_CoreImageBlock {
+export const Accordion = graphql`
+  fragment Accordion on WpBlockLabAccordionBlock {
     attributes {
-      alt
-      url
-      caption
-      sizeSlug
-      align
-      localFile {
-        publicURL
-        childImageSharp {
-          fluid(maxWidth: 768) {
-            ...GatsbyImageSharpFluid_withWebp_tracedSVG
-          }
-        }
-      }
-    }
-  }
-`
-*/
-/*
-export const List = graphql`
-  fragment List on WPGraphQL_CoreListBlock {
-    attributes {
-      values
-      ordered
+      items
+      bg_color
+      padding
     }
   }
 `
 
-export const Blockquote = graphql`
-  fragment Blockquote on WPGraphQL_CoreQuoteBlock {
+export const Anchor = graphql`
+  fragment Anchor on WpBlockLabAnchorBlock {
     attributes {
-      align
-      citation
-      value
-    }
-  }
-`
-
-export const Code = graphql`
-  fragment Code on WPGraphQL_CoreCodeBlock {
-    attributes {
-      nonNullContent: content
-      className
-    }
-  }
-`
-*/
-
-export const Heading = graphql`
-  fragment Button on WpBlockLabHeadingBlock {
-    attributes {
-      text
-      size
-      alignment
-      background_color
+      label
     }
   }
 `
 
 export const Button = graphql`
-  fragment Heading on WpBlockLabButtonBlock {
+  fragment Button on WpBlockLabButtonBlock {
     attributes {
       text
       alignment
       page
-      color
-      background_color
+      url_append
+      btn_color
+      btn_outline
+      font_color
+      bg_color
+      padding
       has_arrow
       has_icon
       min_width
       text_float
+      add_padding
+      dropdown
+      size
+      block_on
+      block_off
+    }
+  }
+`
+
+export const ExternalRedirect = graphql`
+  fragment ExternalRedirect on WpBlockLabExternalRedirectBlock {
+    attributes {
+      external_url
+      new_tab
+    }
+  }
+`
+
+export const GoogleMap = graphql`
+  fragment GoogleMap on WpBlockLabGoogleMapBlock {
+    attributes {
+      campuses
+      latitude
+      longitude
+      zoom
+    }
+  }
+`
+
+export const Heading = graphql`
+  fragment Heading on WpBlockLabHeadingBlock {
+    attributes {
+      text
+      size
+      alignment
+      font_color
+      show_hr
+      all_caps
+      add_padding
+      bg_color
+      padding
+    }
+  }
+`
+
+export const HeroImage = graphql`
+  fragment HeroImage on WpBlockLabHeroImageBlock {
+    attributes {
+      image_id
+      image_style
+      bg_color
+      padding
+      spacing
+      alignment
+      size
+      color
+      statement
+      sidekick
+      cta
+    }
+  }
+`
+
+export const HomeLinks = graphql`
+  fragment HomeLinks on WpBlockLabHomeLinksBlock {
+    attributes {
+      page_list
+      background_color
     }
   }
 `
@@ -130,46 +147,39 @@ export const HompageHero = graphql`
   }
 `
 
-export const HeroImage = graphql`
-  fragment HeroImage on WpBlockLabHeroImageBlock {
+export const LinkTiles = graphql`
+  fragment LinkTiles on WpBlockLabLinkTilesBlock {
     attributes {
-      hero_image_id
-      hero_title
-      image_style
-      hero_text
-      theme_style
+      slugs_list
+      bg_color
+      padding
     }
   }
 `
 
-export const ExternalRedirect = graphql`
-  fragment ExternalRedirect on WpBlockLabExternalRedirectBlock {
+export const List = graphql`
+  fragment List on WpCoreListBlock {
     attributes {
-        external_url
-        new_tab
+      values
+      ordered
+      reversed
+      start
     }
   }
 `
 
-export const PageStrap = graphql`
-  fragment PageStrap on WpBlockLabPageStrapBlock {
+export const MediaTiles = graphql`
+  fragment MediaTiles on WpBlockLabMediaTilesBlock {
     attributes {
-      cta_slug
-      cta_text
-      strap_bg_img
-      strap_color
-      strap_tag
-      strap_text
-      strap_image
-    }
-  }
-`
-
-export const HomeLinks = graphql`
-  fragment HomeLinks on WpBlockLabHomeLinksBlock {
-    attributes {
-      page_list
-      background_color
+      show_attribution
+      media_list
+      num_items
+      show_blurb
+      show_series
+      type
+      display_type
+      bg_color
+      padding
     }
   }
 `
@@ -178,30 +188,9 @@ export const MessageTile = graphql`
   fragment MessageTile on WpBlockLabMessageTileBlock {
       attributes {
         block_title
-        background_color
-        message_slug
+        bg_color
+        padding
       }
-  }
-`
-
-export const MediaTile = graphql`
-  fragment MediaTile on WpBlockLabMediaTileBlock {
-      attributes {
-        block_title
-        background_color
-        media_slug
-      }
-  }
-`
-
-export const MediaTiles = graphql`
-  fragment MediaTiles on WpBlockLabMediaTilesBlock {
-    attributes {
-      label
-      background_color
-      type
-      media_list
-    }
   }
 `
 
@@ -210,32 +199,128 @@ export const PageModal = graphql`
       attributes {
         modal_title
         modal_text
+        modal_id
       }
   }
 `
 
-export const LinkTiles = graphql`
-  fragment LinkTiles on WpBlockLabLinkTilesBlock {
+export const PageStrap = graphql`
+  fragment PageStrap on WpBlockLabPageStrapBlock {
     attributes {
-      slugs_list
+      statement
+      font_color
+      all_caps
+      sidekick
+      image_id
+      image_size
+      cta
+      bg_color
+      padding
+      spacing
+      width
+      alignment
+      size
+      color
+      block_on
+      block_off
     }
   }
 `
 
+export const Paragraph = graphql`
+  fragment Paragraph on WpCoreParagraphBlock {
+    attributes {
+      ... on WpCoreParagraphBlockAttributes {
+        align
+        content
+        dropCap
+        fontSize
+      }
+    }
+  }
+`
+
+export const PhotoCarousel = graphql`
+  fragment PhotoCarousel on WpBlockLabPhotoCarouselBlock {
+      attributes {
+        images
+      }
+  }
+`
+
+export const PhotoTab = graphql`
+  fragment PhotoTab on WpBlockLabPhotoBlock {
+    attributes {
+      location
+      image_id
+      header
+      text_block
+      cta
+      header_secondary
+      text_block_secondary
+      cta_secondary
+      color
+      bg_color
+      padding
+      spacing
+      alignment
+      header_size
+      size
+      block_on
+      block_off
+      google_map
+      map_toggle
+    }
+  } 
+`
+
+export const SeriesTiles = graphql`
+  fragment SeriesTiles on WpBlockLabSeriesTilesBlock {
+    attributes {
+      type
+      num_items
+      layout
+      series_list
+      bg_color
+      padding
+    }
+  }
+`
+export const Video = graphql`
+  fragment Video on WpBlockLabVideoBlock {
+    attributes {
+      video_url
+      video_title
+      bg_color
+      padding
+    }
+  } 
+`
+
+// Create All Blocks fragment.
 export const AllBlocks = graphql`
   fragment AllBlocks on WpBlock {
     name
+    ...Paragraph
+    ...List
+    ...Accordion
+    ...Anchor
+    ...Attributions
     ...Button
     ...Heading
     ...HomepageHero
     ...HeroImage
+    ...GoogleMap
     ...ExternalRedirect
     ...PageStrap
     ...HomeLinks
     ...MessageTile
-    ...MediaTile
     ...MediaTiles
+    ...SeriesTiles
     ...PageModal
     ...LinkTiles
+    ...PhotoTab
+    ...PhotoCarousel
+    ...Video
   }
 `

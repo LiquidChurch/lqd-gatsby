@@ -1,0 +1,51 @@
+.resource-title {
+  color: #565656;
+  margin-left: 0px !important;
+}
+
+.resource-header {
+  font-family: "Avenir Next Demi";
+  font-size: 1.3em;
+  color: #565656;
+  line-height: 1.3em;
+  letter-spacing: 0.03em;
+  padding: 2px 0px;
+  padding-bottom: 12px;
+  margin-top: -10px;
+}
+
+.resource-item {
+  font-family: "Avenir Next Regular";
+  font-size: 1em;
+  color: #009DD1;
+  line-height: 1.3em;
+  letter-spacing: 0.03em;
+  padding: 2px 0px;
+}
+
+@media (max-width:991px) { 
+  .resource-header {
+    padding: 4px 16px;
+    padding-bottom: 12px;    
+  }
+  
+  .resource-item {
+    padding: 2px 16px;
+  }
+}
+
+@media (max-width:767px) { 
+  .resource-header {
+    padding: 4px 16px; 
+    margin-top: 16px;
+  }
+
+  .resource-item {
+    padding: 2px 16px;
+  } 
+}
+
+.resource-item:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}

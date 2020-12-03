@@ -1,12 +1,12 @@
 import React, { useContext, useEffect } from "react"
 import { Helmet } from "react-helmet"
-import { graphql } from "gatsby"
-//import { useGeneralSettings } from "../data/hooks"
+import { graphql, navigate } from "gatsby"
+import { useGeneralSettings } from "../data/hooks"
 import Parse from "react-html-parser"
 import Layout from "../components/Layout"
 import MessageBlocks from "../components/MessageBlocks"
 import { GlobalContext } from '../components/GlobalContext/context'
-import { isTouchEnabled } from '../helpers/functions'
+import { getDate } from '../helpers/functions'
 
 /** 
  * Template - Messages Component
@@ -17,24 +17,46 @@ export default ({
     lqdmMessage,
   },
 }) => {
+  
+  console.log("message:", lqdmMessage.title)
+  const generalSettings = useGeneralSettings()  
   const ctx = useContext(GlobalContext)
   
+  var pageValid = false
+  if ( (lqdmMessage.publication.publishDate === null || getDate(location.search) >= Date.parse(lqdmMessage.publication.publishDate.replace(/\s/g, 'T'))) &&
+       (lqdmMessage.publication.unpublishDate === null || getDate(location.search) < Date.parse(lqdmMessage.publication.unpublishDate.replace(/\s/g, 'T'))) ) {
+    pageValid = true
+  }
+  
   useEffect(() => {
-    ctx.setTheme("Dark")
-    if (isTouchEnabled()) {
-      ctx.enableTouchState()
+    let userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent
+    if (!ctx.isMobileSet) {
+      ctx.setIsMobile(Boolean(userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i)))
+    }     
+    
+    if (!pageValid) {
+      navigate('/messages')
     }
-  }, [ctx])
+    ctx.setTheme("dark")
+
+    ctx.setPath(location.pathname)
+  }, [ctx, location.pathname, pageValid])
   
   return (
-    <Layout location={location}>
-      <Helmet titleTemplate={`%s | Liquid Church`}>
-        <title>{Parse(lqdmMessage.title)}</title>
-      </Helmet>
-      <article className="post">
-        <MessageBlocks {...lqdmMessage} />
-      </article>
-    </Layout>
+    <>
+    {!pageValid ? (
+      ''
+     ) :
+      <Layout location={location}>
+        <Helmet titleTemplate={`%s | ${generalSettings.title}`}>
+          <title>{Parse(lqdmMessage.title)}</title>
+        </Helmet>
+        <article className="post">
+          <MessageBlocks {...lqdmMessage} />
+        </article>
+      </Layout>
+    }
+  </>
   )
 }
 
@@ -47,17 +69,30 @@ export const query = graphql`
       }
       title
       content
-      speakers {
+      attributions {
         nodes {
-          name
           id
+          name
+          slug
+          profileImage {
+            image {
+              sourceUrl
+            }
+          }
+        }
+      }
+      attributionsCo {
+        attributions {
+          id
+          name
           slug
         }
       }
       date
       slug
       message {
-        url
+        vimeoId
+        youtubeId        
       }        
       featuredImage {
         node {
@@ -66,6 +101,10 @@ export const query = graphql`
           altText
         }
       }
+      publication {
+          unpublishDate
+          publishDate
+        }
       seriesList {
         nodes {
           name
@@ -88,6 +127,48 @@ export const query = graphql`
           id
           name
           slug
+        }
+      }
+      resources {
+        resource1 {
+          language
+          url
+          resourceType
+        }
+        resource2 {
+          language
+          resourceType
+          url
+        }
+        resource3 {
+          language
+          resourceType
+          url
+        }
+        resource4 {
+          language
+          resourceType
+          url
+        }
+        resource5 {
+          language
+          resourceType
+          url
+        }
+        resource6 {
+          language
+          resourceType
+          url
+        }
+        resource7 {
+          language
+          resourceType
+          url
+        }
+        resource8 {
+          language
+          resourceType
+          url
         }
       }
     }

@@ -1,0 +1,60 @@
+.map-label {
+  background: rgba(0,0,0, 0.75);
+  position: relative;
+  color:#fff;
+  font-size: 18px;
+  font-family: "Avenir Next Demi";
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  height: 55px;
+  line-height: 20px;
+  overflow: visible !important;
+  z-index: -300 !important;
+}
+
+.map-label.right{
+  border-radius: 0 16px 16px 0;  
+}
+.map-label.left {
+  border-radius: 16px 0 0 16px;  
+}
+
+.circle {
+  width: 19px;
+  height: 55px;
+  top:0px;
+  overflow: hidden;
+  position: absolute;
+  display: block;
+}
+
+.circle.right {
+  left: -19px;  
+}
+
+.circle.left {
+  right: -19px;  
+}
+
+.circle:after {
+  content: '';
+  width: 96px;
+  height: 96px;
+  -moz-border-radius: 55px;
+  -webkit-border-radius: 55px;
+  border-radius: 55px;
+  background: rgba(0, 0, 0, 0);
+  position: absolute;
+  top: -20px;
+  border: 20px solid rgba(0, 0, 0, 0.75);
+}
+
+.circle.right:after {
+  left: -58px;
+}
+
+.circle.left:after {
+  right: -58px;
+}

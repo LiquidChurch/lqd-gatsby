@@ -1,0 +1,45 @@
+.linked-tile {
+  width: 104%;
+  margin: 8px -6px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 20px;
+  transition: opacity 0.3s;  
+}
+
+.linked-tile-image {
+  border-radius: 20px;
+}
+
+.linked-tile-title {
+  text-align: center;
+  position: absolute;
+  top: 54%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  font-family: "Avenir Next Bold";
+  font-size: 1.6em;
+  letter-spacing: 0.02em;
+}
+
+
+.linked-tile:hover {
+  opacity:.5;
+} 
+
+/* Hero text of the locations 
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 54%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+}
+
+.linked-tile-title {
+  color: #24a7e1;
+  text-alignment: center;
+}
+
+*/

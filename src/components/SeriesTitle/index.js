@@ -1,11 +1,11 @@
 import React from 'react'
+import Parse from 'react-html-parser'
+
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Imgix from 'react-imgix'
 import { Link } from 'gatsby'
-
-import SectionHeader from '../SectionHeader'
 
 import './styles.css'
 
@@ -13,24 +13,29 @@ import './styles.css'
  * Series Title Component
  */
 export default (series) => {
-  console.log(series)
-  
   var imgUrl = series.SeriesImage.image.sourceUrl.split("/")
-
+  let padding = "bottom"
+  let bg_color = "#F8F8F8"
   return (
   <>
-  <section className="fullwidth-section message-title-section" style={{backgroundColor: '#f8F8F8'}}>
+  <section className={'site-section ' + padding} style={{backgroundColor: bg_color}}>    
   <Container>
     <Row>
-      <SectionHeader label="Message Series" offset={0}/>
-      <Col>
+      <Col xs={12} lg={6}>
       <Link to={"/series/" + series.slug}>
         <Imgix
-          src={"https://liquidchurch.imgix.net/" + imgUrl[4] + "/" + imgUrl[5] + "?ar=16:9&fit=crop&h=607"}
-          className="d-none d-sm-block message-tile-image"
+          src={process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX] + "?ar=16:9&fit=crop&h=545"}
+          className="message-tile-image"
           sizes="90vw" />
-        
       </Link>
+      </Col>
+      <Col xs={12} lg={6}>
+        <div className="series-title-block">
+          <Link to={"/series/" + series.slug}>
+            <h4 className="font-h2 series-title">{series.name}</h4>
+          </Link>
+          <div className="font-regular series-description">{Parse(series.description)}</div>
+        </div>
       </Col>
     </Row>
   </Container>

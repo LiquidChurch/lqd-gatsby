@@ -17,9 +17,9 @@
 }
 
 .to-top-icon {
-  -webkit-mask-image: url('./svg/to-top.svg');
+  -webkit-mask-image: url('./svg/top.svg');
   -webkit-mask-size: 100% 100%;
-  mask-image: url('./svg/to-top.svg');
+  mask-image: url('./svg/top.svg');
 }
 
 .facebook-icon {
@@ -88,6 +88,12 @@
   mask-image: url('./svg/give.svg');
 }
 
+.give-outline-icon {
+  -webkit-mask-image: url('./svg/give-outline.svg');
+  -webkit-mask-size: 101% 101%;
+  mask-image: url('./svg/give-outline.svg');
+}
+
 .messages-icon {
   -webkit-mask-image: url('./svg/messages.svg');
   -webkit-mask-size: 101% 101%;
@@ -130,8 +136,38 @@
   mask-image: url('./svg/family.svg');
 }
 
-.blog-icon {
-  -webkit-mask-image: url('./svg/blog.svg');
+.blogs-icon {
+  -webkit-mask-image: url('./svg/blogs.svg');
   -webkit-mask-size: 101% 101%;
-  mask-image: url('./svg/blog.svg');
+  mask-image: url('./svg/blogs.svg');
+}
+
+.share-icon {
+  -webkit-mask-image: url('./svg/share.svg');
+  -webkit-mask-size: 101% 101%;
+  mask-image: url('./svg/share.svg');
+}
+
+.subscribe-icon {
+  -webkit-mask-image: url('./svg/subscribe.svg');
+  -webkit-mask-size: 101% 101%;
+  mask-image: url('./svg/subscribe.svg');
+}
+
+.email-icon {
+  -webkit-mask-image: url('./svg/email.svg');
+  -webkit-mask-size: 101% 101%;
+  mask-image: url('./svg/email.svg');
+}
+
+.google-play-button {
+  background: url('./svg/google-play-store.svg') no-repeat center;
+  background-image: url('./svg/google-play-store.svg');
+  background-size: contain;
+}
+
+.apple-app-button {
+  background: url('./svg/apple-app-store.svg') no-repeat center;
+  background-image: url('./svg/apple-app-store.svg');
+  background-size: contain;
 }

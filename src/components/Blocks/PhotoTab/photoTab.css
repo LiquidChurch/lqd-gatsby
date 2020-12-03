@@ -1,0 +1,108 @@
+.photo-tab-row {
+  padding-bottom:0em;
+  padding-top:0em;
+}
+
+.photo-tab-image {
+  border-radius: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.photo-tab-map {
+  height: 525px;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.photo-tab-body-col {
+  display: block;
+  margin-top:0;
+  margin-bottom:-6px;
+}
+
+.photo-tab-tag {
+  display: block;
+}
+
+.photo-tab-text {
+  margin-top:12px;
+  display: block;  
+  line-height: 1.3em;  
+  padding-bottom:0;
+}
+
+.photo-tab-cta {
+  display: block;  
+  color: #009DD1;
+  text-transform: uppercase;
+  padding-top:20px;
+  padding-bottom:0;
+}
+
+@media (max-width:1199px) {
+  .photo-tab-map {
+    height: 435px;
+  }
+}
+
+@media (max-width:991px) {
+  .photo-tab-map {
+    height: 315px;
+  }
+  
+  .photo-tab-left {
+  }
+  
+  .photo-tab-image {
+    width: 315px;
+  } 
+
+  .photo-tab-body-col {
+
+  }
+}
+
+@media (max-width:767px) { 
+  .photo-tab-map {
+    height: 480px;
+  }
+  
+  .photo-tab-left {
+    margin-right: auto;
+    margin-left: auto;
+  } 
+  
+  .photo-tab-image-col {
+    text-align: center;
+  }
+  
+  .photo-tab-body-col {
+    margin-top:20px;
+  }
+}
+
+@media (max-width: 575px) {
+  .photo-tab-map {
+    height: calc(97vw - 60px);
+  }
+  
+  .photo-tab-image {
+    width: 100%;
+  }
+}
+
+.photo-tab-h2 {
+  font-family: "Avenir Next Demi";  
+  color: #009DD1;
+  font-size: 1.08em;
+  letter-spacing: 0.1em;
+  margin-bottom: 5px;
+  margin-top: 12px;
+  text-transform: uppercase;
+}
+
+.photo-tab-h2.grey {
+  color: #565656;
+}
+

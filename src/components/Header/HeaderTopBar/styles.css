@@ -45,6 +45,12 @@
   background-color:white;
 }
 
+
+.topbar-icon-dark:hover {
+  background-color: #009DD1 !important;
+}
+
+
 .topbar-icon-light{
   background-color:#009DD1
 }
@@ -63,12 +69,12 @@
   flex-direction: row;
   place-content:flex-end;
   height: 2rem;
-  margin-top: -0.3em;
+  margin-top: -7px;
   margin-left: -0.9em;
 }
 
 .topbar-menu-item {
-  margin: 0 0.9em;
+  margin: 0 0.3em;
   white-space: nowrap;
   font-size:1.1em;
   margin-bottom: -0.5em;
@@ -80,7 +86,7 @@
   justify-content:center;
   max-width:19.1em;
   min-width:15.9em;
-  margin-left: 1.8em;
+  margin-left: 1.2em;
 }
 
 .topbar-chop-button {
@@ -92,6 +98,7 @@
   padding-top: 6px;
   border-width: medium;
   vertial-align: text-top;
+  font-weight: 600;
 }
 
 .topbar-button-dark {
@@ -127,6 +134,7 @@
   width: auto;  
 }
 
+
 .theme-icon-dark {
   background-color: white !important;
 }
@@ -139,8 +147,8 @@
   background-color: white;
   border:none;
   border-radius: 0;
-  height: 2.2rem;
-  width: 10.9rem;  
+  height: 2.4rem;
+  width: 11.9rem;  
 }
 
 .btn-topbar-brand-focus {
@@ -155,6 +163,10 @@
   background-color:transparent;
   color:white;
   font-weight: bold
+}
+
+.btn-topbar-menu-dark:hover{
+  color:#009DD1;
 }
 
 .btn-topbar-menu-light {
@@ -193,20 +205,38 @@
 
 @media (max-width:1199px) { 
   .topbar-menu-item {
-    margin: 0 0.3em;
+    margin: 0.2em 0.2em;
     font-size:0.9em;
   }
   
   .topbar-chop {
     max-width:15.6em;
-    min-width:14.9em;
+    min-width:14.6em;
     margin-left: 0em;
   }
   
   .topbar-chop-button {
-    width: 235px;
-    padding-top:8px;
+    width: 242px;
+    padding-top:6px;
     font-size: 0.9em;
   }
 }
 
+@media (max-width:991px) {
+  .topbar-chop-button {
+    width: 234px;
+  }
+  
+  .topbar-chop {
+    margin-right: 0.2em;
+  }
+}
+
+@media (max-width:830px) {
+  .topbar-chop-button {
+    width: 226px;
+  }
+  .topbar-chop {
+    margin-right: 0em;
+  }
+}

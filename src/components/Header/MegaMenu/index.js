@@ -97,7 +97,7 @@ const MegaMenu = () => {
       disableAutoFocus
       onStateChange={ (state) => ctx.stateChangeHandler(state)}
     > 
-      <Container fluid>
+      <Container>
         <div 
             id='megamenu' 
             className="screen-reader-only"

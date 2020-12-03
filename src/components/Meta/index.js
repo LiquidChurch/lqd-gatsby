@@ -8,7 +8,7 @@ export default () => {
   return (
     <Helmet defaultTitle={`${ReactHtmlParser(data.title)} | ${data.description}`}>
       <meta name="description" content={data.description} />
-      <meta name="viewport" content= "width=device-width, user-scalable=no" />
+      <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no, viewport-fit=cover" />
       <html lang="en" />
       <link
         rel="apple-touch-icon"
@@ -27,7 +27,7 @@ export default () => {
         sizes="16x16"
         href="/favicon/favicon-16x16.png"
       />
-      <link rel="manifest" href="/favicon/site.webmanifest" />
+      <link rel="manifest" href="/manifest.webmanifest" />
       <link
         rel="mask-icon"
         href="/favicon/safari-pinned-tab.svg"

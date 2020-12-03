@@ -4,6 +4,10 @@
   height: 30px;
 }
 
+.container-fluid {
+  overflow: hidden;
+}
+
 @media screen and (max-width: 300px) {
   html, body {
     min-width: 300px;
@@ -35,17 +39,18 @@
 
 .font-h1 {
   font-family: "Avenir Next Bold";
-  font-size: 2.5em;
+  font-size: 2.0em;
   color: #0099CC;
   line-height: 1.3em;
+  letter-spacing: 0.01em;
 }
 
 .font-h2 {
   font-family: "Avenir Next Demi";
-  font-size: 1.5em;
+  font-size: 1.3em;
   color: #0099CC;
   line-height: 1.3em;
-  letter-spacing:0.02em;
+  letter-spacing:0.01em;
 }
 
 .font-h3 {
@@ -53,7 +58,7 @@
   font-weight: 400 !important;
   font-size: 1.13em;
   color: #565656;
-  letter-spacing:0.02em;  
+  letter-spacing:0.01em;  
 }
 
 .font-h3 a {
@@ -66,25 +71,53 @@
   font-size: 1.5em;
   color: #565656;
   line-height: 1.3em;
+  padding-top:0.5em;
   margin-bottom: 1em;
-  letter-spacing: 0.1em;    
+  letter-spacing: 0.08em;    
+}
+
+.font-huge {
+  font-family: "Avenir Next Regular";
+  font-size: 2.0em;
+  color: #585858;
 }
 
 .font-large {
   font-family: "Avenir Next Regular";
   font-size: 1.5em;
-  color: #464646;
+  color: #585858;
+}
+
+.font-medium {
+  font-family: "Avenir Next Regular";
+  font-size: 1.3em;
+  color: #585858;
 }
 
 .font-regular {
   font-family: "Avenir Next Regular";
   font-size: 1.13em;
-  color: #464646;
+  color: #585858;
+}
+
+.font-small {
+  font-family: "Avenir Next Regular";
+  font-size: 1.0em;
+  color: #585858;
+}
+
+.font-dropCap:first-letter {
+  line-height: 0.68;
+  float: left;
+  font-size: 3em;
+  font-style: normal;
+  font-weight: 700;
+  margin: 0.2em 0.15em 0 0;
+  text-transform: uppercase;
 }
 
 .font-link {
   font-family: "Avenir Next Demi";
-  font-size: 1.13em;
   color: #0099CC;
   letter-spacing: 0.1em;
 }
@@ -103,7 +136,13 @@
   text-transform: uppercase;
   margin-top: -1em;
   font-size: 0.81em;
-  letter-spacing:0.1em;
+  letter-spacing:0.08em;
+}
+
+.font-btn:hover {
+  filter: brightness(0.75);
+  color: #fff;
+  text-decoration:none;
 }
 
 .font-btn-large {
@@ -115,7 +154,13 @@
   text-transform: uppercase;
   margin-top: -1em;
   font-size: 1.13em;
-  letter-spacing:0.1em;
+  letter-spacing:0.09em;
+}
+
+.font-btn-large:hover {
+  filter: brightness(0.75);
+  color: #fff;
+  text-decoration:none;
 }
 
 .font-btn-xlarge {
@@ -123,29 +168,38 @@
   background: #898989;
   border-radius: 1.5em;
   color: white;
-  padding: 10px 20px;
+  padding: 6px 20px;
   text-transform: uppercase;
-  font-size: 1.75em;
+  font-size: 1.44em;
   letter-spacing:0.1em;
 }
+
+.font-btn-xlarge:hover {
+  filter: brightness(0.75);
+  color: #fff;
+  text-decoration:none;
+}
+
 
 .blue-btn {
   background: #0099CC !important;
 }
 
+/*
 @media (max-width:991px) { 
   .font-h1 {
     font-size:1.9em;
   }
 }
+*/
 
 @media (max-width:767px) { 
   .font-h1 {
-    font-size:1.6em;
+    font-size:1.8em;
   }
   
   .font-h2 {
-    font-size:1.35em;
+    font-size:1.25em;
   }
   
   .font-h3 {
@@ -156,13 +210,17 @@
     font-size: 1.13em;
   }
   
+  .font-huge {
+    font-size: 1.5em;
+  }
+  
   .font-large {
+    font-size: 1.3em;
+  }
+  
+  .font-medium {
     font-size: 1.13em;
   }
-
-  .font-regular {
-    font-size: 1em;
-  }  
 }
 
 @media (max-width:575px) {
@@ -171,7 +229,7 @@
   }
   
   .font-h2 {
-    font-size:1.25em;
+    font-size:1.2em;
   }
   
   .font-h3 {
@@ -195,6 +253,30 @@
     padding: 6px 16px;
     margin-top: 0em;
   }
+  
+  .font-huge {
+    font-size: 1.3em;
+  }
+  
+  .font-large {
+    font-size: 1.13em;
+  }
+  
+  .font-medium {
+    font-size: 1.0em;
+  }
+  
+  .font-regular {
+    font-size: 1.0em;
+  }
+  
+  .font-small {
+    font-size: 0.9em;
+  }
+  
+  .font-link {
+    font-size: 0.9em !important;
+  }  
 }
 
 @media (max-width:334px) {
@@ -203,11 +285,11 @@
   }  
   
   .font-h2 {
-    font-size:1.05em;
+    font-size:1.1em;
   }
-  
-  .font-h3 {
-    font-size:0.9em;
+
+  .font-huge {
+    font-size: 1.13em;
   }
   
   .font-large {
@@ -215,10 +297,6 @@
   }
   
   .font-regular {
-    font-size: 0.9em !important;
-  }
-  
-  .font-link {
     font-size: 0.9em !important;
   }
 }
@@ -280,17 +358,100 @@ html,body {
 }
 
 .fullwidth-section {
-  padding-top:3.5em;
-  padding-bottom:3.5em;
+  padding-top:1.9em;
+  padding-bottom:1.9em;
   margin-left: -15px;
   margin-right: -15px;  
+}
+
+.site-section {
+  margin-left: -15px;
+  margin-right: -15px;  
+}
+
+.site-section.top {
+  padding-top: 3.4em;
+}
+
+.top-padding {
+  padding-top: 3.4em;
+}
+.half-top-padding {
+  padding-top: 2.7em;
+}
+
+.site-section.bottom {
+  padding-bottom: 3.4em;
+}
+
+.site-section.both {
+  padding-top: 3.4em;  
+  padding-bottom: 3.4em;
+}
+
+.sidekick-only-padding {
+  padding-top: 0.3em;
+}
+
+@media (max-width:1199px) {
+  .top-padding {
+    padding-top: 2.7em
+  }
+  .half-top-padding {
+    padding-top: 2.0em;
+  }    
+  .sidekick-only-padding {
+    padding-top: 0.1em !important;
+  }
+}
+
+@media (max-width:991px) {
+  .top-padding {
+    padding-top: 2.0em
+  }  
+  .half-top-padding {
+    padding-top: 1.5em;
+  }  
+  
+  .sidekick-only-padding {
+    padding-top: 0em !important;
+  }
+}
+
+@media (max-width:767px) {
+  .top-padding {
+    padding-top: 1.5em;
+  }
+  .half-top-padding {
+    padding-top: 1.1em;
+  }
+  .sidekick-only-padding {
+    padding-top: 0.7em !important;
+  }
 }
 
 @media (max-width:575px) {
   .fullwidth-section{
     padding-top: 1.25em;
-    padding-bottom: 1.25em;
+    padding-bottom: 0.8em;
   } 
+
+  .site-section.top {
+    padding-top: 1.7em;
+  }
+
+  .half-top-padding {
+    padding-top: 1.0em;
+  }
+
+  .site-section.bottom {
+    padding-bottom: 1.7em;
+  }
+
+  .site-section.both {
+    padding-top: 1.7em;  
+    padding-bottom: 1.7em;
+  }
 }
 
 .vertical-center {
@@ -298,7 +459,93 @@ html,body {
   margin-bottom: auto;
 }
 
+.align-left {
+  text-align:left;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.text-center {
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.zero-padding-top {
+  padding-top: 0 !important;
+}
+
+.text-padding {
+  padding-bottom: 14px;
+}
+
+.no-display {
+  display: none;
+}
 .rounded {
   border-radius: 0.8em !important;
   box-shadow: 0px 3px 6px #00000029;
+}
+
+.blog {
+  width: 784px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width:767px) {
+  .blog {
+    width: auto;
+  } 
+}
+
+hr {
+  border-color: rgba(0,0,0,0.2);
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+
+a {
+  font-weight: inherit;
+  color: #007EA8;
+}
+
+h4 {
+  font-family: "Avenir Next Demi";  
+  color: #565656;
+  font-size: 1.08em;
+  letter-spacing: 0.05em;
+  margin-bottom: 5px;
+  margin-top: 12px;
+  text-transform: uppercase;
+}
+
+h4.grey {
+  color: #565656;
+}
+
+h4.blue {
+  color: #009DD1;
+}
+
+.flex-space-between {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+strong {
+  color: #696969;
+  font-family: "Avenir Next Demi";
+}
+
+b {
+  color: #696969;
+  font-family: "Avenir Next Demi";
 }

@@ -53,6 +53,7 @@ typings/
 
 # dotenv environment variable files
 .env*
+!.env.example
 
 # gatsby files
 .cache/
@@ -74,3 +75,7 @@ yarn-error.log
 workers-site/
 wrangler.toml
 dist/
+
+# Build status
+build_status.txt
+build_pid.txt

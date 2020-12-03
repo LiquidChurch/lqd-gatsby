@@ -31,6 +31,11 @@
   vertical-align:top;
 }
 
+.liquid-app-download:hover{
+  color: #757575;
+  filter: brightness(0.7);
+}
+
 .liquid-app-icon {
   display: inline-flex;
   height: 3.3em;
@@ -38,6 +43,7 @@
   margin-left:-3.7em;
   background-color: #009DD1;
 }
+
 
 .liquid-app-text {
   display: inline-flex;
@@ -47,32 +53,37 @@
   vertical-align: top;
 }
 
+.liquid-app-text:hover {
+  text-decoration:underline;
+}
+
 .liquid-app-arrow {
   display: inline-flex;
-  vertical-align: top;
+  position: relative;
+  bottom: 22px;
+  left:12px;
 }
 
 
 .scroll-to-top {
   position: absolute;
   right: 1em;
-  height: 3.9em;
+  height: 3.0em;
   width: 4.8em;
-  bottom:1.35em;
+  bottom:2.27em;
   background-color: #009DD1;
   border:none;
 }
 
 .to-top-icon {
   transition: bottom 0.3s ease-in-out;
-  color:#009DD1;
+  background-color:#009DD1;
   fill-opacity:0;
 }
 .to-top-icon:hover {
-    bottom: 2em;
-    background-color:#757575;
+  filter: brightness(0.7);
 }
 
 .to-top-icon:focus {
-    background-color:#757575;
+  filter: brightness(0.7);
 }
