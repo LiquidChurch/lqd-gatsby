@@ -10,6 +10,7 @@ import WideSlider from '../../Commons/WideSlider'
 import { useRecentMessages } from '../../../data/useRecentMessages'
 import { useMessageById } from '../../../data/useMessage'
 import { useRecentBlogs } from '../../../data/useRecentBlogs'
+import { useRecentPosts } from '../../../data/useRecentPosts'
 import { useBlog } from '../../../data/useBlog'
 import { getDate } from '../../../helpers/functions'
 import { useScrollPosition } from "../../../helpers/useScrollPosition"
@@ -195,11 +196,14 @@ export default ({
     show_blurb,
     show_series,
     type,
+    category,
     display_type,
     bg_color,
     padding,
   }) => {
   const ctx = useContext(GlobalContext)
+  console.log(type)
+  console.log(category)
   if (display_type === undefined) {
     display_type = "grid"
   }
@@ -224,6 +228,11 @@ export default ({
       "showSeries":show_series,
       "showAttribution":show_attribution,
     })
+  }
+  
+  if (type === "posts") {
+    let tempItems = useRecentPosts(num_items, category.id, getDate(useLocation().search))
+    console.log(tempItems)
   }
   
   if (type === "custom") {

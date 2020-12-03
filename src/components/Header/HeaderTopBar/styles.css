@@ -234,9 +234,9 @@
 
 @media (max-width:830px) {
   .topbar-chop-button {
-    width: 226px;
+    width: 234px;
   }
   .topbar-chop {
-    margin-right: 0em;
+    margin-right: 0.7em;
   }
 }
