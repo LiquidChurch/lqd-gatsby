@@ -202,68 +202,74 @@ export default ({
     padding,
   }) => {
   const ctx = useContext(GlobalContext)
+  const [mediaLists, setMediaLists] = useState([])
+  const [mediaLoaded, setMediaLoaded] = useState(false)
   
   if (display_type === undefined) {
     display_type = "grid"
   }
-  
-  let mediaLists = []
-  
-  if (type === "messages") {
-    let tempItems = useRecentMessages(num_items, getDate(useLocation().search))
-    mediaLists = MediaDataTransformer({
-      "rawItems":tempItems,
-      "showBlurb":show_blurb,
-      "showSeries":show_series,
-      "showAttribution":show_attribution,
-    })
-  }
-  
-  if (type === "blogs") {
-    let tempItems = useRecentBlogs(num_items, getDate(useLocation().search))
-     mediaLists = MediaDataTransformer({
-      "rawItems":tempItems,
-      "showBlurb":show_blurb,
-      "showSeries":show_series,
-      "showAttribution":show_attribution,
-    })
-  }
-  
-  if (type === "posts") {
-    let categoryObject = JSON.parse(category)
-    let tempItems = useRecentPosts(num_items, categoryObject.id, getDate(useLocation().search))
-     mediaLists = MediaDataTransformer({
-      "rawItems":tempItems,
-      "showBlurb":show_blurb,
-      "showSeries":show_series,
-      "showAttribution":show_attribution,
-    })
-  }
-  
-  if (type === "custom") {
-    let rawMediaList = JSON.parse(media_list)
-    let tempItems = []
-    rawMediaList.rows.forEach(item => {
-      if (item.message !== undefined) {
-        tempItems.push(useMessageById(item.message.id, getDate(useLocation().search)))
-      }
-      if (item.blog !== undefined) {
-        tempItems.push(useBlog(item.blog.id))
-      }
-    })
-    mediaLists = MediaDataTransformer({
-      "rawItems":tempItems,
-      "showBlurb":show_blurb,
-      "showSeries":show_series,
-      "showAttribution":show_attribution,
-    })
-  }
-  
+
   if (type === "") {
-    mediaLists = media_list
+    return (<></>)
+  }
+          
+  if (!mediaLoaded) {  
+    if (type === "messages") {
+      let tempItems = useRecentMessages(num_items, getDate(useLocation().search))
+      setMediaLists = MediaDataTransformer({
+        "rawItems":tempItems,
+        "showBlurb":show_blurb,
+        "showSeries":show_series,
+        "showAttribution":show_attribution,
+      })
+      setMediaLoaded(true)
+    }
+
+    if (type === "blogs") {
+      let tempItems = useRecentBlogs(num_items, getDate(useLocation().search))
+       setMediaLists = MediaDataTransformer({
+        "rawItems":tempItems,
+        "showBlurb":show_blurb,
+        "showSeries":show_series,
+        "showAttribution":show_attribution,
+      })
+      setMediaLoaded(true)
+    }
+
+    if (type === "posts") {
+      let categoryObject = JSON.parse(category)
+      let tempItems = useRecentPosts(num_items, categoryObject.id, getDate(useLocation().search))
+       setMediaLists = MediaDataTransformer({
+        "rawItems":tempItems,
+        "showBlurb":show_blurb,
+        "showSeries":show_series,
+        "showAttribution":show_attribution,
+      })
+      setMediaLoaded(true)
+    }
+
+    if (type === "custom") {
+      let rawMediaList = JSON.parse(media_list)
+      let tempItems = []
+      rawMediaList.rows.forEach(item => {
+        if (item.message !== undefined) {
+          tempItems.push(useMessageById(item.message.id, getDate(useLocation().search)))
+        }
+        if (item.blog !== undefined) {
+          tempItems.push(useBlog(item.blog.id))
+        }
+      })
+      setMediaLists = MediaDataTransformer({
+        "rawItems":tempItems,
+        "showBlurb":show_blurb,
+        "showSeries":show_series,
+        "showAttribution":show_attribution,
+      })
+      setMediaLoaded(true)
+    }  
   }
   
-  if (mediaLists === undefined) {
+  if (mediaLists.length === 0) {
     return (
     <>
     </>

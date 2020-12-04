@@ -3,7 +3,7 @@ const { createRemoteFileNode } = require("gatsby-source-filesystem")
 const { slash } = require("gatsby-core-utils")
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
-  const { createPage } = actions
+  const { createPage, createRedirect } = actions
 
   // CreatePage for Posts
   const postResult = await graphql(
@@ -54,6 +54,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             slug
             title
             uri
+            publication {
+              promoSlug
+            }
           }
         }
       }
@@ -67,8 +70,23 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   if (pageResult.data.allWpPage.nodes) {
     pageResult.data.allWpPage.nodes.forEach(page => {
+      if (page.publication.promoSlug !== null) {
+        let promoSlugList = page.publication.promoSlug.split(",")
+        
+        for (let j=0; j < promoSlugList.length; j++) {
+          let promoPath = "/" + promoSlugList[j].trim().toLowerCase()
+          console.log(promoPath + " -> " + page.uri)
+          createRedirect({
+            fromPath: promoPath,
+            toPath: page.uri.slice(0,-1),
+            redirectInBrowser: true,
+            isPermanent: true
+          }) 
+        }
+      }
+      
       createPage({
-        path: page.uri.slice(1,-1),
+        path: page.uri.slice(0,-1),
         component: slash(path.resolve(`./src/templates/page.js`)),
         context: {
           id: page.id,

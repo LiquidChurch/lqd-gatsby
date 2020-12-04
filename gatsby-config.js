@@ -106,5 +106,6 @@ module.exports = {
         allowList: ["IMGIX_URL", "IMG_DIR_INDEX", "IMG_FILE_INDEX", "GATSBY_ALGOLIA_INDEX_NAME", "LOGO_IMG", "GOOGLE_API_KEY"]
       },
     },
+    `gatsby-plugin-meta-redirect`,
   ],
 }
