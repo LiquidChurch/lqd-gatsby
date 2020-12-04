@@ -76,7 +76,7 @@ function UseSlider(props) {
   if (props.displayType === "slider") {
     return (
       <WideSlider sliderId={'slider-' + props.keyValue} touchEnabled={props.touchEnabled}>
-        {props.mediaLists.map((item, index) => {
+        {props.mediaLists[0].map((item, index) => {
           return (
               <MediaCard mediaItem={item} key={'media-lists-' + props.keyValue + '-' + index} />
           )
@@ -89,7 +89,7 @@ function UseSlider(props) {
       <>
       <Row>
         <Col className="media-card-wrap">
-        {items.map((item, index) => {
+        {props.mediaLists[0].map((item, index) => {
           return (
               <MediaCard mediaItem={item} key={'media-lists-' + props.keyValue + '-' + index} />
           )
@@ -108,7 +108,7 @@ function UseSlider(props) {
   if (props.displayType === "featured") {
     return (
     <>
-      <MediaFeatured mediaItem={props.mediaLists[0]} />
+      <MediaFeatured mediaItem={props.mediaLists[0][0]} />
     </>
     )
   }
@@ -202,10 +202,8 @@ export default ({
     padding,
   }) => {
   const ctx = useContext(GlobalContext)
-  //const [mediaLists, setMediaLists] = useState([])
-  //const [mediaLoaded, setMediaLoaded] = useState(false)
-  
-  let mediaLists = []
+  const [mediaLists, setMediaLists] = useState([])
+  const [mediaLoaded, setMediaLoaded] = useState(false)
   
   if (display_type === undefined) {
     display_type = "grid"
@@ -218,36 +216,39 @@ export default ({
   if (!mediaLoaded) {  
     if (type === "messages") {
       let tempItems = useRecentMessages(num_items, getDate(useLocation().search))
-      mediaLists = MediaDataTransformer({
+      setMediaLists([...mediaLists, MediaDataTransformer({
         "rawItems":tempItems,
         "showBlurb":show_blurb,
         "showSeries":show_series,
         "showAttribution":show_attribution,
-      })
-      //setMediaLoaded(true)
+        })
+      ])
+      setMediaLoaded(true)
     }
 
     if (type === "blogs") {
       let tempItems = useRecentBlogs(num_items, getDate(useLocation().search))
-       mediaLists = MediaDataTransformer({
+      setMediaLists([...mediaLists, MediaDataTransformer({
         "rawItems":tempItems,
         "showBlurb":show_blurb,
         "showSeries":show_series,
         "showAttribution":show_attribution,
-      })
-      //setMediaLoaded(true)
+        })
+      ])
+      setMediaLoaded(true)
     }
 
     if (type === "posts") {
       let categoryObject = JSON.parse(category)
       let tempItems = useRecentPosts(num_items, categoryObject.id, getDate(useLocation().search))
-       mediaLists = MediaDataTransformer({
+      setMediaLists([...mediaLists, MediaDataTransformer({
         "rawItems":tempItems,
         "showBlurb":show_blurb,
         "showSeries":show_series,
         "showAttribution":show_attribution,
-      })
-      //setMediaLoaded(true)
+        })
+      ])
+      setMediaLoaded(true)
     }
 
     if (type === "custom") {
@@ -261,26 +262,24 @@ export default ({
           tempItems.push(useBlog(item.blog.id))
         }
       })
-      mediaLists = MediaDataTransformer({
+      setMediaLists([...mediaLists, MediaDataTransformer({
         "rawItems":tempItems,
         "showBlurb":show_blurb,
         "showSeries":show_series,
         "showAttribution":show_attribution,
-      })
-      //setMediaLoaded(true)
+        })
+      ])
+      setMediaLoaded(true)
     }  
   }
   
+  if (mediaLists.length === 0) {
+    return (<></>)
+  }
   
-  if (mediaLists === undefined) {
-    return (
-    <>
-    </>
-    )
-  } 
-        
   return (
   <>
+    {mediaLoaded &&
     <section className={'site-section media-cards ' + padding} style={{backgroundColor: bg_color}} key={'section-' + keyValue}>
       <Container key={'container-' + keyValue}>
         <UseSlider
@@ -291,6 +290,7 @@ export default ({
         />
       </Container>
     </section>
+    }
   </>
   )
 }

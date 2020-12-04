@@ -44,7 +44,15 @@ function ShowSeries(props) {
 }
 
 function ShowAttribution(props) {
-
+  let icon=''
+  switch(props.category) {
+    case 'messages':
+      icon='messages-icon'
+      break;
+    default:
+      icon='blogs-icon'
+  }
+  
   if (props.showAttribution) {
     let date = props.date.toUpperCase()
     let profileImgUrl = []
@@ -60,7 +68,7 @@ function ShowAttribution(props) {
         />
         <div className="media-card-attribution-info">
           <div className="media-card-name">{props.attributionName}</div>
-          <div className={"media-card-icon " + props.category + "-icon"}></div>
+          <div className={"media-card-icon " + icon}></div>
           <div className="media-card-date">{date}</div>
         </div>
       </ListGroup.Item>
