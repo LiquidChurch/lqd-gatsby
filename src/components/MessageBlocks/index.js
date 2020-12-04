@@ -86,7 +86,7 @@ export default (lqdmMessage) => {
           bg_color="#F8F8F8"
       />    
       <MediaTiles 
-          type="" 
+          type="internal" 
           display_type="grid"
           bg_color="#F8F8F8"
           padding="bottom"

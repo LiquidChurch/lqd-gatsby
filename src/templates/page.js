@@ -95,7 +95,7 @@ export default ({
         } else if (ctx.prevPath === "") {
           window.location.replace(parentPageUri)
         }
-      },1500)      
+      },2500)      
     } else if (!pageValid) {
       navigate('/404')  
     } else {        

@@ -20,8 +20,7 @@ export default ({
   }
   
   useEffect(() => {
-    if (urlPath !== null) {
-      
+    if (urlPath !== null) {      
       switch(urlPath[0]) {
     case "job":
       window.location.replace("/jobs" + subPath)
