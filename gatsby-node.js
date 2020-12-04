@@ -118,6 +118,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             id
             slug
             title
+            seriesList {
+              nodes {
+                slug
+              }
+            }
           }
         }
       }
@@ -134,6 +139,13 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   do {
     if (messageResult.data.allWpMessage.nodes) {
       messageResult.data.allWpMessage.nodes.forEach(message => {
+        createRedirect({
+          fromPath: `/messages/${message.seriesList.nodes[0].slug}-series/${message.slug}`,
+          toPath: `/messages/${message.slug}`,
+          redirectInBrowser: true,
+          isPermanent: true
+        }) 
+        
         createPage({
           path: `/messages/${message.slug}`,
           component: slash(path.resolve(`./src/templates/message.js`)),
@@ -214,6 +226,13 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   
   if (seriesListResult.data.allWpSeries.nodes) {
     seriesListResult.data.allWpSeries.nodes.forEach(series=> {
+      createRedirect({
+        fromPath: `/messages/${series.slug}-series`,
+        toPath: `/series/${series.slug}`,
+        redirectInBrowser: true,
+        isPermanent: true
+      }) 
+
       createPage({
         path: `/series/${series.slug}`,
         component: slash(path.resolve(`./src/templates/series.js`)),
