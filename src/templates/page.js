@@ -8,7 +8,7 @@ import Layout from "../components/Layout"
 import PageBlocks from "../components/PageBlocks"
 import { GlobalContext } from '../components/GlobalContext/context'
 //import { isTouchEnabled, getDate } from '../helpers/functions'
-import { getDate, RichTextHelper } from '../helpers/functions'
+import { getDate, isAppView, RichTextHelper } from '../helpers/functions'
 import { usePageById } from '../data/usePage'
 //import useDeviceDetect from '../helpers/useDeviceDetection'
 
@@ -22,6 +22,7 @@ export default ({
   },
 }) => {
   console.log("page: ", page.title)
+  console.log(location)
   const generalSettings = useGeneralSettings()
   const ctx = useContext(GlobalContext)
   
@@ -41,7 +42,10 @@ export default ({
   if (page.themeState !== null) {
     theme = page.themeState.state
   }
- 
+  if (isAppView(location.search) === "true" || ctx.currentTheme === 'app') {
+    theme = 'app'
+  }
+
   let featuredImageUrl = "" 
   if (page.featuredImage !== null) {
     let imgUrl = page.featuredImage.node.mediaItemUrl.split("/")

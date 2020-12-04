@@ -13,7 +13,7 @@ import PageBlocks from "../components/PageBlocks"
 import Heading from "../components/Blocks/Heading"
 
 import { GlobalContext } from '../components/GlobalContext/context'
-import { getDate } from '../helpers/functions'
+import { getDate, isAppView } from '../helpers/functions'
 import { locationLookup, jobTypeLookup, postLengthCalc } from '../helpers/jobHelper'
 
 function JobPageButtons(props) {
@@ -69,6 +69,11 @@ export default ({
   const generalSettings = useGeneralSettings()    
   const ctx = useContext(GlobalContext)
 
+  let theme = 'light'
+  if (isAppView(location.search) === "true" || ctx.currentTheme === 'app') {
+    theme = 'app'
+  }
+  
   var pageValid = false
   if ( (lqdmJob.publication.publishDate === null || getDate(location.search) >= Date.parse(lqdmJob.publication.publishDate.replace(/\s/g, 'T'))) &&
        (lqdmJob.publication.unpublishDate === null || getDate(location.search) < Date.parse(lqdmJob.publication.unpublishDate.replace(/\s/g, 'T'))) ) {
@@ -89,7 +94,7 @@ export default ({
       ctx.setIsMobile(Boolean(userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i)))
     }   
     ctx.setPath(location.pathname)
-  }, [ctx, location.pathname, pageValid])
+  }, [ctx, theme, location.pathname, pageValid])
     
   return (
     <>

@@ -6,7 +6,7 @@ import Parse from "react-html-parser"
 import Layout from "../components/Layout"
 import MessageBlocks from "../components/MessageBlocks"
 import { GlobalContext } from '../components/GlobalContext/context'
-import { getDate } from '../helpers/functions'
+import { getDate, isAppView } from '../helpers/functions'
 
 /** 
  * Template - Messages Component
@@ -21,6 +21,11 @@ export default ({
   console.log("message:", lqdmMessage.title)
   const generalSettings = useGeneralSettings()  
   const ctx = useContext(GlobalContext)
+  
+  let theme = 'dark'
+  if (isAppView(location.search) === "true" || ctx.currentTheme === 'app') {
+    theme = 'app'
+  }
   
   var pageValid = false
   if ( (lqdmMessage.publication.publishDate === null || getDate(location.search) >= Date.parse(lqdmMessage.publication.publishDate.replace(/\s/g, 'T'))) &&
@@ -37,10 +42,10 @@ export default ({
     if (!pageValid) {
       navigate('/messages')
     }
-    ctx.setTheme("dark")
+    ctx.setTheme(theme)
 
     ctx.setPath(location.pathname)
-  }, [ctx, location.pathname, pageValid])
+  }, [ctx, theme, location.pathname, pageValid])
   
   return (
     <>

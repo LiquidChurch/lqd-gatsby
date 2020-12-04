@@ -4,6 +4,9 @@
   margin-top:3.0em;
 }
 
+.footer.app {
+  display: none !important;
+}
 @media (max-width:575px) {
   .footer {
     margin-bottom: 3.5em;

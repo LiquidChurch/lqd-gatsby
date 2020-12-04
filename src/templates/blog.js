@@ -5,7 +5,7 @@ import { useGeneralSettings } from "../data/hooks"
 import Parse from "react-html-parser"
 import Layout from "../components/Layout"
 import { GlobalContext } from '../components/GlobalContext/context'
-import { getDate } from '../helpers/functions'
+import { getDate, isAppView } from '../helpers/functions'
 
 import PageBlocks from "../components/PageBlocks"
 import HeroFeature from "../components/HeroFeature"
@@ -24,6 +24,11 @@ export default ({
   const generalSettings = useGeneralSettings()  
   const ctx = useContext(GlobalContext)
   
+  let theme = 'light'
+  if (isAppView(location.search) === "true" || ctx.currentTheme === 'app') {
+    theme = 'app'
+  }
+  
   var pageValid = false
   if ( (blog.publication.publishDate === null || getDate(location.search) >= Date.parse(blog.publication.publishDate.replace(/\s/g, 'T'))) &&
        (blog.publication.unpublishDate === null || getDate(location.search) < Date.parse(blog.publication.unpublishDate.replace(/\s/g, 'T'))) ) {
@@ -34,13 +39,13 @@ export default ({
     if (!pageValid) {
       navigate('/blogs')
     }    
-    ctx.setTheme("light")
+    ctx.setTheme(theme)
     let userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent
     if (!ctx.isMobileSet) {
       ctx.setIsMobile(Boolean(userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i)))
     }
     ctx.setPath(location.pathname)
-  }, [ctx, location, pageValid])
+  }, [ctx, theme, location, pageValid])
   
   return (
     <>

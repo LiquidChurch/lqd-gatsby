@@ -13,13 +13,14 @@ import "./styles.css"
  * The Header TopBar component.
  */
 export default ({ location }) => {
+  console.log(location)
   const ctx = useContext(MegaMenuContext)
   const globalCtx = useContext(GlobalContext)
   
   const [focusOn, setFocusOn] = useState(false)
   const [menuOpen, setMenuOpen] = useState(true)
-  
-  var themeState = globalCtx.currentTheme.toLowerCase()
+
+  let themeState = globalCtx.currentTheme.toLowerCase()
 
   useEffect(() => {
     if (!ctx.isMenuOpen) {

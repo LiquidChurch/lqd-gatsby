@@ -12,6 +12,10 @@
   z-index:10;
 }
 
+.tapbar-app {
+  display: none !important;
+}
+
 @media (max-width:575px) {
   .topbar-chop {
     display:none !important;

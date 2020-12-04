@@ -7,7 +7,7 @@ import { useGeneralSettings } from "../data/hooks"
 import Layout from "../components/Layout"
 import PageBlocks from "../components/PageBlocks"
 import { GlobalContext } from '../components/GlobalContext/context'
-import { getDate, RichTextHelper } from '../helpers/functions'
+import { getDate, isAppView, RichTextHelper } from '../helpers/functions'
 //import PostHeader from "../components/PostHeader"
 //import { LoadingOverlayProvider } from "../components/LoadingOverlay/context.js"
 /** 
@@ -23,6 +23,12 @@ export default ({
   console.log("index")
   const generalSettings = useGeneralSettings()
   const ctx = useContext(GlobalContext)
+
+  let theme = 'dark'
+  if (isAppView(location.search) === "true" || ctx.currentTheme === 'app') {
+    theme = 'app'
+  }
+  
   let featuredImageUrl = "" 
   if (page.featuredImage !== null) {
     let imgUrl = page.featuredImage.node.mediaItemUrl.split("/")
@@ -39,10 +45,10 @@ export default ({
   })
 
   useEffect(() => {
-    ctx.setTheme("dark")
+    ctx.setTheme(theme)
     ctx.setPath(location.pathname)
     ctx.setDate(getDate(location.search))
-  }, [ctx, location])
+  }, [ctx, theme, location])
 
   return (
     <Layout location={location}>

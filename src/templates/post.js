@@ -6,7 +6,7 @@ import Parse from "react-html-parser"
 import Layout from "../components/Layout"
 import PageBlocks from "../components/PageBlocks"
 import { GlobalContext } from '../components/GlobalContext/context'
-import { getDate } from '../helpers/functions'
+import { getDate, isAppView } from '../helpers/functions'
 
 import HeroFeature from "../components/HeroFeature"
 
@@ -19,6 +19,11 @@ export default ({
   console.log("post: ", post.title)
   const generalSettings = useGeneralSettings()
   const ctx = useContext(GlobalContext)
+
+  let theme = 'light'
+  if (isAppView(location.search) === "true" || ctx.currentTheme === 'app') {
+    theme = 'app'
+  }
   
   var pageValid = false
   if ( (post.publication.publishDate === null || getDate(location.search) >= Date.parse(post.publication.publishDate.replace(/\s/g, 'T'))) &&
@@ -31,13 +36,13 @@ export default ({
       navigate('')
     }
     
-    ctx.setTheme("light")
+    ctx.setTheme(theme)
     let userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent
     if (!ctx.isMobileSet) {
       ctx.setIsMobile(Boolean(userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i)))
     }   
     ctx.setPath(location.pathname)
-  }, [ctx, location, pageValid])
+  }, [ctx, theme, location, pageValid])
   return (
     <Layout location={location}>
       <Helmet titleTemplate={`%s | ${generalSettings.title}`}>
