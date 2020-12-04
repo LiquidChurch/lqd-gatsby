@@ -202,8 +202,10 @@ export default ({
     padding,
   }) => {
   const ctx = useContext(GlobalContext)
-  const [mediaLists, setMediaLists] = useState([])
-  const [mediaLoaded, setMediaLoaded] = useState(false)
+  //const [mediaLists, setMediaLists] = useState([])
+  //const [mediaLoaded, setMediaLoaded] = useState(false)
+  
+  let mediaLists = []
   
   if (display_type === undefined) {
     display_type = "grid"
@@ -216,36 +218,36 @@ export default ({
   if (!mediaLoaded) {  
     if (type === "messages") {
       let tempItems = useRecentMessages(num_items, getDate(useLocation().search))
-      setMediaLists = MediaDataTransformer({
+      mediaLists = MediaDataTransformer({
         "rawItems":tempItems,
         "showBlurb":show_blurb,
         "showSeries":show_series,
         "showAttribution":show_attribution,
       })
-      setMediaLoaded(true)
+      //setMediaLoaded(true)
     }
 
     if (type === "blogs") {
       let tempItems = useRecentBlogs(num_items, getDate(useLocation().search))
-       setMediaLists = MediaDataTransformer({
+       mediaLists = MediaDataTransformer({
         "rawItems":tempItems,
         "showBlurb":show_blurb,
         "showSeries":show_series,
         "showAttribution":show_attribution,
       })
-      setMediaLoaded(true)
+      //setMediaLoaded(true)
     }
 
     if (type === "posts") {
       let categoryObject = JSON.parse(category)
       let tempItems = useRecentPosts(num_items, categoryObject.id, getDate(useLocation().search))
-       setMediaLists = MediaDataTransformer({
+       mediaLists = MediaDataTransformer({
         "rawItems":tempItems,
         "showBlurb":show_blurb,
         "showSeries":show_series,
         "showAttribution":show_attribution,
       })
-      setMediaLoaded(true)
+      //setMediaLoaded(true)
     }
 
     if (type === "custom") {
@@ -259,17 +261,18 @@ export default ({
           tempItems.push(useBlog(item.blog.id))
         }
       })
-      setMediaLists = MediaDataTransformer({
+      mediaLists = MediaDataTransformer({
         "rawItems":tempItems,
         "showBlurb":show_blurb,
         "showSeries":show_series,
         "showAttribution":show_attribution,
       })
-      setMediaLoaded(true)
+      //setMediaLoaded(true)
     }  
   }
   
-  if (mediaLists.length === 0) {
+  
+  if (mediaLists === undefined) {
     return (
     <>
     </>
