@@ -34,6 +34,20 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   if (postResult.data.allWpPost.nodes) {
     postResult.data.allWpPost.nodes.forEach(post => {
+      createRedirect({
+        fromPath: `/blog/uncategorized/${post.slug}`,
+        toPath: `/${post.categories.nodes[0].slug}/${post.slug}`,
+        redirectInBrowser: true,
+        isPermanent: true
+      }) 
+
+      createRedirect({
+        fromPath: `/blog/${post.categories.nodes[0].slug}/${post.slug}`,
+        toPath: `/${post.categories.nodes[0].slug}/${post.slug}`,
+        redirectInBrowser: true,
+        isPermanent: true
+      }) 
+
       createPage({
         path: `/${post.categories.nodes[0].slug}/${post.slug}`,
         component: slash(path.resolve(`./src/templates/post.js`)),
@@ -158,6 +172,13 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   do {
     if (blogResult.data.allWpBlog.nodes) {
       blogResult.data.allWpBlog.nodes.forEach(blog => {
+        createRedirect({
+          fromPath: `/blog/elixir/${blog.slug}`,
+          toPath: `/blogs/${blog.slug}`,
+          redirectInBrowser: true,
+          isPermanent: true
+        }) 
+        
         createPage({
           path: `/blogs/${blog.slug}`,
           component: slash(path.resolve(`./src/templates/blog.js`)),
