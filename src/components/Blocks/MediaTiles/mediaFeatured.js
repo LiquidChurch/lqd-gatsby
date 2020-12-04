@@ -18,7 +18,7 @@ export default ({mediaItem}) => {
   var profileImgUrl = mediaItem.profileImage.split("/")
   
   return (
-    <Col xs={{span:12, offset:0}} md={{ span: 10, offset: 1 }}>
+    <Col xs={{span:12, offset:0}} md={{ span: 10, offset: 1 }} className="media-tile-col">
       <div className="media-tile-card-image">
         <Link to={"/" + mediaItem.category + "/" + mediaItem.slug}>
           <Imgix
@@ -29,8 +29,8 @@ export default ({mediaItem}) => {
         </Link>
       </div>
       <Card className="media-tile-card" style={{ width: '18rem' }}>
-        <Card.Body>
-        <Link to={"/" + mediaItem.category + "/" + mediaItem.slug}>
+        <Card.Body className="media-tile-card-body">
+        <Link to={"/" + mediaItem.category + "/" + mediaItem.slug} className="media-tile-card-link">
           <Card.Title className="media-tile-title font-h2">{mediaItem.title}</Card.Title>
           <Card.Text as="div" className="media-tile-text font-regular">{Parse(mediaItem.blurb)}</Card.Text>
           <Card.Header className="media-tile-author">

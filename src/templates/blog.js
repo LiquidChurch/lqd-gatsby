@@ -1,13 +1,14 @@
 import React, { useContext, useEffect } from 'react'
 import { Helmet } from "react-helmet"
 import { graphql, navigate } from "gatsby"
+import { useGeneralSettings } from "../data/hooks"
 import Parse from "react-html-parser"
 import Layout from "../components/Layout"
 import { GlobalContext } from '../components/GlobalContext/context'
 import { getDate } from '../helpers/functions'
 
 import PageBlocks from "../components/PageBlocks"
-import FeatureHero from "../components/HeroFeature"
+import HeroFeature from "../components/HeroFeature"
 import { PageModalProvider } from "../components/PageModal/context.js"
 
 /** 
@@ -20,6 +21,7 @@ export default ({
   },
 }) => {
   console.log("blog: ", blog.title)
+  const generalSettings = useGeneralSettings()  
   const ctx = useContext(GlobalContext)
   
   var pageValid = false
@@ -36,8 +38,9 @@ export default ({
     let userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent
     if (!ctx.isMobileSet) {
       ctx.setIsMobile(Boolean(userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i)))
-    }     
-  }, [ctx, pageValid])
+    }
+    ctx.setPath(location.pathname)
+  }, [ctx, location, pageValid])
   
   return (
     <>
@@ -45,12 +48,12 @@ export default ({
       ''
      ) :    
       <Layout location={location}>
-        <Helmet titleTemplate={`%s | Liquid Church`}>
+        <Helmet titleTemplate={`%s | ${generalSettings.title}`}>
           <title>{Parse(blog.title)}</title>
         </Helmet>
         <article className="page">
           <PageModalProvider>
-          <FeatureHero {...blog} />
+          <HeroFeature {...blog} />
           <div className="blog">
             <PageBlocks {...blog} />
           </div>

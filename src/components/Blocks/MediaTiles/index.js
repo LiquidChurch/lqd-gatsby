@@ -10,6 +10,7 @@ import WideSlider from '../../Commons/WideSlider'
 import { useRecentMessages } from '../../../data/useRecentMessages'
 import { useMessageById } from '../../../data/useMessage'
 import { useRecentBlogs } from '../../../data/useRecentBlogs'
+import { useRecentPosts } from '../../../data/useRecentPosts'
 import { useBlog } from '../../../data/useBlog'
 import { getDate } from '../../../helpers/functions'
 import { useScrollPosition } from "../../../helpers/useScrollPosition"
@@ -195,11 +196,13 @@ export default ({
     show_blurb,
     show_series,
     type,
+    category,
     display_type,
     bg_color,
     padding,
   }) => {
   const ctx = useContext(GlobalContext)
+  
   if (display_type === undefined) {
     display_type = "grid"
   }
@@ -218,6 +221,17 @@ export default ({
   
   if (type === "blogs") {
     let tempItems = useRecentBlogs(num_items, getDate(useLocation().search))
+     mediaLists = MediaDataTransformer({
+      "rawItems":tempItems,
+      "showBlurb":show_blurb,
+      "showSeries":show_series,
+      "showAttribution":show_attribution,
+    })
+  }
+  
+  if (type === "posts") {
+    let categoryObject = JSON.parse(category)
+    let tempItems = useRecentPosts(num_items, categoryObject.id, getDate(useLocation().search))
      mediaLists = MediaDataTransformer({
       "rawItems":tempItems,
       "showBlurb":show_blurb,

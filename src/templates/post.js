@@ -1,11 +1,12 @@
 import React, { useContext, useEffect } from "react"
 import { Helmet } from "react-helmet"
-import { graphql } from "gatsby"
+import { graphql, navigate } from "gatsby"
 import { useGeneralSettings } from "../data/hooks"
 import Parse from "react-html-parser"
 import Layout from "../components/Layout"
 import PageBlocks from "../components/PageBlocks"
 import { GlobalContext } from '../components/GlobalContext/context'
+import { getDate } from '../helpers/functions'
 
 import HeroFeature from "../components/HeroFeature"
 
@@ -19,14 +20,24 @@ export default ({
   const generalSettings = useGeneralSettings()
   const ctx = useContext(GlobalContext)
   
+  var pageValid = false
+  if ( (post.publication.publishDate === null || getDate(location.search) >= Date.parse(post.publication.publishDate.replace(/\s/g, 'T'))) &&
+       (post.publication.unpublishDate === null || getDate(location.search) < Date.parse(post.publication.unpublishDate.replace(/\s/g, 'T'))) ) {
+    pageValid = true
+  }
+
   useEffect(() => {
+    if (!pageValid) {
+      navigate('')
+    }
+    
     ctx.setTheme("light")
     let userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent
     if (!ctx.isMobileSet) {
       ctx.setIsMobile(Boolean(userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i)))
     }   
     ctx.setPath(location.pathname)
-  }, [ctx, location.pathname])
+  }, [ctx, location, pageValid])
   return (
     <Layout location={location}>
       <Helmet titleTemplate={`%s | ${generalSettings.title}`}>
@@ -43,10 +54,8 @@ export default ({
 export const query = graphql`
   query Post($id: String!) {
       post: wpPost(id: {eq: $id}) {
-        date
-        excerpt
         title
-        slug
+        date
         attributions {
           nodes {
             id
@@ -59,6 +68,13 @@ export const query = graphql`
             }
           }
         }
+        attributionsCo {
+          attributions {
+            id
+            name
+            slug
+          }
+        }         
         blocks {
           ...AllBlocks
         }
@@ -73,6 +89,5 @@ export const query = graphql`
           publishDate
         }
       }
-   
   }
 `

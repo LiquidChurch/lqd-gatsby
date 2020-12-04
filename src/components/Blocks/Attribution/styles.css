@@ -1,6 +1,13 @@
+.tile-only {
+  margin-top: -38px;
+}
+
 .attribution-profile {
   display: flex;
-  margin-bottom: 35px;
+}
+
+.attribution-profile.margin-bottom {
+  margin-bottom:35px;
 }
 
 .attribution-profile-image {
@@ -8,6 +15,7 @@
   min-width: 247px;
   height: 247px;
   margin-top: 15px;
+  margin-bottom: 48px;
 }
 
 .attribution-profile-blurb {
@@ -73,7 +81,7 @@
 }
 
 .attribution-secondary-profile.margin {
-  margin-top: 48px
+  margin-top: 40px
 }
 .attribution-secondary-profile-image {
   width: 137px;

@@ -177,6 +177,7 @@ export const MediaTiles = graphql`
       show_blurb
       show_series
       type
+      category
       display_type
       bg_color
       padding
