@@ -79,14 +79,15 @@ function ShowAttribution(props) {
 }
 
 export default (props) => {
+  let imgUrl = ''
   if (props.mediaItem.image === undefined || props.mediaItem.image === null) {
     //var imgUrl = process.env.LOGO_IMG.split('/')
     return (<></>)
   } else {
-    var imgUrl = props.mediaItem.image.split("/")
+    imgUrl = props.mediaItem.image.split("/")
   }
   
-  var linkUrl = ""
+  let linkUrl = ""
   if (props.mediaItem.category === "pages") {
     linkUrl = props.mediaItem.slug
   } else {

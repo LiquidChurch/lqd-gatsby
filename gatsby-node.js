@@ -192,8 +192,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         }) 
         
         createRedirect({
-          fromPath: `/blog/uncategorized/${post.slug}`,
-          toPath: `/${post.categories.nodes[0].slug}/${post.slug}`,
+          fromPath: `/blog/uncategorized/${blog.slug}`,
+          toPath: `/blogs/${blog.slug}`,
           redirectInBrowser: true,
           isPermanent: true
         }) 

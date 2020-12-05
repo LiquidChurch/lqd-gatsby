@@ -14,8 +14,8 @@ export default ({mediaItem}) => {
     return (<></>)
   }
   
-  var imgUrl = mediaItem.image.split("/")
-  var profileImgUrl = mediaItem.profileImage.split("/")
+  let imgUrl = mediaItem.image.split("/")
+  let profileImgUrl = mediaItem.profileImage.split("/")
   
   return (
     <Col xs={{span:12, offset:0}} md={{ span: 10, offset: 1 }} className="media-tile-col">

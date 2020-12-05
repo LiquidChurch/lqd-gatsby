@@ -29,6 +29,21 @@ export default ({
     theme = 'app'
   }
   
+  let featuredImageUrl = "" 
+  if (blog.featuredImage !== null) {
+    let imgUrl = blog.featuredImage.node.sourceUrl.split("/")
+    featuredImageUrl = process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX] + "?ar=16:9&fit=crop&h=200"
+  }  
+
+  let keywordsList = ""
+  blog.tags.nodes.forEach((node, i) => {
+    if (i === 0) {
+      keywordsList = node.name
+    } else {
+      keywordsList = keywordsList + ", " + node.name
+    }
+  })
+  
   var pageValid = false
   if ( (blog.publication.publishDate === null || getDate(location.search) >= Date.parse(blog.publication.publishDate.replace(/\s/g, 'T'))) &&
        (blog.publication.unpublishDate === null || getDate(location.search) < Date.parse(blog.publication.unpublishDate.replace(/\s/g, 'T'))) ) {
@@ -53,8 +68,27 @@ export default ({
       ''
      ) :    
       <Layout location={location}>
-        <Helmet titleTemplate={`%s | ${generalSettings.title}`}>
+        <Helmet titleTemplate={`%s - ${generalSettings.title}`}>
           <title>{Parse(blog.title)}</title>
+          <meta http-equiv="last-modified" content={blog.modified} />
+          <meta name="robots" content={"index, no-follow"} />
+          {(blog.seo.metaDesc !== "") &&
+            <meta name="description" content={blog.seo.metaDesc} />          
+          }
+          {(keywordsList !== "") && 
+            <meta name="keywords" content={keywordsList} />
+          }
+
+          <meta property="og:description" content={blog.mediaBlurb.blurb} />          
+          <meta property="og:locale" content="en_US" />
+          <meta property="og:type" content="article" />
+          <meta property="article:published_time" content={blog.publication.publishDate} />
+          <meta property="og:title" content={blog.title} />
+          <meta property="og:site_name" content={generalSettings.title} />
+          <meta property="og:url" content={'https://liquidchurch.com/'+blog.slug} />
+          {(featuredImageUrl !== "") && 
+            <meta property="og:image" content={featuredImageUrl} />
+          }
         </Helmet>
         <article className="page">
           <PageModalProvider>
@@ -75,6 +109,22 @@ export const query = graphql`
       blog: wpBlog(id: {eq: $id}) {
         title
         date
+        modified
+        slug
+        mediaBlurb {
+          blurb
+        }
+        seo {
+          metaDesc
+          focuskw
+        }              
+        tags {
+          nodes {
+            id
+            name
+            slug
+          }
+        }
         attributions {
           nodes {
             id

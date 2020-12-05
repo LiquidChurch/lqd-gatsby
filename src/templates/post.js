@@ -25,6 +25,21 @@ export default ({
     theme = 'app'
   }
   
+  let featuredImageUrl = "" 
+  if (post.featuredImage !== null) {
+    let imgUrl = post.featuredImage.node.sourceUrl.split("/")
+    featuredImageUrl = process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX] + "?ar=16:9&fit=crop&h=200"
+  }  
+
+  let keywordsList = ""
+  post.tags.nodes.forEach((node, i) => {
+    if (i === 0) {
+      keywordsList = node.name
+    } else {
+      keywordsList = keywordsList + ", " + node.name
+    }
+  })
+  
   var pageValid = false
   if ( (post.publication.publishDate === null || getDate(location.search) >= Date.parse(post.publication.publishDate.replace(/\s/g, 'T'))) &&
        (post.publication.unpublishDate === null || getDate(location.search) < Date.parse(post.publication.unpublishDate.replace(/\s/g, 'T'))) ) {
@@ -45,8 +60,28 @@ export default ({
   }, [ctx, theme, location, pageValid])
   return (
     <Layout location={location}>
-      <Helmet titleTemplate={`%s | ${generalSettings.title}`}>
+      <Helmet titleTemplate={`%s - ${generalSettings.title}`}>
         <title>{Parse(post.title)}</title>
+        <meta http-equiv="last-modified" content={post.modified} />
+        <meta name="robots" content={"index, no-follow"} />
+        {(post.seo.metaDesc !== "") &&
+          <meta name="description" content={post.seo.metaDesc} />          
+        }
+        {(keywordsList !== "") && 
+          <meta name="keywords" content={keywordsList} />
+        }
+        {(post.mediaBlurb.blurb !== "" && post.mediaBlurb.blurb !== null) &&
+          <meta property="og:description" content={post.mediaBlurb.blurb} />
+        }
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:type" content="article" />
+        <meta property="article:published_time" content={post.publication.publishDate} />
+        <meta property="og:title" content={post.title} />
+        <meta property="og:site_name" content={generalSettings.title} />
+        <meta property="og:url" content={'https://liquidchurch.com/'+post.categories.nodes[0].slug + '/' + post.slug} />
+        {(featuredImageUrl !== "") && 
+          <meta property="og:image" content={featuredImageUrl} />
+        }
       </Helmet>
       <article className="page">
         <HeroFeature {...post} />
@@ -61,6 +96,28 @@ export const query = graphql`
       post: wpPost(id: {eq: $id}) {
         title
         date
+        modified
+        slug
+        categories {
+          nodes {
+            databaseId
+            slug
+          }
+        }
+        mediaBlurb {
+          blurb
+        }
+        seo {
+          metaDesc
+          focuskw
+        }
+        tags {
+          nodes {
+            id
+            name
+            slug
+          }
+        }
         attributions {
           nodes {
             id
