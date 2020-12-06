@@ -19,7 +19,7 @@ export default ({
     series,
   },
 }) => {
-  console.log("series: ", series.name)
+  console.log('{"type":"series", "name":"'+ series.name + '", "slug":"/series/' + series.slug + '"}')
   const ctx = useContext(GlobalContext)
   const currentDate = getDate(location.search)
   
@@ -82,7 +82,6 @@ export default ({
   
   messagesInfo.sort((a,b) => a.seriesPart > b.seriesPart ? 1: -1)
 
-  console.log('series messages list', messagesInfo)
   return (
     <Layout location={location}>
       <Helmet titleTemplate={`%s | Liquid Church`}>

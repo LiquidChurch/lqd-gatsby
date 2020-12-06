@@ -163,7 +163,6 @@ const featuredImageDesc = featuredImage => {
   if (featuredImage === null) {
     return null
   } else {
-    console.log('page description', featuredImage.node.description)
     return grabText(featuredImage.node.description)
   }
 }

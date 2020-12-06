@@ -89,7 +89,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         
         for (let j=0; j < promoSlugList.length; j++) {
           let promoPath = "/" + promoSlugList[j].trim().toLowerCase()
-          console.log(promoPath + " -> " + page.uri)
+          console.log('{"type":"redirect", "name":"'+ page.title +  '", "from":"' + promoPath + '", "to":"' + page.uri.slice(0,-1) + '"}')
           createRedirect({
             fromPath: promoPath,
             toPath: page.uri.slice(0,-1),

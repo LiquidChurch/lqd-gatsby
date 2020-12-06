@@ -16,7 +16,7 @@ export default ({
     post,
   },
 }) => {
-  console.log("post: ", post.title)
+  console.log('{"type":"posts", "name":"'+ post.title + '", "slug":"/' + post.categories.nodes[0].slug + '/' + post.slug + '"}')  
   const generalSettings = useGeneralSettings()
   const ctx = useContext(GlobalContext)
 
