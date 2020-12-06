@@ -204,13 +204,10 @@ export default ({
   const ctx = useContext(GlobalContext)
   const [mediaLists, setMediaLists] = useState([])
   const [mediaLoaded, setMediaLoaded] = useState(false)
-  
-
 
   if (display_type === undefined) {
     display_type = "grid"
   }
-
           
   if (!mediaLoaded) {  
     if (type === "internal") {
@@ -266,7 +263,6 @@ export default ({
           tempItems.push(useBlog(item.blog.id))
         }
       })
-      console.log('media items', tempItems)
       setMediaLists([...mediaLists, MediaDataTransformer({
         "rawItems":tempItems,
         "showBlurb":show_blurb,

@@ -27,6 +27,10 @@ const messageQuery = `
               slug
             }
           }
+          publication {
+            unpublishDate
+            publishDate
+          }
         }
     }
 }
@@ -56,6 +60,49 @@ const blogQuery = `
               altText
             }
           }
+          publication {
+            unpublishDate
+            publishDate
+          }
+        }
+    }
+}
+`
+
+const postQuery = `
+{
+    allWpPost {
+        nodes {
+          id
+          title
+          date
+          modified
+          slug
+          mediaBlurb {
+            blurb
+          }
+          tags {
+            nodes {
+              name
+            }
+          }
+          categories {
+            nodes {
+              databaseId
+              slug
+            }
+          }
+          featuredImage {
+            node {
+              sourceUrl
+              caption
+              altText
+            }
+          }
+          publication {
+            unpublishDate
+            publishDate
+          }
         }
     }
 }
@@ -81,7 +128,12 @@ const pageQuery = `
               sourceUrl
               caption
               altText
+              description
             }
+          }
+          publication {
+            unpublishDate
+            publishDate
           }
         }
       }
@@ -92,7 +144,11 @@ const grabText = rawText => {
   if (rawText === null || rawText === undefined) {
     return ""
   }
-  return rawText.replace(/<[^>]*>?/gm, '')
+  var stringLength = rawText.length
+  var tempString = rawText.substring(3, stringLength-5)
+  tempString = tempString.replace(/&lt;/g, '<')
+  tempString = tempString.replace(/<\/?p[^>]*>/g, "")                      
+  return tempString
 }
 
 const featuredImageUrl = featuredImage => {
@@ -107,6 +163,7 @@ const featuredImageDesc = featuredImage => {
   if (featuredImage === null) {
     return null
   } else {
+    console.log('page description', featuredImage.node.description)
     return grabText(featuredImage.node.description)
   }
 }
@@ -133,7 +190,9 @@ const queries = [
             slug: node.slug,
             terms: node.tags.nodes,
             imageUrl: node.featuredImage.node.sourceUrl,
-            parentPage: node.seriesList.nodes[0].name
+            parentPage: node.seriesList.nodes[0].name,
+            publishDate: node.publication.publishDate,
+            unpublishDate: node.publication.unpublishDate
           })),
         indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
         enablePartialUpdates: true,
@@ -153,7 +212,31 @@ const queries = [
             modified: node.modified,
             slug: node.slug,
             terms: node.tags.nodes,
-            imageUrl: node.featuredImage.node.sourceUrl            
+            imageUrl: node.featuredImage.node.sourceUrl,
+            publishDate: node.publication.publishDate,
+            unpublishDate: node.publication.unpublishDate
+          })),
+        indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
+        enablePartialUpdates: true,
+        settings: { attributesToSnippet: [`blurb:40`],
+                    searchableAttributes: ['title', 'blurb', 'date', 'terms.name'],
+                    attributesForFaceting: ['pageType']},
+    },
+    {
+        query: postQuery,
+        transformer: ({ data }) => 
+          data.allWpPost.nodes.map((node) => ({
+            objectID: node.id,
+            pageType: node.categories.nodes[0].slug,
+            title: node.title,
+            blurb: node.mediaBlurb.blurb,
+            date: node.date,
+            modified: node.modified,
+            slug: node.slug,
+            terms: node.tags.nodes,
+            imageUrl: node.featuredImage.node.sourceUrl,
+            publishDate: node.publication.publishDate,
+            unpublishDate: node.publication.unpublishDate
           })),
         indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
         enablePartialUpdates: true,
@@ -172,7 +255,9 @@ const queries = [
             blurb: featuredImageDesc(node.featuredImage),
             slug: node.uri,
             terms: pageSearchTerms(node.terms),
-            imageUrl: featuredImageUrl(node.featuredImage)
+            imageUrl: featuredImageUrl(node.featuredImage),
+            publishDate: node.publication.publishDate,
+            unpublishDate: node.publication.unpublishDate
           })),
         indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
         enablePartialUpdates: true,

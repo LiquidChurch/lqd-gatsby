@@ -9,7 +9,6 @@ import Card from 'react-bootstrap/Card'
 
 
 export default ({mediaItem}) => {
-  console.log('mediaFeature', mediaItem)
   if (mediaItem === undefined) {
     return (<></>)
   }

@@ -84,8 +84,6 @@ export const useRecentPosts = (numOfItems, categoryDbId, currentDate) => {
   
   let returnData = []
   for (let i = 0; i < data.allWpPost.nodes.length ; i++) {
-    console.log(data.allWpPost.nodes[i].categories.nodes[0].databaseId)
-    console.log(categoryDbId)
     if (data.allWpPost.nodes[i].categories.nodes[0].databaseId === categoryDbId) {
       data.allWpPost.nodes[i].category=data.allWpPost.nodes[i].categories.nodes[0].slug
       if ( (data.allWpPost.nodes[i].publication.publishDate === null || currentDate >= Date.parse(data.allWpPost.nodes[i].publication.publishDate.replace(/\s/g, 'T')) ) &&

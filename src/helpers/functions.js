@@ -56,8 +56,6 @@ export const getDate = (searchValue) => {
 }
 
 export const isAppView = (searchValue) => {
-  console.log('isAppView check')
-  console.log(searchValue)
   var query = searchValue.substring(1);
 
   var vars = query.split('&');

@@ -13,7 +13,6 @@ import "./styles.css"
  * The Header TopBar component.
  */
 export default ({ location }) => {
-  console.log(location)
   const ctx = useContext(MegaMenuContext)
   const globalCtx = useContext(GlobalContext)
   
