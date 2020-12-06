@@ -102,9 +102,11 @@ export default (props) => {
       setImgUrl(process.env.IMGIX_URL + imgArray[process.env.IMG_DIR_INDEX] + "/" + imgArray[process.env.IMG_FILE_INDEX] + "?ar=16:9&fit=crop&h=296")
   //    let profileImgArray = mediaItem.profileImage.split("/")
   //    setProfileImgUrl(process.env.IMGIX_URL + profileImgArray[process.env.IMG_DIR_INDEX] + "/" + profileImgArray[process.env.IMG_FILE_INDEX] + "?ar=1:1&fit=crop&fill-color=0FFF&mask=ellipse&h=50")
-      setImgLoaded(true)
+      if (!props.mediaItem.isDynamic) {
+        setImgLoaded(true)
+      }
     }
-  }, [imgLoaded, props.mediaItem.image])
+    }, [imgLoaded, props.mediaItem.image, props.mediaItem.isDynamic])
     
   return (
   <>
@@ -113,7 +115,7 @@ export default (props) => {
       className="media-card-link"
     >
     <Card className="media-card">
-      {imgLoaded &&
+      {(imgLoaded || props.mediaItem.isDynamic) &&
         <Imgix
           className="card-img-top"
           src={imgUrl}

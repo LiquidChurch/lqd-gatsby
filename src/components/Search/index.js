@@ -71,7 +71,8 @@ const HitsTest = ({hits}) => {
         blurb: hit.blurb,
         showBlurb: true,
         showSeries: false,
-        showAttribution: false
+        showAttribution: false,
+        isDynamic: true,
     }
      return (
      <>
