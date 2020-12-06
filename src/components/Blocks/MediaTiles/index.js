@@ -204,7 +204,8 @@ export default ({
   const ctx = useContext(GlobalContext)
   const [mediaLists, setMediaLists] = useState([])
   const [mediaLoaded, setMediaLoaded] = useState(false)
-
+  const currentDate = getDate(useLocation().search)
+  
   if (display_type === undefined) {
     display_type = "grid"
   }
@@ -216,7 +217,7 @@ export default ({
     }
     
     if (type === "messages") {
-      let tempItems = useRecentMessages(num_items, getDate(useLocation().search))
+      let tempItems = useRecentMessages(num_items, currentDate)
       setMediaLists([...mediaLists, MediaDataTransformer({
         "rawItems":tempItems,
         "showBlurb":show_blurb,
@@ -228,7 +229,7 @@ export default ({
     }
 
     if (type === "blogs") {
-      let tempItems = useRecentBlogs(num_items, getDate(useLocation().search))
+      let tempItems = useRecentBlogs(num_items, currentDate)
       setMediaLists([...mediaLists, MediaDataTransformer({
         "rawItems":tempItems,
         "showBlurb":show_blurb,
@@ -241,7 +242,7 @@ export default ({
 
     if (type === "posts") {
       let categoryObject = JSON.parse(category)
-      let tempItems = useRecentPosts(num_items, categoryObject.id, getDate(useLocation().search))
+      let tempItems = useRecentPosts(num_items, categoryObject.id, currentDate)
       setMediaLists([...mediaLists, MediaDataTransformer({
         "rawItems":tempItems,
         "showBlurb":show_blurb,
@@ -257,7 +258,7 @@ export default ({
       let tempItems = []
       rawMediaList.rows.forEach(item => {
         if (item.message !== undefined) {
-          tempItems.push(useMessageById(item.message.id, getDate(useLocation().search)))
+          tempItems.push(useMessageById(item.message.id, currentDate))
         }
         if (item.blog !== undefined) {
           tempItems.push(useBlog(item.blog.id))
@@ -277,7 +278,7 @@ export default ({
   if (mediaLists.length === 0) {
     return (<></>)
   }
-  
+      
   return (
   <>
     {mediaLoaded &&

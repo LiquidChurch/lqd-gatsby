@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Imgix from 'react-imgix'
 
 import { Link } from 'gatsby'
@@ -79,13 +79,15 @@ function ShowAttribution(props) {
 }
 
 export default (props) => {
-  let imgUrl = ''
   if (props.mediaItem.image === undefined || props.mediaItem.image === null) {
     //var imgUrl = process.env.LOGO_IMG.split('/')
     return (<></>)
-  } else {
-    imgUrl = props.mediaItem.image.split("/")
-  }
+  } 
+            
+  const [imgUrl, setImgUrl] = useState("")
+//  const [profileImgUrl, setProfileImgUrl]
+  const [imgLoaded, setImgLoaded] = useState(false)
+  
   
   let linkUrl = ""
   if (props.mediaItem.category === "pages") {
@@ -94,6 +96,16 @@ export default (props) => {
     linkUrl = "/" + props.mediaItem.category + "/" + props.mediaItem.slug
   }
   
+  useEffect(() => {
+    if (!imgLoaded) {
+      let imgArray = props.mediaItem.image.split("/")
+      setImgUrl(process.env.IMGIX_URL + imgArray[process.env.IMG_DIR_INDEX] + "/" + imgArray[process.env.IMG_FILE_INDEX] + "?ar=16:9&fit=crop&h=296")
+  //    let profileImgArray = mediaItem.profileImage.split("/")
+  //    setProfileImgUrl(process.env.IMGIX_URL + profileImgArray[process.env.IMG_DIR_INDEX] + "/" + profileImgArray[process.env.IMG_FILE_INDEX] + "?ar=1:1&fit=crop&fill-color=0FFF&mask=ellipse&h=50")
+      setImgLoaded(true)
+    }
+  }, [imgLoaded, props.mediaItem.image])
+    
   return (
   <>
     <Link
@@ -101,11 +113,13 @@ export default (props) => {
       className="media-card-link"
     >
     <Card className="media-card">
-      <Imgix
-        className="card-img-top"
-        src={process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX] + "?ar=16:9&fit=crop&w=262"}
-        width={262}
-      />
+      {imgLoaded &&
+        <Imgix
+          className="card-img-top"
+          src={imgUrl}
+          width={262}
+        />
+      }
       <ListGroup variant="flush" >
         <ShowTitle
           title={props.mediaItem.title}
