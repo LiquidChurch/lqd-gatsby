@@ -60,8 +60,7 @@ export default ({
         }
         {(keywordsList !== "") && 
           <meta name="keywords" content={keywordsList} />
-        }
-        <meta name="description" content={page.seo.metaDesc} />          
+        }       
         <meta property="og:locale" content="en_US" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content={page.title + ' - ' + generalSettings.title} />
