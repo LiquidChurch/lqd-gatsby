@@ -308,13 +308,13 @@ exports.createResolvers = async (
       imageFile: {
         type: "File",
         async resolve(source) {
-          let sourceUrl = source.sourceUrl
+          let mediaItemUrl = source.mediaItemUrl
           if (source.mediaItemUrl !== undefined) {
-            sourceUrl = source.mediaItemUrl
+            mediaItemUrl = source.mediaItemUrl
           }
  
           return await createRemoteFileNode({
-            url: encodeURI(sourceUrl),
+            url: encodeURI(mediaItemUrl),
             store,
             cache,
             createNode,

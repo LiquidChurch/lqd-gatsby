@@ -28,7 +28,7 @@ export default ({
 
   let featuredImageUrl = "" 
   if (lqdmMessage.featuredImage !== null) {
-    let imgUrl = lqdmMessage.featuredImage.node.sourceUrl.split("/")
+    let imgUrl = lqdmMessage.featuredImage.node.mediaItemUrl.split("/")
     featuredImageUrl = process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX] + "?ar=16:9&fit=crop&h=200"
   }  
 

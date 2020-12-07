@@ -45,7 +45,7 @@ export const useRecentPosts = (numOfItems, categoryDbId, currentDate) => {
               slug      
               featuredImage {
                 node {
-                  sourceUrl
+                  mediaItemUrl
                   caption
                   altText
                 }

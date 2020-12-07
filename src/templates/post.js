@@ -27,7 +27,7 @@ export default ({
   
   let featuredImageUrl = "" 
   if (post.featuredImage !== null) {
-    let imgUrl = post.featuredImage.node.sourceUrl.split("/")
+    let imgUrl = post.featuredImage.node.mediaItemUrl.split("/")
     featuredImageUrl = process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX] + "?ar=16:9&fit=crop&h=200"
   }  
 

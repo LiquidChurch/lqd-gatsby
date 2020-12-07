@@ -15,7 +15,7 @@ const messageQuery = `
           }
           featuredImage {
             node {
-              sourceUrl
+              mediaItemUrl
               caption
               altText
             }
@@ -55,7 +55,7 @@ const blogQuery = `
           }
           featuredImage {
             node {
-              sourceUrl
+              mediaItemUrl
               caption
               altText
             }
@@ -94,7 +94,7 @@ const postQuery = `
           }
           featuredImage {
             node {
-              sourceUrl
+              mediaItemUrl
               caption
               altText
             }
@@ -125,7 +125,7 @@ const pageQuery = `
           }
           featuredImage {
             node {
-              sourceUrl
+              mediaItemUrl
               caption
               altText
               description
@@ -155,7 +155,7 @@ const featuredImageUrl = featuredImage => {
   if (featuredImage === null) {
     return null
   } else {
-    return featuredImage.node.sourceUrl
+    return featuredImage.node.mediaItemUrl
   }
 }
 
@@ -188,7 +188,7 @@ const queries = [
             modified: node.modified,
             slug: node.slug,
             terms: node.tags.nodes,
-            imageUrl: node.featuredImage.node.sourceUrl,
+            imageUrl: node.featuredImage.node.mediaItemUrl,
             parentPage: node.seriesList.nodes[0].name,
             publishDate: node.publication.publishDate,
             unpublishDate: node.publication.unpublishDate
@@ -211,7 +211,7 @@ const queries = [
             modified: node.modified,
             slug: node.slug,
             terms: node.tags.nodes,
-            imageUrl: node.featuredImage.node.sourceUrl,
+            imageUrl: node.featuredImage.node.mediaItemUrl,
             publishDate: node.publication.publishDate,
             unpublishDate: node.publication.unpublishDate
           })),
@@ -233,7 +233,7 @@ const queries = [
             modified: node.modified,
             slug: node.slug,
             terms: node.tags.nodes,
-            imageUrl: node.featuredImage.node.sourceUrl,
+            imageUrl: node.featuredImage.node.mediaItemUrl,
             publishDate: node.publication.publishDate,
             unpublishDate: node.publication.unpublishDate
           })),

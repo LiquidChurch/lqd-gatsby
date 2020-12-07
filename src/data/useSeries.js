@@ -14,7 +14,7 @@ export const useSeries = (seriesSlug, currentDate) => {
                 caption
                 altText
                 description
-                sourceUrl
+                mediaItemUrl
               }
             }
             messages {
