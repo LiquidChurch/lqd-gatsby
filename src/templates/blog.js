@@ -132,7 +132,7 @@ export const query = graphql`
             slug
             profileImage {
               image {
-                sourceUrl
+                mediaItemUrl
               }
             }
           }
@@ -150,7 +150,7 @@ export const query = graphql`
         featuredImage {
           node {
             altText
-            sourceUrl
+            mediaItemUrl
           } 
         }
         publication {

@@ -27,7 +27,6 @@ export const useSeries = (seriesSlug, currentDate) => {
                  featuredImage {
                    node {
                      id
-                     sourceUrl
                      mediaItemUrl
                    }
                  }
@@ -42,7 +41,7 @@ export const useSeries = (seriesSlug, currentDate) => {
                     slug
                     profileImage {
                       image {
-                        sourceUrl
+                        mediaItemUrl
                       }
                     }
                   }

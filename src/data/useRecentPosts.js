@@ -29,7 +29,7 @@ export const useRecentPosts = (numOfItems, categoryDbId, currentDate) => {
                   slug
                   profileImage {
                     image {
-                      sourceUrl
+                      mediaItemUrl
                     }
                   }
                 }

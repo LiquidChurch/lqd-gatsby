@@ -12,7 +12,7 @@ export const usePageById = (pageId) => {
               uri
               featuredImage {
                 node {
-                  sourceUrl
+                  mediaItemUrl
                   caption
                   altText
                 }

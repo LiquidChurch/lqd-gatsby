@@ -37,7 +37,7 @@ export default (lqdmMessage) => {
 
     let profileImgSrc = process.env.LOGO_IMG
     if (message.attributions.nodes.length !== 0 && message.attributions.nodes[0].profileImage.image !== null) {
-      profileImgSrc = message.attributions.nodes[0].profileImage.image.sourceUrl
+      profileImgSrc = message.attributions.nodes[0].profileImage.image.mediaItemUrl
     }
     
     seriesSlugs.push({

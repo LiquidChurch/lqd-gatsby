@@ -17,7 +17,7 @@ export const useRecentSeries = (numOfItems, currentDate, excludeId) => {
                 caption
                 altText
                 description
-                sourceUrl
+                mediaItemUrl
               }
             }
           }

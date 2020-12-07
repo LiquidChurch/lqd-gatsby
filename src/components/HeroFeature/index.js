@@ -10,7 +10,7 @@ import './styles.css'
  */
 export default (props) => {
 
-  var imgUrl = props.featuredImage.node.sourceUrl.split("/")
+  var imgUrl = props.featuredImage.node.mediaItemUrl.split("/")
   let messageDate = ""
   if (props.publication.publishDate !== null) {
     messageDate = props.publication.publishDate.replace(/\s/g, 'T')

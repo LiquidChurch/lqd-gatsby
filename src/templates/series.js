@@ -143,7 +143,7 @@ export const query = graphql`
           caption
           altText
           description
-          sourceUrl
+          mediaItemUrl
         }
       }
       messages {
@@ -156,7 +156,6 @@ export const query = graphql`
           featuredImage {
             node {
               id
-              sourceUrl
               mediaItemUrl
             }
           }
@@ -171,7 +170,7 @@ export const query = graphql`
               slug
               profileImage {
                 image {
-                  sourceUrl
+                  mediaItemUrl
                 }
               }
             }

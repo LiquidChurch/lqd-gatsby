@@ -14,7 +14,6 @@ export const useAttributionById = (attributionId) => {
                 image {
                   id
                   mediaItemUrl
-                  sourceUrl
                 }
                 blurb
                 role

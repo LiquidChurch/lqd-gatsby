@@ -13,7 +13,7 @@ import './styles.css'
  * Series Title Component
  */
 export default (series) => {
-  var imgUrl = series.SeriesImage.image.sourceUrl.split("/")
+  var imgUrl = series.SeriesImage.image.mediaItemUrl.split("/")
   let padding = "bottom"
   let bg_color = "#F8F8F8"
   return (

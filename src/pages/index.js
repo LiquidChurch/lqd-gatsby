@@ -115,89 +115,56 @@ export const query = graphql`
             caption 
             altText
             description
-            sourceUrl
             mediaItemUrl
           }
         }
         pageImage {
           image1 {
-            title
             caption 
             altText
             description
-            sourceUrl
             mediaItemUrl
           }
           image2 {
-            title
             caption 
             altText
             description
-            sourceUrl
             mediaItemUrl
           }
           image3 {
-            title
             caption 
             altText
             description
-            sourceUrl
             mediaItemUrl
           }
           image4 {
-            title
             caption 
             altText
             description
-            sourceUrl
             mediaItemUrl
           }
           image5 {
-            title
             caption 
             altText
             description
-            sourceUrl
             mediaItemUrl
           }
           image6 {
-            title
             caption 
             altText
             description
-            sourceUrl
             mediaItemUrl
           }
           image7 {
-            title
             caption 
             altText
             description
-            sourceUrl
             mediaItemUrl
           }
           image8 {
-            title
             caption 
             altText
             description
-            sourceUrl
-            mediaItemUrl
-          }
-          image9 {
-            title
-            caption 
-            altText
-            description
-            sourceUrl
-            mediaItemUrl
-          }
-          image10 {
-            title
-            caption 
-            altText
-            description
-            sourceUrl
             mediaItemUrl
           }
         }

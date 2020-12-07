@@ -39,7 +39,6 @@ export const query = graphql`
       caption
       description
       mediaItemUrl
-      sourceUrl
       databaseId
     }
   }

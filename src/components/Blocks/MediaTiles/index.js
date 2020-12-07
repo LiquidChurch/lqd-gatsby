@@ -143,7 +143,7 @@ function MediaDataTransformer(props) {
     
     let profileImgSrc = process.env.LOGO_IMG
     if (item.attributions.nodes.length !== 0 && item.attributions.nodes[0].profileImage.image !== null) {
-      profileImgSrc = item.attributions.nodes[0].profileImage.image.sourceUrl
+      profileImgSrc = item.attributions.nodes[0].profileImage.image.mediaItemUrl
     }
     
     let blurb = "" 
@@ -167,7 +167,7 @@ function MediaDataTransformer(props) {
     lists.push( {
       "category": item.category,
       "title": item.title,
-      "image": item.featuredImage.node.sourceUrl,
+      "image": item.featuredImage.node.mediaItemUrl,
       "id": item.id,
       "slug": item.slug,
       "showBlurb": props.showBlurb,
