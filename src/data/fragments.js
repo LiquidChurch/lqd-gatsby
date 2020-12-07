@@ -275,6 +275,18 @@ export const PhotoTab = graphql`
   } 
 `
 
+export const PhotoGrid = graphql`
+  fragment PhotoGrid on WpBlockLabPhotoGridBlock {
+    attributes {
+      column
+      max_width
+      image_list
+      bg_color
+      padding
+    }
+  }
+`
+
 export const SeriesTiles = graphql`
   fragment SeriesTiles on WpBlockLabSeriesTilesBlock {
     attributes {
@@ -314,6 +326,7 @@ export const AllBlocks = graphql`
     ...GoogleMap
     ...ExternalRedirect
     ...PageStrap
+    ...PhotoGrid
     ...HomeLinks
     ...MessageTile
     ...MediaTiles

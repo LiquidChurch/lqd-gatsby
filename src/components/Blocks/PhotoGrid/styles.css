@@ -1,0 +1,6 @@
+.photo-grid-image {
+  margin:20px 0px;
+  padding:0px 20px;
+  object-fit:scale-down;
+  height:fit-content;
+}
