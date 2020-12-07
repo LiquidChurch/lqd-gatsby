@@ -246,23 +246,7 @@ export const query = graphql`
             description
             sourceUrl
             mediaItemUrl
-          }
-          image9 {
-            title
-            caption 
-            altText
-            description
-            sourceUrl
-            mediaItemUrl
-          }
-          image10 {
-            title
-            caption 
-            altText
-            description
-            sourceUrl
-            mediaItemUrl
-          }          
+          }        
         }
       }
     
