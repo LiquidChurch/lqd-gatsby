@@ -151,8 +151,8 @@ export const query = graphql`
           slug
           id
           title
-          date
           content
+          date
           featuredImage {
             node {
               id

@@ -54,7 +54,7 @@ export default ({
     <Layout location={location}>
       <Helmet titleTemplate={`%s - ${generalSettings.title}`}>
         <meta http-equiv="last-modified" content={page.modified} />
-        <meta name="robots" content={page.seo.metaRobotsNoindex + ", " + page.seo.metaRobotsNofollow} />
+        <meta name="robots" content={"index, no-follow"} />
         {(featuredImageUrl !== "") &&
           <meta property="og:description" content={RichTextHelper(page.featuredImage.node.description)} />
         }
@@ -66,9 +66,6 @@ export default ({
         <meta property="og:title" content={page.title + ' - ' + generalSettings.title} />
         <meta property="og:site_name" content={generalSettings.title} />
         <meta property="og:url" content={'https://liquidchurch.com'} />
-        {(page.seo.metaDesc !== "") &&
-          <meta property="og:description" content={page.seo.metaDesc} />
-        }
         {(featuredImageUrl !== "") && 
           <meta property="og:image" content={featuredImageUrl} />
         }
@@ -96,13 +93,6 @@ export const query = graphql`
         publication {
           unpublishDate
           publishDate
-        }
-        seo {
-          metaDesc
-          cornerstone
-          focuskw
-          metaRobotsNoindex
-          metaRobotsNofollow
         }
         search_terms {
           nodes {

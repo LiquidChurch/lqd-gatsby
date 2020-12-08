@@ -71,9 +71,6 @@ export default ({
           <title>{Parse(lqdmMessage.title)}</title>
           <meta http-equiv="last-modified" content={lqdmMessage.modified} />
           <meta name="robots" content={"index, no-follow"} />
-          {(lqdmMessage.seo.metaDesc !== "") &&
-            <meta name="description" content={lqdmMessage.seo.metaDesc} />          
-          }
           {(keywordsList !== "") && 
             <meta name="keywords" content={keywordsList} />
           }
@@ -106,11 +103,7 @@ export const query = graphql`
         ...AllBlocks
       }
       title
-      content
       modified
-      seo {
-        metaDesc
-      }
       attributions {
         nodes {
           id

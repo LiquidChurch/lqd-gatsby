@@ -1,0 +1,502 @@
+query PREVIEW_QUERY($id: ID!) {
+  message(id: $id, idType: ID, asPreview: true) {
+    attributions(first: 100) {
+      nodes {
+        id
+      }
+    }
+    attributionsCo {
+      attributions {
+        id
+      }
+      fieldGroupName
+    }
+    blocks {
+      innerBlocks {
+        innerBlocks {
+          innerBlocks {
+            innerBlocks {
+              ...BlockFragment
+              __typename
+            }
+            ...BlockFragment
+            __typename
+          }
+          ...BlockFragment
+          __typename
+        }
+        ...BlockFragment
+        __typename
+      }
+      ...BlockFragment
+      __typename
+    }
+    content
+    contentType {
+      node {
+        id
+      }
+    }
+    databaseId
+    date
+    dateGmt
+    desiredSlug
+    enclosure
+    featuredImage {
+      node {
+        __typename
+        id
+      }
+    }
+    featuredImageDatabaseId
+    featuredImageId
+    guid
+    id
+    lastEditedBy {
+      node {
+        id
+      }
+    }
+    link
+    message {
+      fieldGroupName
+      vimeoId
+      youtubeId
+    }
+    modified
+    modifiedGmt
+    previewBlocks {
+      innerBlocks {
+        innerBlocks {
+          innerBlocks {
+            innerBlocks {
+              ...BlockFragment
+              __typename
+            }
+            ...BlockFragment
+            __typename
+          }
+          ...BlockFragment
+          __typename
+        }
+        ...BlockFragment
+        __typename
+      }
+      ...BlockFragment
+      __typename
+    }
+    previewBlocksJSON
+    publication {
+      fieldGroupName
+      promoSlug
+      publishDate
+      unpublishDate
+    }
+    resources {
+      fieldGroupName
+      resource1 {
+        fieldGroupName
+        language
+        resourceType
+        url
+      }
+      resource2 {
+        fieldGroupName
+        language
+        resourceType
+        url
+      }
+      resource3 {
+        fieldGroupName
+        language
+        resourceType
+        url
+      }
+      resource4 {
+        fieldGroupName
+        language
+        resourceType
+        url
+      }
+      resource5 {
+        fieldGroupName
+        language
+        resourceType
+        url
+      }
+      resource6 {
+        fieldGroupName
+        language
+        resourceType
+        url
+      }
+      resource7 {
+        fieldGroupName
+        language
+        resourceType
+        url
+      }
+      resource8 {
+        fieldGroupName
+        language
+        resourceType
+        url
+      }
+    }
+    scriptures(first: 100) {
+      nodes {
+        id
+      }
+    }
+    seriesList(first: 100) {
+      nodes {
+        id
+      }
+    }
+    seriesPart {
+      fieldGroupName
+      part
+    }
+    slug
+    status
+    tags(first: 100) {
+      nodes {
+        id
+      }
+    }
+    template {
+      templateName
+      __typename
+    }
+    title
+    uri
+    __typename
+  }
+}
+fragment BlockFragment on Block {
+  isDynamic
+  name
+  order
+  parentNode {
+    id
+    __typename
+  }
+  parentNodeDatabaseId
+  saveContent
+  __typename
+  ... on BlockLabAccordionBlock {
+    attributes__typename_BlockLabAccordionBlockAttributes: attributes {
+      bg_color
+      items
+      padding
+    }
+  }
+  ... on BlockLabAnchorBlock {
+    attributes__typename_BlockLabAnchorBlockAttributes: attributes {
+      label
+    }
+  }
+  ... on BlockLabButtonBlock {
+    attributes__typename_BlockLabButtonBlockAttributes: attributes {
+      add_padding
+      alignment
+      bg_color
+      block_off
+      block_on
+      btn_color
+      btn_outline
+      dropdown
+      font_color
+      has_arrow
+      has_icon
+      min_width
+      padding
+      page
+      size
+      text
+      text_float
+      url_append
+    }
+  }
+  ... on BlockLabExternalRedirectBlock {
+    attributes__typename_BlockLabExternalRedirectBlockAttributes: attributes {
+      external_url
+      new_tab
+    }
+  }
+  ... on BlockLabGoogleMapBlock {
+    attributes__typename_BlockLabGoogleMapBlockAttributes: attributes {
+      campuses
+      latitude
+      longitude
+      zoom
+    }
+  }
+  ... on BlockLabHeadingBlock {
+    attributes__typename_BlockLabHeadingBlockAttributes: attributes {
+      add_padding
+      alignment
+      all_caps
+      bg_color
+      font_color
+      padding
+      show_hr
+      size
+      text
+    }
+  }
+  ... on BlockLabHeroImageBlock {
+    attributes__typename_BlockLabHeroImageBlockAttributes: attributes {
+      alignment
+      bg_color
+      color
+      cta
+      image_id
+      image_style
+      padding
+      sidekick
+      size
+      spacing
+      statement
+    }
+  }
+  ... on BlockLabHomeLinksBlock {
+    attributes__typename_BlockLabHomeLinksBlockAttributes: attributes {
+      background_color
+      page_list
+    }
+  }
+  ... on BlockLabHomepageHeroBlock {
+    attributes__typename_BlockLabHomepageHeroBlockAttributes: attributes {
+      cta_label
+      cta_url
+      hero_image
+      hero_tag
+      hero_text
+    }
+  }
+  ... on BlockLabMessageTileBlock {
+    attributes__typename_BlockLabMessageTileBlockAttributes: attributes {
+      bg_color
+      block_title
+      padding
+    }
+  }
+  ... on BlockLabLinkTilesBlock {
+    attributes__typename_BlockLabLinkTilesBlockAttributes: attributes {
+      bg_color
+      padding
+      slugs_list
+    }
+  }
+  ... on BlockLabMediaTilesBlock {
+    attributes__typename_BlockLabMediaTilesBlockAttributes: attributes {
+      bg_color
+      category
+      display_type
+      media_list
+      num_items
+      padding
+      show_attribution
+      show_blurb
+      show_series
+      type
+    }
+  }
+  ... on BlockLabPageModalBlock {
+    attributes__typename_BlockLabPageModalBlockAttributes: attributes {
+      modal_id
+      modal_text
+      modal_title
+    }
+  }
+  ... on BlockLabPageStrapBlock {
+    attributes__typename_BlockLabPageStrapBlockAttributes: attributes {
+      alignment
+      all_caps
+      bg_color
+      block_off
+      block_on
+      color
+      cta
+      font_color
+      image_id
+      image_size
+      padding
+      sidekick
+      size
+      spacing
+      statement
+      width
+    }
+  }
+  ... on BlockLabPhotoCarouselBlock {
+    attributes__typename_BlockLabPhotoCarouselBlockAttributes: attributes {
+      bg_color
+      images
+      padding
+    }
+  }
+  ... on BlockLabPhotoGridBlock {
+    attributes__typename_BlockLabPhotoGridBlockAttributes: attributes {
+      bg_color
+      column
+      image_list
+      max_width
+      padding
+    }
+  }
+  ... on BlockLabPhotoBlock {
+    attributes__typename_BlockLabPhotoBlockAttributes: attributes {
+      alignment
+      bg_color
+      block_off
+      block_on
+      color
+      cta
+      cta_secondary
+      google_map
+      header
+      header_secondary
+      header_size
+      image_id
+      location
+      map_toggle
+      padding
+      size
+      spacing
+      text_block
+      text_block_secondary
+    }
+  }
+  ... on BlockLabAttributionsBlock {
+    attributes__typename_BlockLabAttributionsBlockAttributes: attributes {
+      attribution_list
+      bg_color
+      layout
+      padding
+      show_blurb
+      show_email
+    }
+  }
+  ... on BlockLabSeriesTilesBlock {
+    attributes__typename_BlockLabSeriesTilesBlockAttributes: attributes {
+      bg_color
+      layout
+      num_items
+      padding
+      series_list
+      type
+    }
+  }
+  ... on BlockLabVideoBlock {
+    attributes__typename_BlockLabVideoBlockAttributes: attributes {
+      bg_color
+      padding
+      video_title
+      video_url
+    }
+  }
+  ... on CoreParagraphBlock {
+    attributes__typename_CoreParagraphBlockAttributesUnion: attributes {
+      __typename
+      ... on CoreParagraphBlockAttributes {
+        align
+        anchor
+        backgroundColor
+        content
+        direction
+        dropCap
+        fontSize
+        placeholder
+        style
+        textColor
+      }
+      ... on CoreParagraphBlockDeprecatedV1Attributes {
+        align
+        anchor
+        backgroundColor
+        content
+        direction
+        dropCap
+        fontSize
+        placeholder
+        style
+        textColor
+      }
+      ... on CoreParagraphBlockDeprecatedV2Attributes {
+        align
+        anchor
+        backgroundColor
+        content
+        direction
+        dropCap
+        fontSize
+        placeholder
+        style
+        textColor
+      }
+      ... on CoreParagraphBlockDeprecatedV3Attributes {
+        align
+        anchor
+        backgroundColor
+        content
+        direction
+        dropCap
+        fontSize
+        placeholder
+        style
+        textColor
+      }
+      ... on CoreParagraphBlockDeprecatedV4Attributes {
+        align
+        anchor
+        backgroundColor
+        content
+        direction
+        dropCap
+        fontSize
+        placeholder
+        style
+        textColor
+      }
+      ... on CoreParagraphBlockDeprecatedV5Attributes {
+        align
+        anchor
+        backgroundColor
+        content
+        direction
+        dropCap
+        fontSize
+        placeholder
+        style
+        textColor
+      }
+    }
+  }
+  ... on CoreListBlock {
+    attributes__typename_CoreListBlockAttributes: attributes {
+      anchor
+      ordered
+      reversed
+      start
+      type
+      values
+    }
+  }
+  ... on CoreMissingBlock {
+    attributes__typename_CoreMissingBlockAttributes: attributes {
+      originalName
+      originalUndelimitedContent
+    }
+  }
+  ... on CoreBlock {
+    attributes {
+      ref
+    }
+    reusableBlock {
+      id
+      __typename
+    }
+  }
+}

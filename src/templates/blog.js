@@ -72,9 +72,6 @@ export default ({
           <title>{Parse(blog.title)}</title>
           <meta http-equiv="last-modified" content={blog.modified} />
           <meta name="robots" content={"index, no-follow"} />
-          {(blog.seo.metaDesc !== "") &&
-            <meta name="description" content={blog.seo.metaDesc} />          
-          }
           {(keywordsList !== "") && 
             <meta name="keywords" content={keywordsList} />
           }
@@ -114,10 +111,6 @@ export const query = graphql`
         mediaBlurb {
           blurb
         }
-        seo {
-          metaDesc
-          focuskw
-        }              
         tags {
           nodes {
             id

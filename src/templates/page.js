@@ -22,6 +22,7 @@ export default ({
   },
 }) => {
   console.log('{"type":"pages", "name":"'+ page.title + '", "slug":"' + page.uri.slice(0,-1) + '"}')
+  console.log(page)
   const generalSettings = useGeneralSettings()
   const ctx = useContext(GlobalContext)
   
@@ -60,9 +61,11 @@ export default ({
     }
   })
     
+  if (page.blocks !== null) {
   var externalRedirectBlock = page.blocks.find(
     ({ __typename }) => __typename === "WpBlockLabExternalRedirectBlock"
   )
+  }
   
   let hasExternalRedirect = false
   
@@ -112,22 +115,18 @@ export default ({
         <Helmet titleTemplate={`%s - ${generalSettings.title}`}>
           <title>{Parse(page.title)}</title>
           <meta http-equiv="last-modified" content={page.modified} />
-          <meta name="robots" content={page.seo.metaRobotsNoindex + ", " + page.seo.metaRobotsNofollow} />
+          <meta name="robots" content={"index, no-follow"} />
           {(featuredImageUrl !== "") &&
             <meta property="og:description" content={RichTextHelper(page.featuredImage.node.description)} />
           }
           {(keywordsList !== "") && 
             <meta name="keywords" content={keywordsList} />
           }
-          <meta name="description" content={page.seo.metaDesc} />          
           <meta property="og:locale" content="en_US" />
           <meta property="og:type" content="website" />
           <meta property="og:title" content={page.title + ' - ' + generalSettings.title} />
           <meta property="og:site_name" content={generalSettings.title} />
           <meta property="og:url" content={'https://liquidchurch.com'+page.uri} />
-          {(page.seo.metaDesc !== "") &&
-            <meta property="og:description" content={page.seo.metaDesc} />
-          }
           {(featuredImageUrl !== "") && 
             <meta property="og:image" content={featuredImageUrl} />
           }
@@ -159,13 +158,6 @@ export const query = graphql`
         publication {
           unpublishDate
           publishDate
-        }
-        seo {
-          metaDesc
-          cornerstone
-          focuskw
-          metaRobotsNoindex
-          metaRobotsNofollow
         }
         search_terms {
           nodes {

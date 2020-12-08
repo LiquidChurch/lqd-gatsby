@@ -34,14 +34,14 @@ module.exports = {
         typeName: "WPGraphQL",
         fieldName: "wpgraphql",
         url: process.env.WORDPRESS_URL,
+        excludeFieldNames: [`viewer`, `dynamicContent`, `originalContent`, `className`, `blocksJSON`],
         schema: {
           timeout: 120000,
-          perPage: 1,
-          requestConcurrency: 30,
+          perPage: 5,
         },
         debug: {
           graphql: {
-            writeQueriesToDisk:false,
+            writeQueriesToDisk:true,
             showQueryVarsOnError: true,
           }
         },
@@ -52,15 +52,42 @@ module.exports = {
           MediaItem: {
             lazyNodes: false,
           },
+          Page: {
+            excludeFieldNames: [`author`, `authorDatabaseId`, `authorId`, `blocksJson`, `commentCount`, `commentStatus`, `content`, `comments`, `dateGmt`, `lastEditedBy`, `previewBlocks`, `previewBlockJSON`, `template`, `terms`, `className`, `dynamicContent`, `originalContent`]
+          },
+          Blog: {
+            excludeFieldNames: [`author`, `authorDatabaseId`, `authorId`, `blocksJson`, `commentCount`, `commentStatus`, `comments`, `dateGmt`, `lastEditedBy`, `previewBlocks`, `previewBlockJSON`, `template`, `className`, `dynamicContent`, `originalContent`]
+          },
+          Post: {
+            excludeFieldNames: [`author`, `authorDatabaseId`, `authorId`, `blocksJson`, `commentCount`, `commentStatus`, `comments`, `dateGmt`, `lastEditedBy`, `previewBlocks`, `previewBlockJSON`, `template`, `className`, `dynamicContent`, `originalContent`]
+          },
+          Podcast: {
+            excludeFieldNames: [`author`, `authorDatabaseId`, `authorId`, `blocksJson`, `commentCount`, `commentStatus`, `comments`, `dateGmt`, `lastEditedBy`, `previewBlocks`, `previewBlockJSON`, `template`, `className`, `dynamicContent`, `originalContent`]
+          },
+          Template: {
+            exclude: true
+          },
+          Author: {
+            exclude: true
+          },
+          Comment: {
+            exclude: true
+          },
+          NodeWithTemplate: {
+            exclude: true
+          },
+          NodeWithAuthor: {
+            exclude: true
+          },
+          NodeWithComments: {
+            exclude: true
+          },
+          NodeWithContentEditor: {
+            exclude: true
+          },
         },    
         develop: {
           nodeUpdateInterval: 1000
-        },
-        auth: {
-          htaccess: {
-            username: 'webmaster',
-            password: 'jO0Ydhg@@NxdKwH(3oZseelb',
-          }
         },
         verbose:true,
         includedRoutes: [
