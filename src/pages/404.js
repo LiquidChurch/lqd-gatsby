@@ -35,11 +35,13 @@ export default ({
       if (foundPage !== null) {
         window.location.replace(foundPage.uri)
       } else {
-        window.location.replace('/')
+        console.log('404 page no match', location)
+        setTimeout(() => {window.location.replace('/')},1000)
       }
      }
     }
   })
+  
   
   
   return (

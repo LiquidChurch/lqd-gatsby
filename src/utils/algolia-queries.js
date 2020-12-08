@@ -117,7 +117,7 @@ const pageQuery = `
           slug
           modified
           uri
-          terms {
+          search_terms {
             nodes {
               name
             }
@@ -252,7 +252,7 @@ const queries = [
             modified: node.modified,
             blurb: featuredImageDesc(node.featuredImage),
             slug: node.uri,
-            terms: pageSearchTerms(node.terms),
+            terms: pageSearchTerms(node.search_terms),
             imageUrl: featuredImageUrl(node.featuredImage),
             publishDate: node.publication.publishDate,
             unpublishDate: node.publication.unpublishDate

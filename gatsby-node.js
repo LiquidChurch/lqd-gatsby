@@ -33,14 +33,16 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   }
 
   if (postResult.data.allWpPost.nodes) {
+
     postResult.data.allWpPost.nodes.forEach(post => {
+      console.log('{"type":"redirect", "name":"'+ post.title +  '", "from":"' + `/blog/uncategorized/${post.slug}` + '", "to":"' + `/${post.categories.nodes[0].slug}/${post.slug}`)
       createRedirect({
         fromPath: `/blog/uncategorized/${post.slug}`,
         toPath: `/${post.categories.nodes[0].slug}/${post.slug}`,
         redirectInBrowser: true,
         isPermanent: true
       }) 
-
+      console.log('{"type":"redirect", "name":"'+ post.title +  '", "from":"' + `/blog/${post.categories.nodes[0].slug}/${post.slug}` + '", "to":"' + `/${post.categories.nodes[0].slug}/${post.slug}`)
       createRedirect({
         fromPath: `/blog/${post.categories.nodes[0].slug}/${post.slug}`,
         toPath: `/${post.categories.nodes[0].slug}/${post.slug}`,

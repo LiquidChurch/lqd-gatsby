@@ -37,7 +37,7 @@ module.exports = {
         excludeFieldNames: [`viewer`, `dynamicContent`, `originalContent`, `className`, `blocksJSON`],
         schema: {
           timeout: 120000,
-          perPage: 5,
+          perPage: 4,
         },
         debug: {
           graphql: {

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Imgix from 'react-imgix'
 import { useLocation } from '@reach/router';
 
@@ -55,13 +55,20 @@ export default ({
   block_on,
   block_off,
 }) => {
+  console.log('page strap block entered')
   const currentDate = getDate(useLocation().search)
-  let isPublished = false
-  if ((block_on === null || currentDate >= Date.parse(block_on)) &&
-      (block_off === null || currentDate < Date.parse(block_off))) {
-    isPublished = true
-  }
+  const [isPublished, setIsPublished] = useState(false)
+  const [checkedPublished, setCheckPublished] = useState(false)
   
+  if (!checkedPublished) {
+    console.log('checking published state')
+    if ((block_on === null || currentDate >= Date.parse(block_on)) &&
+        (block_off === null || currentDate < Date.parse(block_off))) {
+      setIsPublished(true)
+    }
+      setCheckPublished(true)
+  }
+  console.log('page strap isPublished', isPublished)  
   var hasImage = false
   if (image_id !== null && image_id !== undefined && image_id !== 0) { hasImage = true }
 
