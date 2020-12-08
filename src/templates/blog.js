@@ -20,7 +20,6 @@ export default ({
     blog,
   },
 }) => {
-  console.log('{"type":"blogs", "name":"'+ blog.title + '", "slug":"/blogs/' + blog.slug + '"}')
   const generalSettings = useGeneralSettings()  
   const ctx = useContext(GlobalContext)
   

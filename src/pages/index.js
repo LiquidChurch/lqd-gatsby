@@ -20,7 +20,6 @@ export default ({
     page,
   },
 }) => {
-  console.log("index")
   const generalSettings = useGeneralSettings()
   const ctx = useContext(GlobalContext)
 
@@ -30,7 +29,6 @@ export default ({
   }
   
   let featuredImageUrl = "" 
-  console.log('index', page)
   if (page.featuredImage !== null) {
     let imgUrl = page.featuredImage.node.mediaItemUrl.split("/")
     featuredImageUrl = process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX] + "?ar=16:9&fit=crop&h=200"

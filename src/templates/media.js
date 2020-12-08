@@ -8,7 +8,6 @@ export default ({
     media,
   },
 }) => {
-  console.log("media: ", media.title)
   const ctx = useContext(GlobalContext)
   
   let theme = 'dark'

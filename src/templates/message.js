@@ -17,7 +17,6 @@ export default ({
     lqdmMessage,
   },
 }) => {
-  console.log('{"type":"messages", "name":"'+ lqdmMessage.title + '", "slug":"/messages/' + lqdmMessage.slug + '"}')
   const generalSettings = useGeneralSettings()  
   const ctx = useContext(GlobalContext)
   

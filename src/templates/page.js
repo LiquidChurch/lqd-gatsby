@@ -21,8 +21,6 @@ export default ({
     page,
   },
 }) => {
-  console.log('{"type":"pages", "name":"'+ page.title + '", "slug":"' + page.uri.slice(0,-1) + '"}')
-  console.log(page)
   const generalSettings = useGeneralSettings()
   const ctx = useContext(GlobalContext)
   

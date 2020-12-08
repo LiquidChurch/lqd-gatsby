@@ -65,7 +65,6 @@ export default ({
     lqdmJob
   },
 }) => {
-  console.log('{"type":"jobs", "name":"'+ lqdmJob.title + '", "slug":"/jobs/' + lqdmJob.slug + '"}')  
   const generalSettings = useGeneralSettings()    
   const ctx = useContext(GlobalContext)
 

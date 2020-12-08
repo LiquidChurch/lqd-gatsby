@@ -35,21 +35,22 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   if (postResult.data.allWpPost.nodes) {
 
     postResult.data.allWpPost.nodes.forEach(post => {
-      console.log('{"type":"redirect", "name":"'+ post.title +  '", "from":"' + `/blog/uncategorized/${post.slug}` + '", "to":"' + `/${post.categories.nodes[0].slug}/${post.slug}`)
+      console.log('{"type":"redirect", "name":"'+ post.title +  '", "from":"' + `/blog/uncategorized/${post.slug}` + '", "to":"' + `/${post.categories.nodes[0].slug}/${post.slug}`  + '"}')
       createRedirect({
         fromPath: `/blog/uncategorized/${post.slug}`,
         toPath: `/${post.categories.nodes[0].slug}/${post.slug}`,
         redirectInBrowser: true,
         isPermanent: true
       }) 
-      console.log('{"type":"redirect", "name":"'+ post.title +  '", "from":"' + `/blog/${post.categories.nodes[0].slug}/${post.slug}` + '", "to":"' + `/${post.categories.nodes[0].slug}/${post.slug}`)
+      console.log('{"type":"redirect", "name":"'+ post.title +  '", "from":"' + `/blog/${post.categories.nodes[0].slug}/${post.slug}` + '", "to":"' + `/${post.categories.nodes[0].slug}/${post.slug}`  + '"}')
       createRedirect({
         fromPath: `/blog/${post.categories.nodes[0].slug}/${post.slug}`,
         toPath: `/${post.categories.nodes[0].slug}/${post.slug}`,
         redirectInBrowser: true,
         isPermanent: true
       }) 
-
+      
+      console.log('{"type":"create", "name":"'+ post.title +  '", "to":"' + `/${post.categories.nodes[0].slug}/${post.slug}`  + '"}')
       createPage({
         path: `/${post.categories.nodes[0].slug}/${post.slug}`,
         component: slash(path.resolve(`./src/templates/post.js`)),
@@ -101,6 +102,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         }
       }
       
+      console.log('{"type":"create", "name":"'+ page.title +  '", "to":"' + page.uri.slice(0,-1) + '"}')      
       createPage({
         path: page.uri.slice(0,-1),
         component: slash(path.resolve(`./src/templates/page.js`)),
@@ -141,6 +143,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   do {
     if (messageResult.data.allWpMessage.nodes) {
       messageResult.data.allWpMessage.nodes.forEach(message => {
+        console.log('{"type":"redirect", "name":"'+ message.title +  '", "from":"' + `/messages/${message.seriesList.nodes[0].slug}-series/${message.slug}` + '", "to":"' + `/messages/${message.slug}`  + '"}')
         createRedirect({
           fromPath: `/messages/${message.seriesList.nodes[0].slug}-series/${message.slug}`,
           toPath: `/messages/${message.slug}`,
@@ -148,6 +151,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           isPermanent: true
         }) 
         
+        console.log('{"type":"create", "name":"'+ message.title +  '", "to":"' + `/messages/${message.slug}` + '"}')              
         createPage({
           path: `/messages/${message.slug}`,
           component: slash(path.resolve(`./src/templates/message.js`)),
@@ -186,6 +190,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   do {
     if (blogResult.data.allWpBlog.nodes) {
       blogResult.data.allWpBlog.nodes.forEach(blog => {
+        console.log('{"type":"redirect", "name":"'+ blog.title +  '", "from":"' + `/blog/elixir/${blog.slug}` + '", "to":"' + `/blogs/${blog.slug}`)
         createRedirect({
           fromPath: `/blog/elixir/${blog.slug}`,
           toPath: `/blogs/${blog.slug}`,
@@ -193,6 +198,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           isPermanent: true
         }) 
         
+        console.log('{"type":"redirect", "name":"'+ blog.title +  '", "from":"' + `/blog/uncategorized/${blog.slug}` + '", "to":"' + `/blogs/${blog.slug}`)
         createRedirect({
           fromPath: `/blog/uncategorized/${blog.slug}`,
           toPath: `/blogs/${blog.slug}`,
@@ -200,6 +206,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           isPermanent: true
         }) 
         
+        console.log('{"type":"create", "name":"'+ blog.title +  '", "to":"' + `/blogs/${blog.slug}` + '"}')  
         createPage({
           path: `/blogs/${blog.slug}`,
           component: slash(path.resolve(`./src/templates/blog.js`)),
@@ -235,6 +242,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   
   if (seriesListResult.data.allWpSeries.nodes) {
     seriesListResult.data.allWpSeries.nodes.forEach(series=> {
+      
+      console.log('{"type":"redirect", "name":"'+ series.name +  '", "from":"' + `/messages/${series.slug}-series` + '", "to":"' + `/series/${series.slug}`)
       createRedirect({
         fromPath: `/messages/${series.slug}-series`,
         toPath: `/series/${series.slug}`,
@@ -242,6 +251,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         isPermanent: true
       }) 
 
+      console.log('{"type":"create", "name":"'+ series.name +  '", "to":"' + `/series/${series.slug}` + '"}')  
       createPage({
         path: `/series/${series.slug}`,
         component: slash(path.resolve(`./src/templates/series.js`)),
@@ -278,6 +288,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   do {
     if (jobResult.data.allWpJob.nodes) {
       jobResult.data.allWpJob.nodes.forEach(job => {
+        console.log('{"type":"create", "name":"'+ job.title +  '", "to":"' + `/jobs/${job.slug}` + '"}')  
         createPage({
           path: `/jobs/${job.slug}`,
           component: slash(path.resolve(`./src/templates/job.js`)),

@@ -19,7 +19,6 @@ export default ({
     series,
   },
 }) => {
-  console.log('{"type":"series", "name":"'+ series.name + '", "slug":"/series/' + series.slug + '"}')
   const ctx = useContext(GlobalContext)
   const currentDate = getDate(location.search)
   

@@ -60,7 +60,6 @@ export default ({
           return (
             <Row>
               {col.map(image => {
-                console.log('photo-grid', image)
                 return (
                 <Col sm={12} md={colNum}>
                   {image.id && 
@@ -92,7 +91,7 @@ export default ({
                             }
                         </>
                   }
-                   
+                  } 
                 </Col>
                )               
               })}  
