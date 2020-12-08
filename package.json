@@ -19,6 +19,8 @@
     "gatsby-plugin-algolia": "^0.11.2",
     "gatsby-plugin-anchor-links": "^1.2.0",
     "gatsby-plugin-env-variables": "^2.0.0",
+    "gatsby-plugin-facebook-pixel": "^1.0.5",
+    "gatsby-plugin-google-analytics": "^2.7.0",
     "gatsby-plugin-manifest": "^2.8.0",
     "gatsby-plugin-meta-redirect": "^1.1.1",
     "gatsby-plugin-nprogress": "^2.6.0",

@@ -55,7 +55,7 @@ export default ({
   return (
   <>
     <section className={'site-section ' + padding} style={{backgroundColor: bg_color}} key={'section-' + keyValue}>
-      <Container>
+      <Container className='photo-grid-container'>
         {imageGrid.map(col => {
           return (
             <Row>

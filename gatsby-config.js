@@ -134,6 +134,22 @@ module.exports = {
         allowList: ["IMGIX_URL", "IMG_DIR_INDEX", "IMG_FILE_INDEX", "GATSBY_ALGOLIA_INDEX_NAME", "LOGO_IMG", "GOOGLE_API_KEY"]
       },
     },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "UA-153198283-1",
+        head: true,
+        respectDNT: true,
+        pageTransitionDelay: 200,
+        defer: false,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-facebook-pixel`,
+      options: {
+        pixelId: "244993876026990",
+      },
+    },
     `gatsby-plugin-meta-redirect`,
   ],
 }

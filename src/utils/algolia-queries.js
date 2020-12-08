@@ -116,7 +116,6 @@ const pageQuery = `
           title
           slug
           modified
-          content
           uri
           terms {
             nodes {
