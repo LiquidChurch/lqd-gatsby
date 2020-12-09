@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { AnchorLink as Link } from "gatsby-plugin-anchor-links";
 import { useLocation } from '@reach/router';
 import Container from 'react-bootstrap/Container'
@@ -93,11 +93,16 @@ export default ({
     block_off,
   }) => {
   const currentDate = getDate(useLocation().search)
-  let isPublished = false
-  if ((block_on === null || currentDate >= Date.parse(block_on)) &&
-      (block_off === null || currentDate < Date.parse(block_off))) {
-    isPublished = true
-  } 
+  const [isPublished, setIsPublished] = useState(false)
+  const [checkedPublished, setCheckPublished] = useState(false)
+  
+  if (!checkedPublished) {
+    if (((block_on === null || block_on.trim() === "") || currentDate >= Date.parse(block_on)) &&
+        ((block_off === null || block_off.trim() === "") || currentDate < Date.parse(block_off))) {
+      setIsPublished(true)
+    }
+      setCheckPublished(true)
+  }
   
   let objPage = JSON.parse(page)
   let pageInfo = {}
