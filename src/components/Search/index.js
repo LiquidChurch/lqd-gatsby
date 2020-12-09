@@ -54,9 +54,7 @@ export default(location) => {
           <Container>
             <Row>
               <Col className="media-card-wrap">
-                {hasSearch &&
                 <CustomHits />
-                }
                </Col>
             </Row>
           </Container>
