@@ -87,10 +87,10 @@ export default ({
                                   src={process.env.IMGIX_URL + image.mediaArray[process.env.IMG_DIR_INDEX] + "/" + image.mediaArray[process.env.IMG_FILE_INDEX]}
                                   className="photo-grid-image"
                                   width={max_width} />
-                                </a>}[image.tabBehavior]
-                            }
-                        </>
-                  }
+                                </a>
+                            }[image.tabBehavior]
+                        }
+                    </>
                   } 
                 </Col>
                )               
