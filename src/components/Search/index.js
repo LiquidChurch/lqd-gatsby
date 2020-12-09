@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -17,6 +17,8 @@ const searchIndex = process.env.GATSBY_ALGOLIA_INDEX_NAME
 const searchClient = algoliasearch(appId, searchKey)
 
 export default(location) => {
+  const [hasSearch, setHasSearch] = useState(false)
+  console.log(hasSearch)
   return (
     <>
       <Heading
@@ -41,6 +43,9 @@ export default(location) => {
                   translations={{
                       placeholder: '',
                   }}
+                  onSearchStateChange={searchState => {
+                    console.log('search state', searchState)
+                  }}
               />
             </Row>
           </Container>
@@ -49,8 +54,10 @@ export default(location) => {
           <Container>
             <Row>
               <Col className="media-card-wrap">
+                {hasSearch &&
                 <CustomHits />
-              </Col>
+                }
+               </Col>
             </Row>
           </Container>
         </section>
@@ -59,10 +66,11 @@ export default(location) => {
   );
 }
 
-const HitsTest = ({hits}) => {
+const HitsTest = (props) => {
+  console.log(props)
   return (
   <>
-    {hits.map(hit => {
+    {props.hits.map(hit => {
       const mediaItem = {
         category: hit.pageType,
         slug: hit.slug,

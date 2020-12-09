@@ -142,7 +142,7 @@ const MegaMenu = () => {
         <Row className="bm-subcat">
           {categories.map(category => {
             return (
-              <Col xs={6} key={category.id}>
+              <Col xs={6} key={category.id} className="bm-subcat-block">
               <p className="bm-subcat-header" aria-hidden={true}>{category.label}</p>
               <ul className="bm-subcat-list">
               {category.childItems.nodes.map(item => {

@@ -88,6 +88,14 @@ Note: Beware of modifying this element as it can break the animations - you shou
   margin-left: -1.5em !important;
   margin-right: -3.5em !important;
   margin-bottom: 2em !important;
+  max-height: 950px;
+  flex-direction: column;
+}
+
+.bm-subcat-block {
+  height: fit-content;
+  flex-basis: auto;
+  margin-bottom: -0.6em;
 }
 
 .bm-subcat-header {

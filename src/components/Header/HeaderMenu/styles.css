@@ -10,6 +10,10 @@
   padding: 0 0;
 }
 
+.mobile-menu.app{
+  display: none !important;
+}
+
 .mobile-menu-burger {
   width: 3.1em;
   height: 3.1em;
