@@ -20,15 +20,23 @@ export default ({
 }) => {
   const ctx = useContext(GlobalContext)
   const [runEffect, setRunEffect] = useState(false)
-  
+  const [ imageHeight, setImageHeight ] = useState(200)  
   if (runEffect === false && ctx.isInitialLoad === false) {
     setRunEffect(true)
   }
  
   useEffect(() => {
+    function setTextAreaHeight() {
+      setImageHeight(window.innerHeight)
+    }
+    
     const timer1 = setTimeout(() => {
       setRunEffect(ctx.isInitialLoad)
     }, 1500);
+    
+    setTextAreaHeight()
+    window.addEventListener('resize', setTextAreaHeight)  
+    
     return () => {
       ctx.initialLoaded()
       clearTimeout(timer1)
@@ -43,6 +51,7 @@ export default ({
         <Imgix 
            src={process.env.IMGIX_URL + hero_image + "?gam=50"} 
            className="homepage-hero-image-crop" 
+           height={imageHeight}
            sizes="150vw" />
       </div>
       <div className="homepage-hero-text-block">
