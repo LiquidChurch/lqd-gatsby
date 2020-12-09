@@ -13,6 +13,7 @@ import './styles.css'
  * Social Icons Component
  */
 function SocialShare(props) {
+  console.log('social share', props)
   return (
   <>
       <Nav className='flex-nowrap flex-row message-social-padding' as='ul'>
@@ -41,10 +42,11 @@ function SocialShare(props) {
 const SocialIcons = ({
   slug,
 }) => {
+  console.log('socialIcons', slug)
   const ctx = useContext(PageModalContext)
   var modalId = 'share-modal'
   var modalTitle = "Share This Message"
-  var url = "https://dev2.liquidchurch.com/message/" + slug
+  var url = "https://liquidchurch.com/message/" + slug
   return (
     <>
       <Nav className='flex-nowrap flex-row message-action-area' as='ul'>
@@ -81,10 +83,14 @@ const SocialIcons = ({
           <div className="message-action-text">Give</div>
         </Nav.Item>
       </Nav>
-      <PageModal 
+      <PageModal
+        keyValue={'social-share-'+slug}
         modal_title={modalTitle}
         modal_text={<SocialShare url={url}/>}
+        modal_obj={true}
         modal_id={modalId}
+        modal_cta=''
+        modal_link=''
       />
     </>
   ) 
