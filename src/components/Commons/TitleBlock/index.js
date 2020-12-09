@@ -14,6 +14,7 @@ const TitleBlock = ({
   attributions,
   attributionsCo,
   title,
+  category,
   slug,
 }) => {
   console.log('title block', slug)
@@ -38,7 +39,7 @@ const TitleBlock = ({
         <h2 className="font-h2 message-title">{title}</h2>
       </Col>
       <Col xs={{span:12, order:3}} md={{span:4, order:2}}>
-        <SocialIcons slug={slug} />
+        <SocialIcons category={category} slug={slug} />
       </Col>
       <Col xs={{span:12, order:2}} md={{span:12, order:3}} className="message-subtitle">
         <div className="font-h3 message-speaker">{formattedAttributions}</div>

@@ -41,12 +41,14 @@ function SocialShare(props) {
 
 const SocialIcons = ({
   slug,
+  category,
+  uri,
 }) => {
   console.log('socialIcons', slug)
   const ctx = useContext(PageModalContext)
   var modalId = 'share-modal'
   var modalTitle = "Share This Message"
-  var url = "https://liquidchurch.com/message/" + slug
+  var url = "https://liquidchurch.com/" + category + "/" + slug
   return (
     <>
       <Nav className='flex-nowrap flex-row message-action-area' as='ul'>

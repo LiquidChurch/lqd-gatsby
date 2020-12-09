@@ -7,6 +7,7 @@ import Layout from "../components/Layout"
 import PageBlocks from "../components/PageBlocks"
 import { GlobalContext } from '../components/GlobalContext/context'
 import { getDate, isAppView } from '../helpers/functions'
+import { PageModalProvider } from "../components/PageModal/context.js"
 
 import HeroFeature from "../components/HeroFeature"
 
@@ -39,6 +40,7 @@ export default ({
     }
   })
   
+  post.category=post.categories.nodes[0].slug
   var pageValid = false
   if ( (post.publication.publishDate === null || getDate(location.search) >= Date.parse(post.publication.publishDate.replace(/\s/g, 'T'))) &&
        (post.publication.unpublishDate === null || getDate(location.search) < Date.parse(post.publication.unpublishDate.replace(/\s/g, 'T'))) ) {
@@ -80,8 +82,12 @@ export default ({
         }
       </Helmet>
       <article className="page">
+    <PageModalProvider>
         <HeroFeature {...post} />
+          <div className="blog">
         <PageBlocks {...post} />
+        </div>
+    </PageModalProvider>
       </article>
     </Layout>
   )
