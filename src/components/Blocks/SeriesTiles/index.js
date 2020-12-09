@@ -13,7 +13,7 @@ import { useScrollPosition } from "../../../helpers/useScrollPosition"
 import "./styles.css"
 
 function SeriesCard(props) {  
-  let imgUrl = props.mediaItem.SeriesImage.image.sourceUrl.split("/")
+  let imgUrl = props.mediaItem.SeriesImage.image.mediaItemUrl.split("/")
   return (
   <>
     <Link

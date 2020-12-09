@@ -22,7 +22,7 @@ export const useRecentMessages = (numOfItems, currentDate) => {
                   slug
                   profileImage {
                     image {
-                      sourceUrl
+                      mediaItemUrl
                     }
                   }
                 }
@@ -42,7 +42,7 @@ export const useRecentMessages = (numOfItems, currentDate) => {
               }        
               featuredImage {
                 node {
-                  sourceUrl
+                  mediaItemUrl
                   caption
                   altText
                 }

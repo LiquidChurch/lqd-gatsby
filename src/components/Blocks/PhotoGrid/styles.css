@@ -1,0 +1,11 @@
+.photo-grid-image {
+ /* margin:20px 0px; */
+ /* padding:0px 20px; */
+  margin-bottom: 30px;
+  object-fit:contain;
+  height:auto;
+}
+
+.photo-grid-container {
+  /* margin-top:-20px; */
+}

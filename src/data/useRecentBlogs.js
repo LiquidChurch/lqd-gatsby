@@ -23,7 +23,7 @@ export const useRecentBlogs = (numOfItems, currentDate) => {
                   slug
                   profileImage {
                     image {
-                      sourceUrl
+                      mediaItemUrl
                     }
                   }
                 }
@@ -39,7 +39,7 @@ export const useRecentBlogs = (numOfItems, currentDate) => {
               slug      
               featuredImage {
                 node {
-                  sourceUrl
+                  mediaItemUrl
                   caption
                   altText
                 }

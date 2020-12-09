@@ -24,7 +24,7 @@ export const useBlog = (blogId) => {
                   slug
                   profileImage {
                     image {
-                      sourceUrl
+                      mediaItemUrl
                     }
                   }
                 }
@@ -40,7 +40,7 @@ export const useBlog = (blogId) => {
               slug    
               featuredImage {
                 node {
-                  sourceUrl
+                  mediaItemUrl
                   caption
                   altText
                 }

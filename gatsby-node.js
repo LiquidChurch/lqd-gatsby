@@ -3,7 +3,7 @@ const { createRemoteFileNode } = require("gatsby-source-filesystem")
 const { slash } = require("gatsby-core-utils")
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
-  const { createPage } = actions
+  const { createPage, createRedirect } = actions
 
   // CreatePage for Posts
   const postResult = await graphql(
@@ -33,7 +33,24 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   }
 
   if (postResult.data.allWpPost.nodes) {
+
     postResult.data.allWpPost.nodes.forEach(post => {
+      console.log('{"action":"redirect", "type":"post", name":"'+ post.title +  '", "from":"' + `/blog/uncategorized/${post.slug}` + '", "to":"' + `/${post.categories.nodes[0].slug}/${post.slug}`  + '"},')
+      createRedirect({
+        fromPath: `/blog/uncategorized/${post.slug}`,
+        toPath: `/${post.categories.nodes[0].slug}/${post.slug}`,
+        redirectInBrowser: true,
+        isPermanent: true
+      }) 
+      console.log('{"action":"redirect", "type":"post", "name":"'+ post.title +  '", "from":"' + `/blog/${post.categories.nodes[0].slug}/${post.slug}` + '", "to":"' + `/${post.categories.nodes[0].slug}/${post.slug}`  + '"},')
+      createRedirect({
+        fromPath: `/blog/${post.categories.nodes[0].slug}/${post.slug}`,
+        toPath: `/${post.categories.nodes[0].slug}/${post.slug}`,
+        redirectInBrowser: true,
+        isPermanent: true
+      }) 
+      
+      console.log('{"action":"create", "type":"post", "name":"'+ post.title +  '", "to":"' + `/${post.categories.nodes[0].slug}/${post.slug}`  + '"},')
       createPage({
         path: `/${post.categories.nodes[0].slug}/${post.slug}`,
         component: slash(path.resolve(`./src/templates/post.js`)),
@@ -54,6 +71,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             slug
             title
             uri
+            publication {
+              promoSlug
+            }
           }
         }
       }
@@ -67,8 +87,24 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   if (pageResult.data.allWpPage.nodes) {
     pageResult.data.allWpPage.nodes.forEach(page => {
+      if (page.publication.promoSlug !== null) {
+        let promoSlugList = page.publication.promoSlug.split(",")
+        
+        for (let j=0; j < promoSlugList.length; j++) {
+          let promoPath = "/" + promoSlugList[j].trim().toLowerCase()
+          console.log('{"action":"redirect", "type":"page", "name":"'+ page.title +  '", "from":"' + promoPath + '", "to":"' + page.uri.slice(0,-1) + '"},')
+          createRedirect({
+            fromPath: promoPath,
+            toPath: page.uri.slice(0,-1),
+            redirectInBrowser: true,
+            isPermanent: true
+          }) 
+        }
+      }
+      
+      console.log('{"action":"create", "type":"page", "name":"'+ page.title +  '", "to":"' + page.uri.slice(0,-1) + '"},')      
       createPage({
-        path: page.uri.slice(1,-1),
+        path: page.uri.slice(0,-1),
         component: slash(path.resolve(`./src/templates/page.js`)),
         context: {
           id: page.id,
@@ -86,6 +122,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             id
             slug
             title
+            seriesList {
+              nodes {
+                slug
+              }
+            }
           }
         }
       }
@@ -102,6 +143,15 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   do {
     if (messageResult.data.allWpMessage.nodes) {
       messageResult.data.allWpMessage.nodes.forEach(message => {
+        console.log('{"action":"redirect", "type":"message", "name":"'+ message.title +  '", "from":"' + `/messages/${message.seriesList.nodes[0].slug}-series/${message.slug}` + '", "to":"' + `/messages/${message.slug}`  + '"},')
+        createRedirect({
+          fromPath: `/messages/${message.seriesList.nodes[0].slug}-series/${message.slug}`,
+          toPath: `/messages/${message.slug}`,
+          redirectInBrowser: true,
+          isPermanent: true
+        }) 
+        
+        console.log('{"action":"redirect", "type":"message", "name":"'+ message.title +  '", "to":"' + `/messages/${message.slug}` + '"},')              
         createPage({
           path: `/messages/${message.slug}`,
           component: slash(path.resolve(`./src/templates/message.js`)),
@@ -140,6 +190,23 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   do {
     if (blogResult.data.allWpBlog.nodes) {
       blogResult.data.allWpBlog.nodes.forEach(blog => {
+        console.log('{"action":"redirect", "type":"blog", "name":"'+ blog.title +  '", "from":"' + `/blog/elixir/${blog.slug}` + '", "to":"' + `/blogs/${blog.slug}` + '"},')
+        createRedirect({
+          fromPath: `/blog/elixir/${blog.slug}`,
+          toPath: `/blogs/${blog.slug}`,
+          redirectInBrowser: true,
+          isPermanent: true
+        }) 
+        
+        console.log('{"action":"redirect", "type":"blog", "name":"'+ blog.title +  '", "from":"' + `/blog/uncategorized/${blog.slug}` + '", "to":"' + `/blogs/${blog.slug}` + '"},')
+        createRedirect({
+          fromPath: `/blog/uncategorized/${blog.slug}`,
+          toPath: `/blogs/${blog.slug}`,
+          redirectInBrowser: true,
+          isPermanent: true
+        }) 
+        
+        console.log('{"action":"create", "type":"blog", "name":"'+ blog.title +  '", "to":"' + `/blogs/${blog.slug}` + '"},')  
         createPage({
           path: `/blogs/${blog.slug}`,
           component: slash(path.resolve(`./src/templates/blog.js`)),
@@ -175,6 +242,16 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   
   if (seriesListResult.data.allWpSeries.nodes) {
     seriesListResult.data.allWpSeries.nodes.forEach(series=> {
+      
+      console.log('{"action":"redirect", "type":"series", "name":"'+ series.name +  '", "from":"' + `/messages/${series.slug}-series` + '", "to":"' + `/series/${series.slug}` + '"},')
+      createRedirect({
+        fromPath: `/messages/${series.slug}-series`,
+        toPath: `/series/${series.slug}`,
+        redirectInBrowser: true,
+        isPermanent: true
+      }) 
+
+      console.log('{"action":"create", "type":"series", "name":"'+ series.name +  '", "to":"' + `/series/${series.slug}` + '"},')  
       createPage({
         path: `/series/${series.slug}`,
         component: slash(path.resolve(`./src/templates/series.js`)),
@@ -211,6 +288,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   do {
     if (jobResult.data.allWpJob.nodes) {
       jobResult.data.allWpJob.nodes.forEach(job => {
+        console.log('{"action":"create", "type":"job", "name":"'+ job.title +  '", "to":"' + `/jobs/${job.slug}` + '"},')  
         createPage({
           path: `/jobs/${job.slug}`,
           component: slash(path.resolve(`./src/templates/job.js`)),
@@ -243,13 +321,13 @@ exports.createResolvers = async (
       imageFile: {
         type: "File",
         async resolve(source) {
-          let sourceUrl = source.sourceUrl
+          let mediaItemUrl = source.mediaItemUrl
           if (source.mediaItemUrl !== undefined) {
-            sourceUrl = source.mediaItemUrl
+            mediaItemUrl = source.mediaItemUrl
           }
  
           return await createRemoteFileNode({
-            url: encodeURI(sourceUrl),
+            url: encodeURI(mediaItemUrl),
             store,
             cache,
             createNode,

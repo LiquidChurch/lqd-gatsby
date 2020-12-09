@@ -19,7 +19,7 @@ export const useMessageById = (messageId, currentDate) => {
                   slug
                   profileImage {
                     image {
-                      sourceUrl
+                      mediaItemUrl
                     }
                   }
                 }
@@ -39,7 +39,7 @@ export const useMessageById = (messageId, currentDate) => {
               }        
               featuredImage {
                 node {
-                  sourceUrl
+                  mediaItemUrl
                   caption
                   altText
                 }

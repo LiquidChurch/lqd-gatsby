@@ -18,8 +18,8 @@ export default ({ location }) => {
   
   const [focusOn, setFocusOn] = useState(false)
   const [menuOpen, setMenuOpen] = useState(true)
-  
-  var themeState = globalCtx.currentTheme.toLowerCase()
+
+  let themeState = globalCtx.currentTheme.toLowerCase()
 
   useEffect(() => {
     if (!ctx.isMenuOpen) {

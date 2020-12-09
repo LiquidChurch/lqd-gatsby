@@ -34,13 +34,14 @@ module.exports = {
         typeName: "WPGraphQL",
         fieldName: "wpgraphql",
         url: process.env.WORDPRESS_URL,
+        excludeFieldNames: [`viewer`, `dynamicContent`, `originalContent`, `className`, `blocksJSON`],
         schema: {
           timeout: 120000,
           perPage: 4,
         },
         debug: {
           graphql: {
-            writeQueriesToDisk:false,
+            writeQueriesToDisk:true,
             showQueryVarsOnError: true,
           }
         },
@@ -51,15 +52,42 @@ module.exports = {
           MediaItem: {
             lazyNodes: false,
           },
+          Page: {
+            excludeFieldNames: [`author`, `authorDatabaseId`, `authorId`, `blocksJson`, `commentCount`, `commentStatus`, `content`, `comments`, `dateGmt`, `lastEditedBy`, `previewBlocks`, `previewBlockJSON`, `template`, `terms`, `className`, `dynamicContent`, `originalContent`]
+          },
+          Blog: {
+            excludeFieldNames: [`author`, `authorDatabaseId`, `authorId`, `blocksJson`, `commentCount`, `commentStatus`, `comments`, `dateGmt`, `lastEditedBy`, `previewBlocks`, `previewBlockJSON`, `template`, `className`, `dynamicContent`, `originalContent`]
+          },
+          Post: {
+            excludeFieldNames: [`author`, `authorDatabaseId`, `authorId`, `blocksJson`, `commentCount`, `commentStatus`, `comments`, `dateGmt`, `lastEditedBy`, `previewBlocks`, `previewBlockJSON`, `template`, `className`, `dynamicContent`, `originalContent`]
+          },
+          Podcast: {
+            excludeFieldNames: [`author`, `authorDatabaseId`, `authorId`, `blocksJson`, `commentCount`, `commentStatus`, `comments`, `dateGmt`, `lastEditedBy`, `previewBlocks`, `previewBlockJSON`, `template`, `className`, `dynamicContent`, `originalContent`]
+          },
+          Template: {
+            exclude: true
+          },
+          Author: {
+            exclude: true
+          },
+          Comment: {
+            exclude: true
+          },
+          NodeWithTemplate: {
+            exclude: true
+          },
+          NodeWithAuthor: {
+            exclude: true
+          },
+          NodeWithComments: {
+            exclude: true
+          },
+          NodeWithContentEditor: {
+            exclude: true
+          },
         },    
         develop: {
           nodeUpdateInterval: 1000
-        },
-        auth: {
-          htaccess: {
-            username: 'webmaster',
-            password: 'jO0Ydhg@@NxdKwH(3oZseelb',
-          }
         },
         verbose:true,
         includedRoutes: [
@@ -94,7 +122,7 @@ module.exports = {
         appId: process.env.GATSBY_ALGOLIA_APP_ID,
         apiKey: process.env.ALGOLIA_ADMIN_KEY,
         queries: require("./src/utils/algolia-queries"),
-        chunkSize: 100,
+        chunkSize: 20,
         enablePartialUpdates: true,
         matchFields: ['slug', 'modified'],
       }
@@ -106,5 +134,22 @@ module.exports = {
         allowList: ["IMGIX_URL", "IMG_DIR_INDEX", "IMG_FILE_INDEX", "GATSBY_ALGOLIA_INDEX_NAME", "LOGO_IMG", "GOOGLE_API_KEY"]
       },
     },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "UA-153198283-1",
+        head: true,
+        respectDNT: true,
+        pageTransitionDelay: 200,
+        defer: false,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-facebook-pixel`,
+      options: {
+        pixelId: "244993876026990",
+      },
+    },
+    `gatsby-plugin-meta-redirect`,
   ],
 }

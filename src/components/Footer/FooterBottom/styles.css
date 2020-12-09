@@ -51,7 +51,8 @@
 }
 
 .footer-menu-padding {
-  place-content:flex-end;
+ /* place-content:flex-end; */
+  place-content: center;
   margin-left: -15px;
 }
 

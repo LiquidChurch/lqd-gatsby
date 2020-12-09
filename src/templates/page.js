@@ -8,7 +8,7 @@ import Layout from "../components/Layout"
 import PageBlocks from "../components/PageBlocks"
 import { GlobalContext } from '../components/GlobalContext/context'
 //import { isTouchEnabled, getDate } from '../helpers/functions'
-import { getDate, RichTextHelper } from '../helpers/functions'
+import { getDate, isAppView, RichTextHelper } from '../helpers/functions'
 import { usePageById } from '../data/usePage'
 //import useDeviceDetect from '../helpers/useDeviceDetection'
 
@@ -21,7 +21,6 @@ export default ({
     page,
   },
 }) => {
-  console.log("page: ", page.title)
   const generalSettings = useGeneralSettings()
   const ctx = useContext(GlobalContext)
   
@@ -41,7 +40,10 @@ export default ({
   if (page.themeState !== null) {
     theme = page.themeState.state
   }
- 
+  if (isAppView(location.search) === "true" || ctx.currentTheme === 'app') {
+    theme = 'app'
+  }
+
   let featuredImageUrl = "" 
   if (page.featuredImage !== null) {
     let imgUrl = page.featuredImage.node.mediaItemUrl.split("/")
@@ -57,9 +59,11 @@ export default ({
     }
   })
     
+  if (page.blocks !== null) {
   var externalRedirectBlock = page.blocks.find(
     ({ __typename }) => __typename === "WpBlockLabExternalRedirectBlock"
   )
+  }
   
   let hasExternalRedirect = false
   
@@ -91,7 +95,7 @@ export default ({
         } else if (ctx.prevPath === "") {
           window.location.replace(parentPageUri)
         }
-      },1500)      
+      },2500)      
     } else if (!pageValid) {
       navigate('/404')  
     } else {        
@@ -109,22 +113,18 @@ export default ({
         <Helmet titleTemplate={`%s - ${generalSettings.title}`}>
           <title>{Parse(page.title)}</title>
           <meta http-equiv="last-modified" content={page.modified} />
-          <meta name="robots" content={page.seo.metaRobotsNoindex + ", " + page.seo.metaRobotsNofollow} />
+          <meta name="robots" content={"index, no-follow"} />
           {(featuredImageUrl !== "") &&
             <meta property="og:description" content={RichTextHelper(page.featuredImage.node.description)} />
           }
           {(keywordsList !== "") && 
             <meta name="keywords" content={keywordsList} />
           }
-          <meta name="description" content={page.seo.metaDesc} />          
           <meta property="og:locale" content="en_US" />
           <meta property="og:type" content="website" />
           <meta property="og:title" content={page.title + ' - ' + generalSettings.title} />
           <meta property="og:site_name" content={generalSettings.title} />
           <meta property="og:url" content={'https://liquidchurch.com'+page.uri} />
-          {(page.seo.metaDesc !== "") &&
-            <meta property="og:description" content={page.seo.metaDesc} />
-          }
           {(featuredImageUrl !== "") && 
             <meta property="og:image" content={featuredImageUrl} />
           }
@@ -157,13 +157,6 @@ export const query = graphql`
           unpublishDate
           publishDate
         }
-        seo {
-          metaDesc
-          cornerstone
-          focuskw
-          metaRobotsNoindex
-          metaRobotsNofollow
-        }
         search_terms {
           nodes {
             name
@@ -171,95 +164,61 @@ export const query = graphql`
         }
         featuredImage {
           node {
-            title
             caption 
             altText
             description
-            sourceUrl
             mediaItemUrl
           }
         }
         pageImage {
           image1 {
-            title
             caption 
             altText
             description
-            sourceUrl
             mediaItemUrl
           }
           image2 {
-            title
             caption 
             altText
             description
-            sourceUrl
             mediaItemUrl
           }
           image3 {
-            title
             caption 
             altText
             description
-            sourceUrl
             mediaItemUrl
           }
           image4 {
-            title
             caption 
             altText
             description
-            sourceUrl
             mediaItemUrl
           }
           image5 {
-            title
             caption 
             altText
             description
-            sourceUrl
             mediaItemUrl
           }
           image6 {
-            title
             caption 
             altText
             description
-            sourceUrl
             mediaItemUrl
           }
           image7 {
-            title
             caption 
             altText
             description
-            sourceUrl
             mediaItemUrl
           }
           image8 {
-            title
             caption 
             altText
             description
-            sourceUrl
             mediaItemUrl
-          }
-          image9 {
-            title
-            caption 
-            altText
-            description
-            sourceUrl
-            mediaItemUrl
-          }
-          image10 {
-            title
-            caption 
-            altText
-            description
-            sourceUrl
-            mediaItemUrl
-          }          
+          }        
         }
       }
     

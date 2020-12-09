@@ -39,24 +39,11 @@ export default function Paragraph({ content, dropCap, align, fontSize }) {
     classNames.push(`p--${align}`)
   }
 
-  const options = {
-    transform: node => {
-      if ("tag" === node.type && "a" === node.name) {
-        return (
-          <MaybeLink
-            key={node?.attribs?.href}
-            url={node?.attribs?.href}
-            label={node?.children?.[0]?.data}
-          />
-        )
-      }
-    },
-  }
   return (
     <Container>
       <Row>
         <p className={classNames.length ? classNames.join(" ") : null}>
-          {Parse(content, options)}
+          {Parse(content)}
         </p>
       </Row>
     </Container>

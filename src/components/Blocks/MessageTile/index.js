@@ -42,7 +42,7 @@ export default ({ keyValue,
   if (messageInfo === undefined || messageInfo[0] === undefined) {
   } else {
     if (!imgLoaded) {
-      let imgArray = messageInfo[0].featuredImage.node.sourceUrl.split('/')
+      let imgArray = messageInfo[0].featuredImage.node.mediaItemUrl.split('/')
       
       setImgUrl(imgArray[process.env.IMG_DIR_INDEX] + "/" + imgArray[process.env.IMG_FILE_INDEX])
       setImgLoaded(true)

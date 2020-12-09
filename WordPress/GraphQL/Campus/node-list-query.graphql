@@ -1,0 +1,45 @@
+query NODE_LIST_QUERY($first: Int!, $after: String) {
+  campuses(first: $first, after: $after) {
+    nodes {
+      contentNodes(first: 100) {
+        nodes {
+          id
+          __typename
+        }
+      }
+      count
+      databaseId
+      description
+      googleMap {
+        anchorLeft
+        fieldGroupName
+        label
+        lat
+        lng
+        title
+      }
+      id
+      link
+      name
+      posts(first: 100) {
+        nodes {
+          id
+        }
+      }
+      slug
+      taxonomy {
+        node {
+          id
+        }
+      }
+      termGroupId
+      termTaxonomyId
+      uri
+      __typename
+    }
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+  }
+}

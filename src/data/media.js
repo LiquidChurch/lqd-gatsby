@@ -23,14 +23,6 @@ export const useMedia = (mediaSlug) => {
                   mediaItemUrl
                 }
               }
-              author {
-                node {
-                  avatar {
-                    url
-                  }
-                  name
-                }
-              }
             }
           }
         

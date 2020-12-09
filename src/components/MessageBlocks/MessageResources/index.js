@@ -16,7 +16,7 @@ const ListResources = ({title, resources}) => {
     <ListGroup.Item className="resource-header">{title}</ListGroup.Item>
     {resources.map(resource => {
       return (
-        <ListGroup.Item as="a" href={resource.url} key={resource.langulage + "-" + resource.resourceType} bsPrefix="resource-item">{resource.resourceTitle}</ListGroup.Item>
+        <ListGroup.Item as="a" href={resource.url} target="_blank" key={resource.langulage + "-" + resource.resourceType} bsPrefix="resource-item">{resource.resourceTitle}</ListGroup.Item>
       )
     })}
     </>

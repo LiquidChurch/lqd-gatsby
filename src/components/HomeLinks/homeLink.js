@@ -10,7 +10,6 @@ import { getDate } from '../../helpers/functions'
 
 export default ({ page_slug_id, cta_text }) => {  
   const page_info = useFeaturedImage(page_slug_id)
-  console.log(cta_text)
   if (page_info === undefined) {
     return (<></>)
   }

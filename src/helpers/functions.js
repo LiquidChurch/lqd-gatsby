@@ -54,3 +54,16 @@ export const getDate = (searchValue) => {
   var min = ('0' + d.getMinutes().toString()).slice(-2) 
   return Date.parse(date + "T" + hour + ":" + min + ":00")
 }
+
+export const isAppView = (searchValue) => {
+  var query = searchValue.substring(1);
+
+  var vars = query.split('&');
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split('=');
+        if (decodeURIComponent(pair[0]) === 'appView') {
+            return decodeURIComponent(pair[1])
+        }
+    }
+    return ''
+}

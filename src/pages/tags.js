@@ -9,14 +9,21 @@ import { GlobalContext } from '../components/GlobalContext/context'
 import Heading from "../components/Blocks/Heading"
 import { getDate } from '../helpers/functions'
 import { useTags } from '../data/useTags'
+import { isAppView } from '../helpers/functions'
 
 export default ({
   location,
 }) => {
   const ctx = useContext(GlobalContext)
+  
+  let theme = 'light'
+  if (isAppView(location.search) === "true" || ctx.currentTheme === 'app') {
+    theme = 'app'
+  }
+  
   useEffect(() => {
-    ctx.setTheme("light")
-  })
+    ctx.setTheme(theme)
+  }, [ctx, theme])
   
   let tagList = useTags(location.hash.substring(1), getDate(location.search))
   

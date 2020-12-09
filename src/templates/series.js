@@ -4,7 +4,7 @@ import { graphql } from "gatsby"
 import Parse from "react-html-parser"
 import Layout from "../components/Layout"
 import { GlobalContext } from '../components/GlobalContext/context'
-import { getDate } from '../helpers/functions'
+import { getDate, isAppView } from '../helpers/functions'
 
 import SeriesHero from "../components/SeriesHero"
 import MediaTiles from "../components/Blocks/MediaTiles"
@@ -19,21 +19,25 @@ export default ({
     series,
   },
 }) => {
-  console.log("series: ", series.name)
   const ctx = useContext(GlobalContext)
   const currentDate = getDate(location.search)
+  
+  let theme = 'light'
+  if (isAppView(location.search) === "true" || ctx.currentTheme === 'app') {
+    theme = 'app'
+  }
+  
   useEffect(() => {
-    ctx.setTheme("light")
+    ctx.setTheme(theme)
     let userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent  
     if (!ctx.isMobileSet) {
       ctx.setIsMobile(Boolean(userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i)))
     }
-  }, [ctx])
+  }, [ctx, theme])
   
   let messagesInfo = []
  
   series.messages.nodes.forEach(message => {
-    
     if ( (message.publication.publishDate === null || currentDate >= Date.parse(message.publication.publishDate.replace(/\s/g, 'T'))) &&
          (message.publication.unpublishDate === null || currentDate < Date.parse(message.publication.unpublishDate.replace(/\s/g, 'T'))) ) {
     
@@ -53,7 +57,7 @@ export default ({
 
       let profileImgSrc = process.env.LOGO_IMG
       if (message.attributions.nodes.length !== 0 && message.attributions.nodes[0].profileImage.image !== null) {
-        profileImgSrc = message.attributions.nodes[0].profileImage.image.sourceUrl
+        profileImgSrc = message.attributions.nodes[0].profileImage.image.mediaItemUrl
       }
 
       messagesInfo.push({
@@ -95,11 +99,13 @@ export default ({
           bg_color="#F8F8F8"
       />    
       <MediaTiles 
-        type=""
-        display_type="grid"
-        bg_color="#F8F8F8"
+        keyValue='series-messages'
+        type='internal'
+        display_type='grid'
+        bg_color='#F8F8F8'
         padding='bottom'
-        media_list={messagesInfo} />
+        media_list={messagesInfo}
+      />
       <Heading
           text="Other Message Series"
           alignment="left"
@@ -136,7 +142,7 @@ export const query = graphql`
           caption
           altText
           description
-          sourceUrl
+          mediaItemUrl
         }
       }
       messages {
@@ -144,12 +150,11 @@ export const query = graphql`
           slug
           id
           title
-          date
           content
+          date
           featuredImage {
             node {
               id
-              sourceUrl
               mediaItemUrl
             }
           }
@@ -164,7 +169,7 @@ export const query = graphql`
               slug
               profileImage {
                 image {
-                  sourceUrl
+                  mediaItemUrl
                 }
               }
             }

@@ -15,7 +15,7 @@ const messageQuery = `
           }
           featuredImage {
             node {
-              sourceUrl
+              mediaItemUrl
               caption
               altText
             }
@@ -26,6 +26,10 @@ const messageQuery = `
               id
               slug
             }
+          }
+          publication {
+            unpublishDate
+            publishDate
           }
         }
     }
@@ -51,10 +55,53 @@ const blogQuery = `
           }
           featuredImage {
             node {
-              sourceUrl
+              mediaItemUrl
               caption
               altText
             }
+          }
+          publication {
+            unpublishDate
+            publishDate
+          }
+        }
+    }
+}
+`
+
+const postQuery = `
+{
+    allWpPost {
+        nodes {
+          id
+          title
+          date
+          modified
+          slug
+          mediaBlurb {
+            blurb
+          }
+          tags {
+            nodes {
+              name
+            }
+          }
+          categories {
+            nodes {
+              databaseId
+              slug
+            }
+          }
+          featuredImage {
+            node {
+              mediaItemUrl
+              caption
+              altText
+            }
+          }
+          publication {
+            unpublishDate
+            publishDate
           }
         }
     }
@@ -69,19 +116,23 @@ const pageQuery = `
           title
           slug
           modified
-          content
           uri
-          terms {
+          search_terms {
             nodes {
               name
             }
           }
           featuredImage {
             node {
-              sourceUrl
+              mediaItemUrl
               caption
               altText
+              description
             }
+          }
+          publication {
+            unpublishDate
+            publishDate
           }
         }
       }
@@ -92,14 +143,18 @@ const grabText = rawText => {
   if (rawText === null || rawText === undefined) {
     return ""
   }
-  return rawText.replace(/<[^>]*>?/gm, '')
+  var stringLength = rawText.length
+  var tempString = rawText.substring(3, stringLength-5)
+  tempString = tempString.replace(/&lt;/g, '<')
+  tempString = tempString.replace(/<\/?p[^>]*>/g, "")                      
+  return tempString
 }
 
 const featuredImageUrl = featuredImage => {
   if (featuredImage === null) {
     return null
   } else {
-    return featuredImage.node.sourceUrl
+    return featuredImage.node.mediaItemUrl
   }
 }
 
@@ -132,8 +187,10 @@ const queries = [
             modified: node.modified,
             slug: node.slug,
             terms: node.tags.nodes,
-            imageUrl: node.featuredImage.node.sourceUrl,
-            parentPage: node.seriesList.nodes[0].name
+            imageUrl: node.featuredImage.node.mediaItemUrl,
+            parentPage: node.seriesList.nodes[0].name,
+            publishDate: node.publication.publishDate,
+            unpublishDate: node.publication.unpublishDate
           })),
         indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
         enablePartialUpdates: true,
@@ -153,7 +210,31 @@ const queries = [
             modified: node.modified,
             slug: node.slug,
             terms: node.tags.nodes,
-            imageUrl: node.featuredImage.node.sourceUrl            
+            imageUrl: node.featuredImage.node.mediaItemUrl,
+            publishDate: node.publication.publishDate,
+            unpublishDate: node.publication.unpublishDate
+          })),
+        indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
+        enablePartialUpdates: true,
+        settings: { attributesToSnippet: [`blurb:40`],
+                    searchableAttributes: ['title', 'blurb', 'date', 'terms.name'],
+                    attributesForFaceting: ['pageType']},
+    },
+    {
+        query: postQuery,
+        transformer: ({ data }) => 
+          data.allWpPost.nodes.map((node) => ({
+            objectID: node.id,
+            pageType: node.categories.nodes[0].slug,
+            title: node.title,
+            blurb: node.mediaBlurb.blurb,
+            date: node.date,
+            modified: node.modified,
+            slug: node.slug,
+            terms: node.tags.nodes,
+            imageUrl: node.featuredImage.node.mediaItemUrl,
+            publishDate: node.publication.publishDate,
+            unpublishDate: node.publication.unpublishDate
           })),
         indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
         enablePartialUpdates: true,
@@ -171,8 +252,10 @@ const queries = [
             modified: node.modified,
             blurb: featuredImageDesc(node.featuredImage),
             slug: node.uri,
-            terms: pageSearchTerms(node.terms),
-            imageUrl: featuredImageUrl(node.featuredImage)
+            terms: pageSearchTerms(node.search_terms),
+            imageUrl: featuredImageUrl(node.featuredImage),
+            publishDate: node.publication.publishDate,
+            unpublishDate: node.publication.unpublishDate
           })),
         indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
         enablePartialUpdates: true,

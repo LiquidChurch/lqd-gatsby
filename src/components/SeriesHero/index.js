@@ -11,7 +11,7 @@ import './styles.css'
  */
 export default (series) => {
   
-  var imgUrl = series.SeriesImage.image.sourceUrl.split("/")
+  var imgUrl = series.SeriesImage.image.mediaItemUrl.split("/")
   
   return (
     <section className="fullwidth-section">

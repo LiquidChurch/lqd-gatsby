@@ -6,7 +6,7 @@ import Parse from "react-html-parser"
 import Layout from "../components/Layout"
 import MessageBlocks from "../components/MessageBlocks"
 import { GlobalContext } from '../components/GlobalContext/context'
-import { getDate } from '../helpers/functions'
+import { getDate, isAppView, RichTextHelper } from '../helpers/functions'
 
 /** 
  * Template - Messages Component
@@ -17,10 +17,28 @@ export default ({
     lqdmMessage,
   },
 }) => {
-  
-  console.log("message:", lqdmMessage.title)
   const generalSettings = useGeneralSettings()  
   const ctx = useContext(GlobalContext)
+  
+  let theme = 'dark'
+  if (isAppView(location.search) === "true" || ctx.currentTheme === 'app') {
+    theme = 'app'
+  }
+
+  let featuredImageUrl = "" 
+  if (lqdmMessage.featuredImage !== null) {
+    let imgUrl = lqdmMessage.featuredImage.node.mediaItemUrl.split("/")
+    featuredImageUrl = process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX] + "?ar=16:9&fit=crop&h=200"
+  }  
+
+  let keywordsList = ""
+  lqdmMessage.tags.nodes.forEach((node, i) => {
+    if (i === 0) {
+      keywordsList = node.name
+    } else {
+      keywordsList = keywordsList + ", " + node.name
+    }
+  })
   
   var pageValid = false
   if ( (lqdmMessage.publication.publishDate === null || getDate(location.search) >= Date.parse(lqdmMessage.publication.publishDate.replace(/\s/g, 'T'))) &&
@@ -37,10 +55,10 @@ export default ({
     if (!pageValid) {
       navigate('/messages')
     }
-    ctx.setTheme("dark")
+    ctx.setTheme(theme)
 
     ctx.setPath(location.pathname)
-  }, [ctx, location.pathname, pageValid])
+  }, [ctx, theme, location.pathname, pageValid])
   
   return (
     <>
@@ -50,6 +68,22 @@ export default ({
       <Layout location={location}>
         <Helmet titleTemplate={`%s | ${generalSettings.title}`}>
           <title>{Parse(lqdmMessage.title)}</title>
+          <meta http-equiv="last-modified" content={lqdmMessage.modified} />
+          <meta name="robots" content={"index, no-follow"} />
+          {(keywordsList !== "") && 
+            <meta name="keywords" content={keywordsList} />
+          }
+
+          <meta property="og:description" content={RichTextHelper(lqdmMessage.content)} />          
+          <meta property="og:locale" content="en_US" />
+          <meta property="og:type" content="article" />
+          <meta property="article:published_time" content={lqdmMessage.publication.publishDate} />
+          <meta property="og:title" content={lqdmMessage.title} />
+          <meta property="og:site_name" content={generalSettings.title} />
+          <meta property="og:url" content={'https://liquidchurch.com/messages/'+lqdmMessage.slug} />
+          {(featuredImageUrl !== "") && 
+            <meta property="og:image" content={featuredImageUrl} />
+          }
         </Helmet>
         <article className="post">
           <MessageBlocks {...lqdmMessage} />
@@ -68,7 +102,7 @@ export const query = graphql`
         ...AllBlocks
       }
       title
-      content
+      modified
       attributions {
         nodes {
           id
@@ -76,7 +110,7 @@ export const query = graphql`
           slug
           profileImage {
             image {
-              sourceUrl
+              mediaItemUrl
             }
           }
         }
@@ -96,7 +130,7 @@ export const query = graphql`
       }        
       featuredImage {
         node {
-          sourceUrl
+          mediaItemUrl
           caption
           altText
         }
