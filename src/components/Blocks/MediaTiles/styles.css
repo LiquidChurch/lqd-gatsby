@@ -46,6 +46,8 @@
 .media-card-message {
   max-height:228px;
   min-height: 70px;
+  padding-left:1rem;
+  padding-right:1rem;
 }
 
 .media-card-link:hover {
