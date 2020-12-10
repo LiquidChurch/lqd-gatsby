@@ -5,6 +5,7 @@
   white-space: nowrap;
 }
 
+
 .component-row {
   display:inline-flex;
 }
@@ -50,4 +51,21 @@
 
 @media (max-width:575px) {
 
+}
+
+@media (max-width:1199px) {
+  .component-slider-start {
+    margin-right: 9px;
+  }
+
+  
+  .component-slider-end {
+    margin-left:9px;
+  }
+  
+  .component-slider-touch {
+    margin-left:0.6em;
+    margin-right:0.6em;
+  }
+  
 }

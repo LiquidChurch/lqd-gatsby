@@ -15,10 +15,15 @@
 }
 
 .media-card {
+  /*
   min-width: 265.5px;
   max-width: 265.5px;
-  border-width: 0px;
   margin: 20px 6px;
+  */
+  min-width: 259.5px;
+  max-width: 259.5px;
+  margin: 20px 9px;
+  border-width: 0px;
   border-radius: 1em;
   border-color:transparent;
   background-color:transparent;
@@ -29,9 +34,12 @@
   border-color: #a4a4a4 !important;
   background-color: #a4a4a4;
   border-width: 3px;
-  min-width: 271.5px;
+  /* min-width: 271.5px;
   max-width: 271.5px;
-  margin: 17px 3px;
+  margin: 17px 3px; */
+  min-width: 265.5px;
+  max-width: 265.5px;
+  margin: 17px 6px;
   border-radius: 1.3em;
 }
 
