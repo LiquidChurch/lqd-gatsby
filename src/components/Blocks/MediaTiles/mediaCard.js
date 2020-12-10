@@ -95,8 +95,10 @@ export default (props) => {
     if (!imgLoaded) {
       let imgArray = props.mediaItem.image.split("/")
       setImgUrl(process.env.IMGIX_URL + imgArray[process.env.IMG_DIR_INDEX] + "/" + imgArray[process.env.IMG_FILE_INDEX] + "?ar=16:9&fit=crop&h=296")
+      if (props.mediaItem.profileImage !== undefined){
       let profileImgArray = props.mediaItem.profileImage.split("/")
       setProfileImgUrl(process.env.IMGIX_URL + profileImgArray[process.env.IMG_DIR_INDEX] + "/" + profileImgArray[process.env.IMG_FILE_INDEX] + "?ar=1:1&fit=crop&fill-color=0FFF&mask=ellipse&h=50")
+      }
       if (!props.mediaItem.isDynamic) {
         setImgLoaded(true)
       }
