@@ -8,10 +8,9 @@ import Heading from '../Blocks/Heading'
 import MediaCard from '../Blocks/MediaTiles/mediaCard'
 
 import algoliasearch from 'algoliasearch/lite';
+import { getDate } from '../../helpers/functions'
 import { InstantSearch, connectHits, SearchBox, connectStateResults } from 'react-instantsearch-dom'
 import './styles.css'
-
-
 const appId = process.env.GATSBY_ALGOLIA_APP_ID
 const searchKey = process.env.GATSBY_ALGOLIA_SEARCH_KEY
 const searchIndex = process.env.GATSBY_ALGOLIA_INDEX_NAME
@@ -76,7 +75,12 @@ const HitsTest = (props) => {
   <>
     {props.hits.map(hit => {
      
-     console.log(hit)
+
+     let isValid=false
+     if ((hit.publishDate === null || getDate('') >= Date.parse(hit.publishDate.replace(/\s/g, 'T'))) &&
+       (hit.unpublishDate === null || getDate('') < Date.parse(hit.unpublishDate.replace(/\s/g, 'T')))) {
+         isValid=true
+      }
      
       const mediaItem = {
         category: hit.pageType,
@@ -91,9 +95,11 @@ const HitsTest = (props) => {
     }
      return (
      <>
+    {isValid &&
         <MediaCard
-          mediaItem={mediaItem}
+          mediaItem={mediaItem} key={'search-result-' + hit.slug}
         />
+    }
      </>
      )
     })}
