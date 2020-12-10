@@ -13,7 +13,6 @@ import './styles.css'
  * Social Icons Component
  */
 function SocialShare(props) {
-  console.log('social share', props)
   return (
   <>
       <Nav className='flex-nowrap flex-row message-social-padding' as='ul'>
@@ -44,7 +43,6 @@ const SocialIcons = ({
   category,
   uri,
 }) => {
-  console.log('socialIcons', slug)
   const ctx = useContext(PageModalContext)
   var modalId = 'share-modal'
   var modalTitle = "Share This Message"

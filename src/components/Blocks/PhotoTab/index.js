@@ -55,8 +55,6 @@ export default ({
     }
       setCheckPublished(true)
   }
-  //console.log(block_on, block_off)  
-  //console.log('photo tab is Published', image_id, isPublished)
   
   let ctaObject = JSON.parse(cta)
   let hasCTA = false

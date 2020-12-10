@@ -66,9 +66,6 @@ export default ({
     }
       setCheckPublished(true)
   }
-  //console.log(block_on, block_off)  
-  //console.log('page strap is Published', image_id, isPublished)
-  //console.log('page strap width', width)
   var hasImage = false
   if (image_id !== null && image_id !== undefined && image_id !== 0) { hasImage = true }
 

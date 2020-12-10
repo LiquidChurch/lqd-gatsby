@@ -17,7 +17,6 @@ const TitleBlock = ({
   category,
   slug,
 }) => {
-  console.log('title block', slug)
   const formatter = new Intl.DateTimeFormat('en-US', { month: 'short',  day: 'numeric',   year: 'numeric'});
   const formattedDate =  formatter.format(new Date(date));
   
