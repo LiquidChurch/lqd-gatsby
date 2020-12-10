@@ -8,8 +8,9 @@ import Heading from '../Blocks/Heading'
 import MediaCard from '../Blocks/MediaTiles/mediaCard'
 
 import algoliasearch from 'algoliasearch/lite';
-import { InstantSearch, connectHits, SearchBox } from 'react-instantsearch-dom'
+import { InstantSearch, connectHits, SearchBox, connectStateResults } from 'react-instantsearch-dom'
 import './styles.css'
+
 
 const appId = process.env.GATSBY_ALGOLIA_APP_ID
 const searchKey = process.env.GATSBY_ALGOLIA_SEARCH_KEY
@@ -18,7 +19,6 @@ const searchClient = algoliasearch(appId, searchKey)
 
 export default(location) => {
   const [hasSearch, setHasSearch] = useState(false)
-  console.log(hasSearch)
   return (
     <>
       <Heading
@@ -34,19 +34,24 @@ export default(location) => {
       <InstantSearch 
         searchClient={searchClient} 
         indexName={searchIndex}
+        onSearchStateChange={searchState => {
+          if (searchState.query !== "") {
+            setHasSearch(true)
+          } else {
+            setHasSearch(false)
+          }
+        }}
       > 
         <section className="site-section bottom">
           <Container>
-            <Row>      
+            <Row>
               <SearchBox
-                  className="searchbox"
+                  className="searchbox "
                   translations={{
-                      placeholder: '',
-                  }}
-                  onSearchStateChange={searchState => {
-                    console.log('search state', searchState)
+                      placeholder: 'Type something',
                   }}
               />
+              <div className="algolia-icon algolia-position"></div>
             </Row>
           </Container>
         </section>
@@ -54,8 +59,10 @@ export default(location) => {
           <Container>
             <Row>
               <Col className="media-card-wrap">
-                <CustomHits />
-               </Col>
+                {hasSearch &&
+                  <CustomHits />
+                }
+              </Col>
             </Row>
           </Container>
         </section>
@@ -65,10 +72,12 @@ export default(location) => {
 }
 
 const HitsTest = (props) => {
-  console.log(props)
   return (
   <>
     {props.hits.map(hit => {
+     
+     console.log(hit)
+     
       const mediaItem = {
         category: hit.pageType,
         slug: hit.slug,
@@ -93,4 +102,3 @@ const HitsTest = (props) => {
 }
 
 const CustomHits = connectHits(HitsTest)
-
