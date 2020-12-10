@@ -55,15 +55,11 @@ function ShowAttribution(props) {
   
   if (props.showAttribution) {
     let date = props.date.toUpperCase()
-    let profileImgUrl = []
-    if (props.profileImage !== undefined) {
-      profileImgUrl = props.profileImage.split("/")
-    }
     return (
     <>
       <ListGroup.Item className="media-card-attribution font-h3">
         <Imgix
-          src={process.env.IMGIX_URL + profileImgUrl[process.env.IMG_DIR_INDEX] + "/" + profileImgUrl[process.env.IMG_FILE_INDEX] + "?ar=1:1&fit=crop&fill-color=0FFF&mask=ellipse&h=50"}
+          src={props.profileImage}
           className="media-card-profile-image"
         />
         <div className="media-card-attribution-info">
@@ -85,9 +81,8 @@ export default (props) => {
   } 
             
   const [imgUrl, setImgUrl] = useState("")
-//  const [profileImgUrl, setProfileImgUrl]
+  const [profileImgUrl, setProfileImgUrl] = useState("")
   const [imgLoaded, setImgLoaded] = useState(false)
-  
   
   let linkUrl = ""
   if (props.mediaItem.category === "pages") {
@@ -100,13 +95,13 @@ export default (props) => {
     if (!imgLoaded) {
       let imgArray = props.mediaItem.image.split("/")
       setImgUrl(process.env.IMGIX_URL + imgArray[process.env.IMG_DIR_INDEX] + "/" + imgArray[process.env.IMG_FILE_INDEX] + "?ar=16:9&fit=crop&h=296")
-  //    let profileImgArray = mediaItem.profileImage.split("/")
-  //    setProfileImgUrl(process.env.IMGIX_URL + profileImgArray[process.env.IMG_DIR_INDEX] + "/" + profileImgArray[process.env.IMG_FILE_INDEX] + "?ar=1:1&fit=crop&fill-color=0FFF&mask=ellipse&h=50")
+      let profileImgArray = props.mediaItem.profileImage.split("/")
+      setProfileImgUrl(process.env.IMGIX_URL + profileImgArray[process.env.IMG_DIR_INDEX] + "/" + profileImgArray[process.env.IMG_FILE_INDEX] + "?ar=1:1&fit=crop&fill-color=0FFF&mask=ellipse&h=50")
       if (!props.mediaItem.isDynamic) {
         setImgLoaded(true)
       }
     }
-    }, [imgLoaded, props.mediaItem.image, props.mediaItem.isDynamic])
+    }, [imgLoaded, props.mediaItem])
     
   return (
   <>
@@ -133,13 +128,15 @@ export default (props) => {
           seriesTitle={props.mediaItem.seriesTitle}
           seriesPart={props.mediaItem.seriesPart}
         />
+      {(imgLoaded || props.mediaItem.isDynamic) &&
         <ShowAttribution
           showAttribution={props.mediaItem.showAttribution}
           attributionName={props.mediaItem.attributionName}
-          profileImage={props.mediaItem.profileImage}
+          profileImage={profileImgUrl}
           date={props.mediaItem.date}
           category={props.mediaItem.category}
         />
+      }
       </ListGroup>
     </Card>
     </Link>

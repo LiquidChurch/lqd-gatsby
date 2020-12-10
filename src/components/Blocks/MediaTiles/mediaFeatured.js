@@ -27,7 +27,7 @@ export default ({mediaItem}) => {
       setProfileImgUrl(process.env.IMGIX_URL + profileImgArray[process.env.IMG_DIR_INDEX] + "/" + profileImgArray[process.env.IMG_FILE_INDEX] + "?ar=1:1&fit=crop&fill-color=0FFF&mask=ellipse&h=50")
       setImgLoaded(true)
     }
-  })  
+  }, [imgLoaded, mediaItem])  
   
   return (
     <Col xs={{span:12, offset:0}} md={{ span: 10, offset: 1 }} className="media-tile-col">
