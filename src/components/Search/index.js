@@ -50,7 +50,6 @@ export default(location) => {
                       placeholder: 'Type something',
                   }}
               />
-              <div className="algolia-icon algolia-position"></div>
             </Row>
           </Container>
         </section>
