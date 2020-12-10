@@ -103,19 +103,23 @@
   width: 50px;
   position:relative;
   display:inline-block;
-  bottom: 14px;
+  bottom: 4px;
   left: -8px;
+  border-radius: 25px;
+  vertical-align: top;
 }
 
 .media-card-attribution-info {
   display: inline-block;
   position:relative;
+  vertical-align:text-top;
+  bottom:7px;
 }
 .media-card-name {
   position: relative;
   font-size: 0.9em;
   font-weight: 600;
-  margin-top:-5px;
+  margin-top:0px;
 }
 
 .media-card-icon {
@@ -253,6 +257,8 @@
   position:relative;
   display:inline-block;
   border-radius: 25px;
+  vertical-align:top;
+  bottom: -24px;
 }
 
 @media (max-width:1199px) {
