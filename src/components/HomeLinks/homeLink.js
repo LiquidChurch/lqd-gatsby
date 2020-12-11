@@ -39,9 +39,9 @@ export default ({ page_slug_id, cta_text }) => {
     if (!imgLoaded) {
       let imgArray = page_info.featuredImage.node.mediaItemUrl.split("/")
       setImgUrl(process.env.IMGIX_URL + imgArray[process.env.IMG_DIR_INDEX] + "/" + imgArray[process.env.IMG_FILE_INDEX] + "?ar=16:9&fit=crop&h=296")
-      setLinkTo = page_info.uri
-      setCaption = page_info.featuredImage.node.caption
-      setDescription = page_info.featuredImage.node.description
+      setLinkTo(page_info.uri)
+      setCaption(page_info.featuredImage.node.caption)
+      setDescription(page_info.featuredImage.node.description)
       setImgLoaded(true)
     }
   }, [imgLoaded, page_info.featuredImage])  
