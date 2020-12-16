@@ -15,6 +15,7 @@ const GlobalProvider = (props) => {
   const [prevPath, setPrevPath] = useState("")
   const [pageDate, setPageDate] = useState(0)
   const [isMobile, setIsMobile] = useState(true)
+  const [isChrome, setIsChrome] = useState(false) 
   const [isMobileSet, setIsMobileSet] = useState(false)
   
   function updatePath(path) {
@@ -41,7 +42,9 @@ const GlobalProvider = (props) => {
       setIsMobile: (isMobile) => {
                                   setIsMobile(isMobile)
                                   setIsMobileSet(true)
-                                  }
+                                  },
+      isChrome: isChrome,
+      setIsChrome: (isChrome) => setIsChrome(isChrome)
     }}>
       {props.children}
     </GlobalContext.Provider>
