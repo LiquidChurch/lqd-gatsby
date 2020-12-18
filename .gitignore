@@ -79,3 +79,4 @@ dist/
 # Build status
 build_status.txt
 build_pid.txt
+publish_lock.txt

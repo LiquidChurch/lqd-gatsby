@@ -195,7 +195,7 @@ const queries = [
         indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
         enablePartialUpdates: true,
         settings: { attributesToSnippet: [`blurb:40`],
-                    searchableAttributes: ['title', 'blurb', 'date', 'terms.name'],
+                    searchableAttributes: ['title', 'blurb', 'date', 'terms.name', 'parentPage'],
                     attributesForFaceting: ['pageType']},      
     },
     {
@@ -217,7 +217,7 @@ const queries = [
         indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
         enablePartialUpdates: true,
         settings: { attributesToSnippet: [`blurb:40`],
-                    searchableAttributes: ['title', 'blurb', 'date', 'terms.name'],
+                    searchableAttributes: ['title', 'blurb', 'date', 'terms.name', 'parentPage'],
                     attributesForFaceting: ['pageType']},
     },
     {
@@ -239,7 +239,7 @@ const queries = [
         indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
         enablePartialUpdates: true,
         settings: { attributesToSnippet: [`blurb:40`],
-                    searchableAttributes: ['title', 'blurb', 'date', 'terms.name'],
+                    searchableAttributes: ['title', 'blurb', 'date', 'terms.name', 'parentPage'],
                     attributesForFaceting: ['pageType']},
     },
     {
@@ -260,7 +260,7 @@ const queries = [
         indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
         enablePartialUpdates: true,
         settings: { attributesToSnippet: [`blurb:20`],
-        searchableAttributes: ['title', 'blurb', 'date', 'terms.name'],
+        searchableAttributes: ['title', 'blurb', 'date', 'terms.name', 'parentPage'],
         attributesForFaceting: ['pageType']},
     },
 ]
