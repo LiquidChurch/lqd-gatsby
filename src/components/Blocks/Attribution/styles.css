@@ -143,8 +143,6 @@
   }
    
   .attribution-profile-blurb.bottom {
-    position: relative;
-    top: -25px;
-    left: 36vw;
+    left: 39vw;
   }  
 }
