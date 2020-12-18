@@ -16,6 +16,7 @@
   height: 247px;
   margin-top: 15px;
   margin-bottom: 48px;
+  border-radius: 123.5px;
 }
 
 .attribution-profile-blurb {
@@ -88,6 +89,7 @@
   min-width: 137px;
   height: auto;
   margin-top: 15px;
+  border-radius: 68.5px;
 }
 
 .attribution-secondary-profile-information {
@@ -108,6 +110,7 @@
     width: 200px;
     min-width: 200px;
     height: 200px;
+      border-radius: 123.5px;
   }
 
   .attribution-profile-blurb.bottom {
