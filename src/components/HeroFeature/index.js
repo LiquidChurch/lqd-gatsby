@@ -9,7 +9,6 @@ import './styles.css'
  * Hero - Feature Component
  */
 export default (props) => {
-
   var imgUrl = props.featuredImage.node.mediaItemUrl.split("/")
   let messageDate = ""
   if (props.publication.publishDate !== null) {
@@ -32,7 +31,8 @@ export default (props) => {
         attributions={props.attributions}
         attributionsCo={props.attributionsCo}
         title={props.title}
-        slut={props.slug}
+        category={props.category}
+        slug={props.slug}
       />
     </Container>
     </section>

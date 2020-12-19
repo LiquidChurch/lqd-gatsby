@@ -171,3 +171,9 @@
   background-image: url('./svg/apple-app-store.svg');
   background-size: contain;
 }
+
+.algolia-icon {
+  background: url('./svg/algolia-search.svg') no-repeat center;
+  background-image: url('./svg/algolia-search.svg');
+  background-size: contain;
+}

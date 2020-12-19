@@ -55,11 +55,12 @@ const VideoPlayer = ({
             textAlign:'center',
             width:dimensions.width,
             height:(dimensions.height - 1),
-            borderRadius:'20px',
+            borderRadius:'1em',
             overflow: 'hidden',
             zIndex: 1,
             margin: '0 auto',
             boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+            willChange: 'transform',
           }}>
         <iframe 
           src={videoSrc} 

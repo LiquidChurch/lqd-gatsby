@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Imgix from 'react-imgix'
 import Parse from 'react-html-parser'
 import Col from 'react-bootstrap/Col'
@@ -14,6 +14,12 @@ export default ({ page_slug_id, cta_text }) => {
     return (<></>)
   }
   
+  const [imgUrl, setImgUrl] = useState("")
+  const [linkTo, setLinkTo] = useState("")
+  const [caption, setCaption] = useState("")
+  const [description, setDescription] = useState("")
+  const [imgLoaded, setImgLoaded] = useState(false)
+  
   if (cta_text === '') {
     cta_text = 'Learn More'          
   }
@@ -27,31 +33,44 @@ export default ({ page_slug_id, cta_text }) => {
     return (<></>)
   }
   
-  var imgUrl = page_info.featuredImage.node.mediaItemUrl.split("/")
-  
+  //var imgUrl = page_info.featuredImage.node.mediaItemUrl.split("/")
+
+  useEffect(() =>{
+    if (!imgLoaded) {
+      let imgArray = page_info.featuredImage.node.mediaItemUrl.split("/")
+      setImgUrl(process.env.IMGIX_URL + imgArray[process.env.IMG_DIR_INDEX] + "/" + imgArray[process.env.IMG_FILE_INDEX] + "?ar=16:9&fit=crop&h=296")
+      setLinkTo(page_info.uri)
+      setCaption(page_info.featuredImage.node.caption)
+      setDescription(page_info.featuredImage.node.description)
+      setImgLoaded(true)
+    }
+  }, [imgLoaded, page_info.featuredImage])  
+    
   return (
   <>
+  {imgLoaded && 
   <Col key={"home-tile-" + page_slug_id} xs={12} md={6} className="home-tile">
     <Link 
-      to={page_info.uri}
+      to={linkTo}
       key={"home-tile-image-" + page_info.databaseId}
     >
-    <Imgix 
-      src={process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX] + "?ar=16:9&fit=crop&h=296"}
-      altText={page_info.featuredImage.altText}
-      className="home-tile-image"
-      sizes="100vw" />
-    <h3 className="home-tile-caption font-h2">{Parse(page_info.featuredImage.node.caption)}</h3>
-    <div className="home-tile-description font-h3">{Parse(page_info.featuredImage.node.description)}</div>
+      <Imgix 
+        src={imgUrl}
+        altText={page_info.featuredImage.altText}
+        className="home-tile-image"
+        sizes="100vw" />
+    <h3 className="home-tile-caption font-h2">{Parse(caption)}</h3>
+    <div className="home-tile-description font-h3">{Parse(description)}</div>
     </Link>
     <Link
       className="btn font-btn"
       key={"home-tile-button" + page_info.databaseId}
-      to={page_info.uri}
+      to={linkTo}
     >
       {cta_text}
     </Link>
   </Col>
+  }
   </>
   )
 }

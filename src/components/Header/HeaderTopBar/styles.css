@@ -4,15 +4,17 @@
   padding: 1.2rem 1.2rem;
   background: linear-gradient(rgba(0,0,0,1), rgba(0,0,0,0));  
   z-index:10;
+  flex-wrap:nowrap;
 }
 
 .topbar-light {
   padding: 1.2rem 1.2rem;
   background: white;
   z-index:10;
+  flex-wrap:nowrap;
 }
 
-.tapbar-app {
+.topbar-app {
   display: none !important;
 }
 
@@ -95,6 +97,7 @@
 
 .topbar-chop-button {
   width: 283px;
+  min-width: fit-content;
   letter-spacing: 0.1em;
   font-size: 1.1em;
   font-family:"Avenir Next Regular";
@@ -159,8 +162,8 @@
   background-color: white;
   border:none;
   border-radius: 0;
-  height: 2.2rem;
-  width: 10.9rem;  
+  height: 2.4rem;
+  width: 11.9rem;  
 }
 
 .btn-topbar-menu-dark {

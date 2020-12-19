@@ -5,7 +5,7 @@ import { GlobalContext } from '../../GlobalContext/context'
 import { ArrowRight, ArrowLeft } from '../../../helpers/icons'
 import "./styles.css"
 
-const shiftWidth = 266 + 12;
+const shiftWidth = 259.5 + 18;
 
 /** 
  * Wide Slider
@@ -14,12 +14,17 @@ export default (props) => {
   const [contentWidth, setContentWidth] = useState(0)
   const [sliderWidth, setSliderWidth] = useState(0)
   const [currentMarginLeft, setMarginLeft] = useState(0)
+  const [sliderPosition, setSliderPosition] = useState("start")
   
   const ctx = useContext(GlobalContext)
 
   let componentClass = ""
   if (ctx.isMobile) {
     componentClass='component-row-touch'
+    if (sliderPosition !== "touch") {
+      setSliderPosition("touch")
+      setMarginLeft(9)
+    }
   } else {
     componentClass='component-row'
   }
@@ -55,9 +60,11 @@ export default (props) => {
     
     if (remainingWidth > 0) {
       if (remainingWidth <= shiftWidth) {
-        marginLeft = currentMarginLeft + remainingWidth;
+        marginLeft = currentMarginLeft + remainingWidth + 0;
+        setSliderPosition("end")
       } else {
         marginLeft = currentMarginLeft + shiftWidth;
+        //setSliderPosition("middle")
       }
     } else {
       marginLeft = currentMarginLeft;
@@ -71,8 +78,10 @@ export default (props) => {
     
     if (currentMarginLeft > shiftWidth) {
       marginLeft = currentMarginLeft - shiftWidth;
+      //setSliderPosition("middle")
     } else {
       marginLeft = 0;
+      setSliderPosition("start")
     }
 
     setMarginLeft(marginLeft)
@@ -128,10 +137,10 @@ export default (props) => {
  
   return (
    <>
-    <div id={'component-slider-' + props.sliderId}>
+    <div id={'component-slider-' + props.sliderId} className={'component-slider-' + sliderPosition}>
       <RenderLeftArrow />  
       <RenderRightArrow />
-      <div className="component-slider">
+      <div className={'component-slider ' + sliderPosition}>
         <Row 
           id={'content-slider-' + props.sliderId}
           className={'flex-nowrap no-scroll-bar ' + componentClass}

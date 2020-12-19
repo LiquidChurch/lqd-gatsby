@@ -117,10 +117,20 @@ const MegaMenu = () => {
           aria-label="Close Main Menu Drawer"
           onClick={ctx.toggleMenu} 
           onKeyDown={closeTopKeyEvent}
-        >
+        >   
           <ClearIcon />
         </button>
         <Row className="bm-maincat">
+          <Link key={'search-btn'}
+            id={'megamenu-search'}
+            aria-label={'search'}
+            aria-hidden={!ctx.isMenuOpen}
+            className="btn bm-search-button"
+            tabIndex={tabIndex}
+            to={'/search'}>
+            <span className={'bm-search-text'}>SEARCH</span>
+            <span className={'bm-search-icon magnifier-icon bm-icon'}></span>
+          </Link> 
           {mainCategory.childItems.nodes.map(mainItem => {
             const { id, label } = mainItem
             var icon = label.replace(/\s+/g, "-").toLowerCase();
@@ -142,7 +152,7 @@ const MegaMenu = () => {
         <Row className="bm-subcat">
           {categories.map(category => {
             return (
-              <Col xs={6} key={category.id}>
+              <Col xs={6} key={category.id} className="bm-subcat-block">
               <p className="bm-subcat-header" aria-hidden={true}>{category.label}</p>
               <ul className="bm-subcat-list">
               {category.childItems.nodes.map(item => {

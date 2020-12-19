@@ -12,6 +12,44 @@
   border:none;
 }
  
+.bm-search-button{
+  height: 35px;
+  width: 270px;
+  position: relative;
+  left: -10px;
+  top: -3px;
+  background-color: transparent;
+  border: none;
+  font-size: 0.7em;
+  -webkit-filter: brightness(1);
+  filter: brightness(1);
+  padding: 4px;
+  padding-right: 10px;
+}
+
+.bm-search-button:hover{
+  filter:brightness(0);
+}
+
+.bm-search-button:focus{
+  border: 1 solid #565656;
+  border-radius: 12px;
+}
+
+.bm-search-text {
+  font-size: 1.3em;
+  padding-left: 5px;
+  padding-right: 180px;
+  color: #565656;
+  vertical-align: middle;
+  font-family:"Avenir Next Regular";
+  border-bottom: 1px solid #565656;
+}
+
+.bm-search-icon {
+  margin-left: -25px;
+}
+
 /*
 Sidebar wrapper styles
 Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
@@ -58,7 +96,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 .bm-maincat {
   margin-left: -0.7em !important;
   display:grid;
-  margin-top:-0.5em;
+  margin-top:-2.4em;
   line-height:2.1em;
 }
 
@@ -88,6 +126,14 @@ Note: Beware of modifying this element as it can break the animations - you shou
   margin-left: -1.5em !important;
   margin-right: -3.5em !important;
   margin-bottom: 2em !important;
+  max-height: 920px;
+  flex-direction: column;
+}
+
+.bm-subcat-block {
+  height: fit-content;
+  flex-basis: auto;
+  margin-bottom: -0.6em;
 }
 
 .bm-subcat-header {

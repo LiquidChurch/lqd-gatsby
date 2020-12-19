@@ -35,12 +35,14 @@ export default ({
   }
   
   const [textAreaPosition, setTextAreaPosition] = useState(0)
+  const [ imageHeight, setImageHeight ] = useState(200)
   var imageUrl = imageInfo.mediaItemUrl.split("/")
   useEffect (() => {
     function setTextAreaHeight() {
       let textAreaHeight = 66
       textAreaHeight = (!document.getElementById('hero-text-area') ? 0 : document.getElementById('hero-text-area').offsetHeight)
       setTextAreaPosition(textAreaHeight)
+      setImageHeight(window.innerHeight * 0.8)
     }
     
     setTextAreaHeight()
@@ -54,6 +56,7 @@ export default ({
       <Imgix 
         src={process.env.IMGIX_URL + imageUrl[process.env.IMG_DIR_INDEX] + "/" + imageUrl[process.env.IMG_FILE_INDEX]}
         className={'hero-image-' + image_style.split(":")[0]}
+        height={imageHeight}
         sizes="100vh" />
       <div 
         id={'hero-text-area'}

@@ -23,7 +23,7 @@ export default ({
 }) => {
   const generalSettings = useGeneralSettings()
   const ctx = useContext(GlobalContext)
-  
+ 
   let parentPageUri = "/"
   
   if (page.parentDatabaseId !== null) {
@@ -68,22 +68,34 @@ export default ({
   let hasExternalRedirect = false
   
   if (externalRedirectBlock !== undefined) {
+    console.log(externalRedirectBlock)
     hasExternalRedirect = true
     pageValid = false
   }
   
   useEffect(() => {
-    let userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent;    
+    
+    let userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent.toLowerCase()
     if (!ctx.isMobileSet) {
-      ctx.setIsMobile(Boolean(userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i)))
+      ctx.setIsMobile(Boolean(userAgent.match(/android|blackBerry|iphone|ipad|ipod|opera mini|iemobile|wpdesktop/i)))
+    
+      if (userAgent.indexOf('safari') !== -1) { 
+        if (userAgent.indexOf('chrome') > -1) {
+          ctx.setIsChrome(true)
+        } else {
+          ctx.setIsChrome(false)
+        }
+      } 
     } 
+    
+    
     
     if (hasExternalRedirect) {
       //add in open in new tab attempt
       if (ctx.currPath !== 'external') {
         ctx.setPath("external")
-        if (externalRedirectBlock.attributes.new_tab && !ctx.isMobile) {
-          window.open(externalRedirectBlock.attributes.external_url) 
+        if (externalRedirectBlock.attributes.new_tab && !ctx.isMobile && ctx.isChrome) {
+          window.open(externalRedirectBlock.attributes.external_url, '_blank', 'noreferrer') 
         } else {
           window.location.replace(externalRedirectBlock.attributes.external_url)
         }

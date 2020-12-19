@@ -84,10 +84,25 @@ fragment BlockFragment on Block {
   parentNodeDatabaseId
   saveContent
   __typename
-  ... on BlockLabAccordionBlock {
-    attributes__typename_BlockLabAccordionBlockAttributes: attributes {
+  ... on FilebirdBlockFilebirdGalleryBlock {
+    attributes__typename_FilebirdBlockFilebirdGalleryBlockAttributes: attributes {
+      align
+      columns
+      foldres
+      hasCaption
+      images
+      isCropped
+      isLoading
+      linkTo
+      selectedFolder
+    }
+  }
+  ... on BlockLabPhotoGridBlock {
+    attributes__typename_BlockLabPhotoGridBlockAttributes: attributes {
       bg_color
-      items
+      column
+      image_list
+      max_width
       padding
     }
   }
@@ -96,32 +111,40 @@ fragment BlockFragment on Block {
       label
     }
   }
-  ... on BlockLabButtonBlock {
-    attributes__typename_BlockLabButtonBlockAttributes: attributes {
-      add_padding
-      alignment
+  ... on BlockLabPostTilesBlock {
+    attributes__typename_BlockLabPostTilesBlockAttributes: attributes {
       bg_color
-      block_off
-      block_on
-      btn_color
-      btn_outline
-      dropdown
-      font_color
-      has_arrow
-      has_icon
-      min_width
+      category
+      layout
+      num_items
       padding
-      page
-      size
-      text
-      text_float
-      url_append
+      posts_list
+      type
     }
   }
-  ... on BlockLabExternalRedirectBlock {
-    attributes__typename_BlockLabExternalRedirectBlockAttributes: attributes {
-      external_url
-      new_tab
+  ... on BlockLabSeriesTilesBlock {
+    attributes__typename_BlockLabSeriesTilesBlockAttributes: attributes {
+      bg_color
+      layout
+      num_items
+      padding
+      series_list
+      type
+    }
+  }
+  ... on BlockLabAccordionBlock {
+    attributes__typename_BlockLabAccordionBlockAttributes: attributes {
+      bg_color
+      items
+      padding
+    }
+  }
+  ... on BlockLabVideoBlock {
+    attributes__typename_BlockLabVideoBlockAttributes: attributes {
+      bg_color
+      padding
+      video_title
+      video_url
     }
   }
   ... on BlockLabGoogleMapBlock {
@@ -132,117 +155,25 @@ fragment BlockFragment on Block {
       zoom
     }
   }
-  ... on BlockLabHeadingBlock {
-    attributes__typename_BlockLabHeadingBlockAttributes: attributes {
-      add_padding
-      alignment
-      all_caps
+  ... on BlockLabAttributionsBlock {
+    attributes__typename_BlockLabAttributionsBlockAttributes: attributes {
+      attribution_list
       bg_color
-      font_color
+      layout
       padding
-      show_hr
-      size
-      text
-    }
-  }
-  ... on BlockLabHeroImageBlock {
-    attributes__typename_BlockLabHeroImageBlockAttributes: attributes {
-      alignment
-      bg_color
-      color
-      cta
-      image_id
-      image_style
-      padding
-      sidekick
-      size
-      spacing
-      statement
-    }
-  }
-  ... on BlockLabHomeLinksBlock {
-    attributes__typename_BlockLabHomeLinksBlockAttributes: attributes {
-      background_color
-      page_list
-    }
-  }
-  ... on BlockLabHomepageHeroBlock {
-    attributes__typename_BlockLabHomepageHeroBlockAttributes: attributes {
-      cta_label
-      cta_url
-      hero_image
-      hero_tag
-      hero_text
-    }
-  }
-  ... on BlockLabMessageTileBlock {
-    attributes__typename_BlockLabMessageTileBlockAttributes: attributes {
-      bg_color
-      block_title
-      padding
-    }
-  }
-  ... on BlockLabLinkTilesBlock {
-    attributes__typename_BlockLabLinkTilesBlockAttributes: attributes {
-      bg_color
-      padding
-      slugs_list
-    }
-  }
-  ... on BlockLabMediaTilesBlock {
-    attributes__typename_BlockLabMediaTilesBlockAttributes: attributes {
-      bg_color
-      category
-      display_type
-      media_list
-      num_items
-      padding
-      show_attribution
       show_blurb
-      show_series
-      type
+      show_email
     }
   }
-  ... on BlockLabPageModalBlock {
-    attributes__typename_BlockLabPageModalBlockAttributes: attributes {
-      modal_id
-      modal_text
-      modal_title
-    }
-  }
-  ... on BlockLabPageStrapBlock {
-    attributes__typename_BlockLabPageStrapBlockAttributes: attributes {
-      alignment
-      all_caps
-      bg_color
-      block_off
-      block_on
-      color
-      cta
-      font_color
-      image_id
-      image_size
-      padding
-      sidekick
-      size
-      spacing
-      statement
-      width
+  ... on BlockLabIframeBlock {
+    attributes__typename_BlockLabIframeBlockAttributes: attributes {
+      src
     }
   }
   ... on BlockLabPhotoCarouselBlock {
     attributes__typename_BlockLabPhotoCarouselBlockAttributes: attributes {
       bg_color
       images
-      padding
-    }
-  }
-  ... on BlockLabPhotoGridBlock {
-    attributes__typename_BlockLabPhotoGridBlockAttributes: attributes {
-      bg_color
-      column
-      image_list
-      max_width
       padding
     }
   }
@@ -269,32 +200,130 @@ fragment BlockFragment on Block {
       text_block_secondary
     }
   }
-  ... on BlockLabAttributionsBlock {
-    attributes__typename_BlockLabAttributionsBlockAttributes: attributes {
-      attribution_list
+  ... on BlockLabMediaTilesBlock {
+    attributes__typename_BlockLabMediaTilesBlockAttributes: attributes {
       bg_color
-      layout
-      padding
-      show_blurb
-      show_email
-    }
-  }
-  ... on BlockLabSeriesTilesBlock {
-    attributes__typename_BlockLabSeriesTilesBlockAttributes: attributes {
-      bg_color
-      layout
+      category
+      display_type
+      media_list
       num_items
       padding
-      series_list
+      show_attribution
+      show_blurb
+      show_series
       type
     }
   }
-  ... on BlockLabVideoBlock {
-    attributes__typename_BlockLabVideoBlockAttributes: attributes {
+  ... on BlockLabButtonBlock {
+    attributes__typename_BlockLabButtonBlockAttributes: attributes {
+      add_padding
+      alignment
+      bg_color
+      block_off
+      block_on
+      btn_color
+      btn_outline
+      dropdown
+      font_color
+      has_arrow
+      has_icon
+      min_width
+      padding
+      page
+      size
+      text
+      text_float
+      url_append
+    }
+  }
+  ... on BlockLabHeadingBlock {
+    attributes__typename_BlockLabHeadingBlockAttributes: attributes {
+      add_padding
+      alignment
+      all_caps
+      bg_color
+      font_color
+      padding
+      show_hr
+      size
+      text
+    }
+  }
+  ... on BlockLabLinkTilesBlock {
+    attributes__typename_BlockLabLinkTilesBlockAttributes: attributes {
       bg_color
       padding
-      video_title
-      video_url
+      slugs_list
+    }
+  }
+  ... on BlockLabPageModalBlock {
+    attributes__typename_BlockLabPageModalBlockAttributes: attributes {
+      modal_id
+      modal_text
+      modal_title
+    }
+  }
+  ... on BlockLabMessageTileBlock {
+    attributes__typename_BlockLabMessageTileBlockAttributes: attributes {
+      bg_color
+      block_title
+      padding
+    }
+  }
+  ... on BlockLabHomeLinksBlock {
+    attributes__typename_BlockLabHomeLinksBlockAttributes: attributes {
+      background_color
+      page_list
+    }
+  }
+  ... on BlockLabPageStrapBlock {
+    attributes__typename_BlockLabPageStrapBlockAttributes: attributes {
+      alignment
+      all_caps
+      bg_color
+      block_off
+      block_on
+      color
+      cta
+      font_color
+      image_id
+      image_size
+      padding
+      sidekick
+      size
+      spacing
+      statement
+      width
+    }
+  }
+  ... on BlockLabExternalRedirectBlock {
+    attributes__typename_BlockLabExternalRedirectBlockAttributes: attributes {
+      external_url
+      new_tab
+    }
+  }
+  ... on BlockLabHomepageHeroBlock {
+    attributes__typename_BlockLabHomepageHeroBlockAttributes: attributes {
+      cta_label
+      cta_url
+      hero_image
+      hero_tag
+      hero_text
+    }
+  }
+  ... on BlockLabHeroImageBlock {
+    attributes__typename_BlockLabHeroImageBlockAttributes: attributes {
+      alignment
+      bg_color
+      color
+      cta
+      image_id
+      image_style
+      padding
+      sidekick
+      size
+      spacing
+      statement
     }
   }
   ... on CoreParagraphBlock {
@@ -377,9 +406,13 @@ fragment BlockFragment on Block {
   ... on CoreListBlock {
     attributes__typename_CoreListBlockAttributes: attributes {
       anchor
+      backgroundColor
+      gradient
       ordered
       reversed
       start
+      style
+      textColor
       type
       values
     }

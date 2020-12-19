@@ -9,9 +9,21 @@
 }
 
 .searchbox {
+    margin-top:-12px;
     margin-bottom: 2rem;
+    width: 99vw;
 }
-  
+ 
+.algolia-position {
+    position: relative;
+    height: 17px;
+    width: 120px;
+    top: -25px;
+    right: 9px;
+    margin-left: auto;
+    margin-bottom: -17px;
+}
+
 .search-pagination {
     margin: 2rem auto;
     text-align: center;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -8,15 +8,16 @@ import Heading from '../Blocks/Heading'
 import MediaCard from '../Blocks/MediaTiles/mediaCard'
 
 import algoliasearch from 'algoliasearch/lite';
-import { InstantSearch, connectHits, SearchBox } from 'react-instantsearch-dom'
+import { getDate } from '../../helpers/functions'
+import { InstantSearch, connectHits, SearchBox, connectStateResults } from 'react-instantsearch-dom'
 import './styles.css'
-
 const appId = process.env.GATSBY_ALGOLIA_APP_ID
 const searchKey = process.env.GATSBY_ALGOLIA_SEARCH_KEY
 const searchIndex = process.env.GATSBY_ALGOLIA_INDEX_NAME
 const searchClient = algoliasearch(appId, searchKey)
 
 export default(location) => {
+  const [hasSearch, setHasSearch] = useState(false)
   return (
     <>
       <Heading
@@ -32,14 +33,21 @@ export default(location) => {
       <InstantSearch 
         searchClient={searchClient} 
         indexName={searchIndex}
+        onSearchStateChange={searchState => {
+          if (searchState.query !== "") {
+            setHasSearch(true)
+          } else {
+            setHasSearch(false)
+          }
+        }}
       > 
         <section className="site-section bottom">
           <Container>
-            <Row>      
+            <Row>
               <SearchBox
-                  className="searchbox"
+                  className="searchbox "
                   translations={{
-                      placeholder: '',
+                      placeholder: 'Type something',
                   }}
               />
             </Row>
@@ -49,7 +57,9 @@ export default(location) => {
           <Container>
             <Row>
               <Col className="media-card-wrap">
-                <CustomHits />
+                {hasSearch &&
+                  <CustomHits />
+                }
               </Col>
             </Row>
           </Container>
@@ -59,10 +69,18 @@ export default(location) => {
   );
 }
 
-const HitsTest = ({hits}) => {
+const HitsTest = (props) => {
   return (
   <>
-    {hits.map(hit => {
+    {props.hits.map(hit => {
+     
+
+     let isValid=false
+     if ((hit.publishDate === null || getDate('') >= Date.parse(hit.publishDate.replace(/\s/g, 'T'))) &&
+       (hit.unpublishDate === null || getDate('') < Date.parse(hit.unpublishDate.replace(/\s/g, 'T')))) {
+         isValid=true
+      }
+     
       const mediaItem = {
         category: hit.pageType,
         slug: hit.slug,
@@ -76,9 +94,11 @@ const HitsTest = ({hits}) => {
     }
      return (
      <>
+    {isValid &&
         <MediaCard
-          mediaItem={mediaItem}
+          mediaItem={mediaItem} key={'search-result-' + hit.slug}
         />
+    }
      </>
      )
     })}
@@ -87,4 +107,3 @@ const HitsTest = ({hits}) => {
 }
 
 const CustomHits = connectHits(HitsTest)
-

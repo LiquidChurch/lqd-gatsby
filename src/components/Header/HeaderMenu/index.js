@@ -4,6 +4,7 @@ import { Link, graphql, useStaticQuery } from "gatsby"
 import Navbar from 'react-bootstrap/Navbar'
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import { MegaMenuContext } from '../MegaMenu/context.js'
+import { GlobalContext } from '../../GlobalContext/context.js'
 
 import "./styles.css"
 
@@ -12,6 +13,8 @@ import "./styles.css"
  */
 export default ({ location }) => {
   const ctx = useContext(MegaMenuContext)
+  const globalCtx = useContext(GlobalContext)
+  let themeState = globalCtx.currentTheme.toLowerCase()
   
   const data = useStaticQuery(graphql`
     query {
@@ -27,7 +30,7 @@ export default ({ location }) => {
     }
   `)
   return (
-    <Navbar aria-label="Mobile Menu" fixed="bottom" bg="light" className="mobile-menu">
+    <Navbar aria-label="Mobile Menu" fixed="bottom" bg="light" className={'mobile-menu ' + themeState} >
       <ButtonGroup className="mobile-menu-burger">
         <button
           className="btn btn-mobile-menu-burger burger-icon" 

@@ -40,11 +40,13 @@ function SocialShare(props) {
 
 const SocialIcons = ({
   slug,
+  category,
+  uri,
 }) => {
   const ctx = useContext(PageModalContext)
   var modalId = 'share-modal'
   var modalTitle = "Share This Message"
-  var url = "https://dev2.liquidchurch.com/message/" + slug
+  var url = "https://liquidchurch.com/" + category + "/" + slug
   return (
     <>
       <Nav className='flex-nowrap flex-row message-action-area' as='ul'>
@@ -75,16 +77,19 @@ const SocialIcons = ({
             href="/give" 
             aria-label="give"
             className={'message-action-icon give-outline-icon'}
-            target="_blank"
           >
           </Nav.Link>
           <div className="message-action-text">Give</div>
         </Nav.Item>
       </Nav>
-      <PageModal 
+      <PageModal
+        keyValue={'social-share-'+slug}
         modal_title={modalTitle}
         modal_text={<SocialShare url={url}/>}
+        modal_obj={true}
         modal_id={modalId}
+        modal_cta=''
+        modal_link=''
       />
     </>
   ) 

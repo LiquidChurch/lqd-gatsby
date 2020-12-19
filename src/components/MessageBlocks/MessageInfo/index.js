@@ -74,6 +74,7 @@ export default (lqdmMessage) => {
           attributions={lqdmMessage.attributions}
           attributionsCo={lqdmMessage.attributionsCo}
           title={lqdmMessage.title}
+          category="messages"
           slug={lqdmMessage.slug}
         />
         <hr className="message-hr" />

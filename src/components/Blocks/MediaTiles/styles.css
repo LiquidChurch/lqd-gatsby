@@ -15,10 +15,15 @@
 }
 
 .media-card {
+  /*
   min-width: 265.5px;
   max-width: 265.5px;
-  border-width: 0px;
   margin: 20px 6px;
+  */
+  min-width: 259.5px;
+  max-width: 259.5px;
+  margin: 20px 9px;
+  border-width: 0px;
   border-radius: 1em;
   border-color:transparent;
   background-color:transparent;
@@ -29,15 +34,20 @@
   border-color: #a4a4a4 !important;
   background-color: #a4a4a4;
   border-width: 3px;
-  min-width: 271.5px;
+  /* min-width: 271.5px;
   max-width: 271.5px;
-  margin: 17px 3px;
+  margin: 17px 3px; */
+  min-width: 265.5px;
+  max-width: 265.5px;
+  margin: 17px 6px;
   border-radius: 1.3em;
 }
 
 .media-card-message {
   max-height:228px;
   min-height: 70px;
+  padding-left:1rem;
+  padding-right:1rem;
 }
 
 .media-card-link:hover {
@@ -103,19 +113,23 @@
   width: 50px;
   position:relative;
   display:inline-block;
-  bottom: 14px;
+  bottom: 4px;
   left: -8px;
+  border-radius: 25px;
+  vertical-align: top;
 }
 
 .media-card-attribution-info {
   display: inline-block;
   position:relative;
+  vertical-align:text-top;
+  bottom:7px;
 }
 .media-card-name {
   position: relative;
   font-size: 0.9em;
   font-weight: 600;
-  margin-top:-5px;
+  margin-top:0px;
 }
 
 .media-card-icon {
@@ -253,6 +267,8 @@
   position:relative;
   display:inline-block;
   border-radius: 25px;
+  vertical-align:top;
+  bottom: -24px;
 }
 
 @media (max-width:1199px) {
