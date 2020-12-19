@@ -55,7 +55,7 @@ const VideoPlayer = ({
             textAlign:'center',
             width:dimensions.width,
             height:(dimensions.height - 1),
-            borderRadius:'20px',
+            borderRadius:'1em',
             overflow: 'hidden',
             zIndex: 1,
             margin: '0 auto',
