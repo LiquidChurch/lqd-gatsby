@@ -121,16 +121,16 @@ const MegaMenu = () => {
           <ClearIcon />
         </button>
         <Row className="bm-maincat">
-         <Link key={'search-btn'}
-          id={'megamenu-search'}
-          aria-label={'search'}
-          aria-hidden={!ctx.isMenuOpen}
-          className="btn bm-search-button"
-          tabIndex={tabIndex}
-          to={'/search'}>
-          <span className={'bm-search-text'}>SEARCH</span>
-          <span className={'bm-search-icon magnifier-icon bm-icon'}></span>
-        </Link> 
+          <Link key={'search-btn'}
+            id={'megamenu-search'}
+            aria-label={'search'}
+            aria-hidden={!ctx.isMenuOpen}
+            className="btn bm-search-button"
+            tabIndex={tabIndex}
+            to={'/search'}>
+            <span className={'bm-search-text'}>SEARCH</span>
+            <span className={'bm-search-icon magnifier-icon bm-icon'}></span>
+          </Link> 
           {mainCategory.childItems.nodes.map(mainItem => {
             const { id, label } = mainItem
             var icon = label.replace(/\s+/g, "-").toLowerCase();
