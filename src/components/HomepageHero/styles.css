@@ -29,7 +29,7 @@
 
 .homepage-hero-image.loaded {
   transform: scaleX(1) scaleY(1);
-  filter: brightness(0.8);
+  filter: brightness(0.6);
 }
 
 .homepage-hero-text-block {
@@ -136,6 +136,7 @@
   
   .homepage-hero-image-crop {
     height: 98.5%;
+    object-position:right;
   }
 }
 
