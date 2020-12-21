@@ -64,7 +64,7 @@ function ScriptureList(props) {
   }
 }
 
-export default (lqdmMessage) => {  
+export default (lqdmMessage) => {
   return (
     <>
     <section className="fullwidth-section message-info-section">

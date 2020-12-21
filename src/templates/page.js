@@ -68,7 +68,6 @@ export default ({
   let hasExternalRedirect = false
   
   if (externalRedirectBlock !== undefined) {
-    console.log(externalRedirectBlock)
     hasExternalRedirect = true
     pageValid = false
   }

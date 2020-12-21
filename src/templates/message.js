@@ -101,6 +101,7 @@ export const query = graphql`
       blocks {
         ...AllBlocks
       }
+      content
       title
       modified
       attributions {
