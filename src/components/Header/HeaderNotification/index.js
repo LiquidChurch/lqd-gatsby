@@ -42,9 +42,9 @@ export default ({ text, cta, url, variant }) => {
       <Alert key="test" variant={variant} className="header-notification" 
          onClose={ctx.toggleNotification} dismissible>
         <Row className="justify-content-sm-center">
-          <Col xs="auto">
+          <Col className="notification-col">
             <div className="notification-text">
-              {Parse(text)}
+              <span>{Parse(text)}</span>
             </div>
           <ShowCtaCheck url={url} cta={cta} variant={variant} />
           </Col>
