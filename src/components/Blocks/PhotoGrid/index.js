@@ -34,6 +34,9 @@ export default ({
     let tempItem = useImageById(item.image)
     tempItem.mediaArray = tempItem.mediaItemUrl.split("/")
     tempItem.tabBehavior = imageListObject.rows[i].tab_behavior
+    if (tempItem.tabBehavior === "") {
+      tempItem.tabBehavior = "none"
+    }
     tempItem.linkUrl = imageListObject.rows[i].url
     imagesInfo.push(tempItem)
   })
@@ -62,6 +65,7 @@ export default ({
               {col.map(image => {
                 return (
                 <Col sm={12} md={colNum}>
+                  <div style={{maxWidth: max_width, margin: 'auto'}}>
                   {image.id && 
                     <>
                       {
@@ -92,6 +96,7 @@ export default ({
                         }
                     </>
                   } 
+                </div>
                 </Col>
                )               
               })}  
