@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Imgix from 'react-imgix'
 import { useLocation } from '@reach/router';
 
@@ -59,13 +59,8 @@ export default ({
   const [isPublished, setIsPublished] = useState(false)
   const [checkedPublished, setCheckPublished] = useState(false)
   
-  if (!checkedPublished) {
-    if (((block_on === null || block_on.trim() === "") || currentDate >= Date.parse(block_on)) &&
-        ((block_off === null || block_off.trim() === "") || currentDate < Date.parse(block_off))) {
-      setIsPublished(true)
-    }
-      setCheckPublished(true)
-  }
+
+  
   var hasImage = false
   if (image_id !== null && image_id !== undefined && image_id !== 0) { hasImage = true }
 
@@ -83,10 +78,23 @@ export default ({
   
   let textAreaWidth = 12
   if (hasImage === true) { textAreaWidth = 12 - image_size }
+  
+  useEffect(
+    () => {
+      if (!checkedPublished) {
+        if (((block_on === null || block_on.trim() === "") || currentDate >= Date.parse(block_on)) &&
+            ((block_off === null || block_off.trim() === "") || currentDate < Date.parse(block_off))) {
+          setIsPublished(true)
+        }
+          setCheckPublished(true)
+      }
+  },[checkedPublished, setCheckPublished, setIsPublished, block_off, block_on, currentDate])
+  
+  
   return (
   <>
-  {isPublished &&
-    <section className={'site-section ' + padding} style={{backgroundColor: bg_color}}>
+    <section className={isPublished ? 'site-section ' + padding : 'site-section ' + padding + ' no-display'} 
+            style={{backgroundColor: bg_color}}>
     <Container>
       <Row>
         <Col xs={{span: xsWidth, offset: xsOffset}}
@@ -113,7 +121,6 @@ export default ({
       </Row>
     </Container>
     </section>
-  }
   </>
   )
 }

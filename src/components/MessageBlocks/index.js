@@ -46,7 +46,7 @@ export default (lqdmMessage) => {
       "image": message.featuredImage.node.mediaItemUrl,
       "id": message.id,
       "slug": message.slug,
-      "showBlurb": false,
+      "showBlurb": true,
       "blurb": message.content,
       "showSeries": true,
       "seriesTitle": message.seriesList.nodes[0].name,
@@ -87,7 +87,7 @@ export default (lqdmMessage) => {
       />    
       <MediaTiles 
           type="internal" 
-          display_type="grid"
+          display_type="slider"
           bg_color="#F8F8F8"
           padding="bottom"
           media_list={seriesSlugs} />

@@ -7,7 +7,6 @@ import Layout from "../components/Layout"
 import PageBlocks from "../components/PageBlocks"
 import { GlobalContext } from '../components/GlobalContext/context'
 import { getDate, isAppView } from '../helpers/functions'
-import { PageModalProvider } from "../components/PageModal/context.js"
 
 import HeroFeature from "../components/HeroFeature"
 
@@ -82,12 +81,8 @@ export default ({
         }
       </Helmet>
       <article className="page">
-    <PageModalProvider>
         <HeroFeature {...post} />
-          <div className="blog">
         <PageBlocks {...post} />
-        </div>
-    </PageModalProvider>
       </article>
     </Layout>
   )

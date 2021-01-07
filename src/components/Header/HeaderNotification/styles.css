@@ -6,24 +6,38 @@
   padding-right:17px;
 }
 
+.notification-col {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap:wrap;
+}
+
 .notification-text {
-  display:inline;
-  margin-right:12px;
+  display:flex;
+  margin: 0 auto;
+  margin-left: 3px;
+  padding-right: 15px;
+  text-align:left;
+  filter: brightness(0.5);  
 }
 
 .notification-cta {
-  display:inline;
+  display:flex;
+  margin: 0 20px;
 }
 
 .notification-cta-button {
   height: 1.5em;
   line-height: 0.6em;
   border-radius: 0.9em;
+  border-width: 2px;
   padding-top: 0.5em;
   padding-left: 1.5em;
   padding-right: 1.5em;
   white-space: nowrap;
   padding-bottom: 1.0em;
+  font-family:'Avenir Next Demi';
 }
 
 .alert-dismissible .close {

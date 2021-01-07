@@ -6,7 +6,6 @@ export default ({
 }) => {
   let locationPath = location.pathname.toLowerCase()
   let urlPath = locationPath.split("/").filter(n => n)
-  console.log('404 page', urlPath)
   let subPath = ""
   
   for (let i = 1; i < urlPath.length; i++ ){
@@ -46,7 +45,6 @@ export default ({
           if (foundPage !== null) {
             window.location.replace(foundPage.uri)
           } else {
-            console.log('404 page no match', location)
             setTimeout(() => {window.location.replace('/')},1000)
           }
        }

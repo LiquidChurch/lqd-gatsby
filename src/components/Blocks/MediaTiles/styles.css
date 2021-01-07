@@ -76,7 +76,8 @@
   overflow-y:hidden;
   display: -webkit-box;
   -webkit-line-clamp: 7;
-  -webkit-box-orient: vertical;     
+  -webkit-box-orient: vertical;
+  white-space: normal;
 }
 
 .media-card-series {
