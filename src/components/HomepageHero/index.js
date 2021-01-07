@@ -19,7 +19,7 @@ export default ({
   cta_url,
 }) => {
   const ctx = useContext(GlobalContext)
-  const [runEffect, setRunEffect] = useState(false)
+  const [ runEffect, setRunEffect ] = useState(false)
   const [ imageHeight, setImageHeight ] = useState(200)  
   if (runEffect === false && ctx.isInitialLoad === false) {
     setRunEffect(true)
@@ -49,7 +49,7 @@ export default ({
     <Container fluid className="homepage-hero-container">
       <div className={runEffect ? "homepage-hero-image loaded" : "homepage-hero-image"}>
         <Imgix 
-           src={process.env.IMGIX_URL + hero_image + "?gam=50"} 
+           src={process.env.IMGIX_URL + "/" + hero_image + "?gam=50"} 
            className="homepage-hero-image-crop" 
            height={imageHeight}
            sizes="150vw" />

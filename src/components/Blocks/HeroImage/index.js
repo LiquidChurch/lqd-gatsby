@@ -4,7 +4,9 @@ import Imgix from 'react-imgix'
 import Container from 'react-bootstrap/Container'
 import TextArea from '../../Commons/TextArea'
 
+import { mediaUrlConverter } from '../../../helpers/functions'
 import { useImageById } from '../../../data/useImage'
+
 
 import './styles.css'
 
@@ -36,7 +38,8 @@ export default ({
   
   const [textAreaPosition, setTextAreaPosition] = useState(0)
   const [ imageHeight, setImageHeight ] = useState(200)
-  var imageUrl = imageInfo.mediaItemUrl.split("/")
+  var imageUrl = mediaUrlConverter(imageInfo.mediaItemUrl)
+  
   useEffect (() => {
     function setTextAreaHeight() {
       let textAreaHeight = 66
@@ -54,7 +57,7 @@ export default ({
     <section id="hero-image" className="fullwidth-section" style={{backgroundColor: bg_color}}>
     <Container fluid className={'hero-image-container-' + image_style.split(":")[0]}>
       <Imgix 
-        src={process.env.IMGIX_URL + imageUrl[process.env.IMG_DIR_INDEX] + "/" + imageUrl[process.env.IMG_FILE_INDEX]}
+        src={imageUrl}
         className={'hero-image-' + image_style.split(":")[0]}
         height={imageHeight}
         sizes="100vh" />

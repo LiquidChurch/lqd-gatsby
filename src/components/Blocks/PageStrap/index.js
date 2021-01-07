@@ -9,7 +9,7 @@ import Row from 'react-bootstrap/Row'
 import TextArea from '../../Commons/TextArea'
 
 import { useImageById } from "../../../data/useImage"
-import { getDate } from '../../../helpers/functions'
+import { getDate, mediaUrlConverter } from '../../../helpers/functions'
 //import { PageModalContext } from '../../PageModal/context'
 
 import "./styles.css"
@@ -18,11 +18,11 @@ function StrapImage(props) {
   const image_info = useImageById(props.strap_image_id)
   
   if (image_info !== undefined) {
-    var imgUrl = image_info.mediaItemUrl.split("/")
+    var imageUrl = mediaUrlConverter(image_info.mediaItemUrl)
     return (
       <Col xs={props.strap_image_size * 2} md={props.strap_image_size} className="page-strap-image-col">
         <Imgix 
-          src={process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX] + "?fit=fillmax&w=" + props.max_width}
+          src={imageUrl + "?fit=fillmax&w=" + props.max_width}
           className="page-strap-image"
           size="100vw"
           />
@@ -31,7 +31,6 @@ function StrapImage(props) {
   }  
   return null
 }
-
 
 /**
  * Page Strap Block Component
@@ -58,8 +57,6 @@ export default ({
   const currentDate = getDate(useLocation().search)
   const [isPublished, setIsPublished] = useState(false)
   const [checkedPublished, setCheckPublished] = useState(false)
-  
-
   
   var hasImage = false
   if (image_id !== null && image_id !== undefined && image_id !== 0) { hasImage = true }

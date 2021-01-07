@@ -4,12 +4,14 @@ import Row from 'react-bootstrap/Row'
 import Imgix from 'react-imgix'
 
 import TitleBlock from "../Commons/TitleBlock"
+import { mediaUrlConverter } from '../../helpers/functions'
+
 import './styles.css'
 /**
  * Hero - Feature Component
  */
 export default (props) => {
-  var imgUrl = props.featuredImage.node.mediaItemUrl.split("/")
+  var imageUrl = mediaUrlConverter(props.featuredImage.node.mediaItemUrl)
   let messageDate = ""
   if (props.publication.publishDate !== null) {
     messageDate = props.publication.publishDate.replace(/\s/g, 'T')
@@ -22,7 +24,7 @@ export default (props) => {
     <Container className={'hero-image-container-fixed'}>
       <Row>  
         <Imgix 
-          src={process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX]}
+          src={imageUrl}
           className={'hero-featured-image'}
           sizes="100vw" />
       </Row>

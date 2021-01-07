@@ -7,13 +7,15 @@ import Col from 'react-bootstrap/Col'
 import Imgix from 'react-imgix'
 import { Link } from 'gatsby'
 
+import { mediaUrlConverter } from '../../helpers/functions'
+
 import './styles.css'
 
 /**
  * Series Title Component
  */
 export default (series) => {
-  var imgUrl = series.SeriesImage.image.mediaItemUrl.split("/")
+  var imageUrl = mediaUrlConverter(series.SeriesImage.image.mediaItemUrl)
   let padding = "bottom"
   let bg_color = "#F8F8F8"
   return (
@@ -24,7 +26,7 @@ export default (series) => {
       <Col xs={12} lg={6}>
       <Link to={"/series/" + series.slug}>
         <Imgix
-          src={process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX] + "?ar=16:9&fit=crop&h=545"}
+          src={imageUrl + "?ar=16:9&fit=crop&h=545"}
           className="message-tile-image"
           sizes="90vw" />
       </Link>

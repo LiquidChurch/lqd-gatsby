@@ -14,7 +14,7 @@ import { useCampusById } from "../../../data/useCampus"
 import { usePageById } from '../../../data/usePage'
 
 import { useImageById } from "../../../data/useImage"
-import { ClassicTextHelper, getDate } from "../../../helpers/functions.js"
+import { ClassicTextHelper, getDate, mediaUrlConverter } from "../../../helpers/functions.js"
 
 import "./photoTab.css"
 
@@ -97,11 +97,11 @@ export default ({
     campusInfo.cta_link=pageInfo.uri
     campusList.push(campusInfo)
   } else {
-    var imageInfo = useImageById(image_id)    
+    var imageInfo = useImageById(image_id) 
     if (imageInfo === undefined) {
       return(<></>)
     } else {
-      var imgUrl = imageInfo.mediaItemUrl.split("/")         
+      var imageUrl = mediaUrlConverter(imageInfo.mediaItemUrl)
     }
   }
   
@@ -171,7 +171,7 @@ export default ({
             className={(imgOrder === 1) ? "photo-tab-image-col photo-tab-left" : "photo-tab-image-col"}>
           {usePhoto ? 
             <Imgix 
-              src={process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX] + "?ar=1:1&fit=crop&h=525"}
+              src={imageUrl + "?ar=1:1&fit=crop&h=525"}
               className="photo-tab-image"
               height={525}
               /> :

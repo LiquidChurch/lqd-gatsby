@@ -2,6 +2,7 @@ import React from 'react'
 import Imgix from 'react-imgix'
 import Parse from "react-html-parser"
 
+import { mediaUrlConverter } from '../../../helpers/functions'
 import { useAttributionById } from '../../../data/useAttribution'
 
 const FeaturedAttribute = ({
@@ -10,12 +11,13 @@ const FeaturedAttribute = ({
     showEmail,
   }) => {
   const attributeObject = useAttributionById(attribute.id)
-  const imageUrl = attributeObject.profileImage.image.mediaItemUrl.split("/")
+  const imageUrl = mediaUrlConverter(attributeObject.profileImage.image.mediaItemUrl)
+    
   return (
   <>
     <div>
       <Imgix 
-        src={process.env.IMGIX_URL + imageUrl[process.env.IMG_DIR_INDEX] + "/" + imageUrl[process.env.IMG_FILE_INDEX] + "?ar=1:1&fit=crop&crop=faces&mask=ellipse&w=240&h=240"}
+        src={imageUrl + "?ar=1:1&fit=crop&crop=faces&mask=ellipse&w=240&h=240"}
         className={'attribution-profile-image'}
         height={240}
         width={240}

@@ -7,6 +7,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
 import { useImageById } from "../../data/useImage"
+import { mediaUrlConverter } from '../../helpers/functions'
 
 import './styles.css'
 
@@ -42,12 +43,12 @@ export default ({ images }) => {
                 onSelect={setCarousel}
               >
                 {imagesInfo.map(image => {
-                  var imgUrl = image.mediaItemUrl.split("/")
+                  var imageUrl = mediaUrlConverter(image.mediaItemUrl)
                   return (
                     <Carousel.Item
                       key={'carouse-image-item-' + image.id}>
                       <Imgix 
-                        src={process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX] + "?ar=16:9&fit=crop&corner-radius=20,20,20,20"}
+                        src={imageUrl + "?ar=16:9&fit=crop&corner-radius=20,20,20,20"}
                         className={'carousel-image'}
                         sizes="110vw" />
                     </Carousel.Item>
@@ -58,7 +59,7 @@ export default ({ images }) => {
             <Col sm={{span:12, offset:0}} md={{span:10, offset:1}} lg={{span:8, offset:2}}>
               <div className={carouselControl ? 'carousel-control' : 'carousel-control-hidden'}>
               {imagesInfo.map((image, index) => {               
-                var imgUrl = image.mediaItemUrl.split("/")
+                var imageUrl = mediaUrlConverter(image.mediaItemUrl)               
                 var buttonWidth = 100 / imagesInfo.length
                 return (
                       <button className={'carousel-control-button'} 
@@ -66,7 +67,7 @@ export default ({ images }) => {
                          onClick={() => setCarousel(index)}
                          key={'carousel-control-image-link-' + image.id}>
                         <Imgix 
-                          src={process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX] + "?ar=16:9&fit=crop&h=120&corner-radius=20,20,20,20"}
+                          src={imageUrl + "?ar=16:9&fit=crop&h=120&corner-radius=20,20,20,20"}
                           className={(carouselIndex===index) ? 'carousel-control-image' : 'carousel-control-image greyed'}
                           height={93}
                         />

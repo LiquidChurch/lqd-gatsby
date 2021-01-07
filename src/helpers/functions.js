@@ -67,3 +67,13 @@ export const isAppView = (searchValue) => {
     }
     return ''
 }
+
+export const mediaUrlConverter = (wpMediaUrl) => {
+  let tempUrlArray = wpMediaUrl.split("/")
+  
+  let imgixUrl = process.env.IMGIX_URL
+  for (let i = process.env.IMG_DIR_INDEX; i < tempUrlArray.length; i++) {
+    imgixUrl = imgixUrl + '/' + tempUrlArray[i]
+  }
+  return imgixUrl
+}

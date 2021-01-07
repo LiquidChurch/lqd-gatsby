@@ -4,6 +4,8 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Imgix from 'react-imgix'
 import { useImageById } from "../../../data/useImage"
+import { mediaUrlConverter } from '../../../helpers/functions'
+
 import './styles.css'
 
 /**
@@ -32,11 +34,13 @@ export default ({
   let imagesInfo = []
   imageListObject.rows.forEach((item,i) => {
     let tempItem = useImageById(item.image)
-    tempItem.mediaArray = tempItem.mediaItemUrl.split("/")
+    tempItem.imageUrl = mediaUrlConverter(tempItem.mediaItemUrl)
+    console.log(tempItem.imageUrl)
     tempItem.tabBehavior = imageListObject.rows[i].tab_behavior
-    if (tempItem.tabBehavior === "") {
+    if (tempItem.tabBehavior === undefined) {
       tempItem.tabBehavior = "none"
     }
+    console.log(tempItem.tabBehavior)
     tempItem.linkUrl = imageListObject.rows[i].url
     imagesInfo.push(tempItem)
   })
@@ -71,24 +75,24 @@ export default ({
                       {
                         {
                         'none':<Imgix 
-                                  src={process.env.IMGIX_URL + image.mediaArray[process.env.IMG_DIR_INDEX] + "/" + image.mediaArray[process.env.IMG_FILE_INDEX]}
+                                  src={image.imageUrl}
                                   className="photo-grid-image"
                                   width={max_width} />,
                         'open':<a href={image.linkUrl}>
                                <Imgix 
-                                  src={process.env.IMGIX_URL + image.mediaArray[process.env.IMG_DIR_INDEX] + "/" + image.mediaArray[process.env.IMG_FILE_INDEX]}
+                                  src={image.imageUrl}
                                   className="photo-grid-image"
                                   width={max_width} />
                                 </a>,
                         'new':<a href={image.linkUrl} target="_blank">
                                <Imgix 
-                                  src={process.env.IMGIX_URL + image.mediaArray[process.env.IMG_DIR_INDEX] + "/" + image.mediaArray[process.env.IMG_FILE_INDEX]}
+                                  src={image.imageUrl}
                                   className="photo-grid-image"
                                   width={max_width} />
                                 </a>,
                         'download':<a href={image.linkUrl} download>
                                <Imgix 
-                                  src={process.env.IMGIX_URL + image.mediaArray[process.env.IMG_DIR_INDEX] + "/" + image.mediaArray[process.env.IMG_FILE_INDEX]}
+                                  src={image.imageUrl}
                                   className="photo-grid-image"
                                   width={max_width} />
                                 </a>

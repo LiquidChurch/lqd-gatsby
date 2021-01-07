@@ -6,7 +6,7 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
-import { getDate } from '../../../helpers/functions'
+import { getDate, mediaUrlConverter } from '../../../helpers/functions'
 import { PlayArrow } from '../../../helpers/icons'
 import { useRecentMessages } from "../../../data/useRecentMessages"
 
@@ -17,11 +17,11 @@ function MessageImage(props) {
     <>
       <Link to={"/messages/" + props.messageSlug}>
       <Imgix 
-        src={process.env.IMGIX_URL + props.imageUrl + "?ar=16:9&fit=crop&h=607"}
+        src={props.imageUrl + "?ar=16:9&fit=crop&h=607"}
         className="d-none d-md-block message-tile-image"
         sizes="90vw" />
       <Imgix 
-        src={process.env.IMGIX_URL + props.imageUrl + "?ar=1:1&fit=crop&h=607"}
+        src={props.imageUrl + "?ar=1:1&fit=crop&h=607"}
         className="d-block d-md-none message-tile-image"
         sizes="90vw" />
       </Link>
@@ -42,9 +42,8 @@ export default ({ keyValue,
   if (messageInfo === undefined || messageInfo[0] === undefined) {
   } else {
     if (!imgLoaded) {
-      let imgArray = messageInfo[0].featuredImage.node.mediaItemUrl.split('/')
-      
-      setImgUrl(imgArray[process.env.IMG_DIR_INDEX] + "/" + imgArray[process.env.IMG_FILE_INDEX])
+      let imageUrl = mediaUrlConverter(messageInfo[0].featuredImage.node.mediaItemUrl)
+      setImgUrl(imageUrl)
       setImgLoaded(true)
     }
   }

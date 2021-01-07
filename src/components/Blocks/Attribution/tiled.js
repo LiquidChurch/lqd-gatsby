@@ -1,6 +1,7 @@
 import React from 'react'
 import Imgix from 'react-imgix'
 
+import { mediaUrlConverter } from '../../../helpers/functions'
 import { useAttributionById } from '../../../data/useAttribution'
 
 const TiledAttribute = ({
@@ -9,12 +10,13 @@ const TiledAttribute = ({
     showEmail,
   }) => {
   const attributeObject = useAttributionById(attribute.id)
-  const imageUrl = attributeObject.profileImage.image.mediaItemUrl.split("/")
+  const imageUrl = mediaUrlConverter(attributeObject.profileImage.image.mediaItemUrl)
+  
   return (
   <>
     <div> 
       <Imgix 
-        src={process.env.IMGIX_URL + imageUrl[process.env.IMG_DIR_INDEX] + "/" + imageUrl[process.env.IMG_FILE_INDEX] + "?ar=1:1&fit=crop&crop=faces&mask=ellipse&w=137&h=137"}
+        src={imageUrl + "?ar=1:1&fit=crop&crop=faces&mask=ellipse&w=137&h=137"}
         className={'attribution-secondary-profile-image'}
         height={137}
         width={137}

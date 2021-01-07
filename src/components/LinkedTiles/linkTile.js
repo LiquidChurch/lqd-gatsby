@@ -6,7 +6,7 @@ import { useLocation } from '@reach/router';
 import { Link } from 'gatsby'
 
 import { useFeaturedImage } from "../../data/featureImage"
-import { getDate } from '../../helpers/functions'
+import { getDate, mediaUrlConverter } from '../../helpers/functions'
 
 export default ({ page_slug_id }) => {  
   const page_info = useFeaturedImage(page_slug_id)
@@ -21,8 +21,7 @@ export default ({ page_slug_id }) => {
     return (<></>)
   }
 
-  var imgUrl = page_info.featuredImage.node.mediaItemUrl.split("/")
-  
+  var imageUrl = mediaUrlConverter(page_info.featuredImage.node.mediaItemUrl)
   return (
     <>
     <Col sm={12} md={6} lg={4} key={"linked-tile-img-" + page_slug_id}>
@@ -32,7 +31,7 @@ export default ({ page_slug_id }) => {
       >
       <div className="linked-tile">
         <Imgix 
-          src={process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX] + "?ar=16:9&fit=crop&h=296&exp=-7"}
+          src={imageUrl + "?ar=16:9&fit=crop&h=296&exp=-7"}
           altText={page_info.featuredImage.node.altText}
           className="linked-tile-image"
         />   

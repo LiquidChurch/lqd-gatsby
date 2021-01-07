@@ -3,6 +3,7 @@ import Imgix from 'react-imgix'
 import Parse from 'react-html-parser'
 
 import { Link } from 'gatsby'
+import { mediaUrlConverter } from '../../../helpers/functions'
 
 import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card'
@@ -16,15 +17,13 @@ export default ({mediaItem}) => {
   const [imgUrl, setImgUrl] = useState("")
   const [profileImgUrl, setProfileImgUrl] = useState("")
   const [imgLoaded, setImgLoaded] = useState(false)
-  
-
    
   useEffect(() =>{
     if (!imgLoaded) {
-      let imgArray = mediaItem.image.split("/")
-      setImgUrl(process.env.IMGIX_URL + imgArray[process.env.IMG_DIR_INDEX] + "/" + imgArray[process.env.IMG_FILE_INDEX] + "?ar=16:9&fit=crop&h=296")
-      let profileImgArray = mediaItem.profileImage.split("/")
-      setProfileImgUrl(process.env.IMGIX_URL + profileImgArray[process.env.IMG_DIR_INDEX] + "/" + profileImgArray[process.env.IMG_FILE_INDEX] + "?ar=1:1&fit=crop&fill-color=0FFF&mask=ellipse&h=50")
+      let imageUrl = mediaUrlConverter(mediaItem.image)
+      setImgUrl(imageUrl + "?ar=16:9&fit=crop&h=296")
+      let profileImageUrl = mediaUrlConverter(mediaItem.profileImage)
+      setProfileImgUrl(profileImageUrl + "?ar=1:1&fit=crop&fill-color=0FFF&mask=ellipse&h=50")
       setImgLoaded(true)
     }
   }, [imgLoaded, mediaItem])  

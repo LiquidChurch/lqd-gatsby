@@ -6,7 +6,7 @@ import { useLocation } from '@reach/router';
 import { Link } from 'gatsby'
 
 import { useFeaturedImage } from "../../data/featureImage"
-import { getDate } from '../../helpers/functions'
+import { getDate, mediaUrlConverter } from '../../helpers/functions'
 
 export default ({ page_slug_id, cta_text }) => {  
   const page_info = useFeaturedImage(page_slug_id)
@@ -33,12 +33,10 @@ export default ({ page_slug_id, cta_text }) => {
     return (<></>)
   }
   
-  //var imgUrl = page_info.featuredImage.node.mediaItemUrl.split("/")
-
   useEffect(() =>{
     if (!imgLoaded) {
-      let imgArray = page_info.featuredImage.node.mediaItemUrl.split("/")
-      setImgUrl(process.env.IMGIX_URL + imgArray[process.env.IMG_DIR_INDEX] + "/" + imgArray[process.env.IMG_FILE_INDEX] + "?ar=16:9&fit=crop&h=296")
+      let imageUrl = mediaUrlConverter(page_info.featuredImage.node.mediaItemUrl)
+      setImgUrl(imageUrl + "?ar=16:9&fit=crop&h=296")
       setLinkTo(page_info.uri)
       setCaption(page_info.featuredImage.node.caption)
       setDescription(page_info.featuredImage.node.description)

@@ -6,14 +6,14 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card'
-import { getDate } from '../../../helpers/functions'
+import { getDate, mediaUrlConverter } from '../../../helpers/functions'
 import { useRecentSeries } from "../../../data/useRecentSeries"
 import { useScrollPosition } from "../../../helpers/useScrollPosition"
 
 import "./styles.css"
 
-function SeriesCard(props) {  
-  let imgUrl = props.mediaItem.SeriesImage.image.mediaItemUrl.split("/")
+function SeriesCard(props) {
+  let imageUrl = mediaUrlConverter(props.mediaItem.SeriesImage.image.mediaItemUrl)
   return (
   <>
     <Link
@@ -23,7 +23,7 @@ function SeriesCard(props) {
     <Card className="series-card">
       <Imgix
         className="rounded"
-        src={process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX] + "?ar=16:9&fit=crop"}
+        src={imageUrl + "?ar=16:9&fit=crop"}
         width={600}
       />
     </Card>
