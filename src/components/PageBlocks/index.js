@@ -64,7 +64,7 @@ export default ({ blocks, featuredImage }) => {
             if (!Component) {
               return null
             }
-            data.keyValue=`${data.name}-${index}`
+            data.attributes.keyValue=`page-block-${index}`
             return (
               <Component key={data.keyValue} {...data.attributes} />
             )

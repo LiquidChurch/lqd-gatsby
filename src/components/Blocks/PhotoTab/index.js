@@ -43,6 +43,7 @@ export default ({
   google_map,
   map_toggle,
 }) => {
+  console.log('phototab keyValue', keyValue)
   const currentDate = getDate(useLocation().search)
   
   const [isPublished, setIsPublished] = useState(false)
@@ -191,7 +192,7 @@ export default ({
         </Col>    
         <Col  xs={{span: 12, order: 2}} md={{span: 6, order: textOrder}} className="photo-tab-body-col" id={"photo-tab-body-" + image_id}>
           <TextArea
-            keyValue={keyValue + '-text-area-primary'}
+            keyValue={keyValue + '-ta-pri'}
             statement={isAlternative ? null : header}
             sidekick={textBlock}
             cta={isAlternative ? null : cta}
@@ -204,7 +205,7 @@ export default ({
           />
           <div className={hasSecondary ? "half-top-padding" : ''}></div>
           <TextArea 
-            keyValue={keyValue + '-text-area-secondary'}
+            keyValue={keyValue + '-ta-sec'}
             statement={header_secondary}
             sidekick={textBlockSecondary}
             cta={cta_secondary}
@@ -223,7 +224,7 @@ export default ({
           {hasCTA ? 
             ctaObject.rows.map((cta, index)=> {
               return (
-                <CallToAction cta={cta} alignment="center" spacing="tall" theme={color} key={keyValue + index + '-' + cta.page_id.id}/>
+                <CallToAction cta={cta} alignment="center" spacing="tall" theme={color} key={keyValue + '-alt-cta-' + index}/>
               )
             }) : ''
           }

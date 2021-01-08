@@ -20,6 +20,7 @@ const TextArea = ({
   theme,
   noMargin,
 }) => {
+  console.log('textarea', keyValue)
   const ctaObject = JSON.parse(cta)
 
   let sidekickTop = true
@@ -103,9 +104,9 @@ const TextArea = ({
                         'cta ' + size + ' ' + spacing + ' align-' + alignment + ' half-top-padding') :
                       'no-display'}>
       {hasCTA ? 
-        ctaObject.rows.map(cta => {
+        ctaObject.rows.map((cta, index) => {
           return (
-            <CallToAction cta={cta} alignment={alignment} theme={theme} spacing={spacing} key={textAreaId + '-' + cta.page_id.id}/>
+            <CallToAction cta={cta} alignment={alignment} theme={theme} spacing={spacing} key={keyValue + '-' + index}/>
           )
         }) : ''
       }
