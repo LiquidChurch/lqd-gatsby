@@ -40,7 +40,6 @@ export default ({
   if (position === null) {
     position = "50% 0"
   }
-  console.log('hero-image position', position)
   
   const [textAreaPosition, setTextAreaPosition] = useState(0)
   const [ imageHeight, setImageHeight ] = useState(200)
