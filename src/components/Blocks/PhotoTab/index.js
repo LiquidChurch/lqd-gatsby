@@ -43,7 +43,6 @@ export default ({
   google_map,
   map_toggle,
 }) => {
-  console.log('phototab keyValue', keyValue)
   const currentDate = getDate(useLocation().search)
   
   const [isPublished, setIsPublished] = useState(false)

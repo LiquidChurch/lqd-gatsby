@@ -140,10 +140,60 @@ export const query = graphql`
             mediaItemUrl
           } 
         }
-        publication {
-            unpublishDate
-            publishDate
+        pageImage {
+          image1 {
+            caption 
+            altText
+            description
+            mediaItemUrl
+          }
+          image2 {
+            caption 
+            altText
+            description
+            mediaItemUrl
+          }
+          image3 {
+            caption 
+            altText
+            description
+            mediaItemUrl
+          }
+          image4 {
+            caption 
+            altText
+            description
+            mediaItemUrl
+          }
+          image5 {
+            caption 
+            altText
+            description
+            mediaItemUrl
+          }
+          image6 {
+            caption 
+            altText
+            description
+            mediaItemUrl
+          }
+          image7 {
+            caption 
+            altText
+            description
+            mediaItemUrl
+          }
+          image8 {
+            caption 
+            altText
+            description
+            mediaItemUrl
           }
         }
+        publication {
+          unpublishDate
+          publishDate
+        }
+      }
     }
 `

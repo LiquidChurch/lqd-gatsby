@@ -24,6 +24,7 @@ export default ({
   padding,
   spacing,
   alignment,
+  position,
   size,
   color,  
 }) => {
@@ -35,6 +36,11 @@ export default ({
     </>
     )
   }
+  
+  if (position === null) {
+    position = "50% 0"
+  }
+  console.log('hero-image position', position)
   
   const [textAreaPosition, setTextAreaPosition] = useState(0)
   const [ imageHeight, setImageHeight ] = useState(200)
@@ -55,12 +61,16 @@ export default ({
   return (
   <>
     <section id="hero-image" className="fullwidth-section" style={{backgroundColor: bg_color}}>
-    <Container fluid className={'hero-image-container-' + image_style.split(":")[0]}>
+    <Container fluid 
+               className={'hero-image-container-' + image_style.split(":")[0]}
+      >
+      <div style={{objectPosition: position}}>
       <Imgix 
         src={imageUrl}
         className={'hero-image-' + image_style.split(":")[0]}
         height={imageHeight}
         sizes="100vh" />
+      </div>
       <div 
         id={'hero-text-area'}
         className={'hero-image-text-area-' + image_style.split(":")[0] + ' ' + color}

@@ -117,6 +117,7 @@ export const HeroImage = graphql`
       padding
       spacing
       alignment
+      position
       size
       color
       statement
