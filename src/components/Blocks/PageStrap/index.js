@@ -73,9 +73,9 @@ export default ({
   if (mdWidth > 12) {mdWidth = 12}
   let mdOffset = (12 - mdWidth)/2
   let lgWidth = width
-  let lgOffset = ((12 - lgWidth)/2 ) 
-  let maxWidth = width * 25
-  
+  let lgOffset = ((12 - lgWidth)/2 )
+  let maxWidth = image_size * 75
+
   let textAreaWidth = 12
   if (hasImage === true) { textAreaWidth = 12 - image_size }
   
