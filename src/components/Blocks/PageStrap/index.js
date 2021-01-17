@@ -15,17 +15,20 @@ import { getDate, mediaUrlConverter } from '../../../helpers/functions'
 import "./styles.css"
 
 function StrapImage(props) {
+  console.log('strapimage', props)
   const image_info = useImageById(props.strap_image_id)
   
   if (image_info !== undefined) {
     var imageUrl = mediaUrlConverter(image_info.mediaItemUrl)
     return (
-      <Col sm={props.strap_image_size} className="page-strap-image-col">
+      <Col xs={12} sm={props.strap_image_size * 2} md={props.strap_image_size} className="page-strap-image-col">
+        <div style={{maxWidth: props.max_width, margin: '0 auto'}}>
         <Imgix 
-          src={imageUrl + "?fit=fillmax&w=" + props.max_width}
+          src={imageUrl + "?fit=clamp"}
+          width={props.max_width}
           className="page-strap-image"
-          size="100vw"
           />
+        </div>
       </Col>
     )
   }  
@@ -54,7 +57,6 @@ export default ({
   block_on,
   block_off,
 }) => {
-  console.log('page strap', image_size)
   const currentDate = getDate(useLocation().search)
   const [isPublished, setIsPublished] = useState(false)
   const [checkedPublished, setCheckPublished] = useState(false)
