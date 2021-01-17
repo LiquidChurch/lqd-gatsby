@@ -20,7 +20,7 @@ function StrapImage(props) {
   if (image_info !== undefined) {
     var imageUrl = mediaUrlConverter(image_info.mediaItemUrl)
     return (
-      <Col xs={props.strap_image_size * 2} md={props.strap_image_size} className="page-strap-image-col">
+      <Col sm={props.strap_image_size} className="page-strap-image-col">
         <Imgix 
           src={imageUrl + "?fit=fillmax&w=" + props.max_width}
           className="page-strap-image"
@@ -54,6 +54,7 @@ export default ({
   block_on,
   block_off,
 }) => {
+  console.log('page strap', image_size)
   const currentDate = getDate(useLocation().search)
   const [isPublished, setIsPublished] = useState(false)
   const [checkedPublished, setCheckPublished] = useState(false)
@@ -100,7 +101,7 @@ export default ({
              lg={{span: lgWidth, offset: lgOffset}}
              className="page-strap">
           <StrapImage strap_image_id={image_id} strap_image_size={image_size} max_width={maxWidth}/>
-          <Col xs={12} md={textAreaWidth} className={"page-strap-col vertical-center"}>
+          <Col md={12} lg={textAreaWidth} className={"page-strap-col vertical-center"}>
             <TextArea
               keyValue={keyValue + '-page-strap'}
               statement={statement}
