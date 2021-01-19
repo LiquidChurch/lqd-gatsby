@@ -42,7 +42,7 @@
   align-self: flex-end;
 }
 
-@media (max-width:767px) {
+@media (max-width:991px) {
   .cta-button.left {
     margin-right: auto;
     margin-left: auto;
