@@ -69,7 +69,7 @@ export default ({
         <Helmet titleTemplate={`%s | ${generalSettings.title}`}>
           <title>{Parse(lqdmMessage.title)}</title>
           <meta http-equiv="last-modified" content={lqdmMessage.modified} />
-          <meta name="robots" content={"index, no-follow"} />
+          <meta name="robots" content={lqdmMessage.seo.metaRobotsNoindex + ', ' + lqdmMessage.seo.metaRobotsNofollow} />
           {(keywordsList !== "") && 
             <meta name="keywords" content={keywordsList} />
           }
@@ -104,6 +104,10 @@ export const query = graphql`
       content
       title
       modified
+      seo {
+        metaRobotsNofollow
+        metaRobotsNoindex
+      }
       attributions {
         nodes {
           id

@@ -23,7 +23,7 @@ export default ({
 }) => {
   const generalSettings = useGeneralSettings()
   const ctx = useContext(GlobalContext)
- 
+  console.log('site setting', page)
   let parentPageUri = "/"
   
   if (page.parentDatabaseId !== null) {
@@ -124,7 +124,7 @@ export default ({
         <Helmet titleTemplate={`%s - ${generalSettings.title}`}>
           <title>{Parse(page.title)}</title>
           <meta http-equiv="last-modified" content={page.modified} />
-          <meta name="robots" content={"index, no-follow"} />
+          <meta name="robots" content={page.seo.metaRobotsNoindex + ', ' + page.seo.metaRobotsNofollow} />
           {(featuredImageUrl !== "") &&
             <meta property="og:description" content={RichTextHelper(page.featuredImage.node.description)} />
           }
@@ -172,6 +172,10 @@ export const query = graphql`
           nodes {
             name
           }
+        }
+        seo {
+          metaRobotsNofollow
+          metaRobotsNoindex
         }
         featuredImage {
           node {

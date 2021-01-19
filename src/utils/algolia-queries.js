@@ -8,6 +8,9 @@ const messageQuery = `
           date
           modified
           slug
+          seo {
+            metaRobotsNoindex
+          }
           tags {
             nodes {
               name
@@ -45,6 +48,9 @@ const blogQuery = `
           date
           modified
           slug
+          seo {
+            metaRobotsNoindex
+          }
           mediaBlurb {
             blurb
           }
@@ -78,6 +84,9 @@ const postQuery = `
           date
           modified
           slug
+          seo {
+            metaRobotsNoindex
+          }
           mediaBlurb {
             blurb
           }
@@ -117,6 +126,9 @@ const pageQuery = `
           slug
           modified
           uri
+          seo {
+            metaRobotsNoindex
+          }
           search_terms {
             nodes {
               name
@@ -190,7 +202,8 @@ const queries = [
             imageUrl: node.featuredImage.node.mediaItemUrl,
             parentPage: node.seriesList.nodes[0].name,
             publishDate: node.publication.publishDate,
-            unpublishDate: node.publication.unpublishDate
+            unpublishDate: node.publication.unpublishDate,
+            index: node.seo.metaRobotsNoindex
           })),
         indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
         enablePartialUpdates: true,
@@ -212,7 +225,8 @@ const queries = [
             terms: node.tags.nodes,
             imageUrl: node.featuredImage.node.mediaItemUrl,
             publishDate: node.publication.publishDate,
-            unpublishDate: node.publication.unpublishDate
+            unpublishDate: node.publication.unpublishDate,
+            index: node.seo.metaRobotsNoindex
           })),
         indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
         enablePartialUpdates: true,
@@ -234,7 +248,8 @@ const queries = [
             terms: node.tags.nodes,
             imageUrl: node.featuredImage.node.mediaItemUrl,
             publishDate: node.publication.publishDate,
-            unpublishDate: node.publication.unpublishDate
+            unpublishDate: node.publication.unpublishDate,
+            index: node.seo.metaRobotsNoindex
           })),
         indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
         enablePartialUpdates: true,
@@ -255,7 +270,8 @@ const queries = [
             terms: pageSearchTerms(node.search_terms),
             imageUrl: featuredImageUrl(node.featuredImage),
             publishDate: node.publication.publishDate,
-            unpublishDate: node.publication.unpublishDate
+            unpublishDate: node.publication.unpublishDate,
+            index: node.seo.metaRobotsNoindex
           })),
         indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
         enablePartialUpdates: true,

@@ -80,7 +80,11 @@ const HitsTest = (props) => {
        (hit.unpublishDate === null || getDate('') < Date.parse(hit.unpublishDate.replace(/\s/g, 'T')))) {
          isValid=true
       }
-     
+
+      if (hit.index !== "index") {
+        isValid=false
+      }
+
       const mediaItem = {
         category: hit.pageType,
         slug: hit.slug,

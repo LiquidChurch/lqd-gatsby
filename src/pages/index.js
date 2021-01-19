@@ -53,7 +53,7 @@ export default ({
     <Layout location={location}>
       <Helmet titleTemplate={`%s - ${generalSettings.title}`}>
         <meta http-equiv="last-modified" content={page.modified} />
-        <meta name="robots" content={"index, no-follow"} />
+        <meta name="robots" content={page.seo.metaRobotsNoindex + ', ' + page.seo.metaRobotsNofollow} />
         {(featuredImageUrl !== "") &&
           <meta property="og:description" content={RichTextHelper(page.featuredImage.node.description)} />
         }
@@ -106,6 +106,10 @@ export const query = graphql`
             description
             mediaItemUrl
           }
+        }
+        seo {
+          metaRobotsNofollow
+          metaRobotsNoindex
         }
         pageImage {
           image1 {

@@ -15,7 +15,6 @@ import { getDate, mediaUrlConverter } from '../../../helpers/functions'
 import "./styles.css"
 
 function StrapImage(props) {
-  console.log('strapimage', props)
   const image_info = useImageById(props.strap_image_id)
   
   if (image_info !== undefined) {

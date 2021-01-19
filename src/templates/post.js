@@ -63,7 +63,7 @@ export default ({
       <Helmet titleTemplate={`%s - ${generalSettings.title}`}>
         <title>{Parse(post.title)}</title>
         <meta http-equiv="last-modified" content={post.modified} />
-        <meta name="robots" content={"index, no-follow"} />
+        <meta name="robots" content={post.seo.metaRobotsNoindex + ', ' + post.seo.metaRobotsNofollow} />
         {(keywordsList !== "") && 
           <meta name="keywords" content={keywordsList} />
         }
@@ -110,6 +110,10 @@ export const query = graphql`
             name
             slug
           }
+        }
+        seo {
+          metaRobotsNofollow
+          metaRobotsNoindex
         }
         attributions {
           nodes {
