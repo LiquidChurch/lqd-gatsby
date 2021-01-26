@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Imgix from 'react-imgix'
 import { useLocation } from '@reach/router';
 
@@ -49,6 +49,7 @@ export default ({
   const [checkedPublished, setCheckPublished] = useState(false)
   const [imgUrl, setImgUrl] = useState("")
   const [imgLoaded, setImgLoaded] = useState(false)
+  const [isLoaded, setIsLoaded] = useState(false)
   
   if (!checkedPublished) {
     if (((block_on === null || block_on.trim() === "") || currentDate >= Date.parse(block_on)) &&
@@ -73,18 +74,20 @@ export default ({
       })
     }
   }
-  
+
   let usePhoto = true
+  let campusList = []
+  let mapObj = {}
+  let pageInfo = {}
+        
   if (map_toggle !== undefined && map_toggle === true) {
     usePhoto = false
-    var mapObj = JSON.parse(google_map)
-    
-    let pageInfo = {}
+    mapObj = JSON.parse(google_map)
+
     if (mapObj.rows[0].cta_link.id !== undefined) {
       pageInfo = usePageById(mapObj.rows[0].cta_link.id)
     } 
 
-    var campusList = []
     let campusInfo = useCampusById(mapObj.rows[0].campus.id)
 
     if (mapObj.rows[0].campus.label_left) {
@@ -92,26 +95,35 @@ export default ({
     } else {
       campusInfo.anchor = -24
     }
-    
+
     campusInfo.icon_style = mapObj.rows[0].icon_style
     campusInfo.index = 1
     campusInfo.cta_label=mapObj.rows[0].cta_label
     campusInfo.cta_link=pageInfo.uri
     campusList.push(campusInfo)
   } else {
-    var imageInfo = useImageById(image_id) 
-    if (imageInfo === undefined) {
-      return(<></>)
-    } else {
-             
-      if (!imgLoaded) {
-        setImgUrl(mediaUrlConverter(imageInfo.mediaItemUrl))     
-        setImgLoaded(true)  
-      }
-      // var imageUrl = mediaUrlConverter(imageInfo.mediaItemUrl)
-    }
+    var imageInfo = useImageById(image_id)  
   }
   
+  useEffect(() => {
+    if (usePhoto) {
+      console.log(imageInfo)
+      if (imageInfo === undefined) {
+        //return(<></>)
+      } else {
+
+        if (!imgLoaded) {
+          setImgUrl(mediaUrlConverter(imageInfo.mediaItemUrl))     
+          setImgLoaded(true)
+          setIsLoaded(true)
+        }
+        // var imageUrl = mediaUrlConverter(imageInfo.mediaItemUrl)
+      }
+    } else {
+      setIsLoaded(true)
+    }
+  }, [usePhoto])
+
   let isAlternative = false
   let altTopPadding = "top"
   let headerColor = "#009DD1"
@@ -176,6 +188,8 @@ export default ({
       <Row className="photo-tab-row">
         <Col xs={{span: 12, order: 1}} md={{span: 6, order: imgOrder}} 
             className={(imgOrder === 1) ? "photo-tab-image-col photo-tab-left" : "photo-tab-image-col"}>
+        {isLoaded &&
+         <>
           {imgLoaded ? 
             <Imgix 
               src={imgUrl + "?ar=1:1&fit=crop&h=525"}
@@ -195,9 +209,11 @@ export default ({
             />
             </div>
            }
+           </>
+          }
         </Col>    
         <Col  xs={{span: 12, order: 2}} md={{span: 6, order: textOrder}} className="photo-tab-body-col" id={"photo-tab-body-" + image_id}>
-          <TextArea
+         <TextArea
             keyValue={keyValue + '-ta-pri'}
             statement={isAlternative ? null : header}
             sidekick={textBlock}
@@ -221,7 +237,7 @@ export default ({
             spacing={spacing}
             theme={color}
             noMargin={true}
-          />    
+          />
         </Col>
       </Row>
       <Row>
