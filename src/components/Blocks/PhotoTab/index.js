@@ -51,13 +51,7 @@ export default ({
   const [imgLoaded, setImgLoaded] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false)
   
-  if (!checkedPublished) {
-    if (((block_on === null || block_on.trim() === "") || currentDate >= Date.parse(block_on)) &&
-        ((block_off === null || block_off.trim() === "") || currentDate < Date.parse(block_off))) {
-      setIsPublished(true)
-    }
-      setCheckPublished(true)
-  }
+
   
   let ctaObject = JSON.parse(cta)
   let hasCTA = false
@@ -106,6 +100,15 @@ export default ({
   }
   
   useEffect(() => {
+
+    if (!checkedPublished) {
+      if (((block_on === null || block_on.trim() === "") || currentDate >= Date.parse(block_on)) &&
+          ((block_off === null || block_off.trim() === "") || currentDate < Date.parse(block_off))) {
+        setIsPublished(true)
+      }
+        setCheckPublished(true)
+    }
+    
     if (usePhoto) {
       console.log(imageInfo)
       if (imageInfo === undefined) {
