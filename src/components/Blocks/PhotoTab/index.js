@@ -47,6 +47,8 @@ export default ({
   
   const [isPublished, setIsPublished] = useState(false)
   const [checkedPublished, setCheckPublished] = useState(false)
+  const [imgUrl, setImgUrl] = useState("")
+  const [imgLoaded, setImgLoaded] = useState(false)
   
   if (!checkedPublished) {
     if (((block_on === null || block_on.trim() === "") || currentDate >= Date.parse(block_on)) &&
@@ -101,7 +103,12 @@ export default ({
     if (imageInfo === undefined) {
       return(<></>)
     } else {
-      var imageUrl = mediaUrlConverter(imageInfo.mediaItemUrl)
+             
+      if (!imgLoaded) {
+        setImgUrl(mediaUrlConverter(imageInfo.mediaItemUrl))     
+        setImgLoaded(true)  
+      }
+      // var imageUrl = mediaUrlConverter(imageInfo.mediaItemUrl)
     }
   }
   
@@ -169,9 +176,9 @@ export default ({
       <Row className="photo-tab-row">
         <Col xs={{span: 12, order: 1}} md={{span: 6, order: imgOrder}} 
             className={(imgOrder === 1) ? "photo-tab-image-col photo-tab-left" : "photo-tab-image-col"}>
-          {usePhoto ? 
+          {imgLoaded ? 
             <Imgix 
-              src={imageUrl + "?ar=1:1&fit=crop&h=525"}
+              src={imgUrl + "?ar=1:1&fit=crop&h=525"}
               className="photo-tab-image"
               height={525}
               /> :
