@@ -7,6 +7,7 @@ import BlockButton from "../Blocks/Button"
 import BlockHeading from "../Blocks/Heading"
 import BlockHeroImage from "../Blocks/HeroImage"
 import BlockMediaTiles from "../Blocks/MediaTiles"
+import BlockPageTiles from "../Blocks/PageTiles"
 import BlockMessageTile from "../Blocks/MessageTile"
 import BlockPageStrap from "../Blocks/PageStrap"
 import BlockPhotoTab from  "../Blocks/PhotoTab"
@@ -46,6 +47,7 @@ export default ({ blocks, featuredImage }) => {
     "block-lab/message-tile": BlockMessageTile,
     "block-lab/media-tiles": BlockMediaTiles,
     "block-lab/page-modal": BlockPageModal,
+    "block-lab/page-tiles": BlockPageTiles,
     "block-lab/series-tiles": BlockSeriesTiles,
     "block-lab/link-tiles": BlockLinkedTiles,
     "block-lab/photo-block": BlockPhotoTab,

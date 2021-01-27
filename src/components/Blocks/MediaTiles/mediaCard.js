@@ -13,7 +13,7 @@ function ShowTitle(props) {
   if (props.showBlurb) {
     return (
       <ListGroup.Item className="media-card-message">
-          <div className="media-card-title font-h2">{props.title}</div>
+          <div className="media-card-title font-h2">{Parse(props.title)}</div>
           <div className="media-card-blurb font-small">{Parse(props.blurb)}</div>
       </ListGroup.Item>
     )
@@ -28,16 +28,23 @@ function ShowTitle(props) {
 function ShowSeries(props) {
   if (props.showSeries && props.seriesTitle !== "") {
     let part = ""
-    
+    let partClass = 'media-card-series-part'
+    let seriesClass = 'media-card-series font-h3'
     if (props.seriesPart !== "" && props.seriesPart !== null) {
       part = "Part " + props.seriesPart
     }
     
+    if (props.seriesPart === "hide") {
+      partClass = 'no-display'
+      seriesClass = 'media-card-series short font-h3'
+    }
+    
+    
     return (
     <>
-      <ListGroup.Item className="media-card-series font-h3">
+      <ListGroup.Item className={seriesClass}>
         <div className="media-card-series-title">{props.seriesTitle}</div>
-        <div className="media-card-series-part">{part}</div>
+        <div className={partClass}>{part}</div>
       </ListGroup.Item>
     </>
     )
@@ -46,27 +53,39 @@ function ShowSeries(props) {
 }
 
 function ShowAttribution(props) {
-  let icon=''
+  let iconClass=''
   switch(props.category) {
     case 'messages':
-      icon='messages-icon'
+      iconClass='media-card-icon messages-icon'
+      break;
+    case 'blogs':
+      iconClass='media-card-icon blogs-icon'
       break;
     default:
-      icon='blogs-icon'
+      iconClass='no-display'
+  }
+  
+  let imageClass='media-card-profile-image'
+  let cardClass='media-card-attribution font-h3'
+     
+  console.log(props.profileImage)
+  if (props.profileImage === '') {
+    imageClass='no-display'
+    cardClass='media-card-attribution short font-h3'
   }
   
   if (props.showAttribution) {
     let date = props.date.toUpperCase()
     return (
     <>
-      <ListGroup.Item className="media-card-attribution font-h3">
+      <ListGroup.Item className={cardClass}>
         <Imgix
           src={props.profileImage}
-          className="media-card-profile-image"
+          className={imageClass}
         />
         <div className="media-card-attribution-info">
           <div className="media-card-name">{props.attributionName}</div>
-          <div className={"media-card-icon " + icon}></div>
+          <div className={iconClass}></div>
           <div className="media-card-date">{date}</div>
         </div>
       </ListGroup.Item>
@@ -93,13 +112,20 @@ export default (props) => {
   }
   
   useEffect(() => {
+    
+    console.log('media card', props.mediaItem.profileImage)
     if (!imgLoaded) {
       let imageUrl = mediaUrlConverter(props.mediaItem.image)
       setImgUrl(imageUrl + "?ar=16:9&fit=crop&h=296")
       if (props.mediaItem.profileImage !== undefined) {
-        let profileImageUrl = mediaUrlConverter(props.mediaItem.profileImage)
-        setProfileImgUrl(profileImageUrl + "?ar=1:1&fit=crop&fill-color=0FFF&mask=ellipse&h=50")
+        if (props.mediaItem.profileImage === "") {
+          console.log('no profile image')
+        } else {
+          let profileImageUrl = mediaUrlConverter(props.mediaItem.profileImage)
+          setProfileImgUrl(profileImageUrl + "?ar=1:1&fit=crop&fill-color=0FFF&mask=ellipse&h=50")
+        }
       }
+      
       if (!props.mediaItem.isDynamic) {
         setImgLoaded(true)
       }

@@ -229,6 +229,20 @@ export const PageStrap = graphql`
   }
 `
 
+export const PageTiles = graphql`
+  fragment PageTiles on WpBlockLabPageTilesBlock {
+    attributes {
+      page_list
+      show_blurb
+      show_series
+      show_attribution
+      display_type
+      bg_color
+      padding
+    }
+  }
+`
+
 export const Paragraph = graphql`
   fragment Paragraph on WpCoreParagraphBlock {
     attributes {
@@ -331,6 +345,7 @@ export const AllBlocks = graphql`
     ...HomeLinks
     ...MessageTile
     ...MediaTiles
+    ...PageTiles
     ...SeriesTiles
     ...PageModal
     ...LinkTiles

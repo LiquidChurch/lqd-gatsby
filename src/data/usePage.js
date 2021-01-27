@@ -15,6 +15,7 @@ export const usePageById = (pageId) => {
                   mediaItemUrl
                   caption
                   altText
+                  description
                 }
               }
               publication {

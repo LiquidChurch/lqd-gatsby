@@ -88,6 +88,10 @@
   min-height: 69px;
 }
 
+.media-card-series.short {
+  min-height: 44px;
+}
+
 .media-card-series-title {
   font-weight: 800;
   letter-spacing: 0.0em !important;
@@ -109,6 +113,10 @@
   height:64px;
 }
 
+.media-card-attribution.short {
+  height: 44px;
+}
+
 .media-card-profile-image {
   height: 50px;
   width: 50px;
@@ -126,11 +134,12 @@
   vertical-align:text-top;
   bottom:7px;
 }
+
 .media-card-name {
   position: relative;
   font-size: 0.9em;
   font-weight: 600;
-  margin-top:0px;
+  margin-top:5px;
 }
 
 .media-card-icon {
