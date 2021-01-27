@@ -106,7 +106,7 @@ export default (props) => {
   
   let linkUrl = ""
   if (props.mediaItem.category === "pages") {
-    linkUrl = props.mediaItem.slug
+    linkUrl = "/" + props.mediaItem.slug
   } else {
     linkUrl = "/" + props.mediaItem.category + "/" + props.mediaItem.slug
   }
@@ -116,7 +116,11 @@ export default (props) => {
     console.log('media card', props.mediaItem.profileImage)
     if (!imgLoaded) {
       let imageUrl = mediaUrlConverter(props.mediaItem.image)
-      setImgUrl(imageUrl + "?ar=16:9&fit=crop&h=296")
+      if (props.mediaItem.category === "pages") {        
+        setImgUrl(imageUrl + "?h=296")      
+      } else {
+        setImgUrl(imageUrl + "?ar=16:9&fit=crop&h=296")      
+      }
       if (props.mediaItem.profileImage !== undefined) {
         if (props.mediaItem.profileImage === "") {
           console.log('no profile image')
