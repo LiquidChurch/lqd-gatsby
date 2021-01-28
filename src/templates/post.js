@@ -48,7 +48,7 @@ export default ({
 
   useEffect(() => {
     if (!pageValid) {
-      navigate('/')
+      navigate('/' + post.categories.nodes[0].slug)
     }
     
     ctx.setTheme(theme)
