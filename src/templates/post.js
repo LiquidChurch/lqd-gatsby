@@ -48,7 +48,7 @@ export default ({
 
   useEffect(() => {
     if (!pageValid) {
-      navigate('')
+      navigate('/')
     }
     
     ctx.setTheme(theme)
