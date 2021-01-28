@@ -43,6 +43,7 @@ export default ({
   
   const [textAreaPosition, setTextAreaPosition] = useState(0)
   const [ imageHeight, setImageHeight ] = useState(200)
+  const [ imageHeightSet, setImageHeightSet ] = useState(false)
   var imageUrl = mediaUrlConverter(imageInfo.mediaItemUrl)
   
   useEffect (() => {
@@ -51,9 +52,13 @@ export default ({
       textAreaHeight = (!document.getElementById('hero-text-area') ? 0 : document.getElementById('hero-text-area').offsetHeight)
       setTextAreaPosition(textAreaHeight)
       setImageHeight(window.innerHeight * 0.8)
+      setImageHeightSet(true)
     }
     
-    setTextAreaHeight()
+    if (imageHeightSet === false) {
+      setTimeout(() => {setTextAreaHeight()},300)
+    }
+    
     window.addEventListener('resize', setTextAreaHeight)  
   }, [])
   
