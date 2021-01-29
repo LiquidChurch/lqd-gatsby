@@ -7,6 +7,8 @@ import Parse from "react-html-parser"
 import Layout from "../components/Layout"
 import PageBlocks from "../components/PageBlocks"
 import { GlobalContext } from '../components/GlobalContext/context'
+import { AnchorLink as Link } from "gatsby-plugin-anchor-links";
+
 //import { isTouchEnabled, getDate } from '../helpers/functions'
 import { getDate, isAppView, RichTextHelper } from '../helpers/functions'
 import { usePageById } from '../data/usePage'
@@ -22,8 +24,11 @@ function hashLinkScroll() {
       const id = hash.replace('#', '');
       const element = document.getElementById(id);
       console.log('hash found', element)
-      if (element) element.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
-    }, 100);
+      if (element) {
+        console.log('scrolling to element')
+        element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+      }     
+    }, 1000);
   }
 }
 
