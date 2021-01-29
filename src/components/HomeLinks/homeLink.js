@@ -3,7 +3,7 @@ import Imgix from 'react-imgix'
 import Parse from 'react-html-parser'
 import Col from 'react-bootstrap/Col'
 import { useLocation } from '@reach/router';
-import { Link } from 'gatsby'
+import { AnchorLink as Link } from "gatsby-plugin-anchor-links";
 
 import { useFeaturedImage } from "../../data/featureImage"
 import { useImageById } from "../../data/useImage"
@@ -15,6 +15,7 @@ export default ({
   page_slug_id, 
   cta_text,
   alt_image,
+  url_append,
 }) => {  
   const page_info = useFeaturedImage(page_slug_id)
   if (page_info === undefined) {
@@ -62,7 +63,12 @@ export default ({
         setDescription(altImage.description)
       }
       setImgUrl(imageUrl + "?ar=16:9&fit=crop&h=296")
-      setLinkTo(page_info.uri)
+      
+      if (url_append !== null && url_append !== undefined) {
+        setLinkTo(page_info.uri + url_append)
+      } else {
+        setLinkTo(page_info.uri)
+      }
 
       setImgLoaded(true)
     }

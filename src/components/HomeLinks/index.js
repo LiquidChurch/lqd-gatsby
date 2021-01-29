@@ -22,7 +22,7 @@ export default ({ page_list, background_color }) => {
           console.log('homelink item', item)
           return (
               <HomeLink
-                page_slug_id={item.page_slug.id} key={item.page_slug.id + '-' + index} alt_image={item.alt_image} cta_text={item.cta_text}>
+                page_slug_id={item.page_slug.id} key={item.page_slug.id + '-' + index} alt_image={item.alt_image} cta_text={item.cta_text} url_append={item.url_append}>
               </HomeLink>
           )
         })}
