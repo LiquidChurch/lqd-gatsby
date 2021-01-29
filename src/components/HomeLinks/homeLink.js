@@ -6,9 +6,16 @@ import { useLocation } from '@reach/router';
 import { Link } from 'gatsby'
 
 import { useFeaturedImage } from "../../data/featureImage"
+import { useImageById } from "../../data/useImage"
+
 import { getDate, mediaUrlConverter } from '../../helpers/functions'
 
-export default ({ page_slug_id, cta_text }) => {  
+
+export default ({ 
+  page_slug_id, 
+  cta_text,
+  alt_image,
+}) => {  
   const page_info = useFeaturedImage(page_slug_id)
   if (page_info === undefined) {
     return (<></>)
@@ -33,13 +40,30 @@ export default ({ page_slug_id, cta_text }) => {
     return (<></>)
   }
   
+  let altImage = ""
+  if (alt_image !== undefined) {
+    console.log('lookup alt image')
+    console.log(useImageById(alt_image))
+    altImage = useImageById(alt_image)
+  }
+  console.log(altImage)
+
   useEffect(() =>{
+    
     if (!imgLoaded) {
-      let imageUrl = mediaUrlConverter(page_info.featuredImage.node.mediaItemUrl)
+      let imageUrl = ""
+      if (altImage === "") {
+        imageUrl = mediaUrlConverter(page_info.featuredImage.node.mediaItemUrl)
+        setCaption(page_info.featuredImage.node.caption)
+        setDescription(page_info.featuredImage.node.description)
+      } else {
+        imageUrl = mediaUrlConverter(altImage.mediaItemUrl)
+        setCaption(altImage.caption)
+        setDescription(altImage.description)
+      }
       setImgUrl(imageUrl + "?ar=16:9&fit=crop&h=296")
       setLinkTo(page_info.uri)
-      setCaption(page_info.featuredImage.node.caption)
-      setDescription(page_info.featuredImage.node.description)
+
       setImgLoaded(true)
     }
   }, [imgLoaded, page_info.featuredImage])  

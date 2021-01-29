@@ -18,10 +18,11 @@ export default ({ page_list, background_color }) => {
   <section className="fullwidth-section" style={{backgroundColor: background_color}} >
   <Container>
     <Row>
-        {obj_page_slug_list.rows.map(item => {
+        {obj_page_slug_list.rows.map((item, index) => {
+          console.log('homelink item', item)
           return (
               <HomeLink
-                page_slug_id={item.page_slug.id} key={item.page_slug.id} cta_text={item.cta_text}>
+                page_slug_id={item.page_slug.id} key={item.page_slug.id + '-' + index} alt_image={item.alt_image} cta_text={item.cta_text}>
               </HomeLink>
           )
         })}
