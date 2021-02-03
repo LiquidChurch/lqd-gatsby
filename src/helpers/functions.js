@@ -49,10 +49,13 @@ export const getDate = (searchValue) => {
     }
   
   var d = new Date()
-  var date = d.toLocaleDateString('sv-SE',)
+  var year = d.getFullYear().toString()
+  var month = ("0" + (d.getMonth() + 1)).slice(-2)
+  var day = ("0" + d.getDate()).slice(-2)
   var hour = ('0' + d.getHours().toString()).slice(-2)
   var min = ('0' + d.getMinutes().toString()).slice(-2) 
-  return Date.parse(date + "T" + hour + ":" + min + ":00")
+  var stringDate =  year + '-' + month + '-' + day + "T" + hour + ":" + min + ":00"
+  return Date.parse(stringDate)
 }
 
 export const isAppView = (searchValue) => {
