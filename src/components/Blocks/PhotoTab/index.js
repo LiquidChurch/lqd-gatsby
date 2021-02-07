@@ -110,7 +110,6 @@ export default ({
     }
     
     if (usePhoto) {
-      console.log(imageInfo)
       if (imageInfo === undefined) {
         //return(<></>)
       } else {

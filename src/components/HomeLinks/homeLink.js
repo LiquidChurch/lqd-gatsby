@@ -43,11 +43,8 @@ export default ({
   
   let altImage = ""
   if (alt_image !== undefined) {
-    console.log('lookup alt image')
-    console.log(useImageById(alt_image))
     altImage = useImageById(alt_image)
   }
-  console.log(altImage)
 
   useEffect(() =>{
     

@@ -23,9 +23,7 @@ function hashLinkScroll() {
     setTimeout(() => {
       const id = hash.replace('#', '');
       const element = document.getElementById(id);
-      console.log('hash found', element)
       if (element) {
-        console.log('scrolling to element')
         element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
       }     
     }, 1000);
@@ -43,7 +41,6 @@ export default ({
 }) => {
   const generalSettings = useGeneralSettings()
   const ctx = useContext(GlobalContext)
-  console.log('site setting', page)
   let parentPageUri = "/"
   
   if (page.parentDatabaseId !== null) {

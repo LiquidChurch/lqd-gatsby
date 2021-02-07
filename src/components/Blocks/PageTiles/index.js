@@ -12,7 +12,6 @@ import { UseSlider } from "../MediaTiles/useSlider"
 import '../MediaTiles/styles.css'
 
 function PageDataTransformer(props) {
-  console.log('pagetiles', props)
   let lists = []
   props.rawItems.map(item => {
     if (item === null) {

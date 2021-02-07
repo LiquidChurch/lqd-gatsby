@@ -35,12 +35,10 @@ export default ({
   imageListObject.rows.forEach((item,i) => {
     let tempItem = useImageById(item.image)
     tempItem.imageUrl = mediaUrlConverter(tempItem.mediaItemUrl)
-    console.log(tempItem.imageUrl)
     tempItem.tabBehavior = imageListObject.rows[i].tab_behavior
     if (tempItem.tabBehavior === undefined) {
       tempItem.tabBehavior = "none"
     }
-    console.log(tempItem.tabBehavior)
     tempItem.linkUrl = imageListObject.rows[i].url
     imagesInfo.push(tempItem)
   })

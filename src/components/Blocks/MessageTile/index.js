@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Imgix from 'react-imgix'
 import { Link } from 'gatsby'
 import { useLocation } from '@reach/router';
@@ -36,34 +36,38 @@ export default ({ keyValue,
                   padding }) => {
   const [imgUrl, setImgUrl] = useState("")
   const [imgLoaded, setImgLoaded] = useState(false)
+  const [msgInfoObject, setMsgInfoObject] = useState({})
+  var messageInfo = useRecentMessages(1, getDate(useLocation().search))
   
-  let messageInfo = useRecentMessages(1, getDate(useLocation().search))
-
-  if (messageInfo === undefined || messageInfo[0] === undefined) {
-  } else {
+  useEffect(() => {
+    let imageInfo = {}
+    if (messageInfo[0] !== null) {
+      imageInfo = messageInfo[0]
+    }
     if (!imgLoaded) {
-      let imageUrl = mediaUrlConverter(messageInfo[0].featuredImage.node.mediaItemUrl)
+      
+      let imageUrl = mediaUrlConverter(imageInfo.featuredImage.node.mediaItemUrl)
       setImgUrl(imageUrl)
+      
+      let tempPartNumber =''
+      if (imageInfo.seriesPart.part !== null && imageInfo.seriesPart.part !== "") {
+        tempPartNumber = " · Part " + imageInfo.seriesPart.part
+      }
+      
+      let msgInfo = {
+        'messageTitle': imageInfo.title,
+        'messageSlug': imageInfo.slug,
+        'partNumber': tempPartNumber,
+        'seriesTitle': imageInfo.seriesList.nodes[0].name,
+        'seriesSlug': imageInfo.seriesList.nodes[0].slug
+      }
+      
+      setMsgInfoObject(msgInfo)
+      
       setImgLoaded(true)
     }
-  }
-
-  let partNumber = ""
-  let messageTitle = ""
-  let messageSlug = ""
-  let seriesSlug = ""
-  let seriesTitle = ""
+  },[setImgUrl,setImgLoaded,messageInfo,setMsgInfoObject])
   
-  if (imgLoaded) {
-    if (messageInfo[0].seriesPart.part !== null && messageInfo[0].seriesPart.part !== "") {
-      partNumber = " · Part " + messageInfo[0].seriesPart.part
-    }
-    messageTitle = messageInfo[0].title
-    messageSlug = messageInfo[0].slug
-    seriesTitle = messageInfo[0].seriesList.nodes[0].name
-    seriesSlug = messageInfo[0].seriesList.nodes[0].slug
-  }
-
   return (
   <>
   <section className={'site-section message-tile-section ' + padding} style={{backgroundColor: bg_color}} key={'section-' + keyValue}>
@@ -73,24 +77,24 @@ export default ({ keyValue,
     <div className="message-tile">
       {imgLoaded && 
         <MessageImage
-          messageSlug = {messageSlug}
+          messageSlug = {msgInfoObject.messageSlug}
           imageUrl = {imgUrl}
         />
       }
     </div>
       <div className="message-tile-text-overlay">
         <div className="message-tile-title font-h1">
-          <Link to={"/messages/" + messageSlug}>{messageTitle}</Link>
+          <Link to={"/messages/" + msgInfoObject.messageSlug}>{msgInfoObject.messageTitle}</Link>
         </div>
         <div className="message-tile-series font-h2">
           <p>
-            <Link to={'/series/' + seriesSlug}>{seriesTitle}</Link>{partNumber}
+            <Link to={'/series/' + msgInfoObject.seriesSlug}>{msgInfoObject.seriesTitle}</Link>{msgInfoObject.partNumber}
           </p>
         </div>
       </div>
       <Link
         className="btn font-btn-large message-tile-btn-overlay"
-        to={"/messages/" + messageSlug}
+        to={"/messages/" + msgInfoObject.messageSlug}
       > 
         <PlayArrow style={{fill:"#fff;"}} /> Watch
       </Link>

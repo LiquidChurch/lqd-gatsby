@@ -68,7 +68,6 @@ function ShowAttribution(props) {
   let imageClass='media-card-profile-image'
   let cardClass='media-card-attribution font-h3'
      
-  console.log(props.profileImage)
   if (props.profileImage === '') {
     imageClass='no-display'
     cardClass='media-card-attribution short font-h3'
@@ -112,8 +111,6 @@ export default (props) => {
   }
   
   useEffect(() => {
-    
-    console.log('media card', props.mediaItem.profileImage)
     if (!imgLoaded) {
       let imageUrl = mediaUrlConverter(props.mediaItem.image)
       if (props.mediaItem.category === "pages") {        
@@ -123,7 +120,6 @@ export default (props) => {
       }
       if (props.mediaItem.profileImage !== undefined) {
         if (props.mediaItem.profileImage === "") {
-          console.log('no profile image')
         } else {
           let profileImageUrl = mediaUrlConverter(props.mediaItem.profileImage)
           setProfileImgUrl(profileImageUrl + "?ar=1:1&fit=crop&fill-color=0FFF&mask=ellipse&h=50")
