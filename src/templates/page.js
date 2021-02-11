@@ -70,7 +70,9 @@ export default ({
   if (page.seo.metaDesc !== "") {
     description = page.seo.metaDesc
   } else {
-    description = RichTextHelper(page.featuredImage.node.description)
+    if (page.featuredImage !== null) {
+      description = RichTextHelper(page.featuredImage.node.description)
+    }
   }
   
   let keywordsList = ""
