@@ -128,6 +128,7 @@ const pageQuery = `
           uri
           seo {
             metaRobotsNoindex
+            metaDesc
           }
           search_terms {
             nodes {
@@ -170,7 +171,10 @@ const featuredImageUrl = featuredImage => {
   }
 }
 
-const featuredImageDesc = featuredImage => {
+const featuredImageDesc = (featuredImage, metaDesc) => {
+  if (metaDesc !== '') {
+    return metaDesc
+  }
   if (featuredImage === null) {
     return null
   } else {
@@ -265,7 +269,7 @@ const queries = [
             pageType: "pages",
             title: node.title,
             modified: node.modified,
-            blurb: featuredImageDesc(node.featuredImage),
+            blurb: featuredImageDesc(node.featuredImage, node.seo.metaDesc),
             slug: node.uri.replace(/^\/?|\/?$/, ""),
             terms: pageSearchTerms(node.search_terms),
             imageUrl: featuredImageUrl(node.featuredImage),

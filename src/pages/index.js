@@ -34,6 +34,14 @@ export default ({
     featuredImageUrl = process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX] + "?ar=16:9&fit=crop&h=200"
   }
   
+  let description = ""
+  if (page.seo.metaDesc !== "") {
+    description = page.seo.metaDesc
+  } else {
+    description = page.featuredImage.node.description
+  }
+    
+  
   let keywordsList = ""
   page.search_terms.nodes.forEach((node, i) => {
     if (i === 0) {
@@ -55,7 +63,7 @@ export default ({
         <meta http-equiv="last-modified" content={page.modified} />
         <meta name="robots" content={page.seo.metaRobotsNoindex + ', ' + page.seo.metaRobotsNofollow} />
         {(featuredImageUrl !== "") &&
-          <meta property="og:description" content={RichTextHelper(page.featuredImage.node.description)} />
+          <meta property="og:description" content={RichTextHelper(description)} />
         }
         {(keywordsList !== "") && 
           <meta name="keywords" content={keywordsList} />
@@ -110,6 +118,7 @@ export const query = graphql`
         seo {
           metaRobotsNofollow
           metaRobotsNoindex
+          metaDesc
         }
         pageImage {
           image1 {

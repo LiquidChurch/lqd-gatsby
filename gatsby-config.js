@@ -113,7 +113,7 @@ module.exports = {
         appId: process.env.GATSBY_ALGOLIA_APP_ID,
         apiKey: process.env.ALGOLIA_ADMIN_KEY,
         queries: require("./src/utils/algolia-queries"),
-        chunkSize: 15,
+        chunkSize: 30,
         enablePartialUpdates: false,
         matchFields: ['slug', 'modified'],
       }
