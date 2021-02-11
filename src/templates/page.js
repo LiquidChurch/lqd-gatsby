@@ -152,9 +152,10 @@ export default ({
           <title>{Parse(page.title)}</title>
           <meta http-equiv="last-modified" content={page.modified} />
           <meta name="robots" content={page.seo.metaRobotsNoindex + ', ' + page.seo.metaRobotsNofollow} />
-          {(featuredImageUrl !== "") &&
-            <meta property="og:description" content={description} />
-          }
+          
+          <meta property="og:description" content={description} />
+          <meta property="description" content={description} />
+          
           {(keywordsList !== "") && 
             <meta name="keywords" content={keywordsList} />
           }
