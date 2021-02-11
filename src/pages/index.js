@@ -64,6 +64,7 @@ export default ({
 
         <meta property="og:description" content={description} />
         <meta property="description" content={description} />
+
         {(keywordsList !== "") && 
           <meta name="keywords" content={keywordsList} />
         }       
@@ -73,7 +74,7 @@ export default ({
         <meta property="og:site_name" content={generalSettings.title} />
         <meta property="og:url" content={'https://liquidchurch.com'} />
         {(featuredImageUrl !== "") && 
-          <meta property="og:image" content={featuredImageUrl} />
+          <meta property="og:image" content={featuredImageUrl + '?ar=16:9&fit=crop&h=630'} />
         }
       </Helmet>
       <article className="page">
