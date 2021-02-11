@@ -7,7 +7,7 @@ import { useGeneralSettings } from "../data/hooks"
 import Layout from "../components/Layout"
 import PageBlocks from "../components/PageBlocks"
 import { GlobalContext } from '../components/GlobalContext/context'
-import { getDate, isAppView, RichTextHelper } from '../helpers/functions'
+import { getDate, isAppView, RichTextHelper, mediaUrlConverter } from '../helpers/functions'
 //import PostHeader from "../components/PostHeader"
 //import { LoadingOverlayProvider } from "../components/LoadingOverlay/context.js"
 /** 
@@ -30,15 +30,14 @@ export default ({
   
   let featuredImageUrl = "" 
   if (page.featuredImage !== null) {
-    let imgUrl = page.featuredImage.node.mediaItemUrl.split("/")
-    featuredImageUrl = process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX] + "?ar=16:9&fit=crop&h=200"
+    featuredImageUrl = mediaUrlConverter(page.featuredImage.node.mediaItemUrl)
   }
   
   let description = ""
   if (page.seo.metaDesc !== "") {
     description = page.seo.metaDesc
   } else {
-    description = page.featuredImage.node.description
+    description = RichTextHelper(page.featuredImage.node.description)
   }
     
   
@@ -63,7 +62,7 @@ export default ({
         <meta http-equiv="last-modified" content={page.modified} />
         <meta name="robots" content={page.seo.metaRobotsNoindex + ', ' + page.seo.metaRobotsNofollow} />
         {(featuredImageUrl !== "") &&
-          <meta property="og:description" content={RichTextHelper(description)} />
+          <meta property="og:description" content={description} />
         }
         {(keywordsList !== "") && 
           <meta name="keywords" content={keywordsList} />

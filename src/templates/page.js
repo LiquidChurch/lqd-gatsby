@@ -10,7 +10,7 @@ import { GlobalContext } from '../components/GlobalContext/context'
 import { AnchorLink as Link } from "gatsby-plugin-anchor-links";
 
 //import { isTouchEnabled, getDate } from '../helpers/functions'
-import { getDate, isAppView, RichTextHelper } from '../helpers/functions'
+import { getDate, isAppView, RichTextHelper, mediaUrlConverter } from '../helpers/functions'
 import { usePageById } from '../data/usePage'
 //import useDeviceDetect from '../helpers/useDeviceDetection'
 
@@ -63,8 +63,14 @@ export default ({
 
   let featuredImageUrl = "" 
   if (page.featuredImage !== null) {
-    let imgUrl = page.featuredImage.node.mediaItemUrl.split("/")
-    featuredImageUrl = process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX] + "?ar=16:9&fit=crop&h=200"
+    featuredImageUrl = mediaUrlConverter(page.featuredImage.node.mediaItemUrl)
+  }
+  
+  let description = ""
+  if (page.seo.metaDesc !== "") {
+    description = page.seo.metaDesc
+  } else {
+    description = RichTextHelper(page.featuredImage.node.description)
   }
   
   let keywordsList = ""
@@ -107,7 +113,7 @@ export default ({
     
     
     if (hasExternalRedirect) {
-      //add in open in new tab attempt
+      //add in open in new tab attempts
       if (ctx.currPath !== 'external') {
         ctx.setPath("external")
         if (externalRedirectBlock.attributes.new_tab && !ctx.isMobile && ctx.isChrome) {
@@ -145,7 +151,7 @@ export default ({
           <meta http-equiv="last-modified" content={page.modified} />
           <meta name="robots" content={page.seo.metaRobotsNoindex + ', ' + page.seo.metaRobotsNofollow} />
           {(featuredImageUrl !== "") &&
-            <meta property="og:description" content={RichTextHelper(page.featuredImage.node.description)} />
+            <meta property="og:description" content={description} />
           }
           {(keywordsList !== "") && 
             <meta name="keywords" content={keywordsList} />
@@ -195,6 +201,7 @@ export const query = graphql`
         seo {
           metaRobotsNofollow
           metaRobotsNoindex
+          metaDesc
         }
         featuredImage {
           node {
