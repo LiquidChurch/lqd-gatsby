@@ -81,7 +81,6 @@ export default ({
     >
       <Imgix 
         src={imgUrl}
-        altText={page_info.featuredImage.altText}
         className="home-tile-image"
         sizes="100vw" />
     <h3 className="home-tile-caption font-h2">{Parse(caption)}</h3>

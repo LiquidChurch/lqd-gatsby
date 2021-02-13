@@ -131,7 +131,7 @@
 .media-card-attribution-info {
   display: inline-block;
   position:relative;
-  vertical-align:text-top;
+  /* vertical-align:text-top; */
   bottom:7px;
 }
 
@@ -139,8 +139,9 @@
   position: relative;
   font-size: 0.9em;
   font-weight: 600;
-  margin-top:5px;
+  margin-top:2px;
 }
+
 
 .media-card-icon {
   position: relative;
@@ -195,6 +196,9 @@
     margin-top: 0;
   }
   
+  .media-card-name {
+    margin-top:8px;
+  }
   .media-card-wrap {
     padding-left:calc(calc(100vw - 322px)/2);
   }
