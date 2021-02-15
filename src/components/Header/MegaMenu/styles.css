@@ -164,6 +164,9 @@ Note: Beware of modifying this element as it can break the animations - you shou
   line-height: 1.4em;
 }
 
+.bm-bottom-padding {
+  height: 30px;
+}
 @media (max-width:349px) {
   .bm-icon {
     width: 1.3em !important;

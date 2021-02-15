@@ -176,6 +176,8 @@ const MegaMenu = () => {
             )
           })}
         </Row>
+        <div className="bm-bottom-padding">
+        </div>
         <button
           id="bm-close-bottom"
           className="btn bm-cross-button"
