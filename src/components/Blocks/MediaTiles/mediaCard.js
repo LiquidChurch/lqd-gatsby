@@ -113,10 +113,10 @@ export default (props) => {
   useEffect(() => {
     if (!imgLoaded) {
       let imageUrl = mediaUrlConverter(props.mediaItem.image)
-      if (props.mediaItem.category === "pages") {        
-        setImgUrl(imageUrl + "?h=296")      
-      } else {
+      if (props.mediaItem.imageScaling) {        
         setImgUrl(imageUrl + "?ar=16:9&fit=crop&h=296")      
+      } else {
+        setImgUrl(imageUrl + "?h=296")      
       }
       if (props.mediaItem.profileImage !== undefined) {
         if (props.mediaItem.profileImage === "") {

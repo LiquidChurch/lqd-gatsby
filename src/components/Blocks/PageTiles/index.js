@@ -22,6 +22,7 @@ function PageDataTransformer(props) {
       "category": "pages",
       "title": item.featuredImage.node.caption,
       "image": item.featuredImage.node.mediaItemUrl,
+      "imageScaling": false,
       "id": item.id,
       "slug": item.slug,
       "showBlurb": props.showBlurb,

@@ -89,6 +89,7 @@ const HitsTest = (props) => {
         category: hit.pageType,
         slug: hit.slug,
         image: hit.imageUrl,
+        imageScaling: true,
         title: hit.title,
         blurb: hit.blurb,
         showBlurb: true,

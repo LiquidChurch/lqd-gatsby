@@ -168,6 +168,7 @@ function MediaDataTransformer(props) {
       "category": item.category,
       "title": item.title,
       "image": item.featuredImage.node.mediaItemUrl,
+      "imageScaling": true,
       "id": item.id,
       "slug": item.slug,
       "showBlurb": props.showBlurb,
