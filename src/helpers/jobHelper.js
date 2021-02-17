@@ -40,7 +40,13 @@ export const postLengthCalc = (publishDate) => {
   const diffMonth = Math.round(diffDays / 30)
   const diffYear = Math.round(diffDays / 365)
   
-  if (diffDays < 12) {
+  if (isNaN(parseFloat(diffTime))) {
+    return ''
+  }
+  
+  if (diffDays < 2) {
+    postLength = "Posted " + diffDays + " day ago"    
+  } else if (diffDays < 12) {
     postLength = "Posted " + diffDays + " days ago"
   } else if (diffWeeks < 7) {
     postLength = "Posted " + diffWeeks + " weeks ago"

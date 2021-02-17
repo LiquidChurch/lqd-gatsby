@@ -21,7 +21,7 @@ export default ({ location }) => {
         <Helmet>
         </Helmet>
         <article className="Page">
-          <Jobs />
+          <Jobs location={location}/>
         </article>
     </Layout>
   )

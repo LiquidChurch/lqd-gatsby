@@ -81,7 +81,12 @@ export default ({
 
   let locationText = locationLookup(lqdmJob.properties.location)
   let jobType = jobTypeLookup(lqdmJob.properties.jobType)
-  let postLength = postLengthCalc(lqdmJob.publication.publishDate)
+  
+  let postLength = ''
+  
+  if (lqdmJob.publication.publishDate !== null ) {
+    postLength = postLengthCalc(lqdmJob.publication.publishDate.replace(' ', 'T'))
+  }
   
   useEffect(() => {
     if (!pageValid) {

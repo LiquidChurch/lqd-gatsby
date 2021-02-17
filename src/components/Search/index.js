@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -17,6 +17,11 @@ const searchIndex = process.env.GATSBY_ALGOLIA_INDEX_NAME
 const searchClient = algoliasearch(appId, searchKey)
 
 export default(location) => {
+  useEffect(() => {
+    let searchBoxElement = document.getElementsByClassName('ais-SearchBox-input')
+    searchBoxElement[0].focus()
+  })
+  
   const [hasSearch, setHasSearch] = useState(false)
   return (
     <>
@@ -135,7 +140,6 @@ function SearchListings({type, listings}) {
               <MediaCard
                 mediaItem={item} key={item.slug + '-' + index}
               />
-
               )
           })}
             </Col>

@@ -49,10 +49,11 @@ function JobListings({type, listings}) {
 /** 
  * JobLists Page Component
  */
-export default (
-) => {
-  
-  const jobLists = useJobs(getDate(useLocation().search), '')
+export default ({
+    location
+  }) => {
+ 
+  const jobLists = useJobs(getDate(useLocation().search), location.hash.replace('#', ''))
   
   let ftJobs = []
   let ptJobs = []
