@@ -51,10 +51,8 @@ function JobListings({type, listings}) {
  */
 export default (
 ) => {
-
-  const { hash } = window.location
   
-  const jobLists = useJobs(getDate(useLocation().search), hash.replace('#', ''))
+  const jobLists = useJobs(getDate(useLocation().search), '')
   
   let ftJobs = []
   let ptJobs = []
