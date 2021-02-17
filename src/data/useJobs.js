@@ -1,6 +1,6 @@
 import { useStaticQuery, graphql } from "gatsby"
 
-export const useJobs = (currentDate) => {
+export const useJobs = (currentDate, type) => {
   const data = useStaticQuery(
     graphql`
       query {
@@ -29,12 +29,14 @@ export const useJobs = (currentDate) => {
       }
     `
   )
-  
   let returnData = []
   for (let i = 0; i < data.allWpJob.nodes.length ; i++) {
-    if ( (data.allWpJob.nodes[i].publication.publishDate === null || currentDate >= Date.parse(data.allWpJob.nodes[i].publication.publishDate.replace(/\s/g, 'T')) ) &&
-         (data.allWpJob.nodes[i].publication.unpublishDate === null || currentDate < Date.parse(data.allWpJob.nodes[i].publication.unpublishDate.replace(/\s/g, 'T')) )) {
-      returnData.push(data.allWpJob.nodes[i])
+    if (type === '' || data.allWpJob.nodes[i].properties.jobType === type) {  
+    
+      if ( (data.allWpJob.nodes[i].publication.publishDate === null || currentDate >= Date.parse(data.allWpJob.nodes[i].publication.publishDate.replace(/\s/g, 'T')) ) &&
+           (data.allWpJob.nodes[i].publication.unpublishDate === null || currentDate < Date.parse(data.allWpJob.nodes[i].publication.unpublishDate.replace(/\s/g, 'T')) )) {
+        returnData.push(data.allWpJob.nodes[i])
+      }
     }
   }
   

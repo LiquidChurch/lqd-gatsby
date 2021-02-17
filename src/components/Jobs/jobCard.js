@@ -41,14 +41,14 @@ export default ({
   }
   return (
     <>
-    <div class="job-link">
+    <div className="job-link">
     <Link to={"/jobs/" + slug}>
       <Card bsPrefix="job-card">
-        <Card.Body class="job-card-body">
-          <div class="job-title">{title}</div>
-          <div class="job-info">
-            <div class="job-location">{locationText}</div>
-            <div class="job-type">{jobType}</div>
+        <Card.Body className="job-card-body">
+          <div className="job-title">{title}</div>
+          <div className="job-info">
+            <div className="job-location">{locationText}</div>
+            <div className="job-type">{jobType}</div>
           </div>
         </Card.Body>
       </Card>

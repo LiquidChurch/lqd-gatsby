@@ -41,7 +41,7 @@ export default(location) => {
           }
         }}
       > 
-        <section className="site-section bottom">
+        <section className="site-section none">
           <Container>
             <Row>
               <SearchBox
@@ -53,38 +53,31 @@ export default(location) => {
             </Row>
           </Container>
         </section>
-        <section className="site-section bottom">
-          <Container>
-            <Row>
-              <Col className="media-card-wrap">
-                {hasSearch &&
-                  <CustomHits />
-                }
-              </Col>
-            </Row>
-          </Container>
-        </section>
+        {hasSearch &&
+          <CustomHits />
+        }
       </InstantSearch>
     </>
   );
 }
 
 const HitsTest = (props) => {
-  return (
-  <>
-    {props.hits.map(hit => {
-     
+  let pageItems = []
+  let messageItems = []
+  let blogItems = []
+  
+  props.hits.map(hit => {
+   let isValid=false
+   if ((hit.publishDate === null || getDate('') >= Date.parse(hit.publishDate.replace(/\s/g, 'T'))) &&
+     (hit.unpublishDate === null || getDate('') < Date.parse(hit.unpublishDate.replace(/\s/g, 'T')))) {
+       isValid=true
+    }
 
-     let isValid=false
-     if ((hit.publishDate === null || getDate('') >= Date.parse(hit.publishDate.replace(/\s/g, 'T'))) &&
-       (hit.unpublishDate === null || getDate('') < Date.parse(hit.unpublishDate.replace(/\s/g, 'T')))) {
-         isValid=true
-      }
-
-      if (hit.index !== "index") {
-        isValid=false
-      }
-
+    if (hit.index !== "index") {
+      isValid=false
+    }
+    
+    if (isValid) {
       const mediaItem = {
         category: hit.pageType,
         slug: hit.slug,
@@ -96,19 +89,59 @@ const HitsTest = (props) => {
         showSeries: false,
         showAttribution: false,
         isDynamic: true,
+      }
+      
+      switch(hit.pageType) {
+        case "pages": pageItems.push(mediaItem); break;
+        case "messages": messageItems.push(mediaItem); break;
+        case "blogs": blogItems.push(mediaItem); break;
+        default:
+      }
     }
-     return (
-     <>
-    {isValid &&
-        <MediaCard
-          mediaItem={mediaItem} key={'search-result-' + hit.slug}
-        />
-    }
-     </>
-     )
-    })}
+  })
+  
+  return (
+  <>
+    <SearchListings type="Pages" listings={pageItems} />
+    <SearchListings type="Messages" listings={messageItems} />
+    <SearchListings type="Blogs" listings={blogItems} />
   </>
   )
 }
 
 const CustomHits = connectHits(HitsTest)
+
+function SearchListings({type, listings}) {
+  if (listings.length === 0) {return (<></>)}
+
+  return (
+    <>
+      <Heading
+          text={type}
+          alignment="left"
+          size="medium"
+          all_caps={false}
+          add_padding={true}
+          font_color="#009DD1"
+          padding="none"
+          bg_color="#FFF"
+      />
+      <section className="site-section bottom" style={{backgroundColor: '#FFF'}} >
+        <Container>
+          <Row>
+            <Col className="media-card-wrap">
+            {listings.map((item, index) => {
+              return(
+              <MediaCard
+                mediaItem={item} key={item.slug + '-' + index}
+              />
+
+              )
+          })}
+            </Col>
+          </Row>
+        </Container>
+      </section>
+    </>
+  )
+}
