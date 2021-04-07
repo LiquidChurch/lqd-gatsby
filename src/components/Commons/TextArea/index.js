@@ -27,7 +27,6 @@ const TextArea = ({
   let hasStatement = false
   let hasSidekick = false
   let hasCTA = false
-  let textAreaId = Math.random().toString(36).substring(2, 7) + Math.random().toString(36).substring(2, 7)
   let fontColor = "#009DD1"
   let hasMargin = ""
   

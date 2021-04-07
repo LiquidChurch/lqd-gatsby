@@ -66,7 +66,7 @@ export default ({ keyValue,
       
       setImgLoaded(true)
     }
-  },[setImgUrl,setImgLoaded,messageInfo,setMsgInfoObject])
+  },[setImgUrl,imgLoaded, setImgLoaded,messageInfo,setMsgInfoObject])
   
   return (
   <>

@@ -60,7 +60,7 @@ export default ({
     }
     
     window.addEventListener('resize', setTextAreaHeight)  
-  }, [])
+  }, [imageHeightSet])
   
   return (
   <>

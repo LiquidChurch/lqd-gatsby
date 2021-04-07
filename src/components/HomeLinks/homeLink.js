@@ -69,7 +69,7 @@ export default ({
 
       setImgLoaded(true)
     }
-  }, [imgLoaded, page_info.featuredImage])  
+  }, [imgLoaded, page_info.featuredImage, altImage, page_info, url_append])  
     
   return (
   <>

@@ -124,7 +124,7 @@ export default ({
     } else {
       setIsLoaded(true)
     }
-  }, [usePhoto])
+  }, [usePhoto, block_off, block_on, checkedPublished, currentDate, imageInfo, imgLoaded])
 
   let isAlternative = false
   let altTopPadding = "top"

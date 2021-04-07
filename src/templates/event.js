@@ -8,7 +8,6 @@ import { GlobalContext } from '../components/GlobalContext/context'
 import { getDate, isAppView } from '../helpers/functions'
 
 import PageBlocks from "../components/PageBlocks"
-import HeroFeature from "../components/HeroFeature"
 
 /** 
  * Template - Blog Component
@@ -102,12 +101,6 @@ export const query = graphql`
         title
         modified
         slug
-        campuses {
-          nodes {
-            id
-            name
-          }
-        }
         EventInfo {
           audience
           date

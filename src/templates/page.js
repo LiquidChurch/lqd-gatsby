@@ -7,7 +7,6 @@ import Parse from "react-html-parser"
 import Layout from "../components/Layout"
 import PageBlocks from "../components/PageBlocks"
 import { GlobalContext } from '../components/GlobalContext/context'
-import { AnchorLink as Link } from "gatsby-plugin-anchor-links";
 
 //import { isTouchEnabled, getDate } from '../helpers/functions'
 import { getDate, isAppView, RichTextHelper, mediaUrlConverter } from '../helpers/functions'

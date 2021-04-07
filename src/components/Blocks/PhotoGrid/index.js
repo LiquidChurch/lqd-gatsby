@@ -82,7 +82,7 @@ export default ({
                                   className="photo-grid-image"
                                   width={max_width} />
                                 </a>,
-                        'new':<a href={image.linkUrl} target="_blank">
+                        'new':<a href={image.linkUrl} target="_blank" rel="noreferrer">
                                <Imgix 
                                   src={image.imageUrl}
                                   className="photo-grid-image"

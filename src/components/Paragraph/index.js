@@ -3,7 +3,6 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 
 import Parse from "react-html-parser"
-import { MaybeLink } from "../../helpers/hoc"
 
 import "./styles.css"
 

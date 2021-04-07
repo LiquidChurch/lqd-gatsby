@@ -9,7 +9,7 @@ import MediaCard from '../Blocks/MediaTiles/mediaCard'
 
 import algoliasearch from 'algoliasearch/lite';
 import { getDate } from '../../helpers/functions'
-import { InstantSearch, connectHits, SearchBox, connectStateResults } from 'react-instantsearch-dom'
+import { InstantSearch, connectHits, SearchBox} from 'react-instantsearch-dom'
 import './styles.css'
 const appId = process.env.GATSBY_ALGOLIA_APP_ID
 const searchKey = process.env.GATSBY_ALGOLIA_SEARCH_KEY
@@ -103,6 +103,7 @@ const HitsTest = (props) => {
         default:
       }
     }
+    return null
   })
   
   return (

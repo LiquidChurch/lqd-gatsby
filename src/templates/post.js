@@ -57,7 +57,7 @@ export default ({
       ctx.setIsMobile(Boolean(userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i)))
     }   
     ctx.setPath(location.pathname)
-  }, [ctx, theme, location, pageValid])
+  }, [ctx, theme, location, pageValid, post.categories.nodes])
   return (
     <Layout location={location}>
       <Helmet titleTemplate={`%s - ${generalSettings.title}`}>
