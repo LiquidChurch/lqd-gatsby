@@ -20,7 +20,7 @@ function StrapImage(props) {
   if (image_info !== undefined) {
     var imageUrl = mediaUrlConverter(image_info.mediaItemUrl)
     return (
-      <Col xs={12} sm={props.strap_image_size * 2} md={props.strap_image_size} className="page-strap-image-col">
+      <Col xs={12} md={props.strap_image_size * 2} lg={props.strap_image_size} className="page-strap-image-col">
         <div style={{maxWidth: props.max_width, margin: '0 auto'}}>
         <Imgix 
           src={imageUrl + "?fit=clamp"}

@@ -36,6 +36,10 @@
   margin-left:0px !important;
 }
 
+.statement.heading-margin{
+  margin-left:15px;
+}
+
 .sidekick {
   font-family: "Avenir Next Regular";
 }

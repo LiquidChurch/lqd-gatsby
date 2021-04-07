@@ -44,7 +44,7 @@ export default ({
       <Container className={add_padding ? "heading-container text-padding" : "heading-container"} key={'container-' + keyValue}>
         <Row>
           <Col>
-            <h2 className={'statement ' + size + ' align-' + alignment}
+            <h2 className={'statement heading-margin ' + size + ' align-' + alignment}
                 style={{color: font_color, textTransform: textTransform}}>
               {Parse(text)}
               <AddHR showHR={show_hr} />
