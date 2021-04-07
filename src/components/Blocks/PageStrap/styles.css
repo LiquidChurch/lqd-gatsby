@@ -1,6 +1,9 @@
 .page-strap {
   display:flex;
+  paddiing-right:0px;
+  padding-left:0px;
 }
+
 .page-strap-col {
   margin-right: auto;
   margin-left: auto;
