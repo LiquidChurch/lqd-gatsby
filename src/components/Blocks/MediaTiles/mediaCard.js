@@ -104,10 +104,13 @@ export default (props) => {
   const [imgLoaded, setImgLoaded] = useState(false)
   
   let linkUrl = ""
-  if (props.mediaItem.category === "pages") {
-    linkUrl = "/" + props.mediaItem.slug
-  } else {
-    linkUrl = "/" + props.mediaItem.category + "/" + props.mediaItem.slug
+  
+  if (props.mediaItem.slug !== '') {
+    if (props.mediaItem.category === "pages") {
+      linkUrl = "/" + props.mediaItem.slug
+    } else {
+      linkUrl = "/" + props.mediaItem.category + "/" + props.mediaItem.slug
+    }    
   }
   
   useEffect(() => {
@@ -136,7 +139,7 @@ export default (props) => {
   <>
     <Link
       to={linkUrl}
-      className="media-card-link"
+      className={(linkUrl === '') ? 'media-card-link disabled-link' : 'media-card-link'}
     >
     <Card className="media-card">
       {(imgLoaded || props.mediaItem.isDynamic) &&

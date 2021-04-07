@@ -5,6 +5,8 @@ import { GlobalContext } from '../../GlobalContext/context'
 import Container from 'react-bootstrap/Container'
 
 import { usePageById } from '../../../data/usePage'
+import { useEventById } from '../../../data/useEvent'
+import { useEventsByCategory } from '../../../data/useEventsCategory'
 // import { getDate } from '../../../helpers/functions'
 
 import { UseSlider } from "../MediaTiles/useSlider"
@@ -13,29 +15,52 @@ import '../MediaTiles/styles.css'
 
 function PageDataTransformer(props) {
   let lists = []
-  props.rawItems.map(item => {
+  props.rawItems.forEach((item, index) => {
     if (item === null) {
       return null
-    }    
-    
-    lists.push( {
-      "category": "pages",
-      "title": item.featuredImage.node.caption,
-      "image": item.featuredImage.node.mediaItemUrl,
-      "imageScaling": false,
-      "id": item.id,
-      "slug": item.slug,
-      "showBlurb": props.showBlurb,
-      "blurb": item.featuredImage.node.description,
-      "showSeries": props.showSeries,
-      "seriesTitle": item.seriesText,
-      "seriesPart": "hide",
-      "showAttribution": props.showAttribution,
-      "attributionName": item.attributionText,
-      "profileImage": "",
-      "date": "",
-    })
-    return null
+    }
+    switch(item.type) {
+      case 'pages':
+        lists.push({
+          "category": item.type,
+          "title": item.featuredImage.node.caption,
+          "image": item.featuredImage.node.mediaItemUrl,
+          "imageScaling": false,
+          "id": item.id,
+          "slug": item.slug,
+          "showBlurb": props.showBlurb,
+          "blurb": item.featuredImage.node.description,
+          "showSeries": props.showSeries,
+          "seriesTitle": item.seriesText,
+          "seriesPart": "hide",
+          "showAttribution": props.showAttribution,
+          "attributionName": item.attributionText,
+          "profileImage": "",
+          "date": "",
+        })
+        break;
+      case 'events':
+        lists.push({
+          "category": item.type,
+          "title": item.title,
+          "image": item.featuredImage.node.mediaItemUrl,
+          "imageScaling": false,
+          "id": item.id,
+          "slug": item.EventInfo.active ? item.slug : '',
+          "showBlurb": props.showBlurb,
+          "blurb": item.mediaBlurb.blurb,
+          "showSeries": props.showSeries,
+          "seriesTitle": item.seriesText,
+          "seriesPart": "hide",
+          "showAttribution": props.showAttribution,
+          "attributionName": item.attributionText,
+          "profileImage": "",
+          "date": "",
+        })
+        break;
+      default:
+        break;
+    }
   })
   return lists
 }
@@ -66,10 +91,28 @@ export default ({
       let rawPageList = JSON.parse(page_list)
       let tempItems = []
       rawPageList.rows.forEach(item => {
-        let tempItem = usePageById(item.page.id)
-        tempItem.seriesText = item.series_text
-        tempItem.attributionText = item.attribution_text
-        tempItems.push(tempItem)
+        let tempItem = {}
+        if (item.page) {
+          tempItem = usePageById(item.page.id)
+          tempItem.type = 'pages'
+          tempItem.seriesText = item.series_text
+          tempItem.attributionText = item.attribution_text
+          tempItems.push(tempItem)
+        } else if (item.event) {
+          tempItem = useEventById(item.event.id)
+          tempItem.type = 'events'
+          tempItem.seriesText = item.EventInfo.date
+          tempItem.attributionText = item.EventInfo.audience
+          tempItems.push(tempItem)
+        } else {
+          let items = useEventsByCategory(item.event_category.id)
+          items.forEach(item => {
+            item.type = 'events'
+            item.seriesText = item.EventInfo.date
+            item.attributionText = item.EventInfo.audience
+            tempItems.push(item)
+          })
+        }
       })
       setPageLists([...pageLists, PageDataTransformer({
         "rawItems":tempItems,

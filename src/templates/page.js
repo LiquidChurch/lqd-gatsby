@@ -180,6 +180,7 @@ export default ({
 export const query = graphql`
   query Page($id: String!) {
       page: wpPage(id: { eq: $id}) {
+        id
         blocks {
           ...AllBlocks
         }

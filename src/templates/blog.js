@@ -98,6 +98,7 @@ export default ({
 export const query = graphql`
   query Blog($id: String!) {
       blog: wpBlog(id: {eq: $id}) {
+        id
         title
         date
         modified
