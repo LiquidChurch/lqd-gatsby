@@ -15,6 +15,7 @@ export default (props) => {
   const [sliderWidth, setSliderWidth] = useState(0)
   const [currentMarginLeft, setMarginLeft] = useState(0)
   const [sliderPosition, setSliderPosition] = useState("start")
+  const [isTouchDevice, setIsTouchDevice] = useState(true)
   
   const ctx = useContext(GlobalContext)
 
@@ -78,18 +79,45 @@ export default (props) => {
   
   let componentClass = ""
       
-  useEffect(() => {
-
-    if (ctx.isMobile) {
-      componentClass='component-row-touch'
-      if (sliderPosition !== "touch") {
-        setSliderPosition("touch")
-        setMarginLeft(9)
+  useEffect(() => {  
+    let userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent.toLowerCase()
+      
+    if (!ctx.isMobileSet) {
+      console.log(userAgent)
+      
+      if (Boolean(userAgent.match(/android|blackBerry|iphone|ipad|ipod|opera mini|iemobile|wpdesktop/i))) {
+        ctx.setIsMobile(true)
+        setIsTouchDevice(true)
+        
+        if (sliderPosition !== "touch") {
+          setSliderPosition("touch")
+          setMarginLeft(9)
+        }
+      } else {
+        ctx.setIsMobile(false)
+        setIsTouchDevice(false)
       }
+
+      if (userAgent.indexOf('safari') !== -1) { 
+        if (userAgent.indexOf('chrome') > -1) {
+          ctx.setIsChrome(true)
+        } else {
+          ctx.setIsChrome(false)
+        }
+      } 
     } else {
-      componentClass='component-row'
+      if (ctx.isMobile) {
+        console.log('isMobile', ctx.isMobile)
+        setIsTouchDevice(true)
+        if (sliderPosition !== "touch") {
+          setSliderPosition("touch")
+          setMarginLeft(9)
+        }
+      } else {
+        setIsTouchDevice(false)
+      }
     }
-  
+    
     function setWidth() {
       let contentOffsetWidth = 0
       let componentOffsetWidth = 0
@@ -145,7 +173,7 @@ export default (props) => {
       <div className={'component-slider ' + sliderPosition}>
         <Row 
           id={'content-slider-' + props.sliderId}
-          className={'flex-nowrap no-scroll-bar ' + componentClass}
+          className={isTouchDevice ? 'flex-nowrap no-scroll-bar component-row-touch' : 'flex-nowrap no-scroll-bar component-row'}
           style={{marginLeft: '-' + currentMarginLeft + 'px' }}
         >
           {props.children}
