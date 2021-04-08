@@ -97,21 +97,9 @@ export default ({
   }
   
   useEffect(() => {
-    
-    let userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent.toLowerCase()
-    if (!ctx.isMobileSet) {
-      ctx.setIsMobile(Boolean(userAgent.match(/android|blackBerry|iphone|ipad|ipod|opera mini|iemobile|wpdesktop/i)))
-    
-      if (userAgent.indexOf('safari') !== -1) { 
-        if (userAgent.indexOf('chrome') > -1) {
-          ctx.setIsChrome(true)
-        } else {
-          ctx.setIsChrome(false)
-        }
-      } 
-    } 
-    
-    
+    if (!pageValid) {
+      navigate('/404')
+    }
     
     if (hasExternalRedirect) {
       //add in open in new tab attempts
@@ -130,14 +118,26 @@ export default ({
         } else if (ctx.prevPath === "") {
           window.location.replace(parentPageUri)
         }
-      },2500)      
-    } else if (!pageValid) {
-      navigate('/404')  
+      },2500)
     } else {        
       ctx.setTheme(theme)
       ctx.setPath(location.pathname)
       
       hashLinkScroll()
+      
+      let userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent.toLowerCase()
+      
+      if (!ctx.isMobileSet) {
+        ctx.setIsMobile(Boolean(userAgent.match(/android|blackBerry|iphone|ipad|ipod|opera mini|iemobile|wpdesktop/i)))
+
+        if (userAgent.indexOf('safari') !== -1) { 
+          if (userAgent.indexOf('chrome') > -1) {
+            ctx.setIsChrome(true)
+          } else {
+            ctx.setIsChrome(false)
+          }
+        } 
+      } 
     }
   }, [ctx, theme, externalRedirectBlock, hasExternalRedirect, location, pageValid, parentPageUri])
   

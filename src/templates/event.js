@@ -20,7 +20,12 @@ export default ({
 }) => {
   const generalSettings = useGeneralSettings()  
   const ctx = useContext(GlobalContext)
+  let parentPageUri = "/"
   
+  //if (event.parentDatabaseId !== null) {
+  //  parentPageUri = usePageById(event.parentDatabaseId).uri
+  //}
+
   let theme = 'light'
   if (isAppView(location.search) === "true" || ctx.currentTheme === 'app') {
     theme = 'app'
@@ -47,17 +52,63 @@ export default ({
     pageValid = true
   }
   
+  if (event.blocks !== null) {
+  var externalRedirectBlock = event.blocks.find(
+    ({ __typename }) => __typename === "WpBlockLabExternalRedirectBlock"
+  )
+  }
+  
+  let hasExternalRedirect = false
+  
+  if (externalRedirectBlock !== undefined) {
+    hasExternalRedirect = true
+    pageValid = false
+  }
+  
+  
   useEffect(() => {
     if (!pageValid) {
-      navigate('/blogs')
+      navigate('/404')
     }    
-    ctx.setTheme(theme)
-    let userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent
-    if (!ctx.isMobileSet) {
-      ctx.setIsMobile(Boolean(userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i)))
+
+    if (hasExternalRedirect) {
+      //add in open in new tab attempts
+      if (ctx.currPath !== 'external') {
+        ctx.setPath("external")
+        if (externalRedirectBlock.attributes.new_tab && !ctx.isMobile && ctx.isChrome) {
+          window.open(externalRedirectBlock.attributes.external_url, '_blank', 'noreferrer') 
+        } else {
+          window.location.replace(externalRedirectBlock.attributes.external_url)
+        }
+      }
+      
+      setTimeout(() => {
+        if (ctx.prevPath !== "" && ctx.prevPath !== location.pathname) {
+          window.location.replace(ctx.prevPath)
+        } else if (ctx.prevPath === "") {
+          window.location.replace(parentPageUri)
+        }
+      },2500)      
+    } else {        
+      ctx.setTheme(theme)
+      ctx.setPath(location.pathname)
+      
+      let userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent.toLowerCase()
+      
+      if (!ctx.isMobileSet) {
+        ctx.setIsMobile(Boolean(userAgent.match(/android|blackBerry|iphone|ipad|ipod|opera mini|iemobile|wpdesktop/i)))
+
+        if (userAgent.indexOf('safari') !== -1) { 
+          if (userAgent.indexOf('chrome') > -1) {
+            ctx.setIsChrome(true)
+          } else {
+            ctx.setIsChrome(false)
+          }
+        } 
+      } 
+      
     }
-    ctx.setPath(location.pathname)
-  }, [ctx, theme, location, pageValid])
+  }, [ctx, theme, externalRedirectBlock, hasExternalRedirect, location, pageValid, parentPageUri])
   
   return (
     <>
@@ -127,12 +178,6 @@ export const query = graphql`
             altText
             mediaItemUrl
           } 
-        }
-        eventCategories {
-          nodes {
-            id
-            databaseId
-          }
         }
         pageImage {
           image1 {
