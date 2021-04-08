@@ -37,8 +37,9 @@ export const useEventsByCategory = (categoryId) => {
                 audience
                 date
               }
-              event_categories {
+              eventCategories {
                 nodes {
+                  id
                   databaseId
                 }
               }
@@ -51,17 +52,16 @@ export const useEventsByCategory = (categoryId) => {
   let events = []
   
   data.allWpEvent.nodes.forEach((item, index) => {
-    if (item.event_categories.nodes.length === 0) {
+    if (item.eventCategories.nodes.length === 0) {
       return
     } else {
-      item.event_categories.nodes.forEach(category => {
+      item.eventCategories.nodes.forEach(category => {
         if (category.databaseId === categoryId) {
           events.push(data.allWpEvent.nodes[index])
         }
       })
     }
   })
-                                                
   if (events.length > 0) {
     events.sort((a, b) => {
       if (a.date > b.date) {

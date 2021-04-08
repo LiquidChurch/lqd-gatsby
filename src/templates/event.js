@@ -128,6 +128,12 @@ export const query = graphql`
             mediaItemUrl
           } 
         }
+        eventCategories {
+          nodes {
+            id
+            databaseId
+          }
+        }
         pageImage {
           image1 {
             caption 
