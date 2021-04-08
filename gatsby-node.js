@@ -262,6 +262,45 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   }
   
+  // CreatePage for Blog
+  const eventResult = await graphql(
+    `
+      query {
+        allWpEvent {
+          nodes {
+            id
+            slug
+            title
+          }
+        }
+      }
+    `
+  )
+
+  if (eventResult.errors) {
+    reporter.panicOnBuild(`Error while running GraphQL query on Event.`)
+    return
+  }
+
+  let endEvent = false
+  
+  do {
+    if (eventResult.data.allWpEvent.nodes) {
+      eventResult.data.allWpEvent.nodes.forEach(event => {
+        console.log('{"action":"create", "type":"event", "name":"'+ event.title +  '", "to":"' + `/events/${event.slug}` + '"},')  
+        createPage({
+          path: `/events/${event.slug}`,
+          component: slash(path.resolve(`./src/templates/event.js`)),
+          context: {
+            id: event.id,
+          },
+        })
+      })
+      endEvent = true;
+    }
+  }
+  while(!endEvent)   
+
   
   // CreatePage for Blog
   const jobResult = await graphql(
