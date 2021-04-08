@@ -18,17 +18,6 @@ export default (props) => {
   
   const ctx = useContext(GlobalContext)
 
-  let componentClass = ""
-  if (ctx.isMobile) {
-    componentClass='component-row-touch'
-    if (sliderPosition !== "touch") {
-      setSliderPosition("touch")
-      setMarginLeft(9)
-    }
-  } else {
-    componentClass='component-row'
-  }
-  
   const RenderRightArrow = () => {
     const remainingWidth = contentWidth - (sliderWidth) - currentMarginLeft;
 
@@ -86,8 +75,21 @@ export default (props) => {
 
     setMarginLeft(marginLeft)
   }
-    
+  
+  let componentClass = ""
+      
   useEffect(() => {
+
+    if (ctx.isMobile) {
+      componentClass='component-row-touch'
+      if (sliderPosition !== "touch") {
+        setSliderPosition("touch")
+        setMarginLeft(9)
+      }
+    } else {
+      componentClass='component-row'
+    }
+  
     function setWidth() {
       let contentOffsetWidth = 0
       let componentOffsetWidth = 0
@@ -133,7 +135,7 @@ export default (props) => {
     return _ => {
       window.removeEventListener('resize', resizeListener)
     }
-  })
+  }, [ctx, componentClass])
  
   return (
    <>
