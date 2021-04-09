@@ -10,7 +10,7 @@ import { getDate, isAppView } from '../helpers/functions'
 import PageBlocks from "../components/PageBlocks"
 
 /** 
- * Template - Blog Component
+ * Template - Event Component
  */
 export default ({
   location,
@@ -20,12 +20,8 @@ export default ({
 }) => {
   const generalSettings = useGeneralSettings()  
   const ctx = useContext(GlobalContext)
-  let parentPageUri = "/"
+  let parentPageUri = "/events"
   
-  //if (event.parentDatabaseId !== null) {
-  //  parentPageUri = usePageById(event.parentDatabaseId).uri
-  //}
-
   let theme = 'light'
   if (isAppView(location.search) === "true" || ctx.currentTheme === 'app') {
     theme = 'app'
@@ -67,32 +63,6 @@ export default ({
   
   
   useEffect(() => {
-    if (!pageValid) {
-      navigate('/404')
-    }    
-
-    if (hasExternalRedirect) {
-      //add in open in new tab attempts
-      if (ctx.currPath !== 'external') {
-        ctx.setPath("external")
-        if (externalRedirectBlock.attributes.new_tab && !ctx.isMobile && ctx.isChrome) {
-          window.open(externalRedirectBlock.attributes.external_url, '_blank', 'noreferrer') 
-        } else {
-          window.location.replace(externalRedirectBlock.attributes.external_url)
-        }
-      }
-      
-      setTimeout(() => {
-        if (ctx.prevPath !== "" && ctx.prevPath !== location.pathname) {
-          window.location.replace(ctx.prevPath)
-        } else if (ctx.prevPath === "") {
-          window.location.replace(parentPageUri)
-        }
-      },2500)      
-    } else {        
-      ctx.setTheme(theme)
-      ctx.setPath(location.pathname)
-      
       let userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent.toLowerCase()
       
       if (!ctx.isMobileSet) {
@@ -106,7 +76,40 @@ export default ({
           }
         } 
       } 
-      
+
+    if (!pageValid) {
+      navigate('/404')
+    }    
+
+    if (hasExternalRedirect) {
+      let isMobile = Boolean(userAgent.match(/android|blackBerry|iphone|ipad|ipod|opera mini|iemobile|wpdesktop/i))
+      if (userAgent.indexOf('safari') !== -1) { 
+        if (userAgent.indexOf('chrome') > -1) {
+          if (ctx.currPath !== 'external') {
+            ctx.setPath("external")
+            if (externalRedirectBlock.attributes.new_tab && !isMobile) {
+              window.open(externalRedirectBlock.attributes.external_url, '_blank', 'noreferrer') 
+            } else {
+              window.location.replace(externalRedirectBlock.attributes.external_url)
+            }
+          }
+        } else {
+          if (ctx.currPath !== 'external') {
+            ctx.setPath("external")
+            window.location.replace(externalRedirectBlock.attributes.external_url)  
+          }
+        } 
+      } 
+      setTimeout(() => {
+        if (ctx.prevPath !== "" && ctx.prevPath !== location.pathname) {
+          window.location.replace(ctx.prevPath)
+        } else if (ctx.prevPath === "") {
+          window.location.replace(parentPageUri)
+        }
+      },2500)
+    } else {        
+      ctx.setTheme(theme)
+      ctx.setPath(location.pathname)
     }
   }, [ctx, theme, externalRedirectBlock, hasExternalRedirect, location, pageValid, parentPageUri])
   
