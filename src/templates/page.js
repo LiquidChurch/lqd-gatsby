@@ -143,7 +143,7 @@ export default ({
         console.log('currentPath', ctx.currPath)
         console.log('perviousPath', ctx.prevPath)
         
-      },50)
+      },2500)
     } else {        
       ctx.setTheme(theme)
       ctx.setPath(location.pathname)
