@@ -110,10 +110,6 @@ export default ({
           }
         } 
       } 
-
-    if (!pageValid) {
-      navigate('/404')
-    }
     
     if (hasExternalRedirect) {
       let isMobile = Boolean(userAgent.match(/android|blackBerry|iphone|ipad|ipod|opera mini|iemobile|wpdesktop/i))
@@ -145,6 +141,10 @@ export default ({
         
       },2500)
     } else {        
+      if (!pageValid) {
+        navigate('/404')
+      }
+
       ctx.setTheme(theme)
       ctx.setPath(location.pathname)
       
