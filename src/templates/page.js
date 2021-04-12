@@ -111,6 +111,10 @@ export default ({
         } 
       } 
     
+    if (!pageValid) {
+      navigate('/404')
+    }    
+    
     if (hasExternalRedirect) {
       let isMobile = Boolean(userAgent.match(/android|blackBerry|iphone|ipad|ipod|opera mini|iemobile|wpdesktop/i))
       if (userAgent.indexOf('safari') !== -1) { 
@@ -122,14 +126,20 @@ export default ({
             } else {
               window.location.replace(externalRedirectBlock.attributes.external_url)
             }
-          }
+          } 
         } else {
           if (ctx.currPath !== 'external') {
             ctx.setPath("external")
             window.location.replace(externalRedirectBlock.attributes.external_url)  
           }
-        } 
+        }  
+      } else {
+        if (ctx.currPath !== 'external') {
+          ctx.setPath("external")
+          window.location.replace(externalRedirectBlock.attributes.external_url)  
+        }
       } 
+      
       setTimeout(() => {
         if (ctx.prevPath !== "" && ctx.prevPath !== location.pathname) {
           window.location.replace(ctx.prevPath)
@@ -141,10 +151,6 @@ export default ({
         
       },2500)
     } else {        
-      if (!pageValid) {
-        navigate('/404')
-      }
-
       ctx.setTheme(theme)
       ctx.setPath(location.pathname)
       

@@ -99,7 +99,13 @@ export default ({
             window.location.replace(externalRedirectBlock.attributes.external_url)  
           }
         } 
+      } else {
+        if (ctx.currPath !== 'external') {
+          ctx.setPath("external")
+          window.location.replace(externalRedirectBlock.attributes.external_url)  
+        }
       } 
+      
       setTimeout(() => {
         if (ctx.prevPath !== "" && ctx.prevPath !== location.pathname) {
           window.location.replace(ctx.prevPath)
