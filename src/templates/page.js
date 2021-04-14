@@ -123,7 +123,6 @@ export default ({
         } 
       } 
     
-
     if (hasExternalRedirect) {
       ctx.setPath("external")
       window.location.replace(externalRedirectBlock.attributes.external_url)  
@@ -159,16 +158,17 @@ export default ({
               ctx.setPath("external")
               window.location.replace(externalRedirectBlock.attributes.external_url)  
             }
+          } 
+        } else {
+          if (ctx.currPath !== 'external') {
+            ctx.setPath("external")
+            window.location.replace(externalRedirectBlock.attributes.external_url)  
           }
+        }  
       } else {
-        console.log('non chrome browser')        
         if (ctx.currPath !== 'external') {
-          console.log('open in existing tab')          
-          ctx.setPath("external")
-          window.location.replace(externalRedirectBlock.attributes.external_url)  
-        }
-      } 
       */
+
       setTimeout(() => {
         if (ctx.prevPath !== "" && ctx.prevPath !== location.pathname) {
           window.location.replace(ctx.prevPath)
@@ -193,7 +193,7 @@ export default ({
       } else if (ctx.prevPath === location.pathname) {
         setTimeout(() => { window.scrollTo({
                            top: ctx.scrollPos,
-                          })},200)
+                          })},100)
         ctx.setPath('back')
       } else {
         ctx.setPath(location.pathname)        

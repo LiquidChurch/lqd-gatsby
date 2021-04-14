@@ -79,7 +79,7 @@ export default ({
       } else if (ctx.prevPath === location.pathname) {
         setTimeout(() => { window.scrollTo({
                            top: ctx.scrollPos,
-                          })},200)
+                          })},100)
         ctx.setPath('back')
       } else {
         ctx.setPath(location.pathname)        
