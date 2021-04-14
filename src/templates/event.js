@@ -5,9 +5,27 @@ import { useGeneralSettings } from "../data/hooks"
 import Parse from "react-html-parser"
 import Layout from "../components/Layout"
 import { GlobalContext } from '../components/GlobalContext/context'
+import { useScrollPosition } from "../helpers/useScrollPosition"
+
 import { getDate, isAppView } from '../helpers/functions'
 
 import PageBlocks from "../components/PageBlocks"
+
+function hashLinkScroll() {
+  const { hash } = window.location;
+  if (hash !== '') {
+    // Push onto callback queue so it runs after the DOM is updated,
+    // this is required when navigating from a different page so that
+    // the element is rendered on the page before trying to getElementById.
+    setTimeout(() => {
+      const id = hash.replace('#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+      }     
+    }, 1000);
+  }
+}
 
 /** 
  * Template - Event Component
@@ -61,6 +79,15 @@ export default ({
     pageValid = false
   }
   
+  useScrollPosition(
+    ({ prevPos, currPos }) => {
+      ctx.setScrollPos(-currPos.y)
+    },
+    null,
+    false,
+    false,
+    100
+  )
   
   useEffect(() => {
       let userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent.toLowerCase()
@@ -76,40 +103,42 @@ export default ({
           }
         } 
       } 
-
-    if (!pageValid) {
-      navigate('/404')
-    }    
+    
 
     if (hasExternalRedirect) {
-      let isMobile = Boolean(userAgent.match(/android|blackBerry|iphone|ipad|ipod|opera mini|iemobile|wpdesktop/i))
-      if (userAgent.indexOf('safari') !== -1) { 
-        if (userAgent.indexOf('chrome') > -1) {
-          if (ctx.currPath !== 'external') {
-            ctx.setPath("external")
-            if (externalRedirectBlock.attributes.new_tab && !isMobile) {
-              window.open(externalRedirectBlock.attributes.external_url, '_blank', 'noreferrer') 
-            } else {
-              window.location.replace(externalRedirectBlock.attributes.external_url)
-            }
-          }
-        } else {
-          if (ctx.currPath !== 'external') {
-            ctx.setPath("external")
-            window.location.replace(externalRedirectBlock.attributes.external_url)  
-          }
-        } 
-      } 
+      ctx.setPath("external")
+      window.location.replace(externalRedirectBlock.attributes.external_url)
       setTimeout(() => {
         if (ctx.prevPath !== "" && ctx.prevPath !== location.pathname) {
           window.location.replace(ctx.prevPath)
         } else if (ctx.prevPath === "") {
           window.location.replace(parentPageUri)
         }
-      },2500)
-    } else {        
+      },2500) 
+      
+      
+    } else if (!pageValid) {
+      navigate('/404')
+    } else {
       ctx.setTheme(theme)
-      ctx.setPath(location.pathname)
+      
+      if (ctx.currPath === "") {
+        ctx.setPath(location.pathname)
+      }
+      
+      if (ctx.currPath !== location.pathname && ctx.prevPath !== location.pathname) {
+        ctx.resetScroll()
+        setTimeout(() => ctx.setPath(location.pathname),0)
+      } else if (ctx.prevPath === location.pathname) {
+        setTimeout(() => { window.scrollTo({
+                           top: ctx.scrollPos,
+                          })},200)
+        ctx.setPath('back')
+      } else {
+        ctx.setPath(location.pathname)        
+      }
+      
+      hashLinkScroll()
     }
   }, [ctx, theme, externalRedirectBlock, hasExternalRedirect, location, pageValid, parentPageUri])
   

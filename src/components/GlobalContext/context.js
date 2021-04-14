@@ -14,6 +14,8 @@ const GlobalProvider = (props) => {
   const [currPath, setCurrPath] = useState("")
   const [prevPath, setPrevPath] = useState("")
   const [pageDate, setPageDate] = useState(0)
+  const [currScroll, setCurrScroll] = useState(0)
+  const [prevScroll, setPrevScroll] = useState(0)
   const [isMobile, setIsMobile] = useState(true)
   const [isChrome, setIsChrome] = useState(false) 
   const [isMobileSet, setIsMobileSet] = useState(false)
@@ -35,6 +37,10 @@ const GlobalProvider = (props) => {
       prevPath: prevPath,
       currPath: currPath,
       setPath: (path) => updatePath(path),
+      setScrollPos: (scroll) => setCurrScroll(scroll),
+      resetScroll: () => setPrevScroll(currScroll),
+      scrollPos: prevScroll,
+      currentScroll: currScroll,
       currentDate: pageDate,
       setDate: (date) => setPageDate(date),
       isMobile: isMobile,

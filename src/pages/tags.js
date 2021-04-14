@@ -6,6 +6,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import MediaCard from '../components/Blocks/MediaTiles/mediaCard'
 import { GlobalContext } from '../components/GlobalContext/context'
+import { useScrollPosition } from "../helpers/useScrollPosition"
 import Heading from "../components/Blocks/Heading"
 import { getDate } from '../helpers/functions'
 import { useTags } from '../data/useTags'
@@ -20,9 +21,39 @@ export default ({
   if (isAppView(location.search) === "true" || ctx.currentTheme === 'app') {
     theme = 'app'
   }
+
+  useScrollPosition(
+    ({ prevPos, currPos }) => {
+      ctx.setScrollPos(-currPos.y)
+    },
+    null,
+    false,
+    false,
+    100
+  )
   
   useEffect(() => {
     ctx.setTheme(theme)
+    let userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent
+    if (!ctx.isMobileSet) {
+      ctx.setIsMobile(Boolean(userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i)))
+    }
+
+    if (ctx.currPath === "") {
+      ctx.setPath(location.pathname)
+    }
+
+    if (ctx.currPath !== location.pathname && ctx.prevPath !== location.pathname) {
+      ctx.resetScroll()
+      setTimeout(() => ctx.setPath(location.pathname),0)
+    } else if (ctx.prevPath === location.pathname) {
+      setTimeout(() => { window.scrollTo({
+                         top: ctx.scrollPos,
+                        })},100)
+      ctx.setPath('back')
+    } else {
+      ctx.setPath(location.pathname)        
+    }
   }, [ctx, theme])
   
   let tagList = useTags(location.hash.substring(1), getDate(location.search))

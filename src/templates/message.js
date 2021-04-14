@@ -6,6 +6,7 @@ import Parse from "react-html-parser"
 import Layout from "../components/Layout"
 import MessageBlocks from "../components/MessageBlocks"
 import { GlobalContext } from '../components/GlobalContext/context'
+import { useScrollPosition } from "../helpers/useScrollPosition"
 import { getDate, isAppView, RichTextHelper } from '../helpers/functions'
 
 /** 
@@ -46,18 +47,45 @@ export default ({
     pageValid = true
   }
   
+  useScrollPosition(
+    ({ prevPos, currPos }) => {
+      console.log('scroll position', -currPos.y)
+      ctx.setScrollPos(-currPos.y)
+    },
+    null,
+    false,
+    false,
+    100
+  )
+  
   useEffect(() => {
-    let userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent
-    if (!ctx.isMobileSet) {
-      ctx.setIsMobile(Boolean(userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i)))
-    }     
-    
     if (!pageValid) {
       navigate('/messages')
-    }
-    ctx.setTheme(theme)
+    } else {
+      
+      ctx.setTheme(theme)
+      let userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent
+      if (!ctx.isMobileSet) {
+        ctx.setIsMobile(Boolean(userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i)))
+      }
 
-    ctx.setPath(location.pathname)
+      if (ctx.currPath === "") {
+        ctx.setPath(location.pathname)
+      }
+
+      if (ctx.currPath !== location.pathname && ctx.prevPath !== location.pathname) {
+        ctx.resetScroll()
+        setTimeout(() => ctx.setPath(location.pathname),0)
+      } else if (ctx.prevPath === location.pathname) {
+        setTimeout(() => { window.scrollTo({
+                           top: ctx.scrollPos,
+                          })},200)
+        ctx.setPath('back')
+      } else {
+        ctx.setPath(location.pathname)        
+      }
+      
+    }
   }, [ctx, theme, location.pathname, pageValid])
   
   return (

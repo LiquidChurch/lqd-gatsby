@@ -7,6 +7,7 @@ import Parse from "react-html-parser"
 import Layout from "../components/Layout"
 import PageBlocks from "../components/PageBlocks"
 import { GlobalContext } from '../components/GlobalContext/context'
+import { useScrollPosition } from "../helpers/useScrollPosition"
 
 //import { isTouchEnabled, getDate } from '../helpers/functions'
 import { getDate, isAppView, RichTextHelper, mediaUrlConverter } from '../helpers/functions'
@@ -96,7 +97,18 @@ export default ({
     pageValid = false
   }
   
+  useScrollPosition(
+    ({ prevPos, currPos }) => {
+      ctx.setScrollPos(-currPos.y)
+    },
+    null,
+    false,
+    false,
+    100
+  )
+  
   useEffect(() => {
+    
       let userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent.toLowerCase()
       
       if (!ctx.isMobileSet) {
@@ -111,42 +123,81 @@ export default ({
         } 
       } 
     
+
     if (hasExternalRedirect) {
+      ctx.setPath("external")
+      window.location.replace(externalRedirectBlock.attributes.external_url)  
+      
+      /*
       let isMobile = Boolean(userAgent.match(/android|blackBerry|iphone|ipad|ipod|opera mini|iemobile|wpdesktop/i))
-      if (userAgent.indexOf('safari') !== -1) { 
+      if (userAgent.indexOf('safari') !== -1) {
         if (userAgent.indexOf('chrome') > -1) {
-          if (ctx.currPath !== 'external') {
-            ctx.setPath("external")
-            if (externalRedirectBlock.attributes.new_tab && !isMobile) {
-              window.open(externalRedirectBlock.attributes.external_url, '_blank', 'noreferrer') 
-            } else {
-              window.location.replace(externalRedirectBlock.attributes.external_url)
+          console.log('chrome browser')
+          switch(ctx.currPath) {   
+            case '':
+              //console.log('no previous path', ctx.currPath)
+              //window.location.replace(externalRedirectBlock.attributes.external_url)
+              break;
+            case 'external':
+              console.log('already clicked on path', ctx.currPath)
+              break;
+            default:
+              console.log('not from external', ctx.currPath)
+              ctx.setPath("external")
+              if (externalRedirectBlock.attributes.new_tab && !isMobile) {
+                console.log('opening new tab')
+                window.open(externalRedirectBlock.attributes.external_url, '_blank', 'noreferrer') 
+              } else {
+                console.log('open in existing tab')
+                window.location.replace(externalRedirectBlock.attributes.external_url)
+              }
+            }
+          } else {
+            console.log('non chrome browser')
+            if (ctx.currPath !== 'external') {
+              console.log('open in existing tab')
+              ctx.setPath("external")
+              window.location.replace(externalRedirectBlock.attributes.external_url)  
             }
           }
-        } else {
-          if (ctx.currPath !== 'external') {
-            ctx.setPath("external")
-            window.location.replace(externalRedirectBlock.attributes.external_url)  
-          }
-        } 
+      } else {
+        console.log('non chrome browser')        
+        if (ctx.currPath !== 'external') {
+          console.log('open in existing tab')          
+          ctx.setPath("external")
+          window.location.replace(externalRedirectBlock.attributes.external_url)  
+        }
       } 
+      */
       setTimeout(() => {
         if (ctx.prevPath !== "" && ctx.prevPath !== location.pathname) {
           window.location.replace(ctx.prevPath)
         } else if (ctx.prevPath === "") {
           window.location.replace(parentPageUri)
         }
-        console.log('currentPath', ctx.currPath)
-        console.log('perviousPath', ctx.prevPath)
-        
-      },2500)
-    } else {        
-      if (!pageValid) {
-        navigate('/404')
-      }
-
+      },2500) 
+      
+      
+    } else if (!pageValid) {
+      navigate('/404')
+    } else {
       ctx.setTheme(theme)
-      ctx.setPath(location.pathname)
+      
+      if (ctx.currPath === "") {
+        ctx.setPath(location.pathname)
+      }
+      
+      if (ctx.currPath !== location.pathname && ctx.prevPath !== location.pathname) {
+        ctx.resetScroll()
+        setTimeout(() => ctx.setPath(location.pathname),0)
+      } else if (ctx.prevPath === location.pathname) {
+        setTimeout(() => { window.scrollTo({
+                           top: ctx.scrollPos,
+                          })},200)
+        ctx.setPath('back')
+      } else {
+        ctx.setPath(location.pathname)        
+      }
       
       hashLinkScroll()
     }

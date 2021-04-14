@@ -7,6 +7,7 @@ import { useGeneralSettings } from "../data/hooks"
 import Layout from "../components/Layout"
 import PageBlocks from "../components/PageBlocks"
 import { GlobalContext } from '../components/GlobalContext/context'
+import { useScrollPosition } from "../helpers/useScrollPosition"
 import { getDate, isAppView, RichTextHelper, mediaUrlConverter } from '../helpers/functions'
 //import PostHeader from "../components/PostHeader"
 //import { LoadingOverlayProvider } from "../components/LoadingOverlay/context.js"
@@ -49,11 +50,41 @@ export default ({
       keywordsList = keywordsList + ", " + node.name
     }
   })
-
+  
+  useScrollPosition(
+    ({ prevPos, currPos }) => {
+      ctx.setScrollPos(-currPos.y)
+    },
+    null,
+    false,
+    false,
+    100
+  )
+  
   useEffect(() => {
     ctx.setTheme(theme)
-    ctx.setPath(location.pathname)
     ctx.setDate(getDate(location.search))
+    
+    let userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent
+    if (!ctx.isMobileSet) {
+      ctx.setIsMobile(Boolean(userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i)))
+    }
+
+    if (ctx.currPath === "") {
+      ctx.setPath(location.pathname)
+    }
+
+    if (ctx.currPath !== location.pathname && ctx.prevPath !== location.pathname) {
+      ctx.resetScroll()
+      setTimeout(() => ctx.setPath(location.pathname),0)
+    } else if (ctx.prevPath === location.pathname) {
+      setTimeout(() => { window.scrollTo({
+                         top: ctx.scrollPos,
+                        })},200)
+      ctx.setPath('back')
+    } else {
+      ctx.setPath(location.pathname)        
+    }    
   }, [ctx, theme, location])
 
   return (

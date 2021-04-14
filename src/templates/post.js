@@ -6,8 +6,10 @@ import Parse from "react-html-parser"
 import Layout from "../components/Layout"
 import PageBlocks from "../components/PageBlocks"
 import { GlobalContext } from '../components/GlobalContext/context'
+import { useScrollPosition } from "../helpers/useScrollPosition"
 import { getDate, isAppView } from '../helpers/functions'
 
+import { PageModalProvider } from "../components/PageModal/context.js"
 import HeroFeature from "../components/HeroFeature"
 
 export default ({
@@ -46,17 +48,45 @@ export default ({
     pageValid = true
   }
 
+  useScrollPosition(
+    ({ prevPos, currPos }) => {
+      ctx.setScrollPos(-currPos.y)
+    },
+    null,
+    false,
+    false,
+    100
+  )
+  
   useEffect(() => {
     if (!pageValid) {
       navigate('/' + post.categories.nodes[0].slug)
-    }
-    
-    ctx.setTheme(theme)
-    let userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent
-    if (!ctx.isMobileSet) {
-      ctx.setIsMobile(Boolean(userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i)))
-    }   
-    ctx.setPath(location.pathname)
+    } else {
+
+      ctx.setTheme(theme)
+      let userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent
+      if (!ctx.isMobileSet) {
+        ctx.setIsMobile(Boolean(userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i)))
+      }
+
+      if (ctx.currPath === "") {
+        ctx.setPath(location.pathname)
+      }
+
+      if (ctx.currPath !== location.pathname && ctx.prevPath !== location.pathname) {
+        ctx.resetScroll()
+        setTimeout(() => ctx.setPath(location.pathname),0)
+      } else if (ctx.prevPath === location.pathname) {
+        setTimeout(() => { window.scrollTo({
+                           top: ctx.scrollPos,
+                          })},200)
+        ctx.setPath('back')
+      } else {
+        ctx.setPath(location.pathname)        
+      }
+
+    } 
+  
   }, [ctx, theme, location, pageValid, post.categories.nodes])
   return (
     <Layout location={location}>
@@ -81,8 +111,10 @@ export default ({
         }
       </Helmet>
       <article className="page">
+        <PageModalProvider>
         <HeroFeature {...post} />
         <PageBlocks {...post} />
+        </PageModalProvider>
       </article>
     </Layout>
   )
