@@ -287,6 +287,23 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   do {
     if (eventResult.data.allWpEvent.nodes) {
       eventResult.data.allWpEvent.nodes.forEach(event => {
+        
+        
+       if (event.publication.promoSlug !== null) {
+        let promoSlugList = page.publication.promoSlug.split(",")
+        
+        for (let j=0; j < promoSlugList.length; j++) {
+          let promoPath = "/" + promoSlugList[j].trim().toLowerCase()
+          console.log('{"action":"redirect", "type":"event", "name":"'+ event.title +  '", "from":"' + promoPath + '", "to":"' + event.uri.slice(0,-1) + '"},')
+          createRedirect({
+            fromPath: promoPath,
+            toPath: '/events' + event.uri.slice(0,-1),
+            redirectInBrowser: true,
+            isPermanent: true
+          }) 
+        }
+      }
+        
         console.log('{"action":"create", "type":"event", "name":"'+ event.title +  '", "to":"' + `/events/${event.slug}` + '"},')  
         createPage({
           path: `/events/${event.slug}`,
