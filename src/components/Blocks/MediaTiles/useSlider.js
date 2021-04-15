@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import MediaCard from './mediaCard'
 import MediaFeatured from './mediaFeatured'
 import WideSlider from '../../Commons/WideSlider'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import { GlobalContext } from '../../GlobalContext/context'
 
 import { useScrollPosition } from "../../../helpers/useScrollPosition"
 
 export const UseSlider = (props) => {
   const perPageNum = 12
+  const ctx = useContext(GlobalContext)
   
   // Get More code
   const [items, setItems] = useState([])
@@ -17,7 +19,8 @@ export const UseSlider = (props) => {
   const [scrollTop, setScrollTop] = useState(0)
   const [updateScroll, setUpdateScroll] = useState(false)
   const [hasMore, setHasMore] = useState(true)
-
+  const [displayType, setDisplayType] = useState('grid')
+  
   const loadMore = () => {
     if (!loadNext) {
       return
@@ -48,12 +51,22 @@ export const UseSlider = (props) => {
     300
   )
   
-  useEffect(
-    () => {
+  useEffect(() => {
       if (updateScroll) {
         window.scrollTo(0,scrollTop)
         setUpdateScroll(false)
       }
+    
+      if (props.displayType === "hybrid") {
+        if (ctx.isMobile) {
+          setDisplayType("slider")
+        } else {
+          setDisplayType("grid")
+        }
+      } else {
+        setDisplayType(props.displayType)
+      }
+      
   },[updateScroll, scrollTop])
   
   if (hasMore) {
@@ -61,7 +74,7 @@ export const UseSlider = (props) => {
   }
   
   // check for null item
-  if (props.displayType === "slider") {
+  if (displayType === "slider") {
     return (
       <WideSlider sliderId={'slider-' + props.keyValue} touchEnabled={props.touchEnabled}>
         {props.mediaLists[0].map((item, index) => {
@@ -72,7 +85,7 @@ export const UseSlider = (props) => {
       </WideSlider>
     )
   } 
-  if (props.displayType === "grid") {
+  if (displayType === "grid") {
     return (
       <>
       <Row>
@@ -93,7 +106,7 @@ export const UseSlider = (props) => {
     )
   }
   
-  if (props.displayType === "featured") {
+  if (displayType === "featured") {
     return (
     <>
       <MediaFeatured mediaItem={props.mediaLists[0][0]} />
