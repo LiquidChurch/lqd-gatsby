@@ -57,7 +57,10 @@ export default ({
   if (page.themeState !== null) {
     theme = page.themeState.state
   }
-  if (isAppView(location.search) === "true" || ctx.currentTheme === 'app') {
+  //if (isAppView(location.search) === "true" || ctx.currentTheme === 'app') {
+  //  theme = 'app'
+  //}
+  if (isAppView(location.search) === "true") {
     theme = 'app'
   }
 
