@@ -16,6 +16,8 @@ export default ({
   cta_text,
   alt_image,
   url_append,
+  heading,
+  subheading,
 }) => {  
   const page_info = useFeaturedImage(page_slug_id)
   if (page_info === undefined) {
@@ -52,13 +54,11 @@ export default ({
       let imageUrl = ""
       if (altImage === "") {
         imageUrl = mediaUrlConverter(page_info.featuredImage.node.mediaItemUrl)
-        setCaption(page_info.featuredImage.node.caption)
-        setDescription(page_info.featuredImage.node.description)
       } else {
         imageUrl = mediaUrlConverter(altImage.mediaItemUrl)
-        setCaption(altImage.caption)
-        setDescription(altImage.description)
       }
+      setCaption('<p>' + heading + '</p>')
+      setDescription('<p>' + subheading + '</p>')
       setImgUrl(imageUrl + "?ar=16:9&fit=crop&h=296")
       
       if (url_append !== null && url_append !== undefined) {
