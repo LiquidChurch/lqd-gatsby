@@ -18,6 +18,10 @@ export const usePageById = (pageId) => {
                   description
                 }
               }
+              seo {
+                title
+                metaDesc
+              }
               publication {
                   unpublishDate
                   publishDate

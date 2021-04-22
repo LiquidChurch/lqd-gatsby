@@ -23,13 +23,13 @@ function PageDataTransformer(props) {
       case 'pages':
         lists.push({
           "category": item.type,
-          "title": item.featuredImage.node.caption,
+          "title": item.seo.title,
           "image": item.featuredImage.node.mediaItemUrl,
           "imageScaling": false,
           "id": item.id,
           "slug": item.slug,
           "showBlurb": props.showBlurb,
-          "blurb": item.featuredImage.node.description,
+          "blurb": item.seo.metaDesc,
           "showSeries": props.showSeries,
           "seriesTitle": item.seriesText,
           "seriesPart": "hide",
