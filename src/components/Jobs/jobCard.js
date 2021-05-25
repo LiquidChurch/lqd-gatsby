@@ -35,6 +35,8 @@ export default ({
 		case 'som': locationText = 'Somerset County'; break;
 		case 'gar': locationText = 'Union County Garwood'; break;
 		case 'mtn': locationText = 'Union County Mountainside'; break;
+    case 'pas': locationText = 'Passaic County'; break;
+    case 'mer': locationText = 'Mercer County'; break;
 		case 'fut': locationText = 'Future Campuses'; break;
 		case 'any': locationText = 'Anywhere'; break;
     default: locationText = ''
