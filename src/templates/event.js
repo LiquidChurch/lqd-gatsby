@@ -128,6 +128,7 @@ export default ({
       
       if (ctx.currPath !== location.pathname && ctx.prevPath !== location.pathname) {
         ctx.resetScroll()
+        hashLinkScroll()
         setTimeout(() => ctx.setPath(location.pathname),0)
       } else if (ctx.prevPath === location.pathname) {
         setTimeout(() => { window.scrollTo({
@@ -138,7 +139,6 @@ export default ({
         ctx.setPath(location.pathname)        
       }
       
-      hashLinkScroll()
     }
   }, [ctx, theme, externalRedirectBlock, hasExternalRedirect, location, pageValid, parentPageUri])
   

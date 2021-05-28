@@ -17,6 +17,7 @@ import { usePageById } from '../data/usePage'
 function hashLinkScroll() {
   const { hash } = window.location;
   if (hash !== '') {
+    console.log('scrolling to anchor')
     // Push onto callback queue so it runs after the DOM is updated,
     // this is required when navigating from a different page so that
     // the element is rendered on the page before trying to getElementById.
@@ -192,6 +193,7 @@ export default ({
       
       if (ctx.currPath !== location.pathname && ctx.prevPath !== location.pathname) {
         ctx.resetScroll()
+        hashLinkScroll()
         setTimeout(() => ctx.setPath(location.pathname),0)
       } else if (ctx.prevPath === location.pathname) {
         setTimeout(() => { window.scrollTo({
@@ -202,7 +204,7 @@ export default ({
         ctx.setPath(location.pathname)        
       }
       
-      hashLinkScroll()
+
     }
   }, [ctx, theme, externalRedirectBlock, hasExternalRedirect, location, pageValid, parentPageUri])
   
