@@ -60,17 +60,17 @@ export default ({
         <div className={runEffect ? "homepage-hero-cta loaded" : "homepage-hero-cta"}>
           <Link
             id="hero-cta"
+            to={"/locations"} 
+            className="btn font-btn homepage-hero-btn"
+          >
+            Join Us In Person
+          </Link>
+          <Link
+            id="hero-cta"
             to={"/" + cta_url} 
             className="btn font-btn homepage-hero-btn"
           >
             {cta_label}
-          </Link>
-          <Link
-            id="hero-cta"
-            to={"/indoor-services"} 
-            className="btn font-btn homepage-hero-btn"
-          >
-            Join Us In Person
           </Link>
         </div>
       </div>
