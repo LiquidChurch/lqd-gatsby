@@ -7,7 +7,7 @@ import Layout from "../components/Layout"
 import MessageBlocks from "../components/MessageBlocks"
 import { GlobalContext } from '../components/GlobalContext/context'
 import { useScrollPosition } from "../helpers/useScrollPosition"
-import { getDate, isAppView, RichTextHelper } from '../helpers/functions'
+import { getDate, isAppView, RichTextHelper, mediaUrlConverter } from '../helpers/functions'
 
 /** 
  * Template - Messages Component
@@ -26,12 +26,17 @@ export default ({
     theme = 'app'
   }
 
+  //let featuredImageUrl = "" 
+  //if (lqdmMessage.featuredImage !== null) {
+  //  let imgUrl = lqdmMessage.featuredImage.node.mediaItemUrl.split("/")
+  //  featuredImageUrl = process.env.IMGIX_URL + "/" + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX] + "?ar=16:9&fit=crop&h=200"
+  //}  
+  
   let featuredImageUrl = "" 
   if (lqdmMessage.featuredImage !== null) {
-    let imgUrl = lqdmMessage.featuredImage.node.mediaItemUrl.split("/")
-    featuredImageUrl = process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX] + "?ar=16:9&fit=crop&h=200"
-  }  
-
+    featuredImageUrl = mediaUrlConverter(lqdmMessage.featuredImage.node.mediaItemUrl)
+  }
+  
   let keywordsList = ""
   lqdmMessage.tags.nodes.forEach((node, i) => {
     if (i === 0) {
@@ -49,7 +54,6 @@ export default ({
   
   useScrollPosition(
     ({ prevPos, currPos }) => {
-      console.log('scroll position', -currPos.y)
       ctx.setScrollPos(-currPos.y)
     },
     null,
@@ -110,7 +114,7 @@ export default ({
           <meta property="og:site_name" content={generalSettings.title} />
           <meta property="og:url" content={'https://liquidchurch.com/messages/'+lqdmMessage.slug} />
           {(featuredImageUrl !== "") && 
-            <meta property="og:image" content={featuredImageUrl} />
+            <meta property="og:image" content={featuredImageUrl + '?ar=16:9&fit=crop&h=630'} />
           }
         </Helmet>
         <article className="post">

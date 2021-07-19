@@ -6,7 +6,7 @@ import Parse from "react-html-parser"
 import Layout from "../components/Layout"
 import { GlobalContext } from '../components/GlobalContext/context'
 import { useScrollPosition } from "../helpers/useScrollPosition"
-import { getDate, isAppView } from '../helpers/functions'
+import { getDate, isAppView, mediaUrlConverter } from '../helpers/functions'
 
 import { PageModalProvider } from "../components/PageModal/context.js"
 import PageBlocks from "../components/PageBlocks"
@@ -29,12 +29,17 @@ export default ({
     theme = 'app'
   }
   
+  //let featuredImageUrl = "" 
+  //if (blog.featuredImage !== null) {
+  //  let imgUrl = blog.featuredImage.node.mediaItemUrl.split("/")
+  //  featuredImageUrl = process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX] + "?ar=16:9&fit=crop&h=200"
+  //}  
+  
   let featuredImageUrl = "" 
   if (blog.featuredImage !== null) {
-    let imgUrl = blog.featuredImage.node.mediaItemUrl.split("/")
-    featuredImageUrl = process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX] + "?ar=16:9&fit=crop&h=200"
-  }  
-
+    featuredImageUrl = mediaUrlConverter(blog.featuredImage.node.mediaItemUrl)
+  }
+  
   let keywordsList = ""
   blog.tags.nodes.forEach((node, i) => {
     if (i === 0) {
@@ -112,7 +117,7 @@ export default ({
           <meta property="og:site_name" content={generalSettings.title} />
           <meta property="og:url" content={'https://liquidchurch.com/'+blog.slug} />
           {(featuredImageUrl !== "") && 
-            <meta property="og:image" content={featuredImageUrl} />
+            <meta property="og:image" content={featuredImageUrl + '?ar=16:9&fit=crop&h=630'} />
           }
         </Helmet>
         <article className="page">

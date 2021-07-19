@@ -1,14 +1,14 @@
 /* Header TopBar component styles */
 
 .topbar-dark {
-  padding: 1.2rem 1.2rem;
+  padding: 1.25rem 1.2rem;
   background: linear-gradient(rgba(0,0,0,1), rgba(0,0,0,0));  
   z-index:10;
   flex-wrap:nowrap;
 }
 
 .topbar-light {
-  padding: 1.2rem 1.2rem;
+  padding: 1.25rem 1.2rem;
   background: white;
   z-index:10;
   flex-wrap:nowrap;

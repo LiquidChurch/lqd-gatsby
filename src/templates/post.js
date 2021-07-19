@@ -7,7 +7,7 @@ import Layout from "../components/Layout"
 import PageBlocks from "../components/PageBlocks"
 import { GlobalContext } from '../components/GlobalContext/context'
 import { useScrollPosition } from "../helpers/useScrollPosition"
-import { getDate, isAppView } from '../helpers/functions'
+import { getDate, isAppView, mediaUrlConverter } from '../helpers/functions'
 
 import { PageModalProvider } from "../components/PageModal/context.js"
 import HeroFeature from "../components/HeroFeature"
@@ -26,11 +26,16 @@ export default ({
     theme = 'app'
   }
   
+  //let featuredImageUrl = "" 
+  //if (post.featuredImage !== null) {
+  //  let imgUrl = post.featuredImage.node.mediaItemUrl.split("/")
+  //  featuredImageUrl = process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX] + "?ar=16:9&fit=crop&h=200"
+  //}  
+  
   let featuredImageUrl = "" 
   if (post.featuredImage !== null) {
-    let imgUrl = post.featuredImage.node.mediaItemUrl.split("/")
-    featuredImageUrl = process.env.IMGIX_URL + imgUrl[process.env.IMG_DIR_INDEX] + "/" + imgUrl[process.env.IMG_FILE_INDEX] + "?ar=16:9&fit=crop&h=200"
-  }  
+    featuredImageUrl = mediaUrlConverter(post.featuredImage.node.mediaItemUrl)
+  }
 
   let keywordsList = ""
   post.tags.nodes.forEach((node, i) => {
@@ -107,7 +112,7 @@ export default ({
         <meta property="og:site_name" content={generalSettings.title} />
         <meta property="og:url" content={'https://liquidchurch.com/'+post.categories.nodes[0].slug + '/' + post.slug} />
         {(featuredImageUrl !== "") && 
-          <meta property="og:image" content={featuredImageUrl} />
+          <meta property="og:image" content={featuredImageUrl + '?ar=16:9&fit=crop&h=630'} />
         }
       </Helmet>
       <article className="page">
