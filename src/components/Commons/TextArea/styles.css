@@ -42,6 +42,7 @@
 
 .sidekick {
   font-family: "Avenir Next Regular";
+  -webkit-font-smoothing: antialiased;
 }
 
 .sidekick.tall {

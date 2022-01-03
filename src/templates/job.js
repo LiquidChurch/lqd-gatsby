@@ -66,6 +66,7 @@ export default ({
     lqdmJob
   },
 }) => {
+  console.log(lqdmJob.title)
   const generalSettings = useGeneralSettings()    
   const ctx = useContext(GlobalContext)
 

@@ -18,6 +18,7 @@ export default ({
     lqdmMessage,
   },
 }) => {
+  console.log(lqdmMessage.title)
   const generalSettings = useGeneralSettings()  
   const ctx = useContext(GlobalContext)
   

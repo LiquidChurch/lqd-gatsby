@@ -18,6 +18,7 @@ export default ({
     post,
   },
 }) => {
+  console.log(post.title)
   const generalSettings = useGeneralSettings()
   const ctx = useContext(GlobalContext)
 

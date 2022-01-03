@@ -36,6 +36,7 @@ export default ({
     event,
   },
 }) => {
+  console.log(event.title)
   const generalSettings = useGeneralSettings()  
   const ctx = useContext(GlobalContext)
   let parentPageUri = "/events"

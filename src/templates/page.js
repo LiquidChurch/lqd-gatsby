@@ -40,6 +40,7 @@ export default ({
     page,
   },
 }) => {
+  console.log(page.title)
   const generalSettings = useGeneralSettings()
   const ctx = useContext(GlobalContext)
   let parentPageUri = "/"

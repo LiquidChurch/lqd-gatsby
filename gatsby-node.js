@@ -271,6 +271,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             id
             slug
             title
+            uri
+            publication {
+              promoSlug
+            }
           }
         }
       }
@@ -290,14 +294,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         
         
        if (event.publication.promoSlug !== null) {
-        let promoSlugList = page.publication.promoSlug.split(",")
+        let promoSlugList = event.publication.promoSlug.split(",")
         
         for (let j=0; j < promoSlugList.length; j++) {
           let promoPath = "/" + promoSlugList[j].trim().toLowerCase()
           console.log('{"action":"redirect", "type":"event", "name":"'+ event.title +  '", "from":"' + promoPath + '", "to":"' + event.uri.slice(0,-1) + '"},')
           createRedirect({
             fromPath: promoPath,
-            toPath: '/events' + event.uri.slice(0,-1),
+            toPath: `/events/${event.slug}`,
             redirectInBrowser: true,
             isPermanent: true
           }) 

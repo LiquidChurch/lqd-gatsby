@@ -20,6 +20,7 @@ export default ({
     series,
   },
 }) => {
+  console.log(series.name)
   const ctx = useContext(GlobalContext)
   const currentDate = getDate(location.search)
   

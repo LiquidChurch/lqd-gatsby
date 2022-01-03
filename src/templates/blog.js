@@ -21,6 +21,7 @@ export default ({
     blog,
   },
 }) => {
+  console.log(blog.title)
   const generalSettings = useGeneralSettings()  
   const ctx = useContext(GlobalContext)
   

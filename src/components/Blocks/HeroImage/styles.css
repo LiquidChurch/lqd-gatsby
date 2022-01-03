@@ -18,11 +18,11 @@
   overflow:hidden;
   object-fit:cover;
   object-position:inherit;
-  height: fit;
-  height: -webkit-fill-available;
+  /* height: -webkit-fill-available; */
   width: 102vw;
   border-width: 0px;
   margin-left:-2px;
+  height: 80vh;
 }
 
 .hero-image-text-area-filled-hero {
