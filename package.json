@@ -40,7 +40,7 @@
     "ink-link": "^1.1.0",
     "ink-select-input": "^3.1.2",
     "jquery": "^3.5.1",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "popper.js": "^1.16.1",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
