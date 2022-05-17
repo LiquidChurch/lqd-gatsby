@@ -19,6 +19,8 @@ export default ({
   switch(type){
     case "full": jobType = "Full Time"; break;
     case "part": jobType = "Part Time"; break;
+    case "cwc-full": jobType = "Full Time"; break;
+    case "cwc-part": jobType = "Part Time"; break;
     case "intern": jobType = "Internship"; break;
     case "vstaff": jobType = "Volunteer Staff"; break;
     case "vol": jobType = "Volunteer"; break;

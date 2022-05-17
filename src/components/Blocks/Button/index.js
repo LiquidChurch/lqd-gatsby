@@ -196,7 +196,7 @@ export default ({
               ||
                <StyledButton
                   to={linkUrl}
-                  className={'cta-button button-' + alignment}
+                  className={'cta-button button-' + alignment + ' btn-primary'}
                   stripHash
                 >
                   <ButtonIcon hasIcon={has_icon} />

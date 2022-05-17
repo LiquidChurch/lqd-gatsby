@@ -57,6 +57,8 @@ export default ({
   
   let ftJobs = []
   let ptJobs = []
+  let cwcFtJobs = []
+  let cwcPtJobs = []
   let volJobs = []
   let vstaffJobs = []
   let internJobs = []
@@ -65,13 +67,17 @@ export default ({
     switch(item.properties.jobType) {
       case "full": ftJobs.push(item); break;
       case "part": ptJobs.push(item); break;
+      case "cwc-full": cwcFtJobs.push(item); break;
+      case "cwc-part": cwcPtJobs.push(item); break;
       case "intern": internJobs.push(item); break;
       case "vstaff": vstaffJobs.push(item); break;
       case "vol": volJobs.push(item); break;
       default:
-    }
+     
     return null
+    }
   })
+  
   return (
   <>
       <Heading
@@ -86,6 +92,8 @@ export default ({
       />
       <JobListings type={'Full Time'} listings={ftJobs} />
       <JobListings type={'Part Time'} listings={ptJobs} />
+      <JobListings type={'Clean Water Cafe - Full Time'} listings={cwcFtJobs} />
+      <JobListings type={'Clean Water Cafe - Part Time'} listings={cwcPtJobs} />
       <JobListings type={'Volunteer Staff'} listings={vstaffJobs} />
       <JobListings type={'Volunteer'} listings={volJobs} />
       <JobListings type={'Internship'} listings={internJobs} />
