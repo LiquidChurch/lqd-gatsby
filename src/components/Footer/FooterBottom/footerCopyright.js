@@ -18,7 +18,7 @@ export default () => {
         <CopyrightIcon />{'\u00A0'}2020–⁠{getCurrentYear()}{'\u00A0'}Liquid Church
       </span>
       <span className="footer-font no-display" aria-hidden={true}>
-        <a href="\privacy-policy">{'\u00A0'}Privacy Policy{'\u00A0'}</a>
+        <a href="\privacy">{'\u00A0'}Privacy Policy{'\u00A0'}</a>
       </span>
       <span className="footer-font no-display" aria-hidden={true}>
         |

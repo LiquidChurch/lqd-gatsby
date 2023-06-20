@@ -155,7 +155,7 @@ export default ({
             jobType = {jobType}
             postLength = {postLength}
           />
-          <div className="blog">
+          <div className="page">
             <PageBlocks {...lqdmJob} />
           </div>
           <JobPageButtons

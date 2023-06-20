@@ -99,7 +99,7 @@ export default ({
   
   if (externalRedirectBlock !== undefined) {
     hasExternalRedirect = true
-    pageValid = false
+    // pageValid = false
   }
   
   useScrollPosition(
@@ -128,7 +128,9 @@ export default ({
         } 
       } 
     
-    if (hasExternalRedirect) {
+    if (!pageValid) {
+      navigate('/404')
+    } else if (hasExternalRedirect) {
       ctx.setPath("external")
       window.location.replace(externalRedirectBlock.attributes.external_url)  
       
@@ -183,8 +185,9 @@ export default ({
       },2500) 
       
       
-    } else if (!pageValid) {
-      navigate('/404')
+    // } 
+    // else if (!pageValid) {
+    //  navigate('/404')
     } else {
       ctx.setTheme(theme)
       

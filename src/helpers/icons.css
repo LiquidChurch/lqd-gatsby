@@ -46,6 +46,12 @@
   mask-image: url('./svg/youtube.svg'); 
 }
 
+.tiktok-icon {
+  -webkit-mask-image: url('./svg/tiktok.svg');
+  -webkit-mask-size: 100% 100%;
+  mask-image: url('./svg/tiktok.svg'); 
+}
+
 .home-icon {
   -webkit-mask-image: url('./svg/liquid.svg');
   -webkit-mask-size: 100% 100%;
